@@ -60,3 +60,9 @@ Remove the Gigantamax factor from\n[BUFFER1]?
 
 #org @gText_MaxPowderRemovesGigantamax
 [BUFFER1] can no longer Gigantamax.[PAUSE_UNTIL_PRESS]
+
+#org @gText_MoveRelearner
+Move Relearn
+
+#org @gText_MoveRelearnerDescription
+Allows Pokemon to remember past\nmoves.

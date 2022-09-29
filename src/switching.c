@@ -255,8 +255,7 @@ static bool8 TryActivateFlowerGift(u8 leavingBank)
 {
 	u32 i = 0;
 
-	if (ABILITY(leavingBank) == ABILITY_AIRLOCK
-	||  ABILITY(leavingBank) == ABILITY_CLOUDNINE)
+	if (ABILITY(leavingBank) == ABILITY_AIRLOCK)
 		gBattleMons[leavingBank].ability = ABILITY_NONE; //Remove ability because we can't have these anymore
 
 	for (u8 bank = gBanksByTurnOrder[i]; i < gBattlersCount; ++i, bank = gBanksByTurnOrder[i])

@@ -1,5 +1,7 @@
 #pragma once
 
+#define FLAG_POKEMONPCMENU 0x1FF
+
 #define FLAG_TEMP_1              0x001
 #define FLAG_TEMP_2              0x002
 #define FLAG_TEMP_3              0x003
@@ -520,7 +522,7 @@
 #define FLAG_HIDE_SILPH_CO_4F_TM41                              0x1FE
 
 // Unused?
-#define FLAG_0x1FF               0x1FF
+#define FLAG_0x1FF               0x1FF //used
 #define FLAG_0x200               0x200
 #define FLAG_0x201               0x201
 #define FLAG_0x202               0x202

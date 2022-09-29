@@ -1132,13 +1132,15 @@ map \map
 	hidepokepic
 .endm
 
-@ Draws an image of the winner of the contest. In FireRed, this command is a nop. (The argument is discarded.)
-.macro drawcontestwinner a:req
+@ Same as fadescreen but works properly in rain
+.macro fadescreenswapbuffers effect:req
 .byte 0x77
-.byte \a
+.byte \effect
 .endm
 
-@ Displays the string at pointer as braille text in a standard message box. The string must be formatted to use braille characters.
+@ Displays the given string as braille text in a standard message box. The string should use the .braille directive
+@ to convert text to braille, and be preceded by brailleformat. The brailleformat data is skipped over (in RS, these
+@ bytes determined the box's size and position, but in Emerald these are calculated automatically).
 .macro braillemessage text:req
 .byte 0x78
 .4byte \text
@@ -1408,7 +1410,7 @@ map \map
 .endm
 
 @ In FireRed, this command is a nop.
-.macro getpricereduction
+.macro getpokenewsactive
 .byte 0x96
 .endm
 
@@ -1425,9 +1427,13 @@ map \map
 .byte \speed
 .endm
 
-.macro setflashradius word:req
+.macro setflashlevel word:req
 .byte 0x99
 .2byte \word
+.endm
+
+.macro setflashradius word:req
+	setflashlevel \word
 .endm
 
 .macro animateflash byte:req
@@ -1547,7 +1553,7 @@ map \map
 .hword \setmapfooter_param
 .endm
 
-.macro setobjectpriority index:req, bank:req, map:req, priority:req
+.macro setobjectsubpriority index:req, bank:req, map:req, priority:req
 .byte 0xa8
 .2byte \index
 .byte \bank
@@ -1555,7 +1561,7 @@ map \map
 .byte \priority
 .endm
 
-.macro resetobjectpriority index:req, bank:req, map:req
+.macro resetobjectsubpriority index:req, bank:req, map:req
 .byte 0xa9
 .byte \bank
 .byte \map
@@ -1834,8 +1840,8 @@ map \map
 .2byte \worldmapflag
 .endm
 
-@ Clone of warpteleport? It is apparently only used in FR/LG, and only with specials.[source]
-.macro warpteleport2 map:req, warp:req, x:req, y:req
+@ Alternate warpteleport. Spins the player in on entry.
+.macro warpspinenter map:req, warp:req, x:req, y:req
 .byte 0xd1
 map \map
 .byte \warp
@@ -1869,6 +1875,114 @@ map \map
 	callstd \type
 .endm
 
+@ Supplementary
+
+	.macro goto_if_unset flag:req, dest:req
+	checkflag \flag
+	goto_if FALSE, \dest
+	.endm
+
+	.macro goto_if_set flag:req, dest:req
+	checkflag \flag
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_lt dest:req @ LESS THAN
+	goto_if 0, \dest
+	.endm	
+
+	.macro goto_if_eq dest:req @ EQUAL
+	goto_if 1, \dest
+	.endm
+
+	.macro goto_if_gt dest:req @ GREATER THAN
+	goto_if 2, \dest
+	.endm
+
+	.macro goto_if_le dest:req @ LESS THAN OR EQUAL
+	goto_if 3, \dest
+	.endm
+
+	.macro goto_if_ge dest:req @ GREATER THAN OR EQUAL
+	goto_if 4, \dest
+	.endm
+
+	.macro goto_if_ne dest:req @ NOT EQUAL
+	goto_if 5, \dest
+	.endm
+
+	.macro call_if_unset flag:req, dest:req
+	checkflag \flag
+	call_if FALSE, \dest
+	.endm
+
+	.macro call_if_set flag:req, dest:req
+	checkflag \flag
+	call_if TRUE, \dest
+	.endm
+
+	.macro call_if_lt dest:req @ LESS THAN
+	call_if 0, \dest
+	.endm	
+
+	.macro call_if_eq dest:req @ EQUAL
+	call_if 1, \dest
+	.endm
+
+	.macro call_if_gt dest:req @ GREATER THAN
+	call_if 2, \dest
+	.endm
+
+	.macro call_if_le dest:req @ LESS THAN OR EQUAL
+	call_if 3, \dest
+	.endm
+
+	.macro call_if_ge dest:req @ GREATER THAN OR EQUAL
+	call_if 4, \dest
+	.endm
+
+	.macro call_if_ne dest:req @ NOT EQUAL
+	call_if 5, \dest
+	.endm
+
+	.macro vgoto_if_eq dest:req
+	vgoto_if TRUE, \dest
+	.endm
+
+	.macro vgoto_if_ne dest:req
+	vgoto_if FALSE, \dest
+	.endm
+
+	.macro vgoto_if_set flag:req, dest:req
+	checkflag \flag
+	vgoto_if TRUE, \dest
+	.endm
+
+	.macro vgoto_if_unset flag:req, dest:req
+	checkflag \flag
+	vgoto_if FALSE, \dest
+	.endm
+
+	.macro goto_if_defeated trainer:req, dest:req
+	checktrainerflag \trainer
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_not_defeated trainer:req, dest:req
+	checktrainerflag \trainer
+	goto_if FALSE, \dest
+	.endm
+
+	.macro call_if_defeated trainer:req, dest:req
+	checktrainerflag \trainer
+	call_if TRUE, \dest
+	.endm
+
+	.macro call_if_not_defeated trainer:req, dest:req
+	checktrainerflag \trainer
+	call_if FALSE, \dest
+	.endm
+
 .macro switch var:req
 	copyvar 0x8000, \var
 .endm
@@ -1876,6 +1990,11 @@ map \map
 .macro case condition:req, dest:req
 	compare 0x8000, \condition
 	if equal _goto \dest
+.endm
+
+.macro callcase condition:req, dest:req
+	compare 0x8000, \condition
+	if equal _call \dest
 .endm
 
 .macro giveitem item:req amount:req msgtype:req
@@ -1910,12 +2029,22 @@ map \map
 	dowildbattle
 .endm
 
-/*.macro braillemessage_wait text:req
+	.macro braillemessage_wait text:req
 	setvar 0x8006, 0
 	braillemessage \text
 	getbraillestringwidth \text
 	call EventScript_BrailleCursorWaitButton
-.endm*/
+	.endm
+
+	@ Prints a braille message, waits for an A or B press, then closes the message.
+	.macro braillemsgbox text:req
+	braillemessage \text
+	waitkeypress
+	closeonkeypress
+	callasm ScrCmd_closebraillemessage
+	.endm
+
+
 
 .macro multichoiceoption text:req num:req
 	setvar 0x8006 \num
@@ -1959,4 +2088,34 @@ map \map
 .macro levelscript var:req val:req script:req
 .hword \var, \val
 .word \script
+.endm
+
+.macro giveitem_msg msg:req, item:req, amount=1, fanfare=257
+additem \item, \amount
+msgreceiveditem \msg, \item, \amount, \fanfare
+.endm
+
+.macro msgreceiveditem msg:req, item:req, amount=1, fanfare=257
+loadword 0, \msg
+setorcopyvar 0x8000, \item
+setorcopyvar 0x8001, \amount
+setorcopyvar 0x8002, \fanfare
+callstd 9
+.endm
+
+.macro givepokemoncustom species:req level:req item:req move1=0 move2=0 move3=0 move4=0 nature=26 shiny=0 hpIv=0 atkIv=0 defIv=0 spatkIv=0 spdefIv=0 spdIv=0 ball=3 abilityNum=0
+setvar 0x8000, \move1 
+setvar 0x8001, \move2 
+setvar 0x8002, \move3 
+setvar 0x8003, \move4 
+setvar 0x8004, \nature 
+setvar 0x8005, \shiny 
+setvar 0x8006, \hpIv 
+setvar 0x8007, \atkIv 
+setvar 0x8008, \defIv 
+setvar 0x8009, \spdIv
+setvar 0x800A, \spatkIv 
+setvar 0x800B, \spdefIv 
+setvar 0x800C, \abilityNum
+givepokemon \species, \level, \item, 0x0, 0x1, \ball 
 .endm

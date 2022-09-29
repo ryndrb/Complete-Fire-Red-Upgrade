@@ -34,7 +34,6 @@ gRolePlayBannedAbilities:
 .byte ABILITY_ZENMODE
 .byte ABILITY_IMPOSTER
 .byte ABILITY_STANCECHANGE
-.byte ABILITY_POWEROFALCHEMY
 .byte ABILITY_RECEIVER
 .byte ABILITY_SCHOOLING
 .byte ABILITY_COMATOSE
@@ -46,6 +45,8 @@ gRolePlayBannedAbilities:
 .byte ABILITY_ICEFACE
 .byte ABILITY_HUNGERSWITCH
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -63,6 +64,8 @@ gRolePlayAttackerBannedAbilities:
 .byte ABILITY_POWERCONSTRUCT
 .byte ABILITY_ICEFACE
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -83,6 +86,8 @@ gSkillSwapBannedAbilities:
 .byte ABILITY_ICEFACE
 .byte ABILITY_HUNGERSWITCH
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -100,6 +105,8 @@ gWorrySeedBannedAbilities:
 .byte ABILITY_TRUANT
 .byte ABILITY_ICEFACE
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -116,6 +123,8 @@ gGastroAcidBannedAbilities:
 .byte ABILITY_POWERCONSTRUCT
 .byte ABILITY_ICEFACE
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -127,7 +136,6 @@ gEntrainmentBannedAbilitiesAttacker:
 .byte ABILITY_ZENMODE
 .byte ABILITY_ILLUSION
 .byte ABILITY_IMPOSTER
-.byte ABILITY_POWEROFALCHEMY
 .byte ABILITY_RECEIVER
 .byte ABILITY_DISGUISE
 .byte ABILITY_POWERCONSTRUCT
@@ -135,6 +143,8 @@ gEntrainmentBannedAbilitiesAttacker:
 .byte ABILITY_ICEFACE
 .byte ABILITY_HUNGERSWITCH
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 gSimpleBeamBannedAbilities:
@@ -150,6 +160,8 @@ gEntrainmentBannedAbilitiesTarget:
 .byte ABILITY_BATTLEBOND
 .byte ABILITY_ICEFACE
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -163,7 +175,6 @@ gReceiverBannedAbilities:
 .byte ABILITY_ZENMODE
 .byte ABILITY_IMPOSTER
 .byte ABILITY_STANCECHANGE
-.byte ABILITY_POWEROFALCHEMY
 .byte ABILITY_RECEIVER
 .byte ABILITY_SCHOOLING
 .byte ABILITY_COMATOSE
@@ -177,6 +188,8 @@ gReceiverBannedAbilities:
 .byte ABILITY_ICEFACE
 .byte ABILITY_HUNGERSWITCH
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -190,7 +203,6 @@ gTraceBannedAbilities:
 .byte ABILITY_ZENMODE
 .byte ABILITY_IMPOSTER
 .byte ABILITY_STANCECHANGE
-.byte ABILITY_POWEROFALCHEMY
 .byte ABILITY_RECEIVER
 .byte ABILITY_SCHOOLING
 .byte ABILITY_COMATOSE
@@ -203,6 +215,8 @@ gTraceBannedAbilities:
 .byte ABILITY_ICEFACE
 .byte ABILITY_HUNGERSWITCH
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -221,4 +235,6 @@ gNeutralizingGasBannedAbilities:
 .byte ABILITY_ICEFACE
 .byte ABILITY_HUNGERSWITCH
 .byte ABILITY_GULPMISSILE
+.byte ABILITY_ASONE_GRIM
+.byte ABILITY_ASONE_CHILL
 .byte ABILITY_TABLES_TERMIN

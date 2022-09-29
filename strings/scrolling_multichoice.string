@@ -32,4 +32,88 @@ Example 9
 #org @sExampleText_10
 Example 10
 
+#org @NATURE_HARDY_1
+Hardy   [BLACK]--
+
+#org @NATURE_LONELY_2
+Lonely  [GREEN]+Atk [RED]-Def
+
+#org @NATURE_BRAVE_3
+Brave   [GREEN]+Atk [RED]-Spe
+
+#org @NATURE_ADAMANT_4
+Adamant [GREEN]+Atk [RED]-SpA
+
+#org @NATURE_NAUGHTY_5
+Naughty [GREEN]+Atk [RED]-SpD
+
+#org @NATURE_BOLD_6
+Bold    [GREEN]+Def [RED]-Atk
+
+#org @NATURE_DOCILE_7
+Docile  [BLACK]--
+
+#org @NATURE_RELAXED_8
+Relaxed [GREEN]+Def [RED]-Spe
+
+#org @NATURE_IMPISH_9
+Impish  [GREEN]+Def [RED]-SpA
+
+#org @NATURE_LAX_10
+Lax     [GREEN]+Def [RED]-SpD
+
+#org @NATURE_TIMID_11
+Timid   [GREEN]+Spe [RED]-Atk
+
+#org @NATURE_HASTY_12
+Hasty   [GREEN]+Spe [RED]-Def
+
+#org @NATURE_SERIOUS_13
+Serious [BLACK]--
+
+#org @NATURE_JOLLY_14
+Jolly   [GREEN]+Spe [RED]-SpA
+
+#org @NATURE_NAIVE_15
+Naive   [GREEN]+Spe [RED]-SpD
+
+#org @NATURE_MODEST_16
+Modest  [GREEN]+SpA [RED]-Atk
+
+#org @NATURE_MILD_17
+Mild    [GREEN]+SpA [RED]-Def
+
+#org @NATURE_QUIET_18
+Quiet   [GREEN]+SpA [RED]-Spe
+
+#org @NATURE_BASHFUL_19
+Bashful [BLACK]--
+
+#org @NATURE_RASH_20
+Rash    [GREEN]+SpA [RED]-SpD
+
+#org @NATURE_CALM_21
+Calm    [GREEN]+SpD [RED]-Atk
+
+#org @NATURE_GENTLE_22
+Gentle  [GREEN]+SpD [RED]-Def
+
+#org @NATURE_SASSY_23
+Sassy   [GREEN]+SpD [RED]-Spe
+
+#org @NATURE_CAREFUL_24
+Careful [GREEN]+SpD [RED]-Spe
+
+#org @NATURE_QUIRKY_25
+Quirky  [BLACK]--
+
+#org @ABILITY_FIRST
+First
+
+#org @ABILITY_SECOND
+Second
+
+#org @ABILITY_HIDDEN
+Hidden
+
 #endif

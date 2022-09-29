@@ -347,8 +347,8 @@ u8 IsRunningFromBattleImpossible(void)
 		return TRUE;
 	else if (itemEffect == ITEM_EFFECT_CAN_ALWAYS_RUN)
 		return FALSE;
-	else if (gBattleMons[gActiveBattler].ability == ABILITY_RUNAWAY)
-		return FALSE;
+	// else if (gBattleMons[gActiveBattler].ability == ABILITY_RUNAWAY)
+	// 	return FALSE;
 	else if (IsOfType(gActiveBattler, TYPE_GHOST))
 		return FALSE;
 
@@ -362,6 +362,7 @@ u8 IsRunningFromBattleImpossible(void)
 		{
 			gBattleScripting.bank = i;
 			gLastUsedAbility = ABILITY(i);
+			
 			gBattleCommunication[MULTISTRING_CHOOSER] = 2;
 			return ABILITY_PREVENTING_ESCAPE;
 		}
@@ -371,6 +372,7 @@ u8 IsRunningFromBattleImpossible(void)
 		&& CheckGrounding(gActiveBattler))
 		{
 			gBattleScripting.bank = i;
+			
 			gLastUsedAbility = ABILITY(i);
 			gBattleCommunication[MULTISTRING_CHOOSER] = 2;
 			return ABILITY_PREVENTING_ESCAPE;
@@ -447,12 +449,13 @@ bool8 TryRunFromBattle(u8 bank)
 		gProtectStructs[bank].fleeFlag = 1;
 		++effect;
 	}
-	else if (ABILITY(bank) == ABILITY_RUNAWAY)
-	{
-		gLastUsedAbility = ABILITY_RUNAWAY;
-		gProtectStructs[bank].fleeFlag = 2;
-		++effect;
-	}
+	// else if (ABILITY(bank) == ABILITY_RUNAWAY)
+	// {
+	// 	gLastUsedAbility = ABILITY_RUNAWAY;
+		
+	// 	gProtectStructs[bank].fleeFlag = 2;
+	// 	++effect;
+	// }
 	#ifndef NO_GHOST_BATTLES
 	else if ((gBattleTypeFlags & (BATTLE_TYPE_SCRIPTED_WILD_1 | BATTLE_TYPE_GHOST)) == BATTLE_TYPE_GHOST)
 	{

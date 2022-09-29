@@ -10,7 +10,6 @@ Multi-hit moves hit five times.
 Turns electricity into Speed.
 
 #org @DESC_MULTISCALE
-#org @DESC_FULLMETALBODY
 Reduces damage at full HP.
 
 #org @DESC_TECHNICIAN
@@ -67,6 +66,10 @@ Prefers the rain to heat.
 #org @DESC_TINTEDLENS
 Boosts "not very effective\" moves.
 
+#org @DESC_ASONEGRIM
+Both Unnerve and Grim Neigh.
+
+#org @DESC_PRISMARMOR
 #org @DESC_SOLIDROCK
 #org @DESC_FILTER
 Weakens super-effective moves.
@@ -124,6 +127,7 @@ Avoids ball and bomb moves.
 Flying moves hit first.
 
 #org @DESC_MOXIE
+#org @DESC_CHILLINGNEIGH
 Knockouts boost Attack.
 
 #org @DESC_AFTERMATH
@@ -139,8 +143,8 @@ Lowers the foe's Speed if hit.
 #org @DESC_MUMMY
 Spreads with contact.
 
-#org @DESC_IRONBARBS
-Hurts to touch.
+#org @DESC_STRIKER
+Boosts kicking moves.
 
 #org @DESC_SANDRUSH
 Raises Speed in a sandstorm.
@@ -232,6 +236,12 @@ Parent and child attack together.
 #org @DESC_TERAVOLT
 Moves ignore Abilities.
 
+#org @DESC_SELFSUFFICIENT
+Recover some HP every turn.
+
+#org @DESC_FATALPRECISION
+Can't miss super-effective moves.
+
 #org @DESC_ZENMODE
 Transforms below half HP.
 
@@ -261,8 +271,8 @@ No special Ability.
 #org @DESC_POWERCONSTRUCT
 Transforms below half HP.
 
-#org @DESC_PRISMARMOR
-Weakens super-effective moves.
+#org @DESC_ASONECHILL
+Both Unnerve and Chilling Neigh.
 
 #org @DESC_RKS_SYSTEM
 Changes type to match Memory.
@@ -270,8 +280,8 @@ Changes type to match Memory.
 #org @DESC_SCHOOLING
 Schools up with high HP.
 
-#org @DESC_SHADOWSHIELD
-Reduces damage at full HP.
+#org @DESC_PSYCH
+Doubles Special Attack.
 
 #org @DESC_SHIELDSDOWN
 Lowers shields below half HP.
@@ -414,8 +424,8 @@ Never makes contact.
 #org @DESC_LIQUIDVOICE
 Sound moves become Water-type.
 
-#org @DESC_QUEENLYMAJESTY
-Blocks priority moves.
+#org @DESC_GRIMNEIGH
+Knockouts boost Sp Atk.
 
 #org @DESC_INNARDSOUT
 Fainting damages the foe.
@@ -459,11 +469,12 @@ Copies dance moves.
 #org @DESC_BATTERY
 Powers up allies.
 
+#org @DESC_POWEROFALCHEMY
 #org @DESC_RECEIVER
 Takes over a KOed ally's Ability.
 
-#org @DESC_POWEROFALCHEMY
-Takes over a KOed ally's Ability.
+#org @DESC_ADRENALINE
+Ups Atk and Spd in first turn.
 
 #org @DESC_NEUROFORCE
 Powers up super-effective hits.
@@ -542,3 +553,26 @@ Protects team from poison.
 
 #org @DESC_HUNGERSWITCH
 Changes form each turn.
+
+#org @DESC_UNSEENFIST
+Contact moves bypass Protect
+
+#org @DESC_TRANSISTOR
+Powers up Electric-type moves.
+
+#org @DESC_DRAGONSMAW
+Powers up Dragon-type moves.
+
+#org @DESC_QUICKDRAW
+Sometimes moves first.
+
+#org @DESC_CURIOUSMEDICINE
+Resets ally's stat changes.
+
+// Custom Abilities
+
+#org @DESC_BLADEMASTER
+Powers up sword moves.
+
+#org @DESC_SAGEPOWER
+Ups Sp Atk, but allows one move.

@@ -440,7 +440,7 @@ void atk49_moveend(void) //All the effects that happen after a move is used
 				{
 					if (gHitMarker & HITMARKER_OBEYS)
 					{
-						if (holdEffectAtk == ITEM_EFFECT_CHOICE_BAND || ABILITY(gBankAttacker) == ABILITY_GORILLATACTICS)
+						if (holdEffectAtk == ITEM_EFFECT_CHOICE_BAND || ABILITY(gBankAttacker) == ABILITY_GORILLATACTICS || ABILITY(gBankAttacker) == ABILITY_SAGEPOWER)
 						{
 							if (*choicedMoveAtk == 0 || *choicedMoveAtk == 0xFFFF)
 							{
@@ -778,7 +778,8 @@ void atk49_moveend(void) //All the effects that happen after a move is used
 						effect = 1;
 					}
 					break;
-
+				
+				case ABILITY_ASONE_CHILL:
 				case ABILITY_MOXIE:
 					if ((arg1 != ARG_IN_FUTURE_ATTACK || gWishFutureKnock.futureSightPartyIndex[bankDef] == gBattlerPartyIndexes[gBankAttacker])
 					&& gBattleMons[bankDef].hp == 0
@@ -794,6 +795,30 @@ void atk49_moveend(void) //All the effects that happen after a move is used
 						gBattleScripting.bank = gBankAttacker;
 						gBattleScripting.statChanger = INCREASE_1 | STAT_STAGE_ATK;
 						gBattleScripting.animArg1 = 0xE + STAT_STAGE_ATK;
+						gBattleScripting.animArg2 = 0;
+
+						BattleScriptPushCursor();
+						gBattlescriptCurrInstr = BattleScript_Moxie;
+						effect = 1;
+					}
+					break;
+
+				case ABILITY_ASONE_GRIM:
+				case ABILITY_GRIMNEIGH: //added 
+					if ((arg1 != ARG_IN_FUTURE_ATTACK || gWishFutureKnock.futureSightPartyIndex[bankDef] == gBattlerPartyIndexes[gBankAttacker])
+					&& gBattleMons[bankDef].hp == 0
+					&& BATTLER_ALIVE(gBankAttacker)
+					&& TOOK_DAMAGE(bankDef)
+					&& MOVE_HAD_EFFECT
+					&& STAT_CAN_RISE(gBankAttacker, STAT_STAGE_SPATK)
+					&& ViableMonCountFromBank(FOE(gBankAttacker)) > 0) //Use FOE so as to not get boost when KOing partner last after enemy has no mons left
+					{
+						PREPARE_STAT_BUFFER(gBattleTextBuff1, STAT_STAGE_SPATK);
+
+						gEffectBank = gBankAttacker;
+						gBattleScripting.bank = gBankAttacker;
+						gBattleScripting.statChanger = INCREASE_1 | STAT_STAGE_SPATK;
+						gBattleScripting.animArg1 = 0xE + STAT_STAGE_SPATK;
 						gBattleScripting.animArg2 = 0;
 
 						BattleScriptPushCursor();

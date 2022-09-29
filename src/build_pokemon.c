@@ -8,6 +8,10 @@
 #include "../include/script.h"
 #include "../include/string_util.h"
 #include "../include/wild_encounter.h"
+
+#include "../include/menu.h"
+#include "../include/pokemon_summary_screen.h"
+
 #include "../include/constants/event_objects.h"
 #include "../include/constants/items.h"
 #include "../include/constants/maps.h"
@@ -38,6 +42,8 @@
 #include "Tables/raid_encounters.h"
 #include "Tables/raid_partners.h"
 #include "Tables/trainers_with_evs_table.h"
+
+#include "Tables/duplicate_abilities.h"
 
 /*
 build_pokemon.c
@@ -1544,7 +1550,7 @@ static u8 BuildFrontierParty(struct Pokemon* const party, const u16 trainerId, c
 				else
 					builder->itemEffectOnTeam[itemEffect] = TRUE;
 
-				if (itemEffect == ITEM_EFFECT_CHOICE_BAND || ability == ABILITY_GORILLATACTICS)
+				if (itemEffect == ITEM_EFFECT_CHOICE_BAND || ability == ABILITY_GORILLATACTICS || ability == ABILITY_SAGEPOWER)
 					++builder->numChoiceItems;
 
 				if (IsMegaStone(item))
@@ -3939,4 +3945,109 @@ void PartySpreadPokerus(struct Pokemon *party)
 			}
 		}
 	}
+}
+
+static const u8 sLevelNickTextColors[][3] =
+{
+	{0, 14, 10},
+	{0, 1, 2},
+	{0, 9, 8},
+	{0, 5, 4},
+	{0, 2, 3},
+	{0, 11, 10},
+};
+
+void HandleDuplicateNames_SummaryScreen()
+{
+    struct Pokemon* mon = &(sMonSummaryScreen->currentMon);
+    u8 ability = GetMonAbility(mon);
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+	for(u8 i = 0; i < ARRAY_COUNT(sDuplicateAbilities); i++)
+	{
+		if(ability == sDuplicateAbilities[i].currAbility && species == sDuplicateAbilities[i].species)
+		{
+			StringCopy(sMonSummaryScreen->summary.abilityNameStrBuf, sDuplicateAbilities[i].replaceAbilityString);
+		}
+	}
+}
+
+void PokeSum_PrintAbilityNameAndDesc(void)
+{
+	HandleDuplicateNames_SummaryScreen();
+
+
+	//COMMENT THIS IF YOU ARE USING THE DEFAULT SUMMARY SCREEN
+	FillWindowPixelBuffer(sMonSummaryScreen->windowIds[5], 0);
+
+	AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[4], 2, 4, 2, sLevelNickTextColors[0], TEXT_SPEED_FF,
+		sMonSummaryScreen->summary.abilityNameStrBuf);
+
+	AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[5], 2, 4, 0, sLevelNickTextColors[0], TEXT_SPEED_FF,
+		sMonSummaryScreen->summary.abilityDescStrBuf);
+
+	//UNCOMMENT THIS IF YOU ARE USING THE DEFAULT SUMMARY SCREEN
+	// FillWindowPixelBuffer(sMonSummaryScreen->windowIds[5], 0);
+    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[5], 2,
+    //                              66, 1, sLevelNickTextColors[0], TEXT_SPEED_FF, sMonSummaryScreen->summary.abilityNameStrBuf);
+    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[5], 2,
+    //                              2, 15, sLevelNickTextColors[0], TEXT_SPEED_FF,
+    //                              sMonSummaryScreen->summary.abilityDescStrBuf);
+}
+
+void ChangeMonNature(void){
+	struct Pokemon* mon = &gPlayerParty[Var8004];
+	u8 nature = Var8005;
+	GiveMonNatureAndAbility(mon, nature, GetMonData(mon, MON_DATA_PERSONALITY, NULL) & 1, IsMonShiny(mon), TRUE, FALSE);
+    CalculateMonStats(mon);
+}
+
+void ChangeMonAbility(void){
+	struct Pokemon* mon = &gPlayerParty[Var8004];
+	u8 nature = GetNature(mon);
+	bool8 forceShiny = IsMonShiny(mon);
+	bool8 keepGender = TRUE;
+	bool8 keepLetterCore = FALSE;
+
+	u32 personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+	u16 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
+	u32 trainerId = GetMonData(mon, MON_DATA_OT_ID, NULL);
+	u16 sid = HIHALF(trainerId);
+	u16 tid = LOHALF(trainerId);
+	u8 gender = GetGenderFromSpeciesAndPersonality(species, personality);
+	u8 letter = GetUnownLetterFromPersonality(personality);
+	bool8 isMinior = IsMinior(species);
+	u8 miniorCore = GetMiniorCoreFromPersonality(personality);
+
+	u8 abilityNum = Var8005; // From script
+	if (abilityNum == 2) //Hidden Ability
+		mon->hiddenAbility = TRUE;
+	else{
+		mon->hiddenAbility = FALSE; // turn off, will get stuck otherwise
+		abilityNum = MathMin(1, abilityNum); //Either First or Second
+	}
+
+	do
+	{
+		personality = Random32();
+		if (forceShiny)
+		{
+			u8 shinyRange = RandRange(0,8);
+			personality = (((shinyRange ^ (sid ^ tid)) ^ LOHALF(personality)) << 16) | LOHALF(personality);
+		}
+
+		if (abilityNum != 2)
+		{
+			personality &= ~(1);
+			personality |= abilityNum; 
+		}
+	} while (GetNatureFromPersonality(personality) != nature
+	|| (keepGender && GetGenderFromSpeciesAndPersonality(species, personality) != gender)
+	|| (keepLetterCore && species == SPECIES_UNOWN && GetUnownLetterFromPersonality(personality) != letter) //Make sure the Unown letter doesn't change
+	|| (keepLetterCore && isMinior && GetMiniorCoreFromPersonality(personality) != miniorCore)); //Make sure the Minior core doesn't change
+
+	mon->personality = personality;
+}
+
+void MoveTutor(void){
+	
 }

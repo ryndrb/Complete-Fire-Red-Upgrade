@@ -94,7 +94,7 @@ void atk04_critcalc(void)
 		u8 defAbility = ABILITY(bankDef);
 
 		if (defAbility == ABILITY_BATTLEARMOR
-		||  defAbility == ABILITY_SHELLARMOR
+		//||  defAbility == ABILITY_SHELLARMOR
 		||  CantScoreACrit(gBankAttacker, NULL)
 		||  gBattleTypeFlags & (BATTLE_TYPE_OLD_MAN | BATTLE_TYPE_OAK_TUTORIAL | BATTLE_TYPE_POKE_DUDE)
 		||  gNewBS->LuckyChantTimers[SIDE(bankDef)])
@@ -114,6 +114,7 @@ void atk04_critcalc(void)
 						+ (CheckTableForMove(gCurrentMove, gHighCriticalChanceMoves))
 						+ (atkEffect == ITEM_EFFECT_SCOPE_LENS)
 						+ (atkAbility == ABILITY_SUPERLUCK)
+						+ (atkAbility == ABILITY_BLADEMASTER && CheckTableForMove(gCurrentMove, gSwordMoves))
 						#ifdef SPECIES_CHANSEY
 						+ 2 * (atkEffect == ITEM_EFFECT_LUCKY_PUNCH && gBattleMons[gBankAttacker].species == SPECIES_CHANSEY)
 						#endif
@@ -183,7 +184,7 @@ static u8 CalcPossibleCritChance(u8 bankAtk, u8 bankDef, u16 move, struct Pokemo
 	}
 
 	if (defAbility == ABILITY_BATTLEARMOR
-	||  defAbility == ABILITY_SHELLARMOR
+	//||  defAbility == ABILITY_SHELLARMOR
 	||  CantScoreACrit(bankAtk, monAtk)
 	||  gBattleTypeFlags & (BATTLE_TYPE_OLD_MAN | BATTLE_TYPE_OAK_TUTORIAL)
 	||  gNewBS->LuckyChantTimers[SIDE(bankDef)])
@@ -200,6 +201,7 @@ static u8 CalcPossibleCritChance(u8 bankAtk, u8 bankDef, u16 move, struct Pokemo
 					+ (CheckTableForMove(move, gHighCriticalChanceMoves))
 					+ (atkEffect == ITEM_EFFECT_SCOPE_LENS)
 					+ (atkAbility == ABILITY_SUPERLUCK)
+					+ (atkAbility == ABILITY_BLADEMASTER && CheckTableForMove(gCurrentMove, gSwordMoves))
 					#ifdef SPECIES_CHANSEY
 					+ 2 * (atkEffect == ITEM_EFFECT_LUCKY_PUNCH && atkSpecies == SPECIES_CHANSEY)
 					#endif
@@ -604,6 +606,7 @@ void atk06_typecalc(void)
 
 			u8 defAbility = ABILITY(bankDef);
 			u8 defEffect = ITEM_EFFECT(bankDef);
+			
 			gBattleMoveDamage = gNewBS->DamageTaken[bankDef];
 			gNewBS->ResultFlags[bankDef] &= ~(MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE | MOVE_RESULT_DOESNT_AFFECT_FOE); //Reset for now so damage can be modulated properly
 
@@ -622,6 +625,7 @@ void atk06_typecalc(void)
 				if (defAbility == ABILITY_LEVITATE)
 				{
 					gLastUsedAbility = defAbility;
+					
 					gNewBS->ResultFlags[bankDef] |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
 					gLastLandedMoves[bankDef] = 0;
 					gLastHitByType[bankDef] = 0;
@@ -651,6 +655,7 @@ void atk06_typecalc(void)
 				if (defAbility == ABILITY_OVERCOAT)
 				{
 					gLastUsedAbility = defAbility;
+			
 					gNewBS->ResultFlags[bankDef] |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
 					gLastLandedMoves[bankDef] = 0;
 					gLastHitByType[bankDef] = 0xFF;
@@ -692,6 +697,7 @@ void atk06_typecalc(void)
 			 && SPLIT(gCurrentMove) != SPLIT_STATUS)
 			 {
 				gLastUsedAbility = defAbility;
+				
 				gNewBS->ResultFlags[bankDef] |= MOVE_RESULT_MISSED;
 				gLastLandedMoves[bankDef] = 0;
 				gLastHitByType[bankDef] = 0;
@@ -729,6 +735,7 @@ void atk4A_typecalc2(void)
 		if (defAbility == ABILITY_LEVITATE)
 		{
 			gLastUsedAbility = atkAbility;
+		
 			gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
 			gLastLandedMoves[gBankTarget] = 0;
 			gNewBS->missStringId[gBankTarget] = 3;
@@ -753,6 +760,7 @@ void atk4A_typecalc2(void)
 		if (defAbility == ABILITY_OVERCOAT)
 		{
 			gLastUsedAbility = defAbility;
+			
 			gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
 			gLastLandedMoves[gBankTarget] = 0;
 			gNewBS->missStringId[gBankTarget] = 3;
@@ -2017,6 +2025,10 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 			attack *= 2;
 			break;
 
+		case ABILITY_PSYCH: // 2x boost
+			spAttack *= 2;
+			break;
+
 		case ABILITY_FLOWERGIFT:
 		//1.5x Boost
 			if (WEATHER_HAS_EFFECT && (gBattleWeather & WEATHER_SUN_ANY)
@@ -2110,6 +2122,12 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 		//1.5x Boost
 			if (!IsDynamaxed(bankAtk))
 				attack = (attack * 15) / 10;
+			break;
+
+		case ABILITY_SAGEPOWER:
+		//1.5x Boost
+			if (!IsDynamaxed(bankAtk))
+				spAttack = (spAttack * 15) / 10;
 			break;
 	}
 
@@ -2484,9 +2502,9 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 				damage = (damage * 125) / 100;
 			break;
 
-		case ABILITY_SOLIDROCK:
+		// case ABILITY_SOLIDROCK:
+		// case ABILITY_PRISMARMOR:
 		case ABILITY_FILTER:
-		case ABILITY_PRISMARMOR:
 		//0.75x Decrement
 			if (data->resultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
 				damage = (damage * 75) / 100;
@@ -2500,7 +2518,6 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 			break;
 
 		case ABILITY_MULTISCALE:
-		case ABILITY_SHADOWSHIELD:
 		//0.5x Decrement
 			if (data->defHP >= data->defMaxHP)
 				damage /= 2;
@@ -3176,6 +3193,18 @@ static u16 AdjustBasePower(struct DamageCalc* data, u16 power)
 			if (CheckTableForMove(move, gPunchingMoves))
 				power = (power * 12) / 10;
 			break;
+		
+		case ABILITY_STRIKER:
+		//1.2x Boost
+			if (CheckTableForMove(move, gKickingMoves))
+				power = (power * 13) / 10;
+			break;
+
+		case ABILITY_BLADEMASTER: //added 
+		//1.2x boost, gives +crit ratio to sword moves check above 
+			if (CheckTableForMove(move, gSwordMoves))
+				power = (power * 12) / 10;
+			break;
 
 		case ABILITY_TOXICBOOST:
 		//1.5x Boost
@@ -3244,6 +3273,11 @@ static u16 AdjustBasePower(struct DamageCalc* data, u16 power)
 				power = (power * 125) / 100;
 			break;
 
+		case ABILITY_FATAL_PRECISION:
+			if (data->resultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
+				power = (power * 12) / 10;
+			break;
+
 		case ABILITY_STAKEOUT:
 		//2x Boost
 			if (!useMonAtk && gNewBS->StakeoutCounters[bankDef])
@@ -3256,6 +3290,18 @@ static u16 AdjustBasePower(struct DamageCalc* data, u16 power)
 			if (data->moveType == TYPE_STEEL)
 				power = (power * 15) / 10;
 			break;
+
+		// 1.5x boost
+		case ABILITY_TRANSISTOR:
+			if (data->moveType == TYPE_ELECTRIC)
+				power = (power * 15) / 10;
+			break;	
+
+		// 1.5x boost
+		case ABILITY_DRAGONSMAW:
+			if (data->moveType == TYPE_DRAGON)
+				power = (power * 15) / 10;
+			break;	
 
 		case ABILITY_WATERBUBBLE:
 		//2x Boost
@@ -3274,6 +3320,12 @@ static u16 AdjustBasePower(struct DamageCalc* data, u16 power)
 			if (CheckSoundMove(move))
 				power = (power * 13) / 10;
 			break;
+		
+		case ABILITY_ADRENALINE:
+		//1.5x Boost first turn 
+			if(gDisableStructs[bankAtk].isFirstTurn)
+				power = (power * 12) / 10;
+			break; 
 	}
 
 	//Check attacker partner ability boost

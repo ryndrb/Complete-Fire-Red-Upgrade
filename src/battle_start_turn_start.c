@@ -120,6 +120,11 @@ void BattleBeginFirstTurn(void)
 	u8* state = &(gBattleStruct->switchInAbilitiesCounter);
 	u8* bank = &(gBattleStruct->switchInItemsCounter);
 
+	if(gBattleTypeFlags & BATTLE_TYPE_TRAINER){ // Force trainer battles to set even if the player choose switch in option
+		gSaveBlock2->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SET;
+		gBattleScripting.battleStyle = OPTIONS_BATTLE_STYLE_SET;
+	}
+
 	if (!gBattleExecBuffer) //Inlclude Safari Check Here?
 	{
 		switch(*state) {
@@ -1550,17 +1555,23 @@ u8 GetWhoStrikesFirst(u8 bank1, u8 bank2, bool8 ignoreMovePriorities)
 //Priority Calc
 	if(!ignoreMovePriorities)
 	{
+		u16 move1 = ReplaceWithZMoveRuntime(bank1, gBattleMons[bank1].moves[gBattleStruct->chosenMovePositions[bank1]]);
+		u16 move2 = ReplaceWithZMoveRuntime(bank2, gBattleMons[bank2].moves[gBattleStruct->chosenMovePositions[bank2]]);
+
 		bank1Priority = PriorityCalc(bank1, gChosenActionByBank[bank1], ReplaceWithZMoveRuntime(bank1, gBattleMons[bank1].moves[gBattleStruct->chosenMovePositions[bank1]]));
 		bank2Priority = PriorityCalc(bank2, gChosenActionByBank[bank2], ReplaceWithZMoveRuntime(bank2, gBattleMons[bank2].moves[gBattleStruct->chosenMovePositions[bank2]]));
 		if (bank1Priority > bank2Priority)
 			return FirstMon;
 		else if (bank1Priority < bank2Priority)
 			return SecondMon;
-	}
 
-//BracketCalc
-	bank1Bracket = gNewBS->lastBracketCalc[bank1] = BracketCalc(bank1);
-	bank2Bracket = gNewBS->lastBracketCalc[bank2] = BracketCalc(bank2);
+		bank1Bracket = gNewBS->lastBracketCalc[bank1] = BracketCalc(bank1, gChosenActionByBank[bank1], move1);
+		bank2Bracket = gNewBS->lastBracketCalc[bank2] = BracketCalc(bank2, gChosenActionByBank[bank2], move2);
+	}else{
+		//BracketCalc
+		bank1Bracket = gNewBS->lastBracketCalc[bank1] = BracketCalc(bank1, 0, MOVE_NONE);
+		bank2Bracket = gNewBS->lastBracketCalc[bank2] = BracketCalc(bank2, 0, MOVE_NONE);
+	}
 
 	if (bank1Bracket > bank2Bracket)
 		return FirstMon;
@@ -1702,7 +1713,7 @@ s8 PriorityCalcMon(struct Pokemon* mon, u16 move)
 	return priority;
 }
 
-s32 BracketCalc(u8 bank)
+s32 BracketCalc(u8 bank, u8 action, u16 move)
 {
 	u8 itemEffect = ITEM_EFFECT(bank);
 	u8 itemQuality = ITEM_QUALITY(bank);
@@ -1711,7 +1722,19 @@ s32 BracketCalc(u8 bank)
 	gNewBS->CustapQuickClawIndicator &= ~(gBitTable[bank]); //Reset the Quick Claw counter just in case
 	if (BATTLER_ALIVE(bank))
 	{
-		switch (itemEffect) {
+		if (gNewBS->ateCustapBerry & gBitTable[bank]) //Already ate the Berry
+			return 1;
+		else{
+			if(ability == ABILITY_QUICKDRAW
+			&& gNewBS->quickDrawRandomNumber[bank] < 30 //30% chance - activates before items
+			&& action == ACTION_USE_MOVE
+			&& SPLIT(move) != SPLIT_STATUS) //Only damaging moves
+			{
+				gNewBS->quickDrawIndicator |= gBitTable[bank];
+				return 1;
+			}
+		
+			switch (itemEffect) {
 			case ITEM_EFFECT_QUICK_CLAW:
 				if (gRandomTurnNumber % 100 < itemQuality)
 				{
@@ -1731,7 +1754,9 @@ s32 BracketCalc(u8 bank)
 
 			case ITEM_EFFECT_LAGGING_TAIL:
 				return -2;
+			}
 		}
+
 
 		if (ability == ABILITY_STALL)
 			return -1;
@@ -1817,6 +1842,11 @@ u32 SpeedCalc(u8 bank)
 			if (gTerrainType == ELECTRIC_TERRAIN)
 				speed *= 2;
 			break;
+		case ABILITY_ADRENALINE:
+			if(gDisableStructs[bank].isFirstTurn){
+				speed = (speed * 15) / 10;
+			}
+			break;
 	}
 
 	speed = BoostSpeedByItemEffect(itemEffect, itemQuality, SPECIES(bank), speed, IsDynamaxed(bank));
@@ -1875,6 +1905,11 @@ u32 SpeedCalcMon(u8 side, struct Pokemon* mon)
 		case ABILITY_SURGESURFER:
 			if (gTerrainType == ELECTRIC_TERRAIN)
 				speed *= 2;
+			break;
+		case ABILITY_ADRENALINE:
+			if(gDisableStructs[side].isFirstTurn){
+				speed = (speed * 15) / 10;
+			}
 			break;
 	}
 

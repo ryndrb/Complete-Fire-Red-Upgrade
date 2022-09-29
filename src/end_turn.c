@@ -314,10 +314,12 @@ u8 TurnBasedEffects(void)
 				if (BATTLER_ALIVE(gActiveBattler))
 				{
 					gLastUsedAbility = ABILITY(gActiveBattler);
+					
 					switch(gLastUsedAbility) {
 						case ABILITY_RAINDISH:
 						case ABILITY_DRYSKIN:
 						case ABILITY_ICEBODY:
+						case ABILITY_SELF_SUFFICIENT:
 						case ABILITY_SOLARPOWER:
 							if (AbilityBattleEffects(ABILITYEFFECT_ENDTURN, gActiveBattler, 0, 0, 0))
 								effect++;
@@ -1290,6 +1292,7 @@ u8 TurnBasedEffects(void)
 						if (BATTLER_ALIVE(gActiveBattler))
 						{
 							gLastUsedAbility = ABILITY(gActiveBattler);
+							
 							switch(gLastUsedAbility) {
 								case ABILITY_SPEEDBOOST:
 								case ABILITY_TRUANT:

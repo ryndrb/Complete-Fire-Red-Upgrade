@@ -391,7 +391,7 @@ u8 PredictFightingStyle(const u16* const moves, const u8 ability, const u8 itemE
 						break;
 
 					default:
-						if (ability == ABILITY_GORILLATACTICS || itemEffect == ITEM_EFFECT_CHOICE_BAND || itemEffect == ITEM_EFFECT_ASSAULT_VEST)
+						if (ability == ABILITY_GORILLATACTICS || itemEffect == ITEM_EFFECT_CHOICE_BAND || itemEffect == ITEM_EFFECT_ASSAULT_VEST || ability == ABILITY_SAGEPOWER)
 							class = FIGHT_CLASS_SWEEPER_KILL;
 						else if (moveEffect == EFFECT_RESTORE_HP //Not placed above because checked in this order
 							  || moveEffect == EFFECT_MORNING_SUN
@@ -927,6 +927,7 @@ enum ProtectQueries ShouldProtect(u8 bankAtk, u8 bankDef, u16 move)
 
 	if (WillFaintFromSecondaryDamage(bankAtk)
 	&&  defAbility != ABILITY_MOXIE
+	&&  defAbility != ABILITY_GRIMNEIGH
 	&&  defAbility != ABILITY_BEASTBOOST)
 		return FALSE; //Don't protect if you're going to faint after protecting and foe can't get boosts from your KO
 
@@ -1283,7 +1284,7 @@ bool8 ShouldPivot(u8 bankAtk, u8 bankDef, u16 move, u8 class)
 					&& SPLIT(move) != SPLIT_STATUS //Damaging move
 					&& (switchScore >= SWITCHING_INCREASE_RESIST_ALL_MOVES + SWITCHING_INCREASE_KO_FOE //Or remove hazards
 					 || (BATTLER_MAX_HP(bankDef)
-					    && (IsBankHoldingFocusSash(bankDef) || defAbility == ABILITY_STURDY || defAbility == ABILITY_MULTISCALE || defAbility == ABILITY_SHADOWSHIELD)))) //Pivot to break the sash/sturdy/multiscale
+					    && (IsBankHoldingFocusSash(bankDef) || defAbility == ABILITY_STURDY || defAbility == ABILITY_MULTISCALE)))) //Pivot to break the sash/sturdy/multiscale
 						return PIVOT;
 				}
 				else if (!hasUsefulStatBoost) //3HKO+ the foe
@@ -1291,7 +1292,7 @@ bool8 ShouldPivot(u8 bankAtk, u8 bankDef, u16 move, u8 class)
 					if (IsClassDamager(class)
 					&& BATTLER_MAX_HP(bankDef)
 					&& SPLIT(move) != SPLIT_STATUS //Damaging move
-					&& (IsBankHoldingFocusSash(bankDef) || defAbility == ABILITY_STURDY || defAbility == ABILITY_MULTISCALE || defAbility == ABILITY_SHADOWSHIELD)) //Pivot to break the sash/sturdy/multiscale
+					&& (IsBankHoldingFocusSash(bankDef) || defAbility == ABILITY_STURDY || defAbility == ABILITY_MULTISCALE)) //Pivot to break the sash/sturdy/multiscale
 						return PIVOT;
 
 					if (IsClassDamager(class) && switchScore >= SWITCHING_INCREASE_WALLS_FOE)

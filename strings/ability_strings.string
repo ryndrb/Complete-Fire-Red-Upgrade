@@ -7,12 +7,6 @@ The effects of weather\ndisappeared.
 #org @gText_MoldBreakerActivate
 [SCRIPTING_BANK] breaks\nthe mold!
 
-#org @gText_TeravoltActivate
-[SCRIPTING_BANK] is radiating\na bursting aura!
-
-#org @gText_TurboblazeActivate
-[SCRIPTING_BANK] is radiating\na blazing aura!
-
 #org @gText_SlowStartActivate
 [SCRIPTING_BANK] couldn't get\ngoing!
 
@@ -90,6 +84,9 @@ Neutralizing Gas fills the area!
 
 #org @gText_NeutralizingGasEnd
 The effects of Neutralizing Gas\nwore off!
+
+#org @gText_CuriousMedicineActivate
+[TARGET]'s stat changes\nwere removed!
 
 #org @gText_PkmnHurtsWith
 [ATTACKER] was hurt!

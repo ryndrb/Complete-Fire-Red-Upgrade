@@ -694,8 +694,6 @@ void atkFF15_jumpifstatcanbemodified(void)
 			gFormCounter = 2;
 
 		else if (ability == ABILITY_CLEARBODY
-		|| ability == ABILITY_WHITESMOKE
-		//|| ability == ABILITY_FULLMETALBODY
 		|| (ability == ABILITY_FLOWERVEIL && IsOfType(gActiveBattler, TYPE_GRASS)))
 		{
 			gBattleScripting.bank = gActiveBattler;
@@ -708,8 +706,7 @@ void atkFF15_jumpifstatcanbemodified(void)
 			gFormCounter = 3;
 		}
 		else if ((ability == ABILITY_KEENEYE && currStat == STAT_STAGE_ACC)
-		|| (ability == ABILITY_HYPERCUTTER && currStat == STAT_STAGE_ATK)
-		|| (ability == ABILITY_BIGPECKS && currStat == STAT_STAGE_DEF))
+		|| (ability == ABILITY_HYPERCUTTER && currStat == STAT_STAGE_ATK))
 			gFormCounter = 4;
 
 		PREPARE_STAT_BUFFER(gBattleTextBuff1, currStat)
@@ -1433,7 +1430,6 @@ void atkFF29_trysetsleep(void)
 	{
 		switch (ABILITY(bank)) {
 			case ABILITY_INSOMNIA:
-			case ABILITY_VITALSPIRIT:
 				gBattlescriptCurrInstr = BattleScript_TargetStayedAwakeUsingAbility;
 				return;
 			case ABILITY_LEAFGUARD:
@@ -1542,7 +1538,6 @@ void atkD7_setyawn(void)
 	{
 		switch (ABILITY(bank)) {
 			case ABILITY_INSOMNIA:
-			case ABILITY_VITALSPIRIT:
 				gBattlescriptCurrInstr = BattleScript_TargetStayedAwakeUsingAbility;
 				return;
 			case ABILITY_LEAFGUARD:

@@ -1,1 +1,8 @@
 ##
+
+# PALLET TOWN
+npc 3 0 3 EventScript_ChangeAbility
+npc 3 0 4 EventScript_NatureChanger
+npc 3 0 5 EventScript_GivePoke
+npc 3 0 6 EventScript_MoveTutor
+npc 3 0 7 EventScript_TrainerBattle

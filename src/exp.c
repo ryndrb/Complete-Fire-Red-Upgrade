@@ -44,7 +44,7 @@ extern const u16 gBaseExpBySpecies[];
 extern u8 String_TeamExpGain[];
 
 //This file's functions:
-static u32 ExpCalculator(u32 a, u32 t, u32 b, u32 e, u32 L, u32 Lp, u32 p, u32 f, u32 v, u32 s);
+static u32 ExpCalculator(u32 a, u32 t, u32 b, u32 e, u32 L, u32 Lp, u32 p, u32 f, u32 v, u32 s, u32 bb);
 static bool8 WasWholeTeamSentIn(u8 bank, u8 sentIn);
 static bool8 MonGetsAffectionBoost(struct Pokemon* mon);
 static void EmitExpBarUpdate(u8 a, u8 b, u32 c);
@@ -147,7 +147,7 @@ void atk23_getexp(void)
 	__attribute__ ((fallthrough));
 
 	case GetExp_Calculation:	; // calculate experience points to redistribute
-		u32 trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, divisor;
+		u32 trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, divisor, cap;
 
 		for (viaSentIn = 0, i = 0; i < 6; i++)
 		{
@@ -214,15 +214,36 @@ void atk23_getexp(void)
 		if (CouldHaveEvolvedViaLevelUp(&gPlayerParty[gBattleStruct->expGetterMonId]))
 			evolutionBoost = 12;
 
+		// Soft Cap Addition here
+		cap = 0;
+        if (!FlagGet(FLAG_BADGE01_GET) && pokeLevel >= 12)
+				cap = 0;
+		else if (!FlagGet(FLAG_BADGE02_GET) && pokeLevel >= 19)
+			cap = 0;
+		else if (!FlagGet(FLAG_BADGE03_GET) && pokeLevel >= 24)
+			cap = 0;
+		else if (!FlagGet(FLAG_BADGE04_GET) && pokeLevel >= 29)
+			cap = 0;
+		else if (!FlagGet(FLAG_BADGE05_GET) && pokeLevel >= 36)
+			cap = 0;
+		else if (!FlagGet(FLAG_BADGE06_GET) && pokeLevel >= 43)
+			cap = 0;
+		else if (!FlagGet(FLAG_BADGE07_GET) && pokeLevel >= 47)
+			cap = 0;
+		else if (!FlagGet(FLAG_BADGE08_GET) && pokeLevel >= 50)
+			cap = 0;
+		else 
+			cap = 1;
+
 		//Exp Share/Num Battlers Divisor
 		#ifndef FLAG_EXP_SHARE
 			#ifdef OLD_EXP_SPLIT
 				if (viaExpShare) // at least one mon is getting exp via exp share
 				{
 					if (holdEffect == ITEM_EFFECT_EXP_SHARE)
-						calculatedExp += ExpCalculator(trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, 2 * viaExpShare);
+						calculatedExp += ExpCalculator(trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, 2 * viaExpShare, cap);
 					if (gNewBS->SentInBackup & (1 << gBattleStruct->expGetterMonId))
-						calculatedExp += ExpCalculator(trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, 2 * viaSentIn);
+						calculatedExp += ExpCalculator(trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, 2 * viaSentIn, cap);
 					goto SKIP_EXP_CALC;
 				}
 				else //No Pokemon holds Exp Share
@@ -244,7 +265,7 @@ void atk23_getexp(void)
 			#endif
 		#endif
 
-		calculatedExp = ExpCalculator(trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, divisor);
+		calculatedExp = ExpCalculator(trainerBonus, tradeBonus, baseExp, eggBoost, defLevel, pokeLevel, passPower, affection, evolutionBoost, divisor, cap);
 		goto SKIP_EXP_CALC; //Only here so the compiler stops giving potential unused label errors (because it can be depending on your configuration)
 
 	SKIP_EXP_CALC:
@@ -451,7 +472,7 @@ void atk23_getexp(void)
 	}
 }
 
-static u32 ExpCalculator(u32 a, u32 t, u32 b, u32 e, u32 L, u32 Lp, u32 p, u32 f, u32 v, u32 s) {
+static u32 ExpCalculator(u32 a, u32 t, u32 b, u32 e, u32 L, u32 Lp, u32 p, u32 f, u32 v, u32 s, u32 bb) {
 	u32 calculatedExp;
 
 	#ifdef FLAT_EXP_FORMULA
@@ -479,6 +500,8 @@ static u32 ExpCalculator(u32 a, u32 t, u32 b, u32 e, u32 L, u32 Lp, u32 p, u32 f
 
 	if (IsRaidBattle())
 		calculatedExp *= 2;
+
+	calculatedExp *= bb;
 
 	return MathMin(1640000, calculatedExp);
 }

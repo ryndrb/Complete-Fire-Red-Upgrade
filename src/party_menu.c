@@ -142,6 +142,9 @@ static bool8 SetUpFieldMove_Defog(void);
 static void CursorCb_MoveItemCallback(u8 taskId);
 static void CursorCb_MoveItem(u8 taskId);
 
+// move relearner party menu
+void PartyMenuMRCallback(u8 taskId);
+
 //*highlightedMon = 0 is Player's Pokemon out
 //*highlightedMon = 1 is Link Partner's Pokemon out
 /*FR LG Format is:		DPPT+ Format is:
@@ -744,6 +747,11 @@ extern const u8 gText_FieldMoveDesc_Dive[];
 extern const u8 EventScript_RockClimb[];
 extern const u8 EventScript_Defog[];
 
+// Move Relearner Party menu
+extern const u8 gText_MoveRelearner[];
+extern const u8 gText_MoveRelearnerDescription[];
+extern u8 EventScript_MoveRelearner[];
+
 // Field Move IDs
 enum FieldMovesIDs
 {
@@ -792,6 +800,9 @@ struct
 	[MENU_TRADE1] =	{(void*) 0x84169bc, (void*) 0x8124491},
 	[MENU_TRADE2] =	{(void*) 0x84169bc, (void*) 0x81245a1},
 	[MENU_MOVE_ITEM] = {gMenuText_Move, CursorCb_MoveItem},
+
+	// move relearner in party menu append
+	[MENU_MOVE_RELEARNER] = {gText_MoveRelearner, PartyMenuMRCallback},
 
 	//Field Moves
 	[MENU_FIELD_MOVES + FIELD_MOVE_FLASH] =	      {gMoveNames[MOVE_FLASH], CursorCb_FieldMove},
@@ -976,6 +987,8 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 			AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_ITEM);
 	}
 
+	// move relearner
+	AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MOVE_RELEARNER);
 	AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
 }
 
@@ -2207,7 +2220,7 @@ static void ItemUseCB_AbilityCapsule(u8 taskId, TaskFunc func)
 	if (changeTo != ABILITY_NONE) //Ability can be changed
 	{
 		GetMonNickname(mon, gStringVar1);
-		CopyAbilityName(gStringVar2, changeTo);
+		CopyAbilityNameByMon(gStringVar2, changeTo, mon->species);
 		StringExpandPlaceholders(gStringVar4, gText_AbilityCapsuleOfferChange);
 		DisplayPartyMenuMessage(gStringVar4, TRUE);
 		ScheduleBgCopyTilemapToVram(2);
@@ -2331,7 +2344,7 @@ static void Task_ChangeAbility(u8 taskId)
 	}
 
 	GetMonNickname(mon, gStringVar1);
-	CopyAbilityName(gStringVar2, GetMonAbility(mon));
+	CopyAbilityNameByMon(gStringVar2, GetMonAbility(mon), mon->species);
 	StringExpandPlaceholders(gStringVar4, gText_AbilityCapsuleChangedAbility);
 	DisplayPartyMenuMessage(gStringVar4, TRUE);
 	ScheduleBgCopyTilemapToVram(2);
@@ -2457,3 +2470,9 @@ void FieldUseFunc_VsSeeker(u8 taskId)
     }
 }
 #endif
+
+void PartyMenuMRCallback(u8 taskId)
+{
+	Var8004 = gPartyMenu.slotId;
+	gTasks[taskId].func = CB2_InitLearnMove;
+}

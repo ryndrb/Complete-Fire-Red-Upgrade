@@ -301,7 +301,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 				break;
 
 			case ABILITY_DAZZLING:
-			case ABILITY_QUEENLYMAJESTY:
+			//case ABILITY_QUEENLYMAJESTY:
 				if (PriorityCalc(bankAtk, ACTION_USE_MOVE, move) > 0) //Check if right num
 				{
 					DECREASE_VIABILITY(10);
@@ -354,8 +354,6 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 				break;
 
 			case ABILITY_CLEARBODY:
-			//case ABILITY_FULLMETALBODY:
-			case ABILITY_WHITESMOKE:
 				if (CheckTableForMoveEffect(move, gStatLoweringMoveEffects))
 				{
 					DECREASE_VIABILITY(10);
@@ -375,15 +373,6 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 			case ABILITY_KEENEYE:
 				if (moveEffect == EFFECT_ACCURACY_DOWN
 				||  moveEffect == EFFECT_ACCURACY_DOWN_2)
-				{
-					DECREASE_VIABILITY(10);
-					return viability;
-				}
-				break;
-
-			case ABILITY_BIGPECKS:
-				if (moveEffect == EFFECT_DEFENSE_DOWN
-				||  moveEffect == EFFECT_DEFENSE_DOWN_2)
 				{
 					DECREASE_VIABILITY(10);
 					return viability;
@@ -489,7 +478,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 					break;
 
 				case ABILITY_DAZZLING:
-				case ABILITY_QUEENLYMAJESTY:
+				//case ABILITY_QUEENLYMAJESTY:
 					if (PriorityCalc(bankAtk, ACTION_USE_MOVE, move) > 0) //Check if right num
 					{
 						DECREASE_VIABILITY(10);
@@ -1348,7 +1337,7 @@ MOVESCR_CHECK_0:
 				case MOVE_LASERFOCUS:
 					if (IsLaserFocused(bankAtk))
 						DECREASE_VIABILITY(10);
-					else if (data->defAbility == ABILITY_SHELLARMOR || data->defAbility == ABILITY_BATTLEARMOR)
+					else if (data->defAbility == ABILITY_BATTLEARMOR)
 						DECREASE_VIABILITY(8);
 					break;
 
@@ -1470,6 +1459,11 @@ MOVESCR_CHECK_0:
 				break;
 			}
 
+			if (ABILITY(bankDef) == ABILITY_UNSEENFIST){ //dont protect if they're urshifu, added
+				DECREASE_VIABILITY(10);
+				break;
+			}
+
 			if (gBattleMoves[gLastResultingMoves[bankAtk]].effect == EFFECT_PROTECT
 			&&  move != MOVE_QUICKGUARD
 			&&  move != MOVE_WIDEGUARD
@@ -1477,6 +1471,7 @@ MOVESCR_CHECK_0:
 			{
 				if (WillFaintFromSecondaryDamage(bankAtk)
 				&&  data->defAbility != ABILITY_MOXIE
+				&&  data->defAbility != ABILITY_GRIMNEIGH
 				&&  data->defAbility != ABILITY_BEASTBOOST)
 				{
 					DECREASE_VIABILITY(10); //Don't protect if you're going to faint after protecting
@@ -1763,7 +1758,7 @@ MOVESCR_CHECK_0:
 				DECREASE_VIABILITY(10);
 			else if (move == MOVE_FAKEOUT)
 			{
-				if ((data->atkItemEffect == ITEM_EFFECT_CHOICE_BAND || data->atkAbility == ABILITY_GORILLATACTICS)
+				if ((data->atkItemEffect == ITEM_EFFECT_CHOICE_BAND || data->atkAbility == ABILITY_GORILLATACTICS || data->atkAbility == ABILITY_SAGEPOWER)
 				&& (ViableMonCountFromBank(bankDef) >= 2 || !MoveKnocksOutXHits(MOVE_FAKEOUT, bankAtk, bankDef, 1)))
 				{
 					if (!BankHasMonToSwitchTo(bankAtk))
@@ -2005,7 +2000,7 @@ MOVESCR_CHECK_0:
 
 		case EFFECT_KNOCK_OFF:
 			if (data->defItemEffect == ITEM_EFFECT_ASSAULT_VEST
-			|| (data->defItemEffect == ITEM_EFFECT_CHOICE_BAND && data->atkAbility != ABILITY_GORILLATACTICS && gBattleStruct->choicedMove[bankDef]))
+			|| (data->defItemEffect == ITEM_EFFECT_CHOICE_BAND && data->atkAbility != ABILITY_GORILLATACTICS && gBattleStruct->choicedMove[bankDef]) && data->atkAbility != ABILITY_SAGEPOWER)
 			{
 				if (GetStrongestMove(bankDef, bankAtk) == MOVE_NONE
 				|| AI_SpecialTypeCalc(GetStrongestMove(bankDef, bankAtk), bankDef, bankAtk) & (MOVE_RESULT_NO_EFFECT | MOVE_RESULT_MISSED))
@@ -2760,16 +2755,17 @@ static void AI_Flee(void)
 
 u8 AIScript_Roaming(const u8 bankAtk, const unusedArg u8 bankDef, const unusedArg u16 move, const u8 originalViability, unusedArg struct AIScript* data)
 {
-	u8 atkAbility = ABILITY(bankAtk);
-	u8 atkItemEffect = ITEM_EFFECT(bankAtk);
+	//u8 atkAbility = ABILITY(bankAtk);
+	//u8 atkItemEffect = ITEM_EFFECT(bankAtk);
 
-	if (atkAbility == ABILITY_RUNAWAY
-	||  atkItemEffect == ITEM_EFFECT_CAN_ALWAYS_RUN
-	||  IsOfType(bankAtk, TYPE_GHOST))
-	{
-		AI_THINKING_STRUCT->aiAction |= (AI_ACTION_DONE | AI_ACTION_FLEE | AI_ACTION_DO_NOT_ATTACK);
-	}
-	else if (IsTrapped(bankAtk, FALSE))
+	// if (atkAbility == ABILITY_RUNAWAY
+	// ||  atkItemEffect == ITEM_EFFECT_CAN_ALWAYS_RUN
+	// ||  IsOfType(bankAtk, TYPE_GHOST))
+	// {
+	// 	AI_THINKING_STRUCT->aiAction |= (AI_ACTION_DONE | AI_ACTION_FLEE | AI_ACTION_DO_NOT_ATTACK);
+	// }
+	// else 
+	if (IsTrapped(bankAtk, FALSE))
 	{
 		return originalViability;
 	}

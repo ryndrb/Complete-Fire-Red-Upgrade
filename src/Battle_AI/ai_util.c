@@ -860,7 +860,7 @@ u16 CalcFinalAIMoveDamage(u16 move, u8 bankAtk, u8 bankDef, u8 numHits, struct D
 		return gBattleMons[bankDef].hp;
 
 	u8 defAbility = ABILITY(bankDef);
-	if (numHits >= 2 && BATTLER_MAX_HP(bankDef) && (defAbility == ABILITY_MULTISCALE || defAbility == ABILITY_SHADOWSHIELD))
+	if (numHits >= 2 && BATTLER_MAX_HP(bankDef) && (defAbility == ABILITY_MULTISCALE))
 		return MathMin(dmg + (dmg * 2) * (numHits - 1), gBattleMons[bankDef].maxHP); //Adjust damage on subsequent hits
 
 	return MathMin(dmg * numHits, gBattleMons[bankDef].maxHP);
@@ -1118,7 +1118,7 @@ bool8 MoveWouldHitBeforeOtherMove(u16 moveAtk, u8 bankAtk, u16 moveDef, u8 bankD
 	}
 
 //BracketCalc
-	if (BracketCalc(bankAtk) > BracketCalc(bankDef)) //Hehehe...AI knows when its Quick Claw activates
+	if (BracketCalc(bankAtk, ACTION_USE_MOVE, bankAtk) > BracketCalc(bankDef, ACTION_USE_MOVE, bankDef)) //Hehehe...AI knows when its Quick Claw activates
 		return TRUE;
 
 //SpeedCalc
@@ -1351,7 +1351,7 @@ bool8 IsTrapped(u8 bank, bool8 switching)
 {
 	if (IsOfType(bank, TYPE_GHOST)
 	|| (switching && ITEM_EFFECT(bank) == ITEM_EFFECT_SHED_SHELL)
-	|| (!switching && ABILITY(bank) == ABILITY_RUNAWAY)
+	// || (!switching && ABILITY(bank) == ABILITY_RUNAWAY)
 	|| (!switching && ITEM_EFFECT(bank) == ITEM_EFFECT_CAN_ALWAYS_RUN))
 		return FALSE;
 	else
@@ -1682,8 +1682,6 @@ bool8 GoodIdeaToLowerAttack(u8 bankDef, u8 bankAtk, u16 move)
 	return STAT_STAGE(bankDef, STAT_STAGE_ATK) > 4 && PhysicalMoveInMoveset(bankDef)
 		&& defAbility != ABILITY_CONTRARY
 		&& defAbility != ABILITY_CLEARBODY
-		&& defAbility != ABILITY_WHITESMOKE
-		//&& defAbility != ABILITY_FULLMETALBODY
 		&& defAbility != ABILITY_HYPERCUTTER;
 }
 
@@ -1697,10 +1695,7 @@ bool8 GoodIdeaToLowerDefense(u8 bankDef, u8 bankAtk, u16 move)
 	return STAT_STAGE(bankDef, STAT_STAGE_DEF) > 4
 		&& PhysicalMoveInMoveset(bankAtk)
 		&& defAbility != ABILITY_CONTRARY
-		&& defAbility != ABILITY_CLEARBODY
-		&& defAbility != ABILITY_WHITESMOKE
-		//&& defAbility != ABILITY_FULLMETALBODY
-		&& defAbility != ABILITY_BIGPECKS;
+		&& defAbility != ABILITY_CLEARBODY;
 }
 
 bool8 GoodIdeaToLowerSpAtk(u8 bankDef, u8 bankAtk, u16 move)
@@ -1712,9 +1707,7 @@ bool8 GoodIdeaToLowerSpAtk(u8 bankDef, u8 bankAtk, u16 move)
 
 	return STAT_STAGE(bankDef, STAT_STAGE_SPATK) > 4 && SpecialMoveInMoveset(bankDef)
 		&& defAbility != ABILITY_CONTRARY
-		&& defAbility != ABILITY_CLEARBODY
-		//&& defAbility != ABILITY_FULLMETALBODY
-		&& defAbility != ABILITY_WHITESMOKE;
+		&& defAbility != ABILITY_CLEARBODY;
 }
 
 bool8 GoodIdeaToLowerSpDef(u8 bankDef, u8 bankAtk, u16 move)
@@ -1726,9 +1719,7 @@ bool8 GoodIdeaToLowerSpDef(u8 bankDef, u8 bankAtk, u16 move)
 
 	return STAT_STAGE(bankDef, STAT_STAGE_SPDEF) > 4 && SpecialMoveInMoveset(bankAtk)
 		&& defAbility != ABILITY_CONTRARY
-		&& defAbility != ABILITY_CLEARBODY
-		//&& defAbility != ABILITY_FULLMETALBODY
-		&& defAbility != ABILITY_WHITESMOKE;
+		&& defAbility != ABILITY_CLEARBODY;
 }
 
 bool8 GoodIdeaToLowerSpeed(u8 bankDef, u8 bankAtk, u16 move)
@@ -1740,9 +1731,7 @@ bool8 GoodIdeaToLowerSpeed(u8 bankDef, u8 bankAtk, u16 move)
 
 	return SpeedCalc(bankAtk) <= SpeedCalc(bankDef)
 		&& defAbility != ABILITY_CONTRARY
-		&& defAbility != ABILITY_CLEARBODY
-		//&& defAbility != ABILITY_FULLMETALBODY
-		&& defAbility != ABILITY_WHITESMOKE;
+		&& defAbility != ABILITY_CLEARBODY;
 }
 
 bool8 GoodIdeaToLowerAccuracy(u8 bankDef, u8 bankAtk, u16 move)
@@ -1754,8 +1743,6 @@ bool8 GoodIdeaToLowerAccuracy(u8 bankDef, u8 bankAtk, u16 move)
 
 	return defAbility != ABILITY_CONTRARY
 		&& defAbility != ABILITY_CLEARBODY
-		&& defAbility != ABILITY_WHITESMOKE
-		//&& defAbility != ABILITY_FULLMETALBODY
 		&& defAbility != ABILITY_KEENEYE;
 }
 
@@ -1765,9 +1752,7 @@ bool8 GoodIdeaToLowerEvasion(u8 bankDef, u8 bankAtk, unusedArg u16 move)
 
 	return (STAT_STAGE(bankDef, STAT_STAGE_EVASION) > 6 || MoveInMovesetWithAccuracyLessThan(bankAtk, bankDef, 90, TRUE))
 		&& defAbility != ABILITY_CONTRARY
-		&& defAbility != ABILITY_CLEARBODY
-		//&& defAbility != ABILITY_FULLMETALBODY
-		&& defAbility != ABILITY_WHITESMOKE;
+		&& defAbility != ABILITY_CLEARBODY;
 }
 
 //Move Prediction Code
@@ -2482,7 +2467,7 @@ static bool8 WallsFoe(u8 bankAtk, u8 bankDef)
 static bool8 ShouldAIFreeChoiceLockWithDynamax(u8 bankAtk, u8 bankDef)
 {
 	if (CanDynamax(bankAtk)
-	&& (ITEM_EFFECT(bankAtk) == ITEM_EFFECT_CHOICE_BAND || ABILITY(bankAtk) == ABILITY_GORILLATACTICS)
+	&& (ITEM_EFFECT(bankAtk) == ITEM_EFFECT_CHOICE_BAND || ABILITY(bankAtk) == ABILITY_GORILLATACTICS || ABILITY(bankAtk) == ABILITY_SAGEPOWER)
 	&& CHOICED_MOVE(bankAtk) != MOVE_NONE && CHOICED_MOVE(bankAtk) != 0xFFFF) //AI is locked into some move
 	{
 		u8 moveLimitations = CheckMoveLimitations(bankAtk, 0, MOVE_LIMITATION_ZEROMOVE | MOVE_LIMITATION_PP);

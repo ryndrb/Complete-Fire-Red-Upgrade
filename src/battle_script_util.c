@@ -222,9 +222,7 @@ void MoldBreakerRemoveAbilitiesOnForceSwitchIn(void)
 	else
 		bank = gBankAttacker;
 
-	if (ABILITY(bank) == ABILITY_MOLDBREAKER
-	||  ABILITY(bank) == ABILITY_TURBOBLAZE
-	||  ABILITY(bank) == ABILITY_TERAVOLT)
+	if (ABILITY(bank) == ABILITY_MOLDBREAKER)
 	{
 		if (gMoldBreakerIgnoredAbilities[ABILITY(gBankSwitching)])
 		{
@@ -1289,6 +1287,7 @@ void AbilityChangeBSFunc(void)
 			{
 				*defAbilityLoc = atkAbility;
 				gLastUsedAbility = defAbility; //Original ability
+	
 				ResetVarsForAbilityChange(gBankTarget);
 				gBattleStringLoader = EntrainmentString;
 
@@ -1306,6 +1305,7 @@ void AbilityChangeBSFunc(void)
 			{
 				*defAbilityLoc = ABILITY_SIMPLE;
 				gLastUsedAbility = defAbility; //Original ability
+
 				ResetVarsForAbilityChange(gBankTarget);
 				gBattleStringLoader = SimpleBeamString;
 			}

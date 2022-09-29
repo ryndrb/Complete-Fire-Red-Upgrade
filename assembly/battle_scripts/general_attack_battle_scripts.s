@@ -3069,7 +3069,6 @@ BS_150_Blank:
 
 .global BS_151_Solarbeam
 BS_151_Solarbeam:
-	jumpifabilitypresent ABILITY_CLOUDNINE, BSSolarbeamDecideTurn
 	jumpifabilitypresent ABILITY_AIRLOCK, BSSolarbeamDecideTurn
 	jumpifhelditemeffect BANK_ATTACKER, ITEM_EFFECT_UTILITY_UMBRELLA, BSSolarbeamDecideTurn
 	jumpifweather WEATHER_SUN_ANY BSSolarbeamOnFirstTurn

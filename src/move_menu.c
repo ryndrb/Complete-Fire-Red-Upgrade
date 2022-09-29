@@ -1659,10 +1659,11 @@ u8 TrySetCantSelectMoveBattleScript(void)
 		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingImprisionedMove;
 		++limitations;
 	}
-	else if (!isAnyMaxMove && ability == ABILITY_GORILLATACTICS && *choicedMove != 0 && *choicedMove != 0xFFFF && *choicedMove != move)
+	else if (!isAnyMaxMove && (ability == ABILITY_GORILLATACTICS || ability == ABILITY_SAGEPOWER) && *choicedMove != 0 && *choicedMove != 0xFFFF && *choicedMove != move)
 	{
 		gCurrentMove = *choicedMove;
 		gLastUsedAbility = ability;
+
 		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedMoveChoiceAbility;
 		++limitations;
 	}

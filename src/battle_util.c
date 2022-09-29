@@ -540,7 +540,7 @@ bool8 IsUnusableMove(u16 move, u8 bank, u8 check, u8 pp, u8 ability, u8 holdEffe
 	else if (gDisableStructs[bank].encoreTimer && gDisableStructs[bank].encoredMove != move && check & MOVE_LIMITATION_ENCORE)
 		return TRUE;
 	else if (!isMaxMove
-		 && (holdEffect == ITEM_EFFECT_CHOICE_BAND || ability == ABILITY_GORILLATACTICS)
+		 && (holdEffect == ITEM_EFFECT_CHOICE_BAND || ability == ABILITY_GORILLATACTICS || ability == ABILITY_SAGEPOWER)
 		 && choicedMove != 0 && choicedMove != 0xFFFF && choicedMove != move
 		 && check & MOVE_LIMITATION_CHOICE)
 	{
@@ -1453,7 +1453,6 @@ bool8 CanBePutToSleep(u8 bank, bool8 checkFlowerVeil)
 
 	switch (ABILITY(bank)) {
 		case ABILITY_INSOMNIA:
-		case ABILITY_VITALSPIRIT:
 		case ABILITY_SWEETVEIL:
 			return FALSE;
 	}
@@ -1489,7 +1488,6 @@ bool8 CanBeYawned(u8 bank)
 
 	switch (ABILITY(bank)) {
 		case ABILITY_INSOMNIA:
-		case ABILITY_VITALSPIRIT:
 		case ABILITY_SWEETVEIL:
 		case ABILITY_COMATOSE:
 			return FALSE;

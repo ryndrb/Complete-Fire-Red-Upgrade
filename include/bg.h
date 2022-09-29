@@ -45,6 +45,12 @@ enum BgTileAllocMode
     BG_TILE_FREE,
 };
 
+// enum {
+//     BG_COORD_SET,
+//     BG_COORD_ADD,
+//     BG_COORD_SUB,
+// };
+
 struct BgTemplate
 {
     u32 bg:2;                   // 0x1, 0x2 -> 0x3

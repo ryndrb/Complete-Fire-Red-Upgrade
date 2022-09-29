@@ -10,6 +10,9 @@
 #include "../include/constants/flags.h"
 #include "../include/constants/songs.h"
 
+#include "../include/constants/songs.h"
+#include "../include/field_weather.h"
+
 #include "../include/new/dexnav.h"
 
 /*
@@ -17,6 +20,9 @@ start_menu.c
 	Functions to redo how the start menu is generated, and
 	associated functions such as safari steps/ball count.
 */
+
+extern u8 EventScript_PCMainMenu[];
+//extern u8 EventScript_AccessPokemonStorage[];
 
 enum
 {
@@ -30,6 +36,7 @@ enum
 	STARTMENU_RETIRE_SAFARI,
 	STARTMENU_PLAYER_LINK,
 	STARTMENU_DEXNAV,
+	STARTMENU_PC,
 	STARTMENU_QUEST_LOG,
 	STARTMENU_EXIT_RIGHT,
 	STARTMENU_EXIT_LEFT,
@@ -52,6 +59,7 @@ extern const u8 gText_MenuExitRight[];
 extern const u8 gText_MenuExitLeft[];
 extern const u8 gText_MenuRetire[];
 extern const u8 gText_DexNav[];
+extern const u8 gText_MenuPC[];
 extern const u8 gText_MissionLog[];
 extern const u8 gText_MenuBag[];
 extern const u8 gText_MenuCube[];
@@ -69,6 +77,7 @@ extern const u8 gText_ExitDescription[];
 extern const u8 gText_RetireDescription[];
 extern const u8 gText_PlayerDescription[];
 extern const u8 gText_DexNavDescription[];
+extern const u8 gText_PocketPCDescription[];
 
 extern bool8 (*sStartMenuCallback)(void);
 extern u8 sStartMenuCursorPos;
@@ -84,7 +93,8 @@ void __attribute__((long_call)) DestroyHelpMessageWindow_(void);
 void __attribute__((long_call)) HideStartMenu(void);
 bool8 __attribute__((long_call)) StartMenuPokedexCallback(void);
 bool8 __attribute__((long_call)) StartMenuPokemonCallback(void);
-bool8 __attribute__((long_call)) StartMenuBagCallback(void);
+bool8 __attribute__((long_call)) StartMenuBagCallback(void); 
+bool8  __attribute__((long_call)) StartMenuPCCallback(void); // POCKET PC
 bool8 __attribute__((long_call)) StartMenuPlayerCallback(void);
 bool8 __attribute__((long_call)) StartMenuSaveCallback(void);
 bool8 __attribute__((long_call)) StartMenuOptionCallback(void);
@@ -123,6 +133,7 @@ const struct MenuAction sStartMenuActionTable[] =
 	[STARTMENU_RETIRE_SAFARI] = {gText_MenuRetire, {.u8_void = StartMenuSafariZoneRetireCallback}},
 	[STARTMENU_PLAYER_LINK] = {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerCallback}},
 	[STARTMENU_DEXNAV] = {gText_DexNav, {.u8_void = StartMenuDexNavCallback}},
+	[STARTMENU_PC] = {gText_MenuPC, {.u8_void = StartMenuPCCallback}},
 	#ifdef FLAG_SYS_QUEST_LOG
 	[STARTMENU_QUEST_LOG] = {gText_MissionLog, {.u8_void = (void*) (0x801D768 | 1)}},
 	#endif
@@ -142,6 +153,7 @@ const u8* const sStartMenuDescPointers[] =
 	gText_RetireDescription,
 	gText_PlayerDescription,
 	gText_DexNavDescription,
+	gText_PocketPCDescription,
 	NULL,
 	gText_ExitDescription,
 	gText_ExitDescription,
@@ -153,6 +165,9 @@ static bool8 CanSetUpSecondaryStartMenu(void)
 	if (FlagGet(FLAG_SYS_DEXNAV) && FlagGet(FLAG_SYS_POKEDEX_GET))
 		return TRUE;
 	#endif
+
+	// if (FlagGet(FLAG_POKEMONPCMENU) && FlagGet(FLAG_SYS_POKEDEX_GET))
+	// 	return TRUE;
 
 	#ifdef FLAG_SYS_QUEST_LOG
 	if (FlagGet(FLAG_SYS_QUEST_LOG))
@@ -233,6 +248,9 @@ static void BuildPokeToolsMenu(void)
 	#endif
 		AppendToStartMenuItems(STARTMENU_DEXNAV);
 
+	if(FlagGet(FLAG_SYS_POKEDEX_GET))	
+		AppendToStartMenuItems(STARTMENU_PC);
+
 	#ifdef FLAG_SYS_QUEST_LOG
 	if (FlagGet(FLAG_SYS_QUEST_LOG))
 		AppendToStartMenuItems(STARTMENU_QUEST_LOG);
@@ -303,13 +321,17 @@ bool8 StartCB_HandleInput(void)
 			sStartMenuCallback = CloseAndReloadStartMenu;
 		}
 	}
+
 	else if (JOY_NEW(A_BUTTON))
 	{
 		PlaySE(SE_SELECT);
 		if (!StartMenuPokedexSanityCheck())
 			return FALSE;
 		sStartMenuCallback = sStartMenuActionTable[sStartMenuOrder[sStartMenuCursorPos]].func.u8_void;
-		StartMenu_FadeScreenIfLeavingOverworld();
+
+		if(sStartMenuCallback != StartMenuPCCallback){
+			StartMenu_FadeScreenIfLeavingOverworld();	
+		}
 		return FALSE;
 	}
 	else if (JOY_NEW(B_BUTTON | START_BUTTON))
@@ -357,4 +379,19 @@ static bool8 ReloadStartMenuItems(void)
 	}
 
 	return FALSE;
+}
+
+bool8 StartMenuPCCallback(void)
+{
+	if (!gPaletteFade->active)
+    {
+        PlayRainStoppingSoundEffect();
+        DestroySafariZoneStatsWindow();
+		ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
+		RemoveStartMenuWindow();
+		ScriptContext1_SetupScript(EventScript_PCMainMenu);
+        return TRUE;
+	}
+
+    return FALSE;
 }

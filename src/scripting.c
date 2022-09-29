@@ -3110,6 +3110,38 @@ extern const u8 sText_13[];
 extern const u8 sText_14[];
 extern const u8 sText_15[];
 
+// Nature Changer Script Items
+extern const u8 NATURE_HARDY_1[];
+extern const u8 NATURE_LONELY_2[];
+extern const u8 NATURE_BRAVE_3[];
+extern const u8 NATURE_ADAMANT_4[];
+extern const u8 NATURE_NAUGHTY_5[];
+extern const u8 NATURE_BOLD_6[];
+extern const u8 NATURE_DOCILE_7[];
+extern const u8 NATURE_RELAXED_8[];
+extern const u8 NATURE_IMPISH_9[];
+extern const u8 NATURE_LAX_10[];
+extern const u8 NATURE_TIMID_11[];
+extern const u8 NATURE_HASTY_12[];
+extern const u8 NATURE_SERIOUS_13[];
+extern const u8 NATURE_JOLLY_14[];
+extern const u8 NATURE_NAIVE_15[];
+extern const u8 NATURE_MODEST_16[];
+extern const u8 NATURE_MILD_17[];
+extern const u8 NATURE_QUIET_18[];
+extern const u8 NATURE_BASHFUL_19[];
+extern const u8 NATURE_RASH_20[];
+extern const u8 NATURE_CALM_21[];
+extern const u8 NATURE_GENTLE_22[];
+extern const u8 NATURE_SASSY_23[];
+extern const u8 NATURE_CAREFUL_24[];
+extern const u8 NATURE_QUIRKY_25[];
+
+// Ability Changer
+extern const u8 ABILITY_FIRST[];
+extern const u8 ABILITY_SECOND[];
+extern const u8 ABILITY_HIDDEN[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3139,11 +3171,49 @@ static const u8* sMultichoiceSet2[] =
 	sExampleText_10,
 };
 
+// Nature Changer Script Items
+static const u8* NatureChangerSet[] = {
+	NATURE_HARDY_1,
+    NATURE_LONELY_2,
+    NATURE_BRAVE_3,
+    NATURE_ADAMANT_4,
+    NATURE_NAUGHTY_5,
+    NATURE_BOLD_6,
+    NATURE_DOCILE_7,
+    NATURE_RELAXED_8,
+    NATURE_IMPISH_9,
+    NATURE_LAX_10,
+    NATURE_TIMID_11,
+    NATURE_HASTY_12,
+    NATURE_SERIOUS_13,
+    NATURE_JOLLY_14,
+    NATURE_NAIVE_15,
+    NATURE_MODEST_16,
+    NATURE_MILD_17,
+    NATURE_QUIET_18,
+    NATURE_BASHFUL_19,
+    NATURE_RASH_20,
+    NATURE_CALM_21,
+    NATURE_GENTLE_22,
+    NATURE_SASSY_23,
+    NATURE_CAREFUL_24,
+    NATURE_QUIRKY_25,
+};
+
+// Ability Changer
+static const u8* AbilityChangerSet[] = {
+	ABILITY_FIRST,
+	ABILITY_SECOND,
+	ABILITY_HIDDEN,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
-	{sMultichoiceSet1, ARRAY_COUNT(sMultichoiceSet1)},
-	{sMultichoiceSet2, ARRAY_COUNT(sMultichoiceSet2)},
+	{sMultichoiceSet1, ARRAY_COUNT(sMultichoiceSet1)},//1
+	{sMultichoiceSet2, ARRAY_COUNT(sMultichoiceSet2)},//2
+	{NatureChangerSet, ARRAY_COUNT(NatureChangerSet)},//3
+	{AbilityChangerSet, ARRAY_COUNT(AbilityChangerSet)},//4
 };
 
 //Link number of opts shown at once to the box height

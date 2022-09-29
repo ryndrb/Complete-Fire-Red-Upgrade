@@ -1721,9 +1721,7 @@ static bool8 ShouldSwitchIfWonderGuard(void)
 			if (SPLIT(move) != SPLIT_STATUS)
 			{
 				u8 atkAbility = GetAIAbility(bankAtk, bankDef, move);
-				if (atkAbility == ABILITY_MOLDBREAKER
-				||  atkAbility == ABILITY_TERAVOLT
-				||  atkAbility == ABILITY_TURBOBLAZE)
+				if (atkAbility == ABILITY_MOLDBREAKER)
 					return FALSE;
 
 				moveFlags = AI_SpecialTypeCalc(move, bankAtk, bankDef);
@@ -2087,6 +2085,7 @@ u8 CalcMostSuitableMonToSwitchInto(void)
 						scores[i] += SWITCHING_INCREASE_KO_FOE;
 
 						if (ability == ABILITY_MOXIE
+						||  ability == ABILITY_GRIMNEIGH
 						||  ability == ABILITY_SOULHEART
 						||  ability == ABILITY_BEASTBOOST)
 							scores[i] += SWITCHING_INCREASE_REVENGE_KILL;

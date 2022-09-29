@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "raid_encounters.h": "c",
+        "trainers_with_evs_table.h": "c"
+    }
+}

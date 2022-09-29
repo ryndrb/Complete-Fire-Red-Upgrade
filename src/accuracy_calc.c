@@ -187,6 +187,9 @@ bool8 ProtectAffects(u16 move, u8 bankAtk, u8 bankDef, bool8 set)
 	u8 target = gBattleMoves[move].target;
 	u8 defSide = SIDE(bankDef);
 
+	if (ABILITY(bankAtk) == ABILITY_UNSEENFIST && contact) //added 
+		return effect;
+
 	if (ProtectedByMaxGuard(bankDef, move))
 	{
 		effect = 1;
@@ -281,7 +284,7 @@ bool8 DoesProtectionMoveBlockMove(u8 bankAtk, u8 bankDef, u16 atkMove, u16 prote
 	u8 split = SPLIT(atkMove);
 	u8 target = gBattleMoves[atkMove].target;
 
-	if (!CheckTableForMove(atkMove, gMovesThatLiftProtectTable))
+	if (!CheckTableForMove(atkMove, gMovesThatLiftProtectTable) || ( !(ABILITY(bankAtk) == ABILITY_UNSEENFIST) ))
 	{
 		switch (protectMove) {
 			case MOVE_PROTECT:
@@ -352,6 +355,22 @@ static bool8 AccuracyCalcHelper(u16 move, u8 bankDef)
 	||	 gBattleMoves[move].accuracy == 0)
 	{
 		//JumpIfMoveFailed(7, move);
+		doneStatus = TRUE;
+	}else if(ABILITY(gBankAttacker) == ABILITY_FATAL_PRECISION) //added here )
+	{ //need to fix this later
+		u16 newMove = move; 
+		if (SPLIT(move) == SPLIT_STATUS) { //need to do this to ensure we get the correct type calc for moves like hypnosis/willowisp
+			for(u16 i = 0; i < MOVES_COUNT; i++) {
+				if( gBattleMoves[i].split != SPLIT_STATUS && gBattleMoves[i].type == GetMoveTypeSpecial(gBankAttacker, move)) {
+					newMove = i;
+					break;
+				}
+			}
+		}
+		u8 moveResult = VisualTypeCalc(newMove, gBankAttacker, gBankTarget);
+		if(moveResult & MOVE_RESULT_SUPER_EFFECTIVE)
+			doneStatus = TRUE;
+	}else if (ITEM(gBankAttacker) == 92 && SPECIES(gBankAttacker) == SPECIES_DUSKNOIR) { //92 is reaper cloth
 		doneStatus = TRUE;
 	}
 	else if (WEATHER_HAS_EFFECT)

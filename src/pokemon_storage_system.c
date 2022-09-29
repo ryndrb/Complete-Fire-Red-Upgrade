@@ -13,6 +13,8 @@
 #include "../include/new/frontier.h"
 #include "../include/new/item.h"
 #include "../include/new/pokemon_storage_system.h"
+
+#include "../include/bg.h"
 /*
 pokemon_storage_system.c
 	handles pokemon storage expansion and related functions

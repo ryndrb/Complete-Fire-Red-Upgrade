@@ -108,9 +108,10 @@ enum
 #define MENU_TRADE1 16
 #define MENU_TRADE2 17
 #define MENU_MOVE_ITEM 18
-#define MENU_FIELD_MOVES 19
+#define MENU_MOVE_RELEARNER 19 // Move Relearner in Party Menu
+#define MENU_FIELD_MOVES 20
 
-#define MENU_FIELD_MOVES_MINUS_1 18
+#define MENU_FIELD_MOVES_MINUS_1 19
 
 struct PartyMenu
 {
@@ -161,3 +162,5 @@ bool8 __attribute__((long_call)) some_other_kind_of_link_test(void);
 void __attribute__((long_call)) InitChooseHalfPartyForBattle(u8 a1);
 u8 __attribute__((long_call)) GetItemEffectType(u16 item);
 void __attribute__((long_call)) PartyMenuModifyHP(u8 taskId, u8 slot, s8 hpIncrement, s16 hpDifference, TaskFunc task);
+
+void __attribute__((long_call)) CB2_InitLearnMove(void);

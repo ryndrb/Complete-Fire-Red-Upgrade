@@ -333,7 +333,6 @@ bool8 CanPartyMonBePutToSleep(struct Pokemon* mon)
 
 	switch (GetMonAbility(mon)) {
 		case ABILITY_INSOMNIA:
-		case ABILITY_VITALSPIRIT:
 		case ABILITY_SWEETVEIL:
 			return FALSE;
 	}
