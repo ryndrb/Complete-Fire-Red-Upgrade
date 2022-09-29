@@ -1,5 +1,7 @@
 #pragma once
 
+// Added some of Radical Red custom abilities, credits to soupercell and others
+
 #define ABILITY_NONE 0
 #define ABILITY_STENCH 0x1
 #define ABILITY_DRIZZLE 0x2
