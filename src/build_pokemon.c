@@ -44,6 +44,7 @@
 #include "Tables/trainers_with_evs_table.h"
 
 #include "Tables/duplicate_abilities.h"
+#include "Tables/custom_trainers.h"
 
 /*
 build_pokemon.c
@@ -144,6 +145,7 @@ extern bool8 sp051_CanTeamParticipateInSkyBattle(void);
 extern bool8 CanMonParticipateInASkyBattle(struct Pokemon* mon);
 
 //This file's functions:
+static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainerId, const struct MultiRaidTrainer trainerData);
 static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerNum, const bool8 firstTrainer, const bool8 side);
 #if (defined SCALED_TRAINERS && !defined  DEBUG_NO_LEVEL_SCALING)
 static u8 GetPlayerBiasedAverageLevel(u8 maxLevel);
@@ -533,6 +535,36 @@ void sp06B_ReplacePlayerTeamWithMultiTrainerTeam(void)
 	BuildFrontierMultiParty(Var8000);
 }
 
+// rad red implemention, cred soupercell
+static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainerId, const struct MultiRaidTrainer trainerData){
+	for(u8 i = 0; i < trainerData.spreadSizes[0]; i++) {
+		u8 level = trainerData.spreads[0]->level; 
+
+		if (trainerData.backSpriteId == DOUBLE_BATTLE && ViableMonCount(gPlayerParty) >= 2 ) {
+			gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+		}
+		if (FlagGet(FLAG_SCALE_TRAINER_LEVELS)) { 
+			level = GetHighestMonLevel(gPlayerParty);
+		} 
+
+		
+		switch (level) {
+			case PLAYER_MAX_LEVEL:
+				level = GetHighestMonLevel(gPlayerParty);
+				break;
+			case ONE_BELOW_PLAYER_MAX_LEVEL:
+				level = GetHighestMonLevel(gPlayerParty) - 1;
+				break;
+			case TWO_BELOW_PLAYER_MAX_LEVEL:
+				level = GetHighestMonLevel(gPlayerParty) - 2;
+				break;
+		}
+
+		CreateFrontierMon(&party[i], level, &trainerData.spreads[0][i], trainerId, 0, 0, FALSE );
+	}
+	return trainerData.spreadSizes[0]; 
+}
+
 //Returns the number of Pokemon
 static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId, const bool8 firstTrainer, const bool8 side)
 {
@@ -541,6 +573,14 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 	struct Trainer* trainer;
 	u32 otid = 0;
 	u8 otIdType = OT_ID_RANDOM_NO_SHINY;
+
+	// Custom Trainer
+	if(FlagGet(FLAG_CUSTOM_TRAINERS) && side == B_SIDE_OPPONENT){
+		for(u8 i = 0; i < gNumCustomTrainerBattles; i++){
+			if(trainerId == gCustomTrainerBattles[i].otId)
+				return BuildCustomTrainerParty(party, trainerId, gCustomTrainerBattles[i]);
+		}
+	}
 
 	if (trainerId == TRAINER_SECRET_BASE)
 		return 0;

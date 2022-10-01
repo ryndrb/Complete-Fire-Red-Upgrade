@@ -210,6 +210,7 @@ struct BattleTowerSpread
 	u8 modifyMovesDoubles : 1;
 	u8 ability : 2;
 	u8 gigantamax : 1;
+	u8 level;
 };
 
 extern const struct BattleTowerSpread gFrontierSpreads[];

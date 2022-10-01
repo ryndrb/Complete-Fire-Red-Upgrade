@@ -318,3 +318,11 @@ enum //These vars need to be one after the other (hence the enum)
 //See "include/new/dexnav_config.h"
 
 #define INSTANT_TEXT // Enable Instant Text. Some Hack Authors might want this disabled because of the effects instant text has on pacing
+
+// New 
+#define FLAG_CUSTOM_TRAINERS 0x1034
+#define SINGLE_BATTLE 0
+#define DOUBLE_BATTLE 1
+#define PLAYER_MAX_LEVEL 103
+#define ONE_BELOW_PLAYER_MAX_LEVEL 102
+#define TWO_BELOW_PLAYER_MAX_LEVEL 101
