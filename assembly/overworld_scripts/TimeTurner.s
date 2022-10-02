@@ -11,30 +11,35 @@
 
 .global EventScript_TimeTurner
 EventScript_TimeTurner:
-    lock   
+    preparemsg gText_TimeOfDay
+    waitmsg
     setvar 0x8000 0x4
     setvar 0x8001 0x4
-    msgbox gText_TimeOfDay MSG_KEEPOPEN
     special 0x158
     waitstate
+    compare LASTRESULT 4
+    if greaterorequal _goto End
     switch LASTRESULT 
     case 0, EventScript_Day
-    case 1, EventScript_Dusk
+    case 1, EventScript_Evening
     case 2, EventScript_Night
     case 3, EventScript_Reset
+    release
     end
 
 EventScript_Day:
     clearflag FLAG_TURN_DUSK
     clearflag FLAG_TURN_NIGHT
     setflag FLAG_TURN_DAY
+    sound 0x2
     release
     end
     
-EventScript_Dusk:
+EventScript_Evening:
     clearflag FLAG_TURN_DAY
     clearflag FLAG_TURN_NIGHT
     setflag FLAG_TURN_DUSK
+    sound 0x2
     release
     end
 
@@ -42,6 +47,7 @@ EventScript_Night:
     clearflag FLAG_TURN_DAY
     clearflag FLAG_TURN_DUSK
     setflag FLAG_TURN_NIGHT
+    sound 0x2
     release
     end
 
@@ -49,6 +55,7 @@ EventScript_Reset:
     clearflag FLAG_TURN_DAY
     clearflag FLAG_TURN_DUSK
     clearflag FLAG_TURN_NIGHT
+    sound 0x2
     release
     end
 

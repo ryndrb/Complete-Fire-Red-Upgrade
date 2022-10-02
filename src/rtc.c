@@ -5,11 +5,13 @@
 
 #include "config.h"
 #include "../include/event_data.h"
+#include "../include/play_time.h"
 
 extern u16 sRTCErrorStatus;
 extern u8 sRTCProbeResult;
 extern u16 sRTCSavedIme;
 extern u8 sRTCFrameCount;
+extern u8 gLastClockSecond;
 
 extern struct SiiRtcInfo sRtc; //0x3005E88
 
@@ -176,34 +178,28 @@ static void UpdateClockFromRtc(struct SiiRtcInfo *rtc)
 	gClock.second = ConvertBcdToBinary(rtc->second);
 
 
-	u8 morning, dusk, night;
+	u8 day, dusk, night;
 
-	if(FlagGet(FLAG_TURN_DAY)){
-		if(gClock.hour >= 8){
-			morning = abs(gClock.hour - 8);
-			gClock.hour -= morning;
-		}else{
-			morning = abs(gClock.hour - 8);
-			gClock.hour += morning;
-		}
+	if(FlagGet(FLAG_TURN_DAY)){ // Day/Morning for encounters
+		day = abs(gClock.hour - 8);
+		if(gClock.hour >= 8)
+			gClock.hour -= day;
+		else
+			gClock.hour += day;
 	}
-	if(FlagGet(FLAG_TURN_DUSK)){
-		if(gClock.hour >= 17){
-			dusk = abs(gClock.hour - 17);
+	if(FlagGet(FLAG_TURN_DUSK)){ // Evening
+		dusk = abs(gClock.hour - 17);
+		if(gClock.hour >= 17)
 			gClock.hour -= dusk;
-		}else{
-			dusk = abs(gClock.hour - 17);
+		else
 			gClock.hour += dusk;
-		}
 	}
 	if(FlagGet(FLAG_TURN_NIGHT)){
-		if(gClock.hour >= 20){
-			night = abs(gClock.hour - 20);
+		night = abs(gClock.hour - 20);
+		if(gClock.hour >= 20)
 			gClock.hour -= night;
-		}else{
-			night = abs(gClock.hour - 20);
+		else
 			gClock.hour += night;
-		}
 	}
 }
 
@@ -214,6 +210,8 @@ void RtcCalcLocalTime(void)
 	{
 		RtcInit();
 		//u8 prevSecond = gClock.second;
+		if (sRTCErrorStatus & RTC_ERR_FLAG_MASK)
+			sRtc = sRtcDummy;
 		UpdateClockFromRtc(&sRtc);
 		
 		/*if (prevSecond == gClock.second
@@ -238,4 +236,46 @@ void RtcCalcLocalTime(void)
 void ForceClockUpdate(void)
 {
 	sRTCFrameCount = 0;
+}
+
+void DirectClockUpdate(void)
+{
+	sRTCFrameCount = 0;
+	RtcCalcLocalTime();
+}
+
+void PlayTimeCounter_Update(void)
+{
+	if (sPlayTimeCounterState == PLAYTIME_RUNNING)
+	{
+		bool8 secondPassed;
+
+		if (gSaveBlock2->playTimeVBlanks < 0xFF)
+			++gSaveBlock2->playTimeVBlanks;
+
+		if (RtcGetErrorStatus() & RTC_ERR_FLAG_MASK)
+			secondPassed = gSaveBlock2->playTimeVBlanks > 59;
+		else
+			secondPassed = gClock.second != gLastClockSecond //Sync clock to RTC
+			            && gSaveBlock2->playTimeVBlanks > 59; //But make sure a second ingame has actually passed and the player didn't just pause the game
+
+		if (secondPassed)
+		{
+			gSaveBlock2->playTimeVBlanks = 0;
+			gLastClockSecond = gClock.second;
+			gSaveBlock2->playTimeSeconds++;
+			if (gSaveBlock2->playTimeSeconds > 59)
+			{
+				gSaveBlock2->playTimeSeconds = 0;
+				gSaveBlock2->playTimeMinutes++;
+				if (gSaveBlock2->playTimeMinutes > 59)
+				{
+					gSaveBlock2->playTimeMinutes = 0;
+					gSaveBlock2->playTimeHours++;
+					if (gSaveBlock2->playTimeHours > 999)
+						PlayTimeCounter_SetToMax();
+				}
+			}
+		}
+	}
 }

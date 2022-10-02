@@ -117,13 +117,13 @@ Second
 Hidden
 
 #org @TIME_DAY
-Day
+Day    [GREEN]8 [RED]AM
 
 #org @TIME_DUSK
-Dusk
+Dusk   [GREEN]5 [RED]PM
 
 #org @TIME_NIGHT
-Night
+Night  [GREEN]8 [RED]PM
 
 #org @TIME_RESET
 Reset

@@ -321,6 +321,7 @@ RandomizerShowPokepicHook 809D2FC 3
 TransferPlttBuffer 8070474 0
 DNSCreateBuyMenuHook 809AC84 0
 DNSEndBuyMenuHook 809C078 1
+PlayTimeCounter_Update 805486C 0
 
 ##Select-From-PC
 pcSelect_ClosingCheck 0808ebb2 0
