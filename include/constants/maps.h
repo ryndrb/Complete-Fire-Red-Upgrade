@@ -528,6 +528,12 @@ u8 __attribute__((long_call)) GetCurrentRegionMapSectionId(void);
 
 #define MAP_GROUPS_COUNT 43
 
+///////////
+#define ROUTE_1 ((3 << 8) | 19)
+
+
+
+
 #else //For Pokemon Unbound
 
 //West Borrius

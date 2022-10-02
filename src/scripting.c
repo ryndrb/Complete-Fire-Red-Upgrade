@@ -3142,6 +3142,12 @@ extern const u8 ABILITY_FIRST[];
 extern const u8 ABILITY_SECOND[];
 extern const u8 ABILITY_HIDDEN[];
 
+// Time Turner
+extern const u8 TIME_DAY[];
+extern const u8 TIME_DUSK[];
+extern const u8 TIME_NIGHT[];
+extern const u8 TIME_RESET[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3207,6 +3213,13 @@ static const u8* AbilityChangerSet[] = {
 	ABILITY_HIDDEN,
 };
 
+static const u8* TimeTurner[] = {
+	TIME_DAY,
+	TIME_DUSK,
+	TIME_NIGHT,
+	TIME_RESET,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
@@ -3214,6 +3227,7 @@ const struct ScrollingMulti gScrollingSets[] =
 	{sMultichoiceSet2, ARRAY_COUNT(sMultichoiceSet2)},//2
 	{NatureChangerSet, ARRAY_COUNT(NatureChangerSet)},//3
 	{AbilityChangerSet, ARRAY_COUNT(AbilityChangerSet)},//4
+	{TimeTurner, ARRAY_COUNT(TimeTurner)},//5
 };
 
 //Link number of opts shown at once to the box height

@@ -320,6 +320,10 @@ enum //These vars need to be one after the other (hence the enum)
 #define INSTANT_TEXT // Enable Instant Text. Some Hack Authors might want this disabled because of the effects instant text has on pacing
 
 // New 
+#define FLAG_TURN_DAY 0x931
+#define FLAG_TURN_DUSK 0x932
+#define FLAG_TURN_NIGHT 0x933
+
 #define FLAG_CUSTOM_TRAINERS 0x1034
 #define SINGLE_BATTLE 0
 #define DOUBLE_BATTLE 1

@@ -19,8 +19,34 @@ tables to edit:
 
 #ifndef UNBOUND //Modify this section
 
+// Test
+const struct WildPokemon gRoute1_LandMonsMorning[] = 
+{
+	{4, 6,SPECIES_PIDGEY},//20
+	{4, 6,SPECIES_ROOKIDEE},//20
+	{4, 6,SPECIES_RATTATA},//10
+	{4, 6,SPECIES_FLETCHLING},//10
+	{4, 6,SPECIES_BIDOOF},//10
+	{4, 6,SPECIES_YUNGOOS},//10
+	{4, 6,SPECIES_SEEDOT},//5
+	{4, 6,SPECIES_SHINX},//5
+	{4, 6,SPECIES_WOOLOO},//4
+	{4, 6,SPECIES_SANDILE},//4
+	{4, 6,SPECIES_ROCKRUFF},//1
+	{4, 6,SPECIES_PANSAGE},//1
+};
+const struct WildPokemonInfo gRoute1_LandMonsInfoMorning = {21, gRoute1_LandMonsMorning};
+
 const struct WildPokemonHeader gWildMonMorningHeaders[] =
 {
+	{
+		.mapGroup = MAP_GROUP(ROUTE_1),
+		.mapNum = MAP_NUM(ROUTE_1),
+		.landMonsInfo = &gRoute1_LandMonsInfoMorning,
+		.waterMonsInfo = NULL,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
 	{
 		.mapGroup = 0xFF,
 		.mapNum = 0xFF,

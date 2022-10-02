@@ -3,6 +3,9 @@
 #include "../include/script.h"
 #include "../include/new/ram_locs.h"
 
+#include "config.h"
+#include "../include/event_data.h"
+
 extern u16 sRTCErrorStatus;
 extern u8 sRTCProbeResult;
 extern u16 sRTCSavedIme;
@@ -171,6 +174,37 @@ static void UpdateClockFromRtc(struct SiiRtcInfo *rtc)
 	gClock.hour = ConvertBcdToBinary(rtc->hour);
 	gClock.minute = ConvertBcdToBinary(rtc->minute);
 	gClock.second = ConvertBcdToBinary(rtc->second);
+
+
+	u8 morning, dusk, night;
+
+	if(FlagGet(FLAG_TURN_DAY)){
+		if(gClock.hour >= 8){
+			morning = abs(gClock.hour - 8);
+			gClock.hour -= morning;
+		}else{
+			morning = abs(gClock.hour - 8);
+			gClock.hour += morning;
+		}
+	}
+	if(FlagGet(FLAG_TURN_DUSK)){
+		if(gClock.hour >= 17){
+			dusk = abs(gClock.hour - 17);
+			gClock.hour -= dusk;
+		}else{
+			dusk = abs(gClock.hour - 17);
+			gClock.hour += dusk;
+		}
+	}
+	if(FlagGet(FLAG_TURN_NIGHT)){
+		if(gClock.hour >= 20){
+			night = abs(gClock.hour - 20);
+			gClock.hour -= night;
+		}else{
+			night = abs(gClock.hour - 20);
+			gClock.hour += night;
+		}
+	}
 }
 
 extern const u8 SystemScript_StopZooming[];

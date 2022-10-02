@@ -116,4 +116,16 @@ Second
 #org @ABILITY_HIDDEN
 Hidden
 
+#org @TIME_DAY
+Day
+
+#org @TIME_DUSK
+Dusk
+
+#org @TIME_NIGHT
+Night
+
+#org @TIME_RESET
+Reset
+
 #endif

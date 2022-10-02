@@ -5,6 +5,8 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ FLAG_TURN_DAY, 0x931
+
 EventScript_GivePoke:
 	lock
 	faceplayer
@@ -13,6 +15,7 @@ EventScript_GivePoke:
 	end
 
 GivePlayerPokemon:
+	setflag FLAG_TURN_DAY
 	givepokemon SPECIES_CHARIZARD 100 0x0 0x0 0x0
 	givepokemon SPECIES_CLEFABLE 100 0x0 0x0 0x0
 	setflag 0x300
