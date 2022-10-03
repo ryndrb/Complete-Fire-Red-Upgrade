@@ -15,6 +15,7 @@
 
 #include "../include/new/dexnav.h"
 #include "../include/string_util.h"
+#include "config.h"
 
 /*
 start_menu.c
@@ -99,7 +100,8 @@ void __attribute__((long_call)) HideStartMenu(void);
 bool8 __attribute__((long_call)) StartMenuPokedexCallback(void);
 bool8 __attribute__((long_call)) StartMenuPokemonCallback(void);
 bool8 __attribute__((long_call)) StartMenuBagCallback(void); 
-bool8  __attribute__((long_call)) StartMenuPCCallback(void); // POCKET PC
+bool8 StartMenuPCCallback(void); // POCKET PC
+bool8 TimeTurnerCallback(void); // TIME TURNER
 bool8 __attribute__((long_call)) StartMenuPlayerCallback(void);
 bool8 __attribute__((long_call)) StartMenuSaveCallback(void);
 bool8 __attribute__((long_call)) StartMenuOptionCallback(void);
@@ -126,7 +128,6 @@ static bool8 CloseAndReloadStartMenu(void);
 static bool8 ReloadStartMenu(void);
 static bool8 ReloadStartMenuItems(void);
 
-bool8 __attribute__((long_call)) TimeTurnerCallback(void);
 void DrawTime(void);
 static void UpdateTimeText(void);
 static void RemoveTimeBox(void);
@@ -189,8 +190,10 @@ static bool8 CanSetUpSecondaryStartMenu(void)
 		return TRUE;
 	#endif
 
-	// if (FlagGet(FLAG_POKEMONPCMENU) && FlagGet(FLAG_SYS_POKEDEX_GET))
-	// 	return TRUE;
+	#if (defined FLAG_TURN_DAY && defined FLAG_TURN_DUSK && defined FLAG_TURN_NIGHT )
+	if (FlagGet(FLAG_TURN_DAY) && FlagGet(FLAG_TURN_DUSK) && FlagGet(FLAG_TURN_NIGHT))
+		return TRUE;
+	#endif
 
 	#ifdef FLAG_SYS_QUEST_LOG
 	if (FlagGet(FLAG_SYS_QUEST_LOG))
@@ -275,13 +278,14 @@ static void BuildPokeToolsMenu(void)
 
 	if(FlagGet(FLAG_SYS_POKEDEX_GET)){
 		AppendToStartMenuItems(STARTMENU_PC);
-		AppendToStartMenuItems(STARMENU_TIMETURNER);
+		//AppendToStartMenuItems(STARMENU_TIMETURNER);
 	}
 	#ifdef FLAG_SYS_QUEST_LOG
 	if (FlagGet(FLAG_SYS_QUEST_LOG))
 		AppendToStartMenuItems(STARTMENU_QUEST_LOG);
 	#endif
 
+	AppendToStartMenuItems(STARMENU_TIMETURNER);
 	AppendToStartMenuItems(STARTMENU_EXIT_LEFT);
 }
 
@@ -524,6 +528,5 @@ bool8 TimeTurnerCallback(void)
 		ScriptContext1_SetupScript(EventScript_TimeTurner);
 		return TRUE;
 	}
-	//ScriptContext1_Stop();
 	return FALSE;
 }

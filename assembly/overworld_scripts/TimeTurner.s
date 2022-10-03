@@ -15,9 +15,10 @@ EventScript_TimeTurner:
     waitmsg
     setvar 0x8000 0x4
     setvar 0x8001 0x4
+    setvar 0x8004 0x0
     special 0x158
     waitstate
-    compare LASTRESULT 4
+    compare LASTRESULT 0x4
     if greaterorequal _goto End
     switch LASTRESULT 
     case 0, EventScript_Day

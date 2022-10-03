@@ -1,7 +1,5 @@
 #pragma once
 
-#define FLAG_POKEMONPCMENU 0x1FF
-
 #define FLAG_TEMP_1              0x001
 #define FLAG_TEMP_2              0x002
 #define FLAG_TEMP_3              0x003
