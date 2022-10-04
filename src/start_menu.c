@@ -494,7 +494,8 @@ static void RemoveTimeBox(void)
 {
 	if (sTimeWindowId != 0xFF)
 	{
-		ClearStdWindowAndFrameToTransparent(sTimeWindowId, FALSE);
+		//ClearStdWindowAndFrameToTransparent(sTimeWindowId, FALSE);
+		ClearStdWindowAndFrame(sTimeWindowId, TRUE);
 		CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 		RemoveWindow(sTimeWindowId);
 	}

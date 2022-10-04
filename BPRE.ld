@@ -786,6 +786,7 @@ SetPCBoxToSendMon = 0x80CC79C | 1;
 GetPCBoxToSendMon = 0x80CC7A8 | 1;
 ShouldShowBoxWasFullMessage = 0x80CC7B4 | 1;
 CB2_EnterPSS = 0x808CDE4 | 1;
+PSS_TryLoadMonIconTiles = 0x80911D4 | 1;
 
 /* Pokemon Icons */
 CreateMonIcon = 0x8096E18 | 1;
