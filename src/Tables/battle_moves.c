@@ -6930,7 +6930,7 @@ const struct BattleMove gBattleMoves[] =
 		.z_move_effect = 0
 	},
 
-	[MOVE_LEAFSTORM] =100
+	[MOVE_LEAFSTORM] =
 	{
 		.effect = EFFECT_OVERHEAT,
 		#ifdef GEN_6_POWER_NERFS

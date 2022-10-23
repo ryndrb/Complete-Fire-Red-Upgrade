@@ -3148,6 +3148,123 @@ extern const u8 TIME_DUSK[];
 extern const u8 TIME_NIGHT[];
 extern const u8 TIME_RESET[];
 
+// Badges For Tutor Moves
+extern const u8 BROCK_BADGE[];
+extern const u8 MISTY_BADGE[];
+extern const u8 SURGE_BADGE[];
+extern const u8 ERIKA_BADGE[];
+extern const u8 SABRINA_BADGE[];
+extern const u8 KOGA_BADGE[];
+extern const u8 BLAINE_BADGE[];
+extern const u8 GIOVANNI_BADGE[];
+
+// First Badge Tutor Moves
+extern const u8 M_SPIKES[];
+extern const u8 M_FIREFANG[];
+extern const u8 M_RAZORSHELL[];
+extern const u8 M_THUNDERFANG[];
+extern const u8 M_ICEFANG[];
+extern const u8 M_LOWKICK[];
+extern const u8 M_BUGBITE[];
+extern const u8 M_HEX[];
+
+// Second Badge Tutor Moves
+extern const u8 M_ENDEAVOR[];
+extern const u8 M_FIREPUNCH[];
+extern const u8 M_THUNDERPUNCH[];
+extern const u8 M_LEAFBLADE[];
+extern const u8 M_ICEPUNCH[];
+extern const u8 M_REVERSAL[];
+extern const u8 M_TOXICSPIKES[];
+extern const u8 M_STOMPINGTANTRUM[];
+extern const u8 M_AIRSLASH[];
+extern const u8 M_SIGNALBEAM[];
+extern const u8 M_ROCKBLAST[];
+extern const u8 M_DUALCHOP[];
+
+// Third Badge Tutor Moves
+extern const u8 M_BODYSLAM[];
+extern const u8 M_BLAZEKICK[];
+extern const u8 M_LIQUIDATION[];
+extern const u8 M_ELECTROWEB[];
+extern const u8 M_SEEDBOMB[];
+extern const u8 M_ICYWIND[];
+extern const u8 M_VACUUMWAVE[];
+extern const u8 M_TAILWIND[];
+extern const u8 M_ZENHEADBUTT[];
+extern const u8 M_BUGBUZZ[];
+extern const u8 M_POWERGEM[];
+extern const u8 M_KNOCKOFF[];
+extern const u8 M_IRONHEAD[];
+extern const u8 M_PLAYROUGH[];
+
+// Fourth Badge Tutor Moves
+extern const u8 M_SUPERFANG[];
+extern const u8 M_MYSTICALFIRE[];
+extern const u8 M_AQUATAIL[];
+extern const u8 M_ELECTRICTERRAIN[];
+extern const u8 M_GRASSYTERRAIN[];
+extern const u8 M_ICICLESPEAR[];
+extern const u8 M_AURASPHERE[];
+extern const u8 M_CROSSPOISON[];
+extern const u8 M_HIGHHORSEPOWER[];
+extern const u8 M_SKYATTACK[];
+extern const u8 M_PSYCHICTERRAIN[];
+extern const u8 M_POLLENPUFF[];
+extern const u8 M_DRAGONDANCE[];
+extern const u8 M_CRUNCH[];
+extern const u8 M_MISTYTERRAIN[];
+
+// Fifth Badge Tutor Moves
+extern const u8 M_HYPERVOICE[];
+extern const u8 M_HEATWAVE[];
+extern const u8 M_MUDDYWATER[];
+extern const u8 M_EARTHPOWER[];
+extern const u8 M_BOUNCE[];
+extern const u8 M_PSYCHICFANGS[];
+extern const u8 M_FOULPLAY[];
+
+// Sixth Badge Tutor Moves
+extern const u8 M_BATONPASS[];
+extern const u8 M_HEATCRASH[];
+extern const u8 M_DRILLRUN[];
+extern const u8 M_FIREPLEDGE[];
+extern const u8 M_WATERPLEDGE[];
+extern const u8 M_GRASSPLEDGE[];
+
+// Seventh Badge Tutor Moves
+extern const u8 M_WEATHERBALL[];
+extern const u8 M_FLAREBLITZ[];
+extern const u8 M_HYDOPUMP[];
+extern const u8 M_LEAFSTORM[];
+extern const u8 M_SUPERPOWER[];
+extern const u8 M_GUNKSHOT[];
+extern const u8 M_BRAVEBIRD[];
+extern const u8 M_MEGAHORN[];
+extern const u8 M_PHANTOMFORCE[];
+extern const u8 M_OUTRAGE[];
+extern const u8 M_DARKESTLARIAT[];
+extern const u8 M_HEAVYSLAM[];
+
+// Eight Badge Tutor Moves
+extern const u8 M_POWERWHIP[];
+extern const u8 M_CLOSECOMBAT[];
+extern const u8 M_HURRICANE[];
+extern const u8 M_PSYCHOCUT[];
+extern const u8 M_BREAKINGSWIPE[];
+extern const u8 M_THROATCHOP[];
+extern const u8 M_SOLARBLADE[];
+extern const u8 M_BLASTBURN[];
+extern const u8 M_HYDROCANNON[];
+extern const u8 M_FRENZYPLANT[];
+
+// Utility Old Man Tool List
+extern const u8 MOVE_TUTOR[];
+extern const u8 NATURE_CHANGER[];
+extern const u8 NAME_RATER[];
+extern const u8 ABILITY_CHANGER[];
+extern const u8 EXIT[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3215,9 +3332,144 @@ static const u8* AbilityChangerSet[] = {
 
 static const u8* TimeTurner[] = {
 	TIME_DAY,
-	TIME_DUSK,
 	TIME_NIGHT,
 	TIME_RESET,
+};
+
+// Badge Tutor Moves
+static const u8* BadgeTutorMoves[] = {
+	BROCK_BADGE,
+	MISTY_BADGE,
+	SURGE_BADGE,
+	ERIKA_BADGE,
+	SABRINA_BADGE,
+	KOGA_BADGE,
+	BLAINE_BADGE,
+	GIOVANNI_BADGE,
+};
+
+// First Badge Tutor Moves
+static const u8* FirstBadgeTutorMoves[] = {
+	M_SPIKES,
+	M_FIREFANG,
+	M_RAZORSHELL,
+	M_THUNDERFANG,
+	M_ICEFANG,
+	M_LOWKICK,
+	M_BUGBITE,
+	M_HEX,
+};
+
+// Second Badge Tutor Moves
+static const u8* SecondBadgeTutorMoves[] = {
+	M_ENDEAVOR,
+	M_FIREPUNCH,
+	M_THUNDERPUNCH,
+	M_LEAFBLADE,
+	M_ICEPUNCH,
+	M_REVERSAL,
+	M_TOXICSPIKES,
+	M_STOMPINGTANTRUM,
+	M_AIRSLASH,
+	M_SIGNALBEAM,
+	M_ROCKBLAST,
+	M_DUALCHOP,
+};
+
+// Third Badge Tutor Moves
+static const u8* ThirdBadgeTutorMoves[] = {
+	M_BODYSLAM,
+	M_BLAZEKICK,
+	M_LIQUIDATION,
+	M_ELECTROWEB,
+	M_SEEDBOMB,
+	M_ICYWIND,
+	M_VACUUMWAVE,
+	M_TAILWIND,
+	M_ZENHEADBUTT,
+	M_BUGBUZZ,
+	M_POWERGEM,
+	M_KNOCKOFF,
+	M_IRONHEAD,
+	M_PLAYROUGH,
+};
+
+// Fourth Badge Tutor Moves
+static const u8* FourthBadgeTutorMoves[] = {
+	M_SUPERFANG,
+	M_MYSTICALFIRE,
+	M_AQUATAIL,
+	M_ELECTRICTERRAIN,
+	M_GRASSYTERRAIN,
+	M_ICICLESPEAR,
+	M_AURASPHERE,
+	M_CROSSPOISON,
+	M_HIGHHORSEPOWER,
+	M_SKYATTACK,
+	M_PSYCHICTERRAIN,
+	M_POLLENPUFF,
+	M_DRAGONDANCE,
+	M_CRUNCH,
+	M_MISTYTERRAIN,
+};
+
+// Fifth Badge Tutor Moves
+static const u8* FifthBadgeTutorMoves[] = {
+	M_HYPERVOICE,
+	M_HEATWAVE,
+	M_MUDDYWATER,
+	M_EARTHPOWER,
+	M_BOUNCE,
+	M_PSYCHICFANGS,
+	M_FOULPLAY,
+};
+
+// Sixth Badge Tutor Moves
+static const u8* SixthBadgeTutorMoves[] = {
+	M_BATONPASS,
+	M_HEATCRASH,
+	M_DRILLRUN,
+	M_FIREPLEDGE,
+	M_WATERPLEDGE,
+	M_GRASSPLEDGE,
+};
+
+// Seventh Badge Tutor Moves
+static const u8* SeventhBadgeTutorMoves[] = {
+	M_WEATHERBALL,
+	M_FLAREBLITZ,
+	M_HYDOPUMP,
+	M_LEAFSTORM,
+	M_SUPERPOWER,
+	M_GUNKSHOT,
+	M_BRAVEBIRD,
+	M_MEGAHORN,
+	M_PHANTOMFORCE,
+	M_OUTRAGE,
+	M_DARKESTLARIAT,
+	M_HEAVYSLAM,
+};
+
+// Eight Badge Tutor Moves
+static const u8* EightBadgeTutorMoves[] = {
+	M_POWERWHIP,
+	M_CLOSECOMBAT,
+	M_HURRICANE,
+	M_PSYCHOCUT,
+	M_BREAKINGSWIPE,
+	M_THROATCHOP,
+	M_SOLARBLADE,
+	M_BLASTBURN,
+	M_HYDROCANNON,
+	M_FRENZYPLANT,
+};
+
+static const u8* UtilityOldManTools[] = {
+	NAME_RATER,
+	MOVE_TUTOR,
+	NATURE_CHANGER,
+	ABILITY_CHANGER,
+	EXIT,
 };
 
 // Multichoice Lists
@@ -3228,6 +3480,16 @@ const struct ScrollingMulti gScrollingSets[] =
 	{NatureChangerSet, ARRAY_COUNT(NatureChangerSet)},//3
 	{AbilityChangerSet, ARRAY_COUNT(AbilityChangerSet)},//4
 	{TimeTurner, ARRAY_COUNT(TimeTurner)},//5
+	{BadgeTutorMoves, ARRAY_COUNT(BadgeTutorMoves)},//6
+	{FirstBadgeTutorMoves, ARRAY_COUNT(FirstBadgeTutorMoves)},//7
+	{SecondBadgeTutorMoves, ARRAY_COUNT(SecondBadgeTutorMoves)},//8
+	{ThirdBadgeTutorMoves, ARRAY_COUNT(ThirdBadgeTutorMoves)},//9
+	{FourthBadgeTutorMoves, ARRAY_COUNT(FourthBadgeTutorMoves)},//10
+	{FifthBadgeTutorMoves, ARRAY_COUNT(FifthBadgeTutorMoves)},//11
+	{SixthBadgeTutorMoves, ARRAY_COUNT(SixthBadgeTutorMoves)},//12
+	{SeventhBadgeTutorMoves, ARRAY_COUNT(SeventhBadgeTutorMoves)},//13
+	{EightBadgeTutorMoves, ARRAY_COUNT(EightBadgeTutorMoves)},//14
+	{UtilityOldManTools, ARRAY_COUNT(UtilityOldManTools)},//15
 };
 
 //Link number of opts shown at once to the box height

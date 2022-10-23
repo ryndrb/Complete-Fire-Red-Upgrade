@@ -538,7 +538,7 @@ void sp06B_ReplacePlayerTeamWithMultiTrainerTeam(void)
 // rad red implemention, cred soupercell
 static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainerId, const struct MultiRaidTrainer trainerData){
 	for(u8 i = 0; i < trainerData.spreadSizes[0]; i++) {
-		u8 level = trainerData.spreads[0]->level; 
+		u8 level = trainerData.spreads[0][i].level; 
 
 		if (trainerData.backSpriteId == DOUBLE_BATTLE && ViableMonCount(gPlayerParty) >= 2 ) {
 			gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
@@ -548,17 +548,17 @@ static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainer
 		} 
 
 		
-		switch (level) {
-			case PLAYER_MAX_LEVEL:
-				level = GetHighestMonLevel(gPlayerParty);
-				break;
-			case ONE_BELOW_PLAYER_MAX_LEVEL:
-				level = GetHighestMonLevel(gPlayerParty) - 1;
-				break;
-			case TWO_BELOW_PLAYER_MAX_LEVEL:
-				level = GetHighestMonLevel(gPlayerParty) - 2;
-				break;
-		}
+		// switch (level) {
+		// 	case PLAYER_MAX_LEVEL:
+		// 		level = GetHighestMonLevel(gPlayerParty);
+		// 		break;
+		// 	case ONE_BELOW_PLAYER_MAX_LEVEL:
+		// 		level = GetHighestMonLevel(gPlayerParty) - 1;
+		// 		break;
+		// 	case TWO_BELOW_PLAYER_MAX_LEVEL:
+		// 		level = GetHighestMonLevel(gPlayerParty) - 2;
+		// 		break;
+		// }
 
 		CreateFrontierMon(&party[i], level, &trainerData.spreads[0][i], trainerId, 0, 0, FALSE );
 	}

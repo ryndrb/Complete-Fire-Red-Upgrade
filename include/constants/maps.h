@@ -23,11 +23,11 @@ u8 __attribute__((long_call)) GetCurrentRegionMapSectionId(void);
 #define MAP_UNKNOWN_MAP_00_04 (4 | (0 << 8))
 
 // Map Group 1
-#define MAP_VIRIDIAN_FOREST                      (0 | (1 << 8))
-#define MAP_MT_MOON_1F                           (1 | (1 << 8))
-#define MAP_MT_MOON_B1F                          (2 | (1 << 8))
-#define MAP_MT_MOON_B2F                          (3 | (1 << 8))
-#define MAP_SSANNE_EXTERIOR                      (4 | (1 << 8))
+#define MAP_VIRIDIAN_FOREST                      ((1 << 8) | 0)
+#define MAP_MT_MOON_1F                           ((1 << 8) | 1)
+#define MAP_MT_MOON_B1F                          ((1 << 8) | 2)
+#define MAP_MT_MOON_B2F                          ((1 << 8) | 3)
+#define MAP_SSANNE_EXTERIOR                      ((1 << 8) | 4)
 #define MAP_SSANNE_1F_CORRIDOR                   (5 | (1 << 8))
 #define MAP_SSANNE_2F_CORRIDOR                   (6 | (1 << 8))
 #define MAP_SSANNE_3F_CORRIDOR                   (7 | (1 << 8))
@@ -59,9 +59,9 @@ u8 __attribute__((long_call)) GetCurrentRegionMapSectionId(void);
 #define MAP_UNDERGROUND_PATH_WEST_ENTRANCE       (33 | (1 << 8))
 #define MAP_UNDERGROUND_PATH_EAST_WEST_TUNNEL    (34 | (1 << 8))
 #define MAP_UNDERGROUND_PATH_EAST_ENTRANCE       (35 | (1 << 8))
-#define MAP_DIGLETTS_CAVE_NORTH_ENTRANCE         (36 | (1 << 8))
-#define MAP_DIGLETTS_CAVE_B1F                    (37 | (1 << 8))
-#define MAP_DIGLETTS_CAVE_SOUTH_ENTRANCE         (38 | (1 << 8))
+#define MAP_DIGLETTS_CAVE_NORTH_ENTRANCE         ((1 << 8) | 36)
+#define MAP_DIGLETTS_CAVE_B1F                    ((1 << 8) | 37)
+#define MAP_DIGLETTS_CAVE_SOUTH_ENTRANCE         ((1 << 8) | 38)
 #define MAP_VICTORY_ROAD_1F                      (39 | (1 << 8))
 #define MAP_VICTORY_ROAD_2F                      (40 | (1 << 8))
 #define MAP_VICTORY_ROAD_3F                      (41 | (1 << 8))
@@ -104,8 +104,8 @@ u8 __attribute__((long_call)) GetCurrentRegionMapSectionId(void);
 #define MAP_POKEMON_LEAGUE_LANCES_ROOM           (78 | (1 << 8))
 #define MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM        (79 | (1 << 8))
 #define MAP_POKEMON_LEAGUE_HALL_OF_FAME          (80 | (1 << 8))
-#define MAP_ROCK_TUNNEL_1F                       (81 | (1 << 8))
-#define MAP_ROCK_TUNNEL_B1F                      (82 | (1 << 8))
+#define MAP_ROCK_TUNNEL_1F                       ((1 << 8) | 81)
+#define MAP_ROCK_TUNNEL_B1F                      ((1 << 8) | 82)
 #define MAP_SEAFOAM_ISLANDS_1F                   (83 | (1 << 8))
 #define MAP_SEAFOAM_ISLANDS_B1F                  (84 | (1 << 8))
 #define MAP_SEAFOAM_ISLANDS_B2F                  (85 | (1 << 8))
@@ -210,18 +210,18 @@ u8 __attribute__((long_call)) GetCurrentRegionMapSectionId(void);
 #define MAP_NAVEL_ROCK_HARBOR                         (59 | (2 << 8))
 
 // Map Group 3
-#define MAP_PALLET_TOWN                          (0 | (3 << 8))
-#define MAP_VIRIDIAN_CITY                        (1 | (3 << 8))
-#define MAP_PEWTER_CITY                          (2 | (3 << 8))
-#define MAP_CERULEAN_CITY                        (3 | (3 << 8))
-#define MAP_LAVENDER_TOWN                        (4 | (3 << 8))
-#define MAP_VERMILION_CITY                       (5 | (3 << 8))
-#define MAP_CELADON_CITY                         (6 | (3 << 8))
-#define MAP_FUCHSIA_CITY                         (7 | (3 << 8))
-#define MAP_CINNABAR_ISLAND                      (8 | (3 << 8))
-#define MAP_INDIGO_PLATEAU_EXTERIOR              (9 | (3 << 8))
-#define MAP_SAFFRON_CITY                         (10 | (3 << 8))
-#define MAP_SAFFRON_CITY_CLASSIC                 (11 | (3 << 8))
+#define MAP_PALLET_TOWN                          ((3 << 8) | 0)
+#define MAP_VIRIDIAN_CITY                        ((3 << 8) | 1)
+#define MAP_PEWTER_CITY                          ((3 << 8) | 2)
+#define MAP_CERULEAN_CITY                        ((3 << 8) | 3)
+#define MAP_LAVENDER_TOWN                        ((3 << 8) | 4)
+#define MAP_VERMILION_CITY                       ((3 << 8) | 5)
+#define MAP_CELADON_CITY                         ((3 << 8) | 6)
+#define MAP_FUCHSIA_CITY                         ((3 << 8) | 7)
+#define MAP_CINNABAR_ISLAND                      ((3 << 8) | 8)
+#define MAP_INDIGO_PLATEAU_EXTERIOR              ((3 << 8) | 9)
+#define MAP_SAFFRON_CITY                         ((3 << 8) | 10)
+#define MAP_SAFFRON_CITY_CLASSIC                 ((3 << 8) | 11)
 #define MAP_ONE_ISLAND                           (12 | (3 << 8))
 #define MAP_TWO_ISLAND                           (13 | (3 << 8))
 #define MAP_THREE_ISLAND                         (14 | (3 << 8))
@@ -527,12 +527,6 @@ u8 __attribute__((long_call)) GetCurrentRegionMapSectionId(void);
 #define MAP_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE (0 | (42 << 8))
 
 #define MAP_GROUPS_COUNT 43
-
-///////////
-#define ROUTE_1 ((3 << 8) | 19)
-
-
-
 
 #else //For Pokemon Unbound
 

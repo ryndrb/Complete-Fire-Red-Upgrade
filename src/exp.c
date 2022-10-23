@@ -216,21 +216,21 @@ void atk23_getexp(void)
 
 		// Soft Cap Addition here
 		cap = 0;
-        if (!FlagGet(FLAG_BADGE01_GET) && pokeLevel >= 12)
-				cap = 0;
-		else if (!FlagGet(FLAG_BADGE02_GET) && pokeLevel >= 19)
+        if (pokeLevel >= 16)
 			cap = 0;
-		else if (!FlagGet(FLAG_BADGE03_GET) && pokeLevel >= 24)
+		else if (pokeLevel >= 27)
 			cap = 0;
-		else if (!FlagGet(FLAG_BADGE04_GET) && pokeLevel >= 29)
+		else if (pokeLevel >= 38)
 			cap = 0;
-		else if (!FlagGet(FLAG_BADGE05_GET) && pokeLevel >= 36)
+		else if (pokeLevel >= 45)
 			cap = 0;
-		else if (!FlagGet(FLAG_BADGE06_GET) && pokeLevel >= 43)
+		else if (pokeLevel >= 52)
 			cap = 0;
-		else if (!FlagGet(FLAG_BADGE07_GET) && pokeLevel >= 47)
+		else if (pokeLevel >= 59)
 			cap = 0;
-		else if (!FlagGet(FLAG_BADGE08_GET) && pokeLevel >= 50)
+		else if (pokeLevel >= 66)
+			cap = 0;
+		else if (pokeLevel >= 73)
 			cap = 0;
 		else 
 			cap = 1;

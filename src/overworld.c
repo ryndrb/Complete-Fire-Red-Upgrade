@@ -53,6 +53,8 @@
 #include "../include/new/read_keys.h"
 #include "../include/new/wild_encounter.h"
 
+#include "../include/constants/tmshms.h"
+
 /*
 overworld.c
 	functions for anything regarding the overworld, such as trainer spotting, whiteout, step counters, etc.
@@ -2330,7 +2332,7 @@ const u8* GetInteractedWaterScript(unusedArg u32 unused1, u8 metatileBehavior, u
 	#endif
 	if (IsPlayerFacingSurfableFishableWater())
 	{
-		if (HasBadgeToUseSurf())
+		if (TRUE)
 		{
 			#ifdef ONLY_CHECK_ITEM_FOR_HM_USAGE
 			item = ITEM_HM03_SURF;
@@ -2415,7 +2417,7 @@ bool8 TrySetupDiveDownScript(void)
 	{
 		u16 item = ITEM_NONE;
 		#ifdef ONLY_CHECK_ITEM_FOR_HM_USAGE
-		item = ITEM_HM05_DIVE;
+		item = ITEM_HM08_DIVE;
 		#endif
 
 		u8 partyId = PartyHasMonWithFieldMovePotential(MOVE_DIVE, item, SHOULD_BE_SURFING);
@@ -2442,7 +2444,7 @@ bool8 TrySetupDiveEmergeScript(void)
 	{
 		u16 item = ITEM_NONE;
 		#ifdef ONLY_CHECK_ITEM_FOR_HM_USAGE
-		item = ITEM_HM05_DIVE;
+		item = ITEM_HM08_DIVE;
 		#endif
 
 		u8 partyId = PartyHasMonWithFieldMovePotential(MOVE_DIVE, item, 0);

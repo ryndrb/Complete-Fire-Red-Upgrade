@@ -1,8 +1,0 @@
-#org @gText_EventScriptDoYouWantPoisonJab
-I can teach your Pok\emon the move\n[GREEN]Poison Jab[GREEN].\pDo you want to?
-
-#org @gText_EventScriptEnd
-Come back if you change your mind.
-
-#org @gText_EventScriptLearned
-Are you and your Pok\emon putting\nthe move to good use?

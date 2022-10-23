@@ -1,8 +1,16 @@
 ##
 
+## still testing scripts
 # PALLET TOWN
-npc 3 0 3 EventScript_ChangeAbility
+npc 3 0 3 EventScript_AbilityChanger
 npc 3 0 4 EventScript_NatureChanger
 npc 3 0 5 EventScript_GivePoke
-npc 3 0 6 EventScript_MoveTutor
-npc 3 0 7 EventScript_TrainerBattle
+npc 3 0 6 EventScript_TrainerBattle
+npc 3 0 7 EventScript_UtilityOldMan
+
+# ROUTE 1
+tile 3 19 0 EvenntScript_Route1_Brendan1
+tile 3 19 1 EvenntScript_Route1_Brendan2
+
+# VIRIDIAN CITY
+npc 5 4 4 EventScript_UtilityOldMan

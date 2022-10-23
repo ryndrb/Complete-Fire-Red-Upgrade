@@ -6,8 +6,7 @@
 .include "../asm_defines.s"
 
 .equ FLAG_TURN_DAY      , 0x931
-.equ FLAG_TURN_DUSK     , 0x932
-.equ FLAG_TURN_NIGHT    , 0x933
+.equ FLAG_TURN_NIGHT    , 0x932
 
 .global EventScript_TimeTurner
 EventScript_TimeTurner:
@@ -18,35 +17,24 @@ EventScript_TimeTurner:
     setvar 0x8004 0x0
     special 0x158
     waitstate
-    compare LASTRESULT 0x4
+    compare LASTRESULT 0x3
     if greaterorequal _goto End
     switch LASTRESULT 
     case 0, EventScript_Day
-    case 1, EventScript_Evening
-    case 2, EventScript_Night
-    case 3, EventScript_Reset
+    case 1, EventScript_Night
+    case 2, EventScript_Reset
     release
     end
 
 EventScript_Day:
-    clearflag FLAG_TURN_DUSK
     clearflag FLAG_TURN_NIGHT
     setflag FLAG_TURN_DAY
-    sound 0x2
-    release
-    end
-    
-EventScript_Evening:
-    clearflag FLAG_TURN_DAY
-    clearflag FLAG_TURN_NIGHT
-    setflag FLAG_TURN_DUSK
     sound 0x2
     release
     end
 
 EventScript_Night:
     clearflag FLAG_TURN_DAY
-    clearflag FLAG_TURN_DUSK
     setflag FLAG_TURN_NIGHT
     sound 0x2
     release
@@ -54,7 +42,6 @@ EventScript_Night:
 
 EventScript_Reset:
     clearflag FLAG_TURN_DAY
-    clearflag FLAG_TURN_DUSK
     clearflag FLAG_TURN_NIGHT
     sound 0x2
     release

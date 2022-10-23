@@ -178,7 +178,7 @@ static void UpdateClockFromRtc(struct SiiRtcInfo *rtc)
 	gClock.second = ConvertBcdToBinary(rtc->second);
 
 
-	u8 day, dusk, night;
+	u8 day, night;
 
 	if(FlagGet(FLAG_TURN_DAY)){ // Day/Morning for encounters
 		day = abs(gClock.hour - 8);
@@ -187,16 +187,9 @@ static void UpdateClockFromRtc(struct SiiRtcInfo *rtc)
 		else
 			gClock.hour += day;
 	}
-	if(FlagGet(FLAG_TURN_DUSK)){ // Evening
-		dusk = abs(gClock.hour - 17);
+	if(FlagGet(FLAG_TURN_NIGHT)){ // Eve/Night
+		night = abs(gClock.hour - 17);
 		if(gClock.hour >= 17)
-			gClock.hour -= dusk;
-		else
-			gClock.hour += dusk;
-	}
-	if(FlagGet(FLAG_TURN_NIGHT)){
-		night = abs(gClock.hour - 20);
-		if(gClock.hour >= 20)
 			gClock.hour -= night;
 		else
 			gClock.hour += night;

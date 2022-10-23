@@ -1,0 +1,59 @@
+#org @gText_EventScript_UtilityOldManGreetings
+How may I help you?
+
+#org @gText_EventScript_NoBrockBadge
+I'm sorry, but there are no moves I\ncan teach you right now.\lCome back when you've at least\ldefeated Gym Leader: [GREEN]Brock[BLUE].
+
+#org @gText_SelectWhichBadge
+Which of these badges do you\ncurrently have?
+
+#org @gText_EventScript_DontHaveThisBadgeYet
+It appears you don't have this\nbadge yet...
+
+#org @gText_WhichMoveDoYouWantToLearn
+Which of these moves do you want\nto teach your Pok\emon?
+
+#org @gText_NatureChangerQuestion
+Do you want to change your Pok\emon's\nnature?
+
+#org @gText_EventScript_NatureIsChanged 
+Your Pok\emon's nature is now\nchanged!
+
+#org @gText_WhichNature
+Which nature would you like to\nchange to?
+
+#org @gText_EventScript_NoMistyBadge
+I'm sorry, but I can't change\nyour Pok\emon's nature right\lnow. Comeback when you've at least\ldefeated Gym Leader: [GREEN]Misty[BLUE]. 
+
+#org @gText_WhichPokemonToChangeNickname
+Which Pok\emon's nickname should be\nchanged?
+
+#org @gText_NewNickname
+What would you like [GREEN][BUFFER1]'s [BLUE]new\nnickname to be?
+
+#org @gText_NicknameCompleted
+Done! From now on, this Pok\emon shall\nbe known as [GREEN][BUFFER1][BLUE]!
+
+#org @gText_EventScript_ThisIsAnEgg
+Now, now.\nThat is merely an Egg!
+
+#org @gText_AbilityChangerQuestion
+Do you want to change your Pok\emon's\nability?
+
+#org @gText_WhichAbility
+Which ability do you want?
+
+#org @gText_EventScript_AbilityHasBeenChanged1
+Changed to its first ability!
+
+#org @gText_EventScript_AbilityHasBeenChanged2
+Changed to its second ability!
+
+#org @gText_EventScript_AbilityHasBeenChanged3
+Changed to its hidden ability!
+
+#org @gText_EventScript_NoSurgeBadge
+I'm sorry, but I can't change\nyour Pok\emon's ability right\lnow. Comeback when you've at least\ldefeated Gym Leader: [GREEN]Surge[BLUE]. 
+
+#org @gText_EventScript_ComeAgain 
+All right, see you then!

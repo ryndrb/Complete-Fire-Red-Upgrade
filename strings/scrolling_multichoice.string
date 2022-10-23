@@ -33,79 +33,79 @@ Example 9
 Example 10
 
 #org @NATURE_HARDY_1
-Hardy   [BLACK]--
+Hardy
 
 #org @NATURE_LONELY_2
-Lonely  [GREEN]+Atk [RED]-Def
+Lonely[SHRINK][ALIGN][38][GREEN]+ATK [SHRINK][ALIGN][38][RED]-DEF
 
 #org @NATURE_BRAVE_3
-Brave   [GREEN]+Atk [RED]-Spe
+Brave[SHRINK][ALIGN][38][GREEN]+ATK [SHRINK][ALIGN][38][RED]-SPE
 
 #org @NATURE_ADAMANT_4
-Adamant [GREEN]+Atk [RED]-SpA
+Adamant[SHRINK][ALIGN][38][GREEN]+ATK [SHRINK][ALIGN][38][RED]-SPA
 
 #org @NATURE_NAUGHTY_5
-Naughty [GREEN]+Atk [RED]-SpD
+Naughty[SHRINK][ALIGN][38][GREEN]+ATK [SHRINK][ALIGN][38][RED]-SPD
 
 #org @NATURE_BOLD_6
-Bold    [GREEN]+Def [RED]-Atk
+Bold[SHRINK][ALIGN][38][GREEN]+DEF [SHRINK][ALIGN][38][RED]-ATK
 
 #org @NATURE_DOCILE_7
-Docile  [BLACK]--
+Docile
 
 #org @NATURE_RELAXED_8
-Relaxed [GREEN]+Def [RED]-Spe
+Relaxed[SHRINK][ALIGN][38][GREEN]+DEF [SHRINK][ALIGN][38][RED]-SPE
 
 #org @NATURE_IMPISH_9
-Impish  [GREEN]+Def [RED]-SpA
+Impish[SHRINK][ALIGN][38][GREEN]+DEF [SHRINK][ALIGN][38][RED]-SPA
 
 #org @NATURE_LAX_10
-Lax     [GREEN]+Def [RED]-SpD
+Lax[SHRINK][ALIGN][38][GREEN]+DEF [SHRINK][ALIGN][38][RED]-SPD
 
 #org @NATURE_TIMID_11
-Timid   [GREEN]+Spe [RED]-Atk
+Timid[SHRINK][ALIGN][38][GREEN]+SPE [SHRINK][ALIGN][38][RED]-ATK
 
 #org @NATURE_HASTY_12
-Hasty   [GREEN]+Spe [RED]-Def
+Hasty[SHRINK][ALIGN][38][GREEN]+SPE [SHRINK][ALIGN][38][RED]-DEF
 
 #org @NATURE_SERIOUS_13
-Serious [BLACK]--
+Serious
 
 #org @NATURE_JOLLY_14
-Jolly   [GREEN]+Spe [RED]-SpA
+Jolly[SHRINK][ALIGN][38][GREEN]+SPE [SHRINK][ALIGN][38][RED]-SPA
 
 #org @NATURE_NAIVE_15
-Naive   [GREEN]+Spe [RED]-SpD
+Naive[SHRINK][ALIGN][38][GREEN]+SPE [SHRINK][ALIGN][38][RED]-SPD
 
 #org @NATURE_MODEST_16
-Modest  [GREEN]+SpA [RED]-Atk
+Modest[SHRINK][ALIGN][38][GREEN]+SPA [SHRINK][ALIGN][38][RED]-ATK
 
 #org @NATURE_MILD_17
-Mild    [GREEN]+SpA [RED]-Def
+Mild[SHRINK][ALIGN][38][GREEN]+SPA [SHRINK][ALIGN][38][RED]-DEF
 
 #org @NATURE_QUIET_18
-Quiet   [GREEN]+SpA [RED]-Spe
+Quiet[SHRINK][ALIGN][38][GREEN]+SPA [SHRINK][ALIGN][38][RED]-SPE
 
 #org @NATURE_BASHFUL_19
-Bashful [BLACK]--
+Bashful
 
 #org @NATURE_RASH_20
-Rash    [GREEN]+SpA [RED]-SpD
+Rash[SHRINK][ALIGN][38][GREEN]+SPA [SHRINK][ALIGN][38][RED]-SPE
 
 #org @NATURE_CALM_21
-Calm    [GREEN]+SpD [RED]-Atk
+Calm[SHRINK][ALIGN][38][GREEN]+SPD [SHRINK][ALIGN][38][RED]-ATK
 
 #org @NATURE_GENTLE_22
-Gentle  [GREEN]+SpD [RED]-Def
+Gentle[SHRINK][ALIGN][38][GREEN]+SPD [SHRINK][ALIGN][38][RED]-DEF
 
 #org @NATURE_SASSY_23
-Sassy   [GREEN]+SpD [RED]-Spe
+Sassy[SHRINK][ALIGN][38][GREEN]+SPD [SHRINK][ALIGN][38][RED]-SPE
 
 #org @NATURE_CAREFUL_24
-Careful [GREEN]+SpD [RED]-Spe
+Careful[SHRINK][ALIGN][38][GREEN]+SPD [SHRINK][ALIGN][38][RED]-SPE
 
 #org @NATURE_QUIRKY_25
-Quirky  [BLACK]--
+Quirky
 
 #org @ABILITY_FIRST
 First
@@ -117,15 +117,302 @@ Second
 Hidden
 
 #org @TIME_DAY
-Day    [GREEN]8 [RED]AM
-
-#org @TIME_DUSK
-Dusk   [GREEN]5 [RED]PM
+Day/Morning
 
 #org @TIME_NIGHT
-Night  [GREEN]8 [RED]PM
+Eve/Nightime
 
 #org @TIME_RESET
 Reset
+
+#org @BROCK_BADGE
+Brock's Badge
+
+#org @MISTY_BADGE
+Misty's Badge
+
+#org @SURGE_BADGE
+Surge's Badge
+
+#org @ERIKA_BADGE
+Erika's Badge
+
+#org @SABRINA_BADGE
+Sabrina's Badge
+
+#org @KOGA_BADGE
+Koga's Badge
+
+#org @BLAINE_BADGE
+Blaine's Badge
+
+#org @GIOVANNI_BADGE
+Giovanni's Badge
+
+#org @M_SPIKES
+Spikes
+
+#org @M_FIREFANG
+Fire Fang
+
+#org @M_RAZORSHELL
+Razor Shell
+
+#org @M_THUNDERFANG
+Thunder Fang
+
+#org @M_ICEFANG
+Ice Fang
+
+#org @M_LOWKICK
+Low Kick
+
+#org @M_BUGBITE
+Bug Bite
+
+#org @M_HEX
+Hex
+
+#org @M_ENDEAVOR
+Endeavor
+
+#org @M_FIREPUNCH
+Fire Punch
+
+#org @M_THUNDERPUNCH
+Thunder Punch
+
+#org @M_LEAFBLADE
+Leaf Blade
+
+#org @M_ICEPUNCH
+Ice Punch
+
+#org @M_REVERSAL
+Reversal
+
+#org @M_TOXICSPIKES
+Toxic Spikes
+
+#org @M_STOMPINGTANTRUM
+Stomping Tantrum
+
+#org @M_AIRSLASH
+Air Slash
+
+#org @M_SIGNALBEAM
+Signal Beam
+
+#org @M_ROCKBLAST
+Rock Blast
+
+#org @M_DUALCHOP
+Dual Chop
+
+#org @M_BODYSLAM
+Body Slam
+
+#org @M_BLAZEKICK
+Blaze Kick
+
+#org @M_LIQUIDATION
+Liquidation
+
+#org @M_ELECTROWEB
+Electroweb
+
+#org @M_SEEDBOMB
+Seed Bomb
+
+#org @M_ICYWIND
+Icy Wind
+
+#org @M_VACUUMWAVE
+Vacuum Wave
+
+#org @M_TAILWIND
+Tailwind
+
+#org @M_ZENHEADBUTT
+Zen Headbutt
+
+#org @M_BUGBUZZ
+Bug Buzz
+
+#org @M_POWERGEM
+Power Gem
+
+#org @M_KNOCKOFF
+Knock Off
+
+#org @M_IRONHEAD
+Iron Head
+
+#org @M_PLAYROUGH
+Play Rough
+
+#org @M_SUPERFANG
+Super Fang
+
+#org @M_MYSTICALFIRE
+Mystical Fire
+
+#org @M_AQUATAIL
+Aqua Tail
+
+#org @M_ELECTRICTERRAIN
+Electric Terrain
+
+#org @M_GRASSYTERRAIN
+Grassy Terrain
+
+#org @M_ICICLESPEAR
+Icicle Spear
+
+#org @M_AURASPHERE
+Aura Sphere
+
+#org @M_CROSSPOISON
+Cross Poison
+
+#org @M_HIGHHORSEPOWER
+High Horse Power
+
+#org @M_SKYATTACK
+Sky Attack
+
+#org @M_PSYCHICTERRAIN
+Psychic Terrain
+
+#org @M_POLLENPUFF
+Pollen Puff
+
+#org @M_DRAGONDANCE
+Dragon Dance
+
+#org @M_CRUNCH
+Crunch
+
+#org @M_MISTYTERRAIN
+Misty Terrain
+
+#org @M_HYPERVOICE
+Hyper Voice
+
+#org @M_HEATWAVE
+Heat Wave
+
+#org @M_MUDDYWATER
+Muddy Water
+
+#org @M_EARTHPOWER
+Earth Power
+
+#org @M_BOUNCE
+Bounce
+
+#org @M_PSYCHICFANGS
+Psychic Fangs
+
+#org @M_FOULPLAY
+Foul Play
+
+#org @M_BATONPASS
+Baton Pass
+
+#org @M_HEATCRASH
+Heat Crash
+
+#org @M_DRILLRUN
+Drill Run
+
+#org @M_FIREPLEDGE
+Fire Pledge
+
+#org @M_WATERPLEDGE
+Water Pledge
+
+#org @M_GRASSPLEDGE
+Grass Pledge
+
+#org @M_WEATHERBALL
+Weather Ball
+
+#org @M_FLAREBLITZ
+Flare Blitz
+
+#org @M_HYDOPUMP
+Hydro Pump
+
+#org @M_LEAFSTORM
+Leaf Storm
+
+#org @M_SUPERPOWER
+Superpower
+
+#org @M_GUNKSHOT
+Gunk Shot
+#org @M_BRAVEBIRD
+Brave Bird
+
+#org @M_MEGAHORN
+Mega Horn
+
+#org @M_PHANTOMFORCE
+Phantom Force
+
+#org @M_OUTRAGE
+Outrage
+
+#org @M_DARKESTLARIAT
+Darkest Lariat
+
+#org @M_HEAVYSLAM
+Heavy Slam
+
+#org @M_POWERWHIP
+Power Whip
+
+#org @M_CLOSECOMBAT
+Close Combat
+
+#org @M_HURRICANE
+Hurricane
+
+#org @M_PSYCHOCUT
+Psycho Cut
+
+#org @M_BREAKINGSWIPE
+Breaking Swipe
+
+#org @M_THROATCHOP
+Throat Chop
+
+#org @M_SOLARBLADE
+Solar Blade
+
+#org @M_BLASTBURN
+Blast Burn
+
+#org @M_HYDROCANNON
+Hydro Cannon
+
+#org @M_FRENZYPLANT
+Frenzy Plant
+
+#org @NAME_RATER
+Name Rater
+
+#org @MOVE_TUTOR
+Move Tutor
+
+#org @NATURE_CHANGER
+Nature Changer
+
+#org @ABILITY_CHANGER
+Ability Changer
+
+#org @EXIT
+Exit
 
 #endif

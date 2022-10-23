@@ -2086,27 +2086,39 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 			break;
 
 		case ABILITY_OVERGROW:
-		//1.5x Boost
-			if (data->moveType == TYPE_GRASS && data->atkHP <= data->atkMaxHP / 3)
+		//1.5x Boost inclement emerald changes which I liked
+			if (data->moveType == TYPE_GRASS)
 			{
-				attack = (attack * 15) / 10;
-				spAttack = (spAttack * 15) / 10;
+				attack = (attack * 12) / 10;
+				spAttack = (spAttack * 12) / 10;
+				if(data->atkHP <= data->atkMaxHP / 3){ // don't stack, would be OP
+					attack = (attack * 15) / 10;
+					spAttack = (spAttack * 15) / 10;
+				}
 			}
 			break;
 		case ABILITY_BLAZE:
-		//1.5x Boost
+		//1.5x Boost inclement emerald changes which I liked
 			if (data->moveType == TYPE_FIRE && data->atkHP <= data->atkMaxHP / 3)
 			{
-				attack = (attack * 15) / 10;
-				spAttack = (spAttack * 15) / 10;
+				attack = (attack * 12) / 10;
+				spAttack = (spAttack * 12) / 10;
+				if(data->atkHP <= data->atkMaxHP / 3){ // don't stack, would be OP
+					attack = (attack * 15) / 10;
+					spAttack = (spAttack * 15) / 10;
+				}
 			}
 			break;
 		case ABILITY_TORRENT:
-		//1.5x Boost
+		//1.5x Boost inclement emerald changes which I liked
 			if (data->moveType == TYPE_WATER && data->atkHP <= data->atkMaxHP / 3)
 			{
-				attack = (attack * 15) / 10;
-				spAttack = (spAttack * 15) / 10;
+				attack = (attack * 12) / 10;
+				spAttack = (spAttack * 12) / 10;
+				if(data->atkHP <= data->atkMaxHP / 3){ // don't stack, would be OP
+					attack = (attack * 15) / 10;
+					spAttack = (spAttack * 15) / 10;
+				}
 			}
 			break;
 		case ABILITY_SWARM:
@@ -3228,6 +3240,12 @@ static u16 AdjustBasePower(struct DamageCalc* data, u16 power)
 		case ABILITY_SHEERFORCE:
 		//1.3x Boost
 			if (CheckTableForMove(move, gSheerForceBoostedMoves))
+				power = (power * 13) / 10;
+			break;
+
+		case ABILITY_LIQUIDVOICE:
+		//1.3x Boost inclement emerald inspired
+			if (CheckTableForMove(move, gSoundMoves))
 				power = (power * 13) / 10;
 			break;
 
