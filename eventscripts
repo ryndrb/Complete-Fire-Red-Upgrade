@@ -7,6 +7,12 @@ npc 3 0 4 EventScript_NatureChanger
 npc 3 0 5 EventScript_GivePoke
 npc 3 0 6 EventScript_TrainerBattle
 npc 3 0 7 EventScript_UtilityOldMan
+tile 4 1 0 EventScript_ChooseStarterRegion
+npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
+npc 4 3 2 EventScript_ProfOakAidLabStatScanner
+npc 4 3 4 EventScript_StarterGrass
+npc 4 3 5 EventScript_StarterWater
+npc 4 3 6 EventScript_StarterFire
 
 # ROUTE 1
 tile 3 19 0 EvenntScript_Route1_Brendan1

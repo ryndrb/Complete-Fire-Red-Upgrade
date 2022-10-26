@@ -2,10 +2,10 @@
 Oh!?
 
 #org @gText_HeyThere
-Hey there! You must be [PLAYER].\nMy name's [GREEN]Brendan[BLACK] from Littleroot\lTown in the Hoenn region. I came\lhere on behalf of Professor Birch\lregarding Professor Oak's\linvention of the Pok\edex.\lHuh...\lSo you got a Pok\edex, too. That\lmeans you're a Pok\emon trainer!\lProfessor Oak mentioned you in his\lmessage but he didn't mention\lyou're a trainer! Hmm...\lWell then, here. I'll give you this.
+Hey there!\pYou must be [PLAYER].\p...\pI'm [GREEN]Brendan[BLACK] from\nLittleroot town in the Hoenn\lregion.\pI came here on behalf of Prof.\nBirch regarding the invention of\lthe Pok\edex.\p...\n...\pHuh...\nSo you have a Pok\edex, too.\pThat means you're a Pok\emon\ntrainer!\pProf. Oak mentioned you in his\nletter but he didn't mention\lyou're a trainer.\p...\n...\pHmm...\pWell then, here.\nI'll give you this.
 
 #org @gText_BrendanGaveExpShare
 That is an Exp. Share.\pIt will surely come in handy in your\nadventure.
 
 #org @gText_HeadingToOak
-Anyway, nice meeting you.\pHow about a battle next time we\nmeet, yeah?\pSee ya!
+...\n...\pAnyway, nice meeting you.\pHow about a battle next time we\nmeet, yeah?\pSee ya!

@@ -63,6 +63,3 @@ Remove the Gigantamax factor from\n[BUFFER1]?
 
 #org @gText_MoveRelearner
 Move Relearn
-
-#org @gText_MoveRelearnerDescription
-Allows Pokemon to remember past\nmoves.

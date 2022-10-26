@@ -3,6 +3,8 @@
 #include "../../include/constants/items.h"
 #include "../../include/constants/moves.h"
 #include "../../include/new/build_pokemon.h"
+#include "../../include/battle.h"
+#include "custom_trainers_id.h"
 
 // Sample trainer builder for now
 static const struct BattleTowerSpread sDifficult_TestBattle[] = 
@@ -845,7 +847,7 @@ const struct MultiRaidTrainer gCustomTrainerBattles[] =
 		.trainerClass = CLASS_PKMN_TRAINER_1,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = MALE,
-		.otId = 0x149,
+		.otId = TRAINER_RIVAL_ROUTE22_SQUIRTLE,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -861,7 +863,7 @@ const struct MultiRaidTrainer gCustomTrainerBattles[] =
 		.trainerClass = CLASS_PKMN_TRAINER_1,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = MALE,
-		.otId = 0x14A,
+		.otId = TRAINER_RIVAL_ROUTE22_BULBASAUR,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -877,7 +879,7 @@ const struct MultiRaidTrainer gCustomTrainerBattles[] =
 		.trainerClass = CLASS_PKMN_TRAINER_1,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = MALE,
-		.otId = 0x14B,
+		.otId = TRAINER_RIVAL_ROUTE22_CHARMANDER,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -893,7 +895,7 @@ const struct MultiRaidTrainer gCustomTrainerBattles[] =
 		.trainerClass = CLASS_PKMN_TRAINER_1,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = MALE,
-		.otId = 0x19E,
+		.otId = TRAINER_GYMLEADER_BROCK,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -909,7 +911,7 @@ const struct MultiRaidTrainer gCustomTrainerBattles[] =
 		.trainerClass = CLASS_PKMN_TRAINER_1,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = FEMALE,
-		.otId = 0x19F,
+		.otId = TRAINER_GYMLEADER_MISTY,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{

@@ -1,0 +1,50 @@
+#org @gText_EventScript_NoPokedex1
+Hmm, let's see...\p...\n...\pYou do not have a Pok\edex yet.\pCome back and talk to me once you\nacquire one.\pI have a rather useful tool\nthat'll surely help you in your\lPok\emon adventure!
+
+#org @gText_HavePokedex1
+Oh?\pSo you've acquired a Pok\edex!\nWell then...\pThis here is a prototype device\ncalled a Time Turner.\pIt allows Pok\emon trainers like\nyou to change the current time for\lwild Pok\emon encounters!\pThis is rather convenient, don't\nyou think?\p...\n...\pTo use it, simply open the second\npage of the start menu.\pGood luck on your adventure!
+
+#org @gText_EventScript_NoPokedex2
+Hmm, let's see...\p...\n...\pYou do not have a Pok\edex yet.\pCome back and talk to me once you\nacquire one.\pI have a rather useful tool\nthat'll surely help you in your\lPok\emon adventure!
+
+#org @gText_HavePokedex2
+Oh?\pSo you've acquired a Pok\edex!\nWell then...\pThis here is a Pok\emon Stat\nScanner called Pok\estat.\pIt allows Pok\emon trainers like\nyou to view various statistics of\ltheir own Pok\emon.\lPretty neat, huh?\p...\n...\pTo use it, simply open the second\npage of the start menu.\pGood luck on your adventure!
+
+#org @gText_EventScript_ChooseStarterRegion
+Which region do want your Pok\emon\nstarter to be from?
+
+#org @gText_EventScript_RemainKanto
+Your starter choices will remain to\nbe from [GREEN]Kanto[BLACK].
+
+#org @gText_EventScript_Gen1
+Selected [GREEN]Kanto[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_EventScript_Gen2
+Selected [GREEN]Johto[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_EventScript_Gen3
+Selected [GREEN]Hoenn[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_EventScript_Gen4
+Selected [GREEN]Sinnoh[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_EventScript_Gen5
+Selected [GREEN]Unova[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_EventScript_Gen6
+Selected [GREEN]Kalos[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_EventScript_Gen7
+Selected [GREEN]Alola[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_EventScript_Gen8
+Selected [GREEN]Galar[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+
+#org @gText_GrassChoice
+I see! [GREEN][BUFFER1][BLUE] is your choice.\nIt's very easy to raise.\pSo, [PLAYER], you want to go with\nthe Grass Pok\emon [GREEN][BUFFER1][BLUE]?
+
+#org @gText_WaterChoice
+Hm! [GREEN][BUFFER1][BLUE] is your choice.\nIt's one worth raising.\pSo, [PLAYER], you've decided on the\nWater Pok\emon [GREEN][BUFFER1][BLUE]?
+
+#org @gText_FireChoice
+Ah! [GREEN][BUFFER1][BLUE] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you're claiming the\nFire Pok\emon [GREEN][BUFFER1][BLUE]?

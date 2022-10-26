@@ -3265,6 +3265,16 @@ extern const u8 NAME_RATER[];
 extern const u8 ABILITY_CHANGER[];
 extern const u8 EXIT[];
 
+// Chosee Starter Region
+extern const u8 REGION_KANTO[];
+extern const u8 REGION_JOHTO[];
+extern const u8 REGION_HOENN[];
+extern const u8 REGION_SINNOH[];
+extern const u8 REGION_UNOVA[];
+extern const u8 REGION_KALOS[];
+extern const u8 REGION_ALOLA[];
+extern const u8 REGION_GALAR[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3472,6 +3482,17 @@ static const u8* UtilityOldManTools[] = {
 	EXIT,
 };
 
+static const u8* ChooseStarterRegion[] = {
+	REGION_KANTO,
+	REGION_JOHTO,
+	REGION_HOENN,
+	REGION_SINNOH,
+	REGION_UNOVA,
+	REGION_KALOS,
+	REGION_ALOLA,
+	REGION_GALAR,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
@@ -3490,6 +3511,7 @@ const struct ScrollingMulti gScrollingSets[] =
 	{SeventhBadgeTutorMoves, ARRAY_COUNT(SeventhBadgeTutorMoves)},//13
 	{EightBadgeTutorMoves, ARRAY_COUNT(EightBadgeTutorMoves)},//14
 	{UtilityOldManTools, ARRAY_COUNT(UtilityOldManTools)},//15
+	{ChooseStarterRegion, ARRAY_COUNT(ChooseStarterRegion)},//16
 };
 
 //Link number of opts shown at once to the box height

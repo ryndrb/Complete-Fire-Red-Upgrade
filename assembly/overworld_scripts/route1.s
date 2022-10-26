@@ -77,6 +77,7 @@ EventScript_BrendanMovement2:
     .byte walk_down
     .byte walk_down
     .byte walk_down
+    .byte walk_down
     .byte end_m
 
 EventScript_BrendanMovement3:
@@ -92,6 +93,7 @@ EventScript_BrendanMovement3:
 
 EventScript_BrendanMovement4:
     .byte walk_right
+    .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down

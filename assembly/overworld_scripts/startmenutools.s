@@ -8,6 +8,21 @@
 .equ FLAG_TURN_DAY      , 0x931
 .equ FLAG_TURN_NIGHT    , 0x932
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pocket PC
+@@@@@@@@@@@@@@@@@@@@@@
+.global EventScript_PCMainMenu
+EventScript_PCMainMenu:
+	playse 2
+	special 0x3C
+	waitstate
+	setvar 0x8004 0x0
+	release
+	end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ TIme Turner
+@@@@@@@@@@@@@@@@@@@@@@
 .global EventScript_TimeTurner
 EventScript_TimeTurner:
     preparemsg gText_TimeOfDay
@@ -50,3 +65,11 @@ EventScript_Reset:
 End:
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Stat Scanner / Pokestat
+@@@@@@@@@@@@@@@@@@@@@@
+.global EventScript_StatScanner
+EventScript_StatScanner:
+	callasm 0x08f90001
+	end

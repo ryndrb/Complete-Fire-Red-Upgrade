@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "raid_encounters.h": "c",
-        "trainers_with_evs_table.h": "c"
+        "trainers_with_evs_table.h": "c",
+        "global.h": "c",
+        "set_z_effect.h": "c",
+        "move_tables.h": "c"
     }
 }

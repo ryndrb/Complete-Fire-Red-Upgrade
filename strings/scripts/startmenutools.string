@@ -1,0 +1,20 @@
+#org @gText_MenuPC
+PC
+
+#org @gText_PocketPCDescription
+A portable Pokemon Storage System.\nUse it anywhere!
+
+#org @gText_TimerTurnerDescription
+A convenient tool which allows the player\nto change to a specific time of the day!
+
+#org @gText_TimeTurner
+Time Turn
+
+#org @gText_TimeOfDay
+Which time of day would you like\nto change to?
+
+#org @gText_StatScanner
+Pok\estat
+
+#org @gText_StatScannerDescription
+A convenient tool which allows the player\nto view their Pok\emon statistics!

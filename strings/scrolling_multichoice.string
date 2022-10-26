@@ -415,4 +415,28 @@ Ability Changer
 #org @EXIT
 Exit
 
+#org @REGION_KANTO
+Kanto
+
+#org @REGION_JOHTO
+Johto
+
+#org @REGION_HOENN
+Hoenn
+
+#org @REGION_SINNOH
+Sinnoh
+
+#org @REGION_UNOVA
+Unova
+
+#org @REGION_KALOS
+Kalos
+
+#org @REGION_ALOLA
+Alola
+
+#org @REGION_GALAR
+Galar
+
 #endif

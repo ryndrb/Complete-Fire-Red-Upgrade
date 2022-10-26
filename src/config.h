@@ -328,6 +328,14 @@ enum //These vars need to be one after the other (hence the enum)
 #define KOGA_DEFEATED 0x205
 #define BLAINE_DEFEATED 0x206
 #define GIOVANNI_DEFEATED 0x207
+#define CHOOSE_REGION_KANTO 0x208
+#define CHOOSE_REGION_JOHTO 0x209
+#define CHOOSE_REGION_HOENN 0x20A
+#define CHOOSE_REGION_SINNOH 0x20B
+#define CHOOSE_REGION_UNOVA 0x20C
+#define CHOOSE_REGION_KALOS 0x20D
+#define CHOOSE_REGION_ALOLA 0x20E
+#define CHOOSE_REGION_GALAR 0x20F
 
 #define BRENDAN_ROUTE1_ENCOUNTER 0x300
 
@@ -335,6 +343,10 @@ enum //These vars need to be one after the other (hence the enum)
 #define FLAG_TURN_NIGHT 0x932
 
 #define FLAG_CUSTOM_TRAINERS 0x0AF
+#define FLAG_RECEIVED_POCKETPC 0x0B0
+#define FLAG_RECEIVED_TIMETURNER 0x0B1
+#define FLAG_RECEIVED_STATSCANNER 0x0B2
+
 #define SINGLE_BATTLE 0
 #define DOUBLE_BATTLE 1
 #define PLAYER_MAX_LEVEL 103

@@ -25,6 +25,7 @@ start_menu.c
 
 extern u8 EventScript_PCMainMenu[];
 extern u8 EventScript_TimeTurner[];
+extern u8 EventScript_StatScanner[];
 //extern u8 EventScript_AccessPokemonStorage[];
 
 enum
@@ -40,7 +41,8 @@ enum
 	STARTMENU_PLAYER_LINK,
 	STARTMENU_DEXNAV,
 	STARTMENU_PC,
-	STARMENU_TIMETURNER,
+	STARTMENU_TIMETURNER,
+	STARTMENU_STATSCANNER,
 	STARTMENU_QUEST_LOG,
 	STARTMENU_EXIT_RIGHT,
 	STARTMENU_EXIT_LEFT,
@@ -65,6 +67,7 @@ extern const u8 gText_MenuRetire[];
 extern const u8 gText_DexNav[];
 extern const u8 gText_MenuPC[];
 extern const u8 gText_TimeTurner[];
+extern const u8 gText_StatScanner[];
 extern const u8 gText_MissionLog[];
 extern const u8 gText_MenuBag[];
 extern const u8 gText_MenuCube[];
@@ -84,6 +87,7 @@ extern const u8 gText_PlayerDescription[];
 extern const u8 gText_DexNavDescription[];
 extern const u8 gText_PocketPCDescription[];
 extern const u8 gText_TimerTurnerDescription[];
+extern const u8 gText_StatScannerDescription[];
 
 extern bool8 (*sStartMenuCallback)(void);
 extern u8 sStartMenuCursorPos;
@@ -102,6 +106,7 @@ bool8 __attribute__((long_call)) StartMenuPokemonCallback(void);
 bool8 __attribute__((long_call)) StartMenuBagCallback(void); 
 bool8 StartMenuPCCallback(void); // POCKET PC
 bool8 TimeTurnerCallback(void); // TIME TURNER
+bool8 StatScannerCallback(void); // Stat Scanner
 bool8 __attribute__((long_call)) StartMenuPlayerCallback(void);
 bool8 __attribute__((long_call)) StartMenuSaveCallback(void);
 bool8 __attribute__((long_call)) StartMenuOptionCallback(void);
@@ -156,7 +161,8 @@ const struct MenuAction sStartMenuActionTable[] =
 	[STARTMENU_PLAYER_LINK] = {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerCallback}},
 	[STARTMENU_DEXNAV] = {gText_DexNav, {.u8_void = StartMenuDexNavCallback}},
 	[STARTMENU_PC] = {gText_MenuPC, {.u8_void = StartMenuPCCallback}},
-	[STARMENU_TIMETURNER] = {gText_TimeTurner, {.u8_void = TimeTurnerCallback}}, 
+	[STARTMENU_TIMETURNER] = {gText_TimeTurner, {.u8_void = TimeTurnerCallback}}, 
+	[STARTMENU_STATSCANNER] = {gText_StatScanner, {.u8_void = StatScannerCallback}}, 
 	#ifdef FLAG_SYS_QUEST_LOG
 	[STARTMENU_QUEST_LOG] = {gText_MissionLog, {.u8_void = (void*) (0x801D768 | 1)}},
 	#endif
@@ -178,6 +184,7 @@ const u8* const sStartMenuDescPointers[] =
 	gText_DexNavDescription,
 	gText_PocketPCDescription,
 	gText_TimerTurnerDescription,
+	gText_StatScannerDescription,
 	NULL,
 	gText_ExitDescription,
 	gText_ExitDescription,
@@ -190,8 +197,18 @@ static bool8 CanSetUpSecondaryStartMenu(void)
 		return TRUE;
 	#endif
 
-	#if (defined FLAG_TURN_DAY && defined FLAG_TURN_DUSK && defined FLAG_TURN_NIGHT )
-	if (FlagGet(FLAG_TURN_DAY) && FlagGet(FLAG_TURN_DUSK) && FlagGet(FLAG_TURN_NIGHT))
+	#if FLAG_RECEIVED_POCKETPC
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_POCKETPC))
+		return TRUE;
+	#endif
+
+	#if FLAG_RECEIVED_TIMETURNER
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_TIMETURNER))
+		return TRUE;
+	#endif
+
+	#if FLAG_RECEIVED_STATSCANNER
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_STATSCANNER))
 		return TRUE;
 	#endif
 
@@ -276,16 +293,26 @@ static void BuildPokeToolsMenu(void)
 	#endif
 		AppendToStartMenuItems(STARTMENU_DEXNAV);
 
-	if(FlagGet(FLAG_SYS_POKEDEX_GET)){
+	#ifdef FLAG_RECEIVED_POCKETPC
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_POCKETPC))
+	#endif
 		AppendToStartMenuItems(STARTMENU_PC);
-		//AppendToStartMenuItems(STARMENU_TIMETURNER);
-	}
+
+	#ifdef FLAG_RECEIVED_TIMETURNER
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_TIMETURNER))
+	#endif
+		AppendToStartMenuItems(STARTMENU_TIMETURNER);
+
+	#ifdef FLAG_RECEIVED_STATSCANNER
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_STATSCANNER))
+	#endif
+		AppendToStartMenuItems(STARTMENU_STATSCANNER);
+
 	#ifdef FLAG_SYS_QUEST_LOG
 	if (FlagGet(FLAG_SYS_QUEST_LOG))
 		AppendToStartMenuItems(STARTMENU_QUEST_LOG);
 	#endif
 
-	AppendToStartMenuItems(STARMENU_TIMETURNER);
 	AppendToStartMenuItems(STARTMENU_EXIT_LEFT);
 }
 
@@ -359,7 +386,7 @@ bool8 StartCB_HandleInput(void)
 			return FALSE;
 		sStartMenuCallback = sStartMenuActionTable[sStartMenuOrder[sStartMenuCursorPos]].func.u8_void;
 
-		if((sStartMenuCallback != StartMenuPCCallback) && (sStartMenuCallback != TimeTurnerCallback)){
+		if((sStartMenuCallback != StartMenuPCCallback) && (sStartMenuCallback != TimeTurnerCallback) && (sStartMenuCallback != StatScannerCallback)){
 			StartMenu_FadeScreenIfLeavingOverworld();	
 		}
 		return FALSE;
@@ -527,6 +554,21 @@ bool8 TimeTurnerCallback(void)
 		RemoveStartMenuWindow();
 		RemoveTimeBox();
 		ScriptContext1_SetupScript(EventScript_TimeTurner);
+		return TRUE;
+	}
+	return FALSE;
+}
+
+bool8 StatScannerCallback(void)
+{
+	if(!gPaletteFade->active)
+	{
+		PlayRainStoppingSoundEffect();
+        DestroySafariZoneStatsWindow();
+		ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
+		RemoveStartMenuWindow();
+		RemoveTimeBox();
+		ScriptContext1_SetupScript(EventScript_StatScanner);
 		return TRUE;
 	}
 	return FALSE;

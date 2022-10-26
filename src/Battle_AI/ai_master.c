@@ -2672,7 +2672,7 @@ static bool8 ShouldAIUseItem(void)
 	u32 i;
 	u8 validMons = 0;
 	bool8 shouldUse = FALSE;
-	
+ 
 	if (SIDE(gActiveBattler) == B_SIDE_PLAYER)
 		return FALSE;
 
