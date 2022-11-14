@@ -1,0 +1,8 @@
+#org @gText_EventScript_HoennWeatherGuyIntro
+Hello, nice to meet you.\p...\n...\pI'm a meteorologist from the Hoenn\nregion.\pWe've been noticing temporary and\nisolated cases of droughts and\lheavy rains there lately so I came\lhere to study this region's\lcurrent weather patterns to see\lif we can find some meaningful\lcorrelation.\pThough from everything that I've\nseen so far, the weather has been\lrelatively stable, which bode well\lfor our research.
+
+#org @gText_EventScript_HoennWeatherGuyGiveRocks
+...\n...\pI see that you're a Pok\emon\ntrainer.\pHmm... Let's see...\pOh, I know.\nHere, you can have them.
+
+#org @gText_EventScript_HoennWeatherGuyEnd
+Those are weather rock samples\ngiven to me by a good friend of\lmine when we were still Pok\emon\ltrainers.\p...\n...\pYou seem like a good kid and a\ncapable trainer.\pPut it to good use, yeah?

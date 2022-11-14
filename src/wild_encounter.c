@@ -73,13 +73,78 @@ static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon* wildMon, u
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon* wildMon, u8 type, u8 ability, u8* monIndex, u8 monsCount);
 static void CreateScriptedWildMon(u16 species, u8 level, u16 item, u16* specialMoves, bool8 firstMon);
 static const struct WildPokemonInfo* LoadProperMonsPointer(const struct WildPokemonHeader* header, const u8 type);
+static u8 GetMedianLevelOfPlayerParty(void);
+u8 CalculatePlayerBattlerPartyCount(void);
 
 #ifdef FLAG_SCALE_WILD_POKEMON_LEVELS
 static u8 GetLowestMonLevel(const struct Pokemon* const party);
 #endif
 
+u8 CalculatePlayerBattlerPartyCount(void)
+{
+    s32 battlerCount = 0;
+    s32 i;
+    CalculatePlayerPartyCount();
+
+    if (gPlayerPartyCount == 1)
+        return gPlayerPartyCount; // PLAYER_HAS_ONE_MON
+
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_EGG
+         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_NONE)
+            battlerCount++;
+    }
+
+    return battlerCount;
+}
+
+static u8 GetMedianLevelOfPlayerParty(void)
+{
+    u8 i, j, temp, medianLevel, medianIndex = 0;
+    u8 playerPartyCount = CalculatePlayerBattlerPartyCount();
+    u8 partyLevels[PARTY_SIZE] = {0};
+
+    // Don't calculate anything if party size is 1
+    if (playerPartyCount == 1)
+    {
+        medianLevel = GetMonData(&gPlayerParty[0], MON_DATA_LEVEL, NULL);
+        return medianLevel;
+    }
+    // Store player levels in partyLevels array
+    for (i = 0 ; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_EGG)
+        {
+            partyLevels[i] = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL);
+        }
+        else
+        {
+            partyLevels[i] = 1; 
+        }
+    }
+    // Sort player levels in ascending order
+    for (i = 0 ; i < PARTY_SIZE ; i++)
+    {
+        for (j = 0 ; j < (PARTY_SIZE - 1) ; j++)
+        {
+            if (partyLevels[j] > partyLevels[j + 1])
+            {
+                temp = partyLevels[j];
+                partyLevels[j] = partyLevels[j + 1];
+                partyLevels[j + 1] = temp;
+            }
+        }
+    }
+    medianIndex = (playerPartyCount / 2) + (PARTY_SIZE - playerPartyCount);
+    medianLevel = partyLevels[medianIndex];
+    
+    return medianLevel;
+}
+
 static u8 ChooseWildMonLevel(const struct WildPokemon* wildPokemon)
 {
+	u8 playerMedianLevel = GetMedianLevelOfPlayerParty();
 	u8 min;
 	u8 max;
 	u8 range;
@@ -95,16 +160,26 @@ static u8 ChooseWildMonLevel(const struct WildPokemon* wildPokemon)
 	else
 	#endif
 	//Make sure minimum level is less than maximum level
-	if (wildPokemon->maxLevel >= wildPokemon->minLevel)
-	{
-		min = wildPokemon->minLevel;
-		max = wildPokemon->maxLevel;
-	}
-	else
-	{
-		min = wildPokemon->maxLevel;
-		max = wildPokemon->minLevel;
-	}
+	if (playerMedianLevel < 8)
+    {
+        min = 2;
+        max = 4;
+    }
+    else
+    {
+        min = playerMedianLevel - 6;
+        max = playerMedianLevel - 3;
+    }
+	// if (wildPokemon->maxLevel >= wildPokemon->minLevel)
+	// {
+	// 	min = wildPokemon->minLevel;
+	// 	max = wildPokemon->maxLevel;
+	// }
+	// else
+	// {
+	// 	min = wildPokemon->maxLevel;
+	// 	max = wildPokemon->minLevel;
+	// }
 	range = max - min + 1;
 	rand = Random() % range;
 

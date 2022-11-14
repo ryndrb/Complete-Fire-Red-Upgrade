@@ -8,14 +8,15 @@
 .equ FLAG_RECIEVED_POCKETPC, 0x0B0
 .equ FLAG_RECEIVED_TIMETURNER, 0x0B1
 .equ FLAG_RECEIVED_STATSCANNER, 0x0B2
-.equ CHOOSE_REGION_KANTO, 0x208
-.equ CHOOSE_REGION_JOHTO, 0x209
-.equ CHOOSE_REGION_HOENN, 0x20A
-.equ CHOOSE_REGION_SINNOH, 0x20B
-.equ CHOOSE_REGION_UNOVA, 0x20C
-.equ CHOOSE_REGION_KALOS, 0x20D
-.equ CHOOSE_REGION_ALOLA, 0x20E
-.equ CHOOSE_REGION_GALAR, 0x20F
+.equ FLAG_CHOOSE_REGION_KANTO, 0x208
+.equ FLAG_CHOOSE_REGION_JOHTO, 0x209
+.equ FLAG_CHOOSE_REGION_HOENN, 0x20A
+.equ FLAG_CHOOSE_REGION_SINNOH, 0x20B
+.equ FLAG_CHOOSE_REGION_UNOVA, 0x20C
+.equ FLAG_CHOOSE_REGION_KALOS, 0x20D
+.equ FLAG_CHOOSE_REGION_ALOLA, 0x20E
+.equ FLAG_CHOOSE_REGION_GALAR, 0x20F
+.equ FLAG_OBTAIN_AMULET_COIN, 0x0B1
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Prof Aid Give Time Turner
@@ -26,17 +27,13 @@ EventScript_ProfOakAidLabTimeTurner:
     checkflag 0x82C
     if 0x1 _goto 0x8169E03
     msgbox 0x818EBE6 MSG_NORMAL
+    lock
     checkflag 0x829 @pokedex received?
-    if 0x0 _goto EventScript_NoPokedex1
+    if 0x0 _goto EventScript_NoPokedex
     checkflag FLAG_RECEIVED_TIMETURNER
     if 0x1 _goto 0x818EBE6
     msgbox gText_HavePokedex1 MSG_KEEPOPEN
     setflag FLAG_RECEIVED_TIMETURNER
-    release
-    end
-
-EventScript_NoPokedex1:
-    msgbox gText_EventScript_NoPokedex1 MSG_KEEPOPEN
     release
     end
 
@@ -49,17 +46,13 @@ EventScript_ProfOakAidLabStatScanner:
     checkflag 0x82C
     if 0x1 _goto 0x8169E2F
     msgbox 0x818EBE6 MSG_NORMAL
+    lock
     checkflag 0x829 @pokedex received?
-    if 0x0 _goto EventScript_NoPokedex2
+    if 0x0 _goto EventScript_NoPokedex
     checkflag FLAG_RECEIVED_STATSCANNER
     if 0x1 _goto 0x818EBE6 
     msgbox gText_HavePokedex2 MSG_KEEPOPEN
     setflag FLAG_RECEIVED_STATSCANNER
-    release
-    end
-
-EventScript_NoPokedex2:
-    msgbox gText_EventScript_NoPokedex2 MSG_KEEPOPEN
     release
     end
 
@@ -68,6 +61,7 @@ EventScript_NoPokedex2:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ChooseStarterRegion:
     lock
+    call SETNECESSARYGAMEFLAGS
     msgbox gText_EventScript_ChooseStarterRegion MSG_KEEPOPEN
     setvar 0x8000 0xF
     setvar 0x8001 0x5
@@ -90,7 +84,7 @@ EventScript_ChooseStarterRegion:
 EventScript_RemainKanto:
     setvar 0x4011 0x1
     msgbox gText_EventScript_RemainKanto MSG_KEEPOPEN
-    setflag CHOOSE_REGION_KANTO
+    setflag FLAG_CHOOSE_REGION_KANTO
     closeonkeypress
     release
     end
@@ -98,7 +92,7 @@ EventScript_RemainKanto:
 EventScript_Gen1:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen1 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_KANTO
+    setflag FLAG_CHOOSE_REGION_KANTO
     closeonkeypress
     release
     end
@@ -106,7 +100,7 @@ EventScript_Gen1:
 EventScript_Gen2:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen2 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_JOHTO
+    setflag FLAG_CHOOSE_REGION_JOHTO
     closeonkeypress
     release
     end
@@ -114,7 +108,7 @@ EventScript_Gen2:
 EventScript_Gen3:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen3 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_HOENN
+    setflag FLAG_CHOOSE_REGION_HOENN
     closeonkeypress
     release
     end
@@ -122,7 +116,7 @@ EventScript_Gen3:
 EventScript_Gen4:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen4 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_SINNOH
+    setflag FLAG_CHOOSE_REGION_SINNOH
     closeonkeypress
     release
     end
@@ -130,7 +124,7 @@ EventScript_Gen4:
 EventScript_Gen5:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen5 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_UNOVA
+    setflag FLAG_CHOOSE_REGION_UNOVA
     closeonkeypress
     release
     end
@@ -138,7 +132,7 @@ EventScript_Gen5:
 EventScript_Gen6:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen6 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_KALOS
+    setflag FLAG_CHOOSE_REGION_KALOS
     closeonkeypress
     release
     end
@@ -146,7 +140,7 @@ EventScript_Gen6:
 EventScript_Gen7:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen7 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_ALOLA
+    setflag FLAG_CHOOSE_REGION_ALOLA
     closeonkeypress
     release
     end
@@ -154,7 +148,7 @@ EventScript_Gen7:
 EventScript_Gen8:
     setvar 0x4011 0x1
     msgbox gText_EventScript_Gen8 MSG_KEEPOPEN
-    setflag CHOOSE_REGION_GALAR
+    setflag FLAG_CHOOSE_REGION_GALAR
     closeonkeypress
     release
     end
@@ -166,21 +160,21 @@ EventScript_Gen8:
 EventScript_StarterGrass:
     lock
     faceplayer
-    checkflag CHOOSE_REGION_KANTO
+    checkflag FLAG_CHOOSE_REGION_KANTO
     if 0x1 _call EventScript_KantoStartersGrass
-    checkflag CHOOSE_REGION_JOHTO
+    checkflag FLAG_CHOOSE_REGION_JOHTO
     if 0x1 _call EventScript_JohtoStartersGrass
-    checkflag CHOOSE_REGION_HOENN
+    checkflag FLAG_CHOOSE_REGION_HOENN
     if 0x1 _call EventScript_HoennStartersGrass
-    checkflag CHOOSE_REGION_SINNOH
+    checkflag FLAG_CHOOSE_REGION_SINNOH
     if 0x1 _call EventScript_SinnohStartersGrass
-    checkflag CHOOSE_REGION_UNOVA
+    checkflag FLAG_CHOOSE_REGION_UNOVA
     if 0x1 _call EventScript_UnovaStartersGrass
-    checkflag CHOOSE_REGION_KALOS
+    checkflag FLAG_CHOOSE_REGION_KALOS
     if 0x1 _call EventScript_KalosStartersGrass
-    checkflag CHOOSE_REGION_ALOLA
+    checkflag FLAG_CHOOSE_REGION_ALOLA
     if 0x1 _call EventScript_AlolaStartersGrass
-    checkflag CHOOSE_REGION_GALAR
+    checkflag FLAG_CHOOSE_REGION_GALAR
     if 0x1 _call EventScript_GalarStartersGrass
     setvar 0x4001 0x0
     setvar 0x4003 0x4
@@ -237,21 +231,21 @@ EventScript_GalarStartersGrass:
 EventScript_StarterWater:
     lock
     faceplayer
-    checkflag CHOOSE_REGION_KANTO
+    checkflag FLAG_CHOOSE_REGION_KANTO
     if 0x1 _call EventScript_KantoStartersWater
-    checkflag CHOOSE_REGION_JOHTO
+    checkflag FLAG_CHOOSE_REGION_JOHTO
     if 0x1 _call EventScript_JohtoStartersWater
-    checkflag CHOOSE_REGION_HOENN
+    checkflag FLAG_CHOOSE_REGION_HOENN
     if 0x1 _call EventScript_HoennStartersWater
-    checkflag CHOOSE_REGION_SINNOH
+    checkflag FLAG_CHOOSE_REGION_SINNOH
     if 0x1 _call EventScript_SinnohStartersWater
-    checkflag CHOOSE_REGION_UNOVA
+    checkflag FLAG_CHOOSE_REGION_UNOVA
     if 0x1 _call EventScript_UnovaStartersWater
-    checkflag CHOOSE_REGION_KALOS
+    checkflag FLAG_CHOOSE_REGION_KALOS
     if 0x1 _call EventScript_KalosStartersWater
-    checkflag CHOOSE_REGION_ALOLA
+    checkflag FLAG_CHOOSE_REGION_ALOLA
     if 0x1 _call EventScript_AlolaStartersWater
-    checkflag CHOOSE_REGION_GALAR
+    checkflag FLAG_CHOOSE_REGION_GALAR
     if 0x1 _call EventScript_GalarStartersWater
     setvar 0x4001 0x1
     setvar 0x4003 0x1
@@ -308,23 +302,23 @@ EventScript_GalarStartersWater:
 EventScript_StarterFire:
     lock
     faceplayer
-    setvar 0x4001 0x2
-    checkflag CHOOSE_REGION_KANTO
+    checkflag FLAG_CHOOSE_REGION_KANTO
     if 0x1 _call EventScript_KantoStartersFire
-    checkflag CHOOSE_REGION_JOHTO
+    checkflag FLAG_CHOOSE_REGION_JOHTO
     if 0x1 _call EventScript_JohtoStartersFire
-    checkflag CHOOSE_REGION_HOENN
+    checkflag FLAG_CHOOSE_REGION_HOENN
     if 0x1 _call EventScript_HoennStartersFire
-    checkflag CHOOSE_REGION_SINNOH
+    checkflag FLAG_CHOOSE_REGION_SINNOH
     if 0x1 _call EventScript_SinnohStartersFire
-    checkflag CHOOSE_REGION_UNOVA
+    checkflag FLAG_CHOOSE_REGION_UNOVA
     if 0x1 _call EventScript_UnovaStartersFire
-    checkflag CHOOSE_REGION_KALOS
+    checkflag FLAG_CHOOSE_REGION_KALOS
     if 0x1 _call EventScript_KalosStartersFire
-    checkflag CHOOSE_REGION_ALOLA
+    checkflag FLAG_CHOOSE_REGION_ALOLA
     if 0x1 _call EventScript_AlolaStartersFire
-    checkflag CHOOSE_REGION_GALAR
+    checkflag FLAG_CHOOSE_REGION_GALAR
     if 0x1 _call EventScript_GalarStartersFire
+    setvar 0x4001 0x2
     setvar 0x4003 0x7
     setvar 0x4004 0x6
     compare 0x4055 0x3
@@ -411,3 +405,35 @@ EventScript_0x8169C52:
     compare LASTRESULT 0x0
     if 0x1 _goto 0x8169C71
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Amulet Coin
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_AmuletCoin:
+    lock
+    faceplayer
+    msgbox 0x817D80D MSG_FACE
+    checkflag FLAG_OBTAIN_AMULET_COIN
+    if 0x0 _goto EventScript_GiveAmuletCoin
+    end
+
+EventScript_GiveAmuletCoin:
+    lock
+    msgbox gText_EventScript_GiveAmuletCoin MSG_KEEPOPEN
+    giveitem ITEM_AMULET_COIN 0x1 MSG_OBTAIN
+    setflag FLAG_OBTAIN_AMULET_COIN
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ End Script Dialogues
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_NoPokedex:
+    msgbox gText_EventScript_NoPokedex MSG_KEEPOPEN
+    release
+    end
+
+SETNECESSARYGAMEFLAGS: @ will add more
+    setflag 0x101
+    setflag 0x300
+    return

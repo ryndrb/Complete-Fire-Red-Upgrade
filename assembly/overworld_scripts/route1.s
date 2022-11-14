@@ -5,13 +5,15 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ BRENDAN_ROUTE1_ENCOUNTER, 0x300
-.equ FLAG_CUSTOM_TRAINERS, 0x0AF
+.equ VAR_BRENDAN_ROUTE1_ENCOUNTER, 0x5013
+.equ FLAG_BRENDAN_ROUTE1_ENCOUNTER, 0x300
 .equ FLAG_EXP_SHARE, 0x906
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Meet Brendan | Exp Share
+@@@@@@@@@@@@@@@@@@@@@@
 EvenntScript_Route1_Brendan1:
     lock
-    setflag FLAG_CUSTOM_TRAINERS
     showsprite 0x3
     applymovement PLAYER EventScript_PlayerNotice
     waitmovement 0x0
@@ -49,8 +51,8 @@ EvenntScript_Route1_Brendan2:
     end
 
 EventScript_BrendanLeft:
-    setvar 0x4010 0x1
-    setflag BRENDAN_ROUTE1_ENCOUNTER 
+    setvar VAR_BRENDAN_ROUTE1_ENCOUNTER 0x1
+    setflag FLAG_BRENDAN_ROUTE1_ENCOUNTER 
     setflag FLAG_EXP_SHARE
     release
     end

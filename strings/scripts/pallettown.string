@@ -1,11 +1,8 @@
-#org @gText_EventScript_NoPokedex1
+#org @gText_EventScript_NoPokedex
 Hmm, let's see...\p...\n...\pYou do not have a Pok\edex yet.\pCome back and talk to me once you\nacquire one.\pI have a rather useful tool\nthat'll surely help you in your\lPok\emon adventure!
 
 #org @gText_HavePokedex1
 Oh?\pSo you've acquired a Pok\edex!\nWell then...\pThis here is a prototype device\ncalled a Time Turner.\pIt allows Pok\emon trainers like\nyou to change the current time for\lwild Pok\emon encounters!\pThis is rather convenient, don't\nyou think?\p...\n...\pTo use it, simply open the second\npage of the start menu.\pGood luck on your adventure!
-
-#org @gText_EventScript_NoPokedex2
-Hmm, let's see...\p...\n...\pYou do not have a Pok\edex yet.\pCome back and talk to me once you\nacquire one.\pI have a rather useful tool\nthat'll surely help you in your\lPok\emon adventure!
 
 #org @gText_HavePokedex2
 Oh?\pSo you've acquired a Pok\edex!\nWell then...\pThis here is a Pok\emon Stat\nScanner called Pok\estat.\pIt allows Pok\emon trainers like\nyou to view various statistics of\ltheir own Pok\emon.\lPretty neat, huh?\p...\n...\pTo use it, simply open the second\npage of the start menu.\pGood luck on your adventure!
@@ -48,3 +45,6 @@ Hm! [GREEN][BUFFER1][BLUE] is your choice.\nIt's one worth raising.\pSo, [PLAYER
 
 #org @gText_FireChoice
 Ah! [GREEN][BUFFER1][BLUE] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you're claiming the\nFire Pok\emon [GREEN][BUFFER1][BLUE]?
+
+#org @gText_EventScript_GiveAmuletCoin
+Hm?\p...\n...\pSo you're an aspiring Pok\emon\ntrainer?\pI see...\pYou might find this useful then.

@@ -49,7 +49,7 @@
 #define FLAG_REMOVE_EVO_ITEM 0x912  //Flag to toggle item removal after leveling up (set by the engine)
 #define FLAG_SHINY_CREATION 0x913 //Flag to cause next battle to be against a shiny Pokemon
 #define FLAG_AUTO_RUN 0x914 //Flag to enable auto-run (toggled by L-button). If this feature is used, L=A will not work. Comment out this line for it to work again.
-#define FLAG_RUNNING_ENABLED 0x82F //The player can only run if this flag is set. If commented, the player will start the game with running shoes.
+//#define FLAG_RUNNING_ENABLED 0x82F //The player can only run if this flag is set. If commented, the player will start the game with running shoes.
 #define FLAG_BIKE_TURBO_BOOST 0x91F //The bike moves extra fast if this flag is set or if the player holds B.
 #define FLAG_DISABLE_BAG 0x915 //The bag can't be used in-battle if this flag is set
 #define FLAG_MOVE_RELEARNER_IGNORE_LEVEL 0x916 //When set, the move relearner shows all level-up moves up to MAX_LEVEL
@@ -113,11 +113,11 @@ enum //These vars need to be one after the other (hence the enum)
 /*===== TM/HM/Tutor Options (Vastly improved from other versions!) =====*/
 #define EXPANDED_TMSHMS  //Comment this out if you want to keep 50 tms/8 hms
 #define EXPANDED_MOVE_TUTORS //Comment this out if you want to keep 16 move tutors and the ultimate elemental moves being exclusive to Kantonian starters
-#define NUM_TMS 50	//keep this defined even if EXPANDED_TMSHMS is not!!
+#define NUM_TMS 120	//keep this defined even if EXPANDED_TMSHMS is not!!
 #define NUM_HMS 8	//keep this defined even if EXPANDED_TMSHMS is not!!
 #define NUM_MOVE_TUTORS 128 //keep this defined even if EXPANDED_MOVE_TUTORS is not!! If using DPE, set to 128.
 #define LAST_TOTAL_TUTOR_NUM 136 //Should be equal to (NUM_MOVE_TUTORS - 1) + 9. Must be set to an actual integer or the compilation will not work.
-#define TMS_BEFORE_HMS  //Uncomment this if you want the HMs to appear after the TMs in your bag
+//#define TMS_BEFORE_HMS  //Uncomment this if you want the HMs to appear after the TMs in your bag
 #define DELETABLE_HMS //Uncomment this if you want HMs to be deletable without the Move Deleter
 #define REUSABLE_TMS	//if defined, don't forget to give all TMs a Mystery byte of 1!
 
@@ -210,7 +210,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define BRIDGE_FIX //If this remains uncommented, the water battle background will only be loaded if the player's surfing sprite is shown
 #define MEGA_EVOLUTION_FEATURE //Comment this line to remove Mega Evolutions
 #define DYNAMAX_FEATURE //Comment this line to remove Dynamax and Raid Battles
-//#define TUTORIAL_BATTLES //Comment this line to remove Oak's Tutorial
+#define TUTORIAL_BATTLES //Comment this line to remove Oak's Tutorial
 #define TANOBY_RUINS_ENABLED //The Tanoby Ruins will be the only location Unown can be encountered
 #define ALTERING_CAVE_ENABLED //The Altering Cave from FR will work as intended provided the proper var is set
 #define SWEET_SCENT_ONLY_IN_CLEAR_WEATHER //Sweet Scent won't attract any wild Pokemon if the weather is not clear
@@ -318,37 +318,3 @@ enum //These vars need to be one after the other (hence the enum)
 //See "include/new/dexnav_config.h"
 
 #define INSTANT_TEXT // Enable Instant Text. Some Hack Authors might want this disabled because of the effects instant text has on pacing
-
-// New 
-#define BROCK_DEFEATED 0x200
-#define MISTY_DEFEATED 0x201
-#define SURGE_DEFEATED 0x202
-#define ERIKA_DEFEATED 0x203
-#define SABRINA_DEFEATED 0x204
-#define KOGA_DEFEATED 0x205
-#define BLAINE_DEFEATED 0x206
-#define GIOVANNI_DEFEATED 0x207
-#define CHOOSE_REGION_KANTO 0x208
-#define CHOOSE_REGION_JOHTO 0x209
-#define CHOOSE_REGION_HOENN 0x20A
-#define CHOOSE_REGION_SINNOH 0x20B
-#define CHOOSE_REGION_UNOVA 0x20C
-#define CHOOSE_REGION_KALOS 0x20D
-#define CHOOSE_REGION_ALOLA 0x20E
-#define CHOOSE_REGION_GALAR 0x20F
-
-#define BRENDAN_ROUTE1_ENCOUNTER 0x300
-
-#define FLAG_TURN_DAY 0x931
-#define FLAG_TURN_NIGHT 0x932
-
-#define FLAG_CUSTOM_TRAINERS 0x0AF
-#define FLAG_RECEIVED_POCKETPC 0x0B0
-#define FLAG_RECEIVED_TIMETURNER 0x0B1
-#define FLAG_RECEIVED_STATSCANNER 0x0B2
-
-#define SINGLE_BATTLE 0
-#define DOUBLE_BATTLE 1
-#define PLAYER_MAX_LEVEL 103
-#define ONE_BELOW_PLAYER_MAX_LEVEL 102
-#define TWO_BELOW_PLAYER_MAX_LEVEL 101

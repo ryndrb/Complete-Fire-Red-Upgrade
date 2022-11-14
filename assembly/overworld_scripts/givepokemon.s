@@ -8,7 +8,6 @@
 EventScript_GivePoke:
 	lock
 	faceplayer
-	givepokemoncustom SPECIES_CRESSELIA 100 0x0 MOVE_PSYCHIC MOVE_FUTURESIGHT MOVE_MOONBLAST 0x0 0xF 0x1 0x1F 0x1F 0x1F 0x1F 0x1F 0x1F 3 1
 	checkflag 0x301
 	if 0x0 _goto GivePlayerPokemon
 	release
@@ -24,3 +23,4 @@ GivePlayerPokemon:
 	waitfanfare
 	release
 	end
+	

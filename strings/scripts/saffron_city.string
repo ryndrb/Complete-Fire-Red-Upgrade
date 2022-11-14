@@ -1,0 +1,14 @@
+#org @gText_GiveDrainPunchQuestion
+Greetings!\pAre you interested in a free\nsample of Silph Corporation's new\lcreation?
+
+#org @gText_TooBad
+Really?\nThat's too bad then.\pCome back if  you change your\nmind.
+
+#org @gText_GiveDrainPunchAccept
+Great!\nHere it is.
+
+#org @gText_GiveSleepTalk
+Zzz... Hm?\nTaaake.. thissss...
+
+#org @gText_SleepTalkObtained
+Zzz...\nZzz...

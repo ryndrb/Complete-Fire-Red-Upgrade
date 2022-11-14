@@ -1,0 +1,14 @@
+#org @EventScript_LavenderTownMerchantFujiRescued
+Word is that a very strong\nPok\emon trainer rescued Mr. Fuji\lfrom Team Rocket inside the\lPok\emon Tower.\pYou're a trainer aren't you?\nDid you happen to know who that\lperson is?
+
+#org @gText_LavenderTownMerchantAdmit
+Really!?\p...\n...\pWhat you did was really admirable.
+
+#org @gText_LavenderTownMerchantSell
+Hmm...\pI haven't finalize these yet and\nsome are even malfunctioning.\pBut since it's you, I'll allow you\nto purchase some of my goods.\pWhat do you say?
+
+#org @gText_DoesntMatter
+Well, it doesn't matter.
+
+#org @gText_LavenderTownMerchantBye
+Alright, see ya!

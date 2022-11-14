@@ -5,15 +5,18 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ BROCK_DEFEATED 		,0x200
-.equ MISTY_DEFEATED 		,0x201
-.equ SURGE_DEFEATED 		,0x202
-.equ ERIKA_DEFEATED 		,0x203
-.equ SABRINA_DEFEATED 		,0x204
-.equ KOGA_DEFEATED 			,0x205
-.equ BLAINE_DEFEATED 		,0x206
-.equ GIOVANNI_DEFEATED 		,0x207
+.equ FLAG_OBTAIN_AERODACTYLITE, 0x0F9
+.equ FLAG_OBTAIN_GYARADOSITE, 0x0FA
+.equ FLAG_OBTAIN_MANECTITE, 0x0FB
+.equ FLAG_OBTAIN_ABOMASITE, 0x0FC
+.equ FLAG_OBTAIN_ALAKAZITE, 0x0FD
+.equ FLAG_OBTAIN_GENGARITE, 0x0FE
+.equ FLAG_OBTAIN_HOUNDOOMINITE, 0x0FF
+.equ FLAG_OBTAIN_STEELIXITE, 0x100
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brock
+@@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderBrock:
     lock
     setvar 0x8004 0x2
@@ -37,7 +40,6 @@ EventScript_0x816A5C5:
     clearflag 0x92
     setvar 0x8008 0x1
     call 0x81A6B18
-    setflag BROCK_DEFEATED
     goto EventScript_0x816A5F3
     end
 
@@ -52,10 +54,36 @@ EventScript_0x816A5F3:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Aerodactylite | Viridian City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyAerodactylite:
+    lock
+    faceplayer
+    checkflag 0x4B0
+    if 0x1 _goto EventScript_GiveAerodactylite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
 
+EventScript_GiveAerodactylite:
+    checkflag FLAG_OBTAIN_AERODACTYLITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_AERODACTYLITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_AERODACTYLITE
+    bufferpokemon 0x1 SPECIES_AERODACTYL
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_AERODACTYLITE
+    release
+    end
 
-
-
+@@@@@@@@@@@@@@@@@@@@@@
+@ Misty
+@@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderMisty:
     setvar 0x8004 0x3
     setvar 0x8005 0x2
@@ -76,7 +104,6 @@ EventScript_0x816AAD3:
     sethealingplace 0x4
     setvar 0x8008 0x2
     call 0x81A6B18
-    setflag MISTY_DEFEATED
     goto EventScript_0x816AAF9
     end
 
@@ -91,10 +118,36 @@ EventScript_0x816AAF9:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Gyaradosite | Cerulean City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyGyaradosite:
+    lock
+    faceplayer
+    checkflag 0x4B1
+    if 0x1 _goto EventScript_GiveGyaradosite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
 
+EventScript_GiveGyaradosite:
+    checkflag FLAG_OBTAIN_GYARADOSITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_GYARADOSITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_GYARADOSITE
+    bufferpokemon 0x1 SPECIES_GYARADOS
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_GYARADOSITE
+    release
+    end
 
-
-
+@@@@@@@@@@@@@@@@@@@@@@
+@ Surge
+@@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderSurge:
     setvar 0x8004 0x4
     setvar 0x8005 0x2
@@ -111,13 +164,12 @@ EventScript_0x816B97C:
     setvar 0x8005 0x1
     special 0x173
     checkflag 0x23B
-    if 0x0 _goto 0x816B9AB
+    if 0x0 _call 0x816B9AB
     clearflag 0xA0
     setflag 0x4B2
     setflag 0x822
     setvar 0x8008 0x3
     call 0x81A6B18
-    setflag SURGE_DEFEATED
     goto EventScript_0x816B9AF
     end
 
@@ -132,10 +184,36 @@ EventScript_0x816B9AF:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Manectite | Vermillion City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyManectite:
+    lock
+    faceplayer
+    checkflag 0x4B2
+    if 0x1 _goto EventScript_GiveManectite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
 
+EventScript_GiveManectite:
+    checkflag FLAG_OBTAIN_MANECTITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_MANECTITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_MANECTITE
+    bufferpokemon 0x1 SPECIES_MANECTRIC
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_MANECTITE
+    release
+    end
 
-
-
+@@@@@@@@@@@@@@@@@@@@@@
+@ Erika
+@@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderErika:
     setvar 0x8004 0x5
     setvar 0x8005 0x2
@@ -157,9 +235,9 @@ EventScript_0x816D0A0:
     clearflag 0x9E
     setflag 0x4B3
     setflag 0x823
+    clearflag 0x101
     setvar 0x8008 0x4
     call 0x81A6B18
-    setflag ERIKA_DEFEATED
     goto EventScript_0x816D0C6
     end
 
@@ -173,10 +251,101 @@ EventScript_0x816D0C6:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Abomasite | Celadon City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyAbomasite:
+    lock
+    faceplayer
+    checkflag 0x4B3
+    if 0x1 _goto EventScript_GiveAbomasite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
 
+EventScript_GiveAbomasite:
+    checkflag FLAG_OBTAIN_ABOMASITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_ABOMASITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_ABOMASITE
+    bufferpokemon 0x1 SPECIES_ABOMASNOW
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_ABOMASITE
+    release
+    end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Koga
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymLeaderKoga:
+    setvar 0x8004 0x6
+    setvar 0x8005 0x2
+    special 0x174
+    trainerbattle1 0x1 0x1A2 0x0 0x819832E 0x8198444 EventScript_0x816D580
+    checkflag 0x259
+    if 0x0 _goto 0x816D5A6
+    msgbox 0x8198481 MSG_KEEPOPEN
+    release
+    end
 
+EventScript_0x816D580:
+    setvar 0x8004 0x6
+    setvar 0x8005 0x1
+    special 0x173
+    clearflag 0x9F
+    setflag 0x4B4
+    setflag 0x824
+    setvar 0x8008 0x5
+    call 0x81A6B18
+    goto EventScript_0x816D5A6
+    end
 
+EventScript_0x816D5A6:
+    msgbox 0x819850E MSG_KEEPOPEN
+    checkitemspace 0x126 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816D5E7
+    giveitem_msg 0x819858F ITEM_TM06
+    setflag 0x259
+    msgbox 0x81985AB MSG_KEEPOPEN
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Gengarite | Fuschia City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyGengarite:
+    lock
+    faceplayer
+    setflag 0x4B4
+    checkflag 0x4B4
+    if 0x1 _goto EventScript_GiveGengarite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveGengarite:
+    checkflag FLAG_OBTAIN_GENGARITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_GENGARITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_GENGARITE
+    bufferpokemon 0x1 SPECIES_GENGAR
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_GENGARITE
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Sabrina
+@@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderSabrina:
     setvar 0x8004 0x7
     setvar 0x8005 0x2
@@ -200,7 +369,6 @@ EventScript_0x816EE0A:
     setflag 0x825
     setvar 0x8008 0x6
     call 0x81A6B18
-    setflag SABRINA_DEFEATED
     goto EventScript_0x816EE3D
     end
 
@@ -215,49 +383,36 @@ EventScript_0x816EE3D:
     release
     end
 
-
-
-
-
-EventScript_GymLeaderKoga:
-    setvar 0x8004 0x6
-    setvar 0x8005 0x2
-    special 0x174
-    trainerbattle1 0x1 0x1A2 0x0 0x819832E 0x8198444 EventScript_0x816D580
-    checkflag 0x259
-    if 0x0 _goto 0x816D5A6
-    msgbox 0x8198481 MSG_KEEPOPEN
-    release
-    end
-
-EventScript_0x816D580:
-    setvar 0x8004 0x6
-    setvar 0x8005 0x1
-    special 0x173
-    clearflag 0x9F
-    setflag 0x4B4
-    setflag 0x824
-    setvar 0x8008 0x5
-    call 0x81A6B18
-    setflag KOGA_DEFEATED
-    goto EventScript_0x816D5A6
-    end
-
-EventScript_0x816D5A6:
-    msgbox 0x819850E MSG_KEEPOPEN
-    checkitemspace 0x126 0x1
+@@@@@@@@@@@@@@@@@@@@@@
+@ Alakazite | Saffron City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyAlakazite:
+    lock
+    faceplayer
+    checkflag 0x4B5
+    if 0x1 _goto EventScript_GiveAlakazite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
     compare LASTRESULT 0x0
-    if 0x1 _goto 0x816D5E7
-    giveitem_msg 0x819858F ITEM_TM06
-    setflag 0x259
-    msgbox 0x81985AB MSG_KEEPOPEN
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveAlakazite:
+    checkflag FLAG_OBTAIN_ALAKAZITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_ALAKAZITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_ALAKAZITE
+    bufferpokemon 0x1 SPECIES_ALAKAZAM
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_ALAKAZITE
     release
     end
 
-
-
-
-
+@@@@@@@@@@@@@@@@@@@@@@
+@ Blaine
+@@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderBlaine:
     setvar 0x8004 0x8
     setvar 0x8005 0x2
@@ -280,7 +435,6 @@ EventScript_0x816DA06:
     clearflag 0x62
     setvar 0x8008 0x7
     call 0x81A6B18
-    setflag BLAINE_DEFEATED
     goto EventScript_0x816DA34
     end
 
@@ -295,9 +449,36 @@ EventScript_0x816DA34:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Houndoominite | Cinnabar Island | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyHoundoominite:
+    lock
+    faceplayer
+    checkflag 0x4B6
+    if 0x1 _goto EventScript_GiveHoundoominite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
 
+EventScript_GiveHoundoominite:
+    checkflag FLAG_OBTAIN_HOUNDOOMINITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_HOUNDOOMINITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_HOUNDOOMINITE
+    bufferpokemon 0x1 SPECIES_HOUNDOOM
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_HOUNDOOMINITE
+    release
+    end
 
-
+@@@@@@@@@@@@@@@@@@@@@@
+@ Goivanni
+@@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderGiovanni:
     setvar 0x8004 0xF
     setvar 0x8005 0x2
@@ -323,7 +504,6 @@ EventScript_0x8169F04:
     setvar 0x4054 0x3
     setvar 0x8008 0x8
     call 0x81A6B18
-    setflag GIOVANNI_DEFEATED
     goto 0x8169F2F
     end
 
@@ -336,4 +516,35 @@ EventScript_0x8169F2F:
     setflag 0x298
     msgbox 0x818F695 MSG_KEEPOPEN
     release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Steelixite | Cinnabar Island | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuySteelixite:
+    lock
+    faceplayer
+    checkflag 0x4B7
+    if 0x1 _goto EventScript_GiveSteelixite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveSteelixite:
+    checkflag FLAG_OBTAIN_STEELIXITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_STEELIXITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_STEELIXITE
+    bufferpokemon 0x1 SPECIES_STEELIX
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_STEELIXITE
+    release
+    end
+
+Obtained:
+    goto 0x816A67F
     end

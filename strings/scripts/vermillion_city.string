@@ -1,0 +1,29 @@
+#org @gText_GenericDialogue
+I love fishing so much!
+
+#org @gText_EventScript_GiveEviolite
+Hmm?\nA Pok\emon trainer...
+
+#org @gText_EventScript_GiveEviolite2
+Oh!\pI fished up this strange rock\nyesterday during my weekly fishing\lsession.\pIt's of no use to me, so I'll let you\nhave it.
+
+#org @gText_EventScript_GiveEviolite3
+I bet it's something useful, huh?
+
+#org @gText_EventScript_PowerItemsSeller
+Need to boost your Pok\emon's\ntraining?\pGive these a try!\pIt's how I made my fortune!
+
+#org @gText_PowerItemsSelleComeAgain
+Alright then, have a good one!
+
+#org @gText_SomethingHere
+[BLACK]([GREEN][PLAYER][BLACK] feels there's something\nstrange here.)
+
+#org @gText_MewString
+[BLACK]Meeeeew!
+
+#org @gText_VermillionTMMerchantGreet
+[BLACK]Hi there!\pI sell technical machines.\pAny of this interest you?
+
+#org @gText_VermillionTMMerchantBye
+[BLACK]Alright then, see ya!

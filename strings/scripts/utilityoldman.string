@@ -23,7 +23,7 @@ Your Pok\emon's nature is now\nchanged!
 Which nature would you like to\nchange to?
 
 #org @gText_EventScript_NoMistyBadge
-I'm sorry, but I can't change\nyour Pok\emon's nature right\lnow. Comeback when you've at least\ldefeated Gym Leader: [GREEN]Misty[BLUE]. 
+I'm sorry, but I can't change\nyour Pok\emon's nature right\lnow.\pComeback when you've at least\ldefeated Gym Leader: [GREEN]Misty[BLUE]. 
 
 #org @gText_WhichPokemonToChangeNickname
 Which Pok\emon's nickname should be\nchanged?
@@ -53,7 +53,7 @@ Changed to its second ability!
 Changed to its hidden ability!
 
 #org @gText_EventScript_NoSurgeBadge
-I'm sorry, but I can't change\nyour Pok\emon's ability right\lnow. Comeback when you've at least\ldefeated Gym Leader: [GREEN]Surge[BLUE]. 
+I'm sorry, but I can't change\nyour Pok\emon's ability right\lnow.\pComeback when you've at least\ldefeated Gym Leader: [GREEN]Surge[BLUE]. 
 
 #org @gText_EventScript_ComeAgain 
 All right, see you then!

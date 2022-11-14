@@ -3275,6 +3275,32 @@ extern const u8 REGION_KALOS[];
 extern const u8 REGION_ALOLA[];
 extern const u8 REGION_GALAR[];
 
+// Game Corner Mega Stones
+extern const u8 MEGA_STONE_BLASTOISINITE[];
+extern const u8 MEGA_STONE_BLAZIKENITE[];
+extern const u8 MEGA_STONE_CHARIZARDITE_X[];
+extern const u8 MEGA_STONE_CHARIZARDITE_Y[];
+extern const u8 MEGA_STONE_GARCHOMPITE[];
+extern const u8 MEGA_STONE_METAGROSSITE[];
+extern const u8 MEGA_STONE_SALAMENCITE[];
+extern const u8 MEGA_STONE_SCEPTILITE[];
+extern const u8 MEGA_STONE_SWAMPERTITE[];
+extern const u8 MEGA_STONE_TYRANITARITE[];
+extern const u8 MEGA_STONE_VENUSAURITE[];
+
+// Game Corner Pseudo
+extern const u8 PSEUDO_DRATINI[];
+extern const u8 PSEUDO_LARVITAR[];
+extern const u8 PSEUDO_BAGON[];
+extern const u8 PSEUDO_BELDUM[];
+extern const u8 PSEUDO_GIBLE[];
+extern const u8 PSEUDO_DEINO[];
+extern const u8 PSEUDO_LARVESTA[];
+extern const u8 PSEUDO_GOOMY[];
+extern const u8 PSEUDO_JANGMOO[];
+extern const u8 PSEUDO_DREEPY[];
+extern const u8 PSEUDO_SNOM[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3493,6 +3519,36 @@ static const u8* ChooseStarterRegion[] = {
 	REGION_GALAR,
 };
 
+// Game Corner Mega Stones
+static const u8* GameCornerMegaStones[] = {
+	MEGA_STONE_BLASTOISINITE,
+	MEGA_STONE_BLAZIKENITE,
+	MEGA_STONE_CHARIZARDITE_X,
+	MEGA_STONE_CHARIZARDITE_Y,
+	MEGA_STONE_GARCHOMPITE,
+	MEGA_STONE_METAGROSSITE,
+	MEGA_STONE_SALAMENCITE,
+	MEGA_STONE_SCEPTILITE,
+	MEGA_STONE_SWAMPERTITE,
+	MEGA_STONE_TYRANITARITE,
+	MEGA_STONE_VENUSAURITE,
+};
+
+// Game Corner Pseudo
+static const u8* GameCornerPseudo[] = {
+	PSEUDO_DRATINI,
+	PSEUDO_LARVITAR,
+	PSEUDO_BAGON,
+	PSEUDO_BELDUM,
+	PSEUDO_GIBLE,
+	PSEUDO_DEINO,
+	PSEUDO_LARVESTA,
+	PSEUDO_GOOMY,
+	PSEUDO_JANGMOO,
+	PSEUDO_DREEPY,
+	PSEUDO_SNOM,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
@@ -3512,6 +3568,8 @@ const struct ScrollingMulti gScrollingSets[] =
 	{EightBadgeTutorMoves, ARRAY_COUNT(EightBadgeTutorMoves)},//14
 	{UtilityOldManTools, ARRAY_COUNT(UtilityOldManTools)},//15
 	{ChooseStarterRegion, ARRAY_COUNT(ChooseStarterRegion)},//16
+	{GameCornerMegaStones, ARRAY_COUNT(GameCornerMegaStones)},//17
+	{GameCornerPseudo, ARRAY_COUNT(GameCornerPseudo)},//18
 };
 
 //Link number of opts shown at once to the box height

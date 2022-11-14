@@ -5,25 +5,18 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ BROCK_DEFEATED 		,0x200
-.equ MISTY_DEFEATED 		,0x201
-.equ SURGE_DEFEATED 		,0x202
-.equ ERIKA_DEFEATED 		,0x203
-.equ SABRINA_DEFEATED 		,0x204
-.equ KOGA_DEFEATED 			,0x205
-.equ BLAINE_DEFEATED 		,0x206
-.equ GIOVANNI_DEFEATED 		,0x207
+.equ FLAG_DEFEATED_BROCK, 0x4B0
+.equ FLAG_DEFEATED_MISTY, 0x4B1   
+.equ FLAG_DEFEATED_LT_SURGE, 0x4B2       
+.equ FLAG_DEFEATED_ERIKA, 0x4B3 
+.equ FLAG_DEFEATED_KOGA, 0x4B4           
+.equ FLAG_DEFEATED_SABRINA, 0x4B5      
+.equ FLAG_DEFEATED_BLAINE, 0x4B6        
+.equ FLAG_DEFEATED_LEADER_GIOVANNI, 0x4B7   
 
 EventScript_UtilityOldMan: @will probably add more? inspired by inclement emerald
-    @setflag BROCK_DEFEATED
-	@setflag MISTY_DEFEATED
-	@setflag SURGE_DEFEATED
-	@setflag ERIKA_DEFEATED
-	@setflag SABRINA_DEFEATED
-	@setflag KOGA_DEFEATED
-	@setflag BLAINE_DEFEATED 	
-	@setflag GIOVANNI_DEFEATED 	
     lock
+	faceplayer
     msgbox gText_EventScript_UtilityOldManGreetings MSG_KEEPOPEN
     setvar 0x8000 0xE
     setvar 0x8001 0x5
@@ -74,7 +67,7 @@ EventScript_ThisIsAnEggNameRater:
 @ Move Tutor
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_MoveTutor:
-	checkflag BROCK_DEFEATED
+	checkflag FLAG_DEFEATED_BROCK
 	if 0x0 _goto EventScript_NoBrockBadge
 	msgbox gText_SelectWhichBadge MSG_KEEPOPEN
 	goto EventScript_SelectBadge
@@ -119,7 +112,7 @@ EventScript_FirstBadgeTutorMoves:
 	end
 
 EventScript_SecondBadgeTutorMoves:
-	checkflag MISTY_DEFEATED
+	checkflag FLAG_DEFEATED_MISTY
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
 	setvar 0x8000 0x7
@@ -144,7 +137,7 @@ EventScript_SecondBadgeTutorMoves:
 	end
 
 EventScript_ThirdBadgeTutorMoves:
-	checkflag SURGE_DEFEATED
+	checkflag FLAG_DEFEATED_LT_SURGE
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
 	setvar 0x8000 0x8
@@ -171,7 +164,7 @@ EventScript_ThirdBadgeTutorMoves:
 	end
 
 EventScript_FourthBadgeTutorMoves:
-	checkflag ERIKA_DEFEATED
+	checkflag FLAG_DEFEATED_ERIKA
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
 	setvar 0x8000 0x9
@@ -199,7 +192,7 @@ EventScript_FourthBadgeTutorMoves:
 	end
 
 EventScript_FifthBadgeTutorMoves:
-	checkflag SABRINA_DEFEATED
+	checkflag FLAG_DEFEATED_SABRINA
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
 	setvar 0x8000 0xA
@@ -219,7 +212,7 @@ EventScript_FifthBadgeTutorMoves:
 	end
 
 EventScript_SixthBadgeTutorMoves:
-	checkflag KOGA_DEFEATED
+	checkflag FLAG_DEFEATED_KOGA
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
 	setvar 0x8000 0xB
@@ -238,7 +231,7 @@ EventScript_SixthBadgeTutorMoves:
 	end
 
 EventScript_SeventhBadgeTutorMoves:
-	checkflag BLAINE_DEFEATED
+	checkflag FLAG_DEFEATED_BLAINE
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
 	setvar 0x8000 0xC
@@ -263,7 +256,7 @@ EventScript_SeventhBadgeTutorMoves:
 	end
 
 EventScript_EightBadgeTutorMoves:	
-	checkflag GIOVANNI_DEFEATED
+	checkflag FLAG_DEFEATED_LEADER_GIOVANNI
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
 	setvar 0x8000 0xD
@@ -653,7 +646,7 @@ EventScript_DontHaveThisBadgeYet:
 @ Nature Changer
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_NatureChanger:
-	checkflag MISTY_DEFEATED
+	checkflag FLAG_DEFEATED_MISTY
 	if 0x0 _goto EventScript_NoMistyBadge
     msgbox gText_NatureChangerQuestion MSG_YESNO 
 	compare LASTRESULT 0x1
@@ -706,7 +699,7 @@ EventScript_ThisIsAnEggNatureChanger:
 @ Ability Changer
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_AbilityChanger:
-	checkflag SURGE_DEFEATED
+	checkflag FLAG_DEFEATED_LT_SURGE
 	if 0x0 _goto EventScript_NoSurgeBadge
 	msgbox gText_AbilityChangerQuestion MSG_YESNO
 	compare LASTRESULT 0x1

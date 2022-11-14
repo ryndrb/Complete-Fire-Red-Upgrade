@@ -2,11 +2,8 @@
 
 ## still testing scripts
 # PALLET TOWN
-npc 3 0 3 EventScript_AbilityChanger
-npc 3 0 4 EventScript_NatureChanger
-npc 3 0 5 EventScript_GivePoke
-npc 3 0 6 EventScript_TrainerBattle
-npc 3 0 7 EventScript_UtilityOldMan
+npc 3 0 3 EventScript_LanceMegaRing
+npc 3 0 1 EventScript_AmuletCoin
 tile 4 1 0 EventScript_ChooseStarterRegion
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
 npc 4 3 2 EventScript_ProfOakAidLabStatScanner
@@ -14,9 +11,218 @@ npc 4 3 4 EventScript_StarterGrass
 npc 4 3 5 EventScript_StarterWater
 npc 4 3 6 EventScript_StarterFire
 
+# VIRIDIAN CITY
+npc 3 1 2 EventScript_ViridianSwordsDance
+npc 3 1 9 EventScript_WorkUp
+npc 3 1 10 EventScript_Aggronite
+npc 5 3 0 EventScript_PokeMartMain
+npc 5 3 3 EventScript_ViridianCity
+npc 5 4 4 EventScript_UtilityOldMan
+npc 5 4 5 EventScript_PokemonCenterClerk
+npc 6 2 2 EventScript_GymGuyAerodactylite
+npc 5 1 9 EventScript_GymGuySteelixite
+
+# VIRIDIAN FOREST
+npc 1 0 10 EventScript_BigRoot
+npc 1 0 11 EventScript_ShellBell
+npc 1 0 12 EventScript_GrassKnot
+npc 1 0 13 EventScript_Infestation
+npc 1 0 14 EventScript_StrengthBoulder
+npc 1 0 15 EventScript_StrengthBoulder
+npc 1 0 16 EventScript_Pinsirite
+
+# PEWTER CITY
+npc 3 2 3 EventScript_PewterRoostGuy
+npc 3 2 7 EventScript_StruggleBug
+npc 6 1 5 EventScript_LanceMegaRing
+npc 6 3 2 EventScript_PokeMartMain
+npc 6 3 3 EventScript_ViridianCity
+npc 6 5 7 EventScript_PokemonCenterClerk
+npc 6 5 8 EventScript_UtilityOldMan
+
+# MT MOON
+npc 1 3 11 EventScript_Incinerate
+
+# CERULEAN CITY
+npc 3 3 12 EventScript_SandileGift
+npc 7 7 0 EventScript_PokeMartMain
+npc 7 7 3 EventScript_CeruleanCity
+npc 7 3 7 EventScript_PokemonCenterClerk
+npc 7 3 8 EventScript_UtilityOldMan
+npc 7 5 3 EventScript_GymGuyGyaradosite
+npc 7 8 1 EventScript_CeruleanTMMerchant
+
+# POWER PLANT
+npc 1 95 8 EventScript_Ampharosite
+
+# ROCK TUNNEL
+npc 1 81 10 EventScript_FlashCannon
+npc 1 81 11 EventScript_StrengthBoulder
+npc 1 81 12 EventScript_StrengthBoulder
+npc 1 82 26 EventScript_Sablenite
+
+# LAVENDER TOWN
+npc 3 4 1 EventScript_LavenderTownMerchant
+npc 8 2 6 EventScript_ShadowClaw
+npc 8 5 0 EventScript_PokeMartMain
+npc 8 5 4 EventScript_LavenderTown
+npc 8 0 5 EventScript_PokemonCenterClerk
+npc 8 0 6 EventScript_UtilityOldMan
+
+# VERMILLION CITY
+npc 3 5 2 EventScript_PowerItemsSeller
+tile 3 5 4 EventScript_MewUnderTruckEncounter
+npc 9 0 1 EventScript_VermillionTMMerchant
+npc 9 4 1 EventScript_Eviolite
+npc 9 5 0 EventScript_PokeMartMain
+npc 9 5 3 EventScript_VermillionCity
+npc 9 1 7 EventScript_PokemonCenterClerk
+npc 9 1 8 EventScript_UtilityOldMan
+npc 9 6 3 EventScript_GymGuyManectite
+
+# CELADON CITY
+npc 1 45 9 EventScript_DarkPulse
+npc 3 6 15 EventScript_Waterfall
+npc 10 1 1 EventScript_PokeMartMain
+npc 10 1 2 EventScript_CeladonCity
+npc 10 2 0 EventScript_StorePokeBalls
+npc 10 3 2 EventScript_StoreTM
+npc 10 4 2 EventScript_StoreGalarItems
+npc 10 10 0 EventScript_DazzlingGleam
+npc 10 12 4 EventScript_PokemonCenterClerk
+npc 10 12 5 EventScript_UtilityOldMan
+npc 10 15 2 EventScript_GameCornerPseudo
+npc 10 15 3 EventScript_GameCornerMegaStones
+npc 10 15 4 EventScript_GameCornerTM
+npc 10 16 11 EventScript_GymGuyAbomasite
+
+# FUSCHIA CITY
+npc 3 7 16 EventScript_RockSlide
+npc 10 1 0 EventScript_PokeMartMain
+npc 10 1 3 EventScript_FuschiaCity
+npc 11 5 4 EventScript_PokemonCenterClerk
+npc 11 5 5 EventScript_UtilityOldMan
+npc 11 9 1 EventScript_FuschiaSubstitute
+npc 11 3 7 EventScript_GymGuyGengarite
+
+# SAFARI ZONE
+npc 1 64 4 EventScript_Absolite
+npc 1 65 3 EventScript_Kangaskhanite
+npc 1 71 1 EventScript_WildCharge
+
+# SAFFRON CITY
+npc 1 47 0 EventScipt_SaffronDrainPunch
+npc 1 53 11 EventScript_TrickRoom
+npc 14 5 0 EventScript_PokeMartMain
+npc 14 5 3 EventScript_SaffronCity
+npc 14 6 6 EventScript_PokemonCenterClerk
+npc 14 6 7 EventScript_UtilityOldMan
+npc 14 8 1 EventScript_SaffronSleepTalk
+npc 14 3 8 EventScript_GymGuyAlakazite
+
+# SEAFOAM ISLAND
+npc 1 83 3 EventScript_AuroraVeil
+npc 1 86 6 EventScript_Glalilite
+npc 3 38 11 EventScript_Avalanche
+
+# CINNABAR ISLAND
+npc 1 62 6 EventScript_StoneEdge
+npc 3 8 4 EventScript_CinnabarExplosion
+npc 12 2 3 EventScript_Cameruptite
+npc 12 0 8 EventScript_GymGuyHoundoominite
+
 # ROUTE 1
+npc 3 19 3 EventScript_SootheBell
+npc 3 19 4 EventScript_SludgeWave
 tile 3 19 0 EvenntScript_Route1_Brendan1
 tile 3 19 1 EvenntScript_Route1_Brendan2
 
-# VIRIDIAN CITY
-npc 5 4 4 EventScript_UtilityOldMan
+# ROUTE 2
+npc 3 20 7 EventScript_BindingBand
+npc 15 1 2 EventScript_SmackDown
+
+# ROUTE 3
+npc 3 21 0 EventScript_TimburrGift
+
+# ROUTE 4
+npc 3 22 7 EventScript_Snarl
+npc 16 0 6 EventScript_PokemonCenterClerk
+npc 16 0 7 EventScript_UtilityOldMan
+
+# ROUTE 5
+npc 3 23 0 EventScript_FlameCharge
+npc 3 23 1 EventScript_Mawilite
+
+# ROUTE 6
+npc 1 31 0 EventScipt_Route6GyroBall
+npc 1 32 0 EventScript_Route6Payback
+npc 3 24 6 EventScript_LifeOrb
+
+# ROUTE 7
+npc 3 25 1 EventScript_BerryMaster
+npc 3 25 2 EventScript_Brine
+
+# ROUTE 8
+npc 3 26 15 EventScript_Route8XScissor
+
+# ROUTE 9
+npc 3 27 12 EventScript_StrengthBoulder
+npc 3 27 13 EventScript_StrengthBoulder
+npc 3 27 14 EventScript_Banettite
+npc 3 27 15 EventScript_Medichamite
+
+# ROUTE 10
+npc 3 28 10 EventScript_Psyshock
+npc 3 28 11 EventScript_StrengthBoulder
+npc 3 28 12 EventScript_StrengthBoulder
+npc 21 0 5 EventScript_PokemonCenterClerk
+npc 21 0 6 EventScript_UtilityOldMan
+npc 21 0 7 EventScript_Route10RockSmash
+
+# ROUTE 11
+# ROUTE 12
+npc 3 30 14 EventScript_Defog
+npc 3 30 15 EventScript_Heracronite
+
+# ROUTE 13
+npc 3 31 11 EventScript_ToxicOrb
+npc 3 31 12 EventScript_FlameOrb
+
+# ROUTE 14
+npc 3 32 12 EventScript_Acrobatics
+npc 3 32 13 EventScript_Scizorite
+
+# ROUTE 15
+npc 3 33 14 EventScript_WillOWisp
+npc 24 1 1 EventScript_Pidgeotite
+
+# ROUTE 16
+npc 3 34 10 EventScript_ProtectivePads
+
+# ROUTE 17
+npc 3 35 10 EventScript_PoisonJab
+npc 3 35 11 EventScript_Lopunite
+
+# ROUTE 18
+npc 26 1 1 EventScript_HoennWeatherGuy
+
+# ROUTE 19
+npc 3 37 12 EventScript_DreamEater
+npc 3 37 13 EventScript_Lucarionite
+
+# ROUTE 20
+npc 3 38 12 EventScript_Sharpedonite
+
+# ROUTE 21
+npc 3 39 6 EventScript_ZoomLens
+npc 3 39 7 EventScript_DragonPulse
+npc 3 39 8 EventScript_Audinite
+
+# ROUTE 22
+npc 3 41 1 EventScript_FalseSwipe
+
+# ROUTE 23
+# ROUTE 24
+npc 3 43 8 EventScript_Slowbronite
+
+# ROUTE 25

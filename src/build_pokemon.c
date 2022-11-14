@@ -44,7 +44,8 @@
 #include "Tables/trainers_with_evs_table.h"
 
 #include "Tables/duplicate_abilities.h"
-#include "Tables/custom_trainers.h"
+#include "Tables/Trainer_Tables/important_trainers.h"
+#include "Tables/Trainer_Tables/trainer_parties.h"
 
 /*
 build_pokemon.c
@@ -179,6 +180,9 @@ static void PostProcessTeam(struct Pokemon* party, struct TeamBuilder* builder);
 static void TryShuffleMovesForCamomons(struct Pokemon* party, u8 tier, u16 trainerId);
 static u8 GetPartyIdFromPartyData(struct Pokemon* mon);
 static u8 GetHighestMonLevel(const struct Pokemon* const party);
+static void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum);
+static void SetEVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
+static void SetIVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
 
 #ifdef OPEN_WORLD_TRAINERS
 
@@ -570,15 +574,15 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 {
 	u32 i, j, nameHash;
 	u8 monsCount, baseIV, setMonGender, trainerNameLengthOddness, minPartyLevel, maxPartyLevel, modifiedAveragePlayerLevel, highestPlayerLevel, canEvolveMon, levelScaling;
-	struct Trainer* trainer;
+	const struct Trainer* trainer;
 	u32 otid = 0;
 	u8 otIdType = OT_ID_RANDOM_NO_SHINY;
 
 	// Custom Trainer
 	if(FlagGet(FLAG_CUSTOM_TRAINERS) && side == B_SIDE_OPPONENT){
-		for(u8 i = 0; i < gNumCustomTrainerBattles; i++){
-			if(trainerId == gCustomTrainerBattles[i].otId)
-				return BuildCustomTrainerParty(party, trainerId, gCustomTrainerBattles[i]);
+		for(u8 i = 0; i < gNumImportantTrainers; i++){
+			if(trainerId == gImportantTrainers[i].otId)
+				return BuildCustomTrainerParty(party, trainerId, gImportantTrainers[i]);
 		}
 	}
 
@@ -595,7 +599,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 			ZeroEnemyPartyMons();
 
 		//Set up necessary data
-		trainer = &gTrainers[trainerId];
+		trainer = GET_TRAINER_PTR(trainerId);
 
 		//Choose Trainer IVs
 		#ifdef VAR_GAME_DIFFICULTY
@@ -782,14 +786,31 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 					case PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM:
 						MAKE_POKEMON(trainer->party.ItemCustomMoves);
 						SET_MOVES(trainer->party.ItemCustomMoves);
+						SetAbilityFromEnum(&party[i], trainer->party.ItemCustomMoves[i].ability, trainer->party.ItemCustomMoves[i].nature);
 						SetMonData(&party[i], MON_DATA_HELD_ITEM, &trainer->party.ItemCustomMoves[i].heldItem);
+						SetEVSpread(&party[i], 
+							trainer->party.ItemCustomMoves[i].evSpread[0],
+							trainer->party.ItemCustomMoves[i].evSpread[1],
+							trainer->party.ItemCustomMoves[i].evSpread[2],
+							trainer->party.ItemCustomMoves[i].evSpread[3],
+							trainer->party.ItemCustomMoves[i].evSpread[4],
+							trainer->party.ItemCustomMoves[i].evSpread[5]
+							);		
+						SetIVSpread(&party[i], 
+							trainer->party.ItemCustomMoves[i].ivSpread[0],
+							trainer->party.ItemCustomMoves[i].ivSpread[1],
+							trainer->party.ItemCustomMoves[i].ivSpread[2],
+							trainer->party.ItemCustomMoves[i].ivSpread[3],
+							trainer->party.ItemCustomMoves[i].ivSpread[4],
+							trainer->party.ItemCustomMoves[i].ivSpread[5]
+							);													
 						break;
 				}
 			}
 
 			//Assign Trainer information to mon
 			u8 otGender = trainer->gender;
-			const u8* name = TryGetRivalNameByTrainerClass(gTrainers[trainerId].trainerClass);
+			const u8* name = TryGetRivalNameByTrainerClass(GET_TRAINER(trainerId).trainerClass);
 			if (name == NULL) //Not Rival or Rival name isn't tied to Trainer class
 				SetMonData(&party[i], MON_DATA_OT_NAME, &trainer->trainerName);
 			else
@@ -804,7 +825,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 			//Give EVs
 			#ifdef TRAINERS_WITH_EVS
 			u8 spreadNum = trainer->party.NoItemCustomMoves[i].iv;
-			if (gTrainers[trainerId].partyFlags == (PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM)
+			if (GET_TRAINER(trainerId).partyFlags == (PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM)
 			&& trainer->aiFlags > 1
 			#ifdef VAR_GAME_DIFFICULTY
 			&& gameDifficulty != OPTIONS_EASY_DIFFICULTY
@@ -966,7 +987,7 @@ static bool8 IsPseudoBossTrainerPartyForLevelScaling(u8 trainerPartyFlags)
 
 static bool8 IsBossTrainerClassForLevelScaling(u16 trainerId)
 {
-	switch (gTrainers[trainerId].trainerClass) {
+	switch (GET_TRAINER(trainerId).trainerClass) {
 		case CLASS_LEADER:
 		case CLASS_ELITE_4:
 		case CLASS_CHAMPION:
@@ -4034,6 +4055,50 @@ void PokeSum_PrintAbilityNameAndDesc(void)
     //                              sMonSummaryScreen->summary.abilityDescStrBuf);
 }
 
+static void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum) {
+	switch(abilityNum) {
+		case Ability_Hidden:
+		GIVE_HIDDEN_ABILITY:
+			GiveMonNatureAndAbility(mon, natureNum, 0xFF, FALSE, TRUE, FALSE); //Give Hidden Ability
+			break;
+		case Ability_1:
+		case Ability_2:
+			GiveMonNatureAndAbility(mon, natureNum, MathMin(1, abilityNum - 1), FALSE, TRUE, FALSE);
+			break;
+		case Ability_Random_1_2:
+		GIVE_RANDOM_ABILITY:
+			GiveMonNatureAndAbility(mon, natureNum, Random() % 2, FALSE, TRUE, FALSE);
+			break;
+		case Ability_RandomAll: ;
+			u8 random = Random() % 3;
+
+			if (random == 2)
+				goto GIVE_HIDDEN_ABILITY;
+
+			goto GIVE_RANDOM_ABILITY;
+	}
+}
+
+static void SetEVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd){
+	struct Pokemon* party = mon;
+	party[0].hpEv = hp;	
+	party[0].atkEv = atk;	
+	party[0].defEv = def;
+	party[0].spAtkEv = spa;
+	party[0].spDefEv = spdef;
+	party[0].spdEv = spd;
+}
+
+static void SetIVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd){
+	struct Pokemon* party = mon;
+	party[0].hpIV = hp;	
+	party[0].attackIV = atk;	
+	party[0].defenseIV = def;
+	party[0].spAttackIV = spa;
+	party[0].spDefenseIV = spdef;
+	party[0].speedIV = spd;
+}
+
 void ChangeMonNature(void){
 	struct Pokemon* mon = &gPlayerParty[Var8004];
 	u8 nature = Var8005;
@@ -4089,5 +4154,5 @@ void ChangeMonAbility(void){
 }
 
 void MoveTutor(void){
-	
+ 
 }
