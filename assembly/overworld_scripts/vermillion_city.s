@@ -47,7 +47,7 @@ EventScript_PowerItemsSeller:
     release
     end
 
-.align 2
+.align 1
 EventScript_PowerItemsList:
     .hword ITEM_POWER_ANKLET
     .hword ITEM_POWER_BAND
@@ -117,7 +117,7 @@ EventScript_VermillionTMMerchant:
     release
     end
 
-.align 2
+.align 1
 EventScript_VermillionTMMerchantList:
     .hword ITEM_TM57
     .hword ITEM_TM58

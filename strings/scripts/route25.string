@@ -1,0 +1,8 @@
+#org @gText_RotomEncounter
+[BLACK]Inside the machine...\nThere appears to be a Pok\emon?...\pThe Pok\emon appears as if it will\ncome out. Want to thump the machine?
+
+#org @gText_PlayerThumpMachine
+[BLACK]([GREEN][PLAYER][BLACK] thump the machine.)
+
+#org @gText_RotomAppears
+[BLACK]!!!

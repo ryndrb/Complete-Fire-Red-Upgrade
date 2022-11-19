@@ -81,7 +81,7 @@ EventScript_CeruleanTMMerchant:
     release
     end
 
-.align 2
+.align 1
 EventScript_CeruleanTMMerchantList:
     .hword ITEM_TM42
     .hword ITEM_TM56

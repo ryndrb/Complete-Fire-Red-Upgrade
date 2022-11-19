@@ -18,7 +18,7 @@ EventScript_StorePokeBalls:
     release
     end
 
-.align 2
+.align 1
 EventScript_StorePokeBallsList:
     .hword ITEM_CHERISH_BALL
     .hword ITEM_DIVE_BALL
@@ -54,7 +54,7 @@ EventScript_StoreTM:
     release
     end
 
-.align 2
+.align 1
 EventScript_StoreTMList:
     .hword ITEM_TM10
     .hword ITEM_TM14
@@ -80,7 +80,7 @@ EventScript_GameCornerTM:
     release
     end
 
-.align 2
+.align 1
 EventScript_GameCornerTMList:
     .hword ITEM_TM35
     .hword ITEM_TM36
@@ -518,7 +518,7 @@ EventScript_StoreGalarItems:
     release
     end
 
-.align 2
+.align 1
 EventScript_StoreGalarItemsList:
     .hword ITEM_RED_NECTAR
     .hword ITEM_YELLOW_NECTAR

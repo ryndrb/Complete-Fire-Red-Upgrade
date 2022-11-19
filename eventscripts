@@ -2,7 +2,7 @@
 
 ## still testing scripts
 # PALLET TOWN
-npc 3 0 3 EventScript_LanceMegaRing
+npc 3 0 3 EventScript_RotomEncounter
 npc 3 0 1 EventScript_AmuletCoin
 tile 4 1 0 EventScript_ChooseStarterRegion
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
@@ -164,6 +164,7 @@ npc 3 25 2 EventScript_Brine
 
 # ROUTE 8
 npc 3 26 15 EventScript_Route8XScissor
+npc 3 26 16 EventScript_RockPolish
 
 # ROUTE 9
 npc 3 27 12 EventScript_StrengthBoulder
@@ -226,3 +227,4 @@ npc 3 41 1 EventScript_FalseSwipe
 npc 3 43 8 EventScript_Slowbronite
 
 # ROUTE 25
+sign 30 0 1 EventScript_RotomEncounter

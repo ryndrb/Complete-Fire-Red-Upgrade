@@ -47,6 +47,7 @@ EventScript_LavenderTownMerchantExclaim:
     .byte exclaim
     .byte end_m
 
+.align 1
 EventScript_LavenderTownMerchantList:
     .hword ITEM_ASSAULT_VEST
     .hword ITEM_DESTINY_KNOT
