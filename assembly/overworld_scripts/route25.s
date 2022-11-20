@@ -24,7 +24,7 @@ EventScript_RotomEncounter:
     pause 30
     msgbox gText_RotomAppears MSG_KEEPOPEN
     cry SPECIES_ROTOM 0x0
-    wildbattle SPECIES_ROTOM 5 0x0
+    wildbattle SPECIES_ROTOM 25 0x0
     release
     end
 

@@ -2,7 +2,7 @@
 
 ## still testing scripts
 # PALLET TOWN
-npc 3 0 3 EventScript_RotomEncounter
+npc 3 0 3 EventScript_TrainerBattle
 npc 3 0 1 EventScript_AmuletCoin
 tile 4 1 0 EventScript_ChooseStarterRegion
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
@@ -23,6 +23,7 @@ npc 6 2 2 EventScript_GymGuyAerodactylite
 npc 5 1 9 EventScript_GymGuySteelixite
 
 # VIRIDIAN FOREST
+npc 1 0 3 EventScript_Venoshock
 npc 1 0 10 EventScript_BigRoot
 npc 1 0 11 EventScript_ShellBell
 npc 1 0 12 EventScript_GrassKnot

@@ -247,10 +247,10 @@ struct TrainerMonItemCustomMoves
     u16 iv;
     u16 lvl;
     u16 species;
-	u8 ability;
-	u8 nature;
-	u8 ivSpread[6];
-	u8 evSpread[6];
+	u8 	ability;
+	u8 	nature;
+	u8 	ivSpread[6];
+	u8 	evSpread[6];
     u16 heldItem;
     u16 moves[4];
 };
