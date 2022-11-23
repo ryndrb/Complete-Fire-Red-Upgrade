@@ -2,7 +2,7 @@
 
 ## still testing scripts
 # PALLET TOWN
-npc 3 0 3 EventScript_TrainerBattle
+npc 3 0 3 EventScript_GivePoke
 npc 3 0 1 EventScript_AmuletCoin
 tile 4 1 0 EventScript_ChooseStarterRegion
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
@@ -33,6 +33,15 @@ npc 1 0 15 EventScript_StrengthBoulder
 npc 1 0 16 EventScript_Pinsirite
 
 # PEWTER CITY
+npc 3 2 4 EventScript_0x165B9D
+tile 3 2 0 EventScript_0x165D8E 
+tile 3 2 1 EventScript_0x165DA6
+tile 3 2 2 EventScript_0x165DA6
+tile 3 2 4 EventScript_0x1662B7
+tile 3 2 5 EventScript_0x1662C4
+tile 3 2 6 EventScript_0x1662D1
+npc 3 2 6 EventScript_0x1662A9
+npc 3 2 1 EventScript_0x16607E
 npc 3 2 3 EventScript_PewterRoostGuy
 npc 3 2 7 EventScript_StruggleBug
 npc 6 1 5 EventScript_LanceMegaRing
@@ -222,6 +231,12 @@ npc 3 39 8 EventScript_Audinite
 
 # ROUTE 22
 npc 3 41 1 EventScript_FalseSwipe
+tile 3 41 0 EventScript_0x16828C
+tile 3 41 1 EventScript_0x168298
+tile 3 41 2 EventScript_0x1682AB
+tile 3 41 3 EventScript_0x1683ED
+tile 3 41 4 EventScript_0x1683F9
+tile 3 41 5 EventScript_0x16840C
 
 # ROUTE 23
 # ROUTE 24

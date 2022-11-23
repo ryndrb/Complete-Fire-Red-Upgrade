@@ -4178,7 +4178,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalOaksLabCharmander[] = 
 static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlySquirtle[] = {
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = -2,
         .species = SPECIES_DRILBUR,
         .ability = Ability_Hidden, // mold breaker
         .nature = NATURE_ADAMANT,
@@ -4187,7 +4187,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlySquirtle[]
     },
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = -2,
         .species = SPECIES_STARLY,
         .ability = Ability_1, // keeneye
         .nature = NATURE_ADAMANT,
@@ -4196,7 +4196,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlySquirtle[]
     },
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = 0,
         .species = SPECIES_SQUIRTLE,
         .ability = Ability_1, // torrent
         .nature = NATURE_IMPISH,
@@ -4208,7 +4208,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlySquirtle[]
 static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlyBulbasaur[] = {
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = -2,
         .species = SPECIES_DRILBUR,
         .ability = Ability_Hidden, // mold breaker
         .nature = NATURE_ADAMANT,
@@ -4217,7 +4217,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlyBulbasaur[
     },
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = -2,
         .species = SPECIES_STARLY,
         .ability = Ability_1, // keeneye
         .nature = NATURE_ADAMANT,
@@ -4226,7 +4226,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlyBulbasaur[
     },
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = 0,
         .species = SPECIES_BULBASAUR,
         .ability = Ability_1, // overgrow
         .nature = NATURE_IMPISH,
@@ -4238,7 +4238,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlyBulbasaur[
 static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlyCharmander[] = {
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = -2,
         .species = SPECIES_DRILBUR,
         .ability = Ability_Hidden, // mold breaker
         .nature = NATURE_ADAMANT,
@@ -4247,7 +4247,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlyCharmander
     },
     {
         .iv = 0,
-        .lvl = 10,
+        .lvl = -2,
         .species = SPECIES_STARLY,
         .ability = Ability_1, // keeneye
         .nature = NATURE_ADAMANT,
@@ -4256,7 +4256,7 @@ static const struct TrainerMonItemCustomMoves sParty_RivalRoute22EarlyCharmander
     },
     {
         .iv = 50,
-        .lvl = 9,
+        .lvl = 0,
         .species = SPECIES_CHARMANDER,
         .ability = Ability_1, // blaze
         .nature = NATURE_TIMID,
@@ -7981,7 +7981,7 @@ static const struct TrainerMonItemCustomMoves sParty_BugCatcherAnthony[] = {
     },
     {
         .iv = 0,
-        .lvl = 8,
+        .lvl = -2,
         .species = SPECIES_JOLTIK,
         .ability = Ability_Hidden, // compound eyes
         .nature = NATURE_MODEST,

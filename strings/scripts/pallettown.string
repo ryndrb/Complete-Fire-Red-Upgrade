@@ -1,11 +1,11 @@
 #org @gText_EventScript_NoPokedex
-Hmm, let's see...\p...\n...\pYou do not have a Pok\edex yet.\pCome back and talk to me once you\nacquire one.\pI have a rather useful tool\nthat'll surely help you in your\lPok\emon adventure!
+Hmm[.]\pIt appears you do not have a\nPok\edex yet.\pIf you acquire one, come and see\nme.
 
 #org @gText_HavePokedex1
-Oh?\pSo you've acquired a Pok\edex!\nWell then...\pThis here is a prototype device\ncalled a Time Turner.\pIt allows Pok\emon trainers like\nyou to change the current time for\lwild Pok\emon encounters!\pThis is rather convenient, don't\nyou think?\p...\n...\pTo use it, simply open the second\npage of the start menu.\pGood luck on your adventure!
+[.]\n[.]\pI see that you have acquired a\Pok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a [GREEN]Time Turner[BLUE].\pIt allows trainers like yourself\nto change the current time for\lsuitable wild Pok\emon encounters.\pThough not yet fully optimized, it's\na rather convenient tool, don't\lyou think?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
 
 #org @gText_HavePokedex2
-Oh?\pSo you've acquired a Pok\edex!\nWell then...\pThis here is a Pok\emon Stat\nScanner called Pok\estat.\pIt allows Pok\emon trainers like\nyou to view various statistics of\ltheir own Pok\emon.\lPretty neat, huh?\p...\n...\pTo use it, simply open the second\npage of the start menu.\pGood luck on your adventure!
+[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a [GREEN]Pok\estat[BLUE]!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
 
 #org @gText_EventScript_ChooseStarterRegion
 Wait!\nBefore you go...\pWhich region do want your Pok\emon\nstarter to be from?

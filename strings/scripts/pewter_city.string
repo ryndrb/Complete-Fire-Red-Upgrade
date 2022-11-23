@@ -18,3 +18,18 @@ Not that it's anything I should be\nconcerning myself with...\pBut somehow I fin
 
 #org @gText_MegaRingObtained
 Given your capabilities as a\ntrainer, I presume you already\lknow the concept of Mega\lEvolution.\p...\n...\pWell, I have to go.\nSee you soon.
+
+#org @gText_0x817E67E
+Hey!\nYou're a trainer, right?\pOur gym leader [GREEN]Brock's[BLUE] looking for\nnew challengers, so how about you\ltest your Pok\emon's current\labilities?\pStrong trainers and Pok\emon's are\nup ahead which can be challenging\lwithout a Boulder Badge.
+
+#org @gText_ReceivedDexNav
+[GREEN][PLAYER][BLACK] received DexNav from the\nAide.
+
+#org @gText_PressRightArrow
+[BLACK]Press the [F8][09] when opening the\nstart menu!
+
+#org @gText_MomLetter
+[BLACK]There's a letter attached[.]\pDear [GREEN][PLAYER][BLACK],\pHere is a DexNav for my beloved\nchallenger.\pI planned on giving this to you on\nyour birthday, but you've quickly\lbecome such a capable trainer,\ljust like your dad[.]\pRemember, I'll always cheer for\nyou honey!\pSo don't ever give up!\p- [GREEN]Mom
+
+#org @gText_PlayerFeelWarm
+[GREEN][PLAYER][BLACK] feels a little warmer\ninside after reading the letter.
