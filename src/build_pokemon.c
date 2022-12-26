@@ -37,6 +37,7 @@
 #include "../include/new/multi.h"
 #include "../include/new/pokemon_storage_system.h"
 #include "../include/new/util.h"
+#include "../include/new/exp.h"
 
 #include "Tables/battle_tower_spreads.h"
 #include "Tables/raid_encounters.h"
@@ -183,6 +184,10 @@ static u8 GetHighestMonLevel(const struct Pokemon* const party);
 static void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum);
 static void SetEVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
 static void SetIVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
+void AddEVsTraynee(void);
+void ResetAllEVs(void);
+void ChangeIV(void);
+void ChangeHiddenPower(void);
 
 #ifdef OPEN_WORLD_TRAINERS
 
@@ -549,20 +554,7 @@ static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainer
 		}
 		if (FlagGet(FLAG_SCALE_TRAINER_LEVELS)) { 
 			level = GetHighestMonLevel(gPlayerParty);
-		} 
-
-		
-		// switch (level) {
-		// 	case PLAYER_MAX_LEVEL:
-		// 		level = GetHighestMonLevel(gPlayerParty);
-		// 		break;
-		// 	case ONE_BELOW_PLAYER_MAX_LEVEL:
-		// 		level = GetHighestMonLevel(gPlayerParty) - 1;
-		// 		break;
-		// 	case TWO_BELOW_PLAYER_MAX_LEVEL:
-		// 		level = GetHighestMonLevel(gPlayerParty) - 2;
-		// 		break;
-		// }
+		}
 
 		CreateFrontierMon(&party[i], level, &trainerData.spreads[0][i], trainerId, 0, 0, FALSE );
 	}
@@ -586,6 +578,19 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 		}
 	}
 
+	if(FlagGet(FLAG_TRAYNEE_HP_TEAM))
+		return BuildCustomTrainerParty(party, gImportantTrainers[0].otId, gImportantTrainers[0]);
+	else if(FlagGet(FLAG_TRAYNEE_ATT_TEAM))
+		return BuildCustomTrainerParty(party, gImportantTrainers[1].otId, gImportantTrainers[1]);
+	else if(FlagGet(FLAG_TRAYNEE_DEF_TEAM))
+		return BuildCustomTrainerParty(party, gImportantTrainers[2].otId, gImportantTrainers[2]);
+	else if(FlagGet(FLAG_TRAYNEE_SPA_TEAM))
+		return BuildCustomTrainerParty(party, gImportantTrainers[3].otId, gImportantTrainers[3]);
+	else if(FlagGet(FLAG_TRAYNEE_SPD_TEAM))
+		return BuildCustomTrainerParty(party, gImportantTrainers[4].otId, gImportantTrainers[4]);
+	else if(FlagGet(FLAG_TRAYNEE_SPE_TEAM))
+		return BuildCustomTrainerParty(party, gImportantTrainers[5].otId, gImportantTrainers[5]);
+
 	if (trainerId == TRAINER_SECRET_BASE)
 		return 0;
 	else if (IsFrontierTrainerId(trainerId))
@@ -599,7 +604,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 			ZeroEnemyPartyMons();
 
 		//Set up necessary data
-		trainer = GET_TRAINER_PTR(trainerId);
+		trainer = &gTrainers[trainerId];
 
 		//Choose Trainer IVs
 		#ifdef VAR_GAME_DIFFICULTY
@@ -810,7 +815,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 
 			//Assign Trainer information to mon
 			u8 otGender = trainer->gender;
-			const u8* name = TryGetRivalNameByTrainerClass(GET_TRAINER(trainerId).trainerClass);
+			const u8* name = TryGetRivalNameByTrainerClass(gTrainers[trainerId].trainerClass);
 			if (name == NULL) //Not Rival or Rival name isn't tied to Trainer class
 				SetMonData(&party[i], MON_DATA_OT_NAME, &trainer->trainerName);
 			else
@@ -825,7 +830,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 			//Give EVs
 			#ifdef TRAINERS_WITH_EVS
 			u8 spreadNum = trainer->party.NoItemCustomMoves[i].iv;
-			if (GET_TRAINER(trainerId).partyFlags == (PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM)
+			if (gTrainers[trainerId].partyFlags == (PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM)
 			&& trainer->aiFlags > 1
 			#ifdef VAR_GAME_DIFFICULTY
 			&& gameDifficulty != OPTIONS_EASY_DIFFICULTY
@@ -987,7 +992,7 @@ static bool8 IsPseudoBossTrainerPartyForLevelScaling(u8 trainerPartyFlags)
 
 static bool8 IsBossTrainerClassForLevelScaling(u16 trainerId)
 {
-	switch (GET_TRAINER(trainerId).trainerClass) {
+	switch (gTrainers[trainerId].trainerClass) {
 		case CLASS_LEADER:
 		case CLASS_ELITE_4:
 		case CLASS_CHAMPION:
@@ -4153,6 +4158,210 @@ void ChangeMonAbility(void){
 	mon->personality = personality;
 }
 
-void MoveTutor(void){
- 
+void AddEVsTraynee(void)
+{
+	u8 i = Var8006;
+	u8 EV = Var8007;
+	AddEVs(&gPlayerParty[Var8005], i, EV);
+	CalculateMonStatsNew(&gPlayerParty[Var8005]);
+}
+
+void ResetAllEVs(void)
+{
+	u8 EV = 0;
+	for (u8 i = 0; i < NUM_STATS; i++)
+		SetMonData(&gPlayerParty[Var8004], MON_DATA_HP_EV + i, &EV);
+	CalculateMonStatsNew(&gPlayerParty[Var8004]);
+}
+
+void ChangeIV(void){
+	struct Pokemon* mon = &gPlayerParty[Var8005];
+	u8 statId = Var8006;
+	u8 IVid = Var8007;
+	u8 IV = 0;
+
+	switch (IVid){
+		case 0:
+			break;
+		case 1:
+			IV = 1;
+			break;
+		case 2:
+			IV = 14;
+			break;
+		case 3:
+			IV = 15;
+			break;
+		case 4:
+			IV = 30;
+			break;
+		case 5:
+			IV = 31;
+			break;
+		default:
+			break;
+	}
+
+	if(statId == 0)
+		mon->hpIV = IV;
+	else if(statId == 1)
+		mon->attackIV = IV;
+	else if(statId == 2)
+		mon->defenseIV = IV;
+	else if(statId == 3)
+		mon->speedIV = IV;
+	else if(statId == 4)
+		mon->spAttackIV = IV;
+	else if(statId == 5)	
+		mon->spDefenseIV = IV;
+
+	if(FlagGet(FLAG_IVY_MAX_IVS)){
+		mon->hpIV = 31;
+		mon->attackIV = 31;
+		mon->defenseIV = 31;
+		mon->speedIV = 31;
+		mon->spAttackIV = 31;
+		mon->spDefenseIV = 31;
+	}
+
+	CalculateMonStatsNew(mon);
+}
+
+void ChangeHiddenPower(void){
+	struct Pokemon* mon = &gPlayerParty[Var8005];
+	u8 HPType = Var8006;
+
+	switch(HPType){
+		case 0://dark
+			mon->hpIV = 31;
+			mon->attackIV = 31;
+			mon->defenseIV = 31;
+			mon->speedIV = 31;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 31;
+			break;
+		case 1://dragon
+			mon->hpIV = 30;
+			mon->attackIV = 31;
+			mon->defenseIV = 31;
+			mon->speedIV = 31;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 31;
+			break;
+		case 2://ice
+			mon->hpIV = 30;
+			mon->attackIV = 31;
+			mon->defenseIV = 30;
+			mon->speedIV = 31;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 31;
+			break;
+		case 3://psychic
+			mon->hpIV = 30;
+			mon->attackIV = 31;
+			mon->defenseIV = 31;
+			mon->speedIV = 30;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 30;
+			break;
+		case 4://electric
+			mon->hpIV = 30;
+			mon->attackIV = 31;
+			mon->defenseIV = 30;
+			mon->speedIV = 30;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 31;
+			break;
+		case 5://grass
+			mon->hpIV = 30;
+			mon->attackIV = 31;
+			mon->defenseIV = 31;
+			mon->speedIV = 31;
+			mon->spAttackIV = 30;
+			mon->spDefenseIV = 31;
+			break;
+		case 6://water
+			mon->hpIV = 31;
+			mon->attackIV = 30;
+			mon->defenseIV = 30;
+			mon->speedIV = 31;
+			mon->spAttackIV = 30;
+			mon->spDefenseIV = 31;
+			break;
+		case 7://fire
+			mon->hpIV = 31;
+			mon->attackIV = 30;
+			mon->defenseIV = 31;
+			mon->speedIV = 30;
+			mon->spAttackIV = 30;
+			mon->spDefenseIV = 31;
+			break;
+		case 8://steel
+			mon->hpIV = 31;
+			mon->attackIV = 30;
+			mon->defenseIV = 30;
+			mon->speedIV = 30;
+			mon->spAttackIV = 30;
+			mon->spDefenseIV = 31;
+			break;
+		case 9://ghost
+			mon->hpIV = 31;
+			mon->attackIV = 30;
+			mon->defenseIV = 31;
+			mon->speedIV = 31;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 30;
+			break;
+		case 10://bug
+			mon->hpIV = 31;
+			mon->attackIV = 30;
+			mon->defenseIV = 30;
+			mon->speedIV = 31;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 30;
+			break;
+		case 11://rock
+			mon->hpIV = 30;
+			mon->attackIV = 30;
+			mon->defenseIV = 31;
+			mon->speedIV = 30;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 30;
+			break;
+		case 12://ground
+			mon->hpIV = 30;
+			mon->attackIV = 30;
+			mon->defenseIV = 30;
+			mon->speedIV = 30;
+			mon->spAttackIV = 31;
+			mon->spDefenseIV = 30;
+			break;
+		case 13://poison
+			mon->hpIV = 30;
+			mon->attackIV = 30;
+			mon->defenseIV = 31;
+			mon->speedIV = 31;
+			mon->spAttackIV = 30;
+			mon->spDefenseIV = 30;
+			break;
+		case 14://flying
+			mon->hpIV = 30;
+			mon->attackIV = 30;
+			mon->defenseIV = 30;
+			mon->speedIV = 31;
+			mon->spAttackIV = 30;
+			mon->spDefenseIV = 30;
+			break;
+		case 15://fighting
+			mon->hpIV = 30;
+			mon->attackIV = 30;
+			mon->defenseIV = 31;
+			mon->speedIV = 30;
+			mon->spAttackIV = 30;
+			mon->spDefenseIV = 30;
+			break;
+		default:
+			break;
+	}
+	CalculateMonStatsNew(mon);
 }

@@ -9,6 +9,7 @@
 @ Rival | Route 22 | First Encounter
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x16828C:
+    textcolor 0x0
     lockall
     spriteface PLAYER, LEFT
     setvar 0x4001 0x0
@@ -200,6 +201,7 @@ EventScript_0x81683C5:
 @ Rival | Route 22 | Second Encounter
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x1683ED:
+    textcolor 0x0
     lockall
     spriteface PLAYER, LEFT
     setvar 0x4001 0x0

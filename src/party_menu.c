@@ -143,7 +143,7 @@ static void CursorCb_MoveItemCallback(u8 taskId);
 static void CursorCb_MoveItem(u8 taskId);
 
 // move relearner party menu
-void PartyMenuMRCallback(u8 taskId);
+void CursorCb_MoveRelearner(u8 taskId);
 
 //*highlightedMon = 0 is Player's Pokemon out
 //*highlightedMon = 1 is Link Partner's Pokemon out
@@ -802,7 +802,7 @@ struct
 	[MENU_MOVE_ITEM] = {gMenuText_Move, CursorCb_MoveItem},
 
 	// move relearner in party menu append
-	[MENU_MOVE_RELEARNER] = {gText_MoveRelearner, PartyMenuMRCallback},
+	[MENU_MOVE_RELEARNER] = {gText_MoveRelearner, CursorCb_MoveRelearner},
 
 	//Field Moves
 	[MENU_FIELD_MOVES + FIELD_MOVE_FLASH] =	      {gMoveNames[MOVE_FLASH], CursorCb_FieldMove},
@@ -887,9 +887,9 @@ const u16 gFieldMoves[FIELD_MOVE_COUNT] =
 
 const u8 gFieldMoveBadgeRequirements[FIELD_MOVE_COUNT] =
 {
-	[FIELD_MOVE_FLASH] = 1,
+	//[FIELD_MOVE_FLASH] = 1,
 	[FIELD_MOVE_CUT] = 2,
-	[FIELD_MOVE_FLY] = 3,
+	//[FIELD_MOVE_FLY] = 3,
 	[FIELD_MOVE_STRENGTH] = 4,
 	[FIELD_MOVE_SURF] = 5,
 	[FIELD_MOVE_ROCK_SMASH] = 6,
@@ -941,25 +941,35 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 		}
 	}
 
+	if (CanMonLearnTMHM(&mons[slotId], TMIdFromItemId(ITEM_HM02_FLY)))
+    {
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_MOVES + FIELD_MOVE_FLY);
+    }
+
+    if (CanMonLearnTMHM(&mons[slotId], TMIdFromItemId(ITEM_HM05_FLASH)))
+    {
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLASH + MENU_FIELD_MOVES);
+    }
+
 	//Try to give the mon fly
-	#ifdef ONLY_CHECK_ITEM_FOR_HM_USAGE
-	if (k < MAX_MON_MOVES) //Doesn't know 4 field moves
-	{
-		#ifndef DEBUG_HMS
-		bool8 hasHM = CheckBagHasItem(ITEM_HM02_FLY, 1) > 0;
-		u16 species = GetMonData(&mons[slotId], MON_DATA_SPECIES2, NULL);
+	// #ifdef ONLY_CHECK_ITEM_FOR_HM_USAGE
+	// if (k < MAX_MON_MOVES) //Doesn't know 4 field moves
+	// {
+	// 	#ifndef DEBUG_HMS
+	// 	bool8 hasHM = CheckBagHasItem(ITEM_HM02_FLY, 1) > 0;
+	// 	u16 species = GetMonData(&mons[slotId], MON_DATA_SPECIES2, NULL);
 		
-		if (species != SPECIES_NONE
-		&& species != SPECIES_EGG
-		&& hasHM
-		&& HasBadgeToUseFieldMove(FIELD_MOVE_FLY)
-		&& CanMonLearnTMTutor(&mons[slotId], ITEM_HM02_FLY, 0) == CAN_LEARN_MOVE)
-		#endif
-		{
-			AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_MOVES + FIELD_MOVE_FLY);
-			++k;
-		}
-	}
+	// 	if (species != SPECIES_NONE
+	// 	&& species != SPECIES_EGG
+	// 	&& hasHM
+	// 	&& HasBadgeToUseFieldMove(FIELD_MOVE_FLY)
+	// 	&& CanMonLearnTMTutor(&mons[slotId], ITEM_HM02_FLY, 0) == CAN_LEARN_MOVE)
+	// 	#endif
+	// 	{
+	// 		AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_MOVES + FIELD_MOVE_FLY);
+	// 		++k;
+	// 	}
+	// }
 	/*if (k < MAX_MON_MOVES) //Doesn't know 4 field moves
 	{
 		bool8 hasTM = CheckBagHasItem(ITEM_TM29_DIG, 1) > 0;
@@ -975,7 +985,7 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 			++k;
 		}
 	}*/
-	#endif
+	//#endif
 
 	if (!ShouldDisablePartyMenuItemsBattleTower())
 	{
@@ -2471,8 +2481,9 @@ void FieldUseFunc_VsSeeker(u8 taskId)
 }
 #endif
 
-void PartyMenuMRCallback(u8 taskId)
+void CursorCb_MoveRelearner(u8 taskId)
 {
+	PlaySE(SE_SELECT);
 	Var8004 = gPartyMenu.slotId;
-	gTasks[taskId].func = CB2_InitLearnMove;
+	gTasks[taskId].func = &CB2_InitLearnMove;
 }

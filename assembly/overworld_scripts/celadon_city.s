@@ -9,6 +9,7 @@
 @ Poke Ball Types Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StorePokeBalls:
+    textcolor 0x0
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -45,6 +46,7 @@ EventScript_StorePokeBallsList:
 @ TMs Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StoreTM:
+    textcolor 0x0
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -71,6 +73,7 @@ EventScript_StoreTMList:
 @ TMs Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerTM:
+    textcolor 0x0
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -98,6 +101,7 @@ EventScript_GameCornerTMList:
 @ Mega Stones Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerMegaStones:
+    textcolor 0x0
     lock
     faceplayer
     checkflag 0x243
@@ -300,6 +304,7 @@ EventScript_ObtainedStone:
 @ Pseudo Legendaries Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerPseudo:
+    textcolor 0x0
     lock
     faceplayer
     checkflag 0x243
@@ -510,6 +515,7 @@ EventScript_ObtainedPseudo:
 @ Galar Items Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StoreGalarItems:
+    textcolor 0x0
     lock
     faceplayer
     msgbox gText_GalarExclusive MSG_KEEPOPEN
@@ -538,3 +544,22 @@ EventScript_StoreGalarItemsList:
     .hword ITEM_GALARICA_CUFF
     .hword ITEM_GALARICA_WREATH
     .hword 0x0
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Team Rocket Grunt Game Corner
+@@@@@@@@@@@@@@@@@@@@@@
+EvenScript_0x16CAF5:
+    textcolor 0x0
+    checkflag 0x4B3
+    if NOT_SET _goto EventScript_CantEnterRocketHideoutYet
+    trainerbattle2 0x2 0x165 0x0 0x8196E69 0x8196E95 0x816CB10
+    msgbox 0x8196E9B MSG_NORMAL
+    end
+
+EventScript_CantEnterRocketHideoutYet:
+    lock
+    faceplayer
+    msgbox gText_CantEnterRocketHideoutYet MSG_KEEPOPEN
+    spriteface 0xB, UP
+    release
+    end

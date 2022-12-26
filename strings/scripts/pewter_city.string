@@ -11,25 +11,25 @@ You see, I really dislike bird\nPok\emons.\pThey always ruin my beautiful\ngarde
 I really dislike bird\nPok\emons.\pThey always ruin my beautiful\ngarden!
 
 #org @gText_LanceIntro1
-Why, hello.\pI don't think we have met each\nother.\pIt appears that you're a very\ncapable Pok\emon trainer.\pWhat's your name?\p[GREEN][PLAYER][BLUE] you say...\nHmm...\p...\n...\pYou see, [GREEN][PLAYER][BLUE], in this vast\nworld, there are many kinds of\lPok\emon.\pThey come in many types.\pShould you raise different types?\nOr will you only raise Pok\emon of\la certain type you like?\pI wonder what you think, as a\nPok\emon trainer?
+Why, hello.\pI don't think we have met each\nother.\pIt appears that you're a very\ncapable Pok\emon trainer.\pWhat's your name?\p[.]\n[.]\p[PLAYER] you say[.]\nHmm[.]\p[.]\n[.]\pYou see, [PLAYER], in this vast\nworld, there are many kinds of\lPok\emon.\pThey come in many types.\pShould you raise different types?\nOr will you only raise Pok\emon of\la certain type you like?\pI wonder what you think, as a\nPok\emon trainer?
 
 #org @gText_LanceGiveMegaRing
-Not that it's anything I should be\nconcerning myself with...\pBut somehow I find myself wanting\nto know what you think.\pWell, I suppose that's for another\ntime.\pBut before I go, I want you to\nhave this.
+Not that it's anything I should be\nconcerning myself with[.]\pBut somehow I find myself wanting\nto know what you think.\pWell, I suppose that's for another\ntime.\pBut before I go, I want you to\nhave this.
 
 #org @gText_MegaRingObtained
-Given your capabilities as a\ntrainer, I presume you already\lknow the concept of Mega\lEvolution.\p...\n...\pWell, I have to go.\nSee you soon.
+Given your capabilities as a\ntrainer, I presume you already\lknow the concept of Mega Evolution.\p[.]\n[.]\pWell, I have to go.\nSee you soon.
 
 #org @gText_0x817E67E
-Hey!\nYou're a trainer, right?\pOur gym leader [GREEN]Brock's[BLUE] looking for\nnew challengers, so how about you\ltest your Pok\emon's current\labilities?\pStrong trainers and Pok\emon's are\nup ahead which can be challenging\lwithout a Boulder Badge.
+Hey!\nYou're a trainer, right?\pOur gym leader Brock's looking for\nnew challengers, so how about you\ltest your Pok\emon's current\labilities?\pStrong trainers and Pok\emon's are\nup ahead which can be challenging\lwithout a Boulder Badge.
 
 #org @gText_ReceivedDexNav
-[GREEN][PLAYER][BLACK] received DexNav from the\nAide.
+[PLAYER] received DexNav from the\nAide.
 
 #org @gText_PressRightArrow
-[BLACK]Press the [F8][09] when opening the\nstart menu!
+Press the [F8][09] when opening the\nstart menu!
 
 #org @gText_MomLetter
-[BLACK]There's a letter attached[.]\pDear [GREEN][PLAYER][BLACK],\pHere is a DexNav for my beloved\nchallenger.\pI planned on giving this to you on\nyour birthday, but you've quickly\lbecome such a capable trainer,\ljust like your dad[.]\pRemember, I'll always cheer for\nyou honey!\pSo don't ever give up!\p- [GREEN]Mom
+There's a letter attached[.]\p[BLACK]Dear [PLAYER],\pHere is a DexNav for my beloved\nchallenger.\pI planned on giving this to you on\nyour birthday, but you've quickly\lbecome such a capable trainer,\ljust like your dad[.]\pRemember, I'll always cheer for\nyou honey!\pSo don't ever give up!\p- Mom
 
 #org @gText_PlayerFeelWarm
-[GREEN][PLAYER][BLACK] feels a little warmer\ninside after reading the letter.
+[BLACK][PLAYER] feels a little warmer\ninside after reading the letter.

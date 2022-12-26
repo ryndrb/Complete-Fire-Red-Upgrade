@@ -4,6 +4,10 @@
         "trainers_with_evs_table.h": "c",
         "global.h": "c",
         "set_z_effect.h": "c",
-        "move_tables.h": "c"
+        "move_tables.h": "c",
+        "trainer_money.h": "c",
+        "trainer_classes.h": "c",
+        "field_weather.h": "c",
+        "items.h": "c"
     }
 }

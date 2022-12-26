@@ -2,7 +2,7 @@
 You're a trainer on an adventure\naren't 'ya?\pSince you're here, do you mind\nlending a tired fella some spare\lwater?
 
 #org @gText_Lending
-[GREEN][PLAYER][BLACK] lends a bottle of water.
+[PLAYER] lends a bottle of water.
 
 #org @gText_Gulping
 (Gulp)\p(Gulp)\p...\n...\pHaaaaah!\pThere, that's better.
@@ -11,10 +11,10 @@ You're a trainer on an adventure\naren't 'ya?\pSince you're here, do you mind\nl
 ...\n...\pThank you for that one kid.\pAs a token of appreciation, I'll\nlet you have this Pok\emon.
 
 #org @gText_ReceivedTimburr
-[GREEN][PLAYER][BLACK] received a Timburr!
+[PLAYER] received a Timburr!
 
 #org @gText_AfterReceivingTimburr
 I caught it some time ago, but it\ndoesn't seem to like me very much.
 
 #org @gText_EventScript_PostGift
-How's that [GREEN]Timburr[BLUE] treating 'ya?
+How's that Timburr[BLUE] treating 'ya?

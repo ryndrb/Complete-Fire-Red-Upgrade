@@ -15,6 +15,7 @@
 .equ FLAG_DEFEATED_LEADER_GIOVANNI, 0x4B7   
 
 EventScript_UtilityOldMan: @will probably add more? inspired by inclement emerald
+	textcolor 0x0
     lock
 	faceplayer
     msgbox gText_EventScript_UtilityOldManGreetings MSG_KEEPOPEN

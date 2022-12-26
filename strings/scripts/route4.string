@@ -1,0 +1,23 @@
+#org @gText_BrendanCallPlayer
+???: Wait!\n[PLAYER]!
+
+#org @gText_BrendanAskForBattle
+Brendan: How have you been?\p[.]\n[.]\pYou already got a Gym Badge!\nThat's very impressive!\pI mentioned before about us\nbattling if we come across each\lother again[.]\pSo[.]\nFancy having a battle with me?
+
+#org @gText_BrendanJest
+Brendan: What's wrong?\nScared of my Pok\emon?
+
+#org @gText_BrendanJestAfter
+Brendan: Haha!\nI'm kidding, I'm kidding.\pWell, if you don't want to\nbattle, I'll be on my way.\pUntil we meet again [PLAYER], see 'ya!
+
+#org @gText_BrendanIntroBattle
+Alright then, let's have fun!
+
+#org @gText_BrendanLostBattle
+Yikes!\nYou're better than I expected!
+
+#org @gText_PlayerWonBattle
+Brendan: You're really been busy\nimproving, haven't you?\pI think you deserve a reward!\nThis is from me!
+
+#org @gText_BrendanOnHisWay
+Brendan: [.]\n[.]\pWell, that was a fun one.\pI'll be on my way then.\pUntil we meet again [PLAYER], see 'ya!

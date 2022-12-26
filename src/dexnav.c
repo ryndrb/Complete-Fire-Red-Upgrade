@@ -1015,6 +1015,9 @@ static u8 DexNavGenerateMonLevel(u16 species, u8 chainLevel, u8 environment)
 	if (Random() % 100 < 4) //4% chance of having a +10 level
 		levelBonus += 10;
 
+	// since there's scaling, override. chaining doesnt work
+	levelBase = GetMedianLevelOfPlayerParty();
+
 	if (levelBase + levelBonus > MAX_LEVEL)
 		return MAX_LEVEL;
 	else

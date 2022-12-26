@@ -12,6 +12,7 @@
 @ Payback | Route 6
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route6Payback:
+    textcolor 0x1
     lock
     faceplayer
     checkflag FLAG_OBTAIN_PAYBACK
@@ -38,6 +39,7 @@ EventScript_GivePaybackMove:
 @ Gyro Ball | Route 6 Underground Path
 @@@@@@@@@@@@@@@@@@@@@@
 EventScipt_Route6GyroBall:
+    textcolor 0x0
     lock
     faceplayer
     checkflag FLAG_OBTAIN_GYRO_BALL

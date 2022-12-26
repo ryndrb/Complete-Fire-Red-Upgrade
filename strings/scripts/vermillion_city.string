@@ -17,13 +17,16 @@ Need to boost your Pok\emon's\ntraining?\pGive these a try!\pIt's how I made my 
 Alright then, have a good one!
 
 #org @gText_SomethingHere
-[BLACK]([GREEN][PLAYER][BLACK] feels there's something\nstrange here.)
+([PLAYER] feels there's something\nstrange here.)
 
 #org @gText_MewString
-[BLACK]Meeeeew!
+Meeeeew!
 
 #org @gText_VermillionTMMerchantGreet
-[BLACK]Hi there!\pI sell technical machines.\pAny of this interest you?
+Hi there!\pI sell technical machines.\pAny of this interest you?
 
 #org @gText_VermillionTMMerchantBye
-[BLACK]Alright then, see ya!
+Alright then, see ya!
+
+#org @gText_VermillionGymLocked
+[BLACK]It appears Vermillion Gym doors\nare locked[.]\pI should probably come back later[.]

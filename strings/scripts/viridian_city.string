@@ -3,3 +3,12 @@ That's an Earth Badge!\pSo you defeated the gym leader\nhuh? You must be a reall
 
 #org @gText_GiveSwordsDanceObtained
 It contains a fighting dance that\ncan sharply raise your Pok\emon's\lattack.
+
+#org @gText_NurseJoyGiveVial
+Hello, and welcome to Viridian\nCity Pok\emon Center.\pWe restore your tired Pok\emon to\nfull health.\pThis is your first time here,\nisn't it?\pIt's your lucky day!\pWe're currently giving out free\nPok\e Vials to all Trainers!\pHere, take one!
+
+#org @gText_PlayerReceievedVial
+Player received Pok\e Vial.
+
+#org @gText_NurseJoyExplainsVial
+That Pok\e Vial contains very\npotent medicine.\pIt's strong enough to heal your\nentire party, but you can't use it\lin battles.\pEvery time you heal up at a\nPok\emon Center, we'll refill it\lfor free.\pIt's like a portable Pok\emon\nCenter, don't you think?

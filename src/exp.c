@@ -57,14 +57,14 @@ static void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies);
 // Subject to change one I playtest
 const u16 LevelCaps[] = 
 {
-	16,
-	27,
-	38,
-	49,
-	50,
-	61,
-	72,
-	83,
+	16,//Brock
+	27,//Misty
+	36,//Surge
+	54,//Erika
+	63,//Sabrina
+	72,//Koga
+	81,//Blaine
+	90,//Giovanni
 };
 
 u8 GetBadgeCount() {
@@ -749,7 +749,7 @@ static void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 	u8 holdEffect = ItemId_GetHoldEffect(heldItem);
 	u8 itemQuality = ItemId_GetHoldEffectParam(heldItem);
 
-	if (GetMonEVCount(mon) >= MAX_TOTAL_EVS)
+	if (GetMonEVCount(mon) >= MAX_TOTAL_EVS || FlagGet(FLAG_TRAYNEE_EXP_TRAINING_NO_EV))
 		return;
 
 	for (u8 stat = 0; stat < NUM_STATS; ++stat)

@@ -26,6 +26,7 @@ start_menu.c
 extern u8 EventScript_PCMainMenu[];
 extern u8 EventScript_TimeTurner[];
 extern u8 EventScript_StatScanner[];
+extern u8 EventScript_PokeVial[];
 //extern u8 EventScript_AccessPokemonStorage[];
 
 enum
@@ -42,6 +43,7 @@ enum
 	STARTMENU_DEXNAV,
 	STARTMENU_PC,
 	STARTMENU_TIMETURNER,
+	STARTMENU_POKEVIAL,
 	STARTMENU_STATSCANNER,
 	STARTMENU_QUEST_LOG,
 	STARTMENU_EXIT_RIGHT,
@@ -67,6 +69,7 @@ extern const u8 gText_MenuRetire[];
 extern const u8 gText_DexNav[];
 extern const u8 gText_MenuPC[];
 extern const u8 gText_TimeTurner[];
+extern const u8 gText_PokeVial[];
 extern const u8 gText_StatScanner[];
 extern const u8 gText_MissionLog[];
 extern const u8 gText_MenuBag[];
@@ -87,6 +90,7 @@ extern const u8 gText_PlayerDescription[];
 extern const u8 gText_DexNavDescription[];
 extern const u8 gText_PocketPCDescription[];
 extern const u8 gText_TimerTurnerDescription[];
+extern const u8 gText_PokeVialDescription[];
 extern const u8 gText_StatScannerDescription[];
 
 extern bool8 (*sStartMenuCallback)(void);
@@ -106,6 +110,7 @@ bool8 __attribute__((long_call)) StartMenuPokemonCallback(void);
 bool8 __attribute__((long_call)) StartMenuBagCallback(void); 
 bool8 StartMenuPCCallback(void); // POCKET PC
 bool8 TimeTurnerCallback(void); // TIME TURNER
+bool8 PokeVialCallBack(void); // poke vial
 bool8 StatScannerCallback(void); // Stat Scanner
 bool8 __attribute__((long_call)) StartMenuPlayerCallback(void);
 bool8 __attribute__((long_call)) StartMenuSaveCallback(void);
@@ -136,6 +141,7 @@ static bool8 ReloadStartMenuItems(void);
 void DrawTime(void);
 static void UpdateTimeText(void);
 static void RemoveTimeBox(void);
+void DecreseCharges(void);
 
 extern u8 sTimeWindowId;
 static const struct WindowTemplate sTimeBoxWindowTemplate = {
@@ -162,6 +168,7 @@ const struct MenuAction sStartMenuActionTable[] =
 	[STARTMENU_DEXNAV] = {gText_DexNav, {.u8_void = StartMenuDexNavCallback}},
 	[STARTMENU_PC] = {gText_MenuPC, {.u8_void = StartMenuPCCallback}},
 	[STARTMENU_TIMETURNER] = {gText_TimeTurner, {.u8_void = TimeTurnerCallback}}, 
+	[STARTMENU_POKEVIAL] = {gText_PokeVial, {.u8_void = PokeVialCallBack}}, 
 	[STARTMENU_STATSCANNER] = {gText_StatScanner, {.u8_void = StatScannerCallback}}, 
 	#ifdef FLAG_SYS_QUEST_LOG
 	[STARTMENU_QUEST_LOG] = {gText_MissionLog, {.u8_void = (void*) (0x801D768 | 1)}},
@@ -184,6 +191,7 @@ const u8* const sStartMenuDescPointers[] =
 	gText_DexNavDescription,
 	gText_PocketPCDescription,
 	gText_TimerTurnerDescription,
+	gText_PokeVialDescription,
 	gText_StatScannerDescription,
 	NULL,
 	gText_ExitDescription,
@@ -197,17 +205,22 @@ static bool8 CanSetUpSecondaryStartMenu(void)
 		return TRUE;
 	#endif
 
-	#if FLAG_RECEIVED_POCKETPC
+	#ifdef FLAG_RECEIVED_POCKETPC
 	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_POCKETPC))
 		return TRUE;
 	#endif
 
-	#if FLAG_RECEIVED_TIMETURNER
+	#ifdef FLAG_RECEIVED_TIMETURNER
 	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_TIMETURNER))
 		return TRUE;
 	#endif
 
-	#if FLAG_RECEIVED_STATSCANNER
+	#ifdef FLAG_NURSE_JOY_POKE_VIAL
+	if(FlagGet(FLAG_NURSE_JOY_POKE_VIAL))
+		return TRUE;
+	#endif
+
+	#ifdef FLAG_RECEIVED_STATSCANNER
 	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_STATSCANNER))
 		return TRUE;
 	#endif
@@ -303,6 +316,11 @@ static void BuildPokeToolsMenu(void)
 	#endif
 		AppendToStartMenuItems(STARTMENU_TIMETURNER);
 
+	#ifdef FLAG_NURSE_JOY_POKE_VIAL
+	if(FlagGet(FLAG_NURSE_JOY_POKE_VIAL))
+	#endif
+		AppendToStartMenuItems(STARTMENU_POKEVIAL);
+
 	#ifdef FLAG_RECEIVED_STATSCANNER
 	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_STATSCANNER))
 	#endif
@@ -386,18 +404,26 @@ bool8 StartCB_HandleInput(void)
 			return FALSE;
 		sStartMenuCallback = sStartMenuActionTable[sStartMenuOrder[sStartMenuCursorPos]].func.u8_void;
 
-		if((sStartMenuCallback != StartMenuPCCallback) && (sStartMenuCallback != TimeTurnerCallback) && (sStartMenuCallback != StatScannerCallback)){
+		if((sStartMenuCallback != StartMenuPCCallback) && (sStartMenuCallback != TimeTurnerCallback) && (sStartMenuCallback != StatScannerCallback) && (sStartMenuCallback != PokeVialCallBack)){
 			StartMenu_FadeScreenIfLeavingOverworld();	
 		}
 		return FALSE;
 	}
 	else if (JOY_NEW(B_BUTTON | START_BUTTON))
 	{
-		RemoveTimeBox();
-		DestroySafariZoneStatsWindow();
-		DestroyHelpMessageWindow_();
-		CloseStartMenu();
-		return TRUE;
+		if (sStartMenuOpen == START_MENU_TOOLS && JOY_NEW(B_BUTTON))
+		{
+			PlaySE(SE_SELECT);
+			sStartMenuCursorPos = 0; //Reset cursor position
+			sStartMenuOpen = START_MENU_NORMAL;
+			sStartMenuCallback = CloseAndReloadStartMenu;
+		}else{
+			RemoveTimeBox();
+			DestroySafariZoneStatsWindow();
+			DestroyHelpMessageWindow_();
+			CloseStartMenu();
+			return TRUE;
+		}
 	}
 
 	return FALSE;
@@ -572,4 +598,22 @@ bool8 StatScannerCallback(void)
 		return TRUE;
 	}
 	return FALSE;
+}
+
+bool8 PokeVialCallBack(void){
+	if(!gPaletteFade->active)
+	{
+		PlayRainStoppingSoundEffect();
+        DestroySafariZoneStatsWindow();
+		ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
+		RemoveStartMenuWindow();
+		RemoveTimeBox();
+		ScriptContext1_SetupScript(EventScript_PokeVial);
+		return TRUE;
+	}
+	return FALSE;
+}
+
+void DecreseCharges(void){
+	VarSet(VAR_POKE_VIAL_CHARGES, VarGet(VAR_POKE_VIAL_CHARGES) - 1);
 }

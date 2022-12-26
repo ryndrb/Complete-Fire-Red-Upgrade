@@ -6,11 +6,13 @@
 .include "../asm_defines.s"
 
 .equ FLAG_OBTAIN_SWORDS_DANCE, 0x0D8
+.equ FLAG_NURSE_JOY_POKE_VIAL, 0x310
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Swords Dance | Viridian City Old Man | Beat Giovanni
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ViridianSwordsDance:
+    textcolor 0x0
     lock
     faceplayer
     checkflag FLAG_OBTAIN_SWORDS_DANCE
@@ -37,3 +39,24 @@ EventScript_GiveSwordsDance:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Nurse Joy Give Poke Vial
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_NurseJoyViridian:
+    textcolor 0x1
+    lock
+    faceplayer
+    setvar 0x502D 0xA
+    checkflag FLAG_NURSE_JOY_POKE_VIAL
+    if 0x0 _goto EventScript_GiveVial
+    call 0x81A6578
+    release
+    end
+
+EventScript_GiveVial:
+    msgbox gText_NurseJoyGiveVial MSG_KEEPOPEN
+    msgbox gText_PlayerReceievedVial MSG_KEEPOPEN
+    msgbox gText_NurseJoyExplainsVial MSG_KEEPOPEN
+    setflag FLAG_NURSE_JOY_POKE_VIAL
+    release
+    end

@@ -284,7 +284,7 @@ struct Trainer
 
 extern const struct Trainer gTrainers[];
 
-#define TRAINER_ENCOUNTER_MUSIC(trainer)((GET_TRAINER(trainer).encounterMusic_gender & 0x7F))
+#define TRAINER_ENCOUNTER_MUSIC(trainer)((gTrainers[trainer].encounterMusic_gender & 0x7F))
 
 struct UnknownFlags
 {

@@ -11,6 +11,7 @@
 @ Substitute
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_FuschiaSubstitute:
+    textcolor 0x0
     lock
     faceplayer
     checkflag FLAG_OBTAIN_SUBSTITUTE

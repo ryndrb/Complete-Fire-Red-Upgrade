@@ -2,49 +2,28 @@
 Hmm[.]\pIt appears you do not have a\nPok\edex yet.\pIf you acquire one, come and see\nme.
 
 #org @gText_HavePokedex1
-[.]\n[.]\pI see that you have acquired a\Pok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a [GREEN]Time Turner[BLUE].\pIt allows trainers like yourself\nto change the current time for\lsuitable wild Pok\emon encounters.\pThough not yet fully optimized, it's\na rather convenient tool, don't\lyou think?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
+[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Time Turner.\pIt allows trainers like yourself\nto change the current time for\lsuitable wild Pok\emon encounters.\pThough not yet fully optimized, it's\na rather convenient tool, don't\lyou think?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
 
 #org @gText_HavePokedex2
-[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a [GREEN]Pok\estat[BLUE]!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
-
-#org @gText_EventScript_ChooseStarterRegion
-Wait!\nBefore you go...\pWhich region do want your Pok\emon\nstarter to be from?
-
-#org @gText_EventScript_RemainKanto
-Your starter choices will remain to\nbe from [GREEN]Kanto[BLACK].
-
-#org @gText_EventScript_Gen1
-Selected [GREEN]Kanto[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
-
-#org @gText_EventScript_Gen2
-Selected [GREEN]Johto[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
-
-#org @gText_EventScript_Gen3
-Selected [GREEN]Hoenn[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
-
-#org @gText_EventScript_Gen4
-Selected [GREEN]Sinnoh[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
-
-#org @gText_EventScript_Gen5
-Selected [GREEN]Unova[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
-
-#org @gText_EventScript_Gen6
-Selected [GREEN]Kalos[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
-
-#org @gText_EventScript_Gen7
-Selected [GREEN]Alola[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
-
-#org @gText_EventScript_Gen8
-Selected [GREEN]Galar[BLACK] region.\nRival Pok\emon will be from [RED]Kanto[BLACK].
+[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\estat!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
 
 #org @gText_GrassChoice
-I see! [GREEN][BUFFER1][BLUE] is your choice.\nIt's very easy to raise.\pSo, [PLAYER], you want to go with\nthe Grass Pok\emon [GREEN][BUFFER1][BLUE]?
+I see! [BUFFER1] is your choice.\nIt's very easy to raise.\pSo, [PLAYER], you want to go with\nthe Grass Pok\emon [BUFFER1]?
 
 #org @gText_WaterChoice
-Hm! [GREEN][BUFFER1][BLUE] is your choice.\nIt's one worth raising.\pSo, [PLAYER], you've decided on the\nWater Pok\emon [GREEN][BUFFER1][BLUE]?
+Hm! [BUFFER1] is your choice.\nIt's one worth raising.\pSo, [PLAYER], you've decided on the\nWater Pok\emon [BUFFER1]?
 
 #org @gText_FireChoice
-Ah! [GREEN][BUFFER1][BLUE] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you're claiming the\nFire Pok\emon [GREEN][BUFFER1][BLUE]?
+Ah! [BUFFER1] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you're claiming the\nFire Pok\emon [BUFFER1]?
 
 #org @gText_EventScript_GiveAmuletCoin
-Hm?\p...\n...\pSo you're an aspiring Pok\emon\ntrainer?\pI see...\pYou might find this useful then.
+[.]\n[.]\pSo you're an aspiring Pok\emon\ntrainer?\pI see[.]\pYou might find this useful then.
+
+#org @gText_MomChooseRegion
+[PLAYER], you're up!\pToday is finally the day you\nrecieve your very first Pok\emon!\pProf. Oak came by earlier asking\nfor you, but I told him you were\lsleeping.\pHe wanted to know which region has\nimpressed you the most so far\lduring this year's Pok\emon\lWorld Championship?
+
+#org @gText_MomDone
+Okay, I'll let him know!\nGood luck sweetie!\p[BLACK]Rival Pok\emon will remain Kanto.
+
+#org @gText_RecentSightings
+Recently, there have been\nsightings of many rare Pok\emon\lspecies all around Kanto.\pAs I have mentioned before, it\nwould be wonderful if I can go and\lsee things for myself, but I'm\lmuch too old[.]\pOn the desk there is my invention,\nthe Pok\edex!\pIt automatically records data on\nPok\emon you've seen or caught.\pIt's a high-tech encyclopedia!

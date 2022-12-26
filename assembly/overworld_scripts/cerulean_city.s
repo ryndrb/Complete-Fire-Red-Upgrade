@@ -11,6 +11,7 @@
 @ Sandile Gift | Wise Glasses | Cerulean City
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_SandileGift:
+    textcolor 0x0
     lock
     checkflag FLAG_OBTAIN_GIFT_SANDILE
     if 0x0 _goto EventScript_GiveSandile
@@ -75,6 +76,7 @@ EndScript:
 @ Cerulean TM Merchant
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_CeruleanTMMerchant:
+    textcolor 0x0
     msgbox gText_CeruleanTMMerchantGreet MSG_KEEPOPEN
     pokemart EventScript_CeruleanTMMerchantList
     msgbox gText_CeruleanTMMerchantEnd MSG_KEEPOPEN

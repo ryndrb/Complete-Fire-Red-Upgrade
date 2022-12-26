@@ -2,13 +2,13 @@
 How may I help you?
 
 #org @gText_EventScript_NoBrockBadge
-I'm sorry, but there are no moves I\ncan teach you right now.\lCome back when you've at least\ldefeated Gym Leader: [GREEN]Brock[BLUE].
+I'm sorry, but there are no moves\nI can teach you right now[.]\pCome back when you have at least\ndefeated Pewter City's Gym\lLeader: Brock.
 
 #org @gText_SelectWhichBadge
 Which of these badges do you\ncurrently have?
 
 #org @gText_EventScript_DontHaveThisBadgeYet
-It appears you don't have this\nbadge yet...
+It appears you don't have this\nbadge yet[.]
 
 #org @gText_WhichMoveDoYouWantToLearn
 Which of these moves do you want\nto teach your Pok\emon?
@@ -23,16 +23,16 @@ Your Pok\emon's nature is now\nchanged!
 Which nature would you like to\nchange to?
 
 #org @gText_EventScript_NoMistyBadge
-I'm sorry, but I can't change\nyour Pok\emon's nature right\lnow.\pComeback when you've at least\ldefeated Gym Leader: [GREEN]Misty[BLUE]. 
+I'm sorry, but I cannot not change\nyour Pok\emon's nature right now[.]\pCome back when you have at least\ndefeated Cerulean City's Gym\lLeader: Misty.
 
 #org @gText_WhichPokemonToChangeNickname
 Which Pok\emon's nickname should be\nchanged?
 
 #org @gText_NewNickname
-What would you like [GREEN][BUFFER1]'s [BLUE]new\nnickname to be?
+What would you like [BUFFER1]'s new\nnickname to be?
 
 #org @gText_NicknameCompleted
-Done! From now on, this Pok\emon shall\nbe known as [GREEN][BUFFER1][BLUE]!
+Done! From now on, this Pok\emon shall\nbe known as [BUFFER1]!
 
 #org @gText_EventScript_ThisIsAnEgg
 Now, now.\nThat is merely an Egg!
@@ -53,7 +53,7 @@ Changed to its second ability!
 Changed to its hidden ability!
 
 #org @gText_EventScript_NoSurgeBadge
-I'm sorry, but I can't change\nyour Pok\emon's ability right\lnow.\pComeback when you've at least\ldefeated Gym Leader: [GREEN]Surge[BLUE]. 
+I'm sorry, but I cannot not change\nyour Pok\emon's ability right now[.]\pCome back when you have at least\ndefeated Vermillion City's Gym\lLeader: Lt. Surge.
 
 #org @gText_EventScript_ComeAgain 
 All right, see you then!

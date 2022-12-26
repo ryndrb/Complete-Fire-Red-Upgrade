@@ -18,3 +18,15 @@ Pok\estat
 
 #org @gText_StatScannerDescription
 A convenient tool which allows the player\nto view their Pok\emon statistics!
+
+#org @gText_PokeVial
+Pok\e Vial
+
+#org @gText_PokeVialDescription
+Potent medicine that fully restores all\nPok\emon.
+
+#org @gText_CurrentCharges
+Your Pok\e Vial currently have [BUFFER1]\ncharges.\pDo you want to use one charge?
+
+#org @gText_RefillVial
+Your Pok\e Vial currently have [BUFFER1]\ncharges.\pRefill it at a Pok\emon Center to\ncontinue using it.

@@ -423,3 +423,46 @@ bool8 CanPartyMonBeFrozen(struct Pokemon* mon)
 
 	return TRUE;
 }
+
+u8 GetMedianLevelOfPlayerParty(void)
+{
+    u8 i, j, temp, medianLevel, medianIndex = 0;
+    u8 playerPartyCount = CalculatePlayerBattlerPartyCount();
+    u8 partyLevels[PARTY_SIZE] = {0};
+
+    // Don't calculate anything if party size is 1
+    if (playerPartyCount == 1)
+    {
+        medianLevel = GetMonData(&gPlayerParty[0], MON_DATA_LEVEL, NULL);
+        return medianLevel;
+    }
+    // Store player levels in partyLevels array
+    for (i = 0 ; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_EGG)
+        {
+            partyLevels[i] = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL);
+        }
+        else
+        {
+            partyLevels[i] = 1; 
+        }
+    }
+    // Sort player levels in ascending order
+    for (i = 0 ; i < PARTY_SIZE ; i++)
+    {
+        for (j = 0 ; j < (PARTY_SIZE - 1) ; j++)
+        {
+            if (partyLevels[j] > partyLevels[j + 1])
+            {
+                temp = partyLevels[j];
+                partyLevels[j] = partyLevels[j + 1];
+                partyLevels[j + 1] = temp;
+            }
+        }
+    }
+    medianIndex = (playerPartyCount / 2) + (PARTY_SIZE - playerPartyCount);
+    medianLevel = partyLevels[medianIndex];
+    
+    return medianLevel;
+}

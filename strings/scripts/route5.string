@@ -1,0 +1,95 @@
+#org @gText_ExpLadyGreet
+Hello trainer!\nWhat's your name?\p[.]\n[.]\pNice to meet you, [PLAYER]!\p[.]\n[.]\pAre your Pok\emon in need of some\ntraining?\pWell, in that case, I'll help you!\nTraynee, that's my name!\pYou see, a Pok\emon can improve a\nstat if it battles Pok\emon that\lspecializes in that stat.\pI've got teams of Pok\emon to help\nyou with all of that!\pJust talk to me if you need any\nhelp... all free of charge!\pBuuut...\pI can also juice up your Pok\emon\nusing special vitamins... though\lit's gonna cost you some cash!
+
+#org @gText_ExpTrain
+Traynee: Hi there, [PLAYER]!\nWhat do you want to train today?
+
+#org @gText_Exp
+Traynee: Experience training?\nAlright, let's do it!
+
+#org @gText_BuyForWhichMon
+Traynee: Which Pok\emon do you\nwant to buy EVs for?
+
+#org @gText_WhichMonStat
+Traynee: Which of its stats do you\nwant to train?
+
+#org @gText_AreYouSureToBuyTraynee
+Traynee: That'll cost \$[BUFFER1]. Is\nthat OK?
+
+#org @gText_AllDone
+Traynee: Aaand... done!
+
+#org @gText_NotEnoughMoney
+Traynee: I'm sorry, but you don't\nhave enough money.
+
+#org @gText_HowManyEV
+Traynee: How many EVs do you\nwant to buy?
+
+#org @gText_ResetEV
+Traynee: Which Pok\emon needs\ntheir EVs reset?
+
+#org @gText_EVReset
+[BUFFER1]'s EVs have been reset!
+
+#org @gText_Hp
+Traynee: HP stat training?\nAlright, let's do it!
+
+#org @gText_Attack
+Traynee: Attack stat training?\nAlright, let's do it!
+
+#org @gText_Defense
+Traynee: Defense stat training?\nAlright, let's do it!
+
+#org @gText_SpAttack
+Traynee: Sp Attack stat training?\nAlright, let's do it!
+
+#org @gText_SpDefense
+Traynee: Sp Defense stat training?\nAlright, let's do it!
+
+#org @gText_Speed
+Traynee: Speed stat training?\nAlright, let's do it!
+
+#org @gText_TrainingCompleted
+Are your Pok\emon stronger now?
+
+#org @gText_Dummy
+[.]
+
+#org @gText_TrayneeSeeYa
+Come back anytime!
+
+#org @gText_ThisIsAnEggTraynee
+Traynee: Now, now. That is mereley\nan egg!\pBring it back once it's hatched[.]
+
+#org @gText_IvyHumming
+???: Mmm mm.. mm mm... mmm.. Mmm\nmm... Mm.. mm Mm... mmm.. Mmm\p...a trainer?
+
+#org @gText_IvyGreet
+Oh, sorry! I was listening to some\nmusic with my headphones.\pApologies for not noticing you...!\nI'm Ivy!\pAnyways, did you talk to Traynee\nalready?\pLet's see...\p[.]\n[.]\pYou already have a Gym Badge! Then\nI assume you already know the\lconcept of IVs and EVs then.\pWe offer special training programs\nthat will seriously juice up your\lPok\emon team!\pAs you can tell by my name, I'm\nyour woman for anything involving\lyour Pok\emon IVs.\pTraynee, on the other hand,\nprovides EV and experience\ltraining!\pDo keep in mind that our services\ndon't come in cheap.\pWell, mine don't, at least.\pTraynee's a bit more generous in\nsome ways.\pJust talk to either of us if you\nneed our specific services.\pGood luck and have a good day!
+
+#org @gText_IvyService
+Ivy: Hi there, [PLAYER]!\nWhat service do you want today?
+
+#org @gText_ChangeIVForWhichMon
+Ivy: Which Pok\emon do you want\nits IVs change?
+
+#org @gText_WhichStatToChangeIV
+Ivy: Which one of [BUFFER1] stats do you\nwant to change?
+
+#org @gText_HowManyIvy
+Ivy: What would you like to change\nit to?
+
+#org @gText_IVChanging
+Ivy: Alright let's do this!\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]
+
+#org @gText_IVChanged
+Ivy: Finished! The training made\n[BUFFER1] stronger!
+
+#org @gText_ChangeHiddenPowerForWhichMon
+Ivy: Which Pok\emon do you want\nits hidden power change?
+
+#org @gText_WhichHiddenPower
+Ivy: Which Hidden Power type do\nyou want its IVs set to?
+
+#org @gText_AreYouSureToBuyIvy
+Ivy: That'll cost \$[BUFFER1]. Is\nthat OK?

@@ -11,6 +11,7 @@
 @ Explosion | Cinnabar Island
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_CinnabarExplosion:
+    textcolor 0x0
     lock
     faceplayer
     checkflag FLAG_OBTAIN_EXPLOSION

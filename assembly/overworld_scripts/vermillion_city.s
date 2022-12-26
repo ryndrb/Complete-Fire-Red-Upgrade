@@ -6,13 +6,14 @@
 .include "../asm_defines.s"
 
 .equ VAR_MEW_VERMILLION_CITY_ENCOUNTER, 0x5014
+.equ VAR_VERMILLION_CITY_GYM_LOCKED, 0x502C
 .equ FLAG_OBTAIN_EVIOLITE, 0x0BB
-.equ FLAG_MEW_VERMILLION_CITY_ENCOUNTER, 0x301
 
 @@@@@@@@@@@@@@@@@@@@
 @ Eviolite
 @@@@@@@@@@@@@@@@@@@@
 EventScript_Eviolite:
+    textcolor 0x0
     lock
     faceplayer
     checkflag FLAG_OBTAIN_EVIOLITE
@@ -39,6 +40,7 @@ EventScript_GiveEvioliteNPCMove:
 @ Power Items Seller Old Man
 @@@@@@@@@@@@@@@@@@@@
 EventScript_PowerItemsSeller:
+    textcolor 0x0
     lock
     faceplayer
     msgbox gText_EventScript_PowerItemsSeller MSG_KEEPOPEN
@@ -108,6 +110,7 @@ EventScript_DidNotBeatCatchMew:
 @ Vermillion City TM Merchant
 @@@@@@@@@@@@@@@@@@@@
 EventScript_VermillionTMMerchant:
+    textcolor 0x1
     lock
     faceplayer
     msgbox gText_VermillionTMMerchantGreet MSG_KEEPOPEN
@@ -130,3 +133,49 @@ EventScript_VermillionTMMerchantList:
     .hword ITEM_TM93
     .hword ITEM_TM96
     .hword 0x0
+
+@@@@@@@@@@@@@@@@@@@@
+@ Vermillion City Gym Door Locked
+@@@@@@@@@@@@@@@@@@@@
+EventScript_VermillionCityGymLocked:
+    lock
+    spriteface PLAYER, UP
+    msgbox gText_VermillionGymLocked MSG_KEEPOPEN
+    applymovement PLAYER EventScript_PlayerBack
+    waitmovement PLAYER
+    release
+    end
+
+EventScript_PlayerBack:
+    .byte pause_short
+    .byte walk_down
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@
+@ SS Anne Captain
+@@@@@@@@@@@@@@@@@@@@
+EventScript_0x160B3A:
+    textcolor 0x0
+    lock
+    checkflag 0x237
+    if 0x1 _goto 0x8160BB5
+    msgbox 0x8173646 MSG_KEEPOPEN
+    textcolor 0x3
+    preparemsg 0x8173676
+    waitmsg
+    fanfare 0x100
+    waitfanfare
+    call 0x81A6675
+    pause 0x32
+    applymovement 0x1 0x81A75E1
+    waitmovement 0x0
+    msgbox 0x81736A6 MSG_KEEPOPEN
+    @additem 0x153 0x1
+    @loadpointer 0x0 0x81737AF
+    giveitem 0x153 0x1 MSG_OBTAIN
+    msgbox 0x81737D2 MSG_KEEPOPEN
+    setflag 0x237
+    setvar VAR_VERMILLION_CITY_GYM_LOCKED 0x1
+    setvar 0x407E 0x1
+    release
+    end

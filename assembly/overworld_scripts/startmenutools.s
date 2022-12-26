@@ -73,3 +73,31 @@ End:
 EventScript_StatScanner:
 	callasm 0x08f90001
 	end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Poke Vial | Inclement Emerald inspired
+@@@@@@@@@@@@@@@@@@@@@@
+.global EventScript_PokeVial
+EventScript_PokeVial:
+    buffernumber 0x0 0x502D
+    compare 0x502D 0x0
+    if equal _goto EventScript_RefillVial
+    msgbox gText_CurrentCharges MSG_YESNO
+    compare LASTRESULT 0x1
+    if equal _call EventScript_ConsumeVialCharge
+    release
+	end
+
+EventScript_ConsumeVialCharge:
+    fadescreen 0x1
+    fanfare 0x0100
+	special 0x0
+    waitfanfare
+    fadescreen 0x0
+    callasm DecreseCharges
+    return
+
+EventScript_RefillVial:
+    msgbox gText_RefillVial MSG_KEEPOPEN
+    release
+    end

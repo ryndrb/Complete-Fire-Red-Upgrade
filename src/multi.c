@@ -13,6 +13,7 @@
 #include "../include/new/move_menu.h"
 #include "../include/new/multi.h"
 #include "../include/new/switching.h"
+#include "../include/constants/items.h"
 /*
 multi.c
 	handles partner battle logic
@@ -32,6 +33,8 @@ static void PlayerPartnerHandleChooseMove(void);
 static void PlayerPartnerHandlePrintSelectionString(void);
 static void PlayerPartnerHandleChooseAction(void);
 static void PlayerPartnerHandleChoosePokemon(void);
+static u8 GetHighestMonLevel(const struct Pokemon* const party);
+static bool8 CheckIfPartyHasAmuletCoin(const struct Pokemon* const party);
 
 extern void (*const sPlayerPartnerBufferCommands[COMMAND_MAX])(void);
 
@@ -191,12 +194,45 @@ u32 MultiMoneyCalc(void)
 	return money;
 }
 
+static u8 GetHighestMonLevel(const struct Pokemon* const party)
+{
+	u8 max = GetMonData(&party[0], MON_DATA_LEVEL, NULL);
+
+	for (int i = 1; i < PARTY_SIZE; ++i)
+	{
+		u8 level;
+		u16 species = GetMonData(&party[i], MON_DATA_SPECIES2, NULL);
+	
+		if (max == MAX_LEVEL || species == SPECIES_NONE)
+			return max;
+
+		if (species == SPECIES_EGG)
+			continue;
+
+		level = GetMonData(&party[i], MON_DATA_LEVEL, NULL);
+		if (level > max)
+			max = level;
+	}
+
+	return max;
+}
+
+static bool8 CheckIfPartyHasAmuletCoin(const struct Pokemon* const party)
+{
+	for(int i = 0; i < PARTY_SIZE; i++){
+		if(ITEM_AMULET_COIN == GetMonData(&party[i], MON_DATA_HELD_ITEM, NULL))
+			return TRUE;
+	}
+	return FALSE;
+}
+
 #define gTrainerMoneyTable ((struct TrainerMoney*) *((u32*) 0x80259CC))
 static u32 CalcMultiMoneyForTrainer(u16 trainerId)
 {
 	int i;
-	struct Trainer trainer = GET_TRAINER(trainerId);
+	struct Trainer trainer = gTrainers[trainerId];
 	u8 rate = 0;
+	u32 money;
 
 	/* Find level of the last Pokemon in trainer's party */
 	u8 lastMon = trainer.partySize - 1;
@@ -208,9 +244,9 @@ static u32 CalcMultiMoneyForTrainer(u16 trainerId)
 		level = gOpenWorldLevelRanges[GetOpenWorldBadgeCount()][1];
 	#else
 		if (trainer.partyFlags & PARTY_FLAG_CUSTOM_MOVES)
-			level = trainer.party.ItemCustomMoves[lastMon].lvl;
+			level = GetHighestMonLevel(gPlayerParty) - trainer.party.ItemCustomMoves[lastMon].lvl;
 		else
-			level = trainer.party.NoItemDefaultMoves[lastMon].lvl;
+			level = GetHighestMonLevel(gPlayerParty) - trainer.party.ItemCustomMoves[lastMon].lvl;
 	#endif
 
 	for (i = 0; i < NUM_TRAINER_CLASSES; ++i)
@@ -228,7 +264,10 @@ static u32 CalcMultiMoneyForTrainer(u16 trainerId)
 		}
 	}
 
-	u32 money = (rate * 4) * level * gBattleStruct->moneyMultiplier;
+	if(CheckIfPartyHasAmuletCoin(gPlayerParty))
+		money = ((rate * 4) * level * gBattleStruct->moneyMultiplier) * 2;
+	else
+		money = (rate * 4) * level * gBattleStruct->moneyMultiplier;
 
 	if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && !(gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS)))
 		money *= 2;

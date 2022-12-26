@@ -14,6 +14,7 @@
 .equ FLAG_OBTAIN_ZOOM_LENS, 0x0B8
 .equ FLAG_OBTAIN_PROTECTIVE_PADS, 0x0B9
 .equ FLAG_OBTAIN_LIFE_ORB, 0x0BA
+.equ FLAG_OBTAIN_VENOSHOCK, 0x0BF
 .equ FLAG_OBTAIN_GRASS_KNOT, 0x0C0
 .equ FLAG_OBTAIN_SMACK_DOWN, 0x0C1
 .equ FLAG_OBTAIN_SNARL, 0x0C2
@@ -97,6 +98,15 @@ EventScript_SootheBell:
  EventScript_BindingBand:
     giveitem ITEM_BINDING_BAND 0x1 MSG_FIND
     setflag FLAG_OBTAIN_BIG_ROOT
+    hidesprite 0x8
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Venoshock | Route 2
+@@@@@@@@@@@@@@@@@@@@@@
+ EventScript_Venoshock:
+    giveitem ITEM_TM63 0x1 MSG_FIND
+    setflag FLAG_OBTAIN_VENOSHOCK
     hidesprite 0x8
     end
 
@@ -587,25 +597,60 @@ EventScript_Slowbronite:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Cut Script
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Cut:
+    lockall
+    checkflag 0x821
+    if 0x0 _goto EventScript_CantCutTree
+    checkitem ITEM_HM01 0x1
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_CantCutTree
+    goto EventScript_CanCutTree
+
+EventScript_CantCutTree:
+    msgbox gText_CantCutTree MSG_SIGN
+    release
+    end
+
+EventScript_CanCutTree:
+    sound 0x79
+    applymovement LASTTALKED EventScript_CutTreeAnim
+    waitmovement 0x0
+    checksound
+    hidesprite LASTTALKED
+    release
+    end
+
+EventScript_CutTreeAnim:
+    .byte cut_tree
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Strength Boulder Script
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StrengthBoulder:
-    special 0x187
-    compare LASTRESULT 0x2
-    if 0x1 _goto 0x81A7AE0
     lockall
     checkflag 0x823
-    if 0x0 _goto 0x81BE185
+    if 0x0 _goto EventScript_CantMoveBoulder
     checkflag 0x805
-    if 0x1 _goto 0x81BE18E
-    checkattack 0x46
-    compare LASTRESULT 0x6
-    if 0x1 _goto 0x81BE185
-    setanimation 0x0 LASTRESULT
-    msgbox 0x81BE19A MSG_YESNO
-    compare LASTRESULT 0x0
-    if 0x1 _goto 0x81BE197
-    closeonkeypress
-    doanimation 0x28
-    waitstate
-    goto 0x81BE179
+    if 0x1 _goto Eventscript_CanMoveBoulder
+    special 0x10C
+    checkitem ITEM_HM04 0x1
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_CantMoveBoulder
+    call Eventscript_UseStrength
+    end
+
+EventScript_CantMoveBoulder:
+    msgbox gText_CantMoveBoulder MSG_SIGN
+    end
+
+Eventscript_CanMoveBoulder:
+    msgbox gText_CanMoveBoulder MSG_SIGN
+    end
+
+Eventscript_UseStrength:
+    setflag 0x805
+    msgbox gText_CanMoveBoulder MSG_SIGN
+    return

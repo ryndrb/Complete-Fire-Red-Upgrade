@@ -1,14 +1,17 @@
 #org @gText_GameCornerStartMessage
-[BLACK]Which of these prizes would you like?
+Which of these prizes would you like?
 
 #org @gText_YouWantThisStone
-[BLACK]So you want [GREEN][BUFFER1][BLACK] for [RED][BUFFER2][BLACK]\ncoins?
+So you want [BUFFER1] for [BUFFER2]\ncoins?
 
 #org @gText_GameCornerGivePseudo
-[BLACK]Which of these Pok\emon would you like?
+Which of these Pok\emon would you like?
 
 #org @gText_YouWantThisPokemon
-[BLACK]So you want [GREEN][BUFFER1][BLACK] for [RED][BUFFER2][BLACK]\ncoins?
+So you want [BUFFER1] for [BUFFER2]\ncoins?
 
 #org @gText_GalarExclusive
 Hi, there!\pWe have an all new exclusive items\nfrom the Galar and Alola region!\pHow may I help you?
+
+#org @gText_CantEnterRocketHideoutYet
+Scram kid! Adults are playing!

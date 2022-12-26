@@ -2834,6 +2834,7 @@ bool8 ScrCmd_message(struct ScriptContext* ctx)
 	if (msg == NULL)
 		msg = (const u8*) ctx->data[0];
 
+	SetTextboxSignpostDesign();
 	ShowFieldMessage(msg);
 	return FALSE;
 }
@@ -3301,6 +3302,66 @@ extern const u8 PSEUDO_JANGMOO[];
 extern const u8 PSEUDO_DREEPY[];
 extern const u8 PSEUDO_SNOM[];
 
+// Traynee service list
+extern const u8 T_EXPERIENCE[];
+extern const u8 T_BUYEVS[];
+extern const u8 T_CLEAREVS[];
+extern const u8 T_HP[];
+extern const u8 T_ATTACK[];
+extern const u8 T_DEFENSE[];
+extern const u8 T_SPATTACK[];
+extern const u8 T_SPDEFENSE[];
+extern const u8 T_SPEED[];
+extern const u8 T_CANCEL[];
+
+// EV Stat
+extern const u8 EV_HP[];
+extern const u8 EV_ATTACK[];
+extern const u8 EV_DEFENSE[];
+extern const u8 EV_SPATTACK[];
+extern const u8 EV_SPDEFENSE[];
+extern const u8 EV_SPEED[];
+
+// Number of EVs
+extern const u8 EV_4[];
+extern const u8 EV_8[];
+extern const u8 EV_12[];
+extern const u8 EV_64[];
+extern const u8 EV_128[];
+extern const u8 EV_252[];
+
+// Ivy Service
+extern const u8 I_MAX[];
+extern const u8 I_IV[];
+extern const u8 I_HP[];
+extern const u8 I_CANCEL[];
+
+// Number of IVs
+extern const u8 IV_0[];
+extern const u8 IV_1[];
+extern const u8 IV_14[];
+extern const u8 IV_15[];
+extern const u8 IV_30[];
+extern const u8 IV_31[];
+
+// Hidden Power Types
+extern const u8 IV_HP_DARK[];
+extern const u8 IV_HP_DRAGON[];
+extern const u8 IV_HP_ICE[];
+extern const u8 IV_HP_PSYCHIC[];
+extern const u8 IV_HP_ELECTRIC[];
+extern const u8 IV_HP_GRASS[];
+extern const u8 IV_HP_WATER[];
+extern const u8 IV_HP_FIRE[];
+extern const u8 IV_HP_STEEL[];
+extern const u8 IV_HP_GHOST[];
+extern const u8 IV_HP_BUG[];
+extern const u8 IV_HP_ROCK[];
+extern const u8 IV_HP_GROUND[];
+extern const u8 IV_HP_POISON[];
+extern const u8 IV_HP_FLYING[];
+extern const u8 IV_HP_FIGHTING[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3549,6 +3610,78 @@ static const u8* GameCornerPseudo[] = {
 	PSEUDO_SNOM,
 };
 
+// Traynee service list
+static const u8* TrayneeService[] = {
+	T_EXPERIENCE,
+	T_BUYEVS,
+	T_CLEAREVS,
+	T_HP,
+	T_ATTACK,
+	T_DEFENSE,
+	T_SPATTACK,
+	T_SPDEFENSE,
+	T_SPEED,
+	T_CANCEL,
+};
+
+// EV Stat
+static const u8* EVStat[] = {
+	EV_HP,
+	EV_ATTACK,
+	EV_DEFENSE,
+	EV_SPEED,
+	EV_SPATTACK,
+	EV_SPDEFENSE,
+};
+
+// Number of EV
+static const u8* NumEV[] = {
+	EV_4,
+	EV_8,
+	EV_12,
+	EV_64,
+	EV_128,
+	EV_252,
+};
+
+// Ivy Service
+static const u8* IvyService[] = {
+	I_MAX,
+	I_IV,
+	I_HP,
+	I_CANCEL,
+};
+
+// Number of IV
+static const u8* NumIV[] = {
+	IV_0,
+	IV_1,
+	IV_14,
+	IV_15,
+	IV_30,
+	IV_31,
+};
+
+// Hidden Power Types
+static const u8* HiddenPowerTpyes[] = {
+	IV_HP_DARK,
+	IV_HP_DRAGON,
+	IV_HP_ICE,
+	IV_HP_PSYCHIC,
+	IV_HP_ELECTRIC,
+	IV_HP_GRASS,
+	IV_HP_WATER,
+	IV_HP_FIRE,
+	IV_HP_STEEL,
+	IV_HP_GHOST,
+	IV_HP_BUG,
+	IV_HP_ROCK,
+	IV_HP_GROUND,
+	IV_HP_POISON,
+	IV_HP_FLYING,
+	IV_HP_FIGHTING,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
@@ -3570,6 +3703,12 @@ const struct ScrollingMulti gScrollingSets[] =
 	{ChooseStarterRegion, ARRAY_COUNT(ChooseStarterRegion)},//16
 	{GameCornerMegaStones, ARRAY_COUNT(GameCornerMegaStones)},//17
 	{GameCornerPseudo, ARRAY_COUNT(GameCornerPseudo)},//18
+	{TrayneeService, ARRAY_COUNT(TrayneeService)},//19
+	{EVStat, ARRAY_COUNT(EVStat)},//20
+	{NumEV, ARRAY_COUNT(NumEV)},//21
+	{IvyService, ARRAY_COUNT(IvyService)},//22
+	{NumIV, ARRAY_COUNT(NumIV)},//23
+	{HiddenPowerTpyes, ARRAY_COUNT(HiddenPowerTpyes)},//24
 };
 
 //Link number of opts shown at once to the box height

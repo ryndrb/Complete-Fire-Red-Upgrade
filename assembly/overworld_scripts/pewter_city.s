@@ -6,12 +6,13 @@
 .include "../asm_defines.s"
 
 .equ FLAG_OBTAIN_ROOST, 0x0D4
-.equ FLAG_LANCE_SPRITE_PEWTER, 0x101
+.equ FLAG_LANCE_SPRITE_PEWTER, 0x30D
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Roost | Pewter City Repel Guy
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PewterRoostGuy:
+    textcolor 0x0
     lock
     faceplayer
     checkflag FLAG_OBTAIN_ROOST
@@ -73,6 +74,7 @@ EventScript_RoostGuy2GoBack:
 @ Mega Ring Lance | Defeat Surge
 @@@@@@@@@@@@@@@@@@@@
 EventScript_LanceMegaRing:
+    textcolor 0x0
     lock
     faceplayer
     msgbox gText_LanceIntro1 MSG_KEEPOPEN
@@ -101,6 +103,7 @@ EventScript_LanceMove:
 @ Did you check Museam guy | Fix
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x16607E:
+    textcolor 0x0
     lock
     faceplayer
     msgbox 0x817E53E MSG_YESNO
@@ -212,6 +215,7 @@ EventScript_0x8166140:
 @ Check Brock Guy | Fix
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x165B9D:
+    textcolor 0x0
     lock
     faceplayer
     msgbox gText_0x817E67E MSG_KEEPOPEN
@@ -277,6 +281,7 @@ EventScript_LookDown:
 @ Prof. Aide Dex Nav
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_0x1662A9:
+    textcolor 0x0
     lock
     faceplayer
     setvar 0x4001 0x0

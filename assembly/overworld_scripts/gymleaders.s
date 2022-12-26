@@ -248,6 +248,7 @@ EventScript_0x816D0C6:
     if 0x1 _goto 0x816D107
     giveitem_msg 0x81973BA ITEM_TM19
     setflag 0x293
+    setvar 0x502E 0x1
     release
     end
 

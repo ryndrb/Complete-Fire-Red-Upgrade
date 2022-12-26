@@ -22,16 +22,16 @@
 @ Prof Aid Give Time Turner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ProfOakAidLabTimeTurner:
+    textcolor 0x0
     lock
     faceplayer
     checkflag 0x82C
     if 0x1 _goto 0x8169E03
-    msgbox 0x818EBE6 MSG_NORMAL
-    lock
+    msgbox 0x818EBE6 MSG_KEEPOPEN
     checkflag 0x829 @pokedex received?
     if 0x0 _goto EventScript_NoPokedex
     checkflag FLAG_RECEIVED_TIMETURNER
-    if 0x1 _goto 0x818EBE6
+    if 0x1 _goto EventScript_ReceivedDevices
     msgbox gText_HavePokedex1 MSG_KEEPOPEN
     setflag FLAG_RECEIVED_TIMETURNER
     release
@@ -41,28 +41,49 @@ EventScript_ProfOakAidLabTimeTurner:
 @ Prof Aid PokeStat / Stat Scanner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ProfOakAidLabStatScanner:
+    textcolor 0x0
     lock
     faceplayer
     checkflag 0x82C
     if 0x1 _goto 0x8169E2F
-    msgbox 0x818EBE6 MSG_NORMAL
-    lock
+    msgbox 0x818EBE6 MSG_KEEPOPEN
     checkflag 0x829 @pokedex received?
     if 0x0 _goto EventScript_NoPokedex
     checkflag FLAG_RECEIVED_STATSCANNER
-    if 0x1 _goto 0x818EBE6 
+    if 0x1 _goto EventScript_ReceivedDevices 
     msgbox gText_HavePokedex2 MSG_KEEPOPEN
     setflag FLAG_RECEIVED_STATSCANNER
+    release
+    end
+
+EventScript_ReceivedDevices:
+    release
+    end
+
+EventScript_NoPokedex:
+    msgbox gText_EventScript_NoPokedex MSG_KEEPOPEN
     release
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Choose Starter Region (Upto Gen 8)
 @@@@@@@@@@@@@@@@@@@@@@
+MapScript_ChooseStarterRegion:
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_ChooseStarterRegion
+    .byte MAP_SCRIPT_TERMIN
+
+LevelScript_ChooseStarterRegion:
+    levelscript 0x502A, 0, EventScript_ChooseStarterRegion
+    .hword MAP_SCRIPT_TERMIN
+
 EventScript_ChooseStarterRegion:
+    textcolor 0x1
+    setvar 0x502A 0x1
     lock
     call SETNECESSARYGAMEFLAGS
-    msgbox gText_EventScript_ChooseStarterRegion MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomSawYou
+    waitmovement 0x1
+    msgbox gText_MomChooseRegion MSG_KEEPOPEN
     setvar 0x8000 0xF
     setvar 0x8001 0x5
     setvar 0x8004 0x0
@@ -82,82 +103,111 @@ EventScript_ChooseStarterRegion:
     end
 
 EventScript_RemainKanto:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_RemainKanto MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_KANTO
-    closeonkeypress
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
+    closeonkeypress 
     release
     end
 
 EventScript_Gen1:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen1 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_KANTO
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
 
 EventScript_Gen2:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen2 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_JOHTO
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
 
 EventScript_Gen3:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen3 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_HOENN
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
 
 EventScript_Gen4:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen4 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_SINNOH
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
 
 EventScript_Gen5:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen5 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_UNOVA
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
 
 EventScript_Gen6:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen6 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_KALOS
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
 
 EventScript_Gen7:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen7 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_ALOLA
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
 
 EventScript_Gen8:
-    setvar 0x4011 0x1
-    msgbox gText_EventScript_Gen8 MSG_KEEPOPEN
+    setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_GALAR
+    msgbox gText_MomDone MSG_KEEPOPEN
+    applymovement 0x1 EventScript_MomDone
+    waitmovement 0x1
     closeonkeypress
     release
     end
+
+EventScript_MomSawYou:
+    .byte exclaim
+    .byte pause_short
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+EventScript_MomDone:
+    .byte walk_left_onspot_fastest
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Choose Starter Oak Lab
 @@@@@@@@@@@@@@@@@@@@@@
 @ Grass
 EventScript_StarterGrass:
+    textcolor 0x0
     lock
     faceplayer
     checkflag FLAG_CHOOSE_REGION_KANTO
@@ -410,6 +460,7 @@ EventScript_0x8169C52:
 @ Amulet Coin
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_AmuletCoin:
+    textcolor 0x0
     lock
     faceplayer
     msgbox 0x817D80D MSG_FACE
@@ -426,14 +477,151 @@ EventScript_GiveAmuletCoin:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ End Script Dialogues
+@ Oak In Lab | National Dex 
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_NoPokedex:
-    msgbox gText_EventScript_NoPokedex MSG_KEEPOPEN
+EventScript_0x169595:
+    textcolor 0x0
+    lock
+    faceplayer
+    checkflag 0x2
+    if 0x1 _goto 0x8169600
+    compare 0x4055 0x9
+    if 0x1 _goto 0x8169903
+    compare 0x4055 0x8
+    if 0x1 _goto 0x8169A6E
+    compare 0x4052 0x1
+    if 0x1 _goto 0x8169903
+    compare 0x4055 0x6
+    if 0x1 _goto 0x81698D6
+    compare 0x4057 0x1
+    if 0x4 _goto EventScript_0x816961E
+    compare 0x4055 0x4
+    if 0x1 _goto 0x8169614
+    compare 0x4055 0x3
+    if 0x1 _goto 0x816960A
+    msgbox 0x818E116 MSG_KEEPOPEN
+    release
+    end
+
+EventScript_0x816961E:
+    msgbox 0x818E405 MSG_KEEPOPEN
+    textcolor 0x3
+    fanfare 0x105
+    preparemsg 0x818E4AF
+    waitmsg
+    waitfanfare
+    call 0x81A6675
+    removeitem 0x15D 0x1
+    msgbox 0x818E4CA MSG_KEEPOPEN
+    playsong 0x13B 0x0
+    msgbox 0x818DE8D MSG_KEEPOPEN
+    closeonkeypress
+    compare PLAYERFACING 0x2
+    if 0x1 _call 0x8169A82
+    compare PLAYERFACING 0x1
+    if 0x1 _call 0x8169AC1
+    compare PLAYERFACING 0x4
+    if 0x1 _call 0x8169A9E
+    compare PLAYERFACING 0x3
+    if 0x1 _call 0x8169A9E
+    fadedefault
+    msgbox 0x818DE99 MSG_KEEPOPEN
+    closeonkeypress
+    pause 0x1E
+    sound 0x15
+    applymovement 0x4 0x81A75DB
+    waitmovement 0x0
+    applymovement 0x4 0x81A75DD
+    waitmovement 0x0
+    compare PLAYERFACING 0x1
+    if 0x1 _call 0x8169ADD
+    compare PLAYERFACING 0x4
+    if 0x1 _call 0x8169B14
+    compare PLAYERFACING 0x3
+    if 0x1 _call 0x8169AF5
+    compare PLAYERFACING 0x2
+    if 0x1 _call 0x8169B86
+    msgbox 0x818E508 MSG_KEEPOPEN
+    closeonkeypress
+    compare PLAYERFACING 0x2
+    if 0x1 _call 0x8169882
+    compare PLAYERFACING 0x1
+    if 0x1 _call 0x816988D
+    compare PLAYERFACING 0x4
+    if 0x1 _call 0x81698A6
+    compare PLAYERFACING 0x3
+    if 0x1 _call 0x81698B8
+    msgbox gText_RecentSightings MSG_KEEPOPEN
+    closeonkeypress
+    pause 0x28
+    msgbox 0x818E5C5 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0x4 0x81A75E9
+    waitmovement 0x0
+    hidesprite 0x9
+    pause 0xA
+    hidesprite 0xA
+    pause 0x19
+    compare PLAYERFACING 0x2
+    if 0x1 _call 0x8169845
+    compare PLAYERFACING 0x1
+    if 0x1 _call 0x8169850
+    compare PLAYERFACING 0x4
+    if 0x1 _call 0x816985B
+    compare PLAYERFACING 0x3
+    if 0x1 _call 0x816986D
+    pause 0xA
+    textcolor 0x3
+    fanfare 0x13E
+    preparemsg 0x818E5EA
+    waitmsg
+    waitfanfare
+    call 0x81A6675
+    setflag 0x829
+    special 0x16F
+    special 0x181
+    setvar 0x407C 0x1
+    msgbox 0x818E612 MSG_KEEPOPEN
+    additem 0x4 0x5
+    loadpointer 0x0 0x818E6B3
+    giveitem 0x4 0x14 MSG_OBTAIN
+    msgbox 0x818E6D0 MSG_KEEPOPEN
+    setvar 0x8004 0x0
+    setvar 0x8005 0x1
+    special 0x173
+    msgbox 0x818E784 MSG_KEEPOPEN
+    msgbox 0x818DEC8 MSG_KEEPOPEN
+    compare PLAYERFACING 0x2
+    if 0x1 _call 0x8169B33
+    compare PLAYERFACING 0x1
+    if 0x1 _call 0x8169B45
+    compare PLAYERFACING 0x4
+    if 0x1 _call 0x8169B57
+    compare PLAYERFACING 0x3
+    if 0x1 _call 0x8169B57
+    msgbox 0x818DEF3 MSG_KEEPOPEN
+    closeonkeypress
+    playsong 0x13C 0x0
+    compare PLAYERFACING 0x2
+    if 0x1 _call 0x8169B69
+    compare PLAYERFACING 0x1
+    if 0x1 _call 0x8169B7B
+    compare PLAYERFACING 0x4
+    if 0x1 _call 0x8169B7B
+    compare PLAYERFACING 0x3
+    if 0x1 _call 0x8169B7B
+    hidesprite 0x8
+    fadedefault
+    setvar 0x4055 0x6
+    setvar 0x4057 0x2
+    setvar 0x4051 0x1
+    setvar 0x4058 0x1
+    setvar 0x4054 0x1
     release
     end
 
 SETNECESSARYGAMEFLAGS: @ will add more
-    setflag 0x101
     setflag 0x300
+    setflag 0x304
+    setflag 0x30D
     return

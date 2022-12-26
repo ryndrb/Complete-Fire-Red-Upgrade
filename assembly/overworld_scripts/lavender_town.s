@@ -12,6 +12,7 @@
 @ Lavender Town Items Merchant
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_LavenderTownMerchant:
+    textcolor 0x0
     lock
     faceplayer
     checkflag 0x23C
@@ -73,3 +74,43 @@ EventScript_DoesntMatter:
     msgbox gText_DoesntMatter MSG_KEEPOPEN
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pokemon Tower Lady Preventing Enter
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PokeTowerLady:
+    textcolor 0x1
+    lock
+    faceplayer
+    checkflag 0x4B3
+    if SET _goto EventScript_CanEnterLady
+    msgbox gText_PokeTowerLady MSG_KEEPOPEN
+    msgbox gText_CheckWorthiness MSG_KEEPOPEN
+    release
+    end
+
+EventScript_CanEnterLady:
+    msgbox gText_PokeTowerLady MSG_FACE
+    end
+
+EventScript_PokeTowerLadyTile:
+    lock
+    checkflag 0x4B3
+    if NOT_SET _goto EventScript_CanEnterPokeTower
+    msgbox gText_PokeTowerLady MSG_KEEPOPEN
+    release
+    end
+
+EventScript_CanEnterPokeTower:
+    spriteface 0x2, DOWN
+    spriteface PLAYER, UP
+    msgbox gText_PokeTowerLady MSG_KEEPOPEN
+    msgbox gText_CheckWorthiness MSG_KEEPOPEN
+    applymovement PLAYER EventScript_MovePlayer
+    waitmovement PLAYER
+    release
+    end
+
+EventScript_MovePlayer:
+    .byte walk_left
+    .byte end_m
