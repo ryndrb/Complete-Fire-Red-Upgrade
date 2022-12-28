@@ -2,10 +2,10 @@
 Hmm[.]\pIt appears you do not have a\nPok\edex yet.\pIf you acquire one, come and see\nme.
 
 #org @gText_HavePokedex1
-[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Time Turner.\pIt allows trainers like yourself\nto change the current time for\lsuitable wild Pok\emon encounters.\pThough not yet fully optimized, it's\na rather convenient tool, don't\lyou think?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
+[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Time Turner.\pIt allows trainers like yourself\nto change the current time for\lsuitable wild Pok\emon encounters.\pThough not yet fully optimized, it's\na rather convenient tool, don't\lyou think?\p[.]\n[.]\pAnyway, press [F8][04] and [F8][09] to\naccess it.\pGood luck on your adventure!
 
 #org @gText_HavePokedex2
-[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\estat!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyways, press [F8][09] when opening\nthe start menu to use it.\pGood luck on your adventure!
+[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\estat!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyway, press [F8][04] and [F8][09] to\naccess it.\pGood luck on your adventure!
 
 #org @gText_GrassChoice
 I see! [BUFFER1] is your choice.\nIt's very easy to raise.\pSo, [PLAYER], you want to go with\nthe Grass Pok\emon [BUFFER1]?

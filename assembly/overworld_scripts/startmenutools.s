@@ -71,7 +71,7 @@ End:
 @@@@@@@@@@@@@@@@@@@@@@
 .global EventScript_StatScanner
 EventScript_StatScanner:
-	callasm 0x08f90001
+	callasm CB2_ShowEvIv
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@

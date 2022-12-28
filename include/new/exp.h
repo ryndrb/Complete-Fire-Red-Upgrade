@@ -16,3 +16,4 @@ bool8 AddEVs(struct Pokemon* mon, u8 statId, u16 numToAdd);
 //Functions Hooked In
 void atk23_getexp(void);
 void PlayerHandleExpBarUpdate(void);
+u8 GetBadgeCount(); 

@@ -8,6 +8,8 @@
         "trainer_money.h": "c",
         "trainer_classes.h": "c",
         "field_weather.h": "c",
-        "items.h": "c"
+        "items.h": "c",
+        "ram_locs.h": "c",
+        "form_change.h": "c"
     }
 }

@@ -474,6 +474,7 @@ PokedexLoadAlternateHeightHook 081058DC 0
 PokedexLoadAlternateWeightHook 08105A58 0
 SizeMinigameLoadAlternateHeightHook 080A0774 2
 PokedexScreenStats 08106370 0
+GetVisualBaseStat 0801D77C 2
 
 ##Daycare
 GiveEggFromDaycare 080460D4 1
@@ -647,3 +648,13 @@ RunTextPrintersForInstantTextHook 08002DEE 0
 
 ##Duplicate Ability System
 PokeSum_PrintAbilityNameAndDesc 08137C18 0
+
+NullFunc 0813368C 1
+PrintStringTMCaseOnWindow3 081333c4 0
+NullFunc 08133714 2
+NullFunc 08133730 1
+NullFunc 08133790 2
+NullFunc 081337e4 2
+NullFunc 08133810 1
+CreateTMCaseSpriteHook 8131B94 0
+TMCaseMonIconPalChangeHook 8131E5C 0 

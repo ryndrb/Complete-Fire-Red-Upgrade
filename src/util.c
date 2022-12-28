@@ -204,7 +204,7 @@ bool8 CouldHaveEvolvedViaLevelUp(struct Pokemon* mon)
 	return FALSE;
 }
 
-void EvolveSpeciesByLevel(u16* species, u8 level)
+void EvolveSpeciesByLevel2(u16* species, u8 level)
 {
 	const struct Evolution* evolutions;
 
@@ -424,6 +424,25 @@ bool8 CanPartyMonBeFrozen(struct Pokemon* mon)
 	return TRUE;
 }
 
+u8 CalculatePlayerBattlerPartyCount(void)
+{
+    s32 battlerCount = 0;
+    s32 i;
+    CalculatePlayerPartyCount();
+
+    if (gPlayerPartyCount == 1)
+        return gPlayerPartyCount; // PLAYER_HAS_ONE_MON
+
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_EGG
+         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_NONE)
+            battlerCount++;
+    }
+
+    return battlerCount;
+}
+
 u8 GetMedianLevelOfPlayerParty(void)
 {
     u8 i, j, temp, medianLevel, medianIndex = 0;
@@ -444,7 +463,7 @@ u8 GetMedianLevelOfPlayerParty(void)
             partyLevels[i] = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL);
         }
         else
-        {
+        { 
             partyLevels[i] = 1; 
         }
     }
@@ -465,4 +484,72 @@ u8 GetMedianLevelOfPlayerParty(void)
     medianLevel = partyLevels[medianIndex];
     
     return medianLevel;
+}
+
+u8 GetVisualBaseStat(u8 statId, u16 species) //For the Pokedex screen
+{
+	u16 base = ((u8*) (&gBaseStats[species].baseHP))[statId];
+
+	if (statId != STAT_HP && IsScaleMonsBattle())
+	{
+		u8 baseHP = gBaseStats[species].baseHP;
+		base = MathMin((base * (600 - baseHP)) / (GetBaseStatsTotal(species) - baseHP), 255); //Max 255
+	}
+
+	return base;
+}
+
+static u8 TryRandomizeAbility(u8 originalAbility, unusedArg u16 species)
+{
+	u32 newAbility = originalAbility;
+
+	#ifdef FLAG_ABILITY_RANDOMIZER
+	if (FlagGet(FLAG_ABILITY_RANDOMIZER) && !FlagGet(FLAG_BATTLE_FACILITY)
+	&& !gSpecialAbilityFlags[originalAbility].gRandomizerBannedOriginalAbilities) //This Ability can be changed
+	{
+		u32 id = T1_READ_32(gSaveBlock2->playerTrainerId);
+		u16 startAt = (id & 0xFFFF) % (u32) ABILITIES_COUNT + species;
+		u16 xorVal = (id >> 16) % (u32) 0xFF; //Only set the bits likely to be in the ability
+		u32 numAttempts = 0;
+
+		newAbility = originalAbility + startAt;
+		if (newAbility >= ABILITIES_COUNT)
+		{
+			u16 overflow = newAbility - (ABILITIES_COUNT - 2);
+			newAbility = overflow;
+		}
+
+		newAbility ^= xorVal;
+		newAbility %= (u32) ABILITIES_COUNT; //Prevent overflow
+
+		while (gSpecialAbilityFlags[newAbility].gRandomizerBannedNewAbilities && numAttempts < 100)
+		{
+			newAbility *= xorVal; //Multiply this time
+			newAbility %= (u32) ABILITIES_COUNT;
+			++numAttempts;
+		}
+
+		if (numAttempts >= 100 && gSpecialAbilityFlags[newAbility].gRandomizerBannedNewAbilities) //If the Ability is still banned
+			newAbility = originalAbility; //Just use the original ability
+		else if (newAbility == ABILITY_NONE) //Somehow wound up with no Ability
+			newAbility = originalAbility; //Just use the original ability
+	}
+	#endif
+
+	return newAbility;
+}
+
+u8 GetAbility1(const u16 species)
+{
+	return TryRandomizeAbility(gBaseStats[species].ability1, species);
+}
+
+u8 GetAbility2(const u16 species)
+{
+	return TryRandomizeAbility(gBaseStats[species].ability2, species);
+}
+
+u8 GetHiddenAbility(const u16 species)
+{
+	return TryRandomizeAbility(gBaseStats[species].hiddenAbility, species);
 }

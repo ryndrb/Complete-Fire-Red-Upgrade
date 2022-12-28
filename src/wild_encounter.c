@@ -73,30 +73,10 @@ static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon* wildMon, u
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon* wildMon, u8 type, u8 ability, u8* monIndex, u8 monsCount);
 static void CreateScriptedWildMon(u16 species, u8 level, u16 item, u16* specialMoves, bool8 firstMon);
 static const struct WildPokemonInfo* LoadProperMonsPointer(const struct WildPokemonHeader* header, const u8 type);
-u8 CalculatePlayerBattlerPartyCount(void);
 
 #ifdef FLAG_SCALE_WILD_POKEMON_LEVELS
 static u8 GetLowestMonLevel(const struct Pokemon* const party);
 #endif
-
-u8 CalculatePlayerBattlerPartyCount(void)
-{
-    s32 battlerCount = 0;
-    s32 i;
-    CalculatePlayerPartyCount();
-
-    if (gPlayerPartyCount == 1)
-        return gPlayerPartyCount; // PLAYER_HAS_ONE_MON
-
-    for (i = 0; i < gPlayerPartyCount; i++)
-    {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_EGG
-         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) != SPECIES_NONE)
-            battlerCount++;
-    }
-
-    return battlerCount;
-}
 
 static u8 ChooseWildMonLevel(void)
 {
