@@ -22,6 +22,7 @@ battle_start_turn_start_battle_scripts.s
 .global BattleScript_MistyTerrainBattleBegin
 .global BattleScript_PsychicTerrainBattleBegin
 .global BattleScript_QuickClaw
+.global BattleScript_QuickDraw
 .global BattleScript_FocusPunchSetUp
 .global BattleScript_BeakBlastSetUp
 .global BattleScript_ShellTrapSetUp
@@ -33,6 +34,20 @@ battle_start_turn_start_battle_scripts.s
 .global BattleScript_RaidBattleStorm
 
 .global StringNull
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+BattleScript_QuickDraw:
+	setword BATTLE_STRING_LOADER StringNull
+	printstring 0x184
+	call BattleScript_AbilityPopUp
+	setword BATTLE_STRING_LOADER gText_AbilityIncreasedSpeedBracket
+	printstring 0x184
+	waitmessage DELAY_HALFSECOND
+	call BattleScript_AbilityPopUpRevert
+	end3
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 

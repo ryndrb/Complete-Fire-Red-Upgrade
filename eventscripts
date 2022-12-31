@@ -2,7 +2,7 @@
 
 ## still testing scripts
 # PALLET TOWN
-npc 3 0 3 EventScript_TradeScript
+npc 3 0 3 EventScript_GivePoke
 npc 3 0 1 EventScript_AmuletCoin
 map 4 0 MapScript_ChooseStarterRegion
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner

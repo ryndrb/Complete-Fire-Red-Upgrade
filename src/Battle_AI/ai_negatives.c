@@ -3,6 +3,7 @@
 #include "../../include/random.h"
 #include "../../include/constants/items.h"
 
+#include "../../include/new/ability_util.h"
 #include "../../include/new/ability_tables.h"
 #include "../../include/new/accuracy_calc.h"
 #include "../../include/new/ai_advanced.h"
@@ -105,7 +106,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 	data->atkAbility = GetAIAbility(bankAtk, bankDef, move);
 	data->defAbility = GetAIAbility(bankDef, bankAtk, predictedMove);
 
-	if (!NO_MOLD_BREAKERS(data->atkAbility, move) && gMoldBreakerIgnoredAbilities[data->defAbility])
+	if (!NO_MOLD_BREAKERS(data->atkAbility, move) && gSpecialAbilityFlags[data->defAbility].gMoldBreakerIgnoredAbilities)
 		data->defAbility = ABILITY_NONE;
 
 	u8 moveEffect = gBattleMoves[move].effect;
@@ -116,6 +117,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 	u16 moveAcc = AccuracyCalc(move, bankAtk, bankDef);
 	u16 partnerMove = data->partnerMove;
 	u8 bankAtkPartner = data->bankAtkPartner;
+	const struct SpecialMoveFlags* specialMoveFlags = &gSpecialMoveFlags[move];
 
 	//Affects User Check
 	if (moveTarget & MOVE_TARGET_USER)
@@ -172,7 +174,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 	#endif
 
 	// Gravity Table Prevention Check
-	if (IsGravityActive() && CheckTableForMove(move, gGravityBannedMoves))
+	if (IsGravityActive() && specialMoveFlags->gGravityBannedMoves)
 		return 0; //Can't select this move period
 
 	// Ungrounded check
@@ -180,11 +182,11 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 		return 0;
 
 	// Powder Move Checks (safety goggles, defender has grass type, overcoat, and powder move table)
-	if (CheckTableForMove(move, gPowderMoves) && !IsAffectedByPowder(bankDef))
+	if (specialMoveFlags->gPowderMoves && !IsAffectedByPowder(bankDef))
 		DECREASE_VIABILITY(10); //No return b/c could be reduced further by absorb abilities
 
 	//Dynamax Check
-	if (IsDynamaxed(bankDef) && CheckTableForMove(move, gDynamaxBannedMoves))
+	if (IsDynamaxed(bankDef) && specialMoveFlags->gDynamaxBannedMoves)
 	{
 		DECREASE_VIABILITY(10);
 		return viability; //Move Fails
@@ -293,7 +295,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 				break;
 
 			case ABILITY_BULLETPROOF:
-				if (CheckTableForMove(move, gBallBombMoves))
+				if (specialMoveFlags->gBallBombMoves)
 				{
 					DECREASE_VIABILITY(10);
 					return viability;
@@ -301,7 +303,9 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 				break;
 
 			case ABILITY_DAZZLING:
-			//case ABILITY_QUEENLYMAJESTY:
+			#ifdef ABILITY_QUEENLYMAJESTY
+			case ABILITY_QUEENLYMAJESTY:
+			#endif
 				if (PriorityCalc(bankAtk, ACTION_USE_MOVE, move) > 0) //Check if right num
 				{
 					DECREASE_VIABILITY(10);
@@ -310,7 +314,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 				break;
 
 			case ABILITY_AROMAVEIL:
-				if (CheckTableForMove(move, gAromaVeilProtectedMoves))
+				if (specialMoveFlags->gAromaVeilProtectedMoves)
 				{
 					DECREASE_VIABILITY(10);
 					return viability;
@@ -353,6 +357,12 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 				}
 				break;
 
+			#ifdef ABILITY_WHITESMOKE
+			case ABILITY_WHITESMOKE:
+			#endif
+			#ifdef ABILITY_FULLMETALBODY
+			case ABILITY_FULLMETALBODY:
+			#endif
 			case ABILITY_CLEARBODY:
 				if (CheckTableForMoveEffect(move, gStatLoweringMoveEffects))
 				{
@@ -470,7 +480,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 					break;
 
 				case ABILITY_AROMAVEIL:
-					if (CheckTableForMove(move, gAromaVeilProtectedMoves))
+					if (specialMoveFlags->gAromaVeilProtectedMoves)
 					{
 						DECREASE_VIABILITY(10);
 						return viability;
@@ -478,7 +488,9 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 					break;
 
 				case ABILITY_DAZZLING:
-				//case ABILITY_QUEENLYMAJESTY:
+				#ifdef ABILITY_QUEENLYMAJESTY
+				case ABILITY_QUEENLYMAJESTY:
+				#endif
 					if (PriorityCalc(bankAtk, ACTION_USE_MOVE, move) > 0) //Check if right num
 					{
 						DECREASE_VIABILITY(10);
@@ -544,10 +556,10 @@ MOVESCR_CHECK_0:
 	//Raid Battle Check
 	if (IsRaidBattle())
 	{
-		if (CheckTableForMove(move, gRaidBattleBannedMoves))
+		if (specialMoveFlags->gRaidBattleBannedMoves)
 			return 0; //This move won't work at all.
 
-		if (GetBattlerPosition(bankAtk) == B_POSITION_OPPONENT_LEFT && CheckTableForMove(move, gRaidBattleBannedRaidMonMoves))
+		if (GetBattlerPosition(bankAtk) == B_POSITION_OPPONENT_LEFT && specialMoveFlags->gRaidBattleBannedRaidMonMoves)
 			return 0; //This move really shouldn't be used
 
 		if (bankAtk != bankDef
@@ -660,7 +672,7 @@ MOVESCR_CHECK_0:
 					COPYCAT_CHECK_LAST_MOVE:
 						if (gNewBS->LastUsedMove == MOVE_NONE
 						|| gNewBS->LastUsedMove == 0xFFFF
-						|| CheckTableForMove(gNewBS->LastUsedMove, gCopycatBannedMoves)
+						|| gSpecialMoveFlags[gNewBS->LastUsedMove].gCopycatBannedMoves
 						|| FindMovePositionInMoveset(gNewBS->LastUsedMove, bankAtk) < 4) //If you have the move, use it directly
 							DECREASE_VIABILITY(10);
 						else
@@ -670,7 +682,7 @@ MOVESCR_CHECK_0:
 					{
 						if (predictedMove == MOVE_NONE)
 							goto COPYCAT_CHECK_LAST_MOVE;
-						else if (CheckTableForMove(predictedMove, gCopycatBannedMoves)
+						else if (gSpecialMoveFlags[predictedMove].gCopycatBannedMoves
 							 || FindMovePositionInMoveset(predictedMove, bankAtk) < 4)
 						{
 							DECREASE_VIABILITY(10);
@@ -1116,17 +1128,17 @@ MOVESCR_CHECK_0:
 
 			u32 dmg = GetFinalAIMoveDamage(move, bankAtk, bankDef, 1, NULL);
 
-			if (CheckTableForMove(move, gPercent25RecoilMoves))
+			if (specialMoveFlags->gPercent25RecoilMoves)
 				dmg = MathMax(1, dmg / 4);
-			else if (CheckTableForMove(move, gPercent33RecoilMoves))
+			else if (specialMoveFlags->gPercent33RecoilMoves)
 				dmg = MathMax(1, dmg / 3);
-			else if (CheckTableForMove(move, gPercent50RecoilMoves))
+			else if (specialMoveFlags->gPercent50RecoilMoves)
 				dmg = MathMax(1, dmg / 2);
-			else if (CheckTableForMove(move, gPercent66RecoilMoves))
+			else if (specialMoveFlags->gPercent66RecoilMoves)
 				dmg = MathMax(1, (dmg * 2) / 3);
-			else if (CheckTableForMove(move, gPercent75RecoilMoves))
+			else if (specialMoveFlags->gPercent75RecoilMoves)
 				dmg = MathMax(1, (dmg * 3) / 4);
-			else if (CheckTableForMove(move, gPercent100RecoilMoves))
+			else if (specialMoveFlags->gPercent100RecoilMoves)
 				dmg = MathMax(1, dmg);
 			else if (move == MOVE_MINDBLOWN || move == MOVE_STEELBEAM)
 			{
@@ -1337,7 +1349,11 @@ MOVESCR_CHECK_0:
 				case MOVE_LASERFOCUS:
 					if (IsLaserFocused(bankAtk))
 						DECREASE_VIABILITY(10);
-					else if (data->defAbility == ABILITY_BATTLEARMOR)
+					else if (
+					#ifdef ABILITY_SHELLARMOR 
+					data->defAbility == ABILITY_SHELLARMOR || 
+					#endif
+					data->defAbility == ABILITY_BATTLEARMOR)
 						DECREASE_VIABILITY(8);
 					break;
 
@@ -1471,7 +1487,9 @@ MOVESCR_CHECK_0:
 			{
 				if (WillFaintFromSecondaryDamage(bankAtk)
 				&&  data->defAbility != ABILITY_MOXIE
+				#ifdef ABILITY_GRIMNEIGH
 				&&  data->defAbility != ABILITY_GRIMNEIGH
+				#endif
 				&&  data->defAbility != ABILITY_BEASTBOOST)
 				{
 					DECREASE_VIABILITY(10); //Don't protect if you're going to faint after protecting
@@ -1928,8 +1946,8 @@ MOVESCR_CHECK_0:
 
 			if (data->atkAbility == data->defAbility
 			||  data->defAbility == ABILITY_NONE
-			||  CheckTableForAbility(data->atkAbility, gRolePlayAttackerBannedAbilities)
-			||  CheckTableForAbility(data->defAbility, gRolePlayBannedAbilities))
+			||  gSpecialAbilityFlags[data->atkAbility].gRolePlayAttackerBannedAbilities
+			||  gSpecialAbilityFlags[data->defAbility].gRolePlayBannedAbilities)
 				DECREASE_VIABILITY(10);
 			break;
 
@@ -2015,14 +2033,17 @@ MOVESCR_CHECK_0:
 			switch (move) {
 				case MOVE_WORRYSEED:
 					if (data->defAbility == ABILITY_INSOMNIA
-					|| CheckTableForAbility(data->defAbility, gWorrySeedBannedAbilities)
+					#ifdef ABILITY_VITALSPIRIT
+					data->defAbility == ABILITY_VITALSPIRIT
+					#endif
+					|| gSpecialAbilityFlags[data->defAbility].gWorrySeedBannedAbilities
 					|| MoveBlockedBySubstitute(move, bankAtk, bankDef))
 						DECREASE_VIABILITY(10);
 					break;
 
 				case MOVE_GASTROACID:
 					if (IsAbilitySuppressed(bankDef)
-					||  CheckTableForAbility(data->defAbility, gGastroAcidBannedAbilities)
+					||  gSpecialAbilityFlags[data->defAbility].gGastroAcidBannedAbilities
 					||  MoveBlockedBySubstitute(move, bankAtk, bankDef))
 						DECREASE_VIABILITY(10);
 					break;
@@ -2030,8 +2051,8 @@ MOVESCR_CHECK_0:
 				case MOVE_ENTRAINMENT:
 					if (data->atkAbility == ABILITY_NONE
 					||  IsDynamaxed(bankDef)
-					||  CheckTableForAbility(data->atkAbility, gEntrainmentBannedAbilitiesAttacker)
-					||  CheckTableForAbility(data->defAbility, gEntrainmentBannedAbilitiesTarget)
+					||  gSpecialAbilityFlags[data->atkAbility].gEntrainmentBannedAbilitiesAttacker
+					||  gSpecialAbilityFlags[data->defAbility].gEntrainmentBannedAbilitiesTarget
 					||  MoveBlockedBySubstitute(move, bankAtk, bankDef))
 						DECREASE_VIABILITY(10);
 					else
@@ -2043,7 +2064,7 @@ MOVESCR_CHECK_0:
 
 				case MOVE_SIMPLEBEAM:
 					if (data->defAbility == ABILITY_SIMPLE
-					||  CheckTableForAbility(data->defAbility, gSimpleBeamBannedAbilities)
+					||  gSpecialAbilityFlags[data->defAbility].gSimpleBeamBannedAbilities
 					||  MoveBlockedBySubstitute(move, bankAtk, bankDef))
 						DECREASE_VIABILITY(10);
 					break;
@@ -2052,8 +2073,8 @@ MOVESCR_CHECK_0:
 					if (data->atkAbility == ABILITY_NONE || data->defAbility == ABILITY_NONE
 					|| IsDynamaxed(bankAtk)
 					|| IsDynamaxed(bankDef)
-					|| CheckTableForAbility(data->atkAbility, gSkillSwapBannedAbilities)
-					|| CheckTableForAbility(data->defAbility, gSkillSwapBannedAbilities))
+					|| gSpecialAbilityFlags[data->atkAbility].gSkillSwapBannedAbilities
+					|| gSpecialAbilityFlags[data->defAbility].gSkillSwapBannedAbilities)
 						DECREASE_VIABILITY(10);
 			}
 			break;
@@ -2604,9 +2625,9 @@ MOVESCR_CHECK_0:
 
 					if (instructedMove == MOVE_NONE
 					||  IsDynamaxed(bankDef)
-					||  CheckTableForMove(instructedMove, gInstructBannedMoves)
-					||  CheckTableForMove(instructedMove, gMovesThatRequireRecharging)
-					||  CheckTableForMove(instructedMove, gMovesThatCallOtherMoves)
+					||  gSpecialMoveFlags[instructedMove].gInstructBannedMoves
+					||  gSpecialMoveFlags[instructedMove].gMovesThatCallOtherMoves
+					||  gBattleMoves[instructedMove].effect == EFFECT_RECHARGE
 					|| (IsZMove(instructedMove))
 					|| (gLockedMoves[bankDef] != 0 && gLockedMoves[bankDef] != 0xFFFF)
 					||  gBattleMons[bankDef].status2 & STATUS2_MULTIPLETURNS
@@ -2755,16 +2776,16 @@ static void AI_Flee(void)
 
 u8 AIScript_Roaming(const u8 bankAtk, const unusedArg u8 bankDef, const unusedArg u16 move, const u8 originalViability, unusedArg struct AIScript* data)
 {
-	//u8 atkAbility = ABILITY(bankAtk);
-	//u8 atkItemEffect = ITEM_EFFECT(bankAtk);
+	u8 atkAbility = ABILITY(bankAtk);
+	u8 atkItemEffect = ITEM_EFFECT(bankAtk);
 
-	// if (atkAbility == ABILITY_RUNAWAY
-	// ||  atkItemEffect == ITEM_EFFECT_CAN_ALWAYS_RUN
-	// ||  IsOfType(bankAtk, TYPE_GHOST))
-	// {
-	// 	AI_THINKING_STRUCT->aiAction |= (AI_ACTION_DONE | AI_ACTION_FLEE | AI_ACTION_DO_NOT_ATTACK);
-	// }
-	// else 
+	if (atkAbility == ABILITY_RUNAWAY
+	||  atkItemEffect == ITEM_EFFECT_CAN_ALWAYS_RUN
+	||  IsOfType(bankAtk, TYPE_GHOST))
+	{
+	AI_THINKING_STRUCT->aiAction |= (AI_ACTION_DONE | AI_ACTION_FLEE | AI_ACTION_DO_NOT_ATTACK);
+	}
+	else 
 	if (IsTrapped(bankAtk, FALSE))
 	{
 		return originalViability;

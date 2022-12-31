@@ -45,7 +45,7 @@ u8 AIScript_Positives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 	u8 defAbility = GetAIAbility(bankDef, bankAtk, predictedMove);
 
 	if (!NO_MOLD_BREAKERS(atkAbility, move)
-	&& gMoldBreakerIgnoredAbilities[defAbility])
+	&& gSpecialAbilityFlags[defAbility].gMoldBreakerIgnoredAbilities)
 		defAbility = ABILITY_NONE;
 
 	u8 moveEffect = gBattleMoves[move].effect;
@@ -127,7 +127,7 @@ u8 AIScript_Positives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 					COPYCAT_CHECK_LAST_MOVE:
 						if (gNewBS->LastUsedMove != MOVE_NONE
 						&& gNewBS->LastUsedMove != 0xFFFF
-						&& !CheckTableForMove(gNewBS->LastUsedMove, gCopycatBannedMoves)
+						&& !gSpecialMoveFlags[gNewBS->LastUsedMove].gCopycatBannedMoves
 						&& !MoveInMoveset(gNewBS->LastUsedMove, bankAtk)) //If you have the move, use it directly
 							return AIScript_Positives(bankAtk, bankDef, gNewBS->LastUsedMove, originalViability, data);
 					}
@@ -135,7 +135,7 @@ u8 AIScript_Positives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 					{
 						if (predictedMove == MOVE_NONE)
 							goto COPYCAT_CHECK_LAST_MOVE;
-						else if (!CheckTableForMove(predictedMove, gCopycatBannedMoves)
+						else if (!gSpecialMoveFlags[predictedMove].gCopycatBannedMoves
 							 &&  !MoveInMoveset(predictedMove, bankAtk))
 						{
 							return AIScript_Positives(bankAtk, bankDef, predictedMove, originalViability, data);
@@ -2379,7 +2379,7 @@ u8 AIScript_Positives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 		}
 	}
 
-	if (data->atkStatus1 & STATUS1_FREEZE && CheckTableForMove(move, gMovesCanUnfreezeAttacker))
+	if (data->atkStatus1 & STATUS1_FREEZE && gSpecialMoveFlags[move].gMovesCanUnfreezeAttacker)
 	{
 		//Unfreeze yourself
 		if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
@@ -2515,7 +2515,7 @@ u8 AIScript_SemiSmart(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 			}
 		}
 
-		if (data->atkStatus1 & STATUS1_FREEZE && CheckTableForMove(move, gMovesCanUnfreezeAttacker))
+		if (data->atkStatus1 & STATUS1_FREEZE && gSpecialMoveFlags[move].gMovesCanUnfreezeAttacker)
 		{
 			//Unfreeze yourself
 			if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)

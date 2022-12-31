@@ -5,6 +5,8 @@
 #include "../include/constants/items.h"
 #include "../include/constants/pokedex.h"
 
+#include "../include/new/ability_util.h"
+#include "../include/new/ability_tables.h"
 #include "../include/new/battle_start_turn_start.h"
 #include "../include/new/battle_util.h"
 #include "../include/new/build_pokemon.h"
@@ -354,12 +356,12 @@ bool8 CheckHealingMove(move_t move)
 
 bool8 CheckSoundMove(move_t move)
 {
-	return CheckTableForMove(move, gSoundMoves);
+	return gSpecialMoveFlags[move].gSoundMoves;
 }
 
 bool8 SheerForceCheck(void)
 {
-	return ABILITY(gBankAttacker) == ABILITY_SHEERFORCE && CheckTableForMove(gCurrentMove, gSheerForceBoostedMoves);
+	return ABILITY(gBankAttacker) == ABILITY_SHEERFORCE && gSpecialMoveFlags[gCurrentMove].gSheerForceBoostedMoves;
 }
 
 bool8 IsOfType(u8 bank, u8 type)
@@ -549,16 +551,16 @@ bool8 IsUnusableMove(u16 move, u8 bank, u8 check, u8 pp, u8 ability, u8 holdEffe
 	else if (holdEffect == ITEM_EFFECT_ASSAULT_VEST && SPLIT(move) == SPLIT_STATUS)
 		return TRUE;
 	#ifdef FLAG_SKY_BATTLE
-	else if (FlagGet(FLAG_SKY_BATTLE) && CheckTableForMove(move, gSkyBattleBannedMoves))
+	else if (FlagGet(FLAG_SKY_BATTLE) && gSpecialMoveFlags[move].gSkyBattleBannedMoves && check & MOVE_LIMITATION_ENCORE)
 		return TRUE;
 	#endif
-	else if (IsGravityActive() && CheckTableForMove(move, gGravityBannedMoves))
+	else if (gSpecialMoveFlags[move].gGravityBannedMoves && IsGravityActive() && check & MOVE_LIMITATION_DISABLED)
 		return TRUE;
 	else if (CantUseSoundMoves(bank) && CheckSoundMove(move))
 		return TRUE;
 	else if (IsHealBlocked(bank) && CheckHealingMove(move))
 		return TRUE;
-	else if (IsRaidBattle() && bank != BANK_RAID_BOSS && CheckTableForMove(move, gRaidBattleBannedMoves))
+	else if (IsRaidBattle() && bank != BANK_RAID_BOSS && gSpecialMoveFlags[move].gRaidBattleBannedMoves && check & MOVE_LIMITATION_ENCORE)
 		return TRUE;
 
 	return FALSE;
@@ -579,12 +581,12 @@ u8 CheckMoveLimitationsFromParty(struct Pokemon* mon, u8 unusableMoves, u8 check
 		else if (holdEffect == ITEM_EFFECT_ASSAULT_VEST && SPLIT(move) == SPLIT_STATUS)
 			unusableMoves |= gBitTable[i];
 		#ifdef FLAG_SKY_BATTLE
-		else if (FlagGet(FLAG_SKY_BATTLE) && CheckTableForMove(move, gSkyBattleBannedMoves))
+		else if (check & MOVE_LIMITATION_ENCORE && FlagGet(FLAG_SKY_BATTLE) && gSpecialMoveFlags[move].gSkyBattleBannedMoves)
 			unusableMoves |= gBitTable[i];
 		#endif
-		else if (IsGravityActive() && CheckTableForMove(move, gGravityBannedMoves))
+		else if (check & MOVE_LIMITATION_DISABLED && IsGravityActive() && gSpecialMoveFlags[move].gGravityBannedMoves)
 			unusableMoves |= gBitTable[i];
-		else if (IsRaidBattle() && CheckTableForMove(move, gRaidBattleBannedMoves))
+		else if (check & MOVE_LIMITATION_ENCORE && IsRaidBattle() && gSpecialMoveFlags[move].gRaidBattleBannedMoves)
 			unusableMoves |= gBitTable[i];
 	}
 
@@ -620,7 +622,9 @@ bool8 IsMoveRedirectionPrevented(u16 move, u8 atkAbility)
 {
 	return move == MOVE_SKYDROP
 		|| move == MOVE_SNIPESHOT
-//		|| atkAbility == ABILITY_PROPELLERTAIL
+		#ifdef ABILITY_PROPELLERTAIL
+		|| atkAbility == ABILITY_PROPELLERTAIL
+		#endif
 		|| atkAbility == ABILITY_STALWART;
 }
 
@@ -1119,7 +1123,7 @@ bool8 MoveIgnoresSubstitutes(u16 move, u8 atkAbility)
 {
 	return CheckSoundMove(move)
 		|| (atkAbility == ABILITY_INFILTRATOR && move != MOVE_TRANSFORM && move != MOVE_SKYDROP)
-		|| CheckTableForMove(move, gSubstituteBypassMoves);
+		|| gSpecialMoveFlags[move].gSubstituteBypassMoves;
 }
 
 bool8 MoveBlockedBySubstitute(u16 move, u8 bankAtk, u8 bankDef)
@@ -1141,7 +1145,7 @@ bool8 IsMoveAffectedByParentalBond(u16 move, u8 bankAtk)
 {
 	if (SPLIT(move) != SPLIT_STATUS
 	&& !IsAnyMaxMove(move)
-	&& !CheckTableForMove(move, gParentalBondBannedMoves)
+	&& !gSpecialMoveFlags[move].gParentalBondBannedMoves
 	&& !IsTwoTurnsMove(move)
 	&& gBattleMoves[move].effect != EFFECT_0HKO
 	&& gBattleMoves[move].effect != EFFECT_MULTI_HIT
@@ -1170,7 +1174,7 @@ bool8 IsMoveAffectedByParentalBond(u16 move, u8 bankAtk)
 
 u8 CalcMoveSplit(u8 bank, u16 move)
 {
-	if (CheckTableForMove(move, gMovesThatChangePhysicality)
+	if (gSpecialMoveFlags[move].gMovesThatChangePhysicality
 	&&  SPLIT(move) != SPLIT_STATUS)
 	{
 		u32 attack = gBattleMons[bank].attack;
@@ -1200,7 +1204,7 @@ u8 CalcMoveSplit(u8 bank, u16 move)
 
 u8 CalcMoveSplitFromParty(struct Pokemon* mon, u16 move)
 {
-	if (CheckTableForMove(move, gMovesThatChangePhysicality))
+	if (gSpecialMoveFlags[move].gMovesThatChangePhysicality)
 	{
 		if (mon->spAttack >= mon->attack)
 			return SPLIT_SPECIAL;
@@ -1356,6 +1360,12 @@ void RemoveScreensFromSide(const u8 side)
 	gNewBS->AuroraVeilTimers[side] = 0;
 }
 
+void UpdateQuickClawRandomNumber(u8 bank)
+{
+	//gNewBS->quickClawRandomNumber[bank] = ((u32) Random32()) % 100;
+	gNewBS->quickDrawRandomNumber[bank] = ((u32) Random32()) % 100;
+}
+
 void ClearBankStatus(u8 bank)
 {
 	if (gBattleMons[bank].status1 & (STATUS_POISON | STATUS_TOXIC_POISON))
@@ -1452,6 +1462,9 @@ bool8 CanBePutToSleep(u8 bank, bool8 checkFlowerVeil)
 		return FALSE;
 
 	switch (ABILITY(bank)) {
+		#ifdef ABILITY_VITALSPIRIT
+		case ABILITY_VITALSPIRIT:
+		#endif
 		case ABILITY_INSOMNIA:
 		case ABILITY_SWEETVEIL:
 			return FALSE;
@@ -1487,6 +1500,9 @@ bool8 CanBeYawned(u8 bank)
 		return FALSE;
 
 	switch (ABILITY(bank)) {
+		#ifdef ABILITY_VITALSPIRIT
+		case ABILITY_VITALSPIRIT:
+		#endif
 		case ABILITY_INSOMNIA:
 		case ABILITY_SWEETVEIL:
 		case ABILITY_COMATOSE:
@@ -1805,4 +1821,44 @@ u16 TryFixDynamaxTransformSpecies(u8 bank, u16 species)
 		species = gBattleSpritesDataPtr->bankData[bank].transformSpecies;
 
 	return species;
+}
+
+bool8 WeatherHasEffect(void)
+{
+	u32 i;
+
+	for (i = 0; i < gBattlersCount; ++i)
+	{
+		u8 ability = ABILITY(i);
+
+		if ((ability == ABILITY_CLOUDNINE
+		#ifdef ABILITY_AIRLOCK
+		|| ability == ABILITY_AIRLOCK
+		#endif
+		)
+		&& BATTLER_ALIVE(i))
+			return FALSE;
+	}
+
+	return TRUE;
+}
+
+bool8 ItemEffectIgnoresSunAndRain(u8 itemEffect)
+{
+	return itemEffect == ITEM_EFFECT_UTILITY_UMBRELLA;
+}
+
+bool8 IgnoresSunAndRain(u8 bank)
+{
+	return ItemEffectIgnoresSunAndRain(ITEM_EFFECT(bank));
+}
+
+bool8 AffectedByRain(u8 bank)
+{
+	return !IgnoresSunAndRain(bank);
+}
+
+bool8 CanBeTrapped(u8 bank)
+{
+	return !IsOfType(bank, TYPE_GHOST) && ITEM_EFFECT(bank) != ITEM_EFFECT_SHED_SHELL;
 }

@@ -28,6 +28,7 @@ void RecycleItem(u8 bank);
 u8 GetCamouflageType(void);
 void BufferAttackerItem(void);
 void MoveValuesCleanUp(void);
+bool8 CanLastMoveNotBeEncored(u8 bank);
 
 //Exported Constants
 

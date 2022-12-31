@@ -25,6 +25,8 @@
 #include "../include/new/roamer.h"
 #include "../include/new/util.h"
 #include "../include/new/wild_encounter.h"
+#include "../include/new/ability_util.h"
+
 /*
 wild_encounter.c
 	handles functions related to wild encounter probability and associated features
@@ -711,9 +713,15 @@ u8 GetAbilityEncounterRateModType(void)
     if (!GetMonData(&gPlayerParty[0], MON_DATA_IS_EGG, NULL))
     {
         u8 ability = GetMonAbility(&gPlayerParty[0]);
+		#ifndef ABILITY_WHITESMOKE
+		if (IsWhiteSmokeAbility(ability, GetMonData(&gPlayerParty[0], MON_DATA_SPECIES, NULL)))
+			ability = ABILITY_STENCH;
+		#endif
 
 		switch (ability) {
-			//case ABILITY_WHITESMOKE:
+			#ifdef ABILITY_WHITESMOKE
+			case ABILITY_WHITESMOKE:
+			#endif
 			case ABILITY_STENCH:
 			case ABILITY_QUICKFEET:
 			case ABILITY_INFILTRATOR:

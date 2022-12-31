@@ -138,7 +138,7 @@ void atk02_attackstring(void)
 			if (IsAnyMaxMove(gCurrentMove))
 				gNewBS->LastUsedMove = gChosenMove;
 
-			if (!CheckTableForMove(gCurrentMove, gMovesThatCallOtherMoves))
+			if (!gSpecialMoveFlags[gCurrentMove].gMovesThatCallOtherMoves)
 			{
 				u8 chargingBonus = 20 * gNewBS->metronomeItemBonus[gBankAttacker];
 				if (gLastPrintedMoves[gBankAttacker] == gCurrentMove)
@@ -154,7 +154,7 @@ void atk02_attackstring(void)
 
 			if (ABILITY(gBankAttacker) == ABILITY_PROTEAN
 			&& !(gMoveResultFlags & MOVE_RESULT_FAILED)
-			&& !CheckTableForMove(gCurrentMove, gMovesThatCallOtherMoves))
+			&& !gSpecialMoveFlags[gCurrentMove].gMovesThatCallOtherMoves)
 			{
 				if (gBattleMons[gBankAttacker].type1 != moveType
 				||  gBattleMons[gBankAttacker].type2 != moveType
@@ -1333,7 +1333,7 @@ void atk1B_cleareffectsonfaint(void) {
 
 				if (IS_DOUBLE_BATTLE
 				&& (partnerAbility == ABILITY_RECEIVER)
-				&& !CheckTableForAbility(CopyAbility(gActiveBattler), gReceiverBannedAbilities))
+				&& gSpecialAbilityFlags[CopyAbility(gActiveBattler)]. gReceiverBannedAbilities)
 				{
 					gLastUsedAbility = partnerAbility;
 					
@@ -2411,6 +2411,9 @@ void atk81_trysetrest(void)
 	if (!fail)
 	{
 		switch (ABILITY(gActiveBattler)) {
+			#ifdef ABILITY_VITALSPIRIT
+			case ABILITY_VITALSPIRIT:
+			#endif
 			case ABILITY_INSOMNIA:
 				gBattlescriptCurrInstr = BattleScript_TargetStayedAwakeUsingAbility;
 				fail = TRUE;
@@ -2479,7 +2482,12 @@ void atk84_jumpifcantmakeasleep(void) {
 	)
 		gBattlescriptCurrInstr = jump_loc;
 
-	else if (defAbility == ABILITY_INSOMNIA || defAbility == ABILITY_COMATOSE || defAbility == ABILITY_SWEETVEIL
+	else if (defAbility == ABILITY_INSOMNIA
+	#ifdef ABILITY_VITALSPIRIT
+	|| defAbility == ABILITY_VITALSPIRIT
+	#endif
+	|| defAbility == ABILITY_COMATOSE 
+	|| defAbility == ABILITY_SWEETVEIL
 	|| (defAbility == ABILITY_LEAFGUARD && WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY)
 	|| (defAbility == ABILITY_FLOWERVEIL && IsOfType(bankDef, TYPE_GRASS) && gCurrentMove != MOVE_REST)) {
 		gLastUsedAbility = defAbility;
@@ -3141,7 +3149,7 @@ void atk9D_mimicattackcopy(void)
 	if (gBattleMons[gBankAttacker].status2 & STATUS2_TRANSFORMED
 	|| gLastUsedMoves[gBankTarget] == 0
 	|| gLastUsedMoves[gBankTarget] == 0xFFFF
-	|| CheckTableForMove(gLastUsedMoves[gBankTarget], gMimicBannedMoves)
+	|| gSpecialMoveFlags[gLastUsedMoves[gBankTarget]].gMimicBannedMoves
 	|| IsZMove(gLastUsedMoves[gBankTarget])
 	|| IsAnyMaxMove(gLastUsedMoves[gBankTarget]))
 	{
@@ -3180,7 +3188,7 @@ void atk9E_metronome(void)
 	{
 		gCurrentMove = umodsi(Random(), LAST_MOVE_INDEX) + 1;
 	} while (IsZMove(gCurrentMove) || IsAnyMaxMove(gCurrentMove)
-		|| CheckTableForMove(gCurrentMove, gMetronomeBannedMoves));
+		|| gSpecialMoveFlags[gCurrentMove].gMetronomeBannedMoves);
 
 	TryUpdateCalledMoveWithZMove();
 	UpdateMoveStartValuesForCalledMove();
@@ -3277,17 +3285,28 @@ void atkA3_disablelastusedattack(void)
 	}
 }
 
+bool8 CanLastMoveNotBeEncored(u8 bank)
+{
+	u16 lastUsedMove = gLastUsedMoves[bank];
+	u16 lastPrintedMove = gLastPrintedMoves[bank];
+
+	return lastUsedMove == MOVE_STRUGGLE
+		|| lastUsedMove == MOVE_ENCORE
+		|| lastUsedMove == MOVE_DYNAMAXCANNON
+		|| gSpecialMoveFlags[lastUsedMove].gMovesThatCallOtherMoves
+		|| IsZMove(lastUsedMove)
+		|| IsAnyMaxMove(lastUsedMove)
+		|| IsZMove(lastPrintedMove)
+		|| IsAnyMaxMove(lastPrintedMove)
+		|| IsDynamaxed(bank);
+}
+
 void atkA4_trysetencore(void)
 {
 	int i;
 
-	if (gLastUsedMoves[gBankTarget] == MOVE_STRUGGLE
-	||  gLastUsedMoves[gBankTarget] == MOVE_ENCORE
-	||  gNewBS->playedShellTrapMessage & gBitTable[gBankTarget]
-	||  CheckTableForMove(gLastUsedMoves[gBankTarget], gMovesThatCallOtherMoves)
-	||  IsZMove(gLastUsedMoves[gBankTarget])
-	||  IsAnyMaxMove(gLastUsedMoves[gBankTarget])
-	||  IsDynamaxed(gBankTarget))
+	if (CanLastMoveNotBeEncored(gBankTarget)
+	|| gNewBS->playedShellTrapMessage & gBitTable[gBankTarget])
 	{
 		i = MAX_MON_MOVES;
 	}
@@ -3480,7 +3499,7 @@ void atkA9_trychoosesleeptalkmove(void) {
 	int i;
 
 	for (i = 0; i < 4; ++i) {
-		if (CheckTableForMove(gBattleMons[gBankAttacker].moves[i], gSleepTalkBannedMoves))
+		if (gSpecialMoveFlags[gBattleMons[gBankAttacker].moves[i]].gSleepTalkBannedMoves)
 			unusable_moves |= gBitTable[i];
 	}
 
@@ -4566,8 +4585,8 @@ void atkD3_trycopyability(void) //Role Play
 
 	if (atkAbility == defAbility
 	||  defAbility == ABILITY_NONE
-	||  CheckTableForAbility(atkAbility, gRolePlayAttackerBannedAbilities)
-	||  CheckTableForAbility(defAbility, gRolePlayBannedAbilities))
+	||  gSpecialAbilityFlags[atkAbility].gRolePlayAttackerBannedAbilities
+	||  gSpecialAbilityFlags[defAbility].gRolePlayBannedAbilities)
 	{
 		gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
 	}
@@ -4643,7 +4662,7 @@ void atkDA_tryswapabilities(void) //Skill Swap
 
 	if (atkAbility == ABILITY_NONE || defAbility == ABILITY_NONE
 	|| IsDynamaxed(gBankAttacker) || IsDynamaxed(gBankTarget)
-	|| CheckTableForAbility(atkAbility, gSkillSwapBannedAbilities) || CheckTableForAbility(defAbility, gSkillSwapBannedAbilities)
+	|| gSpecialAbilityFlags[atkAbility].gSkillSwapBannedAbilities || gSpecialAbilityFlags[defAbility].gSkillSwapBannedAbilities
 	|| gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
 	{
 		gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
@@ -4698,7 +4717,7 @@ void atkDE_asistattackselect(void)
 		{
 			u16 move = party[monId].moves[moveId];
 
-			if (CheckTableForMove(move, gAssistBannedMoves))
+			if (gSpecialMoveFlags[move].gAssistBannedMoves)
 				continue;
 
 			if (move == MOVE_NONE)
@@ -4895,7 +4914,7 @@ u8 CastformDataTypeChange(unusedArg u8 bank)
 				formChange = CASTFORM_TO_FIRE;
 			}
 		}
-		else if (gBattleWeather & WEATHER_RAIN_ANY && itemEffect != ITEM_EFFECT_UTILITY_UMBRELLA)
+		else if (gBattleWeather & WEATHER_RAIN_ANY && AffectedByRain(bank))
 		{
 			if (gBattleMonForms[bank] != CASTFORM_RAIN)
 			{

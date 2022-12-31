@@ -143,8 +143,8 @@ Lowers the foe's Speed if hit.
 #org @DESC_MUMMY
 Spreads with contact.
 
-#org @DESC_STRIKER
-Boosts kicking moves.
+#org @DESC_IRONBARBS
+Hurts to touch.
 
 #org @DESC_SANDRUSH
 Raises Speed in a sandstorm.
@@ -236,12 +236,6 @@ Parent and child attack together.
 #org @DESC_TERAVOLT
 Moves ignore Abilities.
 
-#org @DESC_SELFSUFFICIENT
-Recover some HP every turn.
-
-#org @DESC_FATALPRECISION
-Can't miss super-effective moves.
-
 #org @DESC_ZENMODE
 Transforms below half HP.
 
@@ -271,6 +265,9 @@ No special Ability.
 #org @DESC_POWERCONSTRUCT
 Transforms below half HP.
 
+#org @DESC_FATALPRECISION
+Can't miss super-effective moves.
+
 #org @DESC_ASONECHILL
 Both Unnerve and Chilling Neigh.
 
@@ -297,6 +294,9 @@ Taking a hit raises Defense.
 
 #org @DESC_STEELWORKER
 Powers up Steel-type moves.
+
+#org @DESC_SELFSUFFICIENT
+Recover some HP every turn.
 
 #org @DESC_TRIAGE
 Gives priority to healing moves.
@@ -424,8 +424,8 @@ Never makes contact.
 #org @DESC_LIQUIDVOICE
 Sound moves become Water-type.
 
-#org @DESC_GRIMNEIGH
-Knockouts boost Sp Atk.
+#org @DESC_QUEENLYMAJESTY
+Blocks priority moves.
 
 #org @DESC_INNARDSOUT
 Fainting damages the foe.
@@ -472,9 +472,6 @@ Powers up allies.
 #org @DESC_POWEROFALCHEMY
 #org @DESC_RECEIVER
 Takes over a KOed ally's Ability.
-
-#org @DESC_ADRENALINE
-Ups Atk and Spd in first turn.
 
 #org @DESC_NEUROFORCE
 Powers up super-effective hits.
@@ -548,20 +545,35 @@ Ups Attack, but allows one move.
 #org @DESC_NEUTRALISINGGAS
 All Abilities are nullified.
 
+#org @DESC_SAGEPOWER
+Ups Sp Atk, but allows one move.
+
 #org @DESC_PASTEL_VEIL
 Protects team from poison.
 
 #org @DESC_HUNGERSWITCH
 Changes form each turn.
 
+#org @DESC_ADRENALINE
+Ups Atk and Spd in first turn.
+
 #org @DESC_UNSEENFIST
 Contact moves bypass Protect
+
+#org @DESC_DRAGONSMAW
+Powers up Dragon-type moves.
 
 #org @DESC_TRANSISTOR
 Powers up Electric-type moves.
 
-#org @DESC_DRAGONSMAW
-Powers up Dragon-type moves.
+#org @DESC_GRIMNEIGH
+Knockouts boost Sp Atk.
+
+#org @DESC_ASONE_GRIM
+Both Unnerve and Grim Neigh.
+
+#org @DESC_ASONE_CHILLING
+Both Unnerve and Chilling Neigh.
 
 #org @DESC_QUICKDRAW
 Sometimes moves first.
@@ -569,10 +581,10 @@ Sometimes moves first.
 #org @DESC_CURIOUSMEDICINE
 Resets ally's stat changes.
 
+#org @DESC_BLADEMASTER
+Powers up sword moves.  
+
 // Custom Abilities
 
-#org @DESC_BLADEMASTER
-Powers up sword moves.
-
-#org @DESC_SAGEPOWER
-Ups Sp Atk, but allows one move.
+#org @gText_AbilityDescription_Striker
+Boosts kicking moves.

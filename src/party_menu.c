@@ -2230,7 +2230,7 @@ static void ItemUseCB_AbilityCapsule(u8 taskId, TaskFunc func)
 	if (changeTo != ABILITY_NONE) //Ability can be changed
 	{
 		GetMonNickname(mon, gStringVar1);
-		CopyAbilityNameByMon(gStringVar2, changeTo, mon->species);
+		CopyAbilityName(gStringVar2, changeTo, mon->species);
 		StringExpandPlaceholders(gStringVar4, gText_AbilityCapsuleOfferChange);
 		DisplayPartyMenuMessage(gStringVar4, TRUE);
 		ScheduleBgCopyTilemapToVram(2);
@@ -2307,6 +2307,7 @@ static void Task_ChangeAbility(u8 taskId)
 	u16 item = Var800E;
 	u8 abilityType = ItemId_GetHoldEffectParam(item);
 	struct Pokemon* mon = &gPlayerParty[gPartyMenu.slotId];
+	u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
 	PlaySE(SE_USE_ITEM);
 	
 	if (abilityType != 0) //Hidden Ability capsule
@@ -2354,7 +2355,7 @@ static void Task_ChangeAbility(u8 taskId)
 	}
 
 	GetMonNickname(mon, gStringVar1);
-	CopyAbilityNameByMon(gStringVar2, GetMonAbility(mon), mon->species);
+	CopyAbilityName(gStringVar2, GetMonAbility(mon), species);
 	StringExpandPlaceholders(gStringVar4, gText_AbilityCapsuleChangedAbility);
 	DisplayPartyMenuMessage(gStringVar4, TRUE);
 	ScheduleBgCopyTilemapToVram(2);
@@ -2485,5 +2486,5 @@ void CursorCb_MoveRelearner(u8 taskId)
 {
 	PlaySE(SE_SELECT);
 	Var8004 = gPartyMenu.slotId;
-	gTasks[taskId].func = &CB2_InitLearnMove;
+	gTasks[taskId].func = Task_WaitForFadeOut;
 }

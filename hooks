@@ -199,6 +199,7 @@ IsMonAllowedInBattleTower 8127550 1
 Task_ClosePartyMenuAfterText 81255BC 1
 CanPokemonSelectedBeEnteredInBattleTower 81275F8 0
 ExpandedAbilityNamesSummaryScreen 8136714 1
+ExpandedAbilityDescriptionsSummaryScreen 8136728 1
 FieldMoveBadgeHook 812461C 0
 ItemUseCB_MedicineStep 81253B0 2
 Task_DoLearnedMoveFanfareAfterText 8125CF4 1
@@ -645,9 +646,6 @@ ActivateMGBAPrint 81E381C 0
 FixInstantTextOptionSpeed 08002D10 0
 RunTextPrintersForInstantTextHook 08002DEE 0
 #endif
-
-##Duplicate Ability System
-PokeSum_PrintAbilityNameAndDesc 08137C18 0
 
 NullFunc 0813368C 1
 PrintStringTMCaseOnWindow3 081333c4 0

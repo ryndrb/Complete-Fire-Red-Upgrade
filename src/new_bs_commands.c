@@ -1248,7 +1248,7 @@ void atkFF26_attackstringnoprotean(void)
 			if (IsAnyMaxMove(gCurrentMove))
 				gNewBS->LastUsedMove = gChosenMove;
 
-			if (!CheckTableForMove(gCurrentMove, gMovesThatCallOtherMoves))
+			if (!gSpecialMoveFlags[gCurrentMove].gMovesThatCallOtherMoves)
 			{
 				u8 chargingBonus = 20 * gNewBS->metronomeItemBonus[gBankAttacker];
 				if (gLastPrintedMoves[gBankAttacker] == gCurrentMove)
@@ -1276,7 +1276,7 @@ void atkFF27_tryactivateprotean(void)
 	&& !(gMoveResultFlags & MOVE_RESULT_FAILED)
 	&& gCurrentMove != MOVE_STRUGGLE
 	&& !(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
-	&& !(CheckTableForMove(gCurrentMove, gMovesThatCallOtherMoves)))
+	&& !(gSpecialMoveFlags[gCurrentMove].gMovesThatCallOtherMoves))
 	{
 		if (gBattleMons[gBankAttacker].type1 != moveType
 		||  gBattleMons[gBankAttacker].type2 != moveType
@@ -1364,7 +1364,7 @@ void atkFF29_trysetsleep(void)
 	{
 		return;
 	}
-	else if (CheckTableForMove(gCurrentMove, gPowderMoves) && TypeCalc(gCurrentMove, gBankAttacker, bank, NULL, FALSE) & MOVE_RESULT_DOESNT_AFFECT_FOE)
+	else if (gSpecialMoveFlags[gCurrentMove].gPowderMoves && TypeCalc(gCurrentMove, gBankAttacker, bank, NULL, FALSE) & MOVE_RESULT_DOESNT_AFFECT_FOE)
 	{
 		gMoveResultFlags |= MOVE_RESULT_DOESNT_AFFECT_FOE;
 		gBattlescriptCurrInstr = BattleScript_PauseResultMessage;
@@ -1429,6 +1429,9 @@ void atkFF29_trysetsleep(void)
 	if (!fail)
 	{
 		switch (ABILITY(bank)) {
+			#ifdef ABILITY_VITALSPIRIT
+			case ABILITY_VITALSPIRIT:
+			#endif
 			case ABILITY_INSOMNIA:
 				gBattlescriptCurrInstr = BattleScript_TargetStayedAwakeUsingAbility;
 				return;
@@ -1537,6 +1540,9 @@ void atkD7_setyawn(void)
 	if (!fail)
 	{
 		switch (ABILITY(bank)) {
+			#ifdef ABILITY_VITALSPIRIT
+			case ABILITY_VITALSPIRIT:
+			#endif
 			case ABILITY_INSOMNIA:
 				gBattlescriptCurrInstr = BattleScript_TargetStayedAwakeUsingAbility;
 				return;
@@ -1596,7 +1602,7 @@ void atkFF2A_trysetparalysis(void)
 	{
 		return;
 	}
-	else if ((CheckTableForMove(gCurrentMove, gPowderMoves) || gCurrentMove == MOVE_THUNDERWAVE)
+	else if ((gSpecialMoveFlags[gCurrentMove].gPowderMoves || gCurrentMove == MOVE_THUNDERWAVE)
 	&& TypeCalc(gCurrentMove, gBankAttacker, bank, NULL, FALSE) & MOVE_RESULT_DOESNT_AFFECT_FOE)
 	{
 		gMoveResultFlags |= MOVE_RESULT_DOESNT_AFFECT_FOE;

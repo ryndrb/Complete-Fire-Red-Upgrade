@@ -12,6 +12,8 @@ util.c
 	general utility functions
 */
 
+static u8 TryRandomizeAbility(u8 originalAbility, unusedArg u16 species);
+
 u32 MathMax(u32 num1, u32 num2)
 {
 	if (num1 > num2)
@@ -332,6 +334,9 @@ bool8 CanPartyMonBePutToSleep(struct Pokemon* mon)
 		return FALSE;
 
 	switch (GetMonAbility(mon)) {
+		#ifdef ABILITY_VITALSPIRIT
+		case ABILITY_VITALSPIRIT:
+		#endif
 		case ABILITY_INSOMNIA:
 		case ABILITY_SWEETVEIL:
 			return FALSE;
@@ -537,6 +542,11 @@ static u8 TryRandomizeAbility(u8 originalAbility, unusedArg u16 species)
 	#endif
 
 	return newAbility;
+}
+
+bool8 IsSpeciesOfType(u16 species, u8 type)
+{
+	return gBaseStats[species].type1 == type || gBaseStats[species].type2 == type;
 }
 
 u8 GetAbility1(const u16 species)

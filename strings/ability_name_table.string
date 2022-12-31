@@ -41,8 +41,8 @@ Water Absorb
 #org @NAME_OBLIVIOUS
 Oblivious
 
-#org @NAME_UNSEEN_FIST
-Unseen Fist
+#org @NAME_CLOUD_NINE
+Cloud Nine
 
 #org @NAME_COMPOUND_EYES
 Compound Eyes
@@ -152,8 +152,8 @@ Early Bird
 #org @NAME_FLAME_BODY
 Flame Body
 
-#org @NAME_SAGEPOWER 
-Sage Power
+#org @NAME_RUN_AWAY
+Run Away
 
 #org @NAME_KEEN_EYE
 Keen Eye
@@ -218,8 +218,8 @@ Drought
 #org @NAME_ARENA_TRAP
 Arena Trap
 
-#org @NAME_CURIOUS_MEDICINE
-CureMedicine
+#org @NAME_TRANSISTOR
+Transistor
 
 #org @NAME_DRAGONS_MAW
 Dragons Maw
@@ -227,14 +227,14 @@ Dragons Maw
 #org @NAME_NEUTRALISING_GAS
 Neutralizing Gas
 
-#org @NAME_TRANSISTOR
-Transistor
+#org @NAME_SAGE_POWER
+Sage Power
 
 #org @NAME_HUNGER_SWITCH
 Hunger Switch
 
-#org @NAME_AIR_LOCK
-Air Lock
+#org @NAME_ADRENALINE
+Adrenaline
 
 #org @NAME_SWEET_VEIL
 Sweet Veil
@@ -302,8 +302,8 @@ Dry Skin
 #org @NAME_TINTED_LENS
 Tinted Lens
 
-#org @NAME_AS_ONE_GRIM
-As One
+#org @NAME_UNSEEN_FIST
+Unseen Fist
 
 #org @NAME_FILTER
 Filter
@@ -371,8 +371,8 @@ Gooey
 #org @NAME_MUMMY
 Mummy
 
-#org @NAME_STRIKER
-Striker
+#org @NAME_GRIM_NEIGH
+Grim Neigh
 
 #org @NAME_SAND_RUSH
 Sand Rush
@@ -461,11 +461,11 @@ Parental Bond
 #org @NAME_MOLD_BREAKER
 Mold Breaker
 
-#org @NAME_SELF_SUFFICIENT
-Self Sufficient
+#org @NAME_AS_ONE_GRIM
+As One
 
-#org @NAME_FATAL_PRECISION
-Fatal Precision
+#org @NAME_AS_ONE_CHILLING
+As One
 
 #org @NAME_ZEN_MODE
 Zen Mode
@@ -500,8 +500,8 @@ Wandering Soul
 #org @NAME_POWER_CONSTRUCT
 Power Construct
 
-#org @NAME_AS_ONE_CHILL
-As One
+#org @NAME_FATAL_PRECISION
+Fatal Precision
 
 #org @NAME_RKS_SYSTEM
 RKS System
@@ -527,8 +527,8 @@ Stamina
 #org @NAME_STEELWORKER
 Steelworker
 
-#org @NAME_QUICK_DRAW
-Quick Draw
+#org @NAME_SELF_SUFFICIENT
+Self Sufficient
 
 #org @NAME_TRIAGE
 Triage
@@ -659,8 +659,8 @@ Long Reach
 #org @NAME_LIQUID_VOICE
 Liquid Voice
 
-#org @NAME_GRIM_NEIGH
-Grim Neigh
+#org @NAME_QUICK_DRAW
+Quick Draw
 
 #org @NAME_INNARDS_OUT
 Innards Out
@@ -707,8 +707,8 @@ Battery
 #org @NAME_RECEIVER
 Receiver
 
-#org @NAME_ADRENALINE
-Adrenaline
+#org @NAME_CURIOUS_MEDICINE
+Odd Medicine
 
 #org @NAME_NEUROFORCE
 Neuroforce
@@ -720,7 +720,7 @@ Galvanize
 Intrepid Sword
 
 #org @NAME_DAUNTLESS_SHIELD
-Dauntless Shield
+Valiant Shield
 
 #org @NAME_BALL_FETCH
 Ball Fetch
@@ -773,84 +773,73 @@ Blademaster
 /////////////////////////////////////////////
 // SIMILAR REPLACE abilities below and custom
 /////////////////////////////////////////////
-#org @NAME_PURE_POWER
-Pure Power
+//Below Abilities are loaded dynamically by the engine
+#org @gText_AbilityName_AirLock
+Air Lock
 
-#org @NAME_LIBERO
-Libero
-
-#org @NAME_WIMP_OUT
-Wimp Out
-
-#org @NAME_PROPELLER_TAIL
-Propeller Tail
-
-#org @NAME_CLOUD_NINE
-Cloud Nine
-
-#org @NAME_SHELL_ARMOR
-Shell Armor
-
-#org @NAME_FULL_METAL_BODY
-Fullmetal Body
-
-#org @NAME_WHITE_SMOKE
-White Smoke
-
-#org @NAME_QUEENLY_MAJESTY
-Queenly Majesty
-
-#org @NAME_CHILLING_NEIGH
-Chill Neigh
-
-#org @NAME_SOLID_ROCK
-Solid Rock
-
-#org @NAME_PRISM_ARMOR
-Prism Armor
-
-#org @NAME_TANGLING_HAIR
-Tangling Hair
-
-#org @NAME_VITAL_SPIRIT
+#org @gText_AbilityName_VitalSpirit
 Vital Spirit
 
-#org @NAME_TURBOBLAZE
-Turboblaze
+#org @gText_AbilityName_WhiteSmoke
+White Smoke
 
-#org @NAME_TERAVOLT
-Teravolt
+#org @gText_AbilityName_PurePower
+Pure Power
 
-#org @NAME_SHADOW_SHIELD
-Shadow Shield
-
-#org @NAME_POWER_OF_ALCHEMY
-Power of Alchemy
-
-#org @NAME_IRON_BARBS
+#org @gText_AbilityName_IronBarbs
 Iron Barbs
 
+#org @gText_AbilityName_SolidRock
+Solid Rock
+
+#org @gText_AbilityName_Turboblaze
+Turboblaze
+
+#org @gText_AbilityName_Teravolt
+Teravolt
+
+#org @gText_AbilityName_ChillingNeigh
+Chilling Neigh
+
+#org @gText_AbilityName_Libero
+Libero
+
+#org @gText_AbilityName_TanglingHair
+Tangling Hair
+
+#org @gText_AbilityName_WimpOut
+Wimp Out
+
+#org @gText_AbilityName_QueenlyMajesty
+Queenly Majesty
+
+#org @gText_AbilityName_PowerOfAlchemy
+Alchemic Power
+
+#org @gText_AbilityName_PropellerTail
+Propeller Tail
+
 /////////////////////////////////////////////
-// CUSTOME NAMES BUT SAME FUNCTIONALITY
+// CUSTOME ABILITIES
 /////////////////////////////////////////////
 
-#org @NAME_ROYALTY
+#org @gText_AbilityName_Royalty
 Royalty
 
-#org @NAME_FIERY_NEIGH
+#org @gText_AbilityName_FieryNeigh
 Fiery Neigh
 
-#org @NAME_BLUSTER
+#org @gText_AbilityName_Bluster
 Bluster
 
-#org @NAME_FACE_SHIELD
+#org @gText_AbilityName_FaceShield
 Face Shield
 
-#org @NAME_FORTIFICATION
+#org @gText_AbilityName_Fortification
 Fortification
 
-#org @NAME_CARAPACE
+#org @gText_AbilityName_Carapace
 Carapace
 
-#org @NAME_ELASTIC_BODY
-Elastic Body
+#org @gText_AbilityName_Striker
+Striker

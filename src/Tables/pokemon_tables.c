@@ -1292,7 +1292,9 @@ const move_t gSmogonAverageMons_MoveBanList[] =
 const u8 gSmogonAverageMons_AbilityBanList[] =
 {
 	ABILITY_HUGEPOWER,
-//	ABILITY_PUREPOWER,
+	#ifdef ABILITY_PUREPOWER
+	ABILITY_PUREPOWER,
+	#endif
 	ABILITY_SHADOWTAG,
 	ABILITY_ARENATRAP,
 	ABILITY_TABLES_TERMIN

@@ -5,6 +5,7 @@
 #include "../include/constants/songs.h"
 #include "../include/constants/trainer_classes.h"
 
+#include "../include/new/ability_tables.h"
 #include "../include/new/ability_battle_scripts.h"
 #include "../include/new/ai_master.h"
 #include "../include/new/battle_indicators.h"
@@ -255,7 +256,11 @@ static bool8 TryActivateFlowerGift(u8 leavingBank)
 {
 	u32 i = 0;
 
-	if (ABILITY(leavingBank) == ABILITY_AIRLOCK)
+	if (ABILITY(leavingBank) == ABILITY_CLOUDNINE
+	#ifdef ABILITY_AIRLOCK
+	|| ABILITY(leavingBank) == ABILITY_AIRLOCK
+	#endif
+	)
 		gBattleMons[leavingBank].ability = ABILITY_NONE; //Remove ability because we can't have these anymore
 
 	for (u8 bank = gBanksByTurnOrder[i]; i < gBattlersCount; ++i, bank = gBanksByTurnOrder[i])
@@ -436,8 +441,7 @@ void atk4F_jumpifcantswitch(void)
 	struct Pokemon* party = LoadPartyRange(gActiveBattler, &firstMonId, &lastMonId);
 
 	if (!(T2_READ_8(gBattlescriptCurrInstr + 1) & ATK4F_DONT_CHECK_STATUSES)
-	&& !IsOfType(gActiveBattler, TYPE_GHOST)
-	&& ITEM_EFFECT(gActiveBattler) != ITEM_EFFECT_SHED_SHELL
+	&& CanBeTrapped(gActiveBattler)
 	&& ((gBattleMons[gActiveBattler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION)) || (gStatuses3[gActiveBattler] & STATUS3_ROOTED) || IsFairyLockActive()))
 	{
 		gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 2);
@@ -1179,15 +1183,17 @@ void PartyMenuSwitchingUpdate(void)
 {
 	int i;
 
-	if (IsOfType(gActiveBattler, TYPE_GHOST)
-	||  ITEM_EFFECT(gActiveBattler) == ITEM_EFFECT_SHED_SHELL)
-		goto SKIP_SWITCH_BLOCKING_CHECK;
-
 	gBattleStruct->switchoutPartyIndex[gActiveBattler] = gBattlerPartyIndexes[gActiveBattler];
+
+	if (gStatuses3[gActiveBattler] & STATUS3_SKY_DROP_TARGET) //Being Ghost doesn't get you out of this
+		goto TRAPPED;
+	else if (!CanBeTrapped(gActiveBattler))
+		goto SKIP_SWITCH_BLOCKING_CHECK;
 	if ((gBattleMons[gActiveBattler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
 	|| (gStatuses3[gActiveBattler] & (STATUS3_ROOTED | STATUS3_SKY_DROP_TARGET))
 	|| IsFairyLockActive())
 	{
+		TRAPPED:
 		EmitChoosePokemon(0, PARTY_CANT_SWITCH, 6, ABILITY_NONE, gBattleStruct->field_60[gActiveBattler]);
 	}
 	else if (((i = ABILITY_ON_OPPOSING_FIELD(gActiveBattler, ABILITY_SHADOWTAG)) && ABILITY(gActiveBattler) != ABILITY_SHADOWTAG)

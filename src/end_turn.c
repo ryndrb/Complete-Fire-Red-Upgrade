@@ -319,7 +319,7 @@ u8 TurnBasedEffects(void)
 						case ABILITY_RAINDISH:
 						case ABILITY_DRYSKIN:
 						case ABILITY_ICEBODY:
-						case ABILITY_SELF_SUFFICIENT:
+						case ABILITY_SELFSUFFICIENT:
 						case ABILITY_SOLARPOWER:
 							if (AbilityBattleEffects(ABILITYEFFECT_ENDTURN, gActiveBattler, 0, 0, 0))
 								effect++;
@@ -1604,6 +1604,7 @@ u8 TurnBasedEffects(void)
 					gNewBS->recalculatedBestDoublesKillingScores[i] = FALSE;
 					gNewBS->ai.fightingStyle[i] = 0xFF;
 					gNewBS->ai.megaPotential[i] = NULL;
+					UpdateQuickClawRandomNumber(i);
 
 					if (gNewBS->metronomeItemBonus[i] > 0)
 						--gNewBS->metronomeItemBonus[i];

@@ -206,7 +206,7 @@ static bool8 CanSetUpSecondaryStartMenu(void)
 	#endif
 
 	#ifdef FLAG_RECEIVED_POCKETPC
-	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_POCKETPC))
+	if(FlagGet(FLAG_SYS_POKEDEX_GET))
 		return TRUE;
 	#endif
 
@@ -307,7 +307,7 @@ static void BuildPokeToolsMenu(void)
 		AppendToStartMenuItems(STARTMENU_DEXNAV);
 
 	#ifdef FLAG_RECEIVED_POCKETPC
-	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_POCKETPC))
+	if(FlagGet(FLAG_SYS_POKEDEX_GET))
 	#endif
 		AppendToStartMenuItems(STARTMENU_PC);
 

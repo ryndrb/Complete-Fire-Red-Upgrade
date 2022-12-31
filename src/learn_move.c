@@ -10,6 +10,7 @@
 #include "../include/new/item.h"
 #include "../include/new/learn_move.h"
 #include "../include/new/move_reminder_data.h"
+#include "../include/new/move_tables.h"
 /*
 learn_move.c
 	handles functions for pokemon trying to learn moves

@@ -232,6 +232,7 @@ struct BattleMsgData
 	bool8 zMoveActive;
 	bool8 dynamaxActive;
     u8 abilities[MAX_BATTLERS_COUNT];
+    u16 species[MAX_BATTLERS_COUNT];
     u8 textBuffs[3][TEXT_BUFF_ARRAY_COUNT];
 	u8 battleStringLoader[MAX_BATTLE_STRING_LOADER_LENGTH];
 };

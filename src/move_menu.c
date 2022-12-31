@@ -23,6 +23,7 @@
 #include "../include/new/text.h"
 #include "../include/new/util.h"
 #include "../include/new/z_move_effects.h"
+#include "../include/new/ability_util.h"
 
 /*
 move_menu.c
@@ -1659,11 +1660,17 @@ u8 TrySetCantSelectMoveBattleScript(void)
 		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingImprisionedMove;
 		++limitations;
 	}
-	else if (!isAnyMaxMove && (ability == ABILITY_GORILLATACTICS || ability == ABILITY_SAGEPOWER) && *choicedMove != 0 && *choicedMove != 0xFFFF && *choicedMove != move)
+	else if (!isAnyMaxMove && ability == ABILITY_GORILLATACTICS && *choicedMove != 0 && *choicedMove != 0xFFFF && *choicedMove != move)
 	{
 		gCurrentMove = *choicedMove;
 		gLastUsedAbility = ability;
-
+		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedMoveChoiceAbility;
+		++limitations;
+	}
+	else if (!isAnyMaxMove && ability == ABILITY_SAGEPOWER && *choicedMove != 0 && *choicedMove != 0xFFFF && *choicedMove != move)
+	{
+		gCurrentMove = *choicedMove;
+		gLastUsedAbility = ability;
 		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedMoveChoiceAbility;
 		++limitations;
 	}
@@ -1681,13 +1688,13 @@ u8 TrySetCantSelectMoveBattleScript(void)
 		++limitations;
 	}
 	#ifdef FLAG_SKY_BATTLE
-	else if (FlagGet(FLAG_SKY_BATTLE) && CheckTableForMove(move, gSkyBattleBannedMoves))
+	else if (FlagGet(FLAG_SKY_BATTLE) && gSpecialMoveFlags[move].gGravityBannedMoves)
 	{
 		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedSkyBattle;
 		++limitations;
 	}
 	#endif
-	else if (IsGravityActive() && CheckTableForMove(move, gGravityBannedMoves))
+	else if (IsGravityActive() && gSpecialMoveFlags[move].gGravityBannedMoves)
 	{
 		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedGravity;
 		++limitations;

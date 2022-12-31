@@ -112,6 +112,8 @@ extern const u8 gText_DeltaStream[];
 extern const u8 gText_AirLockActivate[];
 extern const u8 gText_PressureActivate[];
 extern const u8 gText_MoldBreakerActivate[];
+extern const u8 gText_TeravoltActivate[];
+extern const u8 gText_TurboblazeActivate[];
 extern const u8 gText_SlowStartActivate[];
 extern const u8 gText_UnnerveActivate[];
 extern const u8 gText_DarkAuraActivate[];

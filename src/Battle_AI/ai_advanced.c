@@ -3,6 +3,7 @@
 #include "../../include/random.h"
 #include "../../include/constants/items.h"
 
+#include "../../include/new/ability_util.h"
 #include "../../include/new/accuracy_calc.h"
 #include "../../include/new/ai_advanced.h"
 #include "../../include/new/ai_util.h"
@@ -817,7 +818,7 @@ u16 GetAmountToRecoverBy(u8 bankAtk, u8 bankDef, u16 move)
 				amountToRecover += MathMax(1, maxHp / 2);
 			}
 
-			if (gBattleWeather & WEATHER_RAIN_ANY && WEATHER_HAS_EFFECT && ITEM_EFFECT(bankAtk) != ITEM_EFFECT_UTILITY_UMBRELLA)
+			if (gBattleWeather & WEATHER_RAIN_ANY && WEATHER_HAS_EFFECT && AffectedByRain(bankAtk))
 			{
 				if (ability == ABILITY_RAINDISH)
 					amountToRecover += MathMax(1, maxHp / 16);

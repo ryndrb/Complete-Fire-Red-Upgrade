@@ -1399,7 +1399,7 @@ bool8 ProtectedByMaxGuard(u8 bankDef, u16 move)
 		if (gBattleMoves[move].target & (MOVE_TARGET_DEPENDS | MOVE_TARGET_OPPONENTS_FIELD))
 			return (gBattleMoves[move].flags & FLAG_PROTECT_AFFECTED) != 0;
 
-		if (gBattleMoves[move].target & MOVE_TARGET_ALL && CheckTableForMove(gCurrentMove, gSpecialWholeFieldMoves))
+		if (gBattleMoves[move].target & MOVE_TARGET_ALL && gSpecialMoveFlags[gCurrentMove].gSpecialWholeFieldMoves)
 			return FALSE;
 
 		return TRUE;
@@ -1411,7 +1411,7 @@ bool8 ProtectedByMaxGuard(u8 bankDef, u16 move)
 void CreateSummaryScreenGigantamaxIcon(void)
 {
 	//Base the position of the icon off of where the Poke Ball sprite is
-	struct Sprite* ballSprite = &gSprites[sMonSummaryScreen->ballIconSpriteId];
+	struct Sprite* ballSprite = &gSprites[sMonSummaryScreen->caughtBallSpriteId];
 
 	if (sMonSummaryScreen->currentMon.gigantamax)
 	{
@@ -1425,8 +1425,8 @@ void CreateSummaryScreenGigantamaxIcon(void)
 
 void SummaryScreen_ChangeCaughtBallSpriteVisibility(u8 invisible)
 {
-	u8 ballSpriteId = sMonSummaryScreen->ballIconSpriteId;
-	u8 gigantamaxIconSpriteId = gSprites[sMonSummaryScreen->ballIconSpriteId].data[0];
+	u8 ballSpriteId = sMonSummaryScreen->caughtBallSpriteId;
+	u8 gigantamaxIconSpriteId = gSprites[sMonSummaryScreen->caughtBallSpriteId].data[0];
 
     gSprites[ballSpriteId].invisible = invisible;
 	if (gigantamaxIconSpriteId != MAX_SPRITES)
@@ -1435,8 +1435,8 @@ void SummaryScreen_ChangeCaughtBallSpriteVisibility(u8 invisible)
 
 void SummaryScreen_DestroyCaughtBallSprite(void)
 {
-	u8 ballSpriteId = sMonSummaryScreen->ballIconSpriteId;
-	u8 gigantamaxIconSpriteId = gSprites[sMonSummaryScreen->ballIconSpriteId].data[0];
+	u8 ballSpriteId = sMonSummaryScreen->caughtBallSpriteId;
+	u8 gigantamaxIconSpriteId = gSprites[sMonSummaryScreen->caughtBallSpriteId].data[0];
 
     DestroySpriteAndFreeResources(&gSprites[ballSpriteId]);
 	if (gigantamaxIconSpriteId != MAX_SPRITES)

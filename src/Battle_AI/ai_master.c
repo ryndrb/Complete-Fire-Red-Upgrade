@@ -1715,7 +1715,7 @@ static bool8 ShouldSwitchIfWonderGuard(void)
 
 		if (!(gBitTable[i] & moveLimitations))
 		{
-			if (CheckTableForMove(move, gMoldBreakerMoves))
+			if (gSpecialMoveFlags[move].gMoldBreakerMoves)
 				return FALSE;
 
 			if (SPLIT(move) != SPLIT_STATUS)
@@ -2085,7 +2085,9 @@ u8 CalcMostSuitableMonToSwitchInto(void)
 						scores[i] += SWITCHING_INCREASE_KO_FOE;
 
 						if (ability == ABILITY_MOXIE
+						#ifdef ABILITY_GRIMNEIGH
 						||  ability == ABILITY_GRIMNEIGH
+						#endif
 						||  ability == ABILITY_SOULHEART
 						||  ability == ABILITY_BEASTBOOST)
 							scores[i] += SWITCHING_INCREASE_REVENGE_KILL;

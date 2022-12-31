@@ -9,9 +9,6 @@
 #include "../include/string_util.h"
 #include "../include/wild_encounter.h"
 
-#include "../include/menu.h"
-#include "../include/pokemon_summary_screen.h"
-
 #include "../include/constants/event_objects.h"
 #include "../include/constants/items.h"
 #include "../include/constants/maps.h"
@@ -22,6 +19,7 @@
 #include "../include/constants/trainers.h"
 #include "../include/constants/tutors.h"
 
+#include "../include/new/ability_util.h"
 #include "../include/new/ability_tables.h"
 #include "../include/new/ai_advanced.h"
 #include "../include/new/build_pokemon.h"
@@ -34,6 +32,7 @@
 #include "../include/new/item.h"
 #include "../include/new/learn_move.h"
 #include "../include/new/mega.h"
+#include "../include/new/move_tables.h"
 #include "../include/new/multi.h"
 #include "../include/new/pokemon_storage_system.h"
 #include "../include/new/util.h"
@@ -44,7 +43,6 @@
 #include "Tables/raid_partners.h"
 #include "Tables/trainers_with_evs_table.h"
 
-#include "Tables/duplicate_abilities.h"
 #include "Tables/Trainer_Tables/important_trainers.h"
 #include "Tables/Trainer_Tables/trainer_parties.h"
 
@@ -4011,53 +4009,6 @@ void PartySpreadPokerus(struct Pokemon *party)
 			}
 		}
 	}
-}
-
-static const u8 sLevelNickTextColors[][3] =
-{
-	{0, 14, 10},
-	{0, 1, 2},
-	{0, 9, 8},
-	{0, 5, 4},
-	{0, 2, 3},
-	{0, 11, 10},
-};
-
-void HandleDuplicateNames_SummaryScreen()
-{
-    struct Pokemon* mon = &(sMonSummaryScreen->currentMon);
-    u8 ability = GetMonAbility(mon);
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-	for(u8 i = 0; i < ARRAY_COUNT(sDuplicateAbilities); i++)
-	{
-		if(ability == sDuplicateAbilities[i].currAbility && species == sDuplicateAbilities[i].species)
-		{
-			StringCopy(sMonSummaryScreen->summary.abilityNameStrBuf, sDuplicateAbilities[i].replaceAbilityString);
-		}
-	}
-}
-
-void PokeSum_PrintAbilityNameAndDesc(void)
-{
-	HandleDuplicateNames_SummaryScreen();
-
-
-	//COMMENT THIS IF YOU ARE USING THE DEFAULT SUMMARY SCREEN
-	FillWindowPixelBuffer(sMonSummaryScreen->windowIds[5], 0);
-
-	AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[4], 2, 4, 2, sLevelNickTextColors[0], TEXT_SPEED_FF,
-		sMonSummaryScreen->summary.abilityNameStrBuf);
-
-	AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[5], 2, 4, 0, sLevelNickTextColors[0], TEXT_SPEED_FF,
-		sMonSummaryScreen->summary.abilityDescStrBuf);
-
-	//UNCOMMENT THIS IF YOU ARE USING THE DEFAULT SUMMARY SCREEN
-	// FillWindowPixelBuffer(sMonSummaryScreen->windowIds[5], 0);
-    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[5], 2,
-    //                              66, 1, sLevelNickTextColors[0], TEXT_SPEED_FF, sMonSummaryScreen->summary.abilityNameStrBuf);
-    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[5], 2,
-    //                              2, 15, sLevelNickTextColors[0], TEXT_SPEED_FF,
-    //                              sMonSummaryScreen->summary.abilityDescStrBuf);
 }
 
 static void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum) {

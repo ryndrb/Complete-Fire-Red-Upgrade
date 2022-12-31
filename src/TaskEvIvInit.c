@@ -40,7 +40,8 @@ Credits to:
 #include "../include/random.h"
 #include "../include/new/exp.h"
 #include "../include/constants/songs.h"
-#include "../include/new/battle_strings.h"
+//#include "../include/new/battle_strings.h"
+#include "../include/new/ability_util.h"
 
 #define FIRERED
 
@@ -395,7 +396,7 @@ static void UpdateCursorSpritePos(u16 spriteId, u8 stat, bool8 goingUp, bool8 re
                 newPosX = 138;
                 break;
             case ABILITY_EDIT:
-                CopyAbilityNameByMon(gStringVar1, ability, species);
+                CopyAbilityName(gStringVar1, ability, species);
                 newPosX = (157 + (GetStringWidth(2, gStringVar1, 0) / 2)) - 5;
                 newPosY = 121;
                 break;
@@ -1661,7 +1662,7 @@ static void PrintWindow2(u16 species, u8 isEgg, u8 friendship, u8 ability)
         StringAppend(gStringVar4, gText_Happy);
         AddTextPrinterParameterized3(WIN_BOTTOM_BOX, 2, 12, 18, gBlackTextColor, 0, gStringVar4);
 
-        CopyAbilityNameByMon(gStringVar1, ability, species);
+        CopyAbilityName(gStringVar1, ability, species);
         AddTextPrinterParameterized3(WIN_BOTTOM_BOX, 2, ABILITY_X, 4, gBlackTextColor, 0, gStringVar1);
         
     }else
@@ -1678,7 +1679,7 @@ static void PrintWindow2(u16 species, u8 isEgg, u8 friendship, u8 ability)
 static void ClearAndPrintAbilityText(u8 ability, u16 species)
 {
     FillWindowPixelRect(WIN_BOTTOM_BOX, PIXEL_FILL(0), ABILITY_X, 4, 91, 15);
-    CopyAbilityNameByMon(gStringVar1, ability, species);
+    CopyAbilityName(gStringVar1, ability, species);
     AddTextPrinterParameterized3(WIN_BOTTOM_BOX, 2, ABILITY_X, 4, gBlackTextColor, 0, gStringVar1);
 }
 

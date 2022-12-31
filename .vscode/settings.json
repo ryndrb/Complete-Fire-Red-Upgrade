@@ -10,6 +10,15 @@
         "field_weather.h": "c",
         "items.h": "c",
         "ram_locs.h": "c",
-        "form_change.h": "c"
-    }
+        "form_change.h": "c",
+        "exp.h": "c",
+        "window.h": "c",
+        "battle_setup.h": "c",
+        "util.h": "c",
+        "battle_string_ids.h": "c",
+        "random.h": "c",
+        "pokemon_storage_system.h": "c",
+        "battle_start_turn_start.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

@@ -36,5 +36,6 @@ extern const u32 gExperienceTables[][255 + 1];
 
 //typedef int TutorLearnsets[NUM_SPECIES];
 //#define sTutorLearnsets ((TutorLearnsets*) (*((u32*) 0x08120BE4)))
+#define gAbilityPopUpSpecies (*((u16*) 0x203E030))
 
 

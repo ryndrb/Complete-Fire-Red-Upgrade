@@ -4,6 +4,7 @@
 #include "../include/string_util.h"
 #include "../include/constants/items.h"
 #include "../include/constants/trainer_classes.h"
+#include "../include/new/ability_tables.h"
 #include "../include/new/battle_util.h"
 #include "../include/new/build_pokemon.h"
 #include "../include/new/util.h"
