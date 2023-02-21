@@ -86,6 +86,8 @@ u8 GetMonMoveTypeSpecial(struct Pokemon* monAtk, u16 move);
 u8 GetExceptionMoveType(u8 bankAtk, move_t);
 u8 GetMonExceptionMoveType(struct Pokemon*, move_t);
 u8 CalcMonHiddenPowerType(struct Pokemon* mon);
+void CalculateHiddenPowerSplits(void);
+void CalculateShellSideArmSplits(void);
 
 void atk05_damagecalc(void);
 void FutureSightDamageCalc(void);

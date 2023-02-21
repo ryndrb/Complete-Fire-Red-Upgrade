@@ -17,7 +17,7 @@ Which of these moves do you want\nto teach your Pok\emon?
 Do you want to change your Pok\emon's\nnature?
 
 #org @gText_EventScript_NatureIsChanged 
-Your Pok\emon's nature is now\nchanged!
+[BUFFER1]'s nature is now changed.
 
 #org @gText_WhichNature
 Which nature would you like to\nchange to?
@@ -41,19 +41,22 @@ Now, now.\nThat is merely an Egg!
 Do you want to change your Pok\emon's\nability?
 
 #org @gText_WhichAbility
-Which ability do you want?
+Which ability do you want?\nCurrent: [BUFFER1]
 
-#org @gText_EventScript_AbilityHasBeenChanged1
-Changed to its first ability!
+#org @gText_SelectedAbility
+Change [BUFFER1]'s ability to\n[BUFFER2]?
 
-#org @gText_EventScript_AbilityHasBeenChanged2
-Changed to its second ability!
+#org @gText_FeedingAbilityPill
+Alright then, let's feed it\nan ability pill.\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]
 
-#org @gText_EventScript_AbilityHasBeenChanged3
-Changed to its hidden ability!
+#org @gText_AbilityChangedSucessful
+[BUFFER1]'s ability has been changed\nto [BUFFER2].
 
 #org @gText_EventScript_NoSurgeBadge
 I'm sorry, but I cannot not change\nyour Pok\emon's ability right now[.]\pCome back when you have at least\ndefeated Vermillion City's Gym\lLeader: Lt. Surge.
 
 #org @gText_EventScript_ComeAgain 
 All right, see you then!
+
+#org @gText_Ability
+[BUFFER1] change to [BUFFER2]!

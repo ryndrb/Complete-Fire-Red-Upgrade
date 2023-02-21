@@ -1172,26 +1172,33 @@ bool8 IsMoveAffectedByParentalBond(u16 move, u8 bankAtk)
 	return FALSE;
 }
 
-u8 CalcMoveSplit(u8 bank, u16 move)
+u8 CalcMoveSplit(u16 move, u8 bankAtk, u8 bankDef)
 {
 	if (gSpecialMoveFlags[move].gMovesThatChangePhysicality
 	&&  SPLIT(move) != SPLIT_STATUS)
 	{
-		u32 attack = gBattleMons[bank].attack;
-		u32 spAttack = gBattleMons[bank].spAttack;
+		u32 attack = gBattleMons[bankAtk].attack;
+		u32 spAttack = gBattleMons[bankAtk].spAttack;
 
-		attack = attack * gStatStageRatios[STAT_STAGE(bank, STAT_STAGE_ATK)][0];
-		attack = udivsi(attack, gStatStageRatios[STAT_STAGE(bank, STAT_STAGE_ATK)][1]);
+		attack = attack * gStatStageRatios[STAT_STAGE(bankAtk, STAT_STAGE_ATK)][0];
+		attack = udivsi(attack, gStatStageRatios[STAT_STAGE(bankAtk, STAT_STAGE_ATK)][1]);
 
-		spAttack = spAttack * gStatStageRatios[STAT_STAGE(bank, STAT_STAGE_SPATK)][0];
-		spAttack = udivsi(spAttack, gStatStageRatios[STAT_STAGE(bank, STAT_STAGE_SPATK)][1]);
+		spAttack = spAttack * gStatStageRatios[STAT_STAGE(bankAtk, STAT_STAGE_SPATK)][0];
+		spAttack = udivsi(spAttack, gStatStageRatios[STAT_STAGE(bankAtk, STAT_STAGE_SPATK)][1]);
 
 		if (spAttack >= attack)
 			return SPLIT_SPECIAL;
 		else
 			return SPLIT_PHYSICAL;
 	}
-
+	else if (move == MOVE_HIDDENPOWER && bankAtk != bankDef) //Indicator to just use the base physicality
+	{
+		return gNewBS->hiddenPowerSplit[bankAtk][bankDef];
+	}else if (move == MOVE_SHELLSIDEARM && bankAtk != bankDef) //Indicator to just use the base physicality
+	{
+		return gNewBS->hiddenPowerSplit[bankAtk][bankDef];
+	}
+	
 	#ifdef OLD_MOVE_SPLIT
 		if (gBattleMoves[move].type < TYPE_FIRE)
 			return SPLIT_PHYSICAL;
@@ -1861,4 +1868,9 @@ bool8 AffectedByRain(u8 bank)
 bool8 CanBeTrapped(u8 bank)
 {
 	return !IsOfType(bank, TYPE_GHOST) && ITEM_EFFECT(bank) != ITEM_EFFECT_SHED_SHELL;
+}
+
+bool8 BypassesScreens(u8 ability)
+{
+	return ability == ABILITY_INFILTRATOR;
 }

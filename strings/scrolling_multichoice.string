@@ -649,4 +649,40 @@ Flying
 #org @IV_HP_FIGHTING
 Fighting
 
+#org @LEVEL11
+11F
+
+#org @LEVEL10
+10F
+
+#org @LEVEL9
+[ALIGN][6]9F
+
+#org @LEVEL8
+[ALIGN][6]8F
+
+#org @LEVEL7
+[ALIGN][6]7F
+
+#org @LEVEL6
+[ALIGN][6]6F
+
+#org @LEVEL5
+[ALIGN][6]5F
+
+#org @LEVEL4
+[ALIGN][6]4F
+
+#org @LEVEL3
+[ALIGN][6]3F
+
+#org @LEVEL2
+[ALIGN][6]2F
+
+#org @LEVEL1
+[ALIGN][6]1F
+
+#org @gEXIT
+Exit
+
 #endif

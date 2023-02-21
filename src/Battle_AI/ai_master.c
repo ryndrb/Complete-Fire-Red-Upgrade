@@ -2175,7 +2175,7 @@ u8 CalcMostSuitableMonToSwitchInto(void)
 						&&  move != gLockedMoves[foe])
 							continue; //Skip non-locked moves
 
-						u8 split = CalcMoveSplit(foe, move);
+						u8 split = CalcMoveSplit(move, foe, foe);
 						if (split == SPLIT_PHYSICAL)
 							physMoveInMoveset = TRUE;
 						else if (split == SPLIT_SPECIAL)

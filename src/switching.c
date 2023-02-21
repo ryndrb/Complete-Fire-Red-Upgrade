@@ -416,6 +416,8 @@ void atk4D_switchindataupdate(void)
 
 	gBattleMons[gActiveBattler].type3 = TYPE_BLANK;
 
+	CalculateHiddenPowerSplits();
+
 	gBattlescriptCurrInstr += 2;
 }
 

@@ -7,6 +7,7 @@
 #include "../include/new/util.h"
 #include "../include/new/frontier.h"
 #include "../include/new/mega.h"
+#include "../include/new/ability_tables.h"
 /*
 util.c
 	general utility functions

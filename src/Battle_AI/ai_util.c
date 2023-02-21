@@ -923,13 +923,13 @@ static u32 CalcPredictedDamageForCounterMoves(u16 move, u8 bankAtk, u8 bankDef)
 
 		switch (move) {
 			case MOVE_COUNTER:
-				if (CalcMoveSplit(bankDef, predictedMove) == SPLIT_PHYSICAL)
+				if (CalcMoveSplit(predictedMove, bankDef, bankAtk) == SPLIT_PHYSICAL)
 					predictedDamage *= 2;
 				else
 					predictedDamage = 0;
 				break;
 			case MOVE_MIRRORCOAT:
-				if (CalcMoveSplit(bankDef, predictedMove) == SPLIT_SPECIAL)
+				if (CalcMoveSplit(predictedMove, bankDef, bankAtk) == SPLIT_SPECIAL)
 					predictedDamage *= 2;
 				else
 					predictedDamage = 0;
@@ -1891,7 +1891,7 @@ bool8 PhysicalMoveInMoveset(u8 bank)
 
 		if (!(gBitTable[i] & moveLimitations))
 		{
-			if (CalcMoveSplit(bank, move) == SPLIT_PHYSICAL
+			if (CalcMoveSplit(move, bank, bank) == SPLIT_PHYSICAL
 			&& gBattleMoves[move].power != 0
 			&& gBattleMoves[move].effect != EFFECT_COUNTER)
 				return TRUE;
@@ -1914,7 +1914,7 @@ bool8 SpecialMoveInMoveset(u8 bank)
 
 		if (!(gBitTable[i] & moveLimitations))
 		{
-			if (CalcMoveSplit(bank, move) == SPLIT_SPECIAL
+			if (CalcMoveSplit(move, bank, bank) == SPLIT_SPECIAL
 			&& gBattleMoves[move].power != 0
 			&& gBattleMoves[move].effect != EFFECT_MIRROR_COAT)
 				return TRUE;
@@ -2198,7 +2198,7 @@ bool8 StatusMoveInMoveset(u8 bank)
 
 		if (!(gBitTable[i] & moveLimitations))
 		{
-			if (CalcMoveSplit(bank, move) == SPLIT_STATUS)
+			if (CalcMoveSplit(move, bank, bank) == SPLIT_STATUS)
 				return TRUE;
 		}
 	}

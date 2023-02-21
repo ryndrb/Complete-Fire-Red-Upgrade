@@ -114,3 +114,21 @@ EventScript_CanEnterPokeTower:
 EventScript_MovePlayer:
     .byte walk_left
     .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Mr Fuji PokeTower | After Sabrina Now
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_MrFuji:
+    lock
+    faceplayer
+    setvar 0x8004 0xE
+    setvar 0x8005 0x2
+    special 0x174
+    setflag 0x34
+    setflag 0x23C
+    msgbox 0x817A529 MSG_KEEPOPEN
+    closeonkeypress
+    warp 0x8 0x2 0xFF 0x4 0x7
+    waitstate
+    release
+    end

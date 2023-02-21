@@ -18,7 +18,7 @@
 #include "../include/new/multi.h"
 #include "../include/new/set_z_effect.h"
 #include "../include/new/text.h"
-#include "defines_battle.h"
+#include "../include/new/ability_util.h"
 
 /*
 battle_strings.c
@@ -991,8 +991,10 @@ void EmitPrintString(u8 bufferId, u16 stringID)
 	if (gBattleStringLoader !=  NULL)
 		StringCopyBattleStringLoader(stringInfo->battleStringLoader, gBattleStringLoader);
 
-	for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+	for (i = 0; i < MAX_BATTLERS_COUNT; i++){
 		stringInfo->abilities[i] = *GetAbilityLocation(i);
+		stringInfo->species[i] = GetProperAbilityPopUpSpecies(i);
+	}
 	for (i = 0; i < TEXT_BUFF_ARRAY_COUNT; i++)
 	{
 		stringInfo->textBuffs[0][i] = gBattleTextBuff1[i];
@@ -1025,8 +1027,10 @@ void EmitPrintSelectionString(u8 bufferId, u16 stringID)
 	if (gBattleStringLoader !=  NULL)
 		StringCopyBattleStringLoader(stringInfo->battleStringLoader, gBattleStringLoader);
 
-	for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+	for (i = 0; i < MAX_BATTLERS_COUNT; i++){
 		stringInfo->abilities[i] = *GetAbilityLocation(i);
+		stringInfo->species[i] = GetProperAbilityPopUpSpecies(i);
+	}
 	for (i = 0; i < TEXT_BUFF_ARRAY_COUNT; i++)
 	{
 		stringInfo->textBuffs[0][i] = gBattleTextBuff1[i];

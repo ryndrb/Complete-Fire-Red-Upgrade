@@ -3363,6 +3363,20 @@ extern const u8 IV_HP_POISON[];
 extern const u8 IV_HP_FLYING[];
 extern const u8 IV_HP_FIGHTING[];
 
+// Saffron Elevator
+extern const u8 LEVEL11[];
+extern const u8 LEVEL10[];
+extern const u8 LEVEL9[];
+extern const u8 LEVEL8[];
+extern const u8 LEVEL7[];
+extern const u8 LEVEL6[];
+extern const u8 LEVEL5[];
+extern const u8 LEVEL4[];
+extern const u8 LEVEL3[];
+extern const u8 LEVEL2[];
+extern const u8 LEVEL1[];
+extern const u8 gEXIT[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3683,6 +3697,21 @@ static const u8* HiddenPowerTpyes[] = {
 	IV_HP_FIGHTING,
 };
 
+static const u8* SaffronElevator[] = {
+	LEVEL11,
+	LEVEL10,
+	LEVEL9,
+	LEVEL8,
+	LEVEL7,
+	LEVEL6,
+	LEVEL5,
+	LEVEL4,
+	LEVEL3,
+	LEVEL2,
+	LEVEL1,
+	gEXIT,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
@@ -3710,6 +3739,7 @@ const struct ScrollingMulti gScrollingSets[] =
 	{IvyService, ARRAY_COUNT(IvyService)},//22
 	{NumIV, ARRAY_COUNT(NumIV)},//23
 	{HiddenPowerTpyes, ARRAY_COUNT(HiddenPowerTpyes)},//24
+	{SaffronElevator, ARRAY_COUNT(SaffronElevator)},//25
 };
 
 //Link number of opts shown at once to the box height

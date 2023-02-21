@@ -647,6 +647,7 @@ EventScript_DontHaveThisBadgeYet:
 @ Nature Changer
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_NatureChanger:
+	sound 0x2
 	checkflag FLAG_DEFEATED_MISTY
 	if 0x0 _goto EventScript_NoMistyBadge
     msgbox gText_NatureChangerQuestion MSG_YESNO 
@@ -675,6 +676,7 @@ EventScript_NatureList:
     if greaterorequal _goto EventScript_ComeAgain
     copyvar 0x8005 LASTRESULT
     callasm ChangeMonNature
+	sound 0x2
     goto EventScript_NatureIsChanged
     end
 
@@ -700,6 +702,7 @@ EventScript_ThisIsAnEggNatureChanger:
 @ Ability Changer
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_AbilityChanger:
+	sound 0x2
 	checkflag FLAG_DEFEATED_LT_SURGE
 	if 0x0 _goto EventScript_NoSurgeBadge
 	msgbox gText_AbilityChangerQuestion MSG_YESNO
@@ -707,6 +710,7 @@ EventScript_AbilityChanger:
 	if 0x0 _goto EventScript_ComeAgain
 	special 0x9F
 	waitstate
+	copyvar 0x8006 0x8004
 	compare 0x8004 0x6
 	if greaterorequal _goto EventScript_ComeAgain
 	special 0x148
@@ -717,6 +721,7 @@ EventScript_AbilityChanger:
 	end
 
 EventScript_DoChangeAbility:
+	callasm DisplayCurrentMonAbility
 	msgbox gText_WhichAbility MSG_KEEPOPEN
 	setvar 0x8000 0x3
 	setvar 0x8001 0x3
@@ -728,28 +733,24 @@ EventScript_DoChangeAbility:
 	compare LASTRESULT 0x3
 	if greaterorequal _goto EventScript_ComeAgain
 	copyvar 0x8005 LASTRESULT
-	callasm ChangeMonAbility
 	switch LASTRESULT
-	case 0, EventScript_AbilityHasBeenChanged1
-	case 1, EventScript_AbilityHasBeenChanged2
-	case 2, EventScript_AbilityHasBeenChanged3
-	end
-
-EventScript_AbilityHasBeenChanged1:
-	msgbox gText_EventScript_AbilityHasBeenChanged1 MSG_KEEPOPEN
-	closeonkeypress
+	case 0, EventScript_SelectedAbility 
+	case 1, EventScript_SelectedAbility
+	case 2, EventScript_SelectedAbility
 	release
 	end
 
-EventScript_AbilityHasBeenChanged2:
-	msgbox gText_EventScript_AbilityHasBeenChanged2 MSG_KEEPOPEN
-	closeonkeypress
-	release
-	end
-
-EventScript_AbilityHasBeenChanged3:
-	msgbox gText_EventScript_AbilityHasBeenChanged3 MSG_KEEPOPEN
-	closeonkeypress
+EventScript_SelectedAbility:
+	sound 0x2
+	callasm DisplayCurrentMonAbility2
+	msgbox gText_SelectedAbility MSG_YESNO
+	compare LASTRESULT 0x1
+	if 0x0 _goto EventScript_DoChangeAbility
+	copyvar 0x8004 0x8006
+	callasm ChangeMonAbility
+	msgbox gText_FeedingAbilityPill MSG_KEEPOPEN
+	sound 0x2
+	msgbox gText_AbilityChangedSucessful MSG_KEEPOPEN
 	release
 	end
 

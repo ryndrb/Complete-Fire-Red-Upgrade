@@ -265,6 +265,7 @@ static void SetUpStartMenu_NormalField(void)
 		AppendToStartMenuItems(STARTMENU_EXIT);
 
 	DrawTime();
+	//CharName();
 }
 
 static void SetUpStartMenu_SafariZone(void)

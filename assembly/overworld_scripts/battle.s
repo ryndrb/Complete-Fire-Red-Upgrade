@@ -9,8 +9,10 @@
 EventScript_TrainerBattle:
 	lock
 	faceplayer
-	trainerbattle0 0x0 0x19E 0x0 gText_Intro gTextWin
+	@setflag 0x907
+	trainerbattle0 0x0 413 0x0 gText_Intro gTextWin
 	msgbox gText_AlreadyDefeated MSG_FACE
+	@clearflag 0x907
 	release
 	end
 

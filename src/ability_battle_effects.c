@@ -572,7 +572,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			break;
 
 		case ABILITY_DRIZZLE:
-			if(ABILITY(gBankAttacker) == ABILITY_DRIZZLE)
 			if (!(gBattleWeather & (WEATHER_RAIN_ANY | WEATHER_PRIMAL_ANY | WEATHER_CIRCUS)))
 			{
 				effect = ActivateWeatherAbility(WEATHER_RAIN_PERMANENT | WEATHER_RAIN_TEMPORARY,
@@ -1868,7 +1867,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 			case ABILITY_WEAKARMOR:
 				if (MOVE_HAD_EFFECT
 				&& TOOK_DAMAGE(bank)
-				&& CalcMoveSplit(gBankAttacker, gCurrentMove) == SPLIT_PHYSICAL
+				&& CalcMoveSplit(gCurrentMove, gBankAttacker, bank) == SPLIT_PHYSICAL
 				&& BATTLER_ALIVE(bank)
 				&& gBankAttacker != bank
 				&& (gBattleMons[bank].statStages[STAT_SPEED - 1] < 12 || gBattleMons[bank].statStages[STAT_DEF - 1] > 0))
@@ -2751,7 +2750,7 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
 
 static void PrintAbilityOnAbilityPopUp(u32 ability, u16 species, u8 spriteId1, u8 spriteId2)
 {
-	const u8* abilityName = GetAbilityName(ability, GetProperAbilityPopUpSpecies(species));
+	const u8* abilityName = GetAbilityName(ability, species);
 
 	PrintOnAbilityPopUp(abilityName,
 						(void*)(OBJ_VRAM0) + (gSprites[spriteId1].oam.tileNum * 32) + 256,
@@ -3047,6 +3046,7 @@ void TransferAbilityPopUp(u8 bank, u8 ability)
 {
 	gActiveBattler = bank;
 	gAbilityPopUpHelper = ability;
+	SetProperAbilityPopUpSpecies(bank);
 
 	EmitDataTransfer(0, &gAbilityPopUpHelper, 1, &gAbilityPopUpHelper);
 	MarkBufferBankForExecution(gActiveBattler);

@@ -8,6 +8,7 @@
 #include "../include/script.h"
 #include "../include/string_util.h"
 #include "../include/wild_encounter.h"
+#include "../include/party_menu.h"
 
 #include "../include/constants/event_objects.h"
 #include "../include/constants/items.h"
@@ -186,6 +187,7 @@ void AddEVsTraynee(void);
 void ResetAllEVs(void);
 void ChangeIV(void);
 void ChangeHiddenPower(void);
+void DisplayCurrentMonAbility(void);
 
 #ifdef OPEN_WORLD_TRAINERS
 
@@ -4060,6 +4062,7 @@ void ChangeMonNature(void){
 	u8 nature = Var8005;
 	GiveMonNatureAndAbility(mon, nature, GetMonData(mon, MON_DATA_PERSONALITY, NULL) & 1, IsMonShiny(mon), TRUE, FALSE);
     CalculateMonStats(mon);
+	GetMonNickname(mon, gStringVar1);
 }
 
 void ChangeMonAbility(void){
@@ -4079,13 +4082,23 @@ void ChangeMonAbility(void){
 	bool8 isMinior = IsMinior(species);
 	u8 miniorCore = GetMiniorCoreFromPersonality(personality);
 
+	u8 changeTo = ABILITY_NONE;
 	u8 abilityNum = Var8005; // From script
-	if (abilityNum == 2) //Hidden Ability
+	if (abilityNum == 2){ //Hidden Ability
 		mon->hiddenAbility = TRUE;
+		changeTo = gBaseStats[species].hiddenAbility;
+	}
 	else{
 		mon->hiddenAbility = FALSE; // turn off, will get stuck otherwise
 		abilityNum = MathMin(1, abilityNum); //Either First or Second
+		if(abilityNum == 0)
+			changeTo = gBaseStats[species].ability1;
+		else
+			changeTo = gBaseStats[species].ability2;
 	}
+
+	GetMonNickname(mon, gStringVar1);
+	CopyAbilityName(gStringVar2, changeTo, species);
 
 	do
 	{
@@ -4107,6 +4120,45 @@ void ChangeMonAbility(void){
 	|| (keepLetterCore && isMinior && GetMiniorCoreFromPersonality(personality) != miniorCore)); //Make sure the Minior core doesn't change
 
 	mon->personality = personality;
+}
+
+void DisplayCurrentMonAbility(void){
+	struct Pokemon* mon = &gPlayerParty[Var8004];
+	u16 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
+	u8 ability = GetMonAbility(mon);
+	u8 changeTo = ABILITY_NONE;
+
+	if (ability == gBaseStats[species].ability1){
+		changeTo = gBaseStats[species].ability1;
+	}
+	else if (ability == gBaseStats[species].ability2){
+		changeTo = gBaseStats[species].ability2;
+	}
+	else if (ability == gBaseStats[species].hiddenAbility){
+		changeTo = gBaseStats[species].hiddenAbility;
+	}
+
+	CopyAbilityName(gStringVar1, changeTo, species);
+}
+
+void DisplayCurrentMonAbility2(void){
+	struct Pokemon* mon = &gPlayerParty[Var8004];
+	u16 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
+	u8 changeTo = ABILITY_NONE;
+	u8 abilityNum = Var8005;
+
+	if(abilityNum == 2){
+		changeTo = gBaseStats[species].hiddenAbility;
+	}else{
+		abilityNum = MathMin(1, abilityNum);
+		if(abilityNum == 0)
+			changeTo = gBaseStats[species].ability1;
+		else
+			changeTo = gBaseStats[species].ability2;
+	}
+
+	GetMonNickname(mon, gStringVar1);
+	CopyAbilityName(gStringVar2, changeTo, species);
 }
 
 void AddEVsTraynee(void)

@@ -110,7 +110,7 @@ u8 AIScript_Negatives(const u8 bankAtk, const u8 bankDef, const u16 originalMove
 		data->defAbility = ABILITY_NONE;
 
 	u8 moveEffect = gBattleMoves[move].effect;
-	u8 moveSplit = CalcMoveSplit(bankAtk, move);
+	u8 moveSplit = CalcMoveSplit(move, bankAtk, bankDef);
 	u8 moveTarget = gBattleMoves[move].target;
 	u8 moveType = GetMoveTypeSpecial(bankAtk, move);
 	u8 moveFlags = gBattleMoves[move].flags;

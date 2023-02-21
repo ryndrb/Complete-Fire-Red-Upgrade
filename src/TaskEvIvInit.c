@@ -1265,15 +1265,15 @@ static void Task_ScriptShowMonPic(u8 taskId)
 //                                     resaltado                fuente                  sombra
 //                                     highlight                font                    shadow
 static const u8 gBlackTextColor[3]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_DARK_GREY,   TEXT_COLOR_LIGHT_GREY};
-static const u8 gBlueTextColor[3]   = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_BLUE,        TEXT_COLOR_LIGHT_GREY};
-static const u8 gRedTextColor[3]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_RED,         TEXT_COLOR_LIGHT_GREY};
+static const u8 gRedTextColor[3]   = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_GREY};
+static const u8 gGreenTextColor[3]    = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_GREEN,         TEXT_COLOR_LIGHT_GREY};
 static const u8 gGrayTextColor[3]   = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_LIGHT_GREY,  TEXT_COLOR_DARK_GREY};
 
 static const u8 *const gTextColorByNature[] = 
 {
     gBlackTextColor,
-    gRedTextColor,
-    gBlueTextColor
+    gGreenTextColor,
+    gRedTextColor
 };
 
 

@@ -45,9 +45,5 @@ bool8 IsTrappedByAbility(u8 bankDef, u8 trapAbility);
 bool8 IsWhiteSmokeAbility(u8 ability, u16 species);
 bool8 IsVitalSpiritAbility(u8 ability, u16 species);
 
-bool8 SpeciesHasSagePower(unusedArg u16 species);
 bool8 SpeciesHasStriker(unusedArg u16 species);
-bool8 SpeciesHasSelfSufficient(unusedArg u16 species);
-bool8 SpeciesHasFatalPrecision(unusedArg u16 species);
-bool8 SpeciesHasPsych(unusedArg u16 species);
-bool8 SpeciesHasAdrenaline(unusedArg u16 species);
+bool8 SpeciesHasLibero(unusedArg u16 species);

@@ -34,3 +34,13 @@ EventScript_GiveSub:
 EventScript_KidExclaim:
     .byte exclaim
     .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Former Substitute Kid
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_FormerSubstituteKid:
+    lock
+    faceplayer
+    msgbox gText_FormerSubstituteKid MSG_KEEPOPEN
+    release
+    end

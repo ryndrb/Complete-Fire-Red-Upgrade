@@ -2481,10 +2481,11 @@ void FieldUseFunc_VsSeeker(u8 taskId)
     }
 }
 #endif
-
+extern u8 EventScript_StatScanner[];
 void CursorCb_MoveRelearner(u8 taskId)
 {
 	PlaySE(SE_SELECT);
 	Var8004 = gPartyMenu.slotId;
-	gTasks[taskId].func = Task_WaitForFadeOut;
+	ScriptContext1_SetupScript(EventScript_StatScanner);
+	//gTasks[taskId].func = Task_WaitForFadeOut;
 }

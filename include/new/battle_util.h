@@ -74,7 +74,7 @@ bool8 MoveBlockedBySubstitute(u16 move, u8 bankAtk, u8 bankDef);
 bool8 MonMoveBlockedBySubstitute(u16 move, struct Pokemon* monAtk, u8 bankDef);
 bool8 IsMockBattle(void);
 bool8 IsMoveAffectedByParentalBond(u16 move, u8 bankAtk);
-u8 CalcMoveSplit(u8 bank, u16 move);
+u8 CalcMoveSplit(u16 move, u8 bankAtk, u8 bankDef);
 u8 CalcMoveSplitFromParty(struct Pokemon* mon, u16 move);
 u8 FindMovePositionInMoveset(u16 move, u8 bank);
 bool8 MoveInMoveset(u16 move, u8 bank);
@@ -133,6 +133,7 @@ bool8 CantUseSoundMoves(u8 bank);
 bool8 IsLaserFocused(u8 bank);
 bool8 IsAbilitySuppressed(u8 bank);
 bool8 CantScoreACrit(u8 bank, struct Pokemon* mon);
+bool8 BypassesScreens(u8 ability);
 
 u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg);
 u8 ItemBattleEffects(u8 caseID, u8 bank, bool8 moveTurn, bool8 DoPluck);

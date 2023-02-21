@@ -122,15 +122,8 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 			}
 			break;
 		case ABILITY_PROTEAN:
-			switch (dexNum)
-			{
-				#if (defined NATIONAL_DEX_SCORBUNNY && defined NATIONAL_DEX_RABOOT && defined NATIONAL_DEX_CINDERACE)
-				case NATIONAL_DEX_SCORBUNNY:
-				case NATIONAL_DEX_RABOOT:
-				case NATIONAL_DEX_CINDERACE:
-					return gText_AbilityName_Libero;
-				#endif
-			}
+			if(SpeciesHasLibero(species))
+				return gText_AbilityName_Libero;
 			break;
 		case ABILITY_GOOEY:
 			switch (dexNum)
@@ -225,6 +218,7 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 		case ABILITY_IRONFIST:
 			if(SpeciesHasStriker(species))
 				return gText_AbilityName_Striker;
+			break;
 	}
 
 	return NULL;
@@ -677,15 +671,6 @@ bool8 IsVitalSpiritAbility(u8 ability, u16 species)
 	return FALSE;
 }
 
-bool8 SpeciesHasSagePower(unusedArg u16 species)
-{   
-    #if (defined SPECIES_ABRA && defined SPECIES_KADABRA && defined SPECIES_ALAKAZAM && defined SPECIES_SIMISAGE && defined SPECIES_SIMISEAR && defined SPECIES_SIMIPOUR && defined SPECIES_ORANGURU )
-    return species == SPECIES_ABRA || species == SPECIES_KADABRA || species == SPECIES_ALAKAZAM || species == SPECIES_SIMISAGE || species == SPECIES_SIMISEAR || species == SPECIES_SIMIPOUR || species == SPECIES_ORANGURU;
-    #else
-    return FALSE;
-    #endif
-}
-
 bool8 SpeciesHasStriker(unusedArg u16 species)
 {
     #if (defined SPECIES_HITMONLEE && defined SPECIES_TORCHIC && defined SPECIES_COMBUSKEN && defined SPECIES_BLAZIKEN && defined SPECIES_STEENEE && defined SPECIES_TSAREENA)
@@ -695,37 +680,10 @@ bool8 SpeciesHasStriker(unusedArg u16 species)
     #endif
 }
 
-bool8 SpeciesHasSelfSufficient(unusedArg u16 species)
+bool8 SpeciesHasLibero(unusedArg u16 species)
 {
-    #if (defined SPECIES_TANGELA && defined SPECIES_TURTWIG && defined SPECIES_GROTLE && defined SPECIES_TORTERRA && defined SPECIES_TANGROWTH && defined SPECIES_FERROSEED && defined SPECIES_FERROTHORN)
-    return species == SPECIES_TANGELA || species == SPECIES_TURTWIG || species == SPECIES_GROTLE || species == SPECIES_TORTERRA || species == SPECIES_TANGROWTH || species == SPECIES_FERROSEED || species == SPECIES_FERROTHORN;
-    #else
-    return FALSE;
-    #endif
-}
-
-bool8 SpeciesHasFatalPrecision(unusedArg u16 species)
-{
-    #if (defined SPECIES_EKANS && defined SPECIES_ARBOK && defined SPECIES_SEVIPER && defined SPECIES_ZANGOOSE && defined SPECIES_BRAVIARY)
-    return species == SPECIES_EKANS || species == SPECIES_ARBOK || species == SPECIES_SEVIPER || species == SPECIES_ZANGOOSE || species == SPECIES_BRAVIARY;
-    #else
-    return FALSE;
-    #endif
-}
-
-bool8 SpeciesHasPsych(unusedArg u16 species)
-{
-    #if (defined SPECIES_SKITTY && defined SPECIES_DELCATTY && defined SPECIES_BALTOY && defined SPECIES_ESPURR && defined SPECIES_MEOWSTIC && defined SPECIES_MEOWSTIC_FEMALE && defined SPECIES_COMFEY)
-    return species == SPECIES_SKITTY || species == SPECIES_DELCATTY || species == SPECIES_BALTOY || species == SPECIES_ESPURR || species == SPECIES_MEOWSTIC || species == SPECIES_MEOWSTIC_FEMALE || species == SPECIES_COMFEY;
-    #else
-    return FALSE;
-    #endif
-}
-
-bool8 SpeciesHasAdrenaline(unusedArg u16 species)
-{
-    #if (defined SPECIES_MANKEY && defined SPECIES_PRIMEAPE && defined SPECIES_VIGOROTH && defined SPECIES_SIMISAGE && defined SPECIES_SIMISEAR && defined SPECIES_PANPOUR && defined SPECIES_BLITZLE && defined SPECIES_ZEBSTRIKA && defined SPECIES_BOUFFALANT && defined SPECIES_YAMPER && defined SPECIES_BOLTUND)
-    return species == SPECIES_MANKEY || species == SPECIES_PRIMEAPE || species == SPECIES_VIGOROTH || species == SPECIES_SIMISAGE || species == SPECIES_SIMISEAR || species == SPECIES_PANPOUR || species == SPECIES_BLITZLE || species == SPECIES_ZEBSTRIKA || species == SPECIES_BOUFFALANT || species == SPECIES_YAMPER || species == SPECIES_BOLTUND;
+    #if (defined SPECIES_SCORBUNNY && defined SPECIES_RABOOT && defined SPECIES_CINDERACE)
+    return species == SPECIES_SCORBUNNY || species == SPECIES_RABOOT || species == SPECIES_CINDERACE;
     #else
     return FALSE;
     #endif

@@ -12,6 +12,7 @@
 #include "../include/new/ability_battle_effects.h"
 #include "../include/new/ability_battle_scripts.h"
 #include "../include/new/ability_tables.h"
+#include "../include/new/ability_util.h"
 #include "../include/new/accuracy_calc.h"
 #include "../include/new/attackcanceler.h"
 #include "../include/new/battle_start_turn_start_battle_scripts.h"
@@ -590,14 +591,14 @@ void atk0C_datahpupdate(void)
 			gNewBS->AttackerDidDamageAtLeastOnce = TRUE;
 			gMoveResultFlags = 0;
 
-			if (CalcMoveSplit(gActiveBattler, gCurrentMove) == SPLIT_PHYSICAL)
+			if (CalcMoveSplit(gCurrentMove, gBankAttacker, gActiveBattler) == SPLIT_PHYSICAL)
 			{
 				gProtectStructs[gActiveBattler].physicalDmg = gHpDealt;
 				gSpecialStatuses[gActiveBattler].moveturnLostHP_physical = gHpDealt;
 				gProtectStructs[gActiveBattler].physicalBank = gBankAttacker;
 				gSpecialStatuses[gActiveBattler].moveturnPhysicalBank = gBankAttacker;
 			}
-			else if (CalcMoveSplit(gActiveBattler, gCurrentMove) == SPLIT_SPECIAL)
+			else if (CalcMoveSplit(gCurrentMove, gBankAttacker, gActiveBattler) == SPLIT_SPECIAL)
 			{
 				gProtectStructs[gActiveBattler].specialDmg = gHpDealt;
 				gSpecialStatuses[gActiveBattler].moveturnLostHP_special = gHpDealt;
@@ -681,7 +682,7 @@ void atk0C_datahpupdate(void)
 				if (!gSpecialStatuses[gActiveBattler].moveturnLostHP && !(gHitMarker & HITMARKER_NON_ATTACK_DMG))
 					gSpecialStatuses[gActiveBattler].moveturnLostHP = hpDealt;
 
-				if (CalcMoveSplit(gActiveBattler, gCurrentMove) == SPLIT_PHYSICAL
+				if (CalcMoveSplit(gCurrentMove, gBankAttacker, gActiveBattler) == SPLIT_PHYSICAL
 				&& !(gHitMarker & HITMARKER_NON_ATTACK_DMG))
 				{
 					gProtectStructs[gActiveBattler].physicalDmg = hpDealt;
@@ -700,7 +701,7 @@ void atk0C_datahpupdate(void)
 					}
 				}
 
-				else if (CalcMoveSplit(gActiveBattler, gCurrentMove) == SPLIT_SPECIAL
+				else if (CalcMoveSplit(gCurrentMove, gBankAttacker, gActiveBattler) == SPLIT_SPECIAL
 				&& !(gHitMarker & HITMARKER_NON_ATTACK_DMG))
 				{
 					gProtectStructs[gActiveBattler].specialDmg = hpDealt;
@@ -1345,6 +1346,7 @@ void atk1B_cleareffectsonfaint(void) {
 					gBattlescriptCurrInstr = BattleScript_Receiver;
 
 					gAbilityPopUpHelper = gLastUsedAbility;
+					SetProperAbilityPopUpSpecies(partner);
 					EmitDataTransfer(0, &gAbilityPopUpHelper, 1, &gAbilityPopUpHelper);
 					MarkBufferBankForExecution(gActiveBattler);
 

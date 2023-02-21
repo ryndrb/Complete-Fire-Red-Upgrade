@@ -280,6 +280,74 @@ EventScript_GiveAbomasite:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Sabrina
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymLeaderSabrina:
+    setvar 0x8004 0x7
+    setvar 0x8005 0x2
+    special 0x174
+    trainerbattle1 0x1 0x1A4 0x0 0x819B53C 0x819B602 EventScript_0x816EE0A
+    checkflag 0x29A
+    if 0x0 _goto 0x816EE3D
+    msgbox 0x819B7F2 MSG_KEEPOPEN
+    release
+    end
+
+EventScript_0x816EE0A:
+    setvar 0x8004 0x7
+    setvar 0x8005 0x2
+    special 0x173
+    setvar 0x8004 0x7
+    setvar 0x8005 0x3
+    special 0x173
+    clearflag 0xAE
+    setflag 0x4B5
+    setflag 0x825
+    clearflag 0x035
+    setvar 0x8008 0x6
+    call 0x81A6B18
+    goto EventScript_0x816EE3D
+    end
+
+EventScript_0x816EE3D:
+    msgbox 0x819B6FA MSG_KEEPOPEN
+    checkitemspace 0x124 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816EE7E
+    giveitem_msg 0x819B7D3 ITEM_TM04
+    setflag 0x29A
+    msgbox 0x819B685 MSG_KEEPOPEN
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Alakazite | Saffron City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyAlakazite:
+    lock
+    faceplayer
+    checkflag 0x4B5
+    if 0x1 _goto EventScript_GiveAlakazite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveAlakazite:
+    checkflag FLAG_OBTAIN_ALAKAZITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_ALAKAZITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_ALAKAZITE
+    bufferpokemon 0x1 SPECIES_ALAKAZAM
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_ALAKAZITE
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Koga
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GymLeaderKoga:
@@ -341,73 +409,6 @@ EventScript_GiveGengarite:
     bufferpokemon 0x1 SPECIES_GENGAR
     msgbox gText_ObtainedStone MSG_KEEPOPEN
     setflag FLAG_OBTAIN_GENGARITE
-    release
-    end
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Sabrina
-@@@@@@@@@@@@@@@@@@@@@@
-EventScript_GymLeaderSabrina:
-    setvar 0x8004 0x7
-    setvar 0x8005 0x2
-    special 0x174
-    trainerbattle1 0x1 0x1A4 0x0 0x819B53C 0x819B602 EventScript_0x816EE0A
-    checkflag 0x29A
-    if 0x0 _goto 0x816EE3D
-    msgbox 0x819B7F2 MSG_KEEPOPEN
-    release
-    end
-
-EventScript_0x816EE0A:
-    setvar 0x8004 0x7
-    setvar 0x8005 0x2
-    special 0x173
-    setvar 0x8004 0x7
-    setvar 0x8005 0x3
-    special 0x173
-    clearflag 0xAE
-    setflag 0x4B5
-    setflag 0x825
-    setvar 0x8008 0x6
-    call 0x81A6B18
-    goto EventScript_0x816EE3D
-    end
-
-EventScript_0x816EE3D:
-    msgbox 0x819B6FA MSG_KEEPOPEN
-    checkitemspace 0x124 0x1
-    compare LASTRESULT 0x0
-    if 0x1 _goto 0x816EE7E
-    giveitem_msg 0x819B7D3 ITEM_TM04
-    setflag 0x29A
-    msgbox 0x819B685 MSG_KEEPOPEN
-    release
-    end
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Alakazite | Saffron City | Gym Guy
-@@@@@@@@@@@@@@@@@@@@@@
-EventScript_GymGuyAlakazite:
-    lock
-    faceplayer
-    checkflag 0x4B5
-    if 0x1 _goto EventScript_GiveAlakazite
-    msgbox 0x8191298 MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x1 _goto 0x816A689
-    compare LASTRESULT 0x0
-    if 0x1 _goto 0x816A697
-    end
-
-EventScript_GiveAlakazite:
-    checkflag FLAG_OBTAIN_ALAKAZITE
-    if 0x1 _goto Obtained
-    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
-    giveitem ITEM_ALAKAZITE 0x1 MSG_OBTAIN
-    bufferitem 0x0 ITEM_ALAKAZITE
-    bufferpokemon 0x1 SPECIES_ALAKAZAM
-    msgbox gText_ObtainedStone MSG_KEEPOPEN
-    setflag FLAG_OBTAIN_ALAKAZITE
     release
     end
 

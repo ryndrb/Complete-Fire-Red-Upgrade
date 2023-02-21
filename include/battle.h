@@ -871,6 +871,8 @@ struct NewBattleStruct
 	bool8 doingPluckItemEffect : 1;
 	bool8 usedXSpDef : 1; //Needed because it's hooked into the X Sp. Atk
 	bool8 lessThanHalfHPBeforeShellBell : 1; //For Emergency Exit
+	u8 hiddenPowerSplit[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT];
+	u8 shellSideArmSplit[MAX_BATTLERS_COUNT][MAX_BATTLERS_COUNT];
 
 	//Other
 	u16 LastUsedMove;
