@@ -32,9 +32,9 @@
 #define ABILITYEFFECT_MOVES_BLOCK_PARTNER		0x14
 #define ABILITYEFFECT_SWITCH_IN_WEATHER         0xFF
 
-#define ABILITY_ON_OPPOSING_FIELD(battlerId, abilityId)(AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, battlerId, abilityId, 0, 0))
-#define ABILITY_ON_FIELD(abilityId)(AbilityBattleEffects(ABILITYEFFECT_CHECK_ON_FIELD, 0, abilityId, 0, 0))
-#define ABILITY_ON_FIELD2(abilityId)(AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, abilityId, 0, 0))
+#define ABILITY_ON_OPPOSING_FIELD(battlerId, abilityId) (AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, battlerId, abilityId, 0, 0))
+#define ABILITY_ON_FIELD(abilityId) (AbilityBattleEffects(ABILITYEFFECT_CHECK_ON_FIELD, 0, abilityId, 0, 0))
+#define ABILITY_ON_FIELD2(abilityId) (AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, abilityId, 0, 0))
 
 #define ITEMEFFECT_ON_SWITCH_IN                 0x0
 
@@ -42,6 +42,7 @@ extern bool8 WeatherHasEffect(void);
 #define WEATHER_HAS_EFFECT WeatherHasEffect()
 
 #define MON_CAN_BATTLE(mon) (((GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE && !GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) != 0)))
+#define SPECIES_CANT_BATTLE(species) (species == SPECIES_NONE || species == SPECIES_EGG)
 
 #define BS_GET_TARGET                   0
 #define BS_GET_ATTACKER                 1

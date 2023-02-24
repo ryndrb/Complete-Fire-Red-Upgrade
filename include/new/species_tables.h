@@ -3,7 +3,7 @@
 #include "../global.h"
 
 /**
- * \file species_tables.h
+ * \file move_tables.h
  * \brief Contains declarations for many lists of species.
  */
 

@@ -33,6 +33,7 @@ switch_battle_scripts.s
 .global BattleScript_HandleFaintedMonDoublesPart2
 .global BattleScript_HandleFaintedMonDoublesSwitchInEffects
 .global BattleScript_FaintedMonChooseAnotherRejoin
+.global BattleScript_FaintedMonTryChooseAnother
 
 .global BattleScript_EntryHazardsHurtReturn
 
@@ -279,12 +280,17 @@ BattleScript_PursuitGiveExp:
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+.equ BATTLE_STYLE_SHIFT, 0
+.equ BATTLE_STYLE_SET, 1
+.equ BATTLE_STYLE_SEMI_SHIFT, 2
+
 BattleScript_HandleFaintedMonSingles:
 	ifwildbattleend 0x81D87B8 @;BattleScript_LinkBattleHandleFaint
 	jumpifbyte NOTEQUALS, BATTLE_OUTCOME, 0, BattleScript_FaintedMonEnd
 	jumpifbattletype BATTLE_TRAINER, BattleScript_FaintedMonTryChooseAnother
 	jumpifword NOTANDS, HIT_MARKER, HITMARKER_PLAYER_FAINTED, BattleScript_FaintedMonTryChooseAnother
 	jumpifbattletype BATTLE_DOUBLE BattleScript_FaintedMonTryChooseAnother
+	callasm SkipUseNextPkmnPromptIfCantRun
 	printstring 337 @;STRINGID_USENEXTPKMN
 	setbyte BATTLE_COMMUNICATION, 0
 	yesnobox
@@ -298,10 +304,13 @@ BattleScript_FaintedMonTryChooseAnother:
 	jumpifbattletype BATTLE_WIRELESS, BattleScript_FaintedMonChooseAnother
 	jumpifbattletype BATTLE_FRONTIER, BattleScript_FaintedMonChooseAnother
 	jumpifbattletype BATTLE_DOUBLE, BattleScript_FaintedMonChooseAnother
-	jumpifbyte EQUALS, BATTLE_STYLE, 1, BattleScript_FaintedMonChooseAnother
+	jumpifbyte EQUALS, BATTLE_STYLE, BATTLE_STYLE_SET, BattleScript_FaintedMonChooseAnother
 	jumpifword ANDS, HIT_MARKER, HITMARKER_PLAYER_FAINTED, BattleScript_TryDoAIShiftSwitch
 	jumpifcannotswitch BANK_PLAYER_1, BattleScript_FaintedMonChooseAnother
+	jumpifbyte EQUALS, BATTLE_STYLE, BATTLE_STYLE_SEMI_SHIFT, BattleScript_FaintedMonChooseAnother_SemiSwitchString
+	callasm HandleIllusionShiftSwitch @;Disguises the Pokemon's name if they have Illusion
 	printstring 282 @;STRINGID_ENEMYABOUTTOSWITCHPKMN
+BattleScript_FaintedMonChooseAnother_PostOfferString:
 	setbyte BATTLE_COMMUNICATION, 0
 	yesnobox
 	jumpifbyte EQUALS, BATTLE_COMMUNICATION + 1, 1, BattleScript_FaintedMonChooseAnother
@@ -374,6 +383,11 @@ BattleScript_TryDoAIShiftSwitch:
 	copybyte BATTLE_SCRIPTING_BANK FAINTED_BANK
 	callasm FaintedBankNameInBuff1
 	goto BattleScript_FaintedMonChooseAnotherRejoin
+
+BattleScript_FaintedMonChooseAnother_SemiSwitchString:
+	setword BATTLE_STRING_LOADER gText_SemiSwitchOffer
+	printstring 0x184
+	goto BattleScript_FaintedMonChooseAnother_PostOfferString
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 

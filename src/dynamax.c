@@ -216,6 +216,35 @@ static bool8 IsBannedHeldItemForDynamax(u16 item)
 		|| IsPrimalOrb(item);
 }
 
+bool8 IsBannedDynamaxBaseSpecies(u16 species)
+{
+	switch (species)
+	{
+		case SPECIES_NONE:
+		#ifdef SPECIES_ZACIAN
+		case SPECIES_ZACIAN:
+		#endif
+		#ifdef SPECIES_ZAMAZENTA
+		case SPECIES_ZAMAZENTA:
+		#endif
+		#ifdef SPECIES_ZACIAN_CROWNED
+		case SPECIES_ZACIAN_CROWNED:
+		#endif
+		#ifdef SPECIES_ZAMAZENTA_CROWNED
+		case SPECIES_ZAMAZENTA_CROWNED:
+		#endif
+		#ifdef SPECIES_ETERNATUS
+		case SPECIES_ETERNATUS:
+		#endif
+		#ifdef SPECIES_ETERNATUS_ETERNAMAX
+		//case SPECIES_ETERNATUS_ETERNAMAX: //Technically this one actually should only appear Dynamaxed
+		#endif
+			return TRUE;
+	}
+
+	return FALSE;
+}
+
 bool8 IsBannedDynamaxSpecies(u16 species)
 {
 	switch (species) {
@@ -542,7 +571,7 @@ static u8 GetMaxMoveType(u16 move, u8 bank, struct Pokemon* mon)
 
 		if (mon != NULL)
 		{
-			moveSplit = CalcMoveSplitFromParty(mon, move);
+			moveSplit = CalcMoveSplitFromParty(move, mon);
 			ability = GetMonAbility(mon);
 		}
 		else
@@ -617,7 +646,7 @@ move_t GetMaxMoveByMove(u8 bank, u16 baseMove)
 static move_t GetMonMaxMove(struct Pokemon* mon, u16 baseMove)
 {
 	u8 moveType = GetMaxMoveType(baseMove, 0, mon);
-	u8 moveSplit = CalcMoveSplitFromParty(mon, baseMove);
+	u8 moveSplit = CalcMoveSplitFromParty(baseMove, mon);
 	u16 maxMove = GetGMaxMove(moveType, moveSplit, mon->species, mon->gigantamax);
 	if (maxMove != MOVE_NONE)
 		return maxMove;
@@ -1168,7 +1197,7 @@ void atkFF2F_setmaxmoveeffect(void)
 
 		case MAX_EFFECT_YAWN_FOE:
 			if (BATTLER_ALIVE(gBankTarget)
-			&& CanBeYawned(gBankTarget)
+			&& CanBeYawned(gBankTarget, gBankAttacker)
 			&& !(gStatuses3[gBankTarget] & STATUS3_YAWN)
 			&& (Random() & 1) == 0) //50 % chance target is put to sleep
 			{
@@ -1192,7 +1221,7 @@ void atkFF2F_setmaxmoveeffect(void)
 
 		case MAX_EFFECT_CONFUSE_FOES:
 			if ((BATTLER_ALIVE(gBankTarget) || (IS_DOUBLE_BATTLE && BATTLER_ALIVE(PARTNER(gBankTarget))))
-			&&  (CanBeConfused(gBankTarget, TRUE) || (IS_DOUBLE_BATTLE && CanBeConfused(PARTNER(gBankTarget), TRUE)))) //Is it worth it to push the script
+			&&  (CanBeConfused(gBankTarget, gBankAttacker, TRUE) || (IS_DOUBLE_BATTLE && CanBeConfused(PARTNER(gBankTarget), gBankAttacker, TRUE)))) //Is it worth it to push the script
 			{
 				BattleScriptPushCursor();
 				gBattlescriptCurrInstr = BattleScript_MaxMoveConfuseFoes;
@@ -1247,7 +1276,7 @@ void PickRandomGMaxBefuddleEffect(void)
 
 	switch (gBattleCommunication[MOVE_EFFECT_BYTE]) {
 		case MOVE_EFFECT_SLEEP:
-			if (CanBePutToSleep(gBankTarget, TRUE))
+			if (CanBePutToSleep(gBankTarget, gBankAttacker, TRUE))
 				gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked on line above
 			break;
 		case MOVE_EFFECT_POISON:
@@ -1256,7 +1285,7 @@ void PickRandomGMaxBefuddleEffect(void)
 			break;
 		case MOVE_EFFECT_BURN: //Gets changed to Paralysis
 			gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
-			if (CanBeParalyzed(gBankTarget, TRUE))
+			if (CanBeParalyzed(gBankTarget, gBankAttacker, TRUE))
 				gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked on line above
 			break;
 	}
@@ -1265,7 +1294,7 @@ void PickRandomGMaxBefuddleEffect(void)
 void SetGMaxVoltCrashEffect(void)
 {
 	gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
-	if (CanBeParalyzed(gBankTarget, TRUE))
+	if (CanBeParalyzed(gBankTarget, gBankAttacker, TRUE))
 		gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked on line above
 }
 
@@ -1294,7 +1323,7 @@ void PickRandomGMaxStunshockEffect(void)
 	else
 	{
 		gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
-		if (CanBeParalyzed(gBankTarget, TRUE))
+		if (CanBeParalyzed(gBankTarget, gBankAttacker, TRUE))
 			gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked on line above
 	}
 }
@@ -1302,7 +1331,7 @@ void PickRandomGMaxStunshockEffect(void)
 void SetGMaxSmiteEffect(void)
 {
 	gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_CONFUSION;
-	if (CanBeConfused(gBankTarget, TRUE))
+	if (CanBeConfused(gBankTarget, gBankAttacker, TRUE))
 		gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked on line above
 }
 
@@ -1481,6 +1510,37 @@ static u8 GetRaidShieldHealthRatio(u8 bank)
 		default:
 			return 4; //Every 1/4 health lost
 	}
+}
+
+u8 GetNumRaidShieldsUp(void)
+{
+	if (gNewBS->dynamaxData.raidShieldsUp)
+		return gNewBS->dynamaxData.shieldCount - gNewBS->dynamaxData.shieldsDestroyed;
+
+	return 0;
+}
+
+bool8 ShouldStartWithRaidShieldsUp(void)
+{
+	if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+		return FALSE; //Only for wild battles
+
+	#if (defined FLAG_RAID_BATTLE_NO_FORCE_END && defined VAR_GAME_DIFFICULTY)
+	if (FlagGet(FLAG_RAID_BATTLE_NO_FORCE_END) && VarGet(VAR_GAME_DIFFICULTY) >= OPTIONS_EXPERT_DIFFICULTY)
+		return TRUE;
+	#endif
+
+	#ifdef SPECIES_SHEDINJA
+	if (IsRaidBattle() && SPECIES(BANK_RAID_BOSS) == SPECIES_SHEDINJA)
+		return TRUE; //Starts with shields otherwise it can't survive a hit
+	#endif
+
+	#ifdef FLAG_START_WITH_RAID_SHIELDS
+	if (FlagGet(FLAG_START_WITH_RAID_SHIELDS))
+		return TRUE;
+	#endif
+	
+	return FALSE;
 }
 
 bool8 ShouldCreateRaidShields(u8 bank)
@@ -1940,22 +2000,57 @@ u16 GetRaidRewardAmount(u16 item)
 		return Random() % 5 + 1; //1 - 5
 
 	if (IsBerry(item))
-		return Random() % 5 + 1; //1 - 5
+	{
+		switch (ItemId_GetHoldEffect(item))
+		{
+			case ITEM_EFFECT_CURE_STATUS:
+			case ITEM_EFFECT_RESTORE_PP:
+			case ITEM_EFFECT_CONFUSE_SPICY:
+			case ITEM_EFFECT_CONFUSE_DRY:
+			case ITEM_EFFECT_CONFUSE_SWEET:
+			case ITEM_EFFECT_CONFUSE_BITTER:
+			case ITEM_EFFECT_CONFUSE_SOUR:
+				return Random() % 3 + 1; //1 - 3
 
-	switch (gItemsByType[item]) {
-		case ITEM_TYPE_HEALTH_RECOVERY:
-		case ITEM_TYPE_STATUS_RECOVERY:
-			return Random() % 5 + 1; //1 - 5
-		case ITEM_TYPE_PP_RECOVERY:
-		case ITEM_TYPE_STAT_BOOST_DRINK:
-			return Random() % 3 + 1; //1 - 3
-		case ITEM_TYPE_STAT_BOOST_WING:
-			return Random() % 21 + 10; //10 - 30
-		case ITEM_TYPE_SHARD:
-			return Random() % 10 + 1; //1 - 10
-		default:
-			return 1;
+			case ITEM_EFFECT_ATTACK_UP:
+			case ITEM_EFFECT_DEFENSE_UP:
+			case ITEM_EFFECT_SPEED_UP:
+			case ITEM_EFFECT_SP_ATTACK_UP:
+			case ITEM_EFFECT_SP_DEFENSE_UP:
+			case ITEM_EFFECT_WEAKNESS_BERRY:
+				return Random() % 2 + 1; //1 - 2
+
+			case ITEM_EFFECT_CRITICAL_UP:
+			case ITEM_EFFECT_RANDOM_STAT_UP:
+			case ITEM_EFFECT_MICLE_BERRY:
+			case ITEM_EFFECT_ENIGMA_BERRY:
+			case ITEM_EFFECT_JABOCA_ROWAP_BERRY:
+			case ITEM_EFFECT_CUSTAP_BERRY:
+			case ITEM_EFFECT_KEE_BERRY:
+			case ITEM_EFFECT_MARANGA_BERRY:
+				return 1;
+
+			default: //ITEM_EFFECT_RESTORE_HP - ITEM_EFFECT_CURE_CONFUSION
+				return Random() % 4 + 1; //1 - 4
+		}	
 	}
+
+	if (IsHealthRecoveryItem(item)
+	|| IsStatusRecoveryItem(item))
+		return Random() % 5 + 1; //1 - 5
+	else if (IsPPRecoveryItem(item)
+	|| IsStatBoostDrink(item)
+	|| IsExpModifierItem(item))
+		return Random() % 3 + 1; //1 - 3
+	else if (IsAbilityModifierItem(item)
+	|| IsPPBoostDrink(item))
+		return 1;
+	else if (IsStatBoostWing(item))
+		return Random() % 21 + 10; //10 - 30
+	else if (IsShard(item))
+		return Random() % 10 + 1; //1 - 10
+	else
+		return 1;
 }
 
 static const u16 s4StarFrontierRaidBattleDrops[] =

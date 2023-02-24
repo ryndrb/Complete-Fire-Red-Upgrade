@@ -4,6 +4,7 @@
 #include "../include/string_util.h"
 #include "../include/constants/items.h"
 #include "../include/constants/trainer_classes.h"
+
 #include "../include/new/ability_tables.h"
 #include "../include/new/battle_util.h"
 #include "../include/new/build_pokemon.h"
@@ -15,6 +16,7 @@
 #include "../include/new/mega_battle_scripts.h"
 #include "../include/new/move_menu.h"
 #include "../include/new/set_z_effect.h"
+
 /*
 mega.c
 	functions that support mega evolution logic and execution
@@ -62,7 +64,9 @@ const struct Evolution* CanMegaEvolve(unusedArg u8 bank, unusedArg bool8 CheckUB
 
 	for (i = 0; i < EVOS_PER_MON; ++i)
 	{
-		if (evolutions[i].method == EVO_MEGA)
+		if (evolutions[i].method == EVO_NONE) //Most likely end of entries
+			break; //Break now to save time
+		else if (evolutions[i].method == EVO_MEGA)
 		{
 			//Ignore reversion information
 			if (evolutions[i].param == 0) continue;
@@ -104,8 +108,11 @@ species_t GetMegaSpecies(unusedArg u16 species, unusedArg u16 item, unusedArg co
 	const struct Evolution* evolutions = gEvolutionTable[species];
 	int i, j;
 
-	for (i = 0; i < EVOS_PER_MON; ++i) {
-		if (evolutions[i].method == EVO_MEGA)
+	for (i = 0; i < EVOS_PER_MON; ++i)
+	{
+		if (evolutions[i].method == EVO_NONE) //Most likely end of entries
+			break; //Break now to save time
+		else if (evolutions[i].method == EVO_MEGA)
 		{
 			//Ignore reversion information
 			if (evolutions[i].param == 0) continue;
@@ -131,26 +138,33 @@ species_t GetMegaSpecies(unusedArg u16 species, unusedArg u16 item, unusedArg co
 	#endif
 }
 
-ability_t GetBankMegaFormAbility(u8 bank)
+ability_t GetBankMegaFormAbility(u8 megaBank, u8 foe)
 {
+	u8 ability = ABILITY_NONE;
 	const struct Evolution* evos;
 
-	if (!IsAbilitySuppressed(bank))
+	if (!IsAbilitySuppressed(megaBank))
 	{
-		evos = CanMegaEvolve(bank, FALSE);
+		evos = CanMegaEvolve(megaBank, FALSE);
 		if (evos != NULL)
+			ability = GetAbility1(evos->targetSpecies); //Megas can only have 1 ability
+		else
 		{
-			return TryRandomizeAbility(gBaseStats[evos->targetSpecies].ability1, evos->targetSpecies); //Megas can only have 1 ability
+			//Check Ultra Burst
+			evos = CanMegaEvolve(megaBank, TRUE);
+			if (evos != NULL)
+				ability = GetAbility1(evos->targetSpecies); //Ultra Necrozma only has 1 ability
 		}
 
-		evos = CanMegaEvolve(bank, TRUE);
-		if (evos != NULL)
+		if (ability == ABILITY_TRACE && IS_SINGLE_BATTLE)
 		{
-			return TryRandomizeAbility(gBaseStats[evos->targetSpecies].ability1, evos->targetSpecies); //Ultra Necrozma only has 1 ability
+			u8 foeAbility = *GetAbilityLocation(foe);
+			if (!gSpecialAbilityFlags[foeAbility].gTraceBannedAbilities)
+				ability = foeAbility; //What the Ability will become
 		}
 	}
 
-	return ABILITY_NONE;
+	return ability;
 }
 
 const u8* DoMegaEvolution(u8 bank)
@@ -163,15 +177,15 @@ const u8* DoMegaEvolution(u8 bank)
 
 	if (evolutions != NULL)
 	{
-		u16 species = mon->species;
 		DoFormChange(bank, evolutions->targetSpecies, TRUE, TRUE, TRUE);
 
 		gBattleScripting.bank = bank;
 		gLastUsedItem = mon->item;
 
 		//[BUFFER][00]'s [LAST_ITEM]\nis reacting to [PLAYER_NAME]'s [BUFFER][01]!
-		PREPARE_SPECIES_BUFFER(gBattleTextBuff1, species);
+		PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, bank, gBattlerPartyIndexes[bank]);
 		PREPARE_ITEM_BUFFER(gBattleTextBuff2, FindBankKeystone(bank));
+		PREPARE_SPECIES_BUFFER(gBattleTextBuff3, SPECIES(bank));
 
 		if (evolutions->unknown == MEGA_VARIANT_WISH)
 			return BattleScript_MegaWish;
@@ -208,13 +222,14 @@ const u8* DoPrimalReversion(u8 bank, u8 caseId)
 			}
 		}
 	}
+
 	return NULL;
 }
 
 //In theory, this function will do nothing as the regular forms revert should
 //should take care of the reversion. This is to prevent bugs if the player
 //gives themselves a Mega or Primal to start the battle.
-void MegaRevert(pokemon_t* party)
+void MegaRevert(struct Pokemon* party)
 {
 	int i;
 
@@ -222,13 +237,15 @@ void MegaRevert(pokemon_t* party)
 		TryRevertMega(&party[i]);
 }
 
-void TryRevertMega(pokemon_t* mon)
+void TryRevertMega(struct Pokemon* mon)
 {
 	const struct Evolution* evolutions = gEvolutionTable[mon->species];
 
 	for (u8 i = 0; i < EVOS_PER_MON; ++i)
 	{
-		if (evolutions[i].method == EVO_MEGA && evolutions[i].param == 0)
+		if (evolutions[i].method == EVO_NONE) //Most likely end of entries
+			break; //Break now to save time
+		else if (evolutions[i].method == EVO_MEGA && evolutions[i].param == 0)
 		{
 			mon->species = evolutions[i].targetSpecies;
 			CalculateMonStats(mon);
@@ -378,7 +395,9 @@ bool8 IsMegaSpecies(u16 species)
 
 	for (u8 i = 0; i < EVOS_PER_MON; ++i)
 	{
-		if (evolutions[i].method == EVO_MEGA
+		if (evolutions[i].method == EVO_NONE) //Most likely end of entries
+			break; //Break now to save time
+		else if (evolutions[i].method == EVO_MEGA
 		&& (evolutions[i].unknown == MEGA_VARIANT_STANDARD || evolutions[i].unknown == MEGA_VARIANT_WISH)
 		&& evolutions[i].param == 0)
 			return TRUE;
@@ -432,7 +451,9 @@ bool8 IsUltraNecrozmaSpecies(u16 species)
 
 	for (u8 i = 0; i < EVOS_PER_MON; ++i)
 	{
-		if (evolutions[i].method == EVO_MEGA && evolutions[i].unknown == MEGA_VARIANT_ULTRA_BURST && evolutions[i].param == 0)
+		if (evolutions[i].method == EVO_NONE) //Most likely end of entries
+			break; //Break now to save time
+		else if (evolutions[i].method == EVO_MEGA && evolutions[i].unknown == MEGA_VARIANT_ULTRA_BURST && evolutions[i].param == 0)
 			return TRUE;
 	}
 
@@ -456,10 +477,17 @@ const u8* GetTrainerName(u8 bank)
 
 	switch (GetBattlerPosition(bank)) {
 		case B_POSITION_PLAYER_LEFT:
-			if (InBattleSands())
+			if (IsAIControlledBattle())
 			{
-				trainerId = BATTLE_FACILITY_MULTI_TRAINER_TID;
-				battlerNum = 2; //Name stored in partner var
+				if (InBattleSands())
+				{
+					trainerId = BATTLE_FACILITY_MULTI_TRAINER_TID;
+					battlerNum = 2; //Name stored in partner var
+				}
+				else
+				{
+					trainerId = VarGet(VAR_PARTNER);
+				}
 			}
 			break;
 
@@ -478,10 +506,17 @@ const u8* GetTrainerName(u8 bank)
 			}
 			else if (gBattleTypeFlags & BATTLE_TYPE_LINK && gBattleTypeFlags & BATTLE_TYPE_MULTI)
 				trainerId = linkPartner;
-			else if (InBattleSands())
+			else if (IsAIControlledBattle())
 			{
-				trainerId = BATTLE_FACILITY_MULTI_TRAINER_TID;
-				battlerNum = 2; //Name stored in partner var
+				if (InBattleSands())
+				{
+					trainerId = BATTLE_FACILITY_MULTI_TRAINER_TID;
+					battlerNum = 2; //Name stored in partner var
+				}
+				else
+				{
+					trainerId = VarGet(VAR_PARTNER);
+				}
 			}
 			else
 				battlerNum = 0;
@@ -517,7 +552,7 @@ const u8* GetTrainerName(u8 bank)
 	else
 	{
 		u8 class = gTrainers[trainerId].trainerClass;
-		const u8* name = NULL;
+		u8* name = NULL;
 
 		if (trainerId < RAID_BATTLE_MULTI_TRAINER_TID)
 			name = TryGetRivalNameByTrainerClass(class);
@@ -528,7 +563,7 @@ const u8* GetTrainerName(u8 bank)
 			|| IsFrontierTrainerId(trainerId))
 				return GetFrontierTrainerName(trainerId, battlerNum);
 
-			return gTrainers[trainerId].trainerName;;
+			return gTrainers[trainerId].trainerName;
 		}
 
 		return name;

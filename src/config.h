@@ -145,6 +145,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define CREATE_ROAMER_WITH_X_PERFECT_IVS 3 //Change this to the number of set 31 IVs you'd like roaming pokemon to have.
 #define EGG_HATCH_LEVEL 1 //The level eggs hatch at
 #define AI_TRY_TO_KILL_RATE 50 //In battles against a trainer with AI flags of 1, the AI will try to use a move to knock out the opponents XX percent of the time
+#define BIKE_ENCOUNTER_PERCENT 60 //Biking through grass or in caves only has this percentage of the encounter rate (vanilla FR is 80)
 
 /*===== Metatile Behaviours =====*/
 #define MB_OMNIDIRECTIONAL_JUMP 0x7F //The tile behaviour byte that can be jumped over in all directions
@@ -313,6 +314,14 @@ enum //These vars need to be one after the other (hence the enum)
 //#define ENCOUNTER_MUSIC_BY_CLASS //Plays music when a trainer spots the player based on the trainer class rather than the value set in the trainer data.
 #define OKAY_WITH_AI_SUICIDE //The AI is allowed to use self-destructing moves
 #define HEALTHBAR_TYPE_ICONS //Pokemon types will always be shown next to the healthbar
+#define LAST_USED_BALL_TRIGGER //The player will be given an option to use their last used Poke Ball in wild battles by pressing L
+#define TEAM_PREVIEW_TRIGGER
+#define PICK_UP_KNOCKED_OFF_ITEMS //Items knocked off wild Pokemon will be picked up at the end of battle
+#define PICKUP_ITEMS_STRAIGHT_TO_BAG //Items obtained with Pickup or Honey Gather are placed right in the bag
+#define TAKE_WILD_MON_ITEM_ON_CAPTURE //Items held by Wild Pokemon when caught can be placed in the bag at the player's request
+#define PAYDAY_MONEY_CAP //Pay Day and G-Max Gold Rush should cap at $99999 per battle
+#define QUICK_CLAW_PROCING_ALWAYS_ALLOWS_FLEEING //Fleeing from wild battles will never fail the turn a Quick Claw activates
+#define FROSTBITE //Replaces the Freeze status condition with the Frostbite status condition from PLA
 
 /* DexNav Options */
 //See "include/new/dexnav_config.h"

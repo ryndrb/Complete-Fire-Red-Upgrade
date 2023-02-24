@@ -1,7 +1,7 @@
 #ifndef GUARD_POKEMON_SUMMARY_SCREEN_H
 #define GUARD_POKEMON_SUMMARY_SCREEN_H
 
-#include "main.h"
+#include "constants/moves.h"
 
 extern const u8* const gMoveDescriptionPointers[];
 extern const u8* const gNatureNamePointers[];
@@ -160,7 +160,7 @@ struct PokemonSummaryScreenData
     u8 ALIGNED(4) unk3304[3]; /* 0x3304 */
 };
 
-extern struct PokemonSummaryScreenData* sMonSummaryScreen;
+#define sMonSummaryScreen ((struct PokemonSummaryScreenData*) *((u32*) 0x203B140))
 
 #define TAG_PSS_UNK_64 0x64
 #define TAG_PSS_UNK_65 0x65

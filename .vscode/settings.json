@@ -18,7 +18,16 @@
         "battle_string_ids.h": "c",
         "random.h": "c",
         "pokemon_storage_system.h": "c",
-        "battle_start_turn_start.h": "c"
+        "battle_start_turn_start.h": "c",
+        "multi.h": "c",
+        "mega.h": "c",
+        "build_pokemon.h": "c",
+        "region_map_sections.h": "c",
+        "ability_util.h": "c",
+        "event_object_movement.h": "c",
+        "battle_transition.h": "c",
+        "battle_util.h": "c",
+        "damage_calc.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

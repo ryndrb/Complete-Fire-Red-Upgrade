@@ -7,6 +7,7 @@
  * \brief Contains declarations for many lists of abilities.
  */
 
+
 struct SpecialAbilityFlags
 {
 	bool8 gMoldBreakerIgnoredAbilities : 1;

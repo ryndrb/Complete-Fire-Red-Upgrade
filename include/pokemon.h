@@ -12,7 +12,7 @@
 #define MON_DATA_OT_NAME            7
 #define MON_DATA_MARKINGS           8
 #define MON_DATA_CHECKSUM           9
-#define MON_DATA_10                10
+#define MON_DATA_ENCRYPT_SEPARATOR 10
 #define MON_DATA_SPECIES           11
 #define MON_DATA_HELD_ITEM         12
 #define MON_DATA_MOVE1             13
@@ -315,7 +315,7 @@ typedef struct Pokemon
     u16 species;
     u16 item;
     u32 experience;
-    u8 pp_bonuses;
+    u8 ppBonuses;
     u8 friendship;
 	u8 pokeball; //This is new
     u8 unknown;
@@ -612,12 +612,16 @@ enum EvolutionMethods
 	EVO_OTHER_PARTY_MON,	//another poke in the party, arg is a specific species
 	EVO_LEVEL_SPECIFIC_TIME_RANGE, // above given level with a range (unknown is [start][end]. eg lycanroc -> 1700-1800 hrs -> 0x1112)
 	EVO_FLAG_SET, //If a certain flag is set. Can be used for touching the Mossy/Icy Rock for Leafeon/Glaceon evolutions
-/*	//Evolution Defines Added in DPE
 	EVO_CRITICAL_HIT, // successfully land 3 critical hits in one battle
 	EVO_NATURE_HIGH, // evolution based on high key nature at a certain level
 	EVO_NATURE_LOW, // evolution based on low key nature at a certain level
-	EVO_DAMAGE_LOCATION // recieve 49+ damage in battle without fainting, walk to specific tile
-*/
+	EVO_DAMAGE_LOCATION, // recieve 49+ damage in battle without fainting, walk to specific tile
+	EVO_ITEM_LOCATION, // Stand on a tile with a certain behaviour and use an item on a Pokemon
+	EVO_LEVEL_HOLD_ITEM, // Level up to a certain level while holding an item
+	EVO_ITEM_HOLD_ITEM, // Use and item on a Pokemon while its holding an item
+	EVO_MOVE_MALE, // Knows a given move and is male
+	EVO_MOVE_FEMALE, // Knows a given move and is female
+	EVO_ITEM_NIGHT, // Item is used on it at night
 };
 #define EVO_GIGANTAMAX 0xFD
 #define EVO_MEGA 0xFE
@@ -685,6 +689,7 @@ u8 __attribute__((long_call)) GetNatureFromPersonality(u32 personality);
 u8 __attribute__((long_call)) GetMonGender(struct Pokemon* mon);
 u8 __attribute__((long_call)) GetBoxMonGender(struct BoxPokemon* boxMon);
 u8 __attribute__((long_call)) GetGenderFromSpeciesAndPersonality(u16 species, u32 personality);
+void __attribute__((long_call)) SetMultiuseSpriteTemplateToPokemon(u16 speciesTag, u8 battlerPosition);
 void __attribute__((long_call)) SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *data);
 void __attribute__((long_call)) EncryptBoxMon(struct BoxPokemon *boxMon);
 void __attribute__((long_call)) ZeroBoxMonData(struct BoxPokemon *boxMon);
@@ -696,6 +701,7 @@ u16 __attribute__((long_call)) GetTutorMove(u8 tutor);
 bool8 __attribute__((long_call)) MonKnowsMove(struct Pokemon *mon, u16 move);
 bool8 __attribute__((long_call)) CanLearnTutorMove(u16, u8);
 void __attribute__((long_call)) BoxMonToMon(struct BoxPokemon *srcMon, struct Pokemon *dstMon);
+bool8 __attribute__((long_call)) IsPlayerPartyAndPokemonStorageFull(void);
 bool8 __attribute__((long_call)) IsPokemonStorageFull(void);
 
 species_t __attribute__((long_call)) GetStarterChoice(void);
@@ -728,7 +734,8 @@ void __attribute__((long_call)) HandleSetPokedexFlag(u16 nationalNum, u8 caseId,
 u16 __attribute__((long_call)) GetPokedexHeightWeight(u16 dexNum, u8 data);
 void __attribute__((long_call)) HealPlayerParty(void);
 void __attribute__((long_call)) ReducePartyToThree(void);
-u8 __attribute__((long_call)) GetPartyIdFromBattlePartyId(u8 a);
+u8 __attribute__((long_call)) GetBattlePartyIdFromPartyId(u8 partyId); //Misnamed in decomps!
+u8 __attribute__((long_call)) GetPartyIdFromBattleSlot(u8 slot);
 u8 __attribute__((long_call)) GetEggMoves(struct Pokemon* poke, void* storageAddr);
 void __attribute__((long_call)) Special_0DD_DeleteMove();
 
@@ -742,12 +749,15 @@ u16 __attribute__((long_call)) SpeciesToPokedexNum(u16 species);
 u16 __attribute__((long_call)) GetCombinedOTID(void);
 u8 __attribute__((long_call)) GetTrainerEncounterMusicId(u16 trainerOpponentId);
 bool8 __attribute__((long_call)) ExecuteTableBasedItemEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 moveIndex);
-void __attribute__((long_call)) SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot);
+void __attribute__((long_call)) SetMonMoveSlotOld(struct Pokemon *mon, u16 move, u8 slot);
+void __attribute__((long_call)) ShiftMoveSlot(struct Pokemon *mon, u8 slotTo, u8 slotFrom);
 void __attribute__((long_call)) RemoveMonPPBonus(struct Pokemon *mon, u8 moveIndex);
 bool8 __attribute__((long_call)) TryIncrementMonLevel(struct Pokemon *mon);
 u8 __attribute__((long_call)) CheckPartyPokerus(struct Pokemon *party, u8 selection);
 bool8 __attribute__((long_call)) PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 moveIndex);
 u8 __attribute__((long_call)) GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit);
+u16 __attribute__((long_call)) GetEvolutionTargetSpeciesOld(struct Pokemon *mon, u8 type, u16 evolutionItem);
+void __attribute__((long_call)) AdjustFriendship(struct Pokemon *mon, u8 event);
 
 /*
 void ZeroMonData(struct Pokemon *mon);

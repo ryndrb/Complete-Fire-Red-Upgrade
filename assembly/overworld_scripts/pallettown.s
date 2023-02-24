@@ -624,4 +624,5 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x300
     setflag 0x304
     setflag 0x30D
+    setflag 0x933 @ team preview
     return

@@ -415,7 +415,7 @@ bool8 IsMoxieAbility(u8 ability)
 
 bool8 IsChoiceAbility(u8 ability)
 {
-	return ability == ABILITY_GORILLATACTICS;
+	return ability == ABILITY_GORILLATACTICS || ability == ABILITY_SAGEPOWER;
 }
 
 bool8 IsHPAbsorptionAbility(u8 ability)
@@ -592,6 +592,30 @@ bool8 IsTrappedByAbility(u8 bankDef, u8 trapAbility)
 		default:
 			return FALSE;
 	}
+}
+
+bool8 BankHasEvaporate(u8 bank)
+{
+	#ifdef ABILITY_EVAPORATE
+	return ABILITY(bank) == ABILITY_EVAPORATE
+		&& SpeciesHasEvaporate(GetProperAbilityPopUpSpecies(bank));
+	#endif
+	return FALSE;
+}
+
+bool8 BankOnFieldHasEvaporate(void)
+{
+	for (u32 i = 0; i < gBattlersCount; ++i)
+	{
+		u8 bank = gBanksByTurnOrder[i];
+
+		if (BATTLER_ALIVE(bank)
+		&& BankHasEvaporate(bank)
+		&& AffectedByRain(bank))
+			return bank + 1;
+	}
+
+	return FALSE;
 }
 
 bool8 IsWhiteSmokeAbility(u8 ability, u16 species)

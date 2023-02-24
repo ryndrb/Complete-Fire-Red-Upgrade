@@ -1,5 +1,5 @@
 #org @gText_ExpLadyGreet
-Hello trainer!\nWhat's your name?\p[.]\n[.]\pNice to meet you, [PLAYER]!\p[.]\n[.]\pAre your Pok\emon in need of some\ntraining?\pWell, in that case, I'll help you!\nTraynee, that's my name!\pYou see, a Pok\emon can improve a\nstat if it battles Pok\emon that\lspecializes in that stat.\pI've got teams of Pok\emon to help\nyou with all of that!\pJust talk to me if you need any\nhelp... all free of charge!\pBuuut...\pI can also juice up your Pok\emon\nusing special vitamins... though\lit's gonna cost you some cash!
+Hello trainer!\nWhat's your name?\p[.]\n[.]\pNice to meet you, [PLAYER]!\p[.]\n[.]\pAre your Pok\emon in need of some\ntraining?\pWell, in that case, I'll help you!\nTraynee, that's my name!\pYou see, a Pok\emon can improve a\nstat if it battles Pok\emon that\lspecializes in that stat.\pI've got teams of Pok\emon to help\nyou with all of that!\pJust talk to me if you need any\nhelp[.] all free of charge!\pBuuut[.]\pI can also juice up your Pok\emon\nusing special vitamins[.] though\lit's gonna cost you some cash!
 
 #org @gText_ExpTrain
 Traynee: Hi there, [PLAYER]!\nWhat do you want to train today?
@@ -17,7 +17,7 @@ Traynee: Which of its stats do you\nwant to train?
 Traynee: That'll cost \$[BUFFER1]. Is\nthat OK?
 
 #org @gText_AllDone
-Traynee: Aaand... done!
+Traynee: Aaand[.] done!
 
 #org @gText_NotEnoughMoney
 Traynee: I'm sorry, but you don't\nhave enough money.
@@ -65,7 +65,7 @@ Traynee: Now, now. That is mereley\nan egg!\pBring it back once it's hatched[.]
 ???: Mmm mm.. mm mm... mmm.. Mmm\nmm... Mm.. mm Mm... mmm.. Mmm\p...a trainer?
 
 #org @gText_IvyGreet
-Oh, sorry! I was listening to some\nmusic with my headphones.\pApologies for not noticing you...!\nI'm Ivy!\pAnyways, did you talk to Traynee\nalready?\pLet's see...\p[.]\n[.]\pYou already have a Gym Badge! Then\nI assume you already know the\lconcept of IVs and EVs then.\pWe offer special training programs\nthat will seriously juice up your\lPok\emon team!\pAs you can tell by my name, I'm\nyour woman for anything involving\lyour Pok\emon IVs.\pTraynee, on the other hand,\nprovides EV and experience\ltraining!\pDo keep in mind that our services\ndon't come in cheap.\pWell, mine don't, at least.\pTraynee's a bit more generous in\nsome ways.\pJust talk to either of us if you\nneed our specific services.\pGood luck and have a good day!
+Oh, sorry! I was listening to some\nmusic with my headphones.\pApologies for not noticing you[.]!\nI'm Ivy!\pAnyways, did you talk to Traynee\nalready?\pLet's see[.]\p[.]\n[.]\pYou already have a Gym Badge! Then\nI assume you already know the\lconcept of IVs and EVs then.\pWe offer special training programs\nthat will seriously juice up your\lPok\emon team!\pAs you can tell by my name, I'm\nyour woman for anything involving\lyour Pok\emon IVs.\pTraynee, on the other hand,\nprovides EV and experience\ltraining!\pDo keep in mind that our services\ndon't come in cheap.\pWell, mine don't, at least.\pTraynee's a bit more generous in\nsome ways.\pJust talk to either of us if you\nneed our specific services.\pGood luck and have a good day!
 
 #org @gText_IvyService
 Ivy: Hi there, [PLAYER]!\nWhat service do you want today?

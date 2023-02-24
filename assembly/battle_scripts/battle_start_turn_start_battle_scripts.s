@@ -15,12 +15,16 @@ battle_start_turn_start_battle_scripts.s
 .global BattleScript_TotemRet
 .global BattleScript_TotemOmniboost
 .global BattleScript_TotemOmniboostRet
+.global BattleScript_TotemMultiBoost
+.global BattleScript_TotemMultiBoostRet
 .global BattleScript_Primal
 .global BattleScript_PrimalSub
 .global BattleScript_ElectricTerrainBattleBegin
 .global BattleScript_GrassyTerrainBattleBegin
 .global BattleScript_MistyTerrainBattleBegin
 .global BattleScript_PsychicTerrainBattleBegin
+.global BattleScript_PixieBoost
+.global BattleScript_PixieBoostRet
 .global BattleScript_QuickClaw
 .global BattleScript_QuickDraw
 .global BattleScript_FocusPunchSetUp
@@ -31,7 +35,9 @@ battle_start_turn_start_battle_scripts.s
 .global BattleScript_CamomonsTypeRevealEnd3
 .global BattleScript_DynamaxEnergySwirl
 .global BattleScript_RaidBattleStart
+.global BattleScript_RaidBattleStart_NoDynamax
 .global BattleScript_RaidBattleStorm
+.global BattleScript_RaidShieldsBattleStart
 
 .global StringNull
 
@@ -70,6 +76,10 @@ BattleScript_Totem:
 	call BattleScript_TotemRet
 	end3
 
+BattleScript_TotemMultiBoost:
+	call BattleScript_TotemMultiBoostRet
+	end3
+
 BattleScript_TotemOmniboost:
 	call BattleScript_TotemOmniboostRet
 	end3
@@ -79,13 +89,35 @@ BattleScript_TotemRet:
 	setword BATTLE_STRING_LOADER TotemAuraFlared
 	printstring 0x184
 	waitmessage DELAY_1SECOND
-	statbuffchange STAT_ATTACKER | STAT_BS_PTR TotemEnd
-	jumpifbyte EQUALS MULTISTRING_CHOOSER 0x2 TotemEnd
+	statbuffchange STAT_ATTACKER | STAT_BS_PTR .LReturn
+	jumpifbyte EQUALS MULTISTRING_CHOOSER 0x2 .LReturn
 	setgraphicalstatchangevalues
-	playanimation BANK_ATTACKER 0x1 0x2023FD4
-	printfromtable 0x83FE57C
+	playanimation BANK_ATTACKER 0x1 ANIM_ARG_1
+	printfromtable gStatUpStringIds
 	waitmessage DELAY_1SECOND
-TotemEnd:
+.LReturn:
+	return
+
+BattleScript_TotemMultiBoostRet:
+	playanimation BANK_ATTACKER ANIM_TOTEM_BOOST 0x0
+	setword BATTLE_STRING_LOADER TotemAuraFlared
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+	callasm ToggleTotemOmniboostByte
+	playstatchangeanimation BANK_ATTACKER, 0xFF, STAT_ANIM_UP | STAT_ANIM_IGNORE_ABILITIES
+	callasm ToggleTotemOmniboostByte
+	statbuffchange STAT_ATTACKER | STAT_BS_PTR BattleScript_TotemMultiBoost_SecondStat
+	jumpifbyte EQUALS MULTISTRING_CHOOSER 0x2 BattleScript_TotemMultiBoost_SecondStat
+	setgraphicalstatchangevalues
+	printfromtable gStatUpStringIds
+	waitmessage DELAY_1SECOND
+BattleScript_TotemMultiBoost_SecondStat:
+	callasm LoadTotemMultiBoostSecondStat
+	statbuffchange STAT_ATTACKER | STAT_BS_PTR .LReturn
+	jumpifbyte EQUALS MULTISTRING_CHOOSER 0x2 .LReturn
+	setgraphicalstatchangevalues
+	printfromtable gStatUpStringIds
+	waitmessage DELAY_1SECOND
 	return
 
 BattleScript_TotemOmniboostRet:
@@ -93,7 +125,12 @@ BattleScript_TotemOmniboostRet:
 	setword BATTLE_STRING_LOADER TotemAuraFlared
 	printstring 0x184
 	waitmessage DELAY_1SECOND
-	call BattleScript_AllStatsUp
+	callasm ToggleTotemOmniboostByte
+	playstatchangeanimation BANK_ATTACKER, 0xFF, STAT_ANIM_UP | STAT_ANIM_IGNORE_ABILITIES
+	callasm ToggleTotemOmniboostByte
+	setword BATTLE_STRING_LOADER gText_TotemOmniboostStatsRose
+	printstring 0x184
+	waitmessage DELAY_1SECOND
 	return
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -150,6 +187,22 @@ BattleScript_PsychicTerrainBattleBegin:
 	printstring 0x184
 	playanimation 0x0 PSYCHIC_TERRAIN_ACTIVE_ANIM 0x0
 	end3
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+BattleScript_PixieBoost:
+	call BattleScript_PixieBoostRet
+	end3
+
+BattleScript_PixieBoostRet:
+	statbuffchange STAT_ATTACKER | STAT_BS_PTR .LReturn
+	jumpifbyte EQUALS MULTISTRING_CHOOSER 0x2 .LReturn
+	setgraphicalstatchangevalues
+	playanimation BANK_ATTACKER 0x1 ANIM_ARG_1
+	setword BATTLE_STRING_LOADER gText_PixieBattleBuff
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+	return
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -222,6 +275,7 @@ BattleScript_RaidBattleStart:
 	playanimation BANK_SCRIPTING ANIM_DYNAMAX_START 0x0
 	printstring 0x184
 	waitmessage DELAY_1SECOND
+BattleScript_RaidBattleStart_NoDynamax:
 	setword BATTLE_STRING_LOADER gText_RaidBattleStormStarted
 	call BattleScript_RaidBattleStorm
 	end3
@@ -234,6 +288,15 @@ BattleScript_RaidBattleStorm:
 
 BattleScript_DynamaxEnergySwirl:
 	playanimation BANK_SCRIPTING ANIM_DYNAMAX_ENERGY_SWIRL 0x0
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+	end3
+
+BattleScript_RaidShieldsBattleStart:
+	pause 0x20
+	callasm CreateRaidShieldSprites
+	pause 0x10
+	setword BATTLE_STRING_LOADER gText_RaidShield
 	printstring 0x184
 	waitmessage DELAY_1SECOND
 	end3

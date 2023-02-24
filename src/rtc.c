@@ -1,22 +1,22 @@
 #include "../include/global.h"
+#include "../include/play_time.h"
 #include "../include/rtc.h"
 #include "../include/script.h"
 #include "../include/new/ram_locs.h"
 
 #include "config.h"
 #include "../include/event_data.h"
-#include "../include/play_time.h"
 
 extern u16 sRTCErrorStatus;
 extern u8 sRTCProbeResult;
 extern u16 sRTCSavedIme;
 extern u8 sRTCFrameCount;
-extern u8 gLastClockSecond;
+extern u32 gLastClockSecond;
 
 extern struct SiiRtcInfo sRtc; //0x3005E88
 
 // const rom
-static const struct SiiRtcInfo sRtcDummy = {.year = 0, .month = MONTH_JAN, .day = 1}; // 2000 Jan 1
+static const struct SiiRtcInfo sRtcDummy = {.year = 0, .month = MONTH_JAN, .day = 1, .hour = 0x10}; // 2000 Jan 1, 10:00 AM (hex is intentional)
 
 static const s32 sNumDaysInMonths[12] =
 {
@@ -196,17 +196,20 @@ static void UpdateClockFromRtc(struct SiiRtcInfo *rtc)
 	}
 }
 
+void __attribute__((long_call)) break_func();
 extern const u8 SystemScript_StopZooming[];
 void RtcCalcLocalTime(void)
 {
 	if (sRTCFrameCount == 0)
 	{
 		RtcInit();
-		//u8 prevSecond = gClock.second;
+
 		if (sRTCErrorStatus & RTC_ERR_FLAG_MASK)
 			sRtc = sRtcDummy;
+
+		//u8 prevSecond = gClock.second;
 		UpdateClockFromRtc(&sRtc);
-		
+
 		/*if (prevSecond == gClock.second
 		&& !ScriptContext2_IsEnabled())
 		//Probably needs an overworld check and a minute/hour/day etc check too

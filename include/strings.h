@@ -90,6 +90,4 @@ extern const u8 gText_IsThisTheCorrectTime[];
 extern const u8 gText_PkmnFainted3[];
 extern const u8 gText_Coins[];
 
-extern const u8 gText_MenuPC[];
-
 #endif //GUARD_STRINGS_H
