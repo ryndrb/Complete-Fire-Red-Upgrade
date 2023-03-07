@@ -30,3 +30,42 @@ Alright then, see ya!
 
 #org @gText_VermillionGymLocked
 [BLACK]It appears Vermillion Gym doors\nare locked[.]\pI should probably come back later[.]
+
+#org @gText_BrendanVermillionSpeaks1
+This Gym appears to be locked[.]\pBut once its re-opened, I want to\nchallenge this Gym and see how\lmuch better I've become.\pSo uncle, please? May I, please?
+
+#org @gText_BrendanVermillionSpeaks2
+I'm not pushing it.\pIf I combine forces with my\nPok\emon, we can beat anyone!
+
+#org @gText_BrendanVermillionSpeaks3
+Oh! Hi [PLAYER]!\pI've gotten a lot stronger since\nwe met.\p[PLAYER], I want you and my uncle to\nunderstand that.\p[PLAYER], please, will you have a\nbattle with me?
+
+#org @gText_BrendanVermillionSpeaks4
+Oh[.]\pIf you won't battle me, [PLAYER], my\nuncle won't know that I've become\lreally strong.
+
+#org @gText_BrendanVermillionSpeaks5
+[PLAYER], please!\nBattle with me!
+
+#org @gText_Vermillion_BrendanFight_Intro
+Thank you, [PLAYER].\pOk. Here we go!
+
+#org @gText_Vermillion_BrendanFight_Lost
+Wow[.] You really are strong,\n[PLAYER].
+
+#org @gText_BrendanVermillionSpeaks6
+Uncle[.] I'll go back to Cerulean\nCity[.]
+
+#org @gText_BrendanVermillionSpeaks7
+[PLAYER], thank you[.]\pBeing a trainer is tough, isn't\nit?\pIt's not enough just to battle\nwith your Pok\emon.\pI can't become a true trainer like\nthat[.] Not really[.]
+
+#org @gText_BrendanVermillionSpeaks8
+[PLAYER][.]\pI[.] I'm definitely[.] I'm going\nto get stronger.\pMuch, much stronger!\pI feel like I learned a lot from\njust one Pok\emon battle with\lyou[.] About my own limits[.] and\lmy Pok\emon[.]\pSo[.] um[.] That's why[.]\n[PLAYER][.] If it's all right[.]\pCould I[.]\nCould I call you[.] my r-riv-\pAh, never mind!\pS-sorry! It was nothing!\nPlease forget about it!\pGuh[.] good-bye!
+
+#org @gText_UncleVermillionSpeaks1
+Now hold, Brendan.\pSince you started living with\nPok\emon, you have grown quite a\llot stronger.\pBut don't you think you're pushing\nit to suddenly challenge a Gym?
+
+#org @gText_UncleVermillionSpeaks2
+Brendan, there's no need to be so\ndown on yourself.\pWhy, what's keeping you from\nbecoming stronger and stronger?\pCome on, let's go home.\nEveryone's waiting for you.
+
+#org @gText_UncleVermillionSpeaks3
+[PLAYER], it just dawned on me that\nyou must be the Trainer who kept\lan eye out for Brendan when he\lcaught his Pok\emon.\pWhy don't you visit us in Cerulean\nCity sometime?\pI'm sure Brendan would enjoy it.

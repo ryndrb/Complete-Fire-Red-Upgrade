@@ -11,7 +11,7 @@
 @ Timburr Gift | Muscle Band | Route 3
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_TimburrGift:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_GIFT_TIMBURR

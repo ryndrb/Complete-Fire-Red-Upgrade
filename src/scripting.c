@@ -2646,7 +2646,7 @@ bool8 ScrCmd_message(struct ScriptContext* ctx)
 	if (msg == NULL)
 		msg = (const u8*) ctx->data[0];
 
-	SetTextboxSignpostDesign();
+	//SetTextboxSignpostDesign();
 	ShowFieldMessage(msg);
 	return FALSE;
 }
@@ -3226,6 +3226,13 @@ extern const u8 LEVEL2[];
 extern const u8 LEVEL1[];
 extern const u8 gEXIT[];
 
+// Game Boy Consol Pallet Town
+extern const u8 gMinimalGrindingMode[];
+extern const u8 gRandomizePokemon[];
+extern const u8 gRandomizeLearnset[];
+extern const u8 gRandomizeAbility[];
+extern const u8 gCheatCode[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3561,6 +3568,14 @@ static const u8* SaffronElevator[] = {
 	gEXIT,
 };
 
+static const u8* GameBoyConsolePalletTown[] = {
+	gMinimalGrindingMode,
+	gRandomizePokemon,
+	gRandomizeLearnset,
+	gRandomizeAbility,
+	gCheatCode,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
@@ -3589,6 +3604,7 @@ const struct ScrollingMulti gScrollingSets[] =
 	{NumIV, ARRAY_COUNT(NumIV)},//23
 	{HiddenPowerTpyes, ARRAY_COUNT(HiddenPowerTpyes)},//24
 	{SaffronElevator, ARRAY_COUNT(SaffronElevator)},//25
+	{GameBoyConsolePalletTown, ARRAY_COUNT(GameBoyConsolePalletTown)},//26
 };
 
 //Link number of opts shown at once to the box height

@@ -5,7 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_AERODACTYLITE, 0x0F9
 .equ FLAG_OBTAIN_GYARADOSITE, 0x0FA
 .equ FLAG_OBTAIN_MANECTITE, 0x0FB
 .equ FLAG_OBTAIN_ABOMASITE, 0x0FC
@@ -13,73 +12,6 @@
 .equ FLAG_OBTAIN_GENGARITE, 0x0FE
 .equ FLAG_OBTAIN_HOUNDOOMINITE, 0x0FF
 .equ FLAG_OBTAIN_STEELIXITE, 0x100
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Brock
-@@@@@@@@@@@@@@@@@@@@@@
-EventScript_GymLeaderBrock:
-    lock
-    setvar 0x8004 0x2
-    setvar 0x8005 0x2
-    special 0x174
-    trainerbattle1 0x1 0x19E 0x0 0x8190CD4 0x8190E4F EventScript_0x816A5C5
-    checkflag 0x254
-    if 0x0 _goto EventScript_0x816A5F3
-    msgbox 0x819110F MSG_KEEPOPEN
-    release
-    end
-
-EventScript_0x816A5C5:
-    setvar 0x8004 0x2
-    setvar 0x8005 0x1
-    special 0x173
-    setflag 0x4B0
-    setflag 0x820
-    setvar 0x406C 0x1
-    setflag 0x2E
-    clearflag 0x92
-    setvar 0x8008 0x1
-    call 0x81A6B18
-    goto EventScript_0x816A5F3
-    end
-
-EventScript_0x816A5F3:
-    msgbox 0x8190FC1 MSG_KEEPOPEN
-    checkitemspace 0x147 0x1
-    compare LASTRESULT 0x0
-    if 0x1 _goto 0x816A634
-    giveitem_msg 0x8190FDB ITEM_TM39
-    setflag 0x254
-    msgbox 0x8190FF8 MSG_KEEPOPEN
-    release
-    end
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Aerodactylite | Viridian City | Gym Guy
-@@@@@@@@@@@@@@@@@@@@@@
-EventScript_GymGuyAerodactylite:
-    lock
-    faceplayer
-    checkflag 0x4B0
-    if 0x1 _goto EventScript_GiveAerodactylite
-    msgbox 0x8191298 MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x1 _goto 0x816A689
-    compare LASTRESULT 0x0
-    if 0x1 _goto 0x816A697
-    end
-
-EventScript_GiveAerodactylite:
-    checkflag FLAG_OBTAIN_AERODACTYLITE
-    if 0x1 _goto Obtained
-    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
-    giveitem ITEM_AERODACTYLITE 0x1 MSG_OBTAIN
-    bufferitem 0x0 ITEM_AERODACTYLITE
-    bufferpokemon 0x1 SPECIES_AERODACTYL
-    msgbox gText_ObtainedStone MSG_KEEPOPEN
-    setflag FLAG_OBTAIN_AERODACTYLITE
-    release
-    end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Misty

@@ -17,12 +17,20 @@
 .equ FLAG_CHOOSE_REGION_ALOLA, 0x20E
 .equ FLAG_CHOOSE_REGION_GALAR, 0x20F
 .equ FLAG_OBTAIN_AMULET_COIN, 0x0B1
+.equ FLAG_EXP_SHARE, 0x906
+.equ FLAG_POKEMON_RANDOMIZER, 0x940
+.equ FLAG_POKEMON_LEARNSET_RANDOMIZER, 0x941
+.equ FLAG_ABILITY_RANDOMIZER, 0x942
+.equ FLAG_MINIMAL_GRINDING, 0x934
+.equ FLAG_MAY_PALLETTOWN_SPRITE, 0x93A
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Prof Aid Give Time Turner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ProfOakAidLabTimeTurner:
-    textcolor 0x0
+    setvar 0x405D 0x0
+    clearflag 0x51
+    textcolor BLUE
     lock
     faceplayer
     checkflag 0x82C
@@ -41,7 +49,7 @@ EventScript_ProfOakAidLabTimeTurner:
 @ Prof Aid PokeStat / Stat Scanner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ProfOakAidLabStatScanner:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag 0x82C
@@ -77,12 +85,14 @@ LevelScript_ChooseStarterRegion:
     .hword MAP_SCRIPT_TERMIN
 
 EventScript_ChooseStarterRegion:
-    textcolor 0x1
+    textcolor RED
     setvar 0x502A 0x1
     lock
     call SETNECESSARYGAMEFLAGS
     applymovement 0x1 EventScript_MomSawYou
     waitmovement 0x1
+    applymovement PLAYER EventScript_GoToMom
+    waitmovement PLAYER
     msgbox gText_MomChooseRegion MSG_KEEPOPEN
     setvar 0x8000 0xF
     setvar 0x8001 0x5
@@ -198,6 +208,12 @@ EventScript_MomSawYou:
     .byte walk_up_onspot_fastest
     .byte end_m
 
+EventScript_GoToMom:
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte end_m
+
 EventScript_MomDone:
     .byte walk_left_onspot_fastest
     .byte end_m
@@ -207,9 +223,10 @@ EventScript_MomDone:
 @@@@@@@@@@@@@@@@@@@@@@
 @ Grass
 EventScript_StarterGrass:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
+    setflag FLAG_MAY_PALLETTOWN_SPRITE
     checkflag FLAG_CHOOSE_REGION_KANTO
     if 0x1 _call EventScript_KantoStartersGrass
     checkflag FLAG_CHOOSE_REGION_JOHTO
@@ -423,7 +440,7 @@ EventScript_0x8169BE1:
     applymovement 0x4 0x81A75EF
     waitmovement 0x0
     showpokepic 0x4002 0xA 0x3
-    textcolor 0x0
+    textcolor BLUE
     compare 0x4001 0x0
     if 0x1 _goto EventScript_0x8169C14
     compare 0x4001 0x1
@@ -460,10 +477,10 @@ EventScript_0x8169C52:
 @ Amulet Coin
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_AmuletCoin:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
-    msgbox 0x817D80D MSG_FACE
+    msgbox 0x817D80D MSG_KEEPOPEN
     checkflag FLAG_OBTAIN_AMULET_COIN
     if 0x0 _goto EventScript_GiveAmuletCoin
     end
@@ -480,7 +497,7 @@ EventScript_GiveAmuletCoin:
 @ Oak In Lab | National Dex 
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_0x169595:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag 0x2
@@ -620,9 +637,176 @@ EventScript_0x816961E:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Gameboy Console Pallet Town
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GameBoyConsole:
+    lock
+    sound 0x4
+    msgbox gTetxt_ConsolePrompt MSG_KEEPOPEN
+    setvar 0x8000 0x19
+    setvar 0x8001 0x5
+    setvar 0x8004 0x0
+    special 0x158
+    waitstate
+    compare LASTRESULT 0x5
+    if greaterorequal _goto EventScript_End
+    switch LASTRESULT
+    case 0, EventScript_MinimalGrinding
+    case 1, EventScript_RandomizePokemon
+    case 2, EventScript_RandomizeLearnset
+    case 3, EventScript_RandomizeAbility
+    case 4, EventScript_CheatCodes
+    release
+    end
+
+EventScript_MinimalGrinding:
+    checkflag FLAG_MINIMAL_GRINDING
+    if SET _goto DisableMinimalGrinding
+    msgbox gText_MinimalGrinding MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    setflag FLAG_MINIMAL_GRINDING
+    release
+    end
+DisableMinimalGrinding:
+    msgbox gText_DisableMinimalGrinding MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    clearflag FLAG_MINIMAL_GRINDING
+    release
+    end
+
+EventScript_RandomizePokemon:
+    checkflag FLAG_POKEMON_RANDOMIZER
+    if SET _goto DisableRandomizePokemon
+    msgbox gText_RandomizePokemon MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    setflag FLAG_POKEMON_RANDOMIZER
+    release
+    end
+DisableRandomizePokemon:
+    msgbox gText_DisableRandomizePokemon MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    clearflag FLAG_POKEMON_RANDOMIZER
+    release
+    end
+
+EventScript_RandomizeLearnset:
+    checkflag FLAG_POKEMON_LEARNSET_RANDOMIZER
+    if SET _goto DisableRandomizeLearnset
+    msgbox gText_RandomizeLearnset MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    setflag FLAG_POKEMON_LEARNSET_RANDOMIZER
+    release
+    end
+DisableRandomizeLearnset:
+    msgbox gText_DisableRandomizeLearnset MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    clearflag FLAG_POKEMON_LEARNSET_RANDOMIZER
+    release
+    end
+
+EventScript_RandomizeAbility:
+    checkflag FLAG_ABILITY_RANDOMIZER
+    if SET _goto DisableRandomizeAbility
+    msgbox gText_RandomizeAbility MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    setflag FLAG_ABILITY_RANDOMIZER
+    release
+    end
+DisableRandomizeAbility:
+    msgbox gText_DisableRandomizeAbility MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto EventScript_End
+    sound 0x2
+    clearflag FLAG_ABILITY_RANDOMIZER
+    release
+    end
+
+EventScript_CheatCodes: @ In the future... if needed
+    end
+
+EventScript_End:
+    sound 0x3
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Locked Door
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PalletTown_LockedDoor:
+    textcolor BLACK
+    msgbox gText_PalletTown_LockedDoor MSG_NORMAL
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ May | Character arc like Silver from HGSS
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PalletTown_May:
+    lock
+    textcolor RED
+    msgbox gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0x4 EventScript_PalletTown_MayNoticePlayer
+    waitmovement 0x4
+    faceplayer
+    msgbox gText_PalletTown_MaySpeaks2 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0x4 EventScript_PalletTown_MayPushPlayer
+    applymovement PLAYER EventScript_PalletTown_Pushed
+    waitmovement 0x4
+    release
+    end
+
+EventScript_PalletTown_MayNoticePlayer:
+    .byte pause_long
+    .byte exclaim
+    .byte end_m
+
+EventScript_PalletTown_MayPushPlayer:
+    .byte run_down
+    .byte pause_long
+    .byte walk_up
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+EventScript_PalletTown_Pushed:
+    .byte jump_down
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ GAME FLAGS
+@@@@@@@@@@@@@@@@@@@@@@
 SETNECESSARYGAMEFLAGS: @ will add more
-    setflag 0x300
-    setflag 0x304
+    additem ITEM_EXP_SHARE 0x1
+    setflag FLAG_EXP_SHARE @ always enabled
+    setflag 0x300 @ Brendan pewter sprite, inside Gym
+    setflag 0x304 @ Brendan pewter sprite, outside Gym
+    setflag 0x312 @ Brendan pewter sprite, inside Gym after catching mon
+    setflag 0x936 @ Brendan vermillion sprite
+    setflag 0x937 @ Brendan's uncle vermillion sprite
+    setflag 0x938 @ Brendan cerulean sprite
+    setflag 0x93B @ May route 1 sprite
+    setflag 0x93C @ May route 4 sprite
+    setflag 0x943 @ May celadon sprite
     setflag 0x30D
     setflag 0x933 @ team preview
+    setvar 0x4070 0x1 @ Pallet Town Sign Lady
+    setvar 0x5030 0x1 @ Route 1 May encounter
+    clearflag 0x93A
     return

@@ -71,7 +71,7 @@
 EventScript_SootheBell:
     giveitem ITEM_SOOTHE_BELL 0x1 MSG_FIND
     setflag FLAG_OBTAIN_SOOTHE_BELL
-    hidesprite 0x4
+    hidesprite 0x3
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -233,7 +233,7 @@ EventScript_DazzlingGleam:
 EventScript_SludgeWave:
     giveitem ITEM_TM103 0x1 MSG_FIND
     setflag FLAG_OBTAIN_SLUDGE_WAVE
-    hidesprite 0x5
+    hidesprite 0x4
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -619,8 +619,94 @@ EventScript_CanCutTree:
     waitmovement 0x0
     checksound
     hidesprite LASTTALKED
+    goto EventScript_Sudowoodo
     release
     end
+
+EventScript_Sudowoodo:
+    setvar 0x8000 0
+    checkflag 0x4B0
+    if SET _call ChangeVar1
+    checkflag 0x4B1
+    if SET _call ChangeVar2
+    checkflag 0x4B2
+    if SET _call ChangeVar3
+    checkflag 0x4B3
+    if SET _call ChangeVar4
+    checkflag 0x4B4
+    if SET _call ChangeVar5
+    checkflag 0x4B5
+    if SET _call ChangeVar6
+    checkflag 0x4B6
+    if SET _call ChangeVar7
+    checkflag 0x4B7
+    if SET _call ChangeVar8
+    random 9
+    compare LASTRESULT 9 @ 10% chance encounter
+    if equal _call DoWildBattle
+    return
+
+DoWildBattle:
+    switch 0x8000
+    case 1, EventScript_SudowoodoEncounter1
+    case 2, EventScript_SudowoodoEncounter2
+    case 3, EventScript_SudowoodoEncounter3
+    case 4, EventScript_SudowoodoEncounter4
+    case 5, EventScript_SudowoodoEncounter5
+    case 6, EventScript_SudowoodoEncounter6
+    case 7, EventScript_SudowoodoEncounter7
+    case 8, EventScript_SudowoodoEncounter8
+    return
+
+ChangeVar1:
+    setvar 0x8000 1
+    return
+ChangeVar2:
+    setvar 0x8000 2
+    return
+ChangeVar3:
+    setvar 0x8000 3
+    return
+ChangeVar4:
+    setvar 0x8000 4
+    return
+ChangeVar5:
+    setvar 0x8000 5
+    return
+ChangeVar6:
+    setvar 0x8000 6
+    return
+ChangeVar7:
+    setvar 0x8000 7
+    return
+ChangeVar8:
+    setvar 0x8000 8
+    return
+
+EventScript_SudowoodoEncounter1:
+    wildbattle SPECIES_SUDOWOODO 16 ITEM_NONE
+    return
+EventScript_SudowoodoEncounter2:
+    wildbattle SPECIES_SUDOWOODO 27 ITEM_NONE
+    return
+EventScript_SudowoodoEncounter3:
+    wildbattle SPECIES_SUDOWOODO 36 ITEM_NONE
+    return
+EventScript_SudowoodoEncounter4:
+    wildbattle SPECIES_SUDOWOODO 45 ITEM_NONE
+    return
+EventScript_SudowoodoEncounter5:
+    wildbattle SPECIES_SUDOWOODO 54 ITEM_NONE
+    return
+EventScript_SudowoodoEncounter6:
+    wildbattle SPECIES_SUDOWOODO 63 ITEM_NONE
+    return
+EventScript_SudowoodoEncounter7:
+    wildbattle SPECIES_SUDOWOODO 72 ITEM_NONE
+    return
+EventScript_SudowoodoEncounter8:
+    wildbattle SPECIES_SUDOWOODO 81 ITEM_NONE
+    return
 
 EventScript_CutTreeAnim:
     .byte cut_tree

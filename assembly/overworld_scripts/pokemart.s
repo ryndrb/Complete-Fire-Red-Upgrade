@@ -18,7 +18,7 @@
 @ 1st Pokemart Clerk
 @@@@@@@@@@@@@@@@@@@@
 EventScript_PokeMartMain:
-    textcolor 0x0
+    textcolor BLUE
     lock
     msgbox gText_WelcomeText MSG_KEEPOPEN
     checkflag FLAG_DEFEATED_BROCK
@@ -188,7 +188,7 @@ EventScript_ItemsBlaineBadge:
 @ 2nd Pokemart Clerk
 @@@@@@@@@@@@@@@@@@@@
 EventScript_ViridianCity:
-    textcolor 0x0
+    textcolor BLUE
     lock 
     msgbox gText_WelcomeText MSG_KEEPOPEN
     pokemart EventScript_ItemsViridianCity
@@ -326,7 +326,7 @@ EventScript_ItemsFuschiaCity:
 @ Pokecenter Clerk
 @@@@@@@@@@@@@@@@@@@@
 EventScript_PokemonCenterClerk:
-    textcolor 0x0
+    textcolor BLUE
     lock
     msgbox gText_WelcomeText MSG_KEEPOPEN
     checkflag FLAG_DEFEATED_BROCK

@@ -15,9 +15,11 @@
 .equ FLAG_DEFEATED_LEADER_GIOVANNI, 0x4B7   
 
 EventScript_UtilityOldMan: @will probably add more? inspired by inclement emerald
-	textcolor 0x0
+	textcolor BLUE
     lock
 	faceplayer
+	checkflag 0x946
+	if NOT_SET _goto EventScript_UtilityOldMan_FirstEncounter
     msgbox gText_EventScript_UtilityOldManGreetings MSG_KEEPOPEN
     setvar 0x8000 0xE
     setvar 0x8001 0x5
@@ -33,6 +35,15 @@ EventScript_UtilityOldMan: @will probably add more? inspired by inclement emeral
 	case 3, EventScript_AbilityChanger
     case 4, EventScript_ComeAgain
     end
+
+EventScript_UtilityOldMan_FirstEncounter:
+	msgbox gText_UtilityOldManSpeak1 MSG_KEEPOPEN
+	msgbox gText_UtilityOldManSpeak2 MSG_KEEPOPEN
+	msgbox gText_UtilityOldManSpeak3 MSG_KEEPOPEN
+	closeonkeypress
+	setflag 0x946
+	release
+	end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Name Rater

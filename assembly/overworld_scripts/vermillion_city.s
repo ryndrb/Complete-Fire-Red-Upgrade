@@ -8,12 +8,17 @@
 .equ VAR_MEW_VERMILLION_CITY_ENCOUNTER, 0x5014
 .equ VAR_VERMILLION_CITY_GYM_LOCKED, 0x502C
 .equ FLAG_OBTAIN_EVIOLITE, 0x0BB
+.equ FLAG_BRENDAN_VERMILLION_ENCOUTER, 0x935
+.equ FLAG_BRENDAN_VERMILLION_SPRITE, 0x936
+.equ FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE, 0x937
+.equ FLAG_BRENDAN_CERULEAN_SPRITE, 0x938
+.equ FLAG_CAP_RIVALSSANNE, 0x945
 
 @@@@@@@@@@@@@@@@@@@@
 @ Eviolite
 @@@@@@@@@@@@@@@@@@@@
 EventScript_Eviolite:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_EVIOLITE
@@ -40,7 +45,7 @@ EventScript_GiveEvioliteNPCMove:
 @ Power Items Seller Old Man
 @@@@@@@@@@@@@@@@@@@@
 EventScript_PowerItemsSeller:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     msgbox gText_EventScript_PowerItemsSeller MSG_KEEPOPEN
@@ -110,7 +115,7 @@ EventScript_DidNotBeatCatchMew:
 @ Vermillion City TM Merchant
 @@@@@@@@@@@@@@@@@@@@
 EventScript_VermillionTMMerchant:
-    textcolor 0x1
+    textcolor RED
     lock
     faceplayer
     msgbox gText_VermillionTMMerchantGreet MSG_KEEPOPEN
@@ -155,7 +160,7 @@ EventScript_PlayerBack:
 @ SS Anne Captain
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x160B3A:
-    textcolor 0x0
+    textcolor BLUE
     lock
     checkflag 0x237
     if 0x1 _goto 0x8160BB5
@@ -177,5 +182,346 @@ EventScript_0x160B3A:
     setflag 0x237
     setvar VAR_VERMILLION_CITY_GYM_LOCKED 0x1
     setvar 0x407E 0x1
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brendan and his uncle in Vermillion Gym
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Vermillion_Brendan:
+    lock
+    checkflag FLAG_BRENDAN_VERMILLION_ENCOUTER
+    if SET _goto EventScript_Vermillion_Brendan_AskAgain
+    textcolor BLUE
+    spriteface 0x9, RIGHT
+    msgbox gText_BrendanVermillionSpeaks1 MSG_KEEPOPEN
+    msgbox gText_UncleVermillionSpeaks1 MSG_KEEPOPEN
+    msgbox gText_BrendanVermillionSpeaks2 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0x9 EventScript_BrendanVermillionNoticePlayer
+    waitmovement 0x9
+    getplayerpos 0x8000 0x8001
+    compare 0x8000 17
+    if equal _call CheckPlayerY1
+    compare 0x8000 20
+    if equal _call CheckPlayerY2
+    compare 0x8000 19
+    if equal _call CheckPlayerY3
+    spriteface 0x9, DOWN
+    spriteface 0xA, DOWN
+    msgbox gText_BrendanVermillionSpeaks3 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto PlayerAnsweredNo
+    goto EventScript_Vermillion_BrendanFight
+    release
+    end
+
+PlayerAnsweredNo:
+    msgbox gText_BrendanVermillionSpeaks4 MSG_NORMAL
+    setflag FLAG_BRENDAN_VERMILLION_ENCOUTER
+    end
+
+EventScript_Vermillion_Brendan_AskAgain:
+    faceplayer
+    msgbox gText_BrendanVermillionSpeaks5 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x0 _goto End
+    goto EventScript_Vermillion_BrendanFight
+    release
+    end
+
+EventScript_Vermillion_BrendanFight:
+    trainerbattle1 0x1 59 0x0 gText_Vermillion_BrendanFight_Intro gText_Vermillion_BrendanFight_Lost EvenScript_Vermillion_BrendanFight_After
+    release
+    end
+
+EvenScript_Vermillion_BrendanFight_After:
+    applymovement 0x9 EventScript_BrendanVermillionBattleLost
+    waitmovement 0x9
+    spriteface 0xA, LEFT
+    msgbox gText_BrendanVermillionSpeaks6 MSG_KEEPOPEN
+    spriteface 0x9, DOWN
+    spriteface 0xA, DOWN
+    msgbox gText_BrendanVermillionSpeaks7 MSG_KEEPOPEN
+    spriteface 0x9, RIGHT
+    spriteface 0xA, LEFT
+    msgbox gText_UncleVermillionSpeaks2 MSG_KEEPOPEN
+    spriteface 0x9, DOWN
+    spriteface 0xA, DOWN
+    msgbox gText_BrendanVermillionSpeaks8 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0xA EventScript_VermillionUncleLeaving
+    applymovement 0x9 EventScript_VermillionBrendanLeaving
+    waitmovement 0xA
+    spriteface PLAYER, RIGHT
+    applymovement 0xA EventScript_VermillionUncleBackToPlayer
+    waitmovement 0xA
+    msgbox gText_UncleVermillionSpeaks3 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0xA EventScript_VermillionUncleFinallyLeaving
+    applymovement 0x9 EventScript_VermillionBrendanFinallyLeaving
+    waitmovement 0xA
+    hidesprite 0x9
+    hidesprite 0xA
+    setflag FLAG_BRENDAN_VERMILLION_SPRITE
+    setflag FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE
+    setflag FLAG_BRENDAN_VERMILLION_ENCOUTER
+    clearflag FLAG_BRENDAN_CERULEAN_SPRITE
+    release
+    end
+
+End:
+    release
+    end
+
+CheckPlayerY1:
+    compare 0x8001 15
+    if equal _call RepositionPlayer1
+    return
+
+CheckPlayerY2:
+    compare 0x8001 15
+    if equal _call RepositionPlayer2
+    return
+
+CheckPlayerY3:
+    compare 0x8001 16
+    if equal _call RepositionPlayer3
+    return
+
+RepositionPlayer1:
+    applymovement PLAYER EventScript_PlayerToFaceBrendan1
+    waitmovement PLAYER
+    return
+
+RepositionPlayer2:
+    applymovement PLAYER EventScript_PlayerToFaceBrendan2
+    waitmovement PLAYER
+    return
+
+RepositionPlayer3:
+    applymovement PLAYER EventScript_PlayerToFaceBrendan3
+    waitmovement PLAYER
+    return
+
+EventScript_PlayerToFaceBrendan1:
+    .byte walk_down
+    .byte walk_right
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+EventScript_PlayerToFaceBrendan2:
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+EventScript_PlayerToFaceBrendan3:
+    .byte walk_left
+    .byte walk_up_onspot_fastest
+
+EventScript_BrendanVermillionNoticePlayer:
+    .byte exclaim
+    .byte end_m
+
+EventScript_BrendanVermillionBattleLost:
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+EventScript_VermillionUncleLeaving:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+EventScript_VermillionBrendanLeaving:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+EventScript_VermillionUncleBackToPlayer:
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte exclaim
+    .byte walk_down
+    .byte walk_left
+    .byte end_m
+
+EventScript_VermillionUncleFinallyLeaving:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+EventScript_VermillionBrendanFinallyLeaving:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rival SS Anne
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_SSAnne_Rival1:
+    lockall
+    setvar 0x4001 0x0
+    textcolor 0x0
+    sound 0x9
+    pause 0x5
+    playsong 0x13B 0x0
+    showsprite 0x1
+    pause 0xA
+    applymovement 0x1 0x81A75ED
+    waitmovement 0x0
+    pause 0x14
+    compare 0x4001 0x0
+    if 0x1 _call 0x81609AD
+    compare 0x4001 0x1
+    if 0x1 _call 0x81609B8
+    compare 0x4001 0x2
+    if 0x1 _call 0x81609CA
+    msgbox 0x8173035 MSG_KEEPOPEN
+    setvar LASTTALKED 0x1
+    compare 0x4031 0x2
+    if 0x1 _call 0x81609DC
+    compare 0x4031 0x1
+    if 0x1 _call 0x81609E7
+    compare 0x4031 0x0
+    if 0x1 _call 0x81609F2
+    msgbox 0x8173164 MSG_KEEPOPEN
+    closeonkeypress
+    pause 0xA
+    playsong 0x13C 0x0
+    compare 0x4001 0x0
+    if 0x1 _call 0x81609FD
+    compare 0x4001 0x1
+    if 0x1 _call 0x8160A08
+    compare 0x4001 0x2
+    if 0x1 _call 0x8160A13
+    fadedefault
+    hidesprite 0x1
+    setvar 0x405B 0x1
+    setflag FLAG_CAP_RIVALSSANNE
+    releaseall
+    end
+
+EventScript_SSAnne_Rival2:
+    lockall
+    setvar 0x4001 0x1
+    textcolor 0x0
+    sound 0x9
+    pause 0x5
+    playsong 0x13B 0x0
+    showsprite 0x1
+    pause 0xA
+    applymovement 0x1 0x81A75ED
+    waitmovement 0x0
+    pause 0x14
+    compare 0x4001 0x0
+    if 0x1 _call 0x81609AD
+    compare 0x4001 0x1
+    if 0x1 _call 0x81609B8
+    compare 0x4001 0x2
+    if 0x1 _call 0x81609CA
+    msgbox 0x8173035 MSG_KEEPOPEN
+    setvar LASTTALKED 0x1
+    compare 0x4031 0x2
+    if 0x1 _call 0x81609DC
+    compare 0x4031 0x1
+    if 0x1 _call 0x81609E7
+    compare 0x4031 0x0
+    if 0x1 _call 0x81609F2
+    msgbox 0x8173164 MSG_KEEPOPEN
+    closeonkeypress
+    pause 0xA
+    playsong 0x13C 0x0
+    compare 0x4001 0x0
+    if 0x1 _call 0x81609FD
+    compare 0x4001 0x1
+    if 0x1 _call 0x8160A08
+    compare 0x4001 0x2
+    if 0x1 _call 0x8160A13
+    fadedefault
+    hidesprite 0x1
+    setvar 0x405B 0x1
+    setflag FLAG_CAP_RIVALSSANNE
+    releaseall
+    end
+
+EventScript_SSAnne_Rival3:
+    lockall
+    setvar 0x4001 0x2
+    textcolor 0x0
+    sound 0x9
+    pause 0x5
+    playsong 0x13B 0x0
+    showsprite 0x1
+    pause 0xA
+    applymovement 0x1 0x81A75ED
+    waitmovement 0x0
+    pause 0x14
+    compare 0x4001 0x0
+    if 0x1 _call 0x81609AD
+    compare 0x4001 0x1
+    if 0x1 _call 0x81609B8
+    compare 0x4001 0x2
+    if 0x1 _call 0x81609CA
+    msgbox 0x8173035 MSG_KEEPOPEN
+    setvar LASTTALKED 0x1
+    compare 0x4031 0x2
+    if 0x1 _call 0x81609DC
+    compare 0x4031 0x1
+    if 0x1 _call 0x81609E7
+    compare 0x4031 0x0
+    if 0x1 _call 0x81609F2
+    msgbox 0x8173164 MSG_KEEPOPEN
+    closeonkeypress
+    pause 0xA
+    playsong 0x13C 0x0
+    compare 0x4001 0x0
+    if 0x1 _call 0x81609FD
+    compare 0x4001 0x1
+    if 0x1 _call 0x8160A08
+    compare 0x4001 0x2
+    if 0x1 _call 0x8160A13
+    fadedefault
+    hidesprite 0x1
+    setvar 0x405B 0x1
+    setflag FLAG_CAP_RIVALSSANNE
+    releaseall
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Good Fising Rod
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Vermillion_GoodRod:
+    lock
+    faceplayer
+    checkflag 0x244
+    if 0x1 _goto 0x816D83F
+    msgbox 0x819918E MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816D849
+    msgbox 0x8199337 MSG_KEEPOPEN
     release
     end

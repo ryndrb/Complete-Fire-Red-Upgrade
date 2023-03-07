@@ -11,7 +11,7 @@
 @ Damp Rock | Icy Rock | Smooth Rock | Heat Rock | Route 18
 @@@@@@@@@@@@@@@@@@@@
 EventScript_HoennWeatherGuy:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     msgbox gText_EventScript_HoennWeatherGuyIntro MSG_KEEPOPEN

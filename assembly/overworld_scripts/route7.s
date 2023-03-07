@@ -9,7 +9,7 @@
 @ Route 7 Berry Master | Old Lady
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_BerryMaster:
-    textcolor 0x1
+    textcolor RED
     lock
     faceplayer
     msgbox gText_BerryMasterWelcome MSG_KEEPOPEN

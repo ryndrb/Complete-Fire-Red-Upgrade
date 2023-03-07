@@ -685,4 +685,19 @@ Fighting
 #org @gEXIT
 Exit
 
+#org @gMinimalGrindingMode
+Minimal Grinding
+
+#org @gRandomizePokemon
+Randomize Pokemon
+
+#org @gRandomizeLearnset
+Randomize Learnset
+
+#org @gRandomizeAbility
+Randomize Ability
+
+#org @gCheatCode
+Enter Code
+
 #endif

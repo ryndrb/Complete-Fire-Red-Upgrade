@@ -27,3 +27,18 @@ Hi there!\pI'm a travelling merchant!\pHow can I help you today?
 
 #org @gText_CeruleanTMMerchantEnd
 Alright, hava a good one!
+
+#org @gText_Brendan_Mom
+My daughter's boyfriend is a very\ndriven and passionate sort of\lperson.
+
+#org @gtext_Brendan_Uncle1
+Ah, the fresh air of the Kanto\nnever gets old.\pIt's days like this that make me\nappreciate the beauty of nature\land all the creatures that inhabit\lit.
+
+#org @gtext_Brendan_Uncle2
+Oh! [PLAYER]!\nBrendan's right there.\pBut, boy, there's something I have\nto tell you.\pThis natural environment is doing\nwonders for Brendan's health.\pMaybe it's not just the\nenvironment.\pIt could be Pok\emon that are\ngiving the boy hope.
+
+#org @gText_Cerulean_BrendanSpeaks1
+I lost to you, [PLAYER], but I'm not\nfeeling down anymore.\pBecause I have a new purpose in\nlife.\pTogether with my Pok\emon, I'm\ngoing to challenge Pok\emon Gyms\land become a great trainer.\pPlease watch me, [PLAYER].\pI'm going to be stronger than you.\pWhen I do, I'm going to challenge\nyou to another battle.\pThat's a promise!
+
+#org @gText_Cerulean_MaySpeaks1
+So you made it here to Cerulean,\ntoo, [PLAYER]!\pIt's really big here, isn't it?\nPallet Town can't even compare.\pAre you off to challenge Misty?\pOnce I catch a couple more\nPok\emon, I'll be sure to take\lher on with my team!\pOh, and one more thing.\pI'm sure you've met him already,\nbut that jerk [RIVAL] is just up\lahead.\pGrandpa wanted us to travel\ntogether in filling the Pok\edex,\lbut he's just a total jerk!\pHe told me to buzz off and I'll\njust be weighing him down.\pCan you imagine that?\pHe's so arrogant. I can't stand\nhim.\p[.] [.]\n[.] [.]\pWell, I digress.\nGood to see you again, [PLAYER]!\pSee 'ya later!

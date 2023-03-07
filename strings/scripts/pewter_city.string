@@ -33,3 +33,45 @@ There's a letter attached[.]\p[BLACK]Dear [PLAYER],\pHere is a DexNav for my bel
 
 #org @gText_PlayerFeelWarm
 [BLACK][PLAYER] feels a little warmer\ninside after reading the letter.
+
+#org @gText_BrendanSpeaks1
+Um[.] E-excuse me[.]\nI[.] I'd like to get a Pok\emon please[.]
+
+#org @gText_BrockSpeaks1
+Hm? You're[.] Uh[.] Oh, right.\nYou're Brendan, right?
+
+#org @gText_BrendanSpeaks2
+Y-yes[.] I'm supposed to stay with\nmy relatives in Cerulean City for\la while.\pBut I thought I might be lonely by\nmyself, so I wanted to bring a\lPokemon with me.\pBut I've never caught a Pok\emon by\nmyself[.] I'm not sure if I can.
+
+#org @gText_BrockSpeaks2
+Mm-hmm. I see.\p[PLAYER]! You heard all that, right?\nYou go with Brendan, and make sure\lthat he safely catches a Pok\emon.
+
+#org @gText_BrockSpeaks3
+Brendan, here. I'll lend you one\nof my Pok\emon.\p[BLACK]Brendan received a Geodude!
+
+#org @gText_BrendanSpeaks3
+Oh, wow[.] Your Pok\emon, sir?
+
+#org @gText_BrockSpeaks4
+Hmm[.] I'll give you a Pokeball,\ntoo, so go give it your best!\p[BLACK]Brendan received a Pok\eball!
+
+#org @gText_BrendanSpeaks4
+Th-thank you, Mr. Brock!
+
+#org @gText_BrockSpeaks5
+Um[.] [PLAYER]? You will[.]\nYou will come with me, right?
+
+#org @gText_BrendanSpeaks6
+[PLAYER][.] Pok\emon hide in tall\ngrass like this, don't they?\pPlease watch me and see if I can\ncatch one properly. [.]Whoa!
+
+#org @gText_BrendanSpeaks7
+[PLAYER]!\pI did it[.] it's my[.] my Pokemon!\p[PLAYER][.] thank you!\nLet's go back to the Gym!
+
+#org @gText_BrockSpeaks6
+So, did it go well?
+
+#org @gText_BrendanSpeaks8
+Yes, it did! Thank you!\nLet me give you back your Pok\emon,\lsir.
+
+#org @gText_BrendanSpeaks9
+And you, [PLAYER][.] Thank you so\nmuch for coming with me.\pIt was was all thanks to you that\nI was able to catch a Pok\emon.\pMy very own Pok\emon[.] I will\nalways, always treasure it!\pOh! My mom's waiting for me, so I\nhave to go! Bye, [PLAYER]!

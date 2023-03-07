@@ -87,7 +87,7 @@ static u8 GetLowestMonLevel(const struct Pokemon* const party);
 
 static u8 ChooseWildMonLevel(const struct WildPokemon* wildPokemon)
 {
-	u8 playerMedianLevel = GetMedianLevelOfPlayerParty();
+	// u8 playerMedianLevel = GetMedianLevelOfPlayerParty();
 	u8 min = wildPokemon->minLevel;
 	u8 max = wildPokemon->maxLevel;
 	u8 range;
@@ -103,26 +103,26 @@ static u8 ChooseWildMonLevel(const struct WildPokemon* wildPokemon)
 	else
 	#endif
 	//Make sure minimum level is less than maximum level
-	if (playerMedianLevel < 8)
-    {
-        min = 2;
-        max = 4;
-    }
-    else
-    {
-        min = playerMedianLevel - 6;
-        max = playerMedianLevel - 3;
-    }
-	// if (wildPokemon->maxLevel >= wildPokemon->minLevel)
-	// {
-	// 	min = wildPokemon->minLevel;
-	// 	max = wildPokemon->maxLevel;
-	// }
-	// else
-	// {
-	// 	min = wildPokemon->maxLevel;
-	// 	max = wildPokemon->minLevel;
-	// }
+	// if (playerMedianLevel < 8)
+    // {
+    //     min = 2;
+    //     max = 4;
+    // }
+    // else
+    // {
+    //     min = playerMedianLevel - 6;
+    //     max = playerMedianLevel - 3;
+    // }
+	if (wildPokemon->maxLevel >= wildPokemon->minLevel)
+	{
+		min = wildPokemon->minLevel;
+		max = wildPokemon->maxLevel;
+	}
+	else
+	{
+		min = wildPokemon->maxLevel;
+		max = wildPokemon->minLevel;
+	}
 	range = max - min + 1;
 	rand = Random() % range;
 

@@ -5,11 +5,13 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ FLAG_MAY_CELADON_SPRITE1, 0x943
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Poke Ball Types Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StorePokeBalls:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -46,7 +48,7 @@ EventScript_StorePokeBallsList:
 @ TMs Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StoreTM:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -73,7 +75,7 @@ EventScript_StoreTMList:
 @ TMs Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerTM:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -101,7 +103,7 @@ EventScript_GameCornerTMList:
 @ Mega Stones Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerMegaStones:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag 0x243
@@ -304,7 +306,7 @@ EventScript_ObtainedStone:
 @ Pseudo Legendaries Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerPseudo:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag 0x243
@@ -515,7 +517,7 @@ EventScript_ObtainedPseudo:
 @ Galar Items Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StoreGalarItems:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     msgbox gText_GalarExclusive MSG_KEEPOPEN
@@ -549,7 +551,7 @@ EventScript_StoreGalarItemsList:
 @ Team Rocket Grunt Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EvenScript_0x16CAF5:
-    textcolor 0x0
+    textcolor BLUE
     checkflag 0x4B3
     if NOT_SET _goto EventScript_CantEnterRocketHideoutYet
     trainerbattle2 0x2 0x165 0x0 0x8196E69 0x8196E95 0x816CB10
@@ -563,3 +565,42 @@ EventScript_CantEnterRocketHideoutYet:
     spriteface 0xB, UP
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ May Celadon Encounter
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Celadon_May:
+    lock
+    faceplayer
+    textcolor RED
+    msgbox gText_Celadon_MaySpeaks1 MSG_KEEPOPEN
+    applymovement 17 EventScript_Celadon_MaySmile
+    applymovement PLAYER EventScript_Celadon_PlayerSmile
+    waitmovement 17
+    msgbox gText_Celadon_MaySpeaks2 MSG_KEEPOPEN
+    msgbox gText_Celadon_MaySpeaks3 MSG_YESNO
+    compare LASTRESULT 0x1
+    if FALSE _goto EventScript_PlayerAnsweredNo
+    msgbox gText_Celadon_MaySpeaks4 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x1
+    hidesprite 17
+    setflag FLAG_MAY_CELADON_SPRITE1
+    fadescreen 0x0
+    release
+    end
+
+EventScript_PlayerAnsweredNo:
+    msgbox gText_Celadon_MaySpeaks5 MSG_KEEPOPEN
+    release
+    end
+
+EventScript_Celadon_MaySmile:
+    .byte say_smile
+    .byte pause_long
+    .byte end_m
+
+EventScript_Celadon_PlayerSmile:
+    .byte say_smile
+    .byte pause_long
+    .byte end_m

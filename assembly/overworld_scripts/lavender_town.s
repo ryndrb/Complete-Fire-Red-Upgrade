@@ -7,12 +7,13 @@
 
 .equ FLAG_LAVENDER_MECHANT_1, 0x302
 .equ FLAG_LAVENDER_MECHANT_2, 0x303
+.equ FLAG_MAY_POKETOWER_SPRITE, 0x93F
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Lavender Town Items Merchant
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_LavenderTownMerchant:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag 0x23C
@@ -79,10 +80,10 @@ EventScript_DoesntMatter:
 @ Pokemon Tower Lady Preventing Enter
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PokeTowerLady:
-    textcolor 0x1
+    textcolor RED
     lock
     faceplayer
-    checkflag 0x4B3
+    checkflag 0x5F @ Have Silph Scope?
     if SET _goto EventScript_CanEnterLady
     msgbox gText_PokeTowerLady MSG_KEEPOPEN
     msgbox gText_CheckWorthiness MSG_KEEPOPEN
@@ -95,7 +96,7 @@ EventScript_CanEnterLady:
 
 EventScript_PokeTowerLadyTile:
     lock
-    checkflag 0x4B3
+    checkflag 0x5F @ Have Silph Scope?
     if NOT_SET _goto EventScript_CanEnterPokeTower
     msgbox gText_PokeTowerLady MSG_KEEPOPEN
     release
@@ -132,3 +133,275 @@ EventScript_MrFuji:
     waitstate
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rival, May, and Player all meet in side PokeTower
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PokeTower_RivalBattle1:
+    lockall
+    setvar 0x4001 0x0
+    textcolor BLUE
+    @playsong 0x13B 0x0
+    compare 0x4001 0x0
+    if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
+    compare 0x4001 0x1
+    if equal _call EventScript_PokeTower_MoveRivalAndPlayer2
+    msgbox gText_PokeTower_RivalSpeaks1 MSG_KEEPOPEN
+    closeonkeypress
+    compare 0x4001 0x0
+    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
+    compare 0x4001 0x1
+    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
+    setvar LASTTALKED 0x1
+    setflag 0x908
+    setvar 0x5011 64
+    setvar 0x5012 0x3
+    compare 0x4031 0x2
+    if 0x1 _call EventScrit_RivalSquirtle
+    compare 0x4031 0x1
+    if 0x1 _call EventScrit_RivalBulbasaur
+    compare 0x4031 0x0
+    if 0x1 _call EventScrit_RivalCharmander
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x1
+    hidesprite 1
+    setflag 0x51
+    setvar 0x405D 0x1
+    fadescreen 0x0
+    special 0x0
+    compare 0x4001 0x0
+    if equal _call EventScript_PokeTower_MayFacePlayer1
+    compare 0x4001 0x1
+    if equal _call EventScript_PokeTower_MayFacePlayer2
+    msgbox gText_PokeTower_MaySpeaks9 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x1
+    hidesprite 3
+    setflag FLAG_MAY_POKETOWER_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScript_PokeTower_RivalBattle2:
+    lockall
+    setvar 0x4001 0x1
+    textcolor BLUE
+    @playsong 0x13B 0x0
+    compare 0x4001 0x0
+    if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
+    compare 0x4001 0x1
+    if equal _call EventScript_PokeTower_MoveRivalAndPlayer2
+    msgbox gText_PokeTower_RivalSpeaks1 MSG_KEEPOPEN
+    closeonkeypress
+    compare 0x4001 0x0
+    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
+    compare 0x4001 0x1
+    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
+    setvar LASTTALKED 0x1
+    setflag 0x908
+    setvar 0x5011 64
+    setvar 0x5012 0x3
+    compare 0x4031 0x2
+    if 0x1 _call EventScrit_RivalSquirtle
+    compare 0x4031 0x1
+    if 0x1 _call EventScrit_RivalBulbasaur
+    compare 0x4031 0x0
+    if 0x1 _call EventScrit_RivalCharmander
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
+    textcolor BLUE
+    msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x1
+    hidesprite 1
+    setflag 0x51
+    setvar 0x405D 0x1
+    fadescreen 0x0
+    special 0x0
+    compare 0x4001 0x0
+    if equal _call EventScript_PokeTower_MayFacePlayer1
+    compare 0x4001 0x1
+    if equal _call EventScript_PokeTower_MayFacePlayer2
+    textcolor RED
+    msgbox gText_PokeTower_MaySpeaks9 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x1
+    hidesprite 3
+    setflag FLAG_MAY_POKETOWER_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScrit_RivalSquirtle:
+    trainerbattle3 0x3 429 0x0 gText_PokeTower_RivalLost
+    return
+
+EventScrit_RivalBulbasaur:
+    trainerbattle3 0x3 430 0x0 gText_PokeTower_RivalLost
+    return
+    
+EventScrit_RivalCharmander:
+    trainerbattle3 0x3 431 0x0 gText_PokeTower_RivalLost
+    return
+
+EventScript_PokeTower_MoveRivalAndPlayer1:
+    applymovement 1 EventScript_PokeTower_RivalNoticePlayer1
+    applymovement PLAYER EventScript_PokeTower_PlayerFaceRival1
+    waitmovement 1
+    return
+
+EventScript_PokeTower_MoveRivalAndPlayer2:
+    applymovement 1 EventScript_PokeTower_RivalNoticePlayer2
+    applymovement PLAYER EventScript_PokeTower_PlayerFaceRival2
+    waitmovement 1
+    return
+
+EventScript_PokeTower_RivalPlayerNoticeMay1:
+    applymovement 1 EventScript_PokeTower_RivalFaceMayDir1
+    applymovement PLAYER EventScript_PokeTower_PlayerFaceMayDir1
+    waitmovement 1
+    applymovement 3 EventScript_PokeTower_MayMoveToBoth1
+    waitmovement 3
+    return
+
+EventScript_PokeTower_RivalPlayerNoticeMay2:
+    applymovement 1 EventScript_PokeTower_RivalFaceMayDir2
+    applymovement PLAYER EventScript_PokeTower_PlayerFaceMayDir2
+    waitmovement 1
+    applymovement 3 EventScript_PokeTower_MayMoveToBoth2
+    waitmovement 3
+    return
+
+EventScript_PokeTower_MayFacePlayer1:
+    applymovement 3 MayFacePlayer1
+    waitmovement 3
+    return
+
+EventScript_PokeTower_MayFacePlayer2:
+    applymovement 3 MayFacePlayer1
+    waitmovement 3
+    return
+
+EventScript_PokeTower_RivalNoticePlayer1:
+    .byte walk_right_onspot_fastest
+    .byte exclaim
+    .byte end_m
+
+EventScript_PokeTower_RivalNoticePlayer2:
+    .byte walk_down_onspot_fastest
+    .byte exclaim
+    .byte end_m
+
+EventScript_PokeTower_PlayerFaceRival1:
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+EventScript_PokeTower_PlayerFaceRival2:
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+EventScript_PokeTower_RivalFaceMayDir1:
+    .byte walk_down_onspot_fastest
+    .byte exclaim
+    .byte end_m
+
+EventScript_PokeTower_RivalFaceMayDir2:
+    .byte walk_right_onspot_fastest
+    .byte exclaim
+    .byte end_m
+
+EventScript_PokeTower_PlayerFaceMayDir1:
+    .byte walk_down_onspot_fastest
+    .byte exclaim
+    .byte end_m
+
+EventScript_PokeTower_PlayerFaceMayDir2:
+    .byte walk_right_onspot_fastest
+    .byte exclaim
+    .byte end_m
+
+EventScript_PokeTower_MayMoveToBoth1:
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+EventScript_PokeTower_MayMoveToBoth2:
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+MayFacePlayer1:
+    .byte walk_left
+    .byte end_m
+
+MayFacePlayer2:
+    .byte walk_up
+    .byte end_m

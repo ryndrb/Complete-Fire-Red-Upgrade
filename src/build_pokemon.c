@@ -66,6 +66,80 @@ build_pokemon.c
 #define TOTAL_LITTLE_CUP_SPREADS ARRAY_COUNT(gLittleCupSpreads)
 #define TOTAL_MIDDLE_CUP_SPREADS ARRAY_COUNT(gMiddleCupSpreads)
 
+const u16 EvCaps[] = 
+{
+	0x146,// Oak Lab Rival
+	0x147,// Oak Lab Rival
+	0x148,// Oak Lab Rival
+	0x149,// Route 22 Early Rival
+	0x14A,// Route 22 Early Rival
+	0x14B,// Route 22 Early Rival
+	0x19E,// BROCK
+	0x14C,// Cerulean Rival
+	0x14D,// Cerulean Rival
+	0x14E,// Cerulean Rival
+	0x19F,// MISTY
+	0x1AA,// SS Anne Rival
+	0x1AB,// SS Anne Rival
+	0x1AC,// SS Anne Rival
+	0x1A0,// Lt Surge
+	 0x3F,// Route 9 May
+	0x1A1,// ERIKA
+	0x15C,// Rocket HQ Giovanni
+	0x1AD,// Poke Tower Rival
+	0x1AE,// Poke Tower Rival
+	0x1AF,// Poke Tower Rival
+	 0x40,// Poke Tower May
+	0x1B0,// Saffron Rival
+	0x1B1,// Saffron Rival
+	0x1B2,// Saffron Rival
+	0x15D,// Saffron Giovanni
+	0x1A4,// SABRINA
+	0x1A2,// KOGA
+	0x1A3,// BLAINE
+	0x15E,// GIOVANNI
+	0x1B3,// Route 22 Late Rival
+	0x1B4,// Route 22 Late Rival
+	0x1B5,// Route 22 Late Rival
+	 0x3C,// Victory Road Brendan
+	0x19A,// LORELEI
+	0x19B,// BRUNO
+	0x19C,// AGATHA
+	0x19D,// LANCE
+	0x1B6,// Champion Rival
+	0x1B7,// Champion Rival
+	0x1B8,// Champion Rival
+};
+
+u8 GetBadgeCount() {
+	u8 cap = 0;
+	if (FlagGet(FLAG_BADGE01_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE02_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE03_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE04_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE05_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE06_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE07_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE08_GET)) {
+		cap++;
+	}
+	return cap;
+} 
+
 enum
 {
 	HAZARDS_SETUP,
@@ -1036,22 +1110,75 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 						SET_MOVES(trainer->party.ItemCustomMoves);
 						SetAbilityFromEnum(&party[i], trainer->party.ItemCustomMoves[i].ability, trainer->party.ItemCustomMoves[i].nature);
 						SetMonData(mon, MON_DATA_HELD_ITEM, &trainer->party.ItemCustomMoves[i].heldItem);
-						SetEVSpread(&party[i], 
-							trainer->party.ItemCustomMoves[i].evSpread[0],
-							trainer->party.ItemCustomMoves[i].evSpread[1],
-							trainer->party.ItemCustomMoves[i].evSpread[2],
-							trainer->party.ItemCustomMoves[i].evSpread[3],
-							trainer->party.ItemCustomMoves[i].evSpread[4],
-							trainer->party.ItemCustomMoves[i].evSpread[5]
-							);		
-						SetIVSpread(&party[i], 
-							trainer->party.ItemCustomMoves[i].ivSpread[0],
-							trainer->party.ItemCustomMoves[i].ivSpread[1],
-							trainer->party.ItemCustomMoves[i].ivSpread[2],
-							trainer->party.ItemCustomMoves[i].ivSpread[3],
-							trainer->party.ItemCustomMoves[i].ivSpread[4],
-							trainer->party.ItemCustomMoves[i].ivSpread[5]
-							);
+
+						u8 ev = 0;
+						switch (GetBadgeCount())
+						{
+							case 0:
+							case 1:
+								ev = 0;
+								break;
+							case 2:
+								ev = 20;
+								break;
+							case 3:
+							case 4:
+								ev = 40;
+								break;
+							case 5:
+								ev = 60;
+								break;
+							case 6:
+							case 7:
+							case 8:
+								ev = 80;
+								break;
+							default:
+								break;
+						}
+
+						if(!FlagGet(FLAG_MINIMAL_GRINDING)){
+							for(u8 i = 0; i < NELEMS(EvCaps); i++){
+								if(trainerId == EvCaps[i]){
+									SetEVSpread(&party[i],
+										trainer->party.ItemCustomMoves[i].evSpread[0],
+										trainer->party.ItemCustomMoves[i].evSpread[1],
+										trainer->party.ItemCustomMoves[i].evSpread[2],
+										trainer->party.ItemCustomMoves[i].evSpread[3],
+										trainer->party.ItemCustomMoves[i].evSpread[4],
+										trainer->party.ItemCustomMoves[i].evSpread[5]
+									);
+									SetIVSpread(&party[i],
+										trainer->party.ItemCustomMoves[i].ivSpread[0],
+										trainer->party.ItemCustomMoves[i].ivSpread[1],
+										trainer->party.ItemCustomMoves[i].ivSpread[2],
+										trainer->party.ItemCustomMoves[i].ivSpread[3],
+										trainer->party.ItemCustomMoves[i].ivSpread[4],
+										trainer->party.ItemCustomMoves[i].ivSpread[5]
+									);
+								}else{
+									SetEVSpread(&party[i], ev, ev, ev, ev, ev, ev);
+									SetIVSpread(&party[i],
+										trainer->party.ItemCustomMoves[i].ivSpread[0],
+										trainer->party.ItemCustomMoves[i].ivSpread[1],
+										trainer->party.ItemCustomMoves[i].ivSpread[2],
+										trainer->party.ItemCustomMoves[i].ivSpread[3],
+										trainer->party.ItemCustomMoves[i].ivSpread[4],
+										trainer->party.ItemCustomMoves[i].ivSpread[5]
+									);
+								}
+							}
+						}else{
+							SetEVSpread(&party[i], 
+								trainer->party.ItemCustomMoves[i].evSpread[0],
+								trainer->party.ItemCustomMoves[i].evSpread[1],
+								trainer->party.ItemCustomMoves[i].evSpread[2],
+								trainer->party.ItemCustomMoves[i].evSpread[3],
+								trainer->party.ItemCustomMoves[i].evSpread[4],
+								trainer->party.ItemCustomMoves[i].evSpread[5]
+								);		
+							SetIVSpread(&party[i], 31, 31, 31, 31, 31, 31);
+						}
 						break;
 				}
 			}
@@ -4840,6 +4967,16 @@ void CreateBoxMon(struct BoxPokemon* boxMon, u16 species, u8 level, u8 fixedIV, 
 		{
 			++numPerfectStats;
 			perfectStats[STAT_SPDEF] = TRUE;
+		}
+
+		if (FlagGet(FLAG_MINIMAL_GRINDING)) {
+			u32 perfect = 31;
+			SetBoxMonData(boxMon, MON_DATA_HP_IV, &perfect);
+			SetBoxMonData(boxMon, MON_DATA_ATK_IV, &perfect);
+			SetBoxMonData(boxMon, MON_DATA_DEF_IV, &perfect);
+			SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &perfect);
+			SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &perfect);
+			SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &perfect);
 		}
 
 		#ifdef CREATE_WITH_X_PERFECT_IVS

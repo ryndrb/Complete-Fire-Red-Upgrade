@@ -11,7 +11,7 @@
 @ X Scissor | Route 8
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route8XScissor:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_X_SCISSOR

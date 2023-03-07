@@ -7,12 +7,362 @@
 
 .equ FLAG_OBTAIN_ROOST, 0x0D4
 .equ FLAG_LANCE_SPRITE_PEWTER, 0x30D
+.equ FLAG_OBTAIN_AERODACTYLITE, 0x0F9
+.equ FLAG_BRENDAN_PEWTER_ENCOUNTER, 0x301
+.equ FLAG_BRENDAN_PEWTER_SPRITE1, 0x300
+.equ FLAG_BRENDAN_PEWTER_SPRITE2, 0x304
+.equ FLAG_BRENDAN_PEWTER_SPRITE3, 0x312
+.equ FLAG_BRENDAN_CATCH_FIRST_MON, 0x311
+.equ VAR_BRENDAN_PEWTER_ENCOUNTER1, 0x5013
+.equ VAR_BRENDAN_PEWTER_ENCOUNTER2, 0x502F
+.equ FLAG_BRENDAN_VERMILLION_SPRITE, 0x936
+.equ FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE, 0x937
+.equ BRENDAN, 0x4
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brock
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymLeaderBrock:
+    lock
+    setvar 0x8004 0x2
+    setvar 0x8005 0x2
+    special 0x174
+    trainerbattle1 0x1 0x19E 0x0 0x8190CD4 0x8190E4F EventScript_0x816A5C5
+    checkflag 0x254
+    if 0x0 _goto EventScript_0x816A5F3
+    msgbox 0x819110F MSG_NORMAL
+    checkflag FLAG_BRENDAN_PEWTER_ENCOUNTER
+    if SET _goto End
+    goto EventScript_Pewter_Brendan @ Brendan Event
+    release
+    end
+
+EventScript_0x816A5C5:
+    setvar 0x8004 0x2
+    setvar 0x8005 0x1
+    special 0x173
+    setflag 0x4B0
+    setflag 0x820
+    setvar 0x406C 0x1
+    setflag 0x2E
+    clearflag 0x92
+    setvar 0x8008 0x1
+    call 0x81A6B18
+    goto EventScript_0x816A5F3
+    end
+
+EventScript_0x816A5F3:
+    msgbox 0x8190FC1 MSG_KEEPOPEN
+    checkitemspace 0x147 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A634
+    giveitem_msg 0x8190FDB ITEM_TM39
+    setflag 0x254
+    setflag FLAG_BRENDAN_PEWTER_ENCOUNTER
+    clearflag FLAG_BRENDAN_PEWTER_SPRITE1
+    clearflag FLAG_BRENDAN_PEWTER_SPRITE2
+    clearflag FLAG_BRENDAN_VERMILLION_SPRITE
+    clearflag FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE
+    msgbox 0x8190FF8 MSG_NORMAL
+    goto EventScript_Pewter_Brendan @ Brendan Event
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Aerodactylite | Viridian City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyAerodactylite:
+    lock
+    faceplayer
+    checkflag 0x4B0
+    if 0x1 _goto EventScript_GiveAerodactylite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveAerodactylite:
+    checkflag FLAG_OBTAIN_AERODACTYLITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_AERODACTYLITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_AERODACTYLITE
+    bufferpokemon 0x1 SPECIES_AERODACTYL
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_AERODACTYLITE
+    release
+    end
+
+Obtained:
+    goto 0x816A67F
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brendan Pewter City
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Pewter_Brendan:
+    textcolor BLUE
+    lock
+    showsprite BRENDAN
+    applymovement 0x4 EventScript_BrendanEnterGym
+    waitmovement 0x4
+    spriteface PLAYER, RIGHT
+    spriteface 0x1, RIGHT
+    msgbox gText_BrendanSpeaks1 MSG_KEEPOPEN
+    msgbox gText_BrockSpeaks1 MSG_KEEPOPEN
+    msgbox gText_BrendanSpeaks2 MSG_KEEPOPEN
+    spriteface 0x1, DOWN
+    msgbox gText_BrockSpeaks2 MSG_KEEPOPEN
+    spriteface 0x1, RIGHT
+    msgbox gText_BrockSpeaks3 MSG_KEEPOPEN
+    fanfare 0x13E
+    waitfanfare
+    msgbox gText_BrendanSpeaks3 MSG_KEEPOPEN
+    msgbox gText_BrockSpeaks4 MSG_KEEPOPEN
+    fanfare 0x101
+    waitfanfare
+    spriteface 0x1, DOWN
+    spriteface 0x4, DOWN
+    spriteface PLAYER, UP
+    msgbox gText_BrockSpeaks5 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0x4 EventScript_BrendanExitGym1
+    waitmovement 0x4
+    applymovement PLAYER EventScript_PlayerFollowBrendanGym1
+    waitmovement PLAYER
+    applymovement 0x4 EventScript_BrendanExitGym2
+    applymovement PLAYER EventScript_PlayerFollowBrendanGym2
+    waitmovement 0x4
+    sound 0x9
+    hidesprite BRENDAN
+    setflag FLAG_BRENDAN_PEWTER_SPRITE1
+    release
+    end
+
+MapScript_BrendanOutsideGym:
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_BrendanOutsideGym
+    .byte MAP_SCRIPT_TERMIN
+
+LevelScript_BrendanOutsideGym:
+    levelscript VAR_BRENDAN_PEWTER_ENCOUNTER1, 0, EventScript_BrendanOutsideGym
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_BrendanOutsideGym:
+    lock
+    textcolor BLUE
+    checkflag FLAG_BRENDAN_PEWTER_ENCOUNTER
+    if NOT_SET _goto End
+    showsprite 0x9
+    applymovement 0x9 EventScript_BrendanHeadingToCatchMon
+    applymovement PLAYER EventScript_FollowBrendanToCatchMon
+    waitmovement 0x9
+    msgbox gText_BrendanSpeaks6 MSG_NORMAL
+    applymovement 0x9 EventScript_BrendanCatchingMon
+    waitmovement 0x9
+    msgbox gText_BrendanSpeaks7 MSG_KEEPOPEN
+    setvar VAR_BRENDAN_PEWTER_ENCOUNTER1 0x1
+    setvar VAR_BRENDAN_PEWTER_ENCOUNTER2 0x0
+    setflag FLAG_BRENDAN_CATCH_FIRST_MON
+    clearflag FLAG_BRENDAN_PEWTER_SPRITE3
+    warp 0x6 0x2 0xFF 0x6 0x6
+    release
+    end
+
+MapScript_BrendanAfterCatchingMonInsideGym:
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_BrendanAfterCatchingMonInsideGym
+    .byte MAP_SCRIPT_TERMIN
+
+LevelScript_BrendanAfterCatchingMonInsideGym:
+    levelscript VAR_BRENDAN_PEWTER_ENCOUNTER2, 0, EventScript_BrendanAfterCatchingMonInsideGym
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_BrendanAfterCatchingMonInsideGym:
+    lock
+    textcolor BLUE
+    checkflag FLAG_BRENDAN_CATCH_FIRST_MON
+    if NOT_SET _goto End
+    showsprite BRENDAN
+    spriteface PLAYER, UP
+    msgbox gText_BrockSpeaks6 MSG_KEEPOPEN
+    msgbox gText_BrendanSpeaks8 MSG_KEEPOPEN
+    spriteface 0x5, DOWN
+    msgbox gText_BrendanSpeaks9 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 0x5 EventScript_BrendanExitGymAfterCatchingMon
+    waitmovement 0x5
+    sound 0x9
+    hidesprite 0x5
+    hidesprite BRENDAN
+    setvar VAR_BRENDAN_PEWTER_ENCOUNTER2 0x1
+    setflag FLAG_BRENDAN_PEWTER_SPRITE2
+    setflag FLAG_BRENDAN_PEWTER_SPRITE3
+    end
+
+End:
+    release
+    end
+
+EventScript_BrendanEnterGym:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_right
+    .byte walk_right
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
+    .byte walk_up
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+EventScript_BrendanExitGym1:
+    .byte walk_down
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+EventScript_BrendanExitGym2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+EventScript_PlayerFollowBrendanGym1:
+    .byte walk_down
+    .byte end_m
+
+EventScript_PlayerFollowBrendanGym2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+EventScript_BrendanHeadingToCatchMon:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+EventScript_FollowBrendanToCatchMon:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+EventScript_BrendanCatchingMon:
+    .byte jump_onspot_right
+    .byte jump_onspot_right
+    .byte jump_onspot_right
+    .byte pause_long
+    .byte jump_onspot_right
+    .byte jump_onspot_right
+    .byte jump_onspot_right
+    .byte pause_long
+    .byte jump_onspot_right
+    .byte jump_onspot_right
+    .byte jump_onspot_right
+    .byte walk_up
+    .byte end_m
+
+EventScript_BrendanExitGymAfterCatchingMon:
+    .byte walk_down
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+
+
+
+
+
+
+
+
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Roost | Pewter City Repel Guy
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PewterRoostGuy:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_ROOST
@@ -74,7 +424,7 @@ EventScript_RoostGuy2GoBack:
 @ Mega Ring Lance | Defeat Surge
 @@@@@@@@@@@@@@@@@@@@
 EventScript_LanceMegaRing:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     msgbox gText_LanceIntro1 MSG_KEEPOPEN
@@ -103,7 +453,7 @@ EventScript_LanceMove:
 @ Did you check Museam guy | Fix
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x16607E:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     msgbox 0x817E53E MSG_YESNO
@@ -215,7 +565,7 @@ EventScript_0x8166140:
 @ Check Brock Guy | Fix
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x165B9D:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     msgbox gText_0x817E67E MSG_KEEPOPEN
@@ -246,7 +596,7 @@ EventScript_0x165DA6:
     goto EventScript_0x165DBE
 
 EventScript_0x165DBE:
-    textcolor 0x0
+    textcolor BLUE
     applymovement 0x5 EventScript_LookDown
     waitmovement 0x5
     msgbox gText_0x817E67E MSG_KEEPOPEN
@@ -281,7 +631,7 @@ EventScript_LookDown:
 @ Prof. Aide Dex Nav
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_0x1662A9:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     setvar 0x4001 0x0
@@ -311,7 +661,7 @@ EventScript_0x1662D1:
     end
 
 EventScrit_0x81662DE:
-    textcolor 0x0
+    textcolor BLUE
     compare 0x4001 0x1
     if 0x1 _call 0x81663CA
     compare 0x4001 0x2

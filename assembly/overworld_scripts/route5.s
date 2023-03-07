@@ -20,7 +20,7 @@
 @ Traynee Services | Drayano inspired
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Traynee:
-    textcolor 0x1
+    textcolor RED
     checkflag FLAG_TRAYNEE_ROUTE5_GREET
     if NOT_SET _goto EventScipt_ExpLadyGreet
     faceplayer
@@ -321,7 +321,7 @@ EventScript_ThisIsAnEggTraynee:
 @ Ivy Services
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Ivy:
-    textcolor 0x1
+    textcolor RED
     checkflag FLAG_IVY_ROUTE5_GREET
     if NOT_SET _goto EventScript_IvyGreet
     faceplayer

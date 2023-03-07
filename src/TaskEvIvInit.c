@@ -503,24 +503,25 @@ static void SandboxChangeAbility(bool8 goingRight)
 
 static u16 GetCurrentEVCap()
 {
-    //u8 badges = GetBadgeCount(); // might implement the caps if i decided to use stat editor apart from debug
-    u16 cap = 510;
-    // switch(badges)
-    // {
-    //     case 0: //no badges, 32 cap
-    //         cap = 32;
-    //         break;
-    //     case 1: //1 badges, 100 cap
-    //         cap = 100;
-    //         break;
-    //     case 2: //2 badges, 252 cap
-    //         cap = 252;
-    //         break;
-    //     case 3:
-    //     default: 
-    //         cap = 510; //not sure if needed, just in case
-    //         break;
-    // }
+    u16 cap = 0;
+    if(FlagGet(FLAG_MINIMAL_GRINDING)){
+        u8 badges = GetBadgeCount(); // might implement the caps if i decided to use stat editor apart from debug
+        switch(badges)
+        {
+            case 1:
+                cap = 60;
+                break;
+            case 2:
+                cap = 120;
+                break;
+            case 3:
+                cap = 510;
+                break;
+            default:
+                cap = 510;
+                break;
+        }
+    }
     return cap;
 }
 
@@ -762,7 +763,7 @@ static void Task_WaitForExit(u8 taskId)
         gState++;
         break;
     case 1:
-        if (TRUE)// will consider the stat editor in the future, we'll see. but good for testing for now
+        if (FlagGet(FLAG_MINIMAL_GRINDING))// will consider the stat editor in the future, we'll see. but good for testing for now
         {
             if (JOY_NEW(A_BUTTON))
             {
@@ -816,11 +817,11 @@ static void Task_WaitForExit(u8 taskId)
                     DestroySprite(&gSprites[gCursorSpriteId]);
                 }
             }
-            if(JOY_NEW(R_BUTTON))
+            if(FlagGet(0x4B1) && JOY_NEW(R_BUTTON)) // defeat misty to edit nature
             {
                 SandboxChangeNature(TRUE);
             }
-            if(JOY_NEW(L_BUTTON))
+            if(FlagGet(0x4B1) && JOY_NEW(L_BUTTON)) // defeat misty to edit nature
             {
                 SandboxChangeNature(FALSE);
             }
@@ -917,7 +918,7 @@ static void Task_WaitForExit(u8 taskId)
                     UpdateCursorSpritePos(gCursorSpriteId, 0xFF, TRUE, resetY);
                 }
             }
-            else if(gInEditor)
+            else if(FlagGet(0x4B2) && gInEditor) // defeat surge to edit ability
             {
                 if (JOY_REPT(DPAD_LEFT))
                 {

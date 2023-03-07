@@ -4,6 +4,7 @@
 #include "../include/event_data.h"
 #include "../include/m4a.h"
 
+#include "../include/constants/flags.h"
 #include "../include/constants/game_stat.h"
 #include "../include/constants/songs.h"
 #include "../include/constants/items.h"
@@ -59,43 +60,61 @@ static void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies);
 // Subject to change one I playtest
 const u16 LevelCaps[] = 
 {
-	16,//Brock
-	27,//Misty
-	36,//Surge
-	54,//Erika
-	63,//Sabrina
-	72,//Koga
-	81,//Blaine
-	90,//Giovanni
+	//  9, // Rival Route 22
+	16, // BROCK
+	// 24, // Rival Cerulean
+	27, // MISTY
+	34, // Rival SS Anne
+	36, // LT. SURGE and May Route 9
+	44, // ERIKA
+	47, // Giovanni Celadon and Rival May in PokeTower
+	57, // Rival and Giovanni Silph Co
+	59, // SABRINA
+	68, // KOGA
+	76, // BLAINE
+	80, // GIOVANNI
+	85, // ELITE FOUR and CHAMPION, Brendan Victory Road
 };
 
-u8 GetBadgeCount() {
-	u8 badgeCount = 0;
+u8 GetCap() {
+	u8 cap = 0;
 	if (FlagGet(FLAG_BADGE01_GET)) {
-		badgeCount++;
+		cap++;
 	}
 	if (FlagGet(FLAG_BADGE02_GET)) {
-		badgeCount++;
+		cap++;
+	}
+	if (FlagGet(FLAG_CAP_RIVALSSANNE)){
+		cap++;
 	}
 	if (FlagGet(FLAG_BADGE03_GET)) {
-		badgeCount++;
+		cap++;
 	}
 	if (FlagGet(FLAG_BADGE04_GET)) {
-		badgeCount++;
+		cap++;
+	}
+	if (FlagGet(0x5F)){ // Celadon Rockets Flag
+		cap++;
+	}
+	if (FlagGet(0x3E)){ // Saffron Rockets Flag
+		cap++;
 	}
 	if (FlagGet(FLAG_BADGE05_GET)) {
-		badgeCount++;
+		cap++;
 	}
 	if (FlagGet(FLAG_BADGE06_GET)) {
-		badgeCount++;
+		cap++;
 	}
 	if (FlagGet(FLAG_BADGE07_GET)) {
-		badgeCount++;
+		cap++;
 	}
 	if (FlagGet(FLAG_BADGE08_GET)) {
-		badgeCount++;
+		cap++;
 	}
-	return badgeCount;
+	if (FlagGet(0x4BC)){ // Defeated Champion Flag
+		cap++;
+	}
+	return cap;
 } 
 
 ///////////////////// GAIN EXPERIENCE //////////////////////
@@ -305,7 +324,7 @@ void atk23_getexp(void)
 
 	SKIP_EXP_CALC:
 		calculatedExp = MathMax(1, calculatedExp);
-		u8 cap = LevelCaps[GetBadgeCount()];
+		u8 cap = LevelCaps[GetCap()];
 		if(pokeLevel >= cap) calculatedExp = 1;
 		gBattleMoveDamage = calculatedExp;
 
@@ -826,7 +845,7 @@ static void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 	u8 itemQuality = ItemId_GetHoldEffectParam(heldItem);
 	u8 pkrsMultiplier = (CheckPartyHasHadPokerus(mon, 0)) ? 2 : 1;
 
-	if (GetMonEVCount(mon) >= MAX_TOTAL_EVS || FlagGet(FLAG_TRAYNEE_EXP_TRAINING_NO_EV))
+	if (GetMonEVCount(mon) >= MAX_TOTAL_EVS || FlagGet(FLAG_TRAYNEE_EXP_TRAINING_NO_EV) || FlagGet(FLAG_MINIMAL_GRINDING))
 		return;
 
 	for (u8 stat = 0; stat < NUM_STATS; ++stat, evIncrease = 0)

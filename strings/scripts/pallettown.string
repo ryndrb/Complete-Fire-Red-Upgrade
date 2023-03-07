@@ -20,10 +20,46 @@ Ah! [BUFFER1] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you
 [.]\n[.]\pSo you're an aspiring Pok\emon\ntrainer?\pI see[.]\pYou might find this useful then.
 
 #org @gText_MomChooseRegion
-[PLAYER], you're up!\pToday is finally the day you\nrecieve your very first Pok\emon!\pProf. Oak came by earlier asking\nfor you, but I told him you were\lsleeping.\pHe wanted to know which region has\nimpressed you the most so far\lduring this year's Pok\emon\lWorld Championship?
+[PLAYER], you're up!\pToday is finally the day you\nreceive your very first Pok\emon!\p[.] [.]\n[.] [.]\pOh!\pI got a message from Professor\nOak!\pMm[.] Hmm[.]\nGot it.\pHe wants to know which region\nimpressed you the most during\lthis years Pok\emon World\lChampionship.\pHe mentioned that this will\ndetermine where your starter\lPok\emon will be from.\pSo, sweetie, do you have a\npreference?
 
 #org @gText_MomDone
 Okay, I'll let him know!\nGood luck sweetie!\p[BLACK]Rival Pok\emon will remain Kanto.
 
 #org @gText_RecentSightings
 Recently, there have been\nsightings of many rare Pok\emon\lspecies all around Kanto.\pAs I have mentioned before, it\nwould be wonderful if I can go and\lsee things for myself, but I'm\lmuch too old[.]\pOn the desk there is my invention,\nthe Pok\edex!\pIt automatically records data on\nPok\emon you've seen or caught.\pIt's a high-tech encyclopedia!
+
+#org @gTetxt_ConsolePrompt
+[PLAYER] boots up the console.\pWhich of these options would you like\nto edit?
+
+#org @gText_MinimalGrinding
+Enabling Minimal Grinding assures\nall Pok\emon to have perfect IVs,\land EVs cannot be obtained.\pEnable Minimal Grinding?
+
+#org @gText_DisableMinimalGrinding
+Minimal Grinding is currently\nenabled.\pDisable Minimal Grinding?
+
+#org @gText_RandomizePokemon
+Randomize Pok\emon randomizes\nencounters, trainers, and gifts.\pEnable Randomize Pok\emon?
+
+#org @gText_RandomizeLearnset
+Randomize Learnset randomizes\nPok\emon learnsets.\pIt does not randomize TMs or Move\nTutor moves.\pEnable Randomize Learnset?
+
+#org @gText_DisableRandomizeLearnset
+Randomize Learnset is currently\nenabled.\pDisable Randomize Learnset?
+
+#org @gText_DisableRandomizePokemon
+Randomize Pok\emon is currently\nenabled.\pDisable Randomize Pok\emon?
+
+#org @gText_RandomizeAbility
+Randomize Ability randomizes\nPok\emon abilities.\pEnable Randomize Ability?
+
+#org @gText_DisableRandomizeAbility
+Randomize Ability is currently\nenabled.\pDisable Randomize Ability?
+
+#org @gText_PalletTown_LockedDoor
+The door is locked.
+
+#org @gText_PalletTown_MaySpeaks1
+[.]Ugh[.]\pThat jerk [RIVAL] is here.\n[.]Ugh.
+
+#org @gText_PalletTown_MaySpeaks2
+Eek!\p[.]W-what are you staring at?

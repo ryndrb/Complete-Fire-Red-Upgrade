@@ -12,7 +12,7 @@
 @ Drain Punch | Saffron City Desk Lady
 @@@@@@@@@@@@@@@@@@@@@@
 EventScipt_SaffronDrainPunch:
-    textcolor 0x1
+    textcolor RED
     lock
     faceplayer
     checkflag FLAG_OBTAIN_DRAIN_PUNCH
@@ -40,7 +40,7 @@ EventScript_TooBad:
 @ Sleep Talk | Saffron City
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_SaffronSleepTalk:
-    textcolor 0x0
+    textcolor BLUE
     lock
     checkflag FLAG_OBTAIN_SLEEP_TALK
     if 0x0 _goto EventScript_GiveSleepTalk

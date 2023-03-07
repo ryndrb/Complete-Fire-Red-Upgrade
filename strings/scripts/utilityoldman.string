@@ -1,3 +1,12 @@
+#org @gText_UtilityOldManSpeak1
+Ah, hello there young trainer!\pYou seem to be looking for some\nassistance with your Pok\emon.\pWell, you're just in luck!\pI happen to offer a few sevices\nthat might interest you.\p[.]\n[.]\pDon't be shy now, let me tell you\nwhat I can do for your Pok\emon.\pI am a Move Tutor, Nature Changer,\nand Ability Changer.\p[.]\n[.]\pAh, I see you're curious now.
+
+#org @gText_UtilityOldManSpeak2
+As a Move Tutor, I can teach your\nPok\emon moves that they normally\lwouldn't be able to learn through\lleveling up or TM/HM.\p[.]\n[.]\pFor my nature changing services,\nI can alter the natural tendencies\lof your Pok\emon, affecting their\lstats in a positive way.\p[.]\n[.]\pFinally, as an Ability Changer, I\ncan alter the natural abilities of\lyour Pok\emon.
+
+#org @gText_UtilityOldManSpeak3
+[.]\n[.]\pWell, I can see that you're still\nhesitant.\pPerhaps you're worried about the\ncost?\pDon't you worry, my services comes\nfree of charge!\pGranted you acquired the\nnecessary Gym badges.\p[.]\n[.]\pStill not convinced, huh?\pWell, if you change you mind, you\nknow where to find me.\pI'll be right here, ready to help\nyou and your Pok\emon become the\lstrongest you can be.\pGood luck on your journey!
+
 #org @gText_EventScript_UtilityOldManGreetings
 How may I help you?
 

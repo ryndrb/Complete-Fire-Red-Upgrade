@@ -1,11 +1,5 @@
-#org @gText_Oh
-Oh!?
+#org @gText_Route1_MaySpeaks1
+You're the guy from earlier.\pI-I'm sorry for pushing you!\nI didn't mean it!\p[.] [.]\n[.] [.]\pPheew[.] I think I've calmed down\na little[.]\pOh! [PLAYER], right?\nWell, I'm May! Glad to meet you!\pYou got a Pok\emon at the lab, huh?
 
-#org @gText_HeyThere
-Hey there!\pI'm Brendan from Littleroot town\nin the Hoenn region.\p[.]\n[.]\pYou're the aspiring trainer Prof.\nOak mentioned in his letter!\p[.]\n[.]\pHmm?\pWhat I'm doing here in Kanto?\pI came here on behalf of Prof.\nBirch regarding the invention of\lthe Pok\edex.\p[.]\n[.]\pTo commemorate our newfound\nacquaintance, I'll give you this.
-
-#org @gText_BrendanGaveExpShare
-That is an Exp. Share.\pIt will surely come in handy in your\nadventure.
-
-#org @gText_HeadingToOak
-[.]\n[.]\pAnyway, nice meeting you.\pHow about a battle next time we\nmeet, yeah?\pSee ya!
+#org @gText_Route1_MaySpeaks2
+[.] [.]\n[.] [.]\pI [.]I actually have this dream of\nbecoming friends with Pok\emon all\lover the world.\pAnd then when [RIVAL] told me about\nyou when I first got here[.]\pWell, I was hoping you would be\nnice and we could be friends[.]\p[.]B-but that's just silly, isn't\nit?\pI mean[.] I've just met you[.]!\n[.]though proper this time[.]\pBut still[.]\nRight, [PLAYER]?\pSo what am I talking about[.]\pHee hee[.]\pOh no! I forgot!\pI'll see 'ya later!\nGood luck, [PLAYER]!

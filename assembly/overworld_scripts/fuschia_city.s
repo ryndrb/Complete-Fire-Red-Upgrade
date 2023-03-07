@@ -11,7 +11,7 @@
 @ Substitute
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_FuschiaSubstitute:
-    textcolor 0x0
+    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_SUBSTITUTE
@@ -42,5 +42,17 @@ EventScript_FormerSubstituteKid:
     lock
     faceplayer
     msgbox gText_FormerSubstituteKid MSG_KEEPOPEN
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Retired Fisherman
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_RetiredFisherMan:
+    lock
+    faceplayer
+    textcolor BLUE
+    msgbox gText_RetireFisherManSpeak1 MSG_KEEPOPEN
+    msgbox gText_RetireFisherManSpeak2 MSG_KEEPOPEN
     release
     end

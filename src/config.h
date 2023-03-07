@@ -187,9 +187,9 @@ enum //These vars need to be one after the other (hence the enum)
 #define MAX_SAFARI_BALLS 30		//Total safari balls player can get (maximum is 0xFFFF or 0xFF if EXPAND_SAFARI_BALLS is defined or not)
 
 /*=====Randomizer Options=====*/
-//#define FLAG_POKEMON_RANDOMIZER 0x940 //Setting randomizes Pokemon species that are created.
-//#define FLAG_POKEMON_LEARNSET_RANDOMIZER 0x941 //Setting randomizes Pokemon learnsets.
-//#define FLAG_ABILITY_RANDOMIZER 0x942 //Setting randomizes Pokemon abilities.
+#define FLAG_POKEMON_RANDOMIZER 0x940 //Setting randomizes Pokemon species that are created.
+#define FLAG_POKEMON_LEARNSET_RANDOMIZER 0x941 //Setting randomizes Pokemon learnsets.
+#define FLAG_ABILITY_RANDOMIZER 0x942 //Setting randomizes Pokemon abilities.
 #define NUM_SPECIES_RANDOMIZER NUM_SPECIES_GEN_7 //The final number of Pokemon (+ 1) of species that can appear in the randomizer. Change to NUM_SPECIES for Gen 8
 
 /*===== Pre-existing Offsets =====*/

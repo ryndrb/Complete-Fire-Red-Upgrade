@@ -6,12 +6,15 @@
 .include "../asm_defines.s"
 
 .equ FLAG_OBTAIN_GIFT_SANDILE, 0x0BE
+.equ FLAG_BRENDAN_CERULEAN_SPRITE, 0x938
+.equ FLAG_BRENDAN_UNCLE_CERULEAN_SPRITE, 0x939
+.equ FLAG_MAY_CERULEAN_SPRITE, 0x93D
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Sandile Gift | Wise Glasses | Cerulean City
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_SandileGift:
-    textcolor 0x0
+    textcolor BLUE
     lock
     checkflag FLAG_OBTAIN_GIFT_SANDILE
     if 0x0 _goto EventScript_GiveSandile
@@ -76,7 +79,7 @@ EndScript:
 @ Cerulean TM Merchant
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_CeruleanTMMerchant:
-    textcolor 0x0
+    textcolor BLUE
     msgbox gText_CeruleanTMMerchantGreet MSG_KEEPOPEN
     pokemart EventScript_CeruleanTMMerchantList
     msgbox gText_CeruleanTMMerchantEnd MSG_KEEPOPEN
@@ -99,3 +102,60 @@ EventScript_CeruleanTMMerchantList:
     .hword ITEM_TM120
     .hword 0x0
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brendan's Mom
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Brendan_Mom:
+    lock
+    textcolor RED
+    faceplayer
+    msgbox gText_Brendan_Mom MSG_FACE
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brendan's Uncle
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Brendan_Uncle:
+    lock
+    faceplayer
+    textcolor BLUE
+    checkflag 0x935
+    if SET _goto EventScript_Brendan_Uncle_AfterVermillion
+    msgbox gtext_Brendan_Uncle1 MSG_FACE
+    release
+    end
+
+EventScript_Brendan_Uncle_AfterVermillion:
+    lock
+    faceplayer
+    msgbox gtext_Brendan_Uncle2 MSG_FACE
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brendan Cerulean
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Cerulean_Brendan:
+    lock
+    faceplayer
+    textcolor BLUE
+    msgbox gText_Cerulean_BrendanSpeaks1 MSG_FACE
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Brendan Cerulean
+@@@@@@@@@@@@@@@@@@@@@@
+EventsScript_Cerulean_May:
+    lock
+    faceplayer
+    textcolor RED
+    msgbox gText_Cerulean_MaySpeaks1 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x1
+    hidesprite 14
+    setflag FLAG_MAY_CERULEAN_SPRITE
+    fadescreen 0x0
+    release
+    end
