@@ -38,14 +38,18 @@ EventScript_0x81682BE:
     compare 0x4001 0x2
     if 0x1 _call EventScript_0x816835B
     pause 0x6
-    msgbox 0x8188890 MSG_FACE
+    call RivalNameBox
+    msgbox gText_Route22_RivalSpeak1 MSG_KEEPOPEN
+    callasm RemoveNameBox
     compare 0x4031 0x2
     if 0x1 _call EventScript_0x816836D
     compare 0x4031 0x1
     if 0x1 _call EventScript_0x816837C
     compare 0x4031 0x0
     if 0x1 _call EventScript_0x816838B
-    msgbox 0x8188974 MSG_KEEPOPEN
+    call RivalNameBox
+    msgbox gText_Route22_RivalSpeak2 MSG_KEEPOPEN
+    callasm RemoveNameBox
     closeonkeypress
     pause 0xA
     playsong 0x13C 0x0
@@ -205,43 +209,47 @@ EventScript_0x1683ED:
     lockall
     spriteface PLAYER, LEFT
     setvar 0x4001 0x0
-    goto 0x816841F
+    goto EventScript_0x16841F
 
 EventScript_0x1683F9:
     lockall
     setvar 0x4001 0x1
     movesprite2 0x1 0x17 0x5
-    goto 0x816841F
+    goto EventScript_0x16841F
 
 EventScript_0x16840C:
     lockall
     setvar 0x4001 0x2
     movesprite2 0x1 0x17 0x5
-    goto 0x816841F
+    goto EventScript_0x16841F
 
 EventScript_0x16841F:
     textcolor BLUE
     playsong 0x13B 0x0
     showsprite 0x1
     compare 0x4001 0x0
-    if 0x1 _call 0x816849C
+    if 0x1 _call EventScript_0x16849C
     compare 0x4001 0x1
-    if 0x1 _call 0x816849C
+    if 0x1 _call EventScript_0x16849C
     compare 0x4001 0x2
-    if 0x1 _call 0x81684A7
-    msgbox 0x8188A3C MSG_KEEPOPEN
+    if 0x1 _call EventScript_0x1684A7
+    call RivalNameBox
+    msgbox gText_Route22_RivalSpeak3 MSG_KEEPOPEN
+    callasm RemoveNameBox
     setvar LASTTALKED 0x1
     compare 0x4031 0x2
-    if 0x1 _call 0x81684B9
+    if 0x1 _call EventScript_0x1684B9
     compare 0x4031 0x1
-    if 0x1 _call 0x81684C4
+    if 0x1 _call EventScript_0x1684C4
     compare 0x4031 0x0
-    if 0x1 _call 0x81684CF
-    msgbox 0x8188B29 MSG_KEEPOPEN
+    if 0x1 _call EventScript_0x1684CF
+    call RivalNameBox
+    msgbox gText_Route22_RivalSpeak4 MSG_KEEPOPEN
+    callasm RemoveNameBox
     closeonkeypress
     pause 0xA
     playsong 0x13C 0x0
-    applymovement 0x1 0x81684DA
+    applymovement 0x1 EventScript_0x1684DA
     waitmovement 0x0
     fadedefault
     hidesprite 0x1
@@ -250,13 +258,13 @@ EventScript_0x16841F:
     end
 
 EventScript_0x16849C:
-    applymovement 0x1 0x81683D1
+    applymovement 0x1 EventScript_0x1683D1
     waitmovement 0x0
     return
 
 EventScript_0x1684A7:
-    applymovement 0x1 0x81683D9
-    applymovement PLAYER 0x81683E3
+    applymovement 0x1 EventScript_0x1683D9
+    applymovement PLAYER EventScript_0x1683E3
     waitmovement 0x0
     return
 
@@ -317,3 +325,12 @@ EventScript_0x1683E3:
     .byte 0x1B
     .byte walk_up_onspot_fastest
     .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@
+@ Route 22 NameBox
+@@@@@@@@@@@@@@@@@@@@
+RivalNameBox:
+    setvar 0x8000 1
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return

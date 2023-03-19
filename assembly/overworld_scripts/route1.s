@@ -22,6 +22,7 @@ LevelScript_Route1_May:
 EventScript_Route1_May:
     lock
     textcolor RED
+    playsong 0x1A7
     showsprite 0x5
     getplayerpos 0x8000 0x8001
     compare 0x8000 10
@@ -36,9 +37,11 @@ EventScript_Route1_May:
     waitmovement PLAYER
     applymovement 0x5 EventScript_Route1_MayGotCloserToPlayer
     waitmovement 0x5
+    call MayNameBox
     msgbox gText_Route1_MaySpeaks1 MSG_KEEPOPEN
     msgbox gText_Route1_MaySpeaks2 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     getplayerpos 0x8000 0x8001
     compare 0x8000 10
     if equal _call EventScript_Route1_MovePlayer1
@@ -53,8 +56,15 @@ EventScript_Route1_May:
     hidesprite 0x5
     setflag FLAG_MAY_ROUTE1_SPRITE
     setvar VAR_MAY_ROUTE1_ENCOUNTER 0x1
+    fadedefaultbgm
     release
     end
+
+MayNameBox:
+    setvar 0x8000 2
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
 
 MoveMaySprite1:
     movesprite 5 10 6

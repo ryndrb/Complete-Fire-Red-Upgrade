@@ -1110,75 +1110,22 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 						SET_MOVES(trainer->party.ItemCustomMoves);
 						SetAbilityFromEnum(&party[i], trainer->party.ItemCustomMoves[i].ability, trainer->party.ItemCustomMoves[i].nature);
 						SetMonData(mon, MON_DATA_HELD_ITEM, &trainer->party.ItemCustomMoves[i].heldItem);
-
-						u8 ev = 0;
-						switch (GetBadgeCount())
-						{
-							case 0:
-							case 1:
-								ev = 0;
-								break;
-							case 2:
-								ev = 20;
-								break;
-							case 3:
-							case 4:
-								ev = 40;
-								break;
-							case 5:
-								ev = 60;
-								break;
-							case 6:
-							case 7:
-							case 8:
-								ev = 80;
-								break;
-							default:
-								break;
-						}
-
-						if(!FlagGet(FLAG_MINIMAL_GRINDING)){
-							for(u8 i = 0; i < NELEMS(EvCaps); i++){
-								if(trainerId == EvCaps[i]){
-									SetEVSpread(&party[i],
-										trainer->party.ItemCustomMoves[i].evSpread[0],
-										trainer->party.ItemCustomMoves[i].evSpread[1],
-										trainer->party.ItemCustomMoves[i].evSpread[2],
-										trainer->party.ItemCustomMoves[i].evSpread[3],
-										trainer->party.ItemCustomMoves[i].evSpread[4],
-										trainer->party.ItemCustomMoves[i].evSpread[5]
-									);
-									SetIVSpread(&party[i],
-										trainer->party.ItemCustomMoves[i].ivSpread[0],
-										trainer->party.ItemCustomMoves[i].ivSpread[1],
-										trainer->party.ItemCustomMoves[i].ivSpread[2],
-										trainer->party.ItemCustomMoves[i].ivSpread[3],
-										trainer->party.ItemCustomMoves[i].ivSpread[4],
-										trainer->party.ItemCustomMoves[i].ivSpread[5]
-									);
-								}else{
-									SetEVSpread(&party[i], ev, ev, ev, ev, ev, ev);
-									SetIVSpread(&party[i],
-										trainer->party.ItemCustomMoves[i].ivSpread[0],
-										trainer->party.ItemCustomMoves[i].ivSpread[1],
-										trainer->party.ItemCustomMoves[i].ivSpread[2],
-										trainer->party.ItemCustomMoves[i].ivSpread[3],
-										trainer->party.ItemCustomMoves[i].ivSpread[4],
-										trainer->party.ItemCustomMoves[i].ivSpread[5]
-									);
-								}
-							}
-						}else{
-							SetEVSpread(&party[i], 
-								trainer->party.ItemCustomMoves[i].evSpread[0],
-								trainer->party.ItemCustomMoves[i].evSpread[1],
-								trainer->party.ItemCustomMoves[i].evSpread[2],
-								trainer->party.ItemCustomMoves[i].evSpread[3],
-								trainer->party.ItemCustomMoves[i].evSpread[4],
-								trainer->party.ItemCustomMoves[i].evSpread[5]
-								);		
-							SetIVSpread(&party[i], 31, 31, 31, 31, 31, 31);
-						}
+						SetEVSpread(&party[i],
+							trainer->party.ItemCustomMoves[i].evSpread[0],
+							trainer->party.ItemCustomMoves[i].evSpread[1],
+							trainer->party.ItemCustomMoves[i].evSpread[2],
+							trainer->party.ItemCustomMoves[i].evSpread[3],
+							trainer->party.ItemCustomMoves[i].evSpread[4],
+							trainer->party.ItemCustomMoves[i].evSpread[5]
+						);
+						SetIVSpread(&party[i],
+							trainer->party.ItemCustomMoves[i].ivSpread[0],
+							trainer->party.ItemCustomMoves[i].ivSpread[1],
+							trainer->party.ItemCustomMoves[i].ivSpread[2],
+							trainer->party.ItemCustomMoves[i].ivSpread[3],
+							trainer->party.ItemCustomMoves[i].ivSpread[4],
+							trainer->party.ItemCustomMoves[i].ivSpread[5]
+						);
 						break;
 				}
 			}

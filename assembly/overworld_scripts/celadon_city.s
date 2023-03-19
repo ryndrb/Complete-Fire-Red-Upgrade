@@ -6,6 +6,120 @@
 .include "../asm_defines.s"
 
 .equ FLAG_MAY_CELADON_SPRITE1, 0x943
+.equ FLAG_OBTAIN_ABOMASITE, 0x95F
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Erika
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymLeaderErika:
+    setvar 0x8004 0x5
+    setvar 0x8005 0x2
+    special 0x174
+    call ErikaNameBox
+    trainerbattle1 0x1 0x1A1 0x0 0x8197114 0x8197260 EventScript_0x816D0A0
+    checkflag 0x293
+    if 0x0 _goto 0x816D0C6
+    setvar 0x8004 0x5
+    setvar 0x8005 0x4
+    special 0x173
+    call ErikaNameBox
+    msgbox 0x81972B8 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x816D0A0:
+    setvar 0x8004 0x5
+    setvar 0x8005 0x1
+    special 0x173
+    clearflag 0x9E
+    setflag 0x4B3
+    setflag 0x823
+    clearflag 0x101
+    setvar 0x8008 0x4
+    call 0x81A6B18
+    goto EventScript_0x816D0C6
+    end
+
+EventScript_0x816D0C6:
+    call ErikaNameBox
+    msgbox 0x8197327 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    checkitemspace 0x133 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816D107
+    giveitem_msg 0x81973BA ITEM_TM19
+    setflag 0x293
+    setvar 0x502E 0x1
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Abomasite | Celadon City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyAbomasite:
+    lock
+    faceplayer
+    checkflag 0x4B3
+    if 0x1 _goto EventScript_GiveAbomasite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveAbomasite:
+    checkflag FLAG_OBTAIN_ABOMASITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_ABOMASITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_ABOMASITE
+    bufferpokemon 0x1 SPECIES_ABOMASNOW
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_ABOMASITE
+    release
+    end
+
+Obtained:
+    goto 0x816A67F
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Celadon Giovanni
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Celadon_Giovanni:
+    lock
+    faceplayer
+    setvar 0x8004 0xF
+    setvar 0x8005 0x0
+    special 0x173
+    call UnknownNameBox
+    msgbox gText_Celadon_GiovanniSpeak1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    call GiovanniNameBox
+    msgbox gText_gText_Celadon_GiovanniSpeak2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    playsong 0x11B 0x0
+    waitkeypress
+    trainerbattle3 0x3 0x15C 0x0 0x8175318
+    call GiovanniNameBox
+    msgbox gText_gText_Celadon_GiovanniSpeak3 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    fadescreen 0x1
+    closeonkeypress
+    hidesprite 0x1
+    showsprite 0x2
+    clearflag 0x37
+    setflag 0x5F
+    setvar 0x8004 0xF
+    setvar 0x8005 0x2
+    special 0x174
+    fadescreen 0x0
+    release
+    end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Poke Ball Types Celadon Dep. Store
@@ -572,26 +686,44 @@ EventScript_CantEnterRocketHideoutYet:
 EventScript_Celadon_May:
     lock
     faceplayer
+    playsong 0x1A7
     textcolor RED
+    call MayNameBox
     msgbox gText_Celadon_MaySpeaks1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    pause 30
     applymovement 17 EventScript_Celadon_MaySmile
     applymovement PLAYER EventScript_Celadon_PlayerSmile
     waitmovement 17
+    call MayNameBox
     msgbox gText_Celadon_MaySpeaks2 MSG_KEEPOPEN
     msgbox gText_Celadon_MaySpeaks3 MSG_YESNO
+    callasm RemoveNameBox
     compare LASTRESULT 0x1
     if FALSE _goto EventScript_PlayerAnsweredNo
+    call MayNameBox
     msgbox gText_Celadon_MaySpeaks4 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     fadescreen 0x1
     hidesprite 17
     setflag FLAG_MAY_CELADON_SPRITE1
     fadescreen 0x0
+    fadedefaultbgm
     release
     end
 
 EventScript_PlayerAnsweredNo:
+    call MayNameBox
     msgbox gText_Celadon_MaySpeaks5 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadescreen 0x1
+    hidesprite 17
+    setflag FLAG_MAY_CELADON_SPRITE1
+    fadescreen 0x0
+    fadedefaultbgm
     release
     end
 
@@ -604,3 +736,30 @@ EventScript_Celadon_PlayerSmile:
     .byte say_smile
     .byte pause_long
     .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Celadon NameBox
+@@@@@@@@@@@@@@@@@@@@@@
+MayNameBox:
+    setvar 0x8000 2
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+ErikaNameBox:
+    setvar 0x8000 14
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+GiovanniNameBox:
+    setvar 0x8000 18
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+UnknownNameBox:
+    setvar 0x8000 0
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return

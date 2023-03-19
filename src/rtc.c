@@ -188,8 +188,8 @@ static void UpdateClockFromRtc(struct SiiRtcInfo *rtc)
 			gClock.hour += day;
 	}
 	if(FlagGet(FLAG_TURN_NIGHT)){ // Eve/Night
-		night = abs(gClock.hour - 17);
-		if(gClock.hour >= 17)
+		night = abs(gClock.hour - 20);
+		if(gClock.hour >= 20)
 			gClock.hour -= night;
 		else
 			gClock.hour += night;

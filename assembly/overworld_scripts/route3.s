@@ -5,7 +5,7 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_GIFT_TIMBURR, 0x0BD
+.equ FLAG_OBTAIN_GIFT_TIMBURR, 0x95B
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Timburr Gift | Muscle Band | Route 3

@@ -538,7 +538,7 @@ static void UpdateTimeText()
 	/#endif*/
 
 	//FillWindowPixelBuffer(sTimeWindowId, PIXEL_FILL(1));
-	AddTextPrinterParameterized(sTimeWindowId, 2, gStringVar4, 4, 3, 0xFF, NULL);
+	AddTextPrinterParameterized(sTimeWindowId, 2, gStringVar4, 4, 0, 0xFF, NULL);
 	//WindowPrint(sTimeWindowId, 1, 3, 1, &sTextColour, 0xFF, gStringVar4);
 	CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 }

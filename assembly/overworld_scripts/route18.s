@@ -5,7 +5,7 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_WEATHER_ROCKS, 0x0BC
+.equ FLAG_OBTAIN_WEATHER_ROCKS, 0x986
 
 @@@@@@@@@@@@@@@@@@@@
 @ Damp Rock | Icy Rock | Smooth Rock | Heat Rock | Route 18

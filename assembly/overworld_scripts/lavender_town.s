@@ -5,8 +5,8 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_LAVENDER_MECHANT_1, 0x302
-.equ FLAG_LAVENDER_MECHANT_2, 0x303
+.equ FLAG_LAVENDER_MECHANT_1, 0x97A
+.equ FLAG_LAVENDER_MECHANT_2, 0x97B
 .equ FLAG_MAY_POKETOWER_SPRITE, 0x93F
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -127,8 +127,10 @@ EventScript_MrFuji:
     special 0x174
     setflag 0x34
     setflag 0x23C
+    call MrFujiNameBox
     msgbox 0x817A529 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     warp 0x8 0x2 0xFF 0x4 0x7
     waitstate
     release
@@ -146,32 +148,54 @@ EventScript_PokeTower_RivalBattle1:
     if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_MoveRivalAndPlayer2
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks1 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     compare 0x4001 0x0
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
+    callasm RemoveNameBox
     setvar LASTTALKED 0x1
     setflag 0x908
     setvar 0x5011 64
@@ -183,18 +207,30 @@ EventScript_PokeTower_RivalBattle1:
     compare 0x4031 0x0
     if 0x1 _call EventScrit_RivalCharmander
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     fadescreen 0x1
     hidesprite 1
     setflag 0x51
@@ -205,8 +241,10 @@ EventScript_PokeTower_RivalBattle1:
     if equal _call EventScript_PokeTower_MayFacePlayer1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_MayFacePlayer2
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks9 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     fadescreen 0x1
     hidesprite 3
     setflag FLAG_MAY_POKETOWER_SPRITE
@@ -223,32 +261,54 @@ EventScript_PokeTower_RivalBattle2:
     if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_MoveRivalAndPlayer2
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks1 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     compare 0x4001 0x0
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
+    callasm RemoveNameBox
     setvar LASTTALKED 0x1
     setflag 0x908
     setvar 0x5011 64
@@ -260,18 +320,30 @@ EventScript_PokeTower_RivalBattle2:
     compare 0x4031 0x0
     if 0x1 _call EventScrit_RivalCharmander
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor BLUE
+    call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     fadescreen 0x1
     hidesprite 1
     setflag 0x51
@@ -283,8 +355,10 @@ EventScript_PokeTower_RivalBattle2:
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_MayFacePlayer2
     textcolor RED
+    call MayNameBox
     msgbox gText_PokeTower_MaySpeaks9 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     fadescreen 0x1
     hidesprite 3
     setflag FLAG_MAY_POKETOWER_SPRITE
@@ -405,3 +479,62 @@ MayFacePlayer1:
 MayFacePlayer2:
     .byte walk_up
     .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Mr Fuji Volunteer House
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Lavender_MrFuji:
+    lock
+    faceplayer
+    checkflag 0x23D
+    if 0x1 _goto EventScript_0x816B196
+    call MrFujiNameBox
+    msgbox gText_Lavender_MrFujiSpeak1 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    checkitemspace 0x15E 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto EventScript_0x816B1A0
+    setflag 0x23D
+    additem 0x15E 0x1
+    loadpointer 0x0 0x81937BD
+    giveitemwithfanfare 0x15E 0x1 0x13E
+    call MrFujiNameBox
+    msgbox gText_Lavender_MrFujiSpeak2 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x816B196:
+    call MrFujiNameBox
+    msgbox gText_Lavender_MrFujiSpeak3 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x816B1A0:
+    call MrFujiNameBox
+    msgbox gText_Lavender_MrFujiSpeak4 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pokemon Tower NameBox
+@@@@@@@@@@@@@@@@@@@@@@
+RivalNameBox:
+    setvar 0x8000 1
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+MayNameBox:
+    setvar 0x8000 2
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+MrFujiNameBox:
+    setvar 0x8000 8
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return

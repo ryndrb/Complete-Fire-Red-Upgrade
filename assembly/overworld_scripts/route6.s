@@ -5,8 +5,8 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_PAYBACK, 0x0D7
-.equ FLAG_OBTAIN_GYRO_BALL, 0x0DE
+.equ FLAG_OBTAIN_PAYBACK, 0x9A2
+.equ FLAG_OBTAIN_GYRO_BALL, 0x9A7
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Payback | Route 6

@@ -5,8 +5,88 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_DRAIN_PUNCH, 0x0D6
-.equ FLAG_OBTAIN_SLEEP_TALK, 0x0DB
+.equ FLAG_OBTAIN_ALAKAZITE, 0x960
+.equ FLAG_OBTAIN_DRAIN_PUNCH, 0x981
+.equ FLAG_OBTAIN_SLEEP_TALK, 0x980
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Sabrina
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymLeaderSabrina:
+    setvar 0x8004 0x7
+    setvar 0x8005 0x2
+    special 0x174
+    call SabrinaNameBox
+    trainerbattle1 0x1 0x1A4 0x0 0x819B53C 0x819B602 EventScript_0x816EE0A
+    checkflag 0x29A
+    if 0x0 _goto 0x816EE3D
+    call SabrinaNameBox
+    msgbox 0x819B7F2 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x816EE0A:
+    setvar 0x8004 0x7
+    setvar 0x8005 0x2
+    special 0x173
+    setvar 0x8004 0x7
+    setvar 0x8005 0x3
+    special 0x173
+    clearflag 0xAE
+    setflag 0x4B5
+    setflag 0x825
+    clearflag 0x035
+    setvar 0x8008 0x6
+    call 0x81A6B18
+    goto EventScript_0x816EE3D
+    end
+
+EventScript_0x816EE3D:
+    call SabrinaNameBox
+    msgbox 0x819B6FA MSG_KEEPOPEN
+    callasm RemoveNameBox
+    checkitemspace 0x124 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816EE7E
+    giveitem_msg 0x819B7D3 ITEM_TM04
+    setflag 0x29A
+    call SabrinaNameBox
+    msgbox 0x819B685 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Alakazite | Saffron City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyAlakazite:
+    lock
+    faceplayer
+    checkflag 0x4B5
+    if 0x1 _goto EventScript_GiveAlakazite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveAlakazite:
+    checkflag FLAG_OBTAIN_ALAKAZITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_ALAKAZITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_ALAKAZITE
+    bufferpokemon 0x1 SPECIES_ALAKAZAM
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_ALAKAZITE
+    release
+    end
+
+Obtained:
+    goto 0x816A67F
+    end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Drain Punch | Saffron City Desk Lady
@@ -206,4 +286,117 @@ EventScript_ElevatorAnim:
     special 0x111
     waitstate
     setflag 0x2
+    return
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Saffron Rival
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Saffron_Rival0:
+    lockall
+    setvar 0x4001 0x0
+    goto EventScript_0x81619D4
+
+EventScript_Saffron_Rival1:
+    lockall
+    setvar 0x4001 0x1
+    goto EventScript_0x81619D4
+
+EventScript_0x81619D4:
+    textcolor 0x0
+    playsong 0x13B 0x0
+    applymovement 0x1 0x81A75DB
+    waitmovement 0x0
+    applymovement PLAYER 0x81A75ED
+    applymovement 0x1 0x81A75DD
+    waitmovement 0x0
+    msgbox gText_Saffron_RivalSpeak1 MSG_KEEPOPEN
+    compare 0x4001 0x0
+    if 0x1 _call 0x8161A73
+    compare 0x4001 0x1
+    if 0x1 _call 0x8161A7F
+    msgbox gText_Saffron_RivalSpeak2 MSG_KEEPOPEN
+    setvar LASTTALKED 0x1
+    compare 0x4031 0x2
+    if 0x1 _call 0x8161A80
+    compare 0x4031 0x1
+    if 0x1 _call 0x8161A8B
+    compare 0x4031 0x0
+    if 0x1 _call 0x8161A96
+    msgbox gText_Saffron_RivalSpeak3 MSG_KEEPOPEN
+    closeonkeypress
+    playsong 0x13C 0x0
+    compare 0x4001 0x0
+    if 0x1 _call 0x8161AA1
+    compare 0x4001 0x1
+    if 0x1 _call 0x8161AAC
+    sound 0x27
+    fadedefault
+    hidesprite 0x1
+    checksound
+    setvar 0x405C 0x1
+    releaseall
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Saffron Giovanni
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Saffron_Giovanni0:
+    lockall
+    setvar 0x4001 0x0
+    goto EventScript_0x8161EA0
+
+EventScript_Saffron_Giovanni1:
+    lockall
+    setvar 0x4001 0x1
+    goto EventScript_0x8161EA0
+
+EventScript_0x8161EA0:
+    textcolor 0x0
+    applymovement 0x3 0x81A75ED
+    waitmovement 0x0
+    pause 0x19
+    call GiovanniNameBox
+    msgbox 0x8177108 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    compare 0x4001 0x0
+    if 0x1 _call 0x8161F00
+    compare 0x4001 0x1
+    if 0x1 _call 0x8161F12
+    setvar LASTTALKED 0x3
+    trainerbattle3 0x3 0x15D 0x0 0x81771AB
+    call GiovanniNameBox
+    msgbox 0x81771C2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadescreen 0x1
+    hidesprite 0x3
+    hidesprite 0x4
+    hidesprite 0x6
+    fadescreen 0x0
+    setvar 0x4060 0x1
+    setflag 0x3E
+    clearflag 0x3F
+    releaseall
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Saffron NameBox
+@@@@@@@@@@@@@@@@@@@@@@
+RivalNameBox:
+    setvar 0x8000 1
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+GiovanniNameBox:
+    setvar 0x8000 1
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+SabrinaNameBox:
+    setvar 0x8000 15
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
     return

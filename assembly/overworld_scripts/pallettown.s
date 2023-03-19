@@ -5,24 +5,24 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_RECIEVED_POCKETPC, 0x0B0
-.equ FLAG_RECEIVED_TIMETURNER, 0x0B1
-.equ FLAG_RECEIVED_STATSCANNER, 0x0B2
-.equ FLAG_CHOOSE_REGION_KANTO, 0x208
-.equ FLAG_CHOOSE_REGION_JOHTO, 0x209
-.equ FLAG_CHOOSE_REGION_HOENN, 0x20A
-.equ FLAG_CHOOSE_REGION_SINNOH, 0x20B
-.equ FLAG_CHOOSE_REGION_UNOVA, 0x20C
-.equ FLAG_CHOOSE_REGION_KALOS, 0x20D
-.equ FLAG_CHOOSE_REGION_ALOLA, 0x20E
-.equ FLAG_CHOOSE_REGION_GALAR, 0x20F
-.equ FLAG_OBTAIN_AMULET_COIN, 0x0B1
 .equ FLAG_EXP_SHARE, 0x906
+.equ FLAG_MINIMAL_GRINDING, 0x934
+.equ FLAG_MAY_PALLETTOWN_SPRITE, 0x93A
 .equ FLAG_POKEMON_RANDOMIZER, 0x940
 .equ FLAG_POKEMON_LEARNSET_RANDOMIZER, 0x941
 .equ FLAG_ABILITY_RANDOMIZER, 0x942
-.equ FLAG_MINIMAL_GRINDING, 0x934
-.equ FLAG_MAY_PALLETTOWN_SPRITE, 0x93A
+.equ FLAG_CHOOSE_REGION_KANTO, 0x9A8
+.equ FLAG_CHOOSE_REGION_JOHTO, 0x9A9
+.equ FLAG_CHOOSE_REGION_HOENN, 0x9AA
+.equ FLAG_CHOOSE_REGION_SINNOH, 0x9AB
+.equ FLAG_CHOOSE_REGION_UNOVA, 0x9AC
+.equ FLAG_CHOOSE_REGION_KALOS, 0x9AD
+.equ FLAG_CHOOSE_REGION_ALOLA, 0x9AE
+.equ FLAG_CHOOSE_REGION_GALAR, 0x9AF
+.equ FLAG_RECEIVED_POCKETPC, 0x9B0
+.equ FLAG_RECEIVED_TIMETURNER, 0x9B1
+.equ FLAG_RECEIVED_STATSCANNER, 0x9B2
+.equ FLAG_OBTAIN_AMULET_COIN, 0x9B3
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Prof Aid Give Time Turner
@@ -93,7 +93,9 @@ EventScript_ChooseStarterRegion:
     waitmovement 0x1
     applymovement PLAYER EventScript_GoToMom
     waitmovement PLAYER
+    call MomNameBox
     msgbox gText_MomChooseRegion MSG_KEEPOPEN
+    callasm RemoveNameBox
     setvar 0x8000 0xF
     setvar 0x8001 0x5
     setvar 0x8004 0x0
@@ -115,90 +117,95 @@ EventScript_ChooseStarterRegion:
 EventScript_RemainKanto:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_KANTO
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress 
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen1:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_KANTO
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen2:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_JOHTO
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen3:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_HOENN
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen4:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_SINNOH
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen5:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_UNOVA
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen6:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_KALOS
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen7:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_ALOLA
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
-    release
-    end
+    goto MomScript_End
 
 EventScript_Gen8:
     setvar 0x5029 0x1
     setflag FLAG_CHOOSE_REGION_GALAR
+    call MomNameBox
     msgbox gText_MomDone MSG_KEEPOPEN
     applymovement 0x1 EventScript_MomDone
     waitmovement 0x1
     closeonkeypress
+    goto MomScript_End
+
+MomScript_End:
+    callasm RemoveNameBox
     release
     end
 
@@ -217,6 +224,146 @@ EventScript_GoToMom:
 EventScript_MomDone:
     .byte walk_left_onspot_fastest
     .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Oak Stop Player from Leaving
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PalletTown_OakStopPlayer1:
+    lockall
+    setvar 0x4001 0x0
+    goto EventScript_0x8165605
+    end
+
+EventScript_PalletTown_OakStopPlayer2:
+    lockall
+    setvar 0x4001 0x1
+    goto EventScript_0x8165605
+    end
+
+EventScript_0x8165605:
+    setvar 0x8004 0x0
+    setvar 0x8005 0x2
+    special 0x174
+    textcolor 0x0
+    pause 0x1E
+    playsong 0x12E 0x0
+    call OakNameBox
+    preparemsg gText_OakStopPlayer
+    waitmsg
+    pause 0x55
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement PLAYER 0x81A75ED
+    waitmovement 0x0
+    sound 0x15
+    applymovement PLAYER 0x81A75DB
+    waitmovement 0x0
+    pause 0x1E
+    showsprite 0x3
+    compare 0x4001 0x0
+    if 0x1 _call 0x81656B8
+    compare 0x4001 0x1
+    if 0x1 _call 0x81656C3
+    pause 0x1E
+    call OakNameBox
+    msgbox gText_OakSayUnsafe MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    pause 0x1E
+    compare 0x4001 0x0
+    if 0x1 _call 0x81656CE
+    compare 0x4001 0x1
+    if 0x1 _call 0x81656E0
+    setdooropen 0x10 0xD
+    opendoor 0x10 0xD
+    waitdooranim
+    applymovement 0x3 0x816572E
+    applymovement PLAYER 0x8165758
+    waitmovement 0x0
+    setdoorclosed 0x10 0xD
+    closedoor 0x10 0xD
+    waitdooranim
+    setvar 0x4055 0x1
+    clearflag 0x2B
+    setvar 0x4050 0x1
+    setflag 0x2C
+    setflag 0x4001
+    warp 0x4 0x3 0xFF 0x6 0xC
+    waitstate
+    releaseall
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Inside Oak Lab
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_InsideOakLab:
+    mapscript MAP_SCRIPT_ON_TRANSITION MapScript_0x168F8E
+    mapscript MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE LevelScript2_InsideOakLab
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_InsideOakLab
+    .byte MAP_SCRIPT_TERMIN
+
+MapScript_0x168F8E:
+    setflag 0x2CF
+    compare 0x4055 0x1
+    if 0x1 _call 0x8168FC6
+    compare 0x4055 0x7
+    if 0x1 _call 0x8168FD5
+    compare 0x4055 0x8
+    if 0x1 _call 0x8168FC0
+    checkflag 0x247
+    if 0x1 _call 0x8168FBC
+    end
+
+LevelScript2_InsideOakLab:
+    levelscript 0x4055, 1, EventScript_LevelScript2_InsideOakLab
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_LevelScript2_InsideOakLab:
+    spriteface 0xFF 0x2
+    end
+
+LevelScript_InsideOakLab:
+    levelscript 0x4055, 1, EventScript_LevelScript_InsideOakLab
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_LevelScript_InsideOakLab:
+    lockall
+    textcolor 0x0
+    applymovement 0x4 0x81692B0
+    waitmovement 0x0
+    hidesprite 0x4
+    movesprite2 0x4 0x6 0x3
+    spritebehave 0x4 0x8
+    clearflag 0x2B
+    applymovement PLAYER 0x81692B7
+    waitmovement 0x0
+    applymovement 0x8 0x81A75E9
+    waitmovement 0x0
+    clearflag 0x4001
+    playsong2 0x0
+    fadedefault
+    call RivalNameBox
+    msgbox gText_RivalTiredWaiting MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    pause 0x3C
+    call OakNameBox
+    msgbox gText_OakExplaining MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    pause 0x1E
+    applymovement 0x8 0x81692C0
+    waitmovement 0x0
+    call RivalNameBox
+    msgbox gText_RivalSayNoFair MSG_KEEPOPEN
+    closeonkeypress
+    call OakNameBox
+    msgbox gText_OakPatient MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setvar 0x4055 0x2
+    releaseall
+    end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Choose Starter Oak Lab
@@ -250,7 +397,10 @@ EventScript_StarterGrass:
     if 0x4 _goto 0x8169DE4
     compare 0x4055 0x2
     if 0x1 _goto EventScript_0x8169BE1
+    call OakNameBox
     msgbox 0x818EA19 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
     release
     end
 
@@ -321,7 +471,10 @@ EventScript_StarterWater:
     if 0x4 _goto 0x8169DE4
     compare 0x4055 0x2
     if 0x1 _goto EventScript_0x8169BE1
+    call OakNameBox
     msgbox 0x818EA19 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
     release
     end
 
@@ -392,7 +545,10 @@ EventScript_StarterFire:
     if 0x4 _goto 0x8169DE4
     compare 0x4055 0x2
     if 0x1 _goto EventScript_0x8169BE1
+    call OakNameBox
     msgbox 0x818EA19 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
     release
     end
 
@@ -452,7 +608,7 @@ EventScript_0x8169BE1:
 EventScript_0x8169C14:
     msgbox gText_GrassChoice MSG_YESNO
     compare LASTRESULT 0x1
-    if 0x1 _goto 0x8169C74
+    if 0x1 _goto EventScript_0x8169C74
     compare LASTRESULT 0x0
     if 0x1 _goto 0x8169C71
     end
@@ -460,7 +616,7 @@ EventScript_0x8169C14:
 EventScript_0x8169C33:
     msgbox gText_WaterChoice MSG_YESNO
     compare LASTRESULT 0x1
-    if 0x1 _goto 0x8169C74
+    if 0x1 _goto EventScript_0x8169C74
     compare LASTRESULT 0x0
     if 0x1 _goto 0x8169C71
     end
@@ -468,9 +624,75 @@ EventScript_0x8169C33:
 EventScript_0x8169C52:
     msgbox gText_FireChoice MSG_YESNO
     compare LASTRESULT 0x1
-    if 0x1 _goto 0x8169C74
+    if 0x1 _goto EventScript_0x8169C74
     compare LASTRESULT 0x0
     if 0x1 _goto 0x8169C71
+    end
+
+EventScript_0x8169C74:
+    hidepokepic
+    hidesprite LASTTALKED
+    msgbox 0x818E2E5 MSG_KEEPOPEN
+    call 0x81A6675
+    setflag 0x828
+    setflag 0x291
+    givepokemon 0x4002 0x5 0x0 0x0 0x0 0x0
+    copyvar 0x4031 0x4001
+    bufferpokemon 0x0 0x4002
+    textcolor BLACK
+    preparemsg 0x818E30D
+    waitmsg
+    fanfare 0x13E
+    waitfanfare
+    msgbox 0x81A56A7 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x8169CCC
+    compare LASTRESULT 0x0
+    if 0x1 _goto EventScript_0x8169CDC
+    end
+
+EventScript_0x8169CDC:
+    closeonkeypress
+    compare 0x4001 0x0
+    if 0x1 _goto EventScript_0x169CFF
+    compare 0x4001 0x1
+    if 0x1 _goto EventScript_0x169D1F
+    compare 0x4001 0x2
+    if 0x1 _goto EventScript_0x169D0F
+    end
+
+EventScript_0x169CFF:
+    applymovement 0x8 0x8169D62
+    waitmovement 0x0
+    goto EventScript_0x8169D2F
+
+EventScript_0x169D1F:
+    applymovement 0x8 0x8169D72
+    waitmovement 0x0
+    goto EventScript_0x8169D2F
+
+EventScript_0x169D0F:
+    applymovement 0x8 0x8169D6B
+    waitmovement 0x0
+    goto EventScript_0x8169D2F
+
+EventScript_0x8169D2F:
+    textcolor BLUE
+    call RivalNameBox
+    msgbox gText_RivalTakeIt MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    hidesprite 0x4004
+    textcolor BLACK
+    bufferpokemon 0x0 0x4003
+    preparemsg 0x818DD52
+    waitmsg
+    fanfare 0x13E
+    waitfanfare
+    setvar 0x4055 0x3
+    checkflag 0x83E
+    if 0x1 _call 0x8169D5C
+    release
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -483,6 +705,7 @@ EventScript_AmuletCoin:
     msgbox 0x817D80D MSG_KEEPOPEN
     checkflag FLAG_OBTAIN_AMULET_COIN
     if 0x0 _goto EventScript_GiveAmuletCoin
+    release
     end
 
 EventScript_GiveAmuletCoin:
@@ -501,11 +724,11 @@ EventScript_0x169595:
     lock
     faceplayer
     checkflag 0x2
-    if 0x1 _goto 0x8169600
+    if 0x1 _goto EventScript_0x8169600
     compare 0x4055 0x9
     if 0x1 _goto 0x8169903
     compare 0x4055 0x8
-    if 0x1 _goto 0x8169A6E
+    if 0x1 _goto EventScript_0x8169A6E
     compare 0x4052 0x1
     if 0x1 _goto 0x8169903
     compare 0x4055 0x6
@@ -516,12 +739,30 @@ EventScript_0x169595:
     if 0x1 _goto 0x8169614
     compare 0x4055 0x3
     if 0x1 _goto 0x816960A
-    msgbox 0x818E116 MSG_KEEPOPEN
+    call OakNameBox
+    msgbox gText_OakSayChoosePokeball MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8169600:
+    call OakNameBox
+    msgbox 0x81A72AD MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8169A6E:
+    call OakNameBox
+    msgbox 0x818E871 MSG_KEEPOPEN
+    callasm RemoveNameBox
     release
     end
 
 EventScript_0x816961E:
-    msgbox 0x818E405 MSG_KEEPOPEN
+    call OakNameBox
+    msgbox gText_PlayerDeliveredParcelToOak MSG_KEEPOPEN
+    callasm RemoveNameBox
     textcolor 0x3
     fanfare 0x105
     preparemsg 0x818E4AF
@@ -529,10 +770,13 @@ EventScript_0x816961E:
     waitfanfare
     call 0x81A6675
     removeitem 0x15D 0x1
-    msgbox 0x818E4CA MSG_KEEPOPEN
+    call OakNameBox
+    msgbox gText_OakSayCustomPokeball MSG_KEEPOPEN
     playsong 0x13B 0x0
-    msgbox 0x818DE8D MSG_KEEPOPEN
+    call RivalNameBox
+    msgbox gText_RivalArrivedAtLab MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169A82
     compare PLAYERFACING 0x1
@@ -542,8 +786,10 @@ EventScript_0x816961E:
     compare PLAYERFACING 0x3
     if 0x1 _call 0x8169A9E
     fadedefault
-    msgbox 0x818DE99 MSG_KEEPOPEN
+    call RivalNameBox
+    msgbox gText_RivalForgotOakMessage MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     pause 0x1E
     sound 0x15
     applymovement 0x4 0x81A75DB
@@ -558,8 +804,10 @@ EventScript_0x816961E:
     if 0x1 _call 0x8169AF5
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169B86
-    msgbox 0x818E508 MSG_KEEPOPEN
+    call OakNameBox
+    msgbox gText_OakSayRequest MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169882
     compare PLAYERFACING 0x1
@@ -568,11 +816,13 @@ EventScript_0x816961E:
     if 0x1 _call 0x81698A6
     compare PLAYERFACING 0x3
     if 0x1 _call 0x81698B8
+    call OakNameBox
     msgbox gText_RecentSightings MSG_KEEPOPEN
     closeonkeypress
     pause 0x28
-    msgbox 0x818E5C5 MSG_KEEPOPEN
+    msgbox gText_OakGavePlayerAndRivalDex MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     applymovement 0x4 0x81A75E9
     waitmovement 0x0
     hidesprite 0x9
@@ -598,16 +848,21 @@ EventScript_0x816961E:
     special 0x16F
     special 0x181
     setvar 0x407C 0x1
-    msgbox 0x818E612 MSG_KEEPOPEN
+    call OakNameBox
+    msgbox gText_OakExplainDex MSG_KEEPOPEN
+    callasm RemoveNameBox
     additem 0x4 0x5
     loadpointer 0x0 0x818E6B3
     giveitem 0x4 0x14 MSG_OBTAIN
-    msgbox 0x818E6D0 MSG_KEEPOPEN
+    call OakNameBox
+    msgbox gText_OakExplainPokeball MSG_KEEPOPEN
     setvar 0x8004 0x0
     setvar 0x8005 0x1
     special 0x173
-    msgbox 0x818E784 MSG_KEEPOPEN
-    msgbox 0x818DEC8 MSG_KEEPOPEN
+    msgbox gText_OakEmotional MSG_KEEPOPEN
+    call RivalNameBox
+    msgbox gText_RivalConfident MSG_KEEPOPEN
+    callasm RemoveNameBox
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169B33
     compare PLAYERFACING 0x1
@@ -616,8 +871,10 @@ EventScript_0x816961E:
     if 0x1 _call 0x8169B57
     compare PLAYERFACING 0x3
     if 0x1 _call 0x8169B57
-    msgbox 0x818DEF3 MSG_KEEPOPEN
+    call RivalNameBox
+    msgbox gText_RivalSayTownMapDaisy MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     playsong 0x13C 0x0
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169B69
@@ -759,13 +1016,18 @@ EventScript_PalletTown_LockedDoor:
 EventScript_PalletTown_May:
     lock
     textcolor RED
+    clearflag 0x959
+    call MayNameBox
     msgbox gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     applymovement 0x4 EventScript_PalletTown_MayNoticePlayer
     waitmovement 0x4
     faceplayer
+    call MayNameBox
     msgbox gText_PalletTown_MaySpeaks2 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     applymovement 0x4 EventScript_PalletTown_MayPushPlayer
     applymovement PLAYER EventScript_PalletTown_Pushed
     waitmovement 0x4
@@ -790,23 +1052,336 @@ EventScript_PalletTown_Pushed:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Rival Inside Lab
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PalletTown_Rival:
+    lock
+    faceplayer
+    compare 0x4055 0x3
+    if 0x1 _goto EventScript_0x816958B
+    compare 0x4055 0x2
+    if 0x1 _goto EventScript_0x8169581
+    call RivalNameBox
+    msgbox gText_PalletTown_RivalSpeak1 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x816958B:
+    call RivalNameBox
+    msgbox gText_PalletTown_RivalSpeak2 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8169581:
+    call RivalNameBox
+    msgbox gText_PalletTown_RivalSpeak3 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Mom
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Mom:
+    lock
+    faceplayer
+    checkflag 0x258
+    if 0x1 _goto EventScript_0x8168C4A
+    checkgender
+    compare LASTRESULT 0x0
+    if 0x1 _call EventScript_0x8168C38
+    compare LASTRESULT 0x1
+    if 0x1 _call EventScript_0x8168C41
+    closeonkeypress
+    applymovement 0x1 0x81A75E5
+    waitmovement 0x0
+    release
+    end
+
+EventScript_0x8168C4A:
+    call MomNameBox
+    msgbox gText_MomTakeAQuickRest MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    call 0x81A6C26
+    call MomNameBox
+    msgbox gText_MomTakeCare MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168C38:
+    call MomNameBox
+    msgbox gText_MomAllBoys MSG_KEEPOPEN
+    callasm RemoveNameBox
+    return
+
+EventScript_0x8168C41:
+    call MomNameBox
+    msgbox gText_MomAllGirls MSG_KEEPOPEN
+    callasm RemoveNameBox
+    return
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Daisy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Daisy:
+    lock
+    faceplayer
+    setvar 0x8004 0x1
+    setvar 0x8005 0x2
+    special 0x174
+    checkflag 0x82C
+    if 0x1 _goto EventScript_0x8168DB9
+    compare 0x4001 0x1
+    if 0x1 _goto EventScript_0x8168EEC
+    compare 0x4058 0x2
+    if 0x1 _goto EventScript_0x8168F59
+    compare 0x4058 0x1
+    if 0x1 _goto EventScript_0x8168EF6
+    compare 0x4055 0x1
+    if 0x4 _goto EventScript_0x8168DAF
+    call DaisyNameBox
+    msgbox gText_Daisy_BrotherIsOut MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 0x1 0x81A75E5
+    waitmovement 0x0
+    release
+    end
+
+EventScript_0x8168DB9:
+    special 0x187
+    compare LASTRESULT 0x2
+    if 0x1 _goto EventScript_0x81A7AE0
+    special 0x188
+    compare 0x4025 0x1F4
+    if 0x0 _goto EventScript_0x8168E46
+    call DaisyNameBox
+    msgbox gText_Daisy_JoinSomeTea MSG_YESNO
+    compare LASTRESULT 0x0
+    if 0x1 _goto EventScript_0x8168E3C
+    msgbox gText_Daisy_WhichOneToGroom MSG_KEEPOPEN
+    callasm RemoveNameBox
+    special 0x9F
+    waitstate
+    lock
+    faceplayer
+    compare 0x8004 0x6
+    if 0x4 _goto EventScript_0x8168E3C
+    special2 LASTRESULT 0x147
+    compare LASTRESULT 0x19C
+    if 0x1 _goto EventScript_0x8168E32
+    call DaisyNameBox
+    msgbox gText_Daisy_PlayerAnsweredYes MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadescreen 0x1
+    fanfare 0x100
+    waitfanfare
+    special 0x197
+    fadescreen 0x0
+    special 0x7C
+    call DaisyNameBox
+    msgbox gText_Daisy_DoneGrooming MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168EEC:
+    call DaisyNameBox
+    msgbox gText_Daisy_PokemonLivingThing MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168F59:
+    call DaisyNameBox
+    msgbox 0x818D6AF MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168EF6:
+    call DaisyNameBox
+    msgbox gText_Daisy_GrandpaErrand MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    checkitemspace 0x169 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto EventScript_0x8168F4F
+    applymovement 0x1 0x81A75EB
+    waitmovement 0x0
+    hidesprite 0x2
+    setvar 0x4058 0x2
+    pause 0xF
+    applymovement 0x1 0x81A75E1
+    waitmovement 0x0
+    pause 0xC
+    additem 0x169 0x1
+    loadpointer 0x0 0x818D661
+    giveitemwithfanfare 0x169 0x1 0x13E
+    release
+    end
+
+EventScript_0x8168DAF:
+    call DaisyNameBox
+    msgbox gText_Daisy_WishedSeenBattle MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x81A7AE0:
+    release
+    end
+
+EventScript_0x8168E46:
+    call DaisyNameBox
+    msgbox gText_Daisy_SeeFirstMon MSG_KEEPOPEN
+    callasm RemoveNameBox
+    special2 LASTRESULT 0xE6
+    copyvar 0x8000 LASTRESULT
+    compare 0x8000 0x0
+    if 0x1 _goto EventScript_0x8168EA6
+    compare 0x8000 0x1
+    if 0x1 _goto EventScript_0x8168EB0
+    compare 0x8000 0x2
+    if 0x1 _goto EventScript_0x8168EBA
+    compare 0x8000 0x3
+    if 0x1 _goto EventScript_0x8168EC4
+    compare 0x8000 0x4
+    if 0x1 _goto EventScript_0x8168ECE
+    compare 0x8000 0x5
+    if 0x1 _goto EventScript_0x8168ED8
+    compare 0x8000 0x6
+    if 0x1 _goto EventScript_0x8168EE2
+    end
+
+EventScript_0x8168E3C:
+    call DaisyNameBox
+    msgbox 0x818D875 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168E32:
+    call DaisyNameBox
+    msgbox 0x818D97B MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168F4F:
+    call DaisyNameBox
+    msgbox 0x818D684 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168EA6:
+    call DaisyNameBox
+    msgbox 0x818DBDD MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168EB0:
+    call DaisyNameBox
+    msgbox 0x818DB88 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168EBA:
+    call DaisyNameBox
+    msgbox 0x818DB2E MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168EC4:
+    call DaisyNameBox
+    msgbox 0x818DAF3 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168ECE:
+    call DaisyNameBox
+    msgbox 0x818DABE MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168ED8:
+    call DaisyNameBox
+    msgbox 0x818DA73 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x8168EE2:
+    call DaisyNameBox
+    msgbox 0x818DA16 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pallet Town NameBoxes
+@@@@@@@@@@@@@@@@@@@@@@
+MomNameBox:
+    setvar 0x8000 5
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+OakNameBox:
+    setvar 0x8000 4
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+RivalNameBox:
+    setvar 0x8000 1
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+MayNameBox:
+    setvar 0x8000 0
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+DaisyNameBox:
+    setvar 0x8000 6
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ GAME FLAGS
 @@@@@@@@@@@@@@@@@@@@@@
 SETNECESSARYGAMEFLAGS: @ will add more
     additem ITEM_EXP_SHARE 0x1
     setflag FLAG_EXP_SHARE @ always enabled
-    setflag 0x300 @ Brendan pewter sprite, inside Gym
-    setflag 0x304 @ Brendan pewter sprite, outside Gym
-    setflag 0x312 @ Brendan pewter sprite, inside Gym after catching mon
+    setflag 0x954 @ Brendan pewter sprite, inside Gym
+    setflag 0x953 @ Brendan pewter sprite, outside Gym
+    setflag 0x955 @ Brendan pewter sprite, inside Gym after catching mon
     setflag 0x936 @ Brendan vermillion sprite
     setflag 0x937 @ Brendan's uncle vermillion sprite
     setflag 0x938 @ Brendan cerulean sprite
     setflag 0x93B @ May route 1 sprite
     setflag 0x93C @ May route 4 sprite
     setflag 0x943 @ May celadon sprite
-    setflag 0x30D
+    setflag 0x959 @ Lance Museum Sprite
     setflag 0x933 @ team preview
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
     setvar 0x5030 0x1 @ Route 1 May encounter
+    setvar 0x5013 0x1 @ Brendan Pewter Encounter Inside Gym
+    setvar 0x502F 0x1 @ Brendan Pewter Encounter Outside Gym
     clearflag 0x93A
     return

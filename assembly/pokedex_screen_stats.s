@@ -213,3 +213,257 @@ stat_spd:
 	
 capture:
 	.byte 0xBD, 0xD5, 0xE4, 0xE8, 0xE9, 0xE6, 0xD9, 0x0, 0xDA, 0xE3, 0xE6, 0xFE, 0xE1, 0xE3, 0xE6, 0xD9, 0x0, 0xDD, 0xE2, 0xDA, 0xE3, 0xE6, 0xE1, 0xD5, 0xE8, 0xDD, 0xE3, 0xE2, 0xAB, 0xFF
+
+/*
+	- Credits to DoesntKnowHowToPlay
+	- The image used was from GreenPHX repo edited a bit to look better
+*/
+
+IVRankingASM:
+	cmp r0, #0x0
+	beq Abort
+	cmp r0, #0x3
+	bgt Abort
+	cmp r0, #0x1
+	bne StandardAbort
+	b Start
+
+Abort:
+	ldr r1, .AbortAddr
+	bx r1
+
+StandardAbort:
+	ldr r1, .StandardAbortAddr
+	bx r1
+
+	.align 2
+	.AbortAddr: .word 0x08137bfd
+	.StandardAbortAddr: .word 0x08137bf9
+
+Start:
+	ldr r0, .ActiveMonPtr
+	ldr r1, .ActiveOffset
+	ldr r0, [r0, #0x0]
+	add r6, r0, r1
+
+	add sp, #-0x18
+
+HPIV:
+	mov r0, r6
+	mov r1, #0x27
+	bl Decrypter
+
+	mov r5, r0
+	lsr r5, r5, #0x1
+	mov r0, #0x40
+	mul r5, r0, r5
+
+	mov r1, #0x80
+	str r1, [sp, #0x0]
+	str r1, [sp, #0x4]
+
+	#x, y position
+	mov r2, #0x29
+	str r2, [sp, #0x8]
+	mov r1, #0x2
+	str r1, [sp, #0xc]
+
+	#x, y size
+	mov r2, #0x10
+	str r2, [sp, #0x10]
+	mov r1, #0x8
+	str r1, [sp, #0x14]
+
+	mov r0, #0x3
+	ldr r1, .GraphicAddr
+	add r1, r5
+	mov r2, #0x0
+	mov r3, #0x0
+	bl GraphicHandler
+
+AtkIV:
+	mov r0, r6
+	mov r1, #0x28
+	bl Decrypter
+
+	mov r5, r0
+	lsr r5, r5, #0x1
+	mov r0, #0x40
+	mul r5, r0, r5
+
+	mov r1, #0x80
+	str r1, [sp, #0x0]
+	str r1, [sp, #0x4]
+
+	#x, y position
+	mov r2, #0x29
+	str r2, [sp, #0x8]
+	mov r1, #0x16
+	str r1, [sp, #0xc]
+
+	#x, y size
+	mov r2, #0x10
+	str r2, [sp, #0x10]
+	mov r1, #0x8
+	str r1, [sp, #0x14]
+
+	mov r0, #0x3
+	ldr r1, .GraphicAddr
+	add r1, r5
+	mov r2, #0x0
+	mov r3, #0x0
+	bl GraphicHandler
+
+DefIV:
+	mov r0, r6
+	mov r1, #0x29
+	bl Decrypter
+
+	mov r5, r0
+	lsr r5, r5, #0x1
+	mov r0, #0x40
+	mul r5, r0, r5
+
+	mov r1, #0x80
+	str r1, [sp, #0x0]
+	str r1, [sp, #0x4]
+
+	#x, y position
+	mov r2, #0x29
+	str r2, [sp, #0x8]
+	mov r1, #0x22
+	str r1, [sp, #0xc]
+
+	#x, y size
+	mov r2, #0x10
+	str r2, [sp, #0x10]
+	mov r1, #0x8
+	str r1, [sp, #0x14]
+
+	mov r0, #0x3
+	ldr r1, .GraphicAddr
+	add r1, r5
+	mov r2, #0x0
+	mov r3, #0x0
+	bl GraphicHandler
+
+SAtkIV:
+	mov r0, r6
+	mov r1, #0x2B
+	bl Decrypter
+
+	mov r5, r0
+	lsr r5, r5, #0x1
+	mov r0, #0x40
+	mul r5, r0, r5
+
+	mov r1, #0x80
+	str r1, [sp, #0x0]
+	str r1, [sp, #0x4]
+
+	#x, y position
+	mov r2, #0x29
+	str r2, [sp, #0x8]
+	mov r1, #0x2E
+	str r1, [sp, #0xc]
+
+	#x, y size
+	mov r2, #0x10
+	str r2, [sp, #0x10]
+	mov r1, #0x8
+	str r1, [sp, #0x14]
+
+	mov r0, #0x3
+	ldr r1, .GraphicAddr
+	add r1, r5
+	mov r2, #0x0
+	mov r3, #0x0
+	bl GraphicHandler
+
+SDefIV:
+	mov r0, r6
+	mov r1, #0x2C
+	bl Decrypter
+
+	mov r5, r0
+	lsr r5, r5, #0x1
+	mov r0, #0x40
+	mul r5, r0, r5
+
+	mov r1, #0x80
+	str r1, [sp, #0x0]
+	str r1, [sp, #0x4]
+
+	#x, y position
+	mov r2, #0x29
+	str r2, [sp, #0x8]
+	mov r1, #0x3A
+	str r1, [sp, #0xc]
+
+	#x, y size
+	mov r2, #0x10
+	str r2, [sp, #0x10]
+	mov r1, #0x8
+	str r1, [sp, #0x14]
+
+	mov r0, #0x3
+	ldr r1, .GraphicAddr
+	add r1, r5
+	mov r2, #0x0
+	mov r3, #0x0
+	bl GraphicHandler
+
+SpeedIV:
+	mov r0, r6
+	mov r1, #0x2A
+	bl Decrypter
+
+	mov r5, r0
+	lsr r5, r5, #0x1
+	mov r0, #0x40
+	mul r5, r0, r5
+
+	mov r1, #0x80
+	str r1, [sp, #0x0]
+	str r1, [sp, #0x4]
+
+	#x, y position
+	mov r2, #0x29
+	str r2, [sp, #0x8]
+	mov r1, #0x46
+	str r1, [sp, #0xc]
+
+	#x, y size
+	mov r2, #0x10
+	str r2, [sp, #0x10]
+	mov r1, #0x8
+	str r1, [sp, #0x14]
+
+	mov r0, #0x3
+	ldr r1, .GraphicAddr
+	add r1, r5
+	mov r2, #0x0
+	mov r3, #0x0
+	bl GraphicHandler
+
+
+
+	add sp, #0x18
+	b Abort
+
+
+GraphicHandler:
+	ldr r4, .HandlerAddr
+	bx r4
+
+Decrypter:
+	ldr r2, .DecrypterAddr
+	bx r2
+
+	.align 2
+	.GraphicAddr: .word 0x08900008
+	.HandlerAddr: .word 0x080041f1
+	.ActiveMonPtr: .word 0x0203b140
+	.ActiveOffset: .word 0x00003290
+	.MonIndex: .word 0x0203b16c
+	.DecrypterAddr: .word 0x0803FBE9

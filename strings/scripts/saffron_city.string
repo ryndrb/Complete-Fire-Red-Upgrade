@@ -12,3 +12,12 @@ Zzz[.] Hm?\nTaaake[.] thissss[.]
 
 #org @gText_SleepTalkObtained
 Zzz[.]\nZzz[.]
+
+#org @gText_Saffron_RivalSpeak1
+What kept you, [PLAYER]?
+
+#org @gText_Saffron_RivalSpeak2
+Hahaha! I thought you'd\nturn up if I waited here!\pI guess Team Rocket slowed you\ndown! Not that I care!\pI saw you in Saffron, so I decided\nto see if you got better!
+
+#org @gText_Saffron_RivalSpeak3
+Well, [PLAYER]!\nI'm moving on up and ahead!\pBy checking my Pok\edex, I'm\nstarting to see what's strong and\lhow they evolve!\pAm I a genius or what?\pI'm going to the Pok\emon League to\nboot out the Elite Four.\pI'll become the world's most\npowerful Trainer!\p[PLAYER], well, good luck to you!\nDon't sweat it!\lSmell ya!

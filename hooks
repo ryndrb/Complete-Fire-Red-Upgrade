@@ -766,3 +766,6 @@ NullFunc 081337e4 2
 NullFunc 08133810 1
 CreateTMCaseSpriteHook 8131B94 0
 TMCaseMonIconPalChangeHook 8131E5C 0 
+
+GetLocationMusicNew 8055D6C 1
+IVRankingASM 8900000 1

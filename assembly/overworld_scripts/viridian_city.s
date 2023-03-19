@@ -5,10 +5,91 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_SWORDS_DANCE, 0x0D8
-.equ FLAG_NURSE_JOY_POKE_VIAL, 0x310
+.equ FLAG_OBTAIN_STEELIXITE, 0x963
+.equ FLAG_OBTAIN_SWORDS_DANCE, 0x9A3
+.equ FLAG_NURSE_JOY_POKE_VIAL, 0x971
 .equ FLAG_MAY_ROUTE1_SPRITE, 0x93B
 .equ VAR_MAY_ROUTE1_ENCOUNTER, 0x5030
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Goivanni
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymLeaderGiovanni:
+    setvar 0x8004 0xF
+    setvar 0x8005 0x2
+    special 0x174
+    call GiovanniNameBox
+    trainerbattle1 0x1 0x15E 0x0 0x818F352 0x818F43F EventScript_0x8169F04
+    checkflag 0x298
+    if 0x0 _goto 0x8169F2F
+    call GiovanniNameBox
+    msgbox 0x818F4A2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadescreen 0x1
+    hidesprite 0x8
+    fadescreen 0x0
+    release
+    end
+
+EventScript_0x8169F04:
+    setvar 0x8004 0xF
+    setvar 0x8005 0x3
+    special 0x173
+    setflag 0xAD
+    setflag 0x4B7
+    setflag 0x827
+    setvar 0x4054 0x3
+    setvar 0x8008 0x8
+    call 0x81A6B18
+    goto 0x8169F2F
+    end
+
+EventScript_0x8169F2F:
+    call GiovanniNameBox
+    msgbox 0x818F586 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    checkitemspace 0x13A 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x8169F70
+    giveitem_msg 0x818F675 ITEM_TM26
+    setflag 0x298
+    call GiovanniNameBox
+    msgbox 0x818F695 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Steelixite | Cinnabar Island | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuySteelixite:
+    lock
+    faceplayer
+    checkflag 0x4B7
+    if 0x1 _goto EventScript_GiveSteelixite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveSteelixite:
+    checkflag FLAG_OBTAIN_STEELIXITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_STEELIXITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_STEELIXITE
+    bufferpokemon 0x1 SPECIES_STEELIX
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_STEELIXITE
+    release
+    end
+
+Obtained:
+    goto 0x816A67F
+    end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Swords Dance | Viridian City Old Man | Beat Giovanni
@@ -120,3 +201,12 @@ EventScript_Viridian_OldRod:
     msgbox 0x8194028 MSG_KEEPOPEN
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Viridian NameBox
+@@@@@@@@@@@@@@@@@@@@@@
+GiovanniNameBox:
+    setvar 0x8000 18
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return

@@ -3,23 +3,29 @@
 ## still testing scripts
 # PALLET TOWN
 map 4 0 MapScript_ChooseStarterRegion
+map 4 3 MapScript_InsideOakLab
 npc 3 0 3 EventScript_PalletTown_May
 npc 3 0 1 EventScript_AmuletCoin
+npc 4 0 0 EventScript_Mom
+npc 4 2 0 EventScript_Daisy
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
 npc 4 3 2 EventScript_ProfOakAidLabStatScanner
 npc 4 3 3 EventScript_0x169595
 npc 4 3 4 EventScript_StarterGrass
 npc 4 3 5 EventScript_StarterWater
 npc 4 3 6 EventScript_StarterFire
+npc 4 3 7 EventScript_PalletTown_Rival
 sign 4 1 0 EventScript_GameBoyConsole
 sign 3 0 4 EventScript_PalletTown_LockedDoor
+tile 3 0 0 EventScript_PalletTown_OakStopPlayer1
+tile 3 0 1 EventScript_PalletTown_OakStopPlayer2
 
 # VIRIDIAN CITY
 npc 3 1 1 EventScript_Cut
 npc 3 1 7 EventScript_Cut
 npc 3 1 2 EventScript_ViridianSwordsDance
-npc 3 1 9 EventScript_WorkUp
-npc 3 1 10 EventScript_Aggronite
+npc 3 1 9 EventScript_Aggronite
+npc 3 1 10 EventScript_WorkUp
 npc 5 3 0 EventScript_PokeMartMain
 npc 5 3 3 EventScript_ViridianCity
 npc 5 4 0 EventScript_NurseJoyViridian
@@ -32,11 +38,12 @@ npc 3 1 11 EventScript_Viridian_OldRod
 map 5 3 MapScript_0x16A1DE
 
 # VIRIDIAN FOREST
-npc 1 0 10 EventScript_BigRoot
-npc 1 0 11 EventScript_ShellBell
-npc 1 0 12 EventScript_GrassKnot
-npc 1 0 13 EventScript_Infestation
-npc 1 0 14 EventScript_StrengthBoulder
+npc 1 0 10 EventScript_DeletedKid
+
+npc 1 0 11 EventScript_BigRoot
+npc 1 0 12 EventScript_ShellBell
+npc 1 0 13 EventScript_GrassKnot
+npc 1 0 14 EventScript_Infestation
 npc 1 0 15 EventScript_StrengthBoulder
 npc 1 0 16 EventScript_Pinsirite
 
@@ -79,6 +86,9 @@ npc 7 2 2 EventScript_Brendan_Mom
 npc 7 2 3 EventScript_Brendan_Uncle
 npc 7 2 4 EventScript_Cerulean_Brendan
 npc 3 3 13 EventsScript_Cerulean_May
+tile 3 3 0 EventScript_Cerulean_Rival0
+tile 3 3 1 EventScript_Cerulean_Rival1
+tile 3 3 2 EventScript_Cerulean_Rival2
 
 # POWER PLANT
 npc 1 95 8 EventScript_Ampharosite
@@ -86,12 +96,12 @@ npc 1 95 8 EventScript_Ampharosite
 # ROCK TUNNEL
 npc 1 81 10 EventScript_FlashCannon
 npc 1 81 11 EventScript_StrengthBoulder
-npc 1 81 12 EventScript_StrengthBoulder
 npc 1 82 26 EventScript_Sablenite
 
 # LAVENDER TOWN
 npc 1 88 1 EventScript_PokeTowerLady
 npc 3 4 1 EventScript_LavenderTownMerchant
+npc 8 2 0 EventScript_Lavender_MrFuji
 npc 8 2 6 EventScript_ShadowClaw
 npc 8 5 0 EventScript_PokeMartMain
 npc 8 5 4 EventScript_LavenderTown
@@ -119,11 +129,12 @@ npc 3 5 9 EventScript_Vermillion_Brendan
 npc 9 0 0 EventScript_Vermillion_GoodRod
 tile 3 5 4 EventScript_MewUnderTruckEncounter
 tile 3 5 5 EventScript_VermillionCityGymLocked
-tile 1 6 0 EventScript_SSAnne_Rival1
-tile 1 6 1 EventScript_SSAnne_Rival2
-tile 1 6 2 EventScript_SSAnne_Rival3
+tile 1 6 0 EventScript_SSAnne_Rival0
+tile 1 6 1 EventScript_SSAnne_Rival1
+tile 1 6 2 EventScript_SSAnne_Rival2
 
 # CELADON CITY
+npc 1 45 0 EventScript_Celadon_Giovanni
 npc 1 45 9 EventScript_DarkPulse
 npc 3 6 9 EventScript_Cut
 npc 3 6 10 EventScript_Cut
@@ -154,8 +165,8 @@ npc 3 7 12 EventScript_Cut
 npc 3 7 13 EventScript_Cut
 npc 3 7 14 EventScript_FormerSubstituteKid
 npc 3 7 16 EventScript_RockSlide
-npc 10 1 0 EventScript_PokeMartMain
-npc 10 1 3 EventScript_FuschiaCity
+npc 11 1 0 EventScript_PokeMartMain
+npc 11 1 3 EventScript_FuschiaCity
 npc 11 3 6 EventScript_GymLeaderKoga
 npc 11 5 4 EventScript_PokemonCenterClerk
 npc 11 5 5 EventScript_UtilityOldMan
@@ -179,11 +190,14 @@ npc 14 6 7 EventScript_UtilityOldMan
 npc 14 8 1 EventScript_SaffronSleepTalk
 npc 14 3 8 EventScript_GymGuyAlakazite
 sign 1 58 0 EventScript_Elevator
+tile 1 53 0 EventScript_Saffron_Rival0
+tile 1 53 1 EventScript_Saffron_Rival1
+tile 1 57 0 EventScript_Saffron_Giovanni0
+tile 1 57 1 EventScript_Saffron_Giovanni1
 
 # SEAFOAM ISLAND
 npc 1 83 3 EventScript_AuroraVeil
 npc 1 86 6 EventScript_Glalilite
-npc 3 38 11 EventScript_Avalanche
 
 # CINNABAR ISLAND
 npc 1 62 6 EventScript_StoneEdge
@@ -194,7 +208,9 @@ npc 12 0 8 EventScript_GymGuyHoundoominite
 npc 12 5 7 EventScript_PokemonCenterClerk
 npc 12 7 3 EventScript_PokeMartMain
 npc 12 5 8 EventScript_UtilityOldMan
+npc 12 5 6 EventScript_Cinnabar_BillPokeCenter
 map 12 1 MapScript_Cinnabar_FossilCenter
+map 3 8 MapScript_Cinnabar
 
 # ROUTE 1
 npc 3 19 2 EventScript_SootheBell
@@ -244,9 +260,8 @@ npc 3 26 16 EventScript_RockPolish
 # ROUTE 9
 npc 3 27 9 EventScript_Cut
 npc 3 27 12 EventScript_StrengthBoulder
-npc 3 27 13 EventScript_StrengthBoulder
+npc 3 27 13 EventScript_Medichamite
 npc 3 27 14 EventScript_Banettite
-npc 3 27 15 EventScript_Medichamite
 tile 3 27 0 EventScript_Route9_MayBattle
 
 # ROUTE 10
@@ -256,7 +271,6 @@ npc 3 28 8 EventScript_Cut
 npc 3 28 9 EventScript_Cut
 npc 3 28 10 EventScript_Psyshock
 npc 3 28 11 EventScript_StrengthBoulder
-npc 3 28 12 EventScript_StrengthBoulder
 npc 21 0 5 EventScript_PokemonCenterClerk
 npc 21 0 6 EventScript_UtilityOldMan
 npc 21 0 7 EventScript_Route10RockSmash
@@ -272,8 +286,11 @@ npc 3 31 11 EventScript_ToxicOrb
 npc 3 31 12 EventScript_FlameOrb
 
 # ROUTE 14
-npc 3 32 12 EventScript_Acrobatics
-npc 3 32 13 EventScript_Scizorite
+npc 3 32 10 EventScript_Cut
+npc 3 32 11 EventScript_Cut
+npc 3 32 12 EventScript_Cut
+npc 3 32 15 EventScript_Acrobatics
+npc 3 32 16 EventScript_Scizorite
 
 # ROUTE 15
 npc 3 33 14 EventScript_WillOWisp
@@ -295,6 +312,7 @@ npc 3 37 12 EventScript_DreamEater
 npc 3 37 13 EventScript_Lucarionite
 
 # ROUTE 20
+npc 3 38 11 EventScript_Avalanche
 npc 3 38 12 EventScript_Sharpedonite
 
 # ROUTE 21
@@ -317,6 +335,8 @@ npc 3 43 8 EventScript_Slowbronite
 
 # ROUTE 25
 npc 3 44 10 EventScript_Cut
+npc 30 0 0 EventScript_Route25_Bill
+npc 30 0 1 EventScript_Route25_Bill
 sign 30 0 1 EventScript_RotomEncounter
 
 # VICTORY ROAD

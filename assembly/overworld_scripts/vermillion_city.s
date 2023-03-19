@@ -7,12 +7,91 @@
 
 .equ VAR_MEW_VERMILLION_CITY_ENCOUNTER, 0x5014
 .equ VAR_VERMILLION_CITY_GYM_LOCKED, 0x502C
-.equ FLAG_OBTAIN_EVIOLITE, 0x0BB
 .equ FLAG_BRENDAN_VERMILLION_ENCOUTER, 0x935
 .equ FLAG_BRENDAN_VERMILLION_SPRITE, 0x936
 .equ FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE, 0x937
 .equ FLAG_BRENDAN_CERULEAN_SPRITE, 0x938
 .equ FLAG_CAP_RIVALSSANNE, 0x945
+.equ FLAG_OBTAIN_MANECTITE, 0x95E
+.equ FLAG_OBTAIN_EVIOLITE, 0x973
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Surge
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymLeaderSurge:
+    setvar 0x8004 0x4
+    setvar 0x8005 0x2
+    special 0x174
+    call LtSurgeNameBox
+    trainerbattle1 0x1 0x1A0 0x0 0x8194BA4 0x8194E03 EventScript_0x816B97C
+    callasm RemoveNameBox
+    checkflag 0x231
+    if 0x0 _goto EventScript_0x816B9AF
+    call LtSurgeNameBox
+    msgbox 0x8194C8E MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_0x816B97C:
+    setvar 0x8004 0x4
+    setvar 0x8005 0x1
+    special 0x173
+    checkflag 0x23B
+    if 0x0 _call 0x816B9AB
+    clearflag 0xA0
+    setflag 0x4B2
+    setflag 0x822
+    setvar 0x8008 0x3
+    call 0x81A6B18
+    goto EventScript_0x816B9AF
+    end
+
+EventScript_0x816B9AF:
+    call LtSurgeNameBox
+    msgbox 0x8194CFA MSG_KEEPOPEN
+    callasm RemoveNameBox
+    checkitemspace 0x142 0x1
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816B9F0
+    giveitem_msg 0x8194D87 ITEM_TM34
+    setflag 0x231
+    call LtSurgeNameBox
+    msgbox 0x8194DA8 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Manectite | Vermillion City | Gym Guy
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_GymGuyManectite:
+    lock
+    faceplayer
+    checkflag 0x4B2
+    if 0x1 _goto EventScript_GiveManectite
+    msgbox 0x8191298 MSG_YESNO
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x816A689
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x816A697
+    end
+
+EventScript_GiveManectite:
+    checkflag FLAG_OBTAIN_MANECTITE
+    if 0x1 _goto Obtained
+    msgbox gText_GymGuyGiveStone MSG_KEEPOPEN
+    giveitem ITEM_MANECTITE 0x1 MSG_OBTAIN
+    bufferitem 0x0 ITEM_MANECTITE
+    bufferpokemon 0x1 SPECIES_MANECTRIC
+    msgbox gText_ObtainedStone MSG_KEEPOPEN
+    setflag FLAG_OBTAIN_MANECTITE
+    release
+    end
+
+Obtained:
+    goto 0x816A67F
+    end
 
 @@@@@@@@@@@@@@@@@@@@
 @ Eviolite
@@ -190,14 +269,19 @@ EventScript_0x160B3A:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Vermillion_Brendan:
     lock
+    playsong 0x1D5
     checkflag FLAG_BRENDAN_VERMILLION_ENCOUTER
     if SET _goto EventScript_Vermillion_Brendan_AskAgain
     textcolor BLUE
     spriteface 0x9, RIGHT
+    call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks1 MSG_KEEPOPEN
+    callasm RemoveNameBox
     msgbox gText_UncleVermillionSpeaks1 MSG_KEEPOPEN
+    call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks2 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     applymovement 0x9 EventScript_BrendanVermillionNoticePlayer
     waitmovement 0x9
     getplayerpos 0x8000 0x8001
@@ -209,7 +293,9 @@ EventScript_Vermillion_Brendan:
     if equal _call CheckPlayerY3
     spriteface 0x9, DOWN
     spriteface 0xA, DOWN
+    call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks3 MSG_YESNO
+    callasm RemoveNameBox
     compare LASTRESULT 0x1
     if 0x0 _goto PlayerAnsweredNo
     goto EventScript_Vermillion_BrendanFight
@@ -217,13 +303,17 @@ EventScript_Vermillion_Brendan:
     end
 
 PlayerAnsweredNo:
+    call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks4 MSG_NORMAL
+    callasm RemoveNameBox
     setflag FLAG_BRENDAN_VERMILLION_ENCOUTER
     end
 
 EventScript_Vermillion_Brendan_AskAgain:
     faceplayer
+    call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks5 MSG_YESNO
+    callasm RemoveNameBox
     compare LASTRESULT 0x1
     if 0x0 _goto End
     goto EventScript_Vermillion_BrendanFight
@@ -231,25 +321,32 @@ EventScript_Vermillion_Brendan_AskAgain:
     end
 
 EventScript_Vermillion_BrendanFight:
+    call BrendanNameBox
     trainerbattle1 0x1 59 0x0 gText_Vermillion_BrendanFight_Intro gText_Vermillion_BrendanFight_Lost EvenScript_Vermillion_BrendanFight_After
     release
     end
 
 EvenScript_Vermillion_BrendanFight_After:
+    playsong 0x1D5
+    callasm RemoveNameBox
     applymovement 0x9 EventScript_BrendanVermillionBattleLost
     waitmovement 0x9
     spriteface 0xA, LEFT
+    call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks6 MSG_KEEPOPEN
     spriteface 0x9, DOWN
     spriteface 0xA, DOWN
     msgbox gText_BrendanVermillionSpeaks7 MSG_KEEPOPEN
     spriteface 0x9, RIGHT
     spriteface 0xA, LEFT
+    callasm RemoveNameBox
     msgbox gText_UncleVermillionSpeaks2 MSG_KEEPOPEN
     spriteface 0x9, DOWN
     spriteface 0xA, DOWN
+    call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks8 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     applymovement 0xA EventScript_VermillionUncleLeaving
     applymovement 0x9 EventScript_VermillionBrendanLeaving
     waitmovement 0xA
@@ -267,6 +364,7 @@ EvenScript_Vermillion_BrendanFight_After:
     setflag FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE
     setflag FLAG_BRENDAN_VERMILLION_ENCOUTER
     clearflag FLAG_BRENDAN_CERULEAN_SPRITE
+    fadedefaultbgm
     release
     end
 
@@ -382,95 +480,22 @@ EventScript_VermillionBrendanFinallyLeaving:
 @@@@@@@@@@@@@@@@@@@@@@
 @ Rival SS Anne
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_SSAnne_Rival1:
+EventScript_SSAnne_Rival0:
     lockall
     setvar 0x4001 0x0
-    textcolor 0x0
-    sound 0x9
-    pause 0x5
-    playsong 0x13B 0x0
-    showsprite 0x1
-    pause 0xA
-    applymovement 0x1 0x81A75ED
-    waitmovement 0x0
-    pause 0x14
-    compare 0x4001 0x0
-    if 0x1 _call 0x81609AD
-    compare 0x4001 0x1
-    if 0x1 _call 0x81609B8
-    compare 0x4001 0x2
-    if 0x1 _call 0x81609CA
-    msgbox 0x8173035 MSG_KEEPOPEN
-    setvar LASTTALKED 0x1
-    compare 0x4031 0x2
-    if 0x1 _call 0x81609DC
-    compare 0x4031 0x1
-    if 0x1 _call 0x81609E7
-    compare 0x4031 0x0
-    if 0x1 _call 0x81609F2
-    msgbox 0x8173164 MSG_KEEPOPEN
-    closeonkeypress
-    pause 0xA
-    playsong 0x13C 0x0
-    compare 0x4001 0x0
-    if 0x1 _call 0x81609FD
-    compare 0x4001 0x1
-    if 0x1 _call 0x8160A08
-    compare 0x4001 0x2
-    if 0x1 _call 0x8160A13
-    fadedefault
-    hidesprite 0x1
-    setvar 0x405B 0x1
-    setflag FLAG_CAP_RIVALSSANNE
-    releaseall
-    end
+    goto EventScript_0x8160903
+
+EventScript_SSAnne_Rival1:
+    lockall
+    setvar 0x4001 0x1
+    goto EventScript_0x8160903
 
 EventScript_SSAnne_Rival2:
     lockall
-    setvar 0x4001 0x1
-    textcolor 0x0
-    sound 0x9
-    pause 0x5
-    playsong 0x13B 0x0
-    showsprite 0x1
-    pause 0xA
-    applymovement 0x1 0x81A75ED
-    waitmovement 0x0
-    pause 0x14
-    compare 0x4001 0x0
-    if 0x1 _call 0x81609AD
-    compare 0x4001 0x1
-    if 0x1 _call 0x81609B8
-    compare 0x4001 0x2
-    if 0x1 _call 0x81609CA
-    msgbox 0x8173035 MSG_KEEPOPEN
-    setvar LASTTALKED 0x1
-    compare 0x4031 0x2
-    if 0x1 _call 0x81609DC
-    compare 0x4031 0x1
-    if 0x1 _call 0x81609E7
-    compare 0x4031 0x0
-    if 0x1 _call 0x81609F2
-    msgbox 0x8173164 MSG_KEEPOPEN
-    closeonkeypress
-    pause 0xA
-    playsong 0x13C 0x0
-    compare 0x4001 0x0
-    if 0x1 _call 0x81609FD
-    compare 0x4001 0x1
-    if 0x1 _call 0x8160A08
-    compare 0x4001 0x2
-    if 0x1 _call 0x8160A13
-    fadedefault
-    hidesprite 0x1
-    setvar 0x405B 0x1
-    setflag FLAG_CAP_RIVALSSANNE
-    releaseall
-    end
-
-EventScript_SSAnne_Rival3:
-    lockall
     setvar 0x4001 0x2
+    goto EventScript_0x8160903
+
+EventScript_0x8160903:
     textcolor 0x0
     sound 0x9
     pause 0x5
@@ -486,7 +511,9 @@ EventScript_SSAnne_Rival3:
     if 0x1 _call 0x81609B8
     compare 0x4001 0x2
     if 0x1 _call 0x81609CA
-    msgbox 0x8173035 MSG_KEEPOPEN
+    call RivalNameBox
+    msgbox gText_SSAnne_RivalSpeak1 MSG_KEEPOPEN
+    callasm RemoveNameBox
     setvar LASTTALKED 0x1
     compare 0x4031 0x2
     if 0x1 _call 0x81609DC
@@ -494,8 +521,10 @@ EventScript_SSAnne_Rival3:
     if 0x1 _call 0x81609E7
     compare 0x4031 0x0
     if 0x1 _call 0x81609F2
-    msgbox 0x8173164 MSG_KEEPOPEN
+    call RivalNameBox
+    msgbox gText_SSAnne_RivalSpeak2 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     pause 0xA
     playsong 0x13C 0x0
     compare 0x4001 0x0
@@ -525,3 +554,24 @@ EventScript_Vermillion_GoodRod:
     msgbox 0x8199337 MSG_KEEPOPEN
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@
+@ Vermillion NameBox
+@@@@@@@@@@@@@@@@@@@@
+BrendanNameBox:
+    setvar 0x8000 3
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+LtSurgeNameBox:
+    setvar 0x8000 13
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+RivalNameBox:
+    setvar 0x8000 1
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return

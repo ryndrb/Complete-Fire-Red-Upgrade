@@ -27,7 +27,8 @@
         "event_object_movement.h": "c",
         "battle_transition.h": "c",
         "battle_util.h": "c",
-        "damage_calc.h": "c"
+        "damage_calc.h": "c",
+        "hold_effects.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

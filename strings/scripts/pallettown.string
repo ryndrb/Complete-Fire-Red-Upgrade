@@ -7,6 +7,24 @@ Hmm[.]\pIt appears you do not have a\nPok\edex yet.\pIf you acquire one, come an
 #org @gText_HavePokedex2
 [.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\estat!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyway, press [F8][04] and [F8][09] to\naccess it.\pGood luck on your adventure!
 
+#org @gText_OakStopPlayer
+Hey! Wait!\nDon't go out!
+
+#org @gText_OakSayUnsafe
+It's unsafe!\nWild Pok\emon live in tall grass!\pYou need your own Pok\emon for\nyour protection.\pI know!\nHere, come with me!
+
+#org @gText_RivalTiredWaiting
+Gramps!\nI'm fed up with waiting!
+
+#org @gText_OakExplaining
+[RIVAL]?\nLet me think[.]\pOh, that's right, I told you to\ncome! Just wait!\pHere, [PLAYER].\pThere are three Pok\emon here.\pHaha!\pThe Pok\emon are held inside\nthese Pok\e Balls.\pWhen I was young, I was a serious\nPok\emon Trainer.\pBut now, in my old age, I have\nonly these three left.\pYou can have one.\nGo on, choose!
+
+#org @gText_RivalSayNoFair
+Hey! Gramps! No fair!\nWhat about me?
+
+#org @gText_OakPatient
+Be patient, [RIVAL].\nYou can have one, too!
+
 #org @gText_GrassChoice
 I see! [BUFFER1] is your choice.\nIt's very easy to raise.\pSo, [PLAYER], you want to go with\nthe Grass Pok\emon [BUFFER1]?
 
@@ -16,6 +34,9 @@ Hm! [BUFFER1] is your choice.\nIt's one worth raising.\pSo, [PLAYER], you've dec
 #org @gText_FireChoice
 Ah! [BUFFER1] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you're claiming the\nFire Pok\emon [BUFFER1]?
 
+#org @gText_RivalTakeIt
+I'll take this one, then!
+
 #org @gText_EventScript_GiveAmuletCoin
 [.]\n[.]\pSo you're an aspiring Pok\emon\ntrainer?\pI see[.]\pYou might find this useful then.
 
@@ -24,6 +45,42 @@ Ah! [BUFFER1] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you
 
 #org @gText_MomDone
 Okay, I'll let him know!\nGood luck sweetie!\p[BLACK]Rival Pok\emon will remain Kanto.
+
+#org @gText_OakSayChoosePokeball
+Now, [PLAYER].\pInside those three Pok\e Balls are\nPok\emon.\pWhich one will you choose for\nyourself?
+
+#org @gText_PlayerDeliveredParcelToOak
+Oh, [PLAYER]!\nHow is my old Pok\emon?\pWell, it seems to be growing more\nattached to you.\pYou must be talented as a Pok\emon\nTrainer.\pWhat's that?\nYou have something for me?
+
+#org @gText_OakSayCustomPokeball
+Ah! \nIt's the custom Pok\e Ball!\pI had it on order.\nThank you!
+
+#org @gText_RivalArrivedAtLab
+Gramps!
+
+#org @gText_RivalForgotOakMessage
+I almost forgot!\nWhat did you call me for?
+
+#org @gText_OakSayRequest
+Oh, right!\nI have a request for you two.
+
+#org @gText_OakGavePlayerAndRivalDex
+[PLAYER] and [RIVAL].\nTake these with you.
+
+#org @gText_OakExplainDex
+You can't get detailed data\non Pok\emon by just seeing them.\pYou must catch them to obtain\ncomplete data.\pSo, here are some tools for\ncatching wild Pok\emon.
+
+#org @gText_OakExplainPokeball
+When a wild Pok\emon appears,\nit's fair game.\pJust throw a Pok\e Ball at it and\ntry to catch it!\pThis won't always work, however.\pA healthy Pok\emon can escape.\nYou have to be lucky!
+
+#org @gText_OakEmotional
+To make a complete guide on all\nthe Pok\emon in the world[.]\pThat was my dream!\pBut, I'm too old.\nI can't get the job done.\pSo, I want you two to fulfill my\ndream for me.\pGet moving, you two.\pThis is a great undertaking in\nPok\emon history!
+
+#org @gText_RivalConfident
+All right, Gramps!\nLeave it all to me!
+
+#org @gText_RivalSayTownMapDaisy
+[PLAYER], I hate to say it, but you\nwon't be necessary for this.\pI know! I'll borrow a Town Map\nfrom my sis!\pI'll tell her not to lend you one,\n[PLAYER]! Hahaha!\pDon't bother coming around to\nmy place after this!
 
 #org @gText_RecentSightings
 Recently, there have been\nsightings of many rare Pok\emon\lspecies all around Kanto.\pAs I have mentioned before, it\nwould be wonderful if I can go and\lsee things for myself, but I'm\lmuch too old[.]\pOn the desk there is my invention,\nthe Pok\edex!\pIt automatically records data on\nPok\emon you've seen or caught.\pIt's a high-tech encyclopedia!
@@ -63,3 +120,51 @@ The door is locked.
 
 #org @gText_PalletTown_MaySpeaks2
 Eek!\p[.]W-what are you staring at?
+
+#org @gText_PalletTown_RivalSpeak1
+What, it's only [PLAYER]?\nGramps isn't around.
+
+#org @gText_PalletTown_RivalSpeak2
+My Pok\emon looks a lot\ntougher than yours.
+
+#org @gText_PalletTown_RivalSpeak3
+Heh, I don't need to be\ngreedy like you. I'm mature!\pGo ahead and choose, [PLAYER]!
+
+#org @gText_MomTakeAQuickRest
+[PLAYER]!\nYou should take a quick rest.
+
+#org @gText_MomTakeCare
+Oh, good! You and your\nPok\emon are looking great.\lTake care now!
+
+#org @gText_MomAllBoys
+[.]Right.\nAll boys leave home someday.\lIt said so on TV.\pOh, yes. Prof. Oak, next door, was\nlooking for you.
+
+#org @gText_MomAllGirls
+[.]Right.\nAll girls dream of traveling.\lIt said so on TV.\pOh, yes. Prof. Oak, next door, was\nlooking for you.
+
+#org @gText_Daisy_BrotherIsOut
+Hi, [PLAYER]!\pMy brother, [RIVAL], is out at\nGrandpa's Lab.
+
+#org @gText_Daisy_JoinSomeTea
+Hi, [PLAYER]!\nGood timing.\pI'm about to have some tea.\nWould you like to join me?\pOh, but look.\nYour Pok\emon are a little dirty.\pWould you like me to groom one?
+
+#org @gText_Daisy_WhichOneToGroom
+Which one should I groom?
+
+#org @gText_Daisy_PlayerAnsweredYes
+Okay, I'll get it looking\nnice in no time.
+
+#org @gText_Daisy_DoneGrooming
+There you go! All done.\nSee? Doesn't it look nice?\pGiggle[.]\nIt's such a cute Pok\emon.
+
+#org @gText_Daisy_GrandpaErrand
+Grandpa asked you to run an\nerrand?\pGee, that's lazy of him.\nHere, this will help you.
+
+#org @gText_Daisy_PokemonLivingThing
+Just like people, Pok\emon\nare living things.\pWhen they get tired, please give\nthem a rest.
+
+#org @gText_Daisy_WishedSeenBattle
+[PLAYER], I heard you had\na battle against [RIVAL].\pI wish I'd seen that!
+
+#org @gText_Daisy_SeeFirstMon
+Your Pok\emon grow to love\nyou if you raise them with love.\pFor example, [PLAYER], may I see\nyour first Pok\emon?
