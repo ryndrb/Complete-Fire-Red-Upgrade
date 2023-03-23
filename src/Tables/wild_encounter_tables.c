@@ -3752,6 +3752,22 @@ const struct WildPokemonHeader gWildMonNightHeaders[] =
 		.fishingMonsInfo = NULL,
 	},
 	{
+		.mapGroup = MAP_GROUP(ROUTE_19),
+		.mapNum = MAP_NUM(ROUTE_19),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gRoute19_SurfMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = &gRoute19_FishingMonsInfo,
+	},
+	{
+		.mapGroup = MAP_GROUP(ROUTE_20),
+		.mapNum = MAP_NUM(ROUTE_20),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gRoute20_SurfMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = &gRoute20_FishingMonsInfo,
+	},
+	{
 		.mapGroup = MAP_GROUP(ROUTE_21_A),
 		.mapNum = MAP_NUM(ROUTE_21_A),
 		.landMonsInfo = &gRoute21_LandMonsNightInfo,

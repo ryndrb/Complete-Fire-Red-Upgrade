@@ -1107,7 +1107,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 
 						if (setCustomMoves)
 							SET_MOVES(trainer->party.ItemCustomMoves);
-						SET_MOVES(trainer->party.ItemCustomMoves);
 						SetAbilityFromEnum(&party[i], trainer->party.ItemCustomMoves[i].ability, trainer->party.ItemCustomMoves[i].nature);
 						SetMonData(mon, MON_DATA_HELD_ITEM, &trainer->party.ItemCustomMoves[i].heldItem);
 						SetEVSpread(&party[i],
