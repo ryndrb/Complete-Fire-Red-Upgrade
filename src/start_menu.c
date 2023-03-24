@@ -302,6 +302,21 @@ static void BuildPokeToolsMenu(void)
 {
 	sNumStartMenuItems = 0;
 
+	#ifdef FLAG_RECEIVED_STATSCANNER
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_STATSCANNER))
+	#endif
+		AppendToStartMenuItems(STARTMENU_STATSCANNER);
+
+	#ifdef FLAG_NURSE_JOY_POKE_VIAL
+	if(FlagGet(FLAG_NURSE_JOY_POKE_VIAL))
+	#endif
+		AppendToStartMenuItems(STARTMENU_POKEVIAL);
+
+	#ifdef FLAG_RECEIVED_TIMETURNER
+	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_TIMETURNER))
+	#endif
+		AppendToStartMenuItems(STARTMENU_TIMETURNER);
+
 	#ifdef FLAG_SYS_DEXNAV
 	if (FlagGet(FLAG_SYS_DEXNAV) && FlagGet(FLAG_SYS_POKEDEX_GET))
 	#endif
@@ -311,21 +326,6 @@ static void BuildPokeToolsMenu(void)
 	if(FlagGet(FLAG_SYS_POKEDEX_GET))
 	#endif
 		AppendToStartMenuItems(STARTMENU_PC);
-
-	#ifdef FLAG_RECEIVED_TIMETURNER
-	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_TIMETURNER))
-	#endif
-		AppendToStartMenuItems(STARTMENU_TIMETURNER);
-
-	#ifdef FLAG_NURSE_JOY_POKE_VIAL
-	if(FlagGet(FLAG_NURSE_JOY_POKE_VIAL))
-	#endif
-		AppendToStartMenuItems(STARTMENU_POKEVIAL);
-
-	#ifdef FLAG_RECEIVED_STATSCANNER
-	if(FlagGet(FLAG_SYS_POKEDEX_GET) && FlagGet(FLAG_RECEIVED_STATSCANNER))
-	#endif
-		AppendToStartMenuItems(STARTMENU_STATSCANNER);
 
 	#ifdef FLAG_SYS_QUEST_LOG
 	if (FlagGet(FLAG_SYS_QUEST_LOG))

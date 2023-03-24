@@ -1368,6 +1368,7 @@ DaisyNameBox:
 SETNECESSARYGAMEFLAGS: @ will add more
     additem ITEM_EXP_SHARE 0x1
     setflag FLAG_EXP_SHARE @ always enabled
+    setflag FLAG_RECEIVED_POCKETPC
     setflag 0x954 @ Brendan pewter sprite, inside Gym
     setflag 0x953 @ Brendan pewter sprite, outside Gym
     setflag 0x955 @ Brendan pewter sprite, inside Gym after catching mon

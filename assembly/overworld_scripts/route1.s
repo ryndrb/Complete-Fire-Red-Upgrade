@@ -37,8 +37,10 @@ EventScript_Route1_May:
     waitmovement PLAYER
     applymovement 0x5 EventScript_Route1_MayGotCloserToPlayer
     waitmovement 0x5
-    call MayNameBox
+    call UnknownNameBox
     msgbox gText_Route1_MaySpeaks1 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    call MayNameBox
     msgbox gText_Route1_MaySpeaks2 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
@@ -59,12 +61,6 @@ EventScript_Route1_May:
     fadedefaultbgm
     release
     end
-
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
 
 MoveMaySprite1:
     movesprite 5 10 6
@@ -97,9 +93,13 @@ EventScript_Route1_MovePlayer3:
 EventScript_Route1_MayGotCloserToPlayer:
     .byte walk_up
     .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
+    .byte pause_long
+    .byte exclaim
+    .byte jump_onspot_up
+    .byte pause_long
+    .byte run_up
+    .byte run_up
+    .byte run_up
     .byte end_m
 
 EventScript_Route1_PlayerNoticeMay:
@@ -135,3 +135,18 @@ EventScript_Route1_PlayerStepAside3:
 End:
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Route 1 NameBox
+@@@@@@@@@@@@@@@@@@@@@@
+MayNameBox:
+    setvar 0x8000 2
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+UnknownNameBox:
+    setvar 0x8000 0
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return

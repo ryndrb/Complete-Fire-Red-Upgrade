@@ -192,7 +192,18 @@ static const struct TrainerMonItemCustomMoves sParty_Wally[] = {DUMMY_TRAINER_MO
 static const struct TrainerMonItemCustomMoves sParty_Brendan[] = {
     {
         .iv = 0,
-        .lvl = -20,
+        .lvl = -15,
+        .species = SPECIES_MAGNEMITE,
+        .ability = Ability_2, // sturdy
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_0},
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_MAGNETBOMB, MOVE_THUNDERWAVE, MOVE_THUNDERSHOCK},
+    },
+    {
+        .iv = 0,
+        .lvl = -15,
         .species = SPECIES_RALTS,
         .ability = Ability_2, // trace
         .nature = NATURE_MODEST,
@@ -201,6 +212,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brendan[] = {
         .heldItem = ITEM_NONE,
         .moves = {MOVE_DISARMINGVOICE, MOVE_CONFUSION},
     },
+    
 };
 static const struct TrainerMonItemCustomMoves sParty_Brendan2[] = {
     {

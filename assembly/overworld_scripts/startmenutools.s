@@ -21,7 +21,7 @@ EventScript_PCMainMenu:
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ TIme Turner
+@ Time Turner / Poketch
 @@@@@@@@@@@@@@@@@@@@@@
 .global EventScript_TimeTurner
 EventScript_TimeTurner:
@@ -75,7 +75,7 @@ EventScript_StatScanner:
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ Poke Vial | Inclement Emerald inspired
+@ Pokevial | Inclement Emerald inspired
 @@@@@@@@@@@@@@@@@@@@@@
 .global EventScript_PokeVial
 EventScript_PokeVial:
@@ -89,6 +89,7 @@ EventScript_PokeVial:
 	end
 
 EventScript_ConsumeVialCharge:
+    closemessage
     fadescreen 0x1
     fanfare 0x0100
 	special 0x0

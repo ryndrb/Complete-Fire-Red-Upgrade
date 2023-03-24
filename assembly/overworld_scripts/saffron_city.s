@@ -309,12 +309,16 @@ EventScript_0x81619D4:
     applymovement PLAYER 0x81A75ED
     applymovement 0x1 0x81A75DD
     waitmovement 0x0
+    call RivalNameBox
     msgbox gText_Saffron_RivalSpeak1 MSG_KEEPOPEN
+    callasm RemoveNameBox
     compare 0x4001 0x0
     if 0x1 _call 0x8161A73
     compare 0x4001 0x1
     if 0x1 _call 0x8161A7F
+    call RivalNameBox
     msgbox gText_Saffron_RivalSpeak2 MSG_KEEPOPEN
+    callasm RemoveNameBox
     setvar LASTTALKED 0x1
     compare 0x4031 0x2
     if 0x1 _call 0x8161A80
@@ -322,8 +326,10 @@ EventScript_0x81619D4:
     if 0x1 _call 0x8161A8B
     compare 0x4031 0x0
     if 0x1 _call 0x8161A96
+    call RivalNameBox
     msgbox gText_Saffron_RivalSpeak3 MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     playsong 0x13C 0x0
     compare 0x4001 0x0
     if 0x1 _call 0x8161AA1

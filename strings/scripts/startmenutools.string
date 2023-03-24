@@ -5,10 +5,10 @@ PC
 A portable Pokemon Storage System.\nUse it anywhere!
 
 #org @gText_TimerTurnerDescription
-A convenient tool which allows the player\nto change to a specific time of the day!
+Adjust time for wild Pok\emon\nencounters.
 
 #org @gText_TimeTurner
-Time Turn
+Pok\etch
 
 #org @gText_TimeOfDay
 Which time of day would you like\nto change to?
@@ -17,16 +17,16 @@ Which time of day would you like\nto change to?
 Pok\estat
 
 #org @gText_StatScannerDescription
-A convenient tool which allows the player\nto view their Pok\emon statistics!
+A device that displays Pok\emon\nstatistics.
 
 #org @gText_PokeVial
-Pok\e Vial
+Pok\evial
 
 #org @gText_PokeVialDescription
 Potent medicine that fully restores all\nPok\emon.
 
 #org @gText_CurrentCharges
-Your Pok\e Vial currently have [BUFFER1]\ncharges.\pDo you want to use one charge?
+Your Pok\evial currently have [BUFFER1]\ncharges.\pDo you want to use one charge?
 
 #org @gText_RefillVial
-Your Pok\e Vial currently have [BUFFER1]\ncharges.\pRefill it at a Pok\emon Center to\ncontinue using it.
+Your Pok\evial currently have [BUFFER1]\ncharges.\pRefill it at a Pok\emon Center to\ncontinue using it.
