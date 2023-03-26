@@ -259,14 +259,38 @@ static const u16* sPlayerMarlonOutfitColours[] =
 	};
 
 #else //Modify this
-	// create 255 OW tables
-	const struct EventObjectGraphicsInfo** const gOverworldTableSwitcher[255] =
-	{
+
+// Normal NPC
+extern const u16 gEventObjectPic_NurseJoyPal[];
+extern const u16 gEventObjectPic_OakPal[];
+
+// Team Rocket
+extern const u16 gEventObjectPic_ArcherPal[];
+extern const u16 gEventObjectPic_ArianaPal[];
+extern const u16 gEventObjectPic_ProtonPal[];
+
+// create 255 OW tables
+const struct EventObjectGraphicsInfo** const gOverworldTableSwitcher[255] ={
 		(NPCPtr*) 0x8EB1000,
 		(NPCPtr*) 0x0,
 		// etc...
 		// please note that this method makes compatability with OW Manager challenging
-	};
+};
+
+// Switcher from Stevebel repo
+static const struct SpritePalette sObjectEventSpritePalettes12[] = {
+	{gEventObjectPic_NurseJoyPal, 0x1201},
+	{gEventObjectPic_OakPal, 0x1202},
+	{gEventObjectPic_ArcherPal, 0x1203},
+	{gEventObjectPic_ArianaPal, 0x1204},
+	{gEventObjectPic_ProtonPal, 0x1205},
+	{NULL, 0x11FF},
+};
+
+const struct SpritePalette* const gObjectEventSpritePalettesSwitcher[255] = {
+	[0x11] = (const struct SpritePalette*) 0x83A5158,
+	[0x12] = sObjectEventSpritePalettes12,
+};
 #endif
 
 struct PlayerGraphics

@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "../include/field_weather.h"
 #include "../include/constants/field_effects.h"
+#include "../include/event_object_movement.h"
 
 #include "../include/new/character_customization.h"
 #include "../include/new/dynamic_ow_pals.h"
@@ -16,7 +17,7 @@ Credit to Navenatox
 #define Green(Color)	((Color >> 5) & 31)
 #define Blue(Color)		((Color >> 10) & 31)
 
-#define LoadNPCPalette(PalTag, PalSlot) ((void(*)(u16, u8)) (0x805F538 | 1))(PalTag, PalSlot)
+// #define LoadNPCPalette(PalTag, PalSlot) ((void(*)(u16, u8)) (0x805F538 | 1))(PalTag, PalSlot)
 #define TintOBJPalette(PalSlot) ((void(*)(u8))0x8083598+1)(PalSlot)
 
 #define OverworldIsActive FuncIsActiveTask(Task_WeatherMain)
@@ -27,6 +28,7 @@ Credit to Navenatox
 
 #define FOG_FADE_COLOUR TintColor(RGB(28, 31, 28))
 #define FOG_BRIGHTEN_INTENSITY 12
+#define OBJ_EVENT_PAL_TAG_NONE 0x11FF
 
 struct PalRef
 {
@@ -336,6 +338,44 @@ u8 GetPalSlotMisc(u32 OBJData)
 	return PalRefIncreaseCount(palSlot);
 }
 
+void LoadObjectEventPalette(u16 paletteTag) {
+	u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
+	const struct SpritePalette* palettes = gObjectEventSpritePalettesSwitcher[GetObjectEventPalettesTableByTag(paletteTag)];
+	if (palettes[i].tag != OBJ_EVENT_PAL_TAG_NONE)
+	{
+		TryLoadObjectPalette(&palettes[i]);
+	}
+}
+void PatchObjectPalette(u16 paletteTag, u8 paletteSlot) {
+	u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
+	const struct SpritePalette* palettes = gObjectEventSpritePalettesSwitcher[GetObjectEventPalettesTableByTag(paletteTag)];
+	LoadPalette(palettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
+	ApplyGlobalFieldPaletteTint(paletteSlot);
+}
+
+u8 FindObjectEventPaletteIndexByTag(u16 tag)
+{
+	u8 i;
+	const struct SpritePalette* palettes = gObjectEventSpritePalettesSwitcher[GetObjectEventPalettesTableByTag(tag)];
+	for (i = 0; palettes[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+	{
+		if (palettes[i].tag == tag)
+		{
+			return i;
+		}
+	}
+	return 0xFF;
+}
+
+u8 GetObjectEventPalettesTableByTag(u16 tag)
+{
+	u8 paletteTable = (tag >> 8) & 0xFF;
+	if (gObjectEventSpritePalettesSwitcher[paletteTable] != 0)
+		return paletteTable;
+	else
+		return 11;
+}
+
 u8 FindOrLoadNPCPalette(u16 palTag)
 {
 	u8 palSlot = FindPalRef(PalTypeNPC, palTag);
@@ -346,7 +386,8 @@ u8 FindOrLoadNPCPalette(u16 palTag)
 	if (palSlot == 0xFF)
 		return PalRefIncreaseCount(0);
 
-	LoadNPCPalette(palTag, palSlot);
+	// LoadNPCPalette(palTag, palSlot);
+	PatchObjectPalette(palTag, palSlot);
 	#ifdef UNBOUND
 	if (IsPaletteTagAffectedByCharacterCustomization(palTag))
 		ChangeEventObjPal(0x100 + palSlot * 16, palTag);
@@ -367,7 +408,8 @@ u8 FindOrCreateReflectionPalette(u8 palSlotNPC)
 	if (palSlot == 0xFF)
 		return PalRefIncreaseCount(0);
 
-	LoadNPCPalette(palTag, palSlot);
+	// LoadNPCPalette(palTag, palSlot);
+	PatchObjectPalette(palTag, palSlot);
 	#ifdef UNBOUND
 	if (IsPaletteTagAffectedByCharacterCustomization(palTag))
 		ChangeEventObjPal(0x100 + palSlot * 16, palTag);
