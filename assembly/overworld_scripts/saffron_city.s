@@ -8,6 +8,11 @@
 .equ FLAG_OBTAIN_ALAKAZITE, 0x960
 .equ FLAG_OBTAIN_DRAIN_PUNCH, 0x981
 .equ FLAG_OBTAIN_SLEEP_TALK, 0x980
+.equ VAR_PROTON_BATTLES, 0x5033
+.equ VAR_ARCHER_BATTLES, 0x5034
+.equ VAR_ARIANA_BATTLES, 0x5035
+.equ VAR_ENCOUNTER_SIPHCO_PROTON, 0x503E
+.equ FLAG_ENCOUNTER_SIPHCO_PROTON, 0x9B8
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Sabrina
@@ -344,35 +349,156 @@ EventScript_0x81619D4:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ Saffron Giovanni
+@ Proton Silph Co
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_Saffron_Giovanni0:
+MapScript_SilphCo_Proton:
+    mapscript MAP_SCRIPT_ON_TRANSITION MapScript_SilphCo
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_SilphCo_Proton
+    .byte MAP_SCRIPT_TERMIN
+
+MapScript_SilphCo:
+    setworldmapflag 0x8AC
+    end
+
+LevelScript_SilphCo_Proton:
+    levelscript VAR_ENCOUNTER_SIPHCO_PROTON, 0, EventScript_SilphCo_Proton
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_SilphCo_Proton:
+    lock
+    textcolor BLUE
+    setflag 0x9B5
+    applymovement 2 Move_SilphCo_Proton1
+    waitmovement 2
+    sound 0x15
+    applymovement 2 Move_SilphCo_Proton2
+    waitmovement 2
+    playsong 0x184 1
+    call ProtonNameBox
+    msgbox gText_SilphCo_ProtonSpeak1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    trainerbattle3 0x3 0x6 0x0 gText_SilphCo_ProtonDefeated
+    call ProtonNameBox
+    msgbox gText_SilphCo_ProtonSpeak2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement PLAYER Move_SilphCo_Player1
+    waitmovement PLAYER
+    applymovement 2 Move_SilphCo_Proton3
+    waitmovement 2
+    sound 0x9
+    hidesprite 2
+    setflag FLAG_ENCOUNTER_SIPHCO_PROTON
+    setvar VAR_ENCOUNTER_SIPHCO_PROTON 1
+    setvar VAR_PROTON_BATTLES 2
+    fadedefaultbgm
+    release
+    end
+
+Move_SilphCo_Proton1:
+    .byte pause_long
+    .byte walk_up
+    .byte walk_up
+    .byte pause_long
+    .byte exclaim
+    .byte end_m
+
+Move_SilphCo_Proton2:
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_SilphCo_Proton3:
+    .byte walk_down
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Player1:
+    .byte walk_right
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Ariana Silph Co
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_SilphCo_Ariana:
+    lock
+    faceplayer
+    textcolor RED
+    setflag 0x9B5
+    playsong 0x181 1
+    call ArianaNameBox
+    msgbox gText_SilphCo_ArianaSpeak1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    trainerbattle3 0x3 0x8 0x0 gText_SilphCo_ArianaDefeated
+    call ArianaNameBox
+    msgbox gText_SilphCo_ArianaSpeak2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadescreen 0x1
+    hidesprite 1
+    fadescreen 0x0
+    setvar VAR_ARIANA_BATTLES 2
+    fadedefaultbgm
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Archer Silph Co
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_SilphCo_Archer0:
     lockall
     setvar 0x4001 0x0
-    goto EventScript_0x8161EA0
+    goto EventScript_Archer
 
-EventScript_Saffron_Giovanni1:
+EventScript_SilphCo_Archer1:
     lockall
     setvar 0x4001 0x1
-    goto EventScript_0x8161EA0
+    goto EventScript_Archer
 
-EventScript_0x8161EA0:
-    textcolor 0x0
-    applymovement 0x3 0x81A75ED
+EventScript_Archer:
+    textcolor BLUE
+    applymovement 0x3 Move_SilphCo_Archer1
     waitmovement 0x0
-    pause 0x19
-    call GiovanniNameBox
-    msgbox 0x8177108 MSG_KEEPOPEN
+    playsong 0x181 1
+    call UnknownNameBox
+    msgbox gText_SilphCo_ArcherSpeak1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     compare 0x4001 0x0
-    if 0x1 _call 0x8161F00
+    if 0x1 _call EventScript_SilphCo_ArcherVar0
     compare 0x4001 0x1
-    if 0x1 _call 0x8161F12
+    if 0x1 _call EventScript_SilphCo_ArcherVar1
     setvar LASTTALKED 0x3
-    trainerbattle3 0x3 0x15D 0x0 0x81771AB
-    call GiovanniNameBox
-    msgbox 0x81771C2 MSG_KEEPOPEN
+    call UnknownNameBox
+    msgbox gText_SilphCo_ArcherSpeak2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    trainerbattle3 0x3 0x7 0x0 gText_SilphCo_ArcherDefeated
+    msgbox gText_SilphCo_PresidentSpeak1 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 3 Move_SilphCo_Archer4
+    waitmovement 3
+    call ArcherNameBox
+    msgbox gText_SilphCo_ArcherSpeak3 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    compare 0x4001 0x0
+    if 0x1 _call EventScript_SilphCo_ArcherVar2
+    compare 0x4001 0x1
+    if 0x1 _call EventScript_SilphCo_ArcherVar3
+    call ArcherNameBox
+    msgbox gText_SilphCo_ArcherSpeak4 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     fadescreen 0x1
@@ -383,8 +509,71 @@ EventScript_0x8161EA0:
     setvar 0x4060 0x1
     setflag 0x3E
     clearflag 0x3F
+    setvar VAR_ARCHER_BATTLES 1
+    fadedefaultbgm
     releaseall
     end
+
+EventScript_SilphCo_ArcherVar0:
+    applymovement 3 Move_SilphCo_Archer2
+    waitmovement 3
+    spriteface PLAYER, RIGHT
+    return
+
+EventScript_SilphCo_ArcherVar1:
+    applymovement 3 Move_SilphCo_Archer3
+    waitmovement 3
+    spriteface PLAYER, LEFT
+    return
+
+EventScript_SilphCo_ArcherVar2:
+    applymovement 3 Move_SilphCo_Archer5
+    waitmovement 3
+    return
+
+EventScript_SilphCo_ArcherVar3:
+    applymovement 3 Move_SilphCo_Archer6
+    waitmovement 3
+    return
+
+Move_SilphCo_Archer1:
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+Move_SilphCo_Archer2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Archer3:
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Archer4:
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Archer5:
+    .byte pause_long
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Archer6:
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Saffron NameBox
@@ -403,6 +592,30 @@ GiovanniNameBox:
 
 SabrinaNameBox:
     setvar 0x8000 15
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+ArcherNameBox:
+    setvar 0x8000 24
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+ProtonNameBox:
+    setvar 0x8000 23
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+ArianaNameBox:
+    setvar 0x8000 25
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+UnknownNameBox:
+    setvar 0x8000 0
     setvar 0x8001 LEFT
     callasm DrawNameBox
     return

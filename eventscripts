@@ -5,7 +5,7 @@
 map 4 0 MapScript_ChooseStarterRegion
 map 4 3 MapScript_InsideOakLab
 npc 3 0 3 EventScript_PalletTown_May
-npc 3 0 1 EventScript_AmuletCoin
+npc 3 0 1 EventScript_TrainerBattle
 npc 4 0 0 EventScript_Mom
 npc 4 2 0 EventScript_Daisy
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
@@ -71,6 +71,7 @@ map 6 2 MapScript_BrendanAfterCatchingMonInsideGym
 
 # MT MOON
 npc 1 3 11 EventScript_Incinerate
+npc 1 3 12 EventScript_MtMoon_Proton
 
 # CERULEAN CITY
 npc 3 3 8 EventScript_Cut
@@ -157,6 +158,7 @@ npc 10 16 9 EventScript_Cut
 npc 10 16 10 EventScript_Cut
 npc 10 16 11 EventScript_GymGuyAbomasite
 npc 3 6 16 EventScript_Celadon_May
+tile 1 45 0 EventScript_RocketHQ_Ariana
 
 # FUSCHIA CITY
 npc 3 7 10 EventScript_Cut
@@ -180,7 +182,9 @@ npc 1 65 3 EventScript_Kangaskhanite
 npc 1 71 1 EventScript_WildCharge
 
 # SAFFRON CITY
+map 1 47 MapScript_SilphCo_Proton
 npc 1 47 0 EventScipt_SaffronDrainPunch
+npc 1 49 0 EventScript_SilphCo_Ariana
 npc 1 53 11 EventScript_TrickRoom
 npc 14 3 6 EventScript_GymLeaderSabrina
 npc 14 5 0 EventScript_PokeMartMain
@@ -192,8 +196,8 @@ npc 14 3 8 EventScript_GymGuyAlakazite
 sign 1 58 0 EventScript_Elevator
 tile 1 53 0 EventScript_Saffron_Rival0
 tile 1 53 1 EventScript_Saffron_Rival1
-tile 1 57 0 EventScript_Saffron_Giovanni0
-tile 1 57 1 EventScript_Saffron_Giovanni1
+tile 1 57 0 EventScript_SilphCo_Archer0
+tile 1 57 1 EventScript_SilphCo_Archer1
 
 # SEAFOAM ISLAND
 npc 1 83 3 EventScript_AuroraVeil

@@ -38,6 +38,9 @@ extern u8 gText_Name_Lorelei[];
 extern u8 gText_Name_Bruno[];
 extern u8 gText_Name_Agatha[];
 extern u8 gText_Name_Lance[];
+extern u8 gText_Name_Proton[];
+extern u8 gText_Name_Archer[];
+extern u8 gText_Name_Ariana[];
 
 // Add Character names here
 u8* CharacterNames[] = {
@@ -64,6 +67,9 @@ u8* CharacterNames[] = {
     /* 20 */ gText_Name_Bruno,
     /* 21 */ gText_Name_Agatha,
     /* 22 */ gText_Name_Lance,
+    /* 23 */ gText_Name_Proton,
+    /* 24 */ gText_Name_Archer,
+    /* 25 */ gText_Name_Ariana,
 };
 
 /*

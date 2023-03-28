@@ -28,8 +28,6 @@
 @ Prof Aid Give Time Turner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ProfOakAidLabTimeTurner:
-    setvar 0x405D 0x0
-    clearflag 0x51
     textcolor BLUE
     lock
     faceplayer
@@ -772,6 +770,8 @@ EventScript_0x816961E:
     removeitem 0x15D 0x1
     call OakNameBox
     msgbox gText_OakSayCustomPokeball MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
     playsong 0x13B 0x0
     call RivalNameBox
     msgbox gText_RivalArrivedAtLab MSG_KEEPOPEN
@@ -819,6 +819,7 @@ EventScript_0x816961E:
     call OakNameBox
     msgbox gText_RecentSightings MSG_KEEPOPEN
     closeonkeypress
+    callasm RemoveNameBox
     pause 0x28
     msgbox gText_OakGavePlayerAndRivalDex MSG_KEEPOPEN
     closeonkeypress
@@ -850,6 +851,7 @@ EventScript_0x816961E:
     setvar 0x407C 0x1
     call OakNameBox
     msgbox gText_OakExplainDex MSG_KEEPOPEN
+    closeonkeypress
     callasm RemoveNameBox
     additem 0x4 0x5
     loadpointer 0x0 0x818E6B3
@@ -860,8 +862,11 @@ EventScript_0x816961E:
     setvar 0x8005 0x1
     special 0x173
     msgbox gText_OakEmotional MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
     call RivalNameBox
     msgbox gText_RivalConfident MSG_KEEPOPEN
+    closeonkeypress
     callasm RemoveNameBox
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169B33
@@ -1016,7 +1021,6 @@ EventScript_PalletTown_LockedDoor:
 EventScript_PalletTown_May:
     lock
     textcolor RED
-    clearflag 0x959
     call MayNameBox
     msgbox gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN
     closeonkeypress
@@ -1380,9 +1384,9 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x943 @ May celadon sprite
     setflag 0x959 @ Lance Museum Sprite
     setflag 0x933 @ team preview
+    setflag 0x9B7 @ ariana rocket hq
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
     setvar 0x5030 0x1 @ Route 1 May encounter
     setvar 0x5013 0x1 @ Brendan Pewter Encounter Inside Gym
     setvar 0x502F 0x1 @ Brendan Pewter Encounter Outside Gym
-    clearflag 0x93A
     return

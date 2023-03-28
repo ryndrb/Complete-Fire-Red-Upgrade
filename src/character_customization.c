@@ -263,6 +263,9 @@ static const u16* sPlayerMarlonOutfitColours[] =
 // Normal NPC
 extern const u16 gEventObjectPic_NurseJoyPal[];
 extern const u16 gEventObjectPic_OakPal[];
+extern const u16 gEventObjectPic_ScientistPal[];
+extern const u16 gEventObjectPic_NerdPal[];
+extern const u16 gEventObjectPic_PolicePal[];
 
 // Team Rocket
 extern const u16 gEventObjectPic_ArcherPal[];
@@ -284,11 +287,14 @@ static const struct SpritePalette sObjectEventSpritePalettes12[] = {
 	{gEventObjectPic_ArcherPal, 0x1203},
 	{gEventObjectPic_ArianaPal, 0x1204},
 	{gEventObjectPic_ProtonPal, 0x1205},
+	{gEventObjectPic_ScientistPal, 0x1206},
+	{gEventObjectPic_NerdPal, 0x1207},
+	{gEventObjectPic_PolicePal, 0x1208},
 	{NULL, 0x11FF},
 };
 
 const struct SpritePalette* const gObjectEventSpritePalettesSwitcher[255] = {
-	[0x11] = (const struct SpritePalette*) 0x83A5158,
+	[0x11] = (const struct SpritePalette*) 0x8F15E70,
 	[0x12] = sObjectEventSpritePalettes12,
 };
 #endif

@@ -822,8 +822,12 @@ void sp06B_ReplacePlayerTeamWithMultiTrainerTeam(void)
 // rad red implemention, cred soupercell
 static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainerId, const struct MultiRaidTrainer trainerData){
 	for(u8 i = 0; i < trainerData.spreadSizes[0]; i++) {
-		u8 level = trainerData.spreads[0][i].level; 
-
+		u8 level = 0;
+		if(FlagGet(FLAG_CUSTOM_TRAINERS)){
+			level = GetHighestMonLevel(gPlayerParty) + trainerData.spreads[0][i].level;
+		}else{
+			level = trainerData.spreads[0][i].level;
+		}
 		if (trainerData.backSpriteId == DOUBLE_BATTLE && ViableMonCount(gPlayerParty) >= 2 ) {
 			gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
 		}
@@ -1102,6 +1106,21 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 						if (trainer->party.ItemCustomMoves[i].heldItem == ITEM_EVIOLITE)
 							canEvolveMon = canEvolveMonBackup; //Restore original option for rest of team
 						#else
+
+						switch(trainerId)
+						{
+							case 0x6:
+								if(VarGet(VAR_PROTON_BATTLES) == 1) // just used var if decided for more future encounters (sevii)
+									return BuildCustomTrainerParty(party, gImportantTrainers[6].otId, gImportantTrainers[6]); 
+								break;
+							case 0x8:
+								if(VarGet(VAR_ARIANA_BATTLES) == 1) // just used var if decided for more future encounters (sevii)
+									return BuildCustomTrainerParty(party, gImportantTrainers[7].otId, gImportantTrainers[7]); 
+								break;
+							default:
+								break;
+						}
+
 						MAKE_POKEMON(trainer->party.ItemCustomMoves);
 						#endif
 

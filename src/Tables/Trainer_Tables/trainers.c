@@ -82,41 +82,41 @@ const struct Trainer gTrainers[] =
         .partySize = NELEMS(sParty_RSRuinManiac),
         .party = {.ItemCustomMoves = sParty_RSRuinManiac}
     },
-    [TRAINER_INTERVIEWER] = {
+    [TRAINER_PROTON] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
-        .trainerClass = CLASS_INTERVIEWER,
-        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_INTERVIEWER,
-        .trainerPic = TRAINER_PIC_CAMERA_DUO,
-        .trainerName = NO_NAME,
-        .items = {},
-        .doubleBattle = TRUE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_Interviewer),
-        .party = {.ItemCustomMoves = sParty_Interviewer}
-    },
-    [TRAINER_RS_TUBER_F] = {
-        .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
-        .trainerClass = CLASS_TUBER_RS_1,
-        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_GIRL,
-        .trainerPic = TRAINER_PIC_RS_TUBER_F,
-        .trainerName = NO_NAME,
-        .items = {},
+        .trainerClass = CLASS_BOSS,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_AQUA,
+        .trainerPic = TRAINER_PIC_CAMERA_DUO, // replaced
+        .trainerName = {_P,_r,_o,_t,_o,_n,_END},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_RSTuberF),
-        .party = {.ItemCustomMoves = sParty_RSTuberF}
+        .partySize = NELEMS(sParty_Proton),
+        .party = {.ItemCustomMoves = sParty_Proton}
     },
-    [TRAINER_RS_TUBER_M] = {
+    [TRAINER_ARCHER] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
-        .trainerClass = CLASS_TUBER_RS_2,
-        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_RS_TUBER_M,
-        .trainerName = NO_NAME,
-        .items = {},
+        .trainerClass = CLASS_BOSS,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_AQUA,
+        .trainerPic = TRAINER_PIC_RS_TUBER_F, // replaced
+        .trainerName = {_A,_r,_c,_h,_e,_r,_END},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_RSTuberM),
-        .party = {.ItemCustomMoves = sParty_RSTuberM}
+        .partySize = NELEMS(sParty_Archer),
+        .party = {.ItemCustomMoves = sParty_Archer}
+    },
+    [TRAINER_ARIANA] = {
+        .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
+        .trainerClass = CLASS_BOSS,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_AQUA,
+        .trainerPic = TRAINER_PIC_RS_TUBER_M, // replaced
+        .trainerName = {_A,_r,_i,_a,_n,_a,_END},
+        .items = {ITEM_MEGA_RING},
+        .doubleBattle = FALSE,
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .partySize = NELEMS(sParty_Ariana),
+        .party = {.ItemCustomMoves = sParty_Ariana}
     },
     [TRAINER_RS_COOLTRAINER_M] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,

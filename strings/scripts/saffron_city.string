@@ -21,3 +21,39 @@ Hahaha! I thought you'd\nturn up if I waited here!\pI guess Team Rocket slowed y
 
 #org @gText_Saffron_RivalSpeak3
 Well, [PLAYER]!\nI'm moving on up and ahead!\pBy checking my Pok\edex, I'm\nstarting to see what's strong and\lhow they evolve!\pAm I a genius or what?\pI'm going to the Pok\emon League to\nboot out the Elite Four.\pI'll become the world's most\npowerful Trainer!\p[PLAYER], well, good luck to you!\nDon't sweat it!\lSmell ya!
+
+#org @gText_SilphCo_ArcherSpeak1
+Oh? You managed yo get this far[.]?\pYou must be quite the Trainer.
+
+#org @gText_SilphCo_ArcherSpeak2
+The President and I are discussing\na vital business proposition.\pKeep your nose out of grown-ups\nmatters[.]\pI will not allow you to interfere\nwith our meticulous plans!
+
+#org @gText_SilphCo_ArcherDefeated
+No! Forgive me, Giovanni!
+
+#org @gText_SilphCo_PresidentSpeak1
+Give it up, Archer.
+
+#org @gText_SilphCo_ArcherSpeak3
+Quiet!
+
+#org @gText_SilphCo_ArcherSpeak4
+How could this be[.]?\pOur dreams have come to naught.\pI must admit that I have failed to\nlead Team Rocket in this mission.\pI was not up to the task after\nall.\pBut I have faith that Giovanni\nwill guide us towards our ultimate\lgoal.\pFarewell[.]
+
+#org @gText_SilphCo_ProtonSpeak1
+[.] [.]\n[.] [.]\pNow, wait a second[.]\pAren't you the one who got in our\nway at Mt. Moon?\pI see[.]\pYou're doing all this because you\nto want make me angry.\pBe careful!\pBut since you seem to wish it,\nI'll show you the full extent of a\lTeam Rocket Executive's wrath!
+
+#org @gText_SilphCo_ProtonDefeated
+Phew[.]
+
+#org @gText_SilphCo_ProtonSpeak2
+You may have won this time[.]\pBut all you did was make Team\nRocket's wrath grow[.]
+
+#org @gText_SilphCo_ArianaSpeak1
+You[.]\pRemember me from the hideout in\nCeladon City?\pThis time[.] Hee hee hee.\pThis time[.] it looks like you're\nreally all alone again.\pBring it!\nLet's finish this!
+
+#org @gText_SilphCo_ArianaDefeated
+Aaaieeeee!\nThis can't be happening!
+
+#org @gText_SilphCo_ArianaSpeak2
+[.] [.]\n[.] [.]\pWhat a waste[.] not to use your\nstrength to do bad things!\pFeh[.] People like you will never\nin a million years understand our\lbrilliance!\pIt's too bad[.]\pI've really come to respect your\nstrength.

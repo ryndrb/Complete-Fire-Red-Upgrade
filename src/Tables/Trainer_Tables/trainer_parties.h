@@ -136,9 +136,191 @@ static const struct TrainerMonItemCustomMoves sParty_RSAromaLady[] = {
     },
 };
 static const struct TrainerMonItemCustomMoves sParty_RSRuinManiac[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_Interviewer[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_RSTuberF[] = {DUMMY_TRAINER_STARMIE};
-static const struct TrainerMonItemCustomMoves sParty_RSTuberM[] = {DUMMY_TRAINER_STARMIE};
+static const struct TrainerMonItemCustomMoves sParty_Proton[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_TENTACOOL,
+        .ability = Ability_1, // clear body
+        .nature = NATURE_CAREFUL,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_20},
+        .heldItem = ITEM_BLACK_SLUDGE,
+        .moves = {MOVE_TOXICSPIKES, MOVE_CONFUSERAY, MOVE_KNOCKOFF, MOVE_BRINE},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_MISDREAVUS,
+        .ability = Ability_1, // levitate
+        .nature = NATURE_TIMID,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_20},
+        .heldItem = ITEM_EVIOLITE,
+        .moves = {MOVE_DRAININGKISS, MOVE_OMINOUSWIND, MOVE_NASTYPLOT, MOVE_ICYWIND},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_LINOONE_G,
+        .ability = Ability_2, // glutonny
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_20},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .moves = {MOVE_KNOCKOFF, MOVE_HONECLAWS, MOVE_HEADBUTT, MOVE_DIG},
+    },
+    {
+        .iv = 0,
+        .lvl = 1,
+        .species = SPECIES_THWACKEY,
+        .ability = Ability_Hidden, // grassy surge
+        .nature = NATURE_IMPISH,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_20},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_LEECHSEED, MOVE_RAZORLEAF, MOVE_TAUNT, MOVE_STRENGTH},
+    },
+};
+
+static const struct TrainerMonItemCustomMoves sParty_Archer[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_GRIMMSNARL,
+        .ability = Ability_1, // prankster
+        .nature = NATURE_IMPISH,
+        .ivSpread = {IV_MAX},
+        .evSpread = {252, 0, 252, 0, 4, 0},
+        .heldItem = ITEM_LIGHT_CLAY,
+        .moves = {MOVE_REFLECT, MOVE_LIGHTSCREEN, MOVE_PLAYROUGH, MOVE_TAUNT},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_WEAVILE,
+        .ability = Ability_2, // technician
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 252, 0, 0, 4, 252},
+        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_KNOCKOFF, MOVE_TRIPLEAXEL, MOVE_ICESHARD, MOVE_LOWKICK},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_SLOWKING_G,
+        .ability = Ability_Hidden, // regenerator
+        .nature = NATURE_CALM,
+        .ivSpread = {IV_MAX},
+        .evSpread = {252, 0, 0, 252, 4, 0},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .moves = {MOVE_PSYCHIC, MOVE_SLUDGEBOMB, MOVE_ICEBEAM, MOVE_FLAMETHROWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_JELLICENT,
+        .ability = Ability_1, // water absorb
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_MAX},
+        .evSpread = {252, 0, 252, 0, 4, 0},
+        .heldItem = ITEM_COLBUR_BERRY,
+        .moves = {MOVE_RECOVER, MOVE_WILLOWISP, MOVE_HEX, MOVE_STRENGTHSAP},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_ARCHEOPS,
+        .ability = Ability_Hidden, // touch claws
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 252, 0, 0, 4, 252},
+        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_EARTHQUAKE, MOVE_UTURN, MOVE_DUALWINGBEAT, MOVE_ROOST},
+    },
+    {
+        .iv = 0,
+        .lvl = 1,
+        .species = SPECIES_HOUNDOOM,
+        .ability = Ability_Hidden, // intimidate / dark aura
+        .nature = NATURE_TIMID,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 0, 0, 252, 4, 252},
+        .heldItem = ITEM_HOUNDOOMINITE,
+        .moves = {MOVE_NASTYPLOT, MOVE_FIREBLAST, MOVE_DARKPULSE, MOVE_SLUDGEBOMB},
+    },
+};
+
+static const struct TrainerMonItemCustomMoves sParty_Ariana[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CORVIKNIGHT,
+        .ability = Ability_1, // pressure
+        .nature = NATURE_CAREFUL,
+        .ivSpread = {IV_MAX},
+        .evSpread = {248, 0, 8, 0, 252, 0},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_BRAVEBIRD, MOVE_UTURN, MOVE_ROOST, MOVE_TAILWIND},
+    },
+    // {
+    //     .iv = 0,
+    //     .lvl = 0,
+    //     .species = SPECIES_GARCHOMP,
+    //     .ability = Ability_Hidden, // rough skin
+    //     .nature = NATURE_JOLLY,
+    //     .ivSpread = {IV_HP_STEEL},
+    //     .evSpread = {0, 252, 0, 0, 4, 252},
+    //     .heldItem = ITEM_CHOICE_SCARF,
+    //     .moves = {MOVE_EARTHQUAKE, MOVE_HIDDENPOWER, MOVE_STONEEDGE, MOVE_DRAGONCLAW},
+    // },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CONKELDURR,
+        .ability = Ability_2, // sheer force
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 252, 0, 0, 4, 252},
+        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_CLOSECOMBAT, MOVE_MACHPUNCH, MOVE_ICEPUNCH, MOVE_THUNDERPUNCH},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_PORYGON_Z,
+        .ability = Ability_1, // adaptability
+        .nature = NATURE_TIMID,
+        .ivSpread = {IV_HP_FIRE},
+        .evSpread = {0, 0, 0, 252, 4, 252},
+        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_TRIATTACK, MOVE_DARKPULSE, MOVE_NASTYPLOT, MOVE_HIDDENPOWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_GLISCOR,
+        .ability = Ability_Hidden, // poison heal
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {252, 0, 4, 0, 252, 0},
+        .heldItem = ITEM_TOXIC_ORB,
+        .moves = {MOVE_EARTHQUAKE, MOVE_ROOST, MOVE_FACADE, MOVE_SWORDSDANCE},
+    },
+    // {
+    //     .iv = 0,
+    //     .lvl = 1,
+    //     .species = SPECIES_GENGAR,
+    //     .ability = Ability_1, // levitate
+    //     .nature = NATURE_TIMID,
+    //     .ivSpread = {IV_HP_FIGHTING},
+    //     .evSpread = {0, 0, 0, 252, 4, 252},
+    //     .heldItem = ITEM_GENGARITE,
+    //     .moves = {MOVE_SHADOWBALL, MOVE_SUBSTITUTE, MOVE_NASTYPLOT, MOVE_HIDDENPOWER},
+    // },
+};
+
 static const struct TrainerMonItemCustomMoves sParty_RSCooltrainerM[] = {DUMMY_TRAINER_MON_IV};
 static const struct TrainerMonItemCustomMoves sParty_RSCooltrainerF[] = {DUMMY_TRAINER_MON_IV};
 static const struct TrainerMonItemCustomMoves sParty_HexManiac[] = {DUMMY_TRAINER_MON};

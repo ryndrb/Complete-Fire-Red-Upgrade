@@ -7,6 +7,9 @@
 
 .equ FLAG_MAY_CELADON_SPRITE1, 0x943
 .equ FLAG_OBTAIN_ABOMASITE, 0x95F
+.equ FLAG_ENCOUNTER_ROCKETHQ_ARIANA, 0x9B7
+.equ VAR_ARIANA_BATTLES, 0x5035
+.equ VAR_ENCOUNTER_ROCKETHQ_ARIANA, 0x5036
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Erika
@@ -738,6 +741,107 @@ EventScript_Celadon_PlayerSmile:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Ariana Rocket Hideout
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_RocketHQ_Ariana:
+    lock
+    textcolor RED
+    sound 0x9
+    pause 30
+    call UnknownNameBox
+    msgbox gText_RocketHQ_ArianaSpeak1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 11 Move_RocketHQ_Ariana1
+    applymovement PLAYER Move_RocketHQ_Player1
+    waitmovement 11
+    playsong 0x181 1
+    call UnknownNameBox
+    msgbox gText_RocketHQ_ArianaSpeak2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 11 Move_RocketHQ_Ariana2
+    waitmovement 11
+    call ArianaNameBox
+    msgbox gText_RocketHQ_ArianaSpeak3 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    trainerbattle3 0x3 0x8 0x0 gText_RocketHQ_ArianaDefeated
+    call ArianaNameBox
+    msgbox gText_RocketHQ_ArianaSpeak4 MSG_KEEPOPEN
+    msgbox gText_RocketHQ_ArianaSpeak5 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 11 Move_RocketHQ_Ariana3
+    waitmovement 11
+    sound 0x9
+    fadedefaultbgm
+    hidesprite 11
+    setflag FLAG_ENCOUNTER_ROCKETHQ_ARIANA
+    setvar VAR_ARIANA_BATTLES 1
+    setvar VAR_ENCOUNTER_ROCKETHQ_ARIANA 1
+    release
+    end
+
+Move_RocketHQ_Player1:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_up
+    .byte walk_right
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+Move_RocketHQ_Ariana1:
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+Move_RocketHQ_Ariana2:
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_Ariana3:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_up
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Celadon NameBox
 @@@@@@@@@@@@@@@@@@@@@@
 MayNameBox:
@@ -754,6 +858,12 @@ ErikaNameBox:
 
 GiovanniNameBox:
     setvar 0x8000 18
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+ArianaNameBox:
+    setvar 0x8000 25
     setvar 0x8001 LEFT
     callasm DrawNameBox
     return

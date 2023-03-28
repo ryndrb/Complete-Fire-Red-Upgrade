@@ -3,7 +3,7 @@
 
 /*
     Credits:
-    OW Sprites: aveontrainer (it was a bit large so I had to re-scale)
+    OW Sprites: aveontrainer (it was a bit large so I had to re-scale), kalarie (pokecommunity post)
     Battle Sprites: GreenPHX, MrDollSteak (Pokecommunity post) and people on credits
 */
 
@@ -28,6 +28,10 @@ extern const u8 gEventObjectPic_OakTiles[];
 extern const u8 gEventObjectPic_ArcherTiles[];
 extern const u8 gEventObjectPic_ArianaTiles[];
 extern const u8 gEventObjectPic_ProtonTiles[];
+
+extern const u8 gEventObjectPic_ScientistTiles[];
+extern const u8 gEventObjectPic_NerdTiles[];
+extern const u8 gEventObjectPic_PoliceTiles[];
 
 static const struct SpriteFrameImage gEventObjectPicTable_NurseJoy[] =
 {
@@ -196,5 +200,107 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Proton =
     .subspriteTables = gEventObjectSpriteOamTables_16x32,
     .anims = gEventObjectImageAnimTable_Standard,
     .images = gEventObjectPicTable_Proton,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+static const struct SpriteFrameImage gEventObjectPicTable_Scientist[] =
+{
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 0),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 1),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 2),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 3),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 4),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 5),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 6),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 7),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 8),
+    overworld_frame(gEventObjectPic_ScientistTiles, 2, 4, 9),
+};
+
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Scientist =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag1 = 0x1206,
+    .paletteTag2 = EVENT_OBJ_PAL_TAG_NONE,
+    .size = (16 * 32) / 2,
+    .width = 16,
+    .height = 32,
+    .shadowSize = SHADOW_SIZE_M, //Can also be SHADOW_SIZE_S, SHADOW_SIZE_L, or SHADOW_SIZE_XL
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT, //Can also be TRACKS_TIRE
+    .gender = MALE, //Can also be FEMALE
+    .oam = gEventObjectBaseOam_16x32,
+    .subspriteTables = gEventObjectSpriteOamTables_16x32,
+    .anims = gEventObjectImageAnimTable_Standard,
+    .images = gEventObjectPicTable_Scientist,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+static const struct SpriteFrameImage gEventObjectPicTable_Nerd[] =
+{
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 0),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 1),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 2),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 3),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 4),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 5),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 6),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 7),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 8),
+    overworld_frame(gEventObjectPic_NerdTiles, 2, 4, 9),
+};
+
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Nerd =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag1 = 0x1207,
+    .paletteTag2 = EVENT_OBJ_PAL_TAG_NONE,
+    .size = (16 * 32) / 2,
+    .width = 16,
+    .height = 32,
+    .shadowSize = SHADOW_SIZE_M, //Can also be SHADOW_SIZE_S, SHADOW_SIZE_L, or SHADOW_SIZE_XL
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT, //Can also be TRACKS_TIRE
+    .gender = MALE, //Can also be FEMALE
+    .oam = gEventObjectBaseOam_16x32,
+    .subspriteTables = gEventObjectSpriteOamTables_16x32,
+    .anims = gEventObjectImageAnimTable_Standard,
+    .images = gEventObjectPicTable_Nerd,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+static const struct SpriteFrameImage gEventObjectPicTable_Police[] =
+{
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 0),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 1),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 2),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 3),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 4),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 5),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 6),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 7),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 8),
+    overworld_frame(gEventObjectPic_PoliceTiles, 2, 4, 9),
+};
+
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Police =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag1 = 0x1208,
+    .paletteTag2 = EVENT_OBJ_PAL_TAG_NONE,
+    .size = (16 * 32) / 2,
+    .width = 16,
+    .height = 32,
+    .shadowSize = SHADOW_SIZE_M, //Can also be SHADOW_SIZE_S, SHADOW_SIZE_L, or SHADOW_SIZE_XL
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT, //Can also be TRACKS_TIRE
+    .gender = MALE, //Can also be FEMALE
+    .oam = gEventObjectBaseOam_16x32,
+    .subspriteTables = gEventObjectSpriteOamTables_16x32,
+    .anims = gEventObjectImageAnimTable_Standard,
+    .images = gEventObjectPicTable_Police,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
