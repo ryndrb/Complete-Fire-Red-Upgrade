@@ -294,6 +294,20 @@ EventScript_0x8165605:
 @@@@@@@@@@@@@@@@@@@@@@
 @ Inside Oak Lab
 @@@@@@@@@@@@@@@@@@@@@@
+EventScript_InsideOakLab_DontGoAway:
+    lockall
+    textcolor BLUE
+    applymovement 0x4 0x81A75F1
+    waitmovement 0x0
+    call OakNameBox
+    msgbox gText_InsideOakLab_OakSpeak1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement PLAYER 0x81692E5
+    waitmovement 0x0
+    releaseall
+    end
+
 MapScript_InsideOakLab:
     mapscript MAP_SCRIPT_ON_TRANSITION MapScript_0x168F8E
     mapscript MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE LevelScript2_InsideOakLab
@@ -724,11 +738,11 @@ EventScript_0x169595:
     checkflag 0x2
     if 0x1 _goto EventScript_0x8169600
     compare 0x4055 0x9
-    if 0x1 _goto 0x8169903
+    if 0x1 _goto EventScript_0x8169903
     compare 0x4055 0x8
     if 0x1 _goto EventScript_0x8169A6E
     compare 0x4052 0x1
-    if 0x1 _goto 0x8169903
+    if 0x1 _goto EventScript_0x8169903
     compare 0x4055 0x6
     if 0x1 _goto 0x81698D6
     compare 0x4057 0x1
@@ -756,6 +770,39 @@ EventScript_0x8169A6E:
     callasm RemoveNameBox
     release
     end
+
+EventScript_0x8169903:
+    call EventScript_0x81A737B
+    checkflag 0x2F4
+    if 0x1 _goto 0x8169913
+    release
+    end
+
+EventScript_0x81A737B:
+    special 0x187
+    compare LASTRESULT 0x2
+    if 0x1 _goto 0x81A7AE0
+    special 0x188
+    checkflag 0x2F4
+    if 0x1 _call EventScript_0x81A73A4
+    checkflag 0x2F4
+    if 0x0 _call EventScript_0x81A73AD
+    call 0x81A73E0
+    return
+
+EventScript_0x81A73A4:
+    call OakNameBox
+    msgbox gText_InsideOakLab_OakSpeak2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    return
+
+EventScript_0x81A73AD:
+    call OakNameBox
+    msgbox gText_InsideOakLab_OakSpeak3 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    return
 
 EventScript_0x816961E:
     call OakNameBox
@@ -1007,16 +1054,37 @@ EventScript_End:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ Locked Door
+@ May House Sign
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_PalletTown_LockedDoor:
+EventScript_PalletTown_MayHouseSign:
     textcolor BLACK
-    msgbox gText_PalletTown_LockedDoor MSG_NORMAL
+    msgbox gText_PalletTown_MayHouseSign MSG_NORMAL
     release
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ May | Character arc like Silver from HGSS
+@ May's Mom and Brother
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PalletTown_MayMom:
+    lock
+    faceplayer
+    textcolor RED
+    msgbox gText_PalletTown_MayMom MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_PalletTown_MayBrother:
+    lock
+    faceplayer
+    textcolor BLUE
+    msgbox gText_PalletTown_MayBrother MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ May Pallet Town
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PalletTown_May:
     lock

@@ -109,5 +109,20 @@ u16 GetLocationMusicNew(struct WarpData* warp)
             break;
     }
 
+    /*
+        Added Maps
+    */
+   
+    // Inside May House
+    if(day){
+        if(warp->mapGroup == 4 && warp->mapNum == 4){
+            music = BGM_RSE_LITTLEROOT_TOWN;
+        }
+    }else if(night){
+        if(warp->mapGroup == 4 && warp->mapNum == 4){
+            music = BGM_RSE_LITTLEROOT_TOWN_ALT;
+        }
+    }
+
     return music;
 }

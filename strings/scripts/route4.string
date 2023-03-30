@@ -2,16 +2,19 @@
 Heeeeeey!
 
 #org @gText_Route4_MaySpeaks2
-Oops! I bumped you again.\nSorry[.]!\p[.] [.]\n[.] [.]\pHow's it going, [PLAYER]?\pOh!\pThat's a DexNav!\nLook, I have one as well!\pI hope you already checked out the\nDexNav's Detertor Mode.\pIt reacts to Pok\emon in the area,\nso it's really handy!\pAh! Look! Over there!
+Oops! I bumped you again.\nSorry[.]!\p[.] [.]\n[.] [.]\pHow's it going, [PLAYER]?\p[.] [.]\n[.] [.]\pSo you were the one who battled\nTeam Rocket inside the cave!?\pGah! That is really scary[.]\pAre and your Pok\emon alright[.]?\p[.] [.]\n[.] [.]\pPheew[.]\nThat was definitely scary[.]
 
 #org @gText_Route4_MaySpeaks3
-Those were[.]\pRookidee, weren't they?\pI'll have to check in my DexNav\nlater to be sure!\pBut, wow, we already made it\nthrough Mt. Moon, huh?\pI guess it's really true that time\nflies when you're with a f-friend!
+[.] [.]\n[.] [.]\pOh!\pYou have a DexNav!\pLook, I have one as well!\pMy dad gave it to me as a birthday\npresent.\p[.] [.]\n[.] [.]\pI hope you already checked out\nDexNav's Detector Mode.\pIt reacts to Pok\emon in the area,\nso it's really handy!\pAh, look!\nOver there!
 
 #org @gText_Route4_MaySpeaks4
-O-oh, look! There's Cerulean City\nalready!
+Those were[.]\pRookidee, weren't they?\pI'll have to check in my DexNav\nlater to be sure!\pBut, wow, we already made it\nthrough Mt. Moon, huh?\pI guess it's really true that time\nflies when you're with a f-friend!
 
 #org @gText_Route4_MaySpeaks5
-Misty[.]\pShe's the Gym Leader in Cerulean\nCity, isn't she?\pMaybe I should try to take her on\ntoo myself, once I train a bit\lmore!\pGuess I'm off then, [PLAYER]!\pL-let's meet up again sometime!
+O-oh, look! There's Cerulean City\nalready!
+
+#org @gText_Route4_MaySpeaks6
+Misty[.]\pShe's the Gym Leader in Cerulean\nCity, isn't she?\pMaybe I should try to take her on\ntoo myself, once I train a bit\lmore!\pGuess I'm off then, [PLAYER]!\pLet's meet up again at Cerulean!
 
 #org @gText_GirlInWater
 Be careful, the water's really\nslippery here!

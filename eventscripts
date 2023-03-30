@@ -5,7 +5,7 @@
 map 4 0 MapScript_ChooseStarterRegion
 map 4 3 MapScript_InsideOakLab
 npc 3 0 3 EventScript_PalletTown_May
-npc 3 0 1 EventScript_TrainerBattle
+npc 3 0 1 EventScript_AmuletCoin
 npc 4 0 0 EventScript_Mom
 npc 4 2 0 EventScript_Daisy
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
@@ -15,10 +15,15 @@ npc 4 3 4 EventScript_StarterGrass
 npc 4 3 5 EventScript_StarterWater
 npc 4 3 6 EventScript_StarterFire
 npc 4 3 7 EventScript_PalletTown_Rival
+npc 4 4 0 EventScript_PalletTown_MayMom
+npc 4 4 1 EventScript_PalletTown_MayBrother
 sign 4 1 0 EventScript_GameBoyConsole
-sign 3 0 4 EventScript_PalletTown_LockedDoor
+sign 3 0 4 EventScript_PalletTown_MayHouseSign
 tile 3 0 0 EventScript_PalletTown_OakStopPlayer1
 tile 3 0 1 EventScript_PalletTown_OakStopPlayer2
+tile 4 3 0 EventScript_InsideOakLab_DontGoAway
+tile 4 3 1 EventScript_InsideOakLab_DontGoAway
+tile 4 3 2 EventScript_InsideOakLab_DontGoAway
 
 # VIRIDIAN CITY
 npc 3 1 1 EventScript_Cut

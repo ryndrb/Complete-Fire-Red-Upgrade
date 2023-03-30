@@ -20,34 +20,34 @@ I am a Channeler.\pThere are spirits up to mischief.\nI sense them high in the T
 [.]\n[.]\pYou are not worthy.
 
 #org @gText_PokeTower_RivalSpeaks1
-Hey, [PLAYER]!\nWhat brings you here?\pIs your Pok\emon dead[.]?\pHey! It's alive!\nAhahaa!\pI can at least make them faint!\nLet's go!
+Yo, [PLAYER]! What's up?\pYour Pok\emon still kickin', or\nwhat?\pHah, I can take 'em down easy!\nLet's battle!
 
 #org @gText_PokeTower_MaySpeaks1
 Hey, [PLAYER]!\nHo-\p[.]Ugh[.] it's you, [RIVAL][.]\nWhat are you doing here?
 
 #org @gText_PokeTower_RivalSpeaks2
-I could say the same thing.\pI'm here to train my Pok\emon,\nwhat's your excuse?
+I'm here to train my Pok\emon,\nwhat's it to you?
 
 #org @gText_PokeTower_MaySpeaks2
 I'm here to catch some Ghost-type\nPok\emon.\pSomething you wouldn't know\nanything about, since you're\lobsessed with being the best.
 
 #org @gText_PokeTower_RivalSpeaks3
-Hey, that line of thinking have\nwon me plenty of battles.\pWhat have your cute little Pok\emon\never accomplished?
+Heh, see where I am now?\pWhat have your wimpy Pok\emon ever\nachieved?
 
 #org @gText_PokeTower_MaySpeaks3
-My Pok\emon may be cute, but\nthey're strong and graceful too.\pUnlike your brash and aggresive\ntactics.
+My Pok\emon may be cute, but\nthey're tough and graceful.\pUnlike your brash and aggresive\ntactics.
 
 #org @gText_PokeTower_RivalSpeaks4
-I'll have you know that my tactics\nwill take me all the way to the\ltop!\pYou wouldn't know anything about\nthat, since you're too busy\lplaying it soft.
+Hah! My tactics will take me all\nthe way to the top, no question!\pYou should try it sometime, May.\nYou're too busy playin' it soft.
 
 #org @gText_PokeTower_MaySpeaks4
-There's nothing wrong with\npursuing a dream, [RIVAL]!\pUnlike you, who seem to only care\nabout winning at any cost.
+Hah! You seem to only care\nabout winning at any cost.
 
 #org @gText_PokeTower_RivalSpeaks5
-Winning is what separates the\nchampions from the amateurs, May.\pMaybe if you focused on that\ninstead of flouncing around in\lyour frilly outfits, you might\lactually stand a chance.
+Winning is everything, May.\pThat's what separates the champs\nfrom the chumps!\pMaybe of you focused on that\ninstead of flouncing around in\lyour frilly outfits, you might\lactually stand a chance.
 
 #org @gText_PokeTower_MaySpeaks5
-I don't need your approval, [RIVAL].\pI know what I'm capable of, and so\ndo my Pok\emon.\pI don't have to stoop to your\nlevel to prove myself.
+I don't need your approval, [RIVAL]!\pI know what I'm capable of, and so\ndo my Pok\emon.\pI don't have to stoop to your\nlevel to prove myself.
 
 #org @gText_PokeTower_RivalSpeaks6
 Hah! Why don't we settle this with\na battle?\pI'll take on both of you at once!
@@ -56,22 +56,22 @@ Hah! Why don't we settle this with\na battle?\pI'll take on both of you at once!
 [.]Yikes!\nI took it easy on you two!
 
 #org @gText_PokeTower_MaySpeaks6
-Looks like we won, [RIVAL].\nMaybe you underestimated us.
+Looks like we won, [RIVAL][.]
 
 #org @gText_PokeTower_RivalSpeaks7
-I don't understand it, I wasn't\neven trying my hardest.\pIt must have been a fluke.\nYeah, definitely.
+I don't get it, I wasn't\neven trying my hardest!\pIt must have been a fluke.\nYeah, that's it.
 
 #org @gText_PokeTower_MaySpeaks7
-Pfft, typical.\pAlways making excuses when you\nlose.\pFace it, [RIVAL], you're not as good\nas you think you are.\p[PLAYER] here is certainly better\nthan you.
+Pfft, typical[.]\pAlways making excuses when you\nlose.\pFace it, [RIVAL], you're not as good\nas you think you are.\p[PLAYER] here is certainly better\nthan you.
 
 #org @gText_PokeTower_RivalSpeaks8
-You're just lucky this time, May.\pI'll come back stronger and beat\nyou both.
+Heh.
 
 #org @gText_PokeTower_MaySpeaks8
 We'll be ready for you, [RIVAL].\pBut next time, don't "hold back."\pI want to see what you're really\ncapable of.\pRemember?\nI'm just playing it soft.
 
 #org @gText_PokeTower_RivalSpeaks9
-Fine, you'll get what's coming to\nyou.\pJust you wait and see.
+It's luck. All there is to it.\nSmell 'ya.
 
 #org @gText_PokeTower_MaySpeaks9
 What a jerk.\pIt's nice seeing him get humbled a\nbit[.]\pSorry you had to hear all of that\nearlier.\pWe don't really have the best\nfamilial relationship[.] ha[.] ha.\p[.] [.]\n[.] [.]\pAnyways, look at this place.\nIt's so eerie yet intriguing.\pI've heard that the Pok\emon Tower\nholds the spirits of departed\lPok\emon.\pIt gives me goosebumps just\nthinking about it.\pI wonder if there are any rare\nGhost-type Pok\emon in here?\pDo you think we could find any?\pMaybe we should explore the tower\nand find out for ourselves.\pBut let's be careful, we don't\nwant to upset any spirits that\lmight be lurking around.\pTake care and good luck, [PLAYER]!

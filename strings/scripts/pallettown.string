@@ -13,6 +13,9 @@ Hey! Wait!\nDon't go out!
 #org @gText_OakSayUnsafe
 It's unsafe!\nWild Pok\emon live in tall grass!\pYou need your own Pok\emon for\nyour protection.\pI know!\nHere, come with me!
 
+#org @gText_InsideOakLab_OakSpeak1
+Hey!\nDon't go away yet!
+
 #org @gText_RivalTiredWaiting
 Gramps!\nI'm fed up with waiting!
 
@@ -37,14 +40,20 @@ Ah! [BUFFER1] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you
 #org @gText_RivalTakeIt
 I'll take this one, then!
 
+#org @gText_InsideOakLab_OakSpeak2
+Ah, welcome!\pTell me, how is your Pok\edex\ncoming along?\pWahaha!\pActually, I know how it is, but I\nlove seeing it anyway!\pLet's see[.]
+
+#org @gText_InsideOakLab_OakSpeak3
+Good to see you!\nHow is your Pok\edex coming along?\pHere, let me take a look.
+
 #org @gText_EventScript_GiveAmuletCoin
 [.]\n[.]\pSo you're an aspiring Pok\emon\ntrainer?\pI see[.]\pYou might find this useful then.
 
 #org @gText_MomChooseRegion
-[PLAYER], you're up!\pToday is finally the day you\nreceive your very first Pok\emon!\p[.] [.]\n[.] [.]\pOh!\pI got a message from Professor\nOak!\pMm[.] Hmm[.]\nGot it.\pHe wants to know which region\nimpressed you the most during\lthis years Pok\emon World\lChampionship.\pHe mentioned that this will\ndetermine where your starter\lPok\emon will be from.\pSo, sweetie, do you have a\npreference?
+Oh sweetie[.] what have you been\ndoing this past week[.]\pIs the PWC really that great?\pBut enough about that for now,\ntoday is finally the day you\lreceive your very first Pok\emon!\pProfessor Oak has already sent me\na message.\pHe wants to know which region has\nimpressed you the most during this\lyears PWC?\pErr[.] I'm not sure why but he\nmentioned that it will determine\lwhich batch of Pok\emon you'll get\lto choose from.\pI know you're an avid fan of the\nPWC.\pSo, sweetie, do you have a\npreference?
 
 #org @gText_MomDone
-Okay, I'll let him know!\nGood luck sweetie!\p[BLACK]Rival Pok\emon will remain Kanto.
+Okay, I'll let him know!\p[.] [.]\n[.] [.]\pAnd[.] done!\pGood luck and take care sweetie!
 
 #org @gText_OakSayChoosePokeball
 Now, [PLAYER].\pInside those three Pok\e Balls are\nPok\emon.\pWhich one will you choose for\nyourself?
@@ -112,17 +121,17 @@ Randomize Ability randomizes\nPok\emon abilities.\pEnable Randomize Ability?
 #org @gText_DisableRandomizeAbility
 Randomize Ability is currently\nenabled.\pDisable Randomize Ability?
 
-#org @gText_PalletTown_LockedDoor
-The door is locked.
+#org @gText_PalletTown_MayHouseSign
+May's House
 
 #org @gText_PalletTown_MaySpeaks1
-[.]Ugh[.]\pThat jerk [RIVAL] is here.\n[.]Ugh.
+[.]Ugh[.]\pThat jerk [RIVAL][.]
 
 #org @gText_PalletTown_MaySpeaks2
-Eek!\p[.]W-what are you staring at?
+Eek!\p[PLAYER], w-what are you staring at?
 
 #org @gText_PalletTown_RivalSpeak1
-What, it's only [PLAYER]?\nGramps isn't around.
+What, it's only [PLAYER]?\nGramps isn't around.\p[.] [.]\n[.] [.]\pHey, wait a sec.\nJust had a thought[.]\pYou haven't met my cousin yet,\nhave 'ya?\pShe's May, from Hoenn.\nBeen livin' next door for about a\lweek now.\pBut I guess you wouldn't know\nthat, huh?\pYou've been glued crazy in your\nroom watching PWC.
 
 #org @gText_PalletTown_RivalSpeak2
 My Pok\emon looks a lot\ntougher than yours.
@@ -168,3 +177,9 @@ Just like people, Pok\emon\nare living things.\pWhen they get tired, please give
 
 #org @gText_Daisy_SeeFirstMon
 Your Pok\emon grow to love\nyou if you raise them with love.\pFor example, [PLAYER], may I see\nyour first Pok\emon?
+
+#org @gText_PalletTown_MayMom
+I think it's wonderful for people\nto travel with Pok\emon.\pBut you should go home every so\noften to let your mother know\lyou're okay.\pShe might not say it, but I'm sure\nshe worries about you, [PLAYER].
+
+#org @gText_PalletTown_MayBrother
+Hi, neighbor!\pDo you already have your own\nPok\emon?

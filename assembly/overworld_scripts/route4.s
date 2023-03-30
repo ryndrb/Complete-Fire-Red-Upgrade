@@ -15,7 +15,7 @@ EventScript_Route4_May:
     lock
     textcolor RED
     playsong 0x1A7
-    call MayNameBox
+    call UnknownNameBox
     msgbox gText_Route4_MaySpeaks1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
@@ -28,24 +28,26 @@ EventScript_Route4_May:
     waitmovement 0x9
     call MayNameBox
     msgbox gText_Route4_MaySpeaks2 MSG_KEEPOPEN
+    msgbox gText_Route4_MaySpeaks3 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     applymovement PLAYER EventScript_Route4_PlayerSeeWhatMayPointed
     waitmovement PLAYER
     call MayNameBox
-    msgbox gText_Route4_MaySpeaks3 MSG_KEEPOPEN
+    msgbox gText_Route4_MaySpeaks4 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
+    pause 45
     spriteface 0x9, RIGHT
     spriteface PLAYER, RIGHT
     call MayNameBox
-    msgbox gText_Route4_MaySpeaks4 MSG_KEEPOPEN
+    msgbox gText_Route4_MaySpeaks5 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     spriteface 0x9, DOWN
     spriteface PLAYER, UP
     call MayNameBox
-    msgbox gText_Route4_MaySpeaks5 MSG_KEEPOPEN
+    msgbox gText_Route4_MaySpeaks6 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     applymovement 0x9 EventScript_Route4_MayLeaving
@@ -78,6 +80,9 @@ EventScript_Route4_PlayerPushedByMay:
 EventScript_Route4_PlayerSeeWhatMayPointed:
     .byte exclaim
     .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
     .byte pause_long
     .byte pause_long
     .byte pause_long
@@ -116,6 +121,12 @@ EventScript_GirlInWater:
 @@@@@@@@@@@@@@@@@@@@@@
 MayNameBox:
     setvar 0x8000 2
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+UnknownNameBox:
+    setvar 0x8000 0
     setvar 0x8001 LEFT
     callasm DrawNameBox
     return
