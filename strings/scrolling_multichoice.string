@@ -149,256 +149,349 @@ Blaine's Badge
 #org @GIOVANNI_BADGE
 Giovanni's Badge
 
-#org @M_SPIKES
-Spikes
-
-#org @M_FIREFANG
-Fire Fang
-
-#org @M_RAZORSHELL
-Razor Shell
-
-#org @M_THUNDERFANG
-Thunder Fang
-
-#org @M_ICEFANG
-Ice Fang
-
-#org @M_LOWKICK
-Low Kick
-
-#org @M_BUGBITE
-Bug Bite
-
-#org @M_HEX
-Hex
-
-#org @M_ENDEAVOR
-Endeavor
-
-#org @M_FIREPUNCH
-Fire Punch
-
-#org @M_THUNDERPUNCH
-Thunder Punch
-
-#org @M_LEAFBLADE
-Leaf Blade
-
-#org @M_ICEPUNCH
-Ice Punch
-
-#org @M_REVERSAL
-Reversal
-
-#org @M_TOXICSPIKES
-Toxic Spikes
-
-#org @M_STOMPINGTANTRUM
-Stomping Tantrum
-
-#org @M_AIRSLASH
-Air Slash
-
-#org @M_SIGNALBEAM
-Signal Beam
-
-#org @M_ROCKBLAST
-Rock Blast
-
-#org @M_DUALCHOP
+#org @TUTOR_AFTERYOU
+After You
+#org @TUTOR_BIND
+Bind
+#org @TUTOR_BLOCK
+Block
+#org @TUTOR_COACHING
+Coaching
+#org @TUTOR_CONFIDE
+Confide
+#org @TUTOR_DUALCHOP
 Dual Chop
-
-#org @M_BODYSLAM
-Body Slam
-
-#org @M_BLAZEKICK
-Blaze Kick
-
-#org @M_LIQUIDATION
-Liquidation
-
-#org @M_ELECTROWEB
-Electroweb
-
-#org @M_SEEDBOMB
-Seed Bomb
-
-#org @M_ICYWIND
-Icy Wind
-
-#org @M_VACUUMWAVE
-Vacuum Wave
-
-#org @M_TAILWIND
-Tailwind
-
-#org @M_ZENHEADBUTT
-Zen Headbutt
-
-#org @M_BUGBUZZ
-Bug Buzz
-
-#org @M_POWERGEM
-Power Gem
-
-#org @M_KNOCKOFF
-Knock Off
-
-#org @M_IRONHEAD
-Iron Head
-
-#org @M_PLAYROUGH
-Play Rough
-
-#org @M_SUPERFANG
-Super Fang
-
-#org @M_MYSTICALFIRE
-Mystical Fire
-
-#org @M_AQUATAIL
-Aqua Tail
-
-#org @M_ELECTRICTERRAIN
-Electric Terrain
-
-#org @M_GRASSYTERRAIN
-Grassy Terrain
-
-#org @M_ICICLESPEAR
+#org @TUTOR_DUALWINGBEAT
+Dual Wingbeat
+#org @TUTOR_FIRESPIN
+Fire Spin
+#org @TUTOR_FOCUSENERGY
+Focus Energy
+#org @TUTOR_GASTROACID
+Gastro Acid
+#org @TUTOR_HELPINGHAND
+Helping Hand
+#org @TUTOR_ICICLESPEAR
 Icicle Spear
+#org @TUTOR_LASERFOCUS
+Laser Focus
+#org @TUTOR_PINMISSILE
+Pin Missile
+#org @TUTOR_ROCKBLAST
+Rock Blast
+#org @TUTOR_ROLEPLAY
+Role Play
+#org @TUTOR_SANDTOMB
+Sand Tomb
+#org @TUTOR_SCALESHOT
+Scale Shot
+#org @TUTOR_SCARYFACE
+Scary Face
+#org @TUTOR_SNATCH
+Snatch
+#org @TUTOR_SNORE
+Snore
+#org @TUTOR_STOREDPOWER
+Stored Power
+#org @TUTOR_TAILSLAP
+Tail Slap
+#org @TUTOR_TRIPLEAXEL
+Triple Axel
+#org @TUTOR_VENOMDRENCH
+Venom Drench
+#org @TUTOR_VACUUMWAVE
+Vacuum Wave
+#org @TUTOR_WHIRLPOOL
+Whirlpool
+#org @TUTOR_WORRYSEED
+Worry Seed
 
-#org @M_AURASPHERE
-Aura Sphere
-
-#org @M_CROSSPOISON
-Cross Poison
-
-#org @M_HIGHHORSEPOWER
-High Horse Power
-
-#org @M_SKYATTACK
-Sky Attack
-
-#org @M_PSYCHICTERRAIN
-Psychic Terrain
-
-#org @M_POLLENPUFF
-Pollen Puff
-
-#org @M_DRAGONDANCE
-Dragon Dance
-
-#org @M_CRUNCH
-Crunch
-
-#org @M_MISTYTERRAIN
-Misty Terrain
-
-#org @M_HYPERVOICE
-Hyper Voice
-
-#org @M_HEATWAVE
-Heat Wave
-
-#org @M_MUDDYWATER
-Muddy Water
-
-#org @M_EARTHPOWER
-Earth Power
-
-#org @M_BOUNCE
-Bounce
-
-#org @M_PSYCHICFANGS
-Psychic Fangs
-
-#org @M_FOULPLAY
-Foul Play
-
-#org @M_BATONPASS
-Baton Pass
-
-#org @M_HEATCRASH
-Heat Crash
-
-#org @M_DRILLRUN
-Drill Run
-
-#org @M_FIREPLEDGE
-Fire Pledge
-
-#org @M_WATERPLEDGE
-Water Pledge
-
-#org @M_GRASSPLEDGE
-Grass Pledge
-
-#org @M_WEATHERBALL
+#org @TUTOR_BARBBARRAGE
+Barb Barrage
+#org @TUTOR_BREAKINGSWIPE
+Breaking Swipe
+#org @TUTOR_BUGBITE
+Bug Bite
+#org @TUTOR_COVET
+Covet
+#org @TUTOR_ELECTROBALL
+Electro Ball
+#org @TUTOR_ELECTROWEB
+Electroweb
+#org @TUTOR_ENCORE
+Encore
+#org @TUTOR_ENDEAVOR
+Endeavor
+#org @TUTOR_FIREFANG
+Fire Fang
+#org @TUTOR_FLIPTURN
+Flip Turn
+#org @TUTOR_GRASSYGLIDE
+Grassy Glide
+#org @TUTOR_ICEFANG
+Ice Fang
+#org @TUTOR_ICYWIND
+Icy Wind
+#org @TUTOR_INFERNALPARADE
+Infernal Parade
+#org @TUTOR_IRONDEFENSE
+Iron Defense
+#org @TUTOR_LOWKICK
+Low Kick
+#org @TUTOR_MAGNETRISE
+Magnet Rise
+#org @TUTOR_PAINSPLIT
+Pain Split
+#org @TUTOR_REVERSAL
+Reversal
+#org @TUTOR_SCREECH
+Screech
+#org @TUTOR_SPIKES
+Spikes
+#org @TUTOR_STONEAXE
+Stone Axe
+#org @TUTOR_SUPERFANG
+Super Fang
+#org @TUTOR_SYNTHESIS
+Synthesis
+#org @TUTOR_TERRAINPULSE
+Terrain Pulse
+#org @TUTOR_THUNDERFANG
+Thunder Fang
+#org @TUTOR_TOXICSPIKES
+Toxic Spikes
+#org @TUTOR_WEATHERBALL
 Weather Ball
 
-#org @M_FLAREBLITZ
-Flare Blitz
-
-#org @M_HYDOPUMP
-Hydro Pump
-
-#org @M_LEAFSTORM
-Leaf Storm
-
-#org @M_SUPERPOWER
-Superpower
-
-#org @M_GUNKSHOT
-Gunk Shot
-#org @M_BRAVEBIRD
-Brave Bird
-
-#org @M_MEGAHORN
-Mega Horn
-
-#org @M_PHANTOMFORCE
-Phantom Force
-
-#org @M_OUTRAGE
-Outrage
-
-#org @M_DARKESTLARIAT
-Darkest Lariat
-
-#org @M_HEAVYSLAM
-Heavy Slam
-
-#org @M_POWERWHIP
-Power Whip
-
-#org @M_CLOSECOMBAT
-Close Combat
-
-#org @M_HURRICANE
-Hurricane
-
-#org @M_PSYCHOCUT
+#org @TUTOR_BURNINGJEALOUSY
+Burning Jealousy
+#org @TUTOR_CEASELESSEDGE
+Ceaseless Edge
+#org @TUTOR_CORROSIVEGAS
+Corrosive Gas
+#org @TUTOR_CROSSPOISON
+Cross Poison
+#org @TUTOR_ELECTRICTERRAIN
+Electric Terrain
+#org @TUTOR_FAKETEARS
+Fake Tears
+#org @TUTOR_FIREPUNCH
+Fire Punch
+#org @TUTOR_GRASSYTERRAIN
+Grassy Terrain
+#org @TUTOR_HEX
+Hex
+#org @TUTOR_ICEPUNCH
+Ice Punch
+#org @TUTOR_KNOCKOFF
+Knock Off
+#org @TUTOR_MAGICCOAT
+Magic Coat
+#org @TUTOR_MAGICROOM
+Magic Room
+#org @TUTOR_MISTYTERRAIN
+Misty Terrain
+#org @TUTOR_MYSTICALPOWER
+Mystical Power
+#org @TUTOR_PSYCHUP
+Psych Up
+#org @TUTOR_PSYCHICTERRAIN
+Psychic Terrain
+#org @TUTOR_PSYCHOCUT
 Psycho Cut
+#org @TUTOR_PSYSHIELDBASH
+Psyshield Bash
+#org @TUTOR_RAZORSHELL
+Razor Shell
+#org @TUTOR_RISINGVOLTAGE
+Rising Voltage
+#org @TUTOR_SCORCHINGSANDS
+Scorching Sands
+#org @TUTOR_SKITTERSMACK
+Skitter Smack
+#org @TUTOR_SPITE
+Spite
+#org @TUTOR_TELEKINESIS
+Telekinesis
+#org @TUTOR_THUNDERPUNCH
+Thunder Punch
+#org @TUTOR_TRICK
+Trick
+#org @TUTOR_WONDERROOM
+Wonder Room
 
-#org @M_BREAKINGSWIPE
-Breaking Swipe
+#org @TUTOR_AGILITY
+Agility
+#org @TUTOR_AIRSLASH
+Air Slash
+#org @TUTOR_AURASPHERE
+Aura Sphere
+#org @TUTOR_BATONPASS
+Baton Pass
+#org @TUTOR_BITTERMALICE
+Bitter Malice
+#org @TUTOR_BODYPRESS
+Body Press
+#org @TUTOR_COSMICPOWER
+Cosmic Power
+#org @TUTOR_DIRECLAW
+Dire Claw
+#org @TUTOR_DRAGONDANCE
+Dragon Dance
+#org @TUTOR_DRILLRUN
+Drill Run
+#org @TUTOR_ESPERWING
+Esper Wing
+#org @TUTOR_FIREPLEDGE
+Fire Pledge
+#org @TUTOR_GRASSPLEDGE
+Grass Pledge
+#org @TUTOR_GRAVITY
+Gravity
+#org @TUTOR_HEALBELL
+Heal Bell
+#org @TUTOR_HEATCRASH
+Heat Crash
+#org @TUTOR_HEAVYSLAM
+Heavy Slam
+#org @TUTOR_LASHOUT
+Lash Out
+#org @TUTOR_LUNARBLESSING
+Lunar Blessing
+#org @TUTOR_MYSTICALFIRE
+Mystical Fire
+#org @TUTOR_NASTYPLOT
+Nasty Plot
+#org @TUTOR_SEEDBOMB
+Seed Bomb
+#org @TUTOR_SIGNALBEAM
+Signal Beam
+#org @TUTOR_STOMPINGTANTRUM
+Stomping Tantrum
+#org @TUTOR_TAILWIND
+Tailwind
+#org @TUTOR_TAKEHEART
+Take Heart
+#org @TUTOR_VICTORYDANCE
+Victory Dance
+#org @TUTOR_WATERPLEDGE
+Water Pledge
 
-#org @M_THROATCHOP
+#org @TUTOR_AQUATAIL
+Aqua Tail
+#org @TUTOR_BLAZEKICK
+Blaze Kick
+#org @TUTOR_BODYSLAM
+Body Slam
+#org @TUTOR_BOUNCE
+Bounce
+#org @TUTOR_CRUNCH
+Crunch
+#org @TUTOR_DARKESTLARIAT
+Darkest Lariat
+#org @TUTOR_EXPANDINGFORCE
+Expanding Force
+#org @TUTOR_HYPERVOICE
+Hyper Voice
+#org @TUTOR_IRONHEAD
+Iron Head
+#org @TUTOR_LIQUIDATION
+Liquidation
+#org @TUTOR_POWERGEM
+Power Gem
+#org @TUTOR_PSYCHICFANGS
+Psychic Fangs
+#org @TUTOR_THROATCHOP
 Throat Chop
+#org @TUTOR_UPROAR
+Uproar
+#org @TUTOR_ZENHEADBUTT
+Zen Headbutt
 
-#org @M_SOLARBLADE
-Solar Blade
+#org @TUTOR_BLEAKWINDSTORM
+Bealkwind Storm
+#org @TUTOR_BUGBUZZ
+Bug Buzz
+#org @TUTOR_EARTHPOWER
+Earth Power
+#org @TUTOR_FOULPLAY
+Fould Play
+#org @TUTOR_HEATWAVE
+Heat Wave
+#org @TUTOR_HIGHHORSEPOWER
+High Horsepower
+#org @TUTOR_LEAFBLADE
+Leaf Blade
+#org @TUTOR_MUDDYWATER
+Muddy Water
+#org @TUTOR_PHANTOMFORCE
+Phantom Force
+#org @TUTOR_PLAYROUGH
+Play Rough
+#org @TUTOR_POLLENPUFF
+Pollen Puff
+#org @TUTOR_SANDSEARSTORM
+Sandsear Storm
+#org @TUTOR_SPRINGTIDESTORM
+Springtide Storm
+#org @TUTOR_TRIPLEARROWS
+Triple Arrows
+#org @TUTOR_WINDBOLTSTORM
+Windbolt Storm
 
-#org @M_BLASTBURN
+#org @TUTOR_BRAVEBIRD
+Brave Bird
+#org @TUTOR_CLOSECOMBAT
+Close Combat
+#org @TUTOR_FLAREBLITZ
+Flare Blitz
+#org @TUTOR_GUNKSHOT
+Gunk Shot
+#org @TUTOR_HEADLONGRUSH
+Headlong Rush
+#org @TUTOR_HURRICANE
+Hurricane
+#org @TUTOR_HYDROPUMP
+Hydro Pump
+#org @TUTOR_MEGAHORN
+Megahorn
+#org @TUTOR_MISTYEXPLOSION
+Misty Explosion
+#org @TUTOR_MOUNTAINGALE
+Mountain Gale
+#org @TUTOR_POLTERGEIST
+Poltergeist
+#org @TUTOR_POWERWHIP
+Power Whip
+#org @TUTOR_RAGINGFURY
+Raging Fury
+#org @TUTOR_SUPERPOWER
+Superpower
+#org @TUTOR_WAVECRASH
+Wave Crash
+
+#org @TUTOR_BLASTBURN
 Blast Burn
-
-#org @M_HYDROCANNON
-Hydro Cannon
-
-#org @M_FRENZYPLANT
+#org @TUTOR_CHLOROBLAST
+Chloroblast
+#org @TUTOR_FRENZYPLANT
 Frenzy Plant
+#org @TUTOR_HYDROCANNON
+Hydro Cannon
+#org @TUTOR_LASTRESORT
+Last Resort
+#org @TUTOR_LEAFSTORM
+Leaf Storm
+#org @TUTOR_METEORBEAM
+Meteor Beam
+#org @TUTOR_OUTRAGE
+Outrage
+#org @TUTOR_SKYATTACK
+Sky Attack
+#org @TUTOR_SOLARBLADE
+Solar Blade
+#org @TUTOR_STEELROLLER
+Steel Roller
 
 #org @NAME_RATER
 Name Rater

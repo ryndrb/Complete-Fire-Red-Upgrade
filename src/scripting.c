@@ -3010,104 +3010,188 @@ extern const u8 BLAINE_BADGE[];
 extern const u8 GIOVANNI_BADGE[];
 
 // First Badge Tutor Moves
-extern const u8 M_SPIKES[];
-extern const u8 M_FIREFANG[];
-extern const u8 M_RAZORSHELL[];
-extern const u8 M_THUNDERFANG[];
-extern const u8 M_ICEFANG[];
-extern const u8 M_LOWKICK[];
-extern const u8 M_BUGBITE[];
-extern const u8 M_HEX[];
+extern const u8 TUTOR_AFTERYOU[];
+extern const u8 TUTOR_BIND[];
+extern const u8 TUTOR_BLOCK[];
+extern const u8 TUTOR_COACHING[];
+extern const u8 TUTOR_CONFIDE[];
+extern const u8 TUTOR_DUALCHOP[];
+extern const u8 TUTOR_DUALWINGBEAT[];
+extern const u8 TUTOR_FIRESPIN[];
+extern const u8 TUTOR_FOCUSENERGY[];
+extern const u8 TUTOR_GASTROACID[];
+extern const u8 TUTOR_HELPINGHAND[];
+extern const u8 TUTOR_ICICLESPEAR[];
+extern const u8 TUTOR_LASERFOCUS[];
+extern const u8 TUTOR_PINMISSILE[];
+extern const u8 TUTOR_ROCKBLAST[];
+extern const u8 TUTOR_ROLEPLAY[];
+extern const u8 TUTOR_SANDTOMB[];
+extern const u8 TUTOR_SCALESHOT[];
+extern const u8 TUTOR_SCARYFACE[];
+extern const u8 TUTOR_SNATCH[];
+extern const u8 TUTOR_SNORE[];
+extern const u8 TUTOR_STOREDPOWER[];
+extern const u8 TUTOR_TAILSLAP[];
+extern const u8 TUTOR_TRIPLEAXEL[];
+extern const u8 TUTOR_VENOMDRENCH[];
+extern const u8 TUTOR_VACUUMWAVE[];
+extern const u8 TUTOR_WHIRLPOOL[];
+extern const u8 TUTOR_WORRYSEED[];
 
 // Second Badge Tutor Moves
-extern const u8 M_ENDEAVOR[];
-extern const u8 M_FIREPUNCH[];
-extern const u8 M_THUNDERPUNCH[];
-extern const u8 M_LEAFBLADE[];
-extern const u8 M_ICEPUNCH[];
-extern const u8 M_REVERSAL[];
-extern const u8 M_TOXICSPIKES[];
-extern const u8 M_STOMPINGTANTRUM[];
-extern const u8 M_AIRSLASH[];
-extern const u8 M_SIGNALBEAM[];
-extern const u8 M_ROCKBLAST[];
-extern const u8 M_DUALCHOP[];
+extern const u8 TUTOR_BARBBARRAGE[];
+extern const u8 TUTOR_BREAKINGSWIPE[];
+extern const u8 TUTOR_BUGBITE[];
+extern const u8 TUTOR_COVET[];
+extern const u8 TUTOR_ELECTROBALL[];
+extern const u8 TUTOR_ELECTROWEB[];
+extern const u8 TUTOR_ENCORE[];
+extern const u8 TUTOR_ENDEAVOR[];
+extern const u8 TUTOR_FIREFANG[];
+extern const u8 TUTOR_FLIPTURN[];
+extern const u8 TUTOR_GRASSYGLIDE[];
+extern const u8 TUTOR_ICEFANG[];
+extern const u8 TUTOR_ICYWIND[];
+extern const u8 TUTOR_INFERNALPARADE[];
+extern const u8 TUTOR_IRONDEFENSE[];
+extern const u8 TUTOR_LOWKICK[];
+extern const u8 TUTOR_MAGNETRISE[];
+extern const u8 TUTOR_PAINSPLIT[];
+extern const u8 TUTOR_REVERSAL[];
+extern const u8 TUTOR_SCREECH[];
+extern const u8 TUTOR_SPIKES[];
+extern const u8 TUTOR_STONEAXE[];
+extern const u8 TUTOR_SUPERFANG[];
+extern const u8 TUTOR_SYNTHESIS[];
+extern const u8 TUTOR_TERRAINPULSE[];
+extern const u8 TUTOR_THUNDERFANG[];
+extern const u8 TUTOR_TOXICSPIKES[];
+extern const u8 TUTOR_WEATHERBALL[];
 
 // Third Badge Tutor Moves
-extern const u8 M_BODYSLAM[];
-extern const u8 M_BLAZEKICK[];
-extern const u8 M_LIQUIDATION[];
-extern const u8 M_ELECTROWEB[];
-extern const u8 M_SEEDBOMB[];
-extern const u8 M_ICYWIND[];
-extern const u8 M_VACUUMWAVE[];
-extern const u8 M_TAILWIND[];
-extern const u8 M_ZENHEADBUTT[];
-extern const u8 M_BUGBUZZ[];
-extern const u8 M_POWERGEM[];
-extern const u8 M_KNOCKOFF[];
-extern const u8 M_IRONHEAD[];
-extern const u8 M_PLAYROUGH[];
+extern const u8 TUTOR_BURNINGJEALOUSY[];
+extern const u8 TUTOR_CEASELESSEDGE[];
+extern const u8 TUTOR_CORROSIVEGAS[];
+extern const u8 TUTOR_CROSSPOISON[];
+extern const u8 TUTOR_ELECTRICTERRAIN[];
+extern const u8 TUTOR_FAKETEARS[];
+extern const u8 TUTOR_FIREPUNCH[];
+extern const u8 TUTOR_GRASSYTERRAIN[];
+extern const u8 TUTOR_HEX[];
+extern const u8 TUTOR_ICEPUNCH[];
+extern const u8 TUTOR_KNOCKOFF[];
+extern const u8 TUTOR_MAGICCOAT[];
+extern const u8 TUTOR_MAGICROOM[];
+extern const u8 TUTOR_MISTYTERRAIN[];
+extern const u8 TUTOR_MYSTICALPOWER[];
+extern const u8 TUTOR_PSYCHUP[];
+extern const u8 TUTOR_PSYCHICTERRAIN[];
+extern const u8 TUTOR_PSYCHOCUT[];
+extern const u8 TUTOR_PSYSHIELDBASH[];
+extern const u8 TUTOR_RAZORSHELL[];
+extern const u8 TUTOR_RISINGVOLTAGE[];
+extern const u8 TUTOR_SCORCHINGSANDS[];
+extern const u8 TUTOR_SKITTERSMACK[];
+extern const u8 TUTOR_SPITE[];
+extern const u8 TUTOR_TELEKINESIS[];
+extern const u8 TUTOR_THUNDERPUNCH[];
+extern const u8 TUTOR_TRICK[];
+extern const u8 TUTOR_WONDERROOM[];
 
 // Fourth Badge Tutor Moves
-extern const u8 M_SUPERFANG[];
-extern const u8 M_MYSTICALFIRE[];
-extern const u8 M_AQUATAIL[];
-extern const u8 M_ELECTRICTERRAIN[];
-extern const u8 M_GRASSYTERRAIN[];
-extern const u8 M_ICICLESPEAR[];
-extern const u8 M_AURASPHERE[];
-extern const u8 M_CROSSPOISON[];
-extern const u8 M_HIGHHORSEPOWER[];
-extern const u8 M_SKYATTACK[];
-extern const u8 M_PSYCHICTERRAIN[];
-extern const u8 M_POLLENPUFF[];
-extern const u8 M_DRAGONDANCE[];
-extern const u8 M_CRUNCH[];
-extern const u8 M_MISTYTERRAIN[];
+extern const u8 TUTOR_AGILITY[];
+extern const u8 TUTOR_AIRSLASH[];
+extern const u8 TUTOR_AURASPHERE[];
+extern const u8 TUTOR_BATONPASS[];
+extern const u8 TUTOR_BITTERMALICE[];
+extern const u8 TUTOR_BODYPRESS[];
+extern const u8 TUTOR_COSMICPOWER[];
+extern const u8 TUTOR_DIRECLAW[];
+extern const u8 TUTOR_DRAGONDANCE[];
+extern const u8 TUTOR_DRILLRUN[];
+extern const u8 TUTOR_ESPERWING[];
+extern const u8 TUTOR_FIREPLEDGE[];
+extern const u8 TUTOR_GRASSPLEDGE[];
+extern const u8 TUTOR_GRAVITY[];
+extern const u8 TUTOR_HEALBELL[];
+extern const u8 TUTOR_HEATCRASH[];
+extern const u8 TUTOR_HEAVYSLAM[];
+extern const u8 TUTOR_LASHOUT[];
+extern const u8 TUTOR_LUNARBLESSING[];
+extern const u8 TUTOR_MYSTICALFIRE[];
+extern const u8 TUTOR_NASTYPLOT[];
+extern const u8 TUTOR_SEEDBOMB[];
+extern const u8 TUTOR_SIGNALBEAM[];
+extern const u8 TUTOR_STOMPINGTANTRUM[];
+extern const u8 TUTOR_TAILWIND[];
+extern const u8 TUTOR_TAKEHEART[];
+extern const u8 TUTOR_VICTORYDANCE[];
+extern const u8 TUTOR_WATERPLEDGE[];
 
 // Fifth Badge Tutor Moves
-extern const u8 M_HYPERVOICE[];
-extern const u8 M_HEATWAVE[];
-extern const u8 M_MUDDYWATER[];
-extern const u8 M_EARTHPOWER[];
-extern const u8 M_BOUNCE[];
-extern const u8 M_PSYCHICFANGS[];
-extern const u8 M_FOULPLAY[];
+extern const u8 TUTOR_AQUATAIL[];
+extern const u8 TUTOR_BLAZEKICK[];
+extern const u8 TUTOR_BODYSLAM[];
+extern const u8 TUTOR_BOUNCE[];
+extern const u8 TUTOR_CRUNCH[];
+extern const u8 TUTOR_DARKESTLARIAT[];
+extern const u8 TUTOR_EXPANDINGFORCE[];
+extern const u8 TUTOR_HYPERVOICE[];
+extern const u8 TUTOR_IRONHEAD[];
+extern const u8 TUTOR_LIQUIDATION[];
+extern const u8 TUTOR_POWERGEM[];
+extern const u8 TUTOR_PSYCHICFANGS[];
+extern const u8 TUTOR_THROATCHOP[];
+extern const u8 TUTOR_UPROAR[];
+extern const u8 TUTOR_ZENHEADBUTT[];
 
 // Sixth Badge Tutor Moves
-extern const u8 M_BATONPASS[];
-extern const u8 M_HEATCRASH[];
-extern const u8 M_DRILLRUN[];
-extern const u8 M_FIREPLEDGE[];
-extern const u8 M_WATERPLEDGE[];
-extern const u8 M_GRASSPLEDGE[];
+extern const u8 TUTOR_BLEAKWINDSTORM[];
+extern const u8 TUTOR_BUGBUZZ[];
+extern const u8 TUTOR_EARTHPOWER[];
+extern const u8 TUTOR_FOULPLAY[];
+extern const u8 TUTOR_HEATWAVE[];
+extern const u8 TUTOR_HIGHHORSEPOWER[];
+extern const u8 TUTOR_LEAFBLADE[];
+extern const u8 TUTOR_MUDDYWATER[];
+extern const u8 TUTOR_PHANTOMFORCE[];
+extern const u8 TUTOR_PLAYROUGH[];
+extern const u8 TUTOR_POLLENPUFF[];
+extern const u8 TUTOR_SANDSEARSTORM[];
+extern const u8 TUTOR_SPRINGTIDESTORM[];
+extern const u8 TUTOR_TRIPLEARROWS[];
+extern const u8 TUTOR_WINDBOLTSTORM[];
 
 // Seventh Badge Tutor Moves
-extern const u8 M_WEATHERBALL[];
-extern const u8 M_FLAREBLITZ[];
-extern const u8 M_HYDOPUMP[];
-extern const u8 M_LEAFSTORM[];
-extern const u8 M_SUPERPOWER[];
-extern const u8 M_GUNKSHOT[];
-extern const u8 M_BRAVEBIRD[];
-extern const u8 M_MEGAHORN[];
-extern const u8 M_PHANTOMFORCE[];
-extern const u8 M_OUTRAGE[];
-extern const u8 M_DARKESTLARIAT[];
-extern const u8 M_HEAVYSLAM[];
+extern const u8 TUTOR_BRAVEBIRD[];
+extern const u8 TUTOR_CLOSECOMBAT[];
+extern const u8 TUTOR_FLAREBLITZ[];
+extern const u8 TUTOR_GUNKSHOT[];
+extern const u8 TUTOR_HEADLONGRUSH[];
+extern const u8 TUTOR_HURRICANE[];
+extern const u8 TUTOR_HYDROPUMP[];
+extern const u8 TUTOR_MEGAHORN[];
+extern const u8 TUTOR_MISTYEXPLOSION[];
+extern const u8 TUTOR_MOUNTAINGALE[];
+extern const u8 TUTOR_POLTERGEIST[];
+extern const u8 TUTOR_POWERWHIP[];
+extern const u8 TUTOR_RAGINGFURY[];
+extern const u8 TUTOR_SUPERPOWER[];
+extern const u8 TUTOR_WAVECRASH[];
 
 // Eight Badge Tutor Moves
-extern const u8 M_POWERWHIP[];
-extern const u8 M_CLOSECOMBAT[];
-extern const u8 M_HURRICANE[];
-extern const u8 M_PSYCHOCUT[];
-extern const u8 M_BREAKINGSWIPE[];
-extern const u8 M_THROATCHOP[];
-extern const u8 M_SOLARBLADE[];
-extern const u8 M_BLASTBURN[];
-extern const u8 M_HYDROCANNON[];
-extern const u8 M_FRENZYPLANT[];
+extern const u8 TUTOR_BLASTBURN[];
+extern const u8 TUTOR_CHLOROBLAST[];
+extern const u8 TUTOR_FRENZYPLANT[];
+extern const u8 TUTOR_HYDROCANNON[];
+extern const u8 TUTOR_LASTRESORT[];
+extern const u8 TUTOR_LEAFSTORM[];
+extern const u8 TUTOR_METEORBEAM[];
+extern const u8 TUTOR_OUTRAGE[];
+extern const u8 TUTOR_SKYATTACK[];
+extern const u8 TUTOR_SOLARBLADE[];
+extern const u8 TUTOR_STEELROLLER[];
 
 // Utility Old Man Tool List
 extern const u8 MOVE_TUTOR[];
@@ -3318,118 +3402,202 @@ static const u8* BadgeTutorMoves[] = {
 
 // First Badge Tutor Moves
 static const u8* FirstBadgeTutorMoves[] = {
-	M_SPIKES,
-	M_FIREFANG,
-	M_RAZORSHELL,
-	M_THUNDERFANG,
-	M_ICEFANG,
-	M_LOWKICK,
-	M_BUGBITE,
-	M_HEX,
+	TUTOR_AFTERYOU,
+	TUTOR_BIND,
+	TUTOR_BLOCK,
+	TUTOR_COACHING,
+	TUTOR_CONFIDE,
+	TUTOR_DUALCHOP,
+	TUTOR_DUALWINGBEAT,
+	TUTOR_FIRESPIN,
+	TUTOR_FOCUSENERGY,
+	TUTOR_GASTROACID,
+	TUTOR_HELPINGHAND,
+	TUTOR_ICICLESPEAR,
+	TUTOR_LASERFOCUS,
+	TUTOR_PINMISSILE,
+	TUTOR_ROCKBLAST,
+	TUTOR_ROLEPLAY,
+	TUTOR_SANDTOMB,
+	TUTOR_SCALESHOT,
+	TUTOR_SCARYFACE,
+	TUTOR_SNATCH,
+	TUTOR_SNORE,
+	TUTOR_STOREDPOWER,
+	TUTOR_TAILSLAP,
+	TUTOR_TRIPLEAXEL,
+	TUTOR_VENOMDRENCH,
+	TUTOR_VACUUMWAVE,
+	TUTOR_WHIRLPOOL,
+	TUTOR_WORRYSEED,
 };
 
 // Second Badge Tutor Moves
 static const u8* SecondBadgeTutorMoves[] = {
-	M_ENDEAVOR,
-	M_FIREPUNCH,
-	M_THUNDERPUNCH,
-	M_LEAFBLADE,
-	M_ICEPUNCH,
-	M_REVERSAL,
-	M_TOXICSPIKES,
-	M_STOMPINGTANTRUM,
-	M_AIRSLASH,
-	M_SIGNALBEAM,
-	M_ROCKBLAST,
-	M_DUALCHOP,
+	TUTOR_BARBBARRAGE,
+	TUTOR_BREAKINGSWIPE,
+	TUTOR_BUGBITE,
+	TUTOR_COVET,
+	TUTOR_ELECTROBALL,
+	TUTOR_ELECTROWEB,
+	TUTOR_ENCORE,
+	TUTOR_ENDEAVOR,
+	TUTOR_FIREFANG,
+	TUTOR_FLIPTURN,
+	TUTOR_GRASSYGLIDE,
+	TUTOR_ICEFANG,
+	TUTOR_ICYWIND,
+	TUTOR_INFERNALPARADE,
+	TUTOR_IRONDEFENSE,
+	TUTOR_LOWKICK,
+	TUTOR_MAGNETRISE,
+	TUTOR_PAINSPLIT,
+	TUTOR_REVERSAL,
+	TUTOR_SCREECH,
+	TUTOR_SPIKES,
+	TUTOR_STONEAXE,
+	TUTOR_SUPERFANG,
+	TUTOR_SYNTHESIS,
+	TUTOR_TERRAINPULSE,
+	TUTOR_THUNDERFANG,
+	TUTOR_TOXICSPIKES,
+	TUTOR_WEATHERBALL,
 };
 
 // Third Badge Tutor Moves
 static const u8* ThirdBadgeTutorMoves[] = {
-	M_BODYSLAM,
-	M_BLAZEKICK,
-	M_LIQUIDATION,
-	M_ELECTROWEB,
-	M_SEEDBOMB,
-	M_ICYWIND,
-	M_VACUUMWAVE,
-	M_TAILWIND,
-	M_ZENHEADBUTT,
-	M_BUGBUZZ,
-	M_POWERGEM,
-	M_KNOCKOFF,
-	M_IRONHEAD,
-	M_PLAYROUGH,
+	TUTOR_BURNINGJEALOUSY,
+	TUTOR_CEASELESSEDGE,
+	TUTOR_CORROSIVEGAS,
+	TUTOR_CROSSPOISON,
+	TUTOR_ELECTRICTERRAIN,
+	TUTOR_FAKETEARS,
+	TUTOR_FIREPUNCH,
+	TUTOR_GRASSYTERRAIN,
+	TUTOR_HEX,
+	TUTOR_ICEPUNCH,
+	TUTOR_KNOCKOFF,
+	TUTOR_MAGICCOAT,
+	TUTOR_MAGICROOM,
+	TUTOR_MISTYTERRAIN,
+	TUTOR_MYSTICALPOWER,
+	TUTOR_PSYCHUP,
+	TUTOR_PSYCHICTERRAIN,
+	TUTOR_PSYCHOCUT,
+	TUTOR_PSYSHIELDBASH,
+	TUTOR_RAZORSHELL,
+	TUTOR_RISINGVOLTAGE,
+	TUTOR_SCORCHINGSANDS,
+	TUTOR_SKITTERSMACK,
+	TUTOR_SPITE,
+	TUTOR_TELEKINESIS,
+	TUTOR_THUNDERPUNCH,
+	TUTOR_TRICK,
+	TUTOR_WONDERROOM,
 };
 
 // Fourth Badge Tutor Moves
 static const u8* FourthBadgeTutorMoves[] = {
-	M_SUPERFANG,
-	M_MYSTICALFIRE,
-	M_AQUATAIL,
-	M_ELECTRICTERRAIN,
-	M_GRASSYTERRAIN,
-	M_ICICLESPEAR,
-	M_AURASPHERE,
-	M_CROSSPOISON,
-	M_HIGHHORSEPOWER,
-	M_SKYATTACK,
-	M_PSYCHICTERRAIN,
-	M_POLLENPUFF,
-	M_DRAGONDANCE,
-	M_CRUNCH,
-	M_MISTYTERRAIN,
+	TUTOR_AGILITY,
+	TUTOR_AIRSLASH,
+	TUTOR_AURASPHERE,
+	TUTOR_BATONPASS,
+	TUTOR_BITTERMALICE,
+	TUTOR_BODYPRESS,
+	TUTOR_COSMICPOWER,
+	TUTOR_DIRECLAW,
+	TUTOR_DRAGONDANCE,
+	TUTOR_DRILLRUN,
+	TUTOR_ESPERWING,
+	TUTOR_FIREPLEDGE,
+	TUTOR_GRASSPLEDGE,
+	TUTOR_GRAVITY,
+	TUTOR_HEALBELL,
+	TUTOR_HEATCRASH,
+	TUTOR_HEAVYSLAM,
+	TUTOR_LASHOUT,
+	TUTOR_LUNARBLESSING,
+	TUTOR_MYSTICALFIRE,
+	TUTOR_NASTYPLOT,
+	TUTOR_SEEDBOMB,
+	TUTOR_SIGNALBEAM,
+	TUTOR_STOMPINGTANTRUM,
+	TUTOR_TAILWIND,
+	TUTOR_TAKEHEART,
+	TUTOR_VICTORYDANCE,
+	TUTOR_WATERPLEDGE,
 };
 
 // Fifth Badge Tutor Moves
 static const u8* FifthBadgeTutorMoves[] = {
-	M_HYPERVOICE,
-	M_HEATWAVE,
-	M_MUDDYWATER,
-	M_EARTHPOWER,
-	M_BOUNCE,
-	M_PSYCHICFANGS,
-	M_FOULPLAY,
+	TUTOR_AQUATAIL,
+	TUTOR_BLAZEKICK,
+	TUTOR_BODYSLAM,
+	TUTOR_BOUNCE,
+	TUTOR_CRUNCH,
+	TUTOR_DARKESTLARIAT,
+	TUTOR_EXPANDINGFORCE,
+	TUTOR_HYPERVOICE,
+	TUTOR_IRONHEAD,
+	TUTOR_LIQUIDATION,
+	TUTOR_POWERGEM,
+	TUTOR_PSYCHICFANGS,
+	TUTOR_THROATCHOP,
+	TUTOR_UPROAR,
+	TUTOR_ZENHEADBUTT,
 };
 
 // Sixth Badge Tutor Moves
 static const u8* SixthBadgeTutorMoves[] = {
-	M_BATONPASS,
-	M_HEATCRASH,
-	M_DRILLRUN,
-	M_FIREPLEDGE,
-	M_WATERPLEDGE,
-	M_GRASSPLEDGE,
+	TUTOR_BLEAKWINDSTORM,
+	TUTOR_BUGBUZZ,
+	TUTOR_EARTHPOWER,
+	TUTOR_FOULPLAY,
+	TUTOR_HEATWAVE,
+	TUTOR_HIGHHORSEPOWER,
+	TUTOR_LEAFBLADE,
+	TUTOR_MUDDYWATER,
+	TUTOR_PHANTOMFORCE,
+	TUTOR_PLAYROUGH,
+	TUTOR_POLLENPUFF,
+	TUTOR_SANDSEARSTORM,
+	TUTOR_SPRINGTIDESTORM,
+	TUTOR_TRIPLEARROWS,
+	TUTOR_WINDBOLTSTORM,
 };
 
 // Seventh Badge Tutor Moves
 static const u8* SeventhBadgeTutorMoves[] = {
-	M_WEATHERBALL,
-	M_FLAREBLITZ,
-	M_HYDOPUMP,
-	M_LEAFSTORM,
-	M_SUPERPOWER,
-	M_GUNKSHOT,
-	M_BRAVEBIRD,
-	M_MEGAHORN,
-	M_PHANTOMFORCE,
-	M_OUTRAGE,
-	M_DARKESTLARIAT,
-	M_HEAVYSLAM,
+	TUTOR_BRAVEBIRD,
+	TUTOR_CLOSECOMBAT,
+	TUTOR_FLAREBLITZ,
+	TUTOR_GUNKSHOT,
+	TUTOR_HEADLONGRUSH,
+	TUTOR_HURRICANE,
+	TUTOR_HYDROPUMP,
+	TUTOR_MEGAHORN,
+	TUTOR_MISTYEXPLOSION,
+	TUTOR_MOUNTAINGALE,
+	TUTOR_POLTERGEIST,
+	TUTOR_POWERWHIP,
+	TUTOR_RAGINGFURY,
+	TUTOR_SUPERPOWER,
+	TUTOR_WAVECRASH,
 };
 
 // Eight Badge Tutor Moves
 static const u8* EightBadgeTutorMoves[] = {
-	M_POWERWHIP,
-	M_CLOSECOMBAT,
-	M_HURRICANE,
-	M_PSYCHOCUT,
-	M_BREAKINGSWIPE,
-	M_THROATCHOP,
-	M_SOLARBLADE,
-	M_BLASTBURN,
-	M_HYDROCANNON,
-	M_FRENZYPLANT,
+	TUTOR_BLASTBURN,
+	TUTOR_CHLOROBLAST,
+	TUTOR_FRENZYPLANT,
+	TUTOR_HYDROCANNON,
+	TUTOR_LASTRESORT,
+	TUTOR_LEAFSTORM,
+	TUTOR_METEORBEAM,
+	TUTOR_OUTRAGE,
+	TUTOR_SKYATTACK,
+	TUTOR_SOLARBLADE,
+	TUTOR_STEELROLLER,
 };
 
 static const u8* UtilityOldManTools[] = {
