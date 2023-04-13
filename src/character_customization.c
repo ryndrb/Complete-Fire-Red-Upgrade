@@ -266,15 +266,27 @@ extern const u16 gEventObjectPic_OakPal[];
 extern const u16 gEventObjectPic_ScientistPal[];
 extern const u16 gEventObjectPic_NerdPal[];
 extern const u16 gEventObjectPic_PolicePal[];
-
-// Team Rocket
+extern const u16 gEventObjectPic_SailorPal[];
+extern const u16 gEventObjectPic_OldManPal[];
+extern const u16 gEventObjectPic_GrannyPal[];
 extern const u16 gEventObjectPic_ArcherPal[];
 extern const u16 gEventObjectPic_ArianaPal[];
 extern const u16 gEventObjectPic_ProtonPal[];
 
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Archer;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ariana;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Proton;
+
+static NPCPtr sOverworldTable2[] = {
+	/* 0 */ &gEventObjectGraphicsInfo_Archer,
+	/* 1 */ &gEventObjectGraphicsInfo_Ariana,
+	/* 2 */ &gEventObjectGraphicsInfo_Proton,
+};
+
 // create 255 OW tables
 const struct EventObjectGraphicsInfo** const gOverworldTableSwitcher[255] ={
 		(NPCPtr*) 0x8EB1000,
+		sOverworldTable2,
 		(NPCPtr*) 0x0,
 		// etc...
 		// please note that this method makes compatability with OW Manager challenging
@@ -290,6 +302,9 @@ static const struct SpritePalette sObjectEventSpritePalettes12[] = {
 	{gEventObjectPic_ScientistPal, 0x1206},
 	{gEventObjectPic_NerdPal, 0x1207},
 	{gEventObjectPic_PolicePal, 0x1208},
+	{gEventObjectPic_SailorPal, 0x1209},
+	{gEventObjectPic_OldManPal, 0x120A},
+	{gEventObjectPic_GrannyPal, 0x120B},
 	{NULL, 0x11FF},
 };
 

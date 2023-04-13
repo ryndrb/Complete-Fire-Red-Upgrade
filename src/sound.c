@@ -5,6 +5,7 @@
 
 #include "../include/new/dns.h"
 
+#include "../include/constants/field_weather.h"
 #include "../include/constants/maps.h"
 #include "../include/constants/songs.h"
 
@@ -61,7 +62,7 @@ u16 GetLocationMusicNew(struct WarpData* warp)
             break;
         case BGM_CINNABAR_ISLAND:
             if(day || night)
-                music = BGM_RSE_FALLARBOR_TOWN;
+                music = BGM_RSE_VENDATURF_TOWN;
             break;
 
 

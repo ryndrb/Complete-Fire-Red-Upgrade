@@ -20,7 +20,7 @@ I am a Channeler.\pThere are spirits up to mischief.\nI sense them high in the T
 [.]\n[.]\pYou are not worthy.
 
 #org @gText_PokeTower_RivalSpeaks1
-Yo, [PLAYER]! What's up?\pYour Pok\emon still kickin', or\nwhat?\pHah, I can take 'em down easy!\nLet's battle!
+Yo, [PLAYER]! What's up?\pHeh, you got a Mega Ring, too.\pYour Pok\emon still kickin', or\nwhat?\pI can take 'em down easy!\nLet's battle!
 
 #org @gText_PokeTower_MaySpeaks1
 Hey, [PLAYER]!\nHo-\p[.]Ugh[.] it's you, [RIVAL][.]\nWhat are you doing here?
@@ -41,10 +41,10 @@ My Pok\emon may be cute, but\nthey're tough and graceful.\pUnlike your brash and
 Hah! My tactics will take me all\nthe way to the top, no question!\pYou should try it sometime, May.\nYou're too busy playin' it soft.
 
 #org @gText_PokeTower_MaySpeaks4
-Hah! You seem to only care\nabout winning at any cost.
+You only care about winning at any\ncost[.]
 
 #org @gText_PokeTower_RivalSpeaks5
-Winning is everything, May.\pThat's what separates the champs\nfrom the chumps!\pMaybe of you focused on that\ninstead of flouncing around in\lyour frilly outfits, you might\lactually stand a chance.
+Winning is everything, May.\pThat's what separates the champs\nfrom the chumps!\pMaybe if you focused on that\ninstead of flouncing around in\lyour frilly outfits, you might\lactually stand a chance.
 
 #org @gText_PokeTower_MaySpeaks5
 I don't need your approval, [RIVAL]!\pI know what I'm capable of, and so\ndo my Pok\emon.\pI don't have to stoop to your\nlevel to prove myself.
@@ -74,7 +74,7 @@ We'll be ready for you, [RIVAL].\pBut next time, don't "hold back."\pI want to s
 It's luck. All there is to it.\nSmell 'ya.
 
 #org @gText_PokeTower_MaySpeaks9
-What a jerk.\pIt's nice seeing him get humbled a\nbit[.]\pSorry you had to hear all of that\nearlier.\pWe don't really have the best\nfamilial relationship[.] ha[.] ha.\p[.] [.]\n[.] [.]\pAnyways, look at this place.\nIt's so eerie yet intriguing.\pI've heard that the Pok\emon Tower\nholds the spirits of departed\lPok\emon.\pIt gives me goosebumps just\nthinking about it.\pI wonder if there are any rare\nGhost-type Pok\emon in here?\pDo you think we could find any?\pMaybe we should explore the tower\nand find out for ourselves.\pBut let's be careful, we don't\nwant to upset any spirits that\lmight be lurking around.\pTake care and good luck, [PLAYER]!
+What a jerk.\pIt's nice seeing him get humbled a\nbit[.]\pSorry you had to hear all of that\nearlier.\pWe aren't particularly close[.]\nHa[.] Ha.\p[.] [.]\n[.] [.]\pAnyways, look at this place.\nIt's so eerie yet intriguing.\pI've heard that the Pok\emon Tower\nholds the spirits of departed\lPok\emon.\pIt gives me goosebumps just\nthinking about it.\pI wonder if there are any rare\nGhost-type Pok\emon in here?\pDo you think we could find any?\pMaybe we should explore the tower\nand find out for ourselves.\pBut let's be careful, we don't\nwant to upset any spirits that\lmight be lurking around.\pTake care and good luck, [PLAYER]!
 
 #org @gText_Lavender_MrFujiSpeak1
 [PLAYER][.]\pYour Pok\edex quest is one that\nrequires strong dedication.\pWithout deep love for Pok\emon,\nyour quest may fail.\pI'm not sure if this will help you,\nbut I'd like you to have it.

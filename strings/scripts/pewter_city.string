@@ -2,13 +2,13 @@
 Just as I thought!\nYou're a Pok\emon champ material!\pHere, take this.
 
 #org @gText_ObtainedStone
-[BUFFER1] allows [BUFFER2] to\nmega evolve if you have a Mega Ring.\pSo keep killin' it champ!
+I found it lying around outside.\pI don't know what it is, but it\nlooks fancy and valuable!\pAnyway, goodluck on your journey,\nchamp!
 
 #org @gText_GiveRoost
-[.]\n[.]\pUgh!\pThose damn birds are back.\pYou're a trainer, right?\nHere, take this.
+[.] [.]\n[.] [.]\pUgh!\pThose damn birds are back.\pYou're a trainer, right?\nHere, take this.
 
 #org @gText_GiveRoost2
-I had that for a while but I wasn't\naware of its typing.
+My brother taught it'd be funny if\nhe gave me something like this[.]
 
 #org @gText_GiveRoost3
 You see, I really dislike bird\nPok\emons.\pThey always ruin my beautiful\ngarden!

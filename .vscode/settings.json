@@ -28,7 +28,10 @@
         "battle_transition.h": "c",
         "battle_util.h": "c",
         "damage_calc.h": "c",
-        "hold_effects.h": "c"
+        "hold_effects.h": "c",
+        "battle_anim.h": "c",
+        "scanline_effect.h": "c",
+        "hooks": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

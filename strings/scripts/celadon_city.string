@@ -35,7 +35,7 @@ What, really?\pWell, now you've got me curious!\pIf you aren't focusing on the\n
 So! I must say, I am impressed you\ngot here.\pTeam Rocket captures Pok\emon from\naround the world.\pThey're important tools for keeping\nour criminal enterprise going.\pI am the leader, Giovanni!
 
 #org @gText_gText_Celadon_GiovanniSpeak2
-For your insolence, you will feel a\nworld of pain!
+[.] [.]\n[.] [.]\pWell, well, well[.]\nLook what we have here.\pIt seems you have a Mega Ring.\pThat is quite an impressive piece\nof technology.\pIt's a shame that such  power is\nwasted on someone like you.\pYou are here to battle me, are you\nnot?\pBe warned, I will not go easy on\nyou.\pFor your insolence, you will feel\na world of pain!
 
 #org @gText_gText_Celadon_GiovanniSpeak3
 I see that you raise Pok\emon with\nutmost care.\pA child like you would never\nunderstand what I hope to achieve.\pI shall step aside this time!\pI hope we meet again[.]
@@ -57,3 +57,12 @@ It's too bad.\pIf you were to join Team Rocket,\nyou could become an Executive.\
 
 #org @gText_RocketHQ_ArianaSpeak5
 [.] [.]\n[.] [.]\pIt doesn't matter what happens to\nthis hideout now.\pWe have much bigger plans.\pYou'll come to appreciate Team\nRocket's true power soon enough.\pFor now, I'll just leave you to\nour boss.\pEnjoy yourself while you can[.]\nFufufufu[.]
+
+#org @gText_Celadon_ErikaSpeak1
+Hello[.]\pLovely weather isn't it?\pIt's so pleasant[.]\pOh, dear[.]\nI must have dozed off.\pWelcome.\p[.] [.]\n[.] [.]\pI couldn't help but notice the\nMega Ring on your hand.\pIt appears you have a great deal\nof skill as a Pok\emon trainer.\pI, too, have a Mega Ring that I\nuse to enhance the power of my\lGrass-type Pok\emon.\pIt was a gift we Gym Leaders\nreceived when we traveled to the\lKalos region for a gathering.
+
+#org @gText_Celadon_ErikaSpeak2
+[.] [.]\n[.] [.]\pYou see, I have always been\nfascinated by the power and beauty\lof nature.\pAnd what better way to harness\nthat power than through Mega\lEvolution?\pWith it, my Pok\emon can reach new\nheights of strength and grace, and\lI can push myself to become a\lbetter trainer.
+
+#org @gText_Celadon_ErikaSpeak3
+But enough talk.\pLet us see if your skills are a\nmatch for mine.\pI may specialize in Grass-type\nPok\emon, but don't think that\lmakes me an easy opponent.\pI look forward to a challenging\nbattle.

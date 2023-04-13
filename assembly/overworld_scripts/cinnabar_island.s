@@ -133,10 +133,11 @@ MapScript_0x16E285:
 EventSript_Cinnabar_May:
     lock
     textcolor RED
-    playsong 0x1A7
+    sound 0x15
     applymovement 2 EventScript_Cinnabar_MayNoticePlayer
     applymovement PLAYER EventScript_Cinnabar_PlayerGetCloseToMay
     waitmovement 2
+    playsong 0x1A7
     call MayNameBox
     msgbox gText_Cinnabar_MaySpeaks1 MSG_KEEPOPEN
     closeonkeypress
@@ -170,7 +171,9 @@ EventSript_Cinnabar_May:
     end
 
 EventScript_Cinnabar_MayNoticePlayer:
-    .byte exclaim
+    .byte pause_long
+    .byte say_question
+    .byte pause_long
     .byte walk_down_onspot_fastest
     .byte pause_long
     .byte pause_long
@@ -180,6 +183,9 @@ EventScript_Cinnabar_MayNoticePlayer:
     .byte end_m
 
 EventScript_Cinnabar_PlayerGetCloseToMay:
+    .byte pause_long
+    .byte exclaim
+    .byte pause_long
     .byte pause_long
     .byte walk_up
     .byte walk_up
@@ -225,8 +231,8 @@ MapScript_Cinnabar1:
     end
 
 Move_RepositionBill:
-    movesprite2 0x3 0xF 0xC
-    spriteface 0x3, LEFT
+    movesprite2 0x3 0x27 0xE
+    spriteface 0x3, UP
     return
 
 LevelScript_Cinnabar_Bill:
@@ -239,6 +245,7 @@ EventSript_Cinnabar_Bill:
     clearflag 0x4001
     textcolor BLUE
     pause 0x14
+    sound 0x15
     applymovement 0x3 Move_BillNoticePlayer
     applymovement PLAYER Move_PlayerFaceBill
     waitmovement 0x3
@@ -267,16 +274,18 @@ EventSript_Cinnabar_Bill:
 
 EventScript_0x1670E6:
     clearflag 0x6B
-    movesprite2 0x4 0x1B 0xF
+    movesprite2 0x4 0x27 0x28
     call BillNameBox
     msgbox gText_Cinnabar_BillSpeaks4 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     applymovement 0x3 Move_BillGoToBoat
     applymovement PLAYER Move_PlayerGoToBoat
-    waitmovement 0x3
+    waitmovement PLAYER
     applymovement 0x4 Move_BoatArrived
     waitmovement 0x4
+    spriteface 0x3, RIGHT
+    spriteface PLAYER, LEFT
     call BillNameBox
     msgbox gText_Cinnabar_BillSpeaks5 MSG_KEEPOPEN
     closeonkeypress
@@ -314,11 +323,8 @@ Move_BillWentToPokeCenter:
     .byte walk_left
     .byte walk_left
     .byte walk_left
+    .byte walk_left
     .byte walk_down
-    .byte walk_down
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
     .byte walk_down
     .byte walk_down
     .byte walk_down
@@ -331,17 +337,52 @@ Move_BillGoToBoat:
     .byte walk_left
     .byte walk_left
     .byte walk_left
-    .byte walk_down
-    .byte walk_down
-    .byte walk_left
-    .byte walk_left
     .byte walk_left
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte walk_right
     .byte walk_right
     .byte walk_right
@@ -350,7 +391,13 @@ Move_BillGoToBoat:
     .byte walk_down
     .byte walk_down
     .byte walk_down
-    .byte walk_right_onspot_fastest
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
     .byte end_m
 
 Move_PlayerGoToBoat:
@@ -359,9 +406,6 @@ Move_PlayerGoToBoat:
     .byte walk_left
     .byte walk_left
     .byte walk_left
-    .byte walk_down
-    .byte walk_down
-    .byte walk_left
     .byte walk_left
     .byte walk_left
     .byte walk_down
@@ -369,7 +413,46 @@ Move_PlayerGoToBoat:
     .byte walk_down
     .byte walk_down
     .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte walk_right
     .byte walk_right
     .byte walk_right
@@ -377,7 +460,15 @@ Move_PlayerGoToBoat:
     .byte walk_right
     .byte walk_down
     .byte walk_down
-    .byte walk_right_onspot_fastest
+    .byte walk_down
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
     .byte end_m
 
 Move_BoatArrived:
@@ -387,20 +478,22 @@ Move_BoatArrived:
     .byte walk_left
     .byte walk_left
     .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left_very_slow
     .byte walk_left_very_slow
     .byte walk_left_very_slow
     .byte walk_left_very_slow
     .byte end_m
 
 Move_BillGetOnBoat:
-    .byte walk_right
-    .byte walk_right_onspot_fastest
+    .byte walk_down_onspot_fastest
     .byte set_invisible
     .byte end_m
 
 Move_PlayerGetOnBoat:
-    .byte walk_right
-    .byte walk_right_onspot_fastest
+    .byte walk_down_onspot_fastest
     .byte set_invisible
     .byte end_m
 
@@ -426,7 +519,7 @@ EventScript_Cinnabar_BillPokeCenter:
     setflag 0xA2
     setvar 0x408A 0x0
     clearflag 0x62
-    warp 0x3 0x8 0xFF 0xE 0xB
+    warp 0x3 0x8 0xFF 0x27 0xB
     waitstate
     release
     end
@@ -435,12 +528,14 @@ EventScript_Cinnabar_OutsidePokeCenter:
     callasm RemoveNameBox
     textcolor BLUE
     clearflag 0x6B
-    movesprite2 0x4 0x1B 0xF
+    movesprite2 0x4 0x27 0x28
     applymovement 3 Move_BillGoToBoatAgain
     applymovement PLAYER Move_PlayerGoToBoatAgain
-    waitmovement 3
+    waitmovement PLAYER
     applymovement 0x4 Move_BoatArrived
     waitmovement 0x4
+    spriteface 0x3, RIGHT
+    spriteface PLAYER, LEFT
     call BillNameBox
     msgbox gText_Cinnabar_BillSpeaks5 MSG_KEEPOPEN
     closeonkeypress
@@ -531,21 +626,122 @@ Move_PlayerFollow2:
     .byte end_m
 
 Move_BillGoToBoatAgain:
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte walk_right
     .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_down
     .byte walk_down
     .byte walk_down
-    .byte walk_right_onspot_fastest
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
     .byte end_m
 
 Move_PlayerGoToBoatAgain:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_down
     .byte walk_down
-    .byte walk_right_onspot_fastest
+    .byte walk_down
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@

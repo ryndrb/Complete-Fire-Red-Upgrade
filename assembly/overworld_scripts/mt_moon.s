@@ -13,6 +13,7 @@
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_MtMoon_Proton:
     lock
+    textcolor BLUE
     applymovement 13 Move_MtMoon_Proton1
     waitmovement 13
     sound 0x15

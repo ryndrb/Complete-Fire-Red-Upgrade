@@ -17,10 +17,10 @@ Zzz[.]\nZzz[.]
 What kept you, [PLAYER]?
 
 #org @gText_Saffron_RivalSpeak2
-Hahaha! I thought you'd\nturn up if I waited here!\pI guess Team Rocket slowed you\ndown! Not that I care!\pI saw you in Saffron, so I decided\nto see if you got better!
+Hahaha, looks like you finally\nmade it!\pI've been waiting here for a\nwhile, figured you might show up\leventually.\pMay's not with you?\nWell, whatever.\pTeam Rocket's been causing trouble\nso I thought I'd take the\lopportunity to test out my Pok\emon\lagainst you.\pDon't worry though, I won't hold\nback!
 
 #org @gText_Saffron_RivalSpeak3
-Well, [PLAYER]!\nI'm moving on up and ahead!\pBy checking my Pok\edex, I'm\nstarting to see what's strong and\lhow they evolve!\pAm I a genius or what?\pI'm going to the Pok\emon League to\nboot out the Elite Four.\pI'll become the world's most\npowerful Trainer!\p[PLAYER], well, good luck to you!\nDon't sweat it!\lSmell ya!
+Heh, you really are a tough\ntrainer, [PLAYER].\pBeen doing some serious training\nmyself and I can tell you've been\ldoing the same.\pI'm starting to see trends in\nPok\emon evolution and strength.\pAm I a genius or what? Haha!\pI'm going to the Pok\emon League to\nboot out the Elite Four.\pI'm not just doing this for myself\nanymore, I want to prove that my\lPok\emon can take on anyone!\p[PLAYER], I hope you're ready for\nthe challenge!\pDon't sweat it though!\nSmell ya!
 
 #org @gText_SilphCo_ArcherSpeak1
 Oh? You managed yo get this far[.]?\pYou must be quite the Trainer.

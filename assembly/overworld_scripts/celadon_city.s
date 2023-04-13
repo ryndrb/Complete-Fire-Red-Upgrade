@@ -19,9 +19,18 @@ EventScript_GymLeaderErika:
     setvar 0x8005 0x2
     special 0x174
     call ErikaNameBox
-    trainerbattle1 0x1 0x1A1 0x0 0x8197114 0x8197260 EventScript_0x816D0A0
+    checkflag 0x4B3
+    if SET _goto EventScript_Celadon_GymLeaderErika2
+    msgbox gText_Celadon_ErikaSpeak1 MSG_KEEPOPEN
+    msgbox gText_Celadon_ErikaSpeak2 MSG_KEEPOPEN
+    trainerbattle1 0x1 0x1A1 0x0 gText_Celadon_ErikaSpeak3 0x8197260 EventScript_0x816D0A0
     checkflag 0x293
-    if 0x0 _goto 0x816D0C6
+    if 0x0 _goto EventScript_0x816D0C6
+    goto EventScript_Celadon_GymLeaderErika2
+    release
+    end
+
+EventScript_Celadon_GymLeaderErika2:
     setvar 0x8004 0x5
     setvar 0x8005 0x4
     special 0x173
@@ -753,6 +762,7 @@ EventScript_RocketHQ_Ariana:
     closeonkeypress
     callasm RemoveNameBox
     applymovement 11 Move_RocketHQ_Ariana1
+    sound 0x15
     applymovement PLAYER Move_RocketHQ_Player1
     waitmovement 11
     playsong 0x181 1

@@ -9,10 +9,15 @@
 #include "../include/text_window.h"
 #include "../include/window.h"
 
+#include "../include/gba/syscall.h"
+
 void DrawNameBox(void);
 void RemoveNameBox(void);
 
 extern u8 sTimeWindowId;
+
+// Text Colors
+static const u8 sDarkTextColor[3]    = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY};
 
 extern u8 gText_Name_Unknown[];
 
@@ -81,11 +86,11 @@ u8* CharacterNames[] = {
 */
 void DrawNameBox(void) {
     u8* name = CharacterNames[Var8000];
-    u16 nameLen = StringLength(name);
+    u8 nameLen = StringLength(name);
 
     // 3 = Left, 4 = Right
     if(Var8001 == 3){
-        struct WindowTemplate Left = SetWindowTemplateFields(0, 1, 11, nameLen, 2, 13, 0x008);
+        struct WindowTemplate Left = SetWindowTemplateFields(0, 1, 11, nameLen, 2, 15, 0x008);
         if(Var8000 == 1){
             Left.width = StringLength(gSaveBlock1->rivalName);
         }
@@ -108,7 +113,8 @@ void DrawNameBox(void) {
     if(Var8000 == 1){
         name = gSaveBlock1->rivalName;
     }
-	AddTextPrinterParameterized(sTimeWindowId, 2, name, 2, 0, 0xFF, NULL);
+
+    AddTextPrinterParameterized3(sTimeWindowId, 2, nameLen, 0, sDarkTextColor, 0xFF, name);
 	CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 }
 

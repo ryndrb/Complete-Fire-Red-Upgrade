@@ -401,9 +401,10 @@ EventScript_PokeTower_RivalPlayerNoticeMay1:
 EventScript_PokeTower_RivalPlayerNoticeMay2:
     applymovement 1 EventScript_PokeTower_RivalFaceMayDir2
     applymovement PLAYER EventScript_PokeTower_PlayerFaceMayDir2
-    waitmovement 1
     applymovement 3 EventScript_PokeTower_MayMoveToBoth2
-    waitmovement 3
+    waitmovement 1
+    @applymovement 3 EventScript_PokeTower_MayMoveToBoth2
+    @waitmovement 3
     return
 
 EventScript_PokeTower_MayFacePlayer1:
@@ -435,23 +436,32 @@ EventScript_PokeTower_PlayerFaceRival2:
     .byte end_m
 
 EventScript_PokeTower_RivalFaceMayDir1:
-    .byte walk_down_onspot_fastest
     .byte exclaim
+    .byte walk_down_onspot_fastest
     .byte end_m
 
 EventScript_PokeTower_RivalFaceMayDir2:
-    .byte walk_right_onspot_fastest
     .byte exclaim
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
     .byte end_m
 
 EventScript_PokeTower_PlayerFaceMayDir1:
-    .byte walk_down_onspot_fastest
     .byte exclaim
+    .byte walk_down_onspot_fastest
     .byte end_m
 
 EventScript_PokeTower_PlayerFaceMayDir2:
+    .byte pause_long
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
     .byte walk_right_onspot_fastest
-    .byte exclaim
     .byte end_m
 
 EventScript_PokeTower_MayMoveToBoth1:

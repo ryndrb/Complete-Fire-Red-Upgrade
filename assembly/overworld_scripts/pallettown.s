@@ -23,6 +23,7 @@
 .equ FLAG_RECEIVED_TIMETURNER, 0x9B1
 .equ FLAG_RECEIVED_STATSCANNER, 0x9B2
 .equ FLAG_OBTAIN_AMULET_COIN, 0x9B3
+.equ FLAG_MAY_PALLET_TOWN_TALKED, 0x9BA
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Prof Aid Give Time Turner
@@ -87,10 +88,9 @@ EventScript_ChooseStarterRegion:
     setvar 0x502A 0x1
     lock
     call SETNECESSARYGAMEFLAGS
+    sound 0x15
     applymovement 0x1 EventScript_MomSawYou
     waitmovement 0x1
-    applymovement PLAYER EventScript_GoToMom
-    waitmovement PLAYER
     call MomNameBox
     msgbox gText_MomChooseRegion MSG_KEEPOPEN
     callasm RemoveNameBox
@@ -209,17 +209,19 @@ MomScript_End:
 
 EventScript_MomSawYou:
     .byte exclaim
-    .byte pause_short
+    .byte pause_long
     .byte walk_up_onspot_fastest
-    .byte end_m
-
-EventScript_GoToMom:
-    .byte walk_left
-    .byte walk_left
-    .byte walk_down
+    .byte pause_long
+    .byte walk_up
+    .byte walk_up
+    .byte walk_right
     .byte end_m
 
 EventScript_MomDone:
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte walk_left_onspot_fastest
     .byte end_m
 
@@ -1093,6 +1095,7 @@ EventScript_PalletTown_May:
     msgbox gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
+    sound 0x15
     applymovement 0x4 EventScript_PalletTown_MayNoticePlayer
     waitmovement 0x4
     faceplayer
@@ -1103,24 +1106,25 @@ EventScript_PalletTown_May:
     applymovement 0x4 EventScript_PalletTown_MayPushPlayer
     applymovement PLAYER EventScript_PalletTown_Pushed
     waitmovement 0x4
+    setflag FLAG_MAY_PALLET_TOWN_TALKED
     release
     end
 
 EventScript_PalletTown_MayNoticePlayer:
-    .byte pause_long
     .byte exclaim
+    .byte pause_long
     .byte end_m
 
 EventScript_PalletTown_MayPushPlayer:
-    .byte run_down
+    .byte run_left
     .byte pause_long
-    .byte walk_up
-    .byte walk_left_onspot_fastest
+    .byte walk_right
+    .byte walk_up_onspot_fastest
     .byte end_m
 
 EventScript_PalletTown_Pushed:
-    .byte jump_down
-    .byte walk_up_onspot_fastest
+    .byte jump_left
+    .byte walk_right_onspot_fastest
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -1450,11 +1454,12 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x93B @ May route 1 sprite
     setflag 0x93C @ May route 4 sprite
     setflag 0x943 @ May celadon sprite
-    setflag 0x959 @ Lance Museum Sprite
     setflag 0x933 @ team preview
     setflag 0x9B7 @ ariana rocket hq
+    setflag 0x9B9 @ may league sprite
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
     setvar 0x5030 0x1 @ Route 1 May encounter
     setvar 0x5013 0x1 @ Brendan Pewter Encounter Inside Gym
     setvar 0x502F 0x1 @ Brendan Pewter Encounter Outside Gym
+    setvar 0x503F 0x1 @ vermillion kalos researcher mega ring
     return

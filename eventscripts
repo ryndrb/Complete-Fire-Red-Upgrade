@@ -65,7 +65,6 @@ npc 3 2 6 EventScript_0x1662A9
 npc 3 2 1 EventScript_0x16607E
 npc 3 2 3 EventScript_PewterRoostGuy
 npc 3 2 7 EventScript_StruggleBug
-npc 6 1 5 EventScript_LanceMegaRing
 npc 6 2 0 EventScript_GymLeaderBrock
 npc 6 3 2 EventScript_PokeMartMain
 npc 6 3 3 EventScript_ViridianCity
@@ -138,6 +137,7 @@ tile 3 5 5 EventScript_VermillionCityGymLocked
 tile 1 6 0 EventScript_SSAnne_Rival0
 tile 1 6 1 EventScript_SSAnne_Rival1
 tile 1 6 2 EventScript_SSAnne_Rival2
+map 3 5 MapScript_Vermillion
 
 # CELADON CITY
 npc 1 45 0 EventScript_Celadon_Giovanni
@@ -350,3 +350,11 @@ sign 30 0 1 EventScript_RotomEncounter
 
 # VICTORY ROAD
 npc 1 40 13 EventScript_VictoryRoad_Brendan
+
+# POKEMON LEAGUE
+npc 1 76 0 EventScript_League_Bruno
+npc 1 77 0 EventScript_League_Agatha
+npc 1 78 0 EventScript_League_Lance
+npc 1 78 1 EventScript_League_May
+map 1 79 MapScript_Legue_FinalRoom
+map 1 80 MapScript_Legue_HallOfFameRoom

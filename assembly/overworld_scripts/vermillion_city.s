@@ -7,6 +7,7 @@
 
 .equ VAR_MEW_VERMILLION_CITY_ENCOUNTER, 0x5014
 .equ VAR_VERMILLION_CITY_GYM_LOCKED, 0x502C
+.equ VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING, 0x503F
 .equ FLAG_BRENDAN_VERMILLION_ENCOUTER, 0x935
 .equ FLAG_BRENDAN_VERMILLION_SPRITE, 0x936
 .equ FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE, 0x937
@@ -37,8 +38,8 @@ EventScript_0x816B97C:
     setvar 0x8004 0x4
     setvar 0x8005 0x1
     special 0x173
-    checkflag 0x23B
-    if 0x0 _call 0x816B9AB
+    @checkflag 0x23B // flash stuff, replaced for kalos researcher
+    @if 0x0 _call 0x816B9AB
     clearflag 0xA0
     setflag 0x4B2
     setflag 0x822
@@ -59,6 +60,7 @@ EventScript_0x816B9AF:
     call LtSurgeNameBox
     msgbox 0x8194DA8 MSG_KEEPOPEN
     callasm RemoveNameBox
+    setvar VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING 0
     release
     end
 
@@ -554,6 +556,134 @@ EventScript_Vermillion_GoodRod:
     msgbox 0x8199337 MSG_KEEPOPEN
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@
+@ Kalos Researcher Giving Mega Ring
+@@@@@@@@@@@@@@@@@@@@
+MapScript_Vermillion:
+    mapscript MAP_SCRIPT_ON_TRANSITION MapScript_0x166906
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_0x1668F1
+    .byte MAP_SCRIPT_TERMIN
+    
+MapScript_0x166906:
+    setworldmapflag 0x895
+    @checkflag 0x2F9
+    @if 0x1 _call EventScript_0x8166913
+    end
+
+@EventScript_0x8166913:
+@    setflag 0xA1
+@    return
+
+LevelScript_0x1668F1:
+    levelscript 0x407E, 0, EventScript_0x1668F1
+    levelscript VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING, 0, EventScript_Vermillion_MegaRingResearcher
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_0x1668F1:
+    lockall
+    applymovement PLAYER 0x8166903
+    waitmovement 0x0
+    setvar 0x407E 0x3
+    releaseall
+    end
+
+EventScript_Vermillion_MegaRingResearcher:
+    lock
+    textcolor BLUE
+    applymovement 8 Move_Vermillion_Researcher1
+    applymovement PLAYER Move_Vermillion_Player1
+    waitmovement 8
+    msgbox gText_Vermillion_MegaRingResearcherSpeak1 MSG_KEEPOPEN
+    closeonkeypress
+    call EventScript_Vermillion_CheckMegaStones
+    goto EventScript_Vermillion_MegaRingResearcher2
+    release
+    end
+
+EventScript_Vermillion_MegaRingResearcher2:
+    pause 30
+    spriteface 8, LEFT
+    pause 60
+    spriteface 8, UP
+    msgbox gText_Vermillion_MegaRingResearcherSpeak2 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    playfanfare 0x101
+    giveitem ITEM_MEGA_RING 1 MSG_OBTAIN
+    waitfanfare
+    pause 45
+    msgbox gText_Vermillion_MegaRingResearcherSpeak3 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 8 Move_Vermillion_Researcher2
+    waitmovement 8
+    hidesprite 8
+    setflag 0xA1
+    setvar VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING 1
+    release
+    end
+
+EventScript_Vermillion_CheckMegaStones:
+    checkitem ITEM_AERODACTYLITE 1
+    compare LASTRESULT 0x1
+    if TRUE _goto EventScript_Vermillion_PlayerHasStones
+    checkitem ITEM_GYARADOSITE 1
+    compare LASTRESULT 0x1
+    if TRUE _goto EventScript_Vermillion_PlayerHasStones
+    checkitem ITEM_MAWILITE 1
+    compare LASTRESULT 0x1
+    if TRUE _goto EventScript_Vermillion_PlayerHasStones
+    return
+
+EventScript_Vermillion_PlayerHasStones:
+    sound 0x15
+    applymovement 8 Move_Vermillion_Researcher3
+    waitmovement 8
+    msgbox gTest_gText_Vermillion_MegaRingResearcherSpeak4 MSG_KEEPOPEN
+    closeonkeypress
+    goto EventScript_Vermillion_MegaRingResearcher2
+    release
+    end
+
+Move_Vermillion_Researcher1:
+    .byte pause_long
+    .byte pause_long
+    .byte exclaim
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_up_onspot_fastest
+    .byte end_m
+    
+Move_Vermillion_Player1:
+    .byte pause_long
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Vermillion_Researcher2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_Vermillion_Researcher3:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@
 @ Vermillion NameBox
