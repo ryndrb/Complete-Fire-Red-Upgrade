@@ -260,7 +260,6 @@ static const u16* sPlayerMarlonOutfitColours[] =
 
 #else //Modify this
 
-// Normal NPC
 extern const u16 gEventObjectPic_NurseJoyPal[];
 extern const u16 gEventObjectPic_OakPal[];
 extern const u16 gEventObjectPic_ScientistPal[];
@@ -272,15 +271,48 @@ extern const u16 gEventObjectPic_GrannyPal[];
 extern const u16 gEventObjectPic_ArcherPal[];
 extern const u16 gEventObjectPic_ArianaPal[];
 extern const u16 gEventObjectPic_ProtonPal[];
+extern const u16 gEventObjectPic_KyogrePal[];
+extern const u16 gEventObjectPic_GroudonPal[];
+extern const u16 gEventObjectPic_RegirockPal[];
+extern const u16 gEventObjectPic_RegicePal[];
+extern const u16 gEventObjectPic_RegisteelPal[];
+extern const u16 gEventObjectPic_StevenPal[];
+extern const u16 gEventObjectPic_HeatranPal[];
+extern const u16 gEventObjectPic_LatiasPal[];
+extern const u16 gEventObjectPic_LatiosPal[];
+extern const u16 gEventObjectPic_CresseliaPal[];
+extern const u16 gEventObjectPic_DarkraiPal[];
 
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Archer;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ariana;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Proton;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Kyogre;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Groudon;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Regirock;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Regice;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Registeel;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Steven;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Heatran;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Latias;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Latios;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Cresselia;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Darkrai;
 
 static NPCPtr sOverworldTable2[] = {
-	/* 0 */ &gEventObjectGraphicsInfo_Archer,
-	/* 1 */ &gEventObjectGraphicsInfo_Ariana,
-	/* 2 */ &gEventObjectGraphicsInfo_Proton,
+	/*  0 */ &gEventObjectGraphicsInfo_Archer,
+	/*  1 */ &gEventObjectGraphicsInfo_Ariana,
+	/*  2 */ &gEventObjectGraphicsInfo_Proton,
+	/*  3 */ &gEventObjectGraphicsInfo_Kyogre,
+	/*  4 */ &gEventObjectGraphicsInfo_Groudon,
+	/*  5 */ &gEventObjectGraphicsInfo_Regirock,
+	/*  6 */ &gEventObjectGraphicsInfo_Regice,
+	/*  7 */ &gEventObjectGraphicsInfo_Registeel,
+	/*  8 */ &gEventObjectGraphicsInfo_Steven,
+	/*  9 */ &gEventObjectGraphicsInfo_Heatran,
+	/* 10 */ &gEventObjectGraphicsInfo_Latias,
+	/* 11 */ &gEventObjectGraphicsInfo_Latios,
+	/* 12 */ &gEventObjectGraphicsInfo_Cresselia,
+	/* 13 */ &gEventObjectGraphicsInfo_Darkrai,
 };
 
 // create 255 OW tables
@@ -305,6 +337,17 @@ static const struct SpritePalette sObjectEventSpritePalettes12[] = {
 	{gEventObjectPic_SailorPal, 0x1209},
 	{gEventObjectPic_OldManPal, 0x120A},
 	{gEventObjectPic_GrannyPal, 0x120B},
+	{gEventObjectPic_KyogrePal, 0x120C},
+	{gEventObjectPic_GroudonPal, 0x120D},
+	{gEventObjectPic_RegirockPal, 0x120E},
+	{gEventObjectPic_RegicePal, 0x120F},
+	{gEventObjectPic_RegisteelPal, 0x1210},
+	{gEventObjectPic_StevenPal, 0x1211},
+	{gEventObjectPic_HeatranPal, 0x1212},
+	{gEventObjectPic_LatiasPal, 0x1213},
+	{gEventObjectPic_LatiosPal, 0x1214},
+	{gEventObjectPic_CresseliaPal, 0x1215},
+	{gEventObjectPic_DarkraiPal, 0x1216},
 	{NULL, 0x11FF},
 };
 

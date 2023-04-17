@@ -5612,3 +5612,85 @@ void ChangeHiddenPower(void){
 	}
 	CalculateMonStatsNew(mon);
 }
+
+void CheckRelicantWailord(void){
+    u8 i, j;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_WAILORD){
+			for(j = 0; j < gPlayerPartyCount; j++){
+				if(gPlayerParty[j].species == SPECIES_RELICANTH){
+					VarSet(0x8004, 1);
+					break;
+				}
+			}
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}
+
+void CheckLatiasLatios(void){
+    u8 i, j;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_LATIAS){
+			for(j = 0; j < gPlayerPartyCount; j++){
+				if(gPlayerParty[j].species == SPECIES_LATIOS){
+					VarSet(0x8004, 1);
+					break;
+				}
+			}
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}
+
+void CheckRegis(void){
+    u8 i, j, k;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_REGIROCK){
+			for(j = 0; j < gPlayerPartyCount; j++){
+				if(gPlayerParty[j].species == SPECIES_REGICE){
+					for(k = 0; k < gPlayerPartyCount; k++){
+						if(gPlayerParty[k].species == SPECIES_REGISTEEL){
+							VarSet(0x8004, 1);
+							break;
+						}
+					}
+					break;
+				}
+			}
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}
+
+void CheckWeatherTrio(void){
+    u8 i, j, k;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_GROUDON){
+			for(j = 0; j < gPlayerPartyCount; j++){
+				if(gPlayerParty[j].species == SPECIES_KYOGRE){
+					for(k = 0; k < gPlayerPartyCount; k++){
+						if(gPlayerParty[k].species == SPECIES_RAYQUAZA){
+							VarSet(0x8004, 1);
+							break;
+						}
+					}
+					break;
+				}
+			}
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}

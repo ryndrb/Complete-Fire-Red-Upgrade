@@ -1457,9 +1457,19 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x933 @ team preview
     setflag 0x9B7 @ ariana rocket hq
     setflag 0x9B9 @ may league sprite
+    setflag 0x9CD @ littleboy dad cinnabar sprite inside house
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
+
     setvar 0x5030 0x1 @ Route 1 May encounter
     setvar 0x5013 0x1 @ Brendan Pewter Encounter Inside Gym
     setvar 0x502F 0x1 @ Brendan Pewter Encounter Outside Gym
     setvar 0x503F 0x1 @ vermillion kalos researcher mega ring
+
+    setflag 0x9BB @ kyogre
+    setflag 0x9BC @ groudon
+    setflag 0x9BD @ regirock
+    setflag 0x9BE @ regice
+    setflag 0x9BF @ registeel
+    setflag 0x9C7 @ latias
+    setflag 0x9C8 @ latios
     return

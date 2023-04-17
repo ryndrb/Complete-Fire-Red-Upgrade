@@ -31,3 +31,62 @@ All right, then.\nLet's go!
 #org @gText_Cinnabar_BillSpeaks5
 Looks like my pal's boat arrived,\ntoo.\pHe sent it specifically to Cinnabar\nto pick me up.
 
+#org @gText_Cinnabar_BillSpeaks6
+Hey, wasn't that a long cruise?\pMy buddy Celio seem to enjoy your\ncompany.\pI'm sure he'd welcome you if your\nwere to visit him again.\pIf you have a Tri-Pass, you can\nalways take a ferry there from\lVermillion Port.\pAll right, thanks for your\ncompany!
+
+#org @gText_Cinnabar_LittleBoy_Speak1
+The little boy is thrashing about\nin his sleep.\pHe appears to be in torment[.]\nHe is muttering something[.]
+
+#org @gText_Cinnabar_LittleBoy_Speak2
+"Dar[.]\nDark[.] is watching[.] me[.]"
+
+#org @gText_Cinnabar_LittleBoy_Speak3
+The little boy is thrashing about\nin his sleep.\p[PLAYER]'s Lunar Wing began\nto glow[.]\pThe boy's sleeping face became\nuntroubled and serene!\pThe little boy woke up!
+
+#org @gText_Cinnabar_LittleBoy_Speak4
+I couldn't wake up[.]\nI saw it[.]\pIt was a scary dream[.]\nIt was a dark place[.]\lAnd there was a dark Pok\emon[.]\pBut, Daddy, Mommy[.]\nI could always hear your voices[.]
+
+#org @gText_Cinnabar_LittleBoy_Speak5
+I went sailing with my dad but the\nwaves were too much for me[.]
+
+#org @gText_Cinnabar_LittleBoyMom_Speak1
+I never thought our boy would fall\ninto this endless nightmare[.]\pIt's happened in the past in\nCinnabar[.]\pThere were people who never woke\nup from their nightmares[.]\p[.]That is, until they were awoken\nusing something called the\lLunar Wing.\pMy husband went to find a Lunar\nWing on Fullmoon Island, but he\lfailed[.]\pDoes it take a Trainer to do that?\nWe feel so frustrated by this.
+
+#org @gText_Cinnabar_LittleBoyMom_Speak2
+Thank you! We can't thank you\nenough, but thank you!
+
+#org @gText_Cinnabar_LittleBoyMom_Speak3
+[.]And I told my husband it might\nbe best if he didn't go sailing\lwith him for a while[.]
+
+#org @gText_Cinnabar_LittleBoyDad_Speak1
+[.]You[.]\pYou're going to Fullmoon island\nfor us?
+
+#org @gText_Cinnabar_LittleBoyDad_Speak2
+We're both counting on you!\pOnly you can awaken my son from\nhis awful nightmare[.]\pPlease, I need the Lunar Wing from\nFullmoon Island to awaken him!\pI went, but I failed to find it[.]\pAnchors aweigh!
+
+#org @gText_Cinnabar_LittleBoyDad_Speak3
+Oh, my gosh!\nYou're awake!\pOh, my son[.]\nI[.] I don't know what to say[.]\pThank you!\nWe'll never forget you!\pSeeing you back to normal makes me\nfeel great!\pI've regained my spirit as a\nSailor! Come sail with me later!
+
+#org @gText_Cinnabar_LittleBoyDad_Speak4
+[.]Oh, my poor boy[.]\pHe's been having such terrible\nnightmares lately[.]
+
+#org @gText_Cinnabar_LittleBoyDad_Speak5
+Thank you again from the bottom of\nmy heart.\pFair winds and following seas!
+
+#org @gText_Cinnabar_LittleBoyDad_Speak6
+Fair winds and following seas!
+
+#org @gText_LittleBoyDad_Unfortunate
+Oh[.]\pI understand[.]
+
+#org @gText_Cinnabar_AbandonedHouse_Weirdo_Speak_1
+[.]Welcome[.]\p[.]\n[.]Kekeke[.]\pWe've had a reservation for you.\nWe've held it for a long time[.]
+
+#org @gText_Cinnabar_AbandonedHouse_Narrator_Speak_1
+[PLAYER] lay down on the bed as if\nbidden there[.]
+
+#org @gText_Cinnabar_AbandonedHouse_Narrator_Speak_2
+[PLAYER] awakened!
+
+#org @gText_Cinnabar_Sailor_Speak_1
+You've been asleep for a long,\nlong time[.] What happened to you?\pAnd what were you doing here?\pNo one's lived here for fifty\nyears.

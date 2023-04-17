@@ -6,6 +6,27 @@
 .include "../asm_defines.s"
 
 .equ FLAG_OBTAIN_GIFT_TIMBURR, 0x95B
+.equ FLAG_GROUDON_ROUTE3, 0x9BC
+.equ FLAG_ROUTE3_STEAM, 0x9D0
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Route 3 Steam (Groudon)
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_Route3:
+    mapscript MAP_SCRIPT_ON_RESUME EventScript_Route3
+    .byte MAP_SCRIPT_TERMIN
+
+EventScript_Route3:
+    checkflag FLAG_ROUTE3_STEAM
+    if NOT_SET _goto EventScript_Route3_End
+    setweather 0x6
+    doweather
+    release
+    end
+
+EventScript_Route3_End:
+    release
+    end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Timburr Gift | Muscle Band | Route 3

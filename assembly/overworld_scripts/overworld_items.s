@@ -740,3 +740,43 @@ Eventscript_UseStrength:
     setflag 0x805
     msgbox gText_CanMoveBoulder MSG_SIGN
     return
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rock Smash Script
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_RockSmash:
+    lockall
+    checkflag 0x825
+    if NOT_SET _goto EventScript_CantRockSmash
+    checkitem ITEM_HM06 0x1
+    compare LASTRESULT 0x1
+    if lessthan _goto EventScript_CantRockSmash
+    goto EventScript_CanRockSmash
+    end
+
+EventScript_CanRockSmash:
+    sound 0x7C
+    applymovement LASTTALKED Move_Smashed
+    waitmovement 0x0
+    checksound
+    hidesprite LASTTALKED
+    special 0xAB
+    compare LASTRESULT 0x0
+    if TRUE _goto EventScript_End
+    waitstate
+    release
+    end
+
+EventScript_CantRockSmash:
+    textcolor BLACK
+    msgbox gText_CantRockSmash MSG_NORMAL
+    release
+    end
+
+EventScript_End:
+    release
+    end
+
+Move_Smashed:
+    .byte smash_rock
+    .byte end_m

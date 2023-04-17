@@ -70,12 +70,14 @@ npc 6 3 2 EventScript_PokeMartMain
 npc 6 3 3 EventScript_ViridianCity
 npc 6 5 7 EventScript_PokemonCenterClerk
 npc 6 5 8 EventScript_UtilityOldMan
+npc 6 7 2 EventScript_Pewter_Steven
 map 3 2 MapScript_BrendanOutsideGym
 map 6 2 MapScript_BrendanAfterCatchingMonInsideGym
 
 # MT MOON
 npc 1 3 11 EventScript_Incinerate
 npc 1 3 12 EventScript_MtMoon_Proton
+npc 43 3 0 EventScript_MtMoon_Registeel
 
 # CERULEAN CITY
 npc 3 3 8 EventScript_Cut
@@ -101,7 +103,24 @@ npc 1 95 8 EventScript_Ampharosite
 # ROCK TUNNEL
 npc 1 81 10 EventScript_FlashCannon
 npc 1 81 11 EventScript_StrengthBoulder
+npc 1 82 11 EventScript_RockSmash
+npc 1 82 12 EventScript_RockSmash
+npc 1 82 13 EventScript_RockSmash
+npc 1 82 14 EventScript_RockSmash
+npc 1 82 15 EventScript_RockSmash
+npc 1 82 16 EventScript_RockSmash
+npc 1 82 17 EventScript_RockSmash
+npc 1 82 18 EventScript_RockSmash
+npc 1 82 19 EventScript_RockSmash
+npc 1 82 20 EventScript_RockSmash
+npc 1 82 21 EventScript_RockSmash
+npc 1 82 22 EventScript_RockSmash
+npc 1 82 23 EventScript_RockSmash
+npc 1 82 24 EventScript_RockSmash
+npc 1 82 25 EventScript_RockSmash
+npc 1 82 26 EventScript_RockSmash
 npc 1 82 26 EventScript_Sablenite
+npc 1 82 27 EventScript_RockTunnel_Regirock
 
 # LAVENDER TOWN
 npc 1 88 1 EventScript_PokeTowerLady
@@ -205,12 +224,28 @@ tile 1 57 0 EventScript_SilphCo_Archer0
 tile 1 57 1 EventScript_SilphCo_Archer1
 
 # SEAFOAM ISLAND
+npc 1 83 0 EventScript_StrengthBoulder
+npc 1 83 1 EventScript_StrengthBoulder
+npc 1 84 0 EventScript_StrengthBoulder
+npc 1 84 1 EventScript_StrengthBoulder
+npc 1 85 0 EventScript_StrengthBoulder
+npc 1 85 1 EventScript_StrengthBoulder
+npc 1 86 0 EventScript_StrengthBoulder
+npc 1 86 1 EventScript_StrengthBoulder
+npc 1 86 2 EventScript_StrengthBoulder
+npc 1 86 3 EventScript_StrengthBoulder
+npc 1 86 4 EventScript_StrengthBoulder
+npc 1 86 5 EventScript_StrengthBoulder
+npc 1 87 0 EventScript_StrengthBoulder
+npc 1 87 1 EventScript_StrengthBoulder
 npc 1 83 3 EventScript_AuroraVeil
 npc 1 86 6 EventScript_Glalilite
+npc 43 2 0 EventScript_Seafoam_Regice
 
 # CINNABAR ISLAND
 npc 1 62 6 EventScript_StoneEdge
 npc 3 8 4 EventScript_CinnabarExplosion
+npc 3 8 5 EventScript_Cinnabar_LittleBoyDad
 npc 12 2 3 EventScript_Cameruptite
 npc 12 0 7 EventScript_GymLeaderBlaine
 npc 12 0 8 EventScript_GymGuyHoundoominite
@@ -218,8 +253,12 @@ npc 12 5 7 EventScript_PokemonCenterClerk
 npc 12 7 3 EventScript_PokeMartMain
 npc 12 5 8 EventScript_UtilityOldMan
 npc 12 5 6 EventScript_Cinnabar_BillPokeCenter
-map 12 1 MapScript_Cinnabar_FossilCenter
+npc 43 6 0 EventScript_Cinnabar_LittleBoyMom
+npc 43 6 1 EventScript_Cinnabar_LittleBoy
+npc 43 6 1 EventScript_Cinnabar_LittleBoy
 map 3 8 MapScript_Cinnabar
+map 12 1 MapScript_Cinnabar_FossilCenter
+map 43 7 MapScript_Cinnabar_AbandonedHouse
 
 # ROUTE 1
 npc 3 19 2 EventScript_SootheBell
@@ -237,6 +276,9 @@ npc 15 1 2 EventScript_SmackDown
 
 # ROUTE 3
 npc 3 21 0 EventScript_TimburrGift
+npc 43 1 0 EventScript_Route3_Groudon
+sign 43 1 0 EventScript_Route3_TerraCave
+map 3 21 MapScript_Route3
 
 # ROUTE 4
 tile 3 22 0 EventScript_Route4_May
@@ -308,6 +350,7 @@ npc 24 1 1 EventScript_Pidgeotite
 # ROUTE 16
 npc 3 34 6 EventScript_Cut
 npc 3 34 10 EventScript_ProtectivePads
+npc 25 0 0 EventScript_Route16_Fly
 
 # ROUTE 17
 npc 3 35 10 EventScript_PoisonJab
@@ -328,6 +371,9 @@ npc 3 38 12 EventScript_Sharpedonite
 npc 3 39 6 EventScript_ZoomLens
 npc 3 39 7 EventScript_DragonPulse
 npc 3 39 8 EventScript_Audinite
+npc 43 0 0 EventScript_Route21_Kyogre
+sign 43 0 0 EventScript_Route21_MarineCave
+map 3 39 MapScript_Route21
 
 # ROUTE 22
 npc 3 41 1 EventScript_FalseSwipe
@@ -349,6 +395,16 @@ npc 30 0 1 EventScript_Route25_Bill
 sign 30 0 1 EventScript_RotomEncounter
 
 # VICTORY ROAD
+npc 1 39 4 EventScript_StrengthBoulder
+npc 1 39 5 EventScript_StrengthBoulder
+npc 1 39 6 EventScript_StrengthBoulder
+npc 1 40 9 EventScript_StrengthBoulder
+npc 1 40 10 EventScript_StrengthBoulder
+npc 1 40 11 EventScript_StrengthBoulder
+npc 1 41 6 EventScript_StrengthBoulder
+npc 1 41 7 EventScript_StrengthBoulder
+npc 1 41 8 EventScript_StrengthBoulder
+npc 1 41 9 EventScript_StrengthBoulder
 npc 1 40 13 EventScript_VictoryRoad_Brendan
 
 # POKEMON LEAGUE
@@ -358,3 +414,107 @@ npc 1 78 0 EventScript_League_Lance
 npc 1 78 1 EventScript_League_May
 map 1 79 MapScript_Legue_FinalRoom
 map 1 80 MapScript_Legue_HallOfFameRoom
+
+# MT EMBER
+npc 43 4 0 EventScript_MtEmber_Heatran
+
+# FULLMOON ISLAND
+npc 43 5 0 EventScript_Fullmoon_Latias
+npc 43 5 1 EventScript_Fullmoon_Latios
+npc 43 5 2 EventScript_Fullmoon_Cresselia
+npc 43 5 3 EventScript_Fullmoon_LittleBoyDad
+sign 43 5 0 EventScript_FullmoonIsland_Sign
+
+# NEWMOON ISLAND
+npc 43 8 0 EventScript_Newmoon_Darkrai
+sign 43 8 0 EventScript_NewmoonIsland_Sign
+
+# ONE ISLAND
+tile 32 0 0 EventScript_OneIsland_PokeCenter_Event0
+tile 32 0 1 EventScript_OneIsland_PokeCenter_Event1
+tile 32 0 2 EventScript_OneIsland_PokeCenter_Event2
+tile 32 0 3 EventScript_OneIsland_PokeCenter_Event3
+
+# KINDLE ROAD
+npc 3 45 13 EventScript_RockSmash
+npc 3 45 14 EventScript_RockSmash
+npc 3 45 15 EventScript_RockSmash
+npc 3 45 16 EventScript_RockSmash
+npc 3 45 17 EventScript_RockSmash
+npc 3 45 18 EventScript_RockSmash
+npc 3 45 19 EventScript_RockSmash
+npc 3 45 20 EventScript_RockSmash
+npc 3 45 21 EventScript_RockSmash
+npc 3 45 22 EventScript_RockSmash
+npc 3 45 25 EventScript_RockSmash
+
+# MT EMBER
+npc 1 97 6 EventScript_RockSmash
+npc 1 97 7 EventScript_RockSmash
+npc 1 97 8 EventScript_StrengthBoulder
+npc 1 97 9 EventScript_StrengthBoulder
+npc 1 97 10 EventScript_StrengthBoulder
+npc 1 97 11 EventScript_RockSmash
+npc 1 97 12 EventScript_RockSmash
+npc 1 97 13 EventScript_StrengthBoulder
+npc 1 97 14 EventScript_StrengthBoulder
+npc 1 97 15 EventScript_RockSmash
+npc 1 97 16 EventScript_RockSmash
+npc 1 99 0 EventScript_RockSmash
+npc 1 99 1 EventScript_RockSmash
+npc 1 99 2 EventScript_RockSmash
+npc 1 99 3 EventScript_RockSmash
+npc 1 99 4 EventScript_RockSmash
+npc 1 99 5 EventScript_RockSmash
+npc 1 99 6 EventScript_RockSmash
+npc 1 99 7 EventScript_RockSmash
+npc 1 99 9 EventScript_RockSmash
+npc 1 103 0 EventScript_RockSmash
+npc 1 103 1 EventScript_RockSmash
+npc 1 103 2 EventScript_RockSmash
+npc 1 103 3 EventScript_RockSmash
+npc 1 103 4 EventScript_RockSmash
+npc 1 104 0 EventScript_RockSmash
+npc 1 104 1 EventScript_RockSmash
+npc 1 104 2 EventScript_RockSmash
+npc 1 104 3 EventScript_RockSmash
+npc 1 105 1 EventScript_StrengthBoulder
+npc 1 105 2 EventScript_StrengthBoulder
+npc 1 105 3 EventScript_StrengthBoulder
+npc 1 105 3 EventScript_RockSmash
+npc 1 105 4 EventScript_RockSmash
+npc 1 105 5 EventScript_RockSmash
+npc 1 105 6 EventScript_RockSmash
+npc 1 106 0 EventScript_StrengthBoulder
+npc 1 106 1 EventScript_StrengthBoulder
+npc 1 106 2 EventScript_StrengthBoulder
+npc 1 106 3 EventScript_RockSmash
+npc 1 106 4 EventScript_RockSmash
+npc 1 106 5 EventScript_RockSmash
+npc 1 106 6 EventScript_RockSmash
+npc 1 106 7 EventScript_RockSmash
+npc 1 106 8 EventScript_RockSmash
+npc 1 106 9 EventScript_StrengthBoulder
+npc 1 107 0 EventScript_RockSmash
+npc 1 108 0 EventScript_RockSmash
+npc 1 108 1 EventScript_RockSmash
+npc 1 101 1 EventScript_StrengthBoulder
+npc 1 101 2 EventScript_StrengthBoulder
+npc 1 101 3 EventScript_StrengthBoulder
+npc 1 101 4 EventScript_StrengthBoulder
+
+# BOND BRIDGE
+npc 3 48 7 EventScript_Cut
+npc 3 48 8 EventScript_Cut
+
+# BERRY FOREST
+npc 1 109 1 EventScript_Cut
+npc 1 109 2 EventScript_Cut
+npc 1 109 3 EventScript_Cut
+npc 1 109 4 EventScript_Cut
+npc 1 109 5 EventScript_Cut
+npc 1 109 6 EventScript_Cut
+npc 1 109 7 EventScript_Cut
+npc 1 109 8 EventScript_Cut
+npc 1 109 9 EventScript_Cut
+npc 1 109 10 EventScript_Cut

@@ -15,6 +15,18 @@
 .equ FLAG_OBTAIN_AERODACTYLITE, 0x958
 .equ FLAG_LANCE_SPRITE_PEWTER, 0x959
 .equ FLAG_OBTAIN_ROOST, 0x95A
+.equ FLAG_KYOGRE_ROUTE21, 0x9BB
+.equ FLAG_GROUDON_ROUTE3, 0x9BC
+.equ FLAG_REGIROCK_ROCKTUNNEL, 0x9BD
+.equ FLAG_REGICE_SEAFOAM, 0x9BE
+.equ FLAG_REGISTEEL_MTMOON, 0x9BF
+.equ FLAG_ROUTE21_THUNDERSTORMS, 0x9C0
+.equ FLAG_PEWTER_STEVEN_BELDUM, 0x9C1
+.equ FLAG_QUEST_HEATRAN, 0x9C2
+.equ FLAG_QUEST_LATITWINS, 0x9C3
+.equ FLAG_QUEST_REGIS, 0x9C4
+.equ FLAG_QUEST_WEATHERTRIO, 0x9C5
+.equ FLAG_ROUTE3_STEAM, 0x9D0
 .equ VAR_BRENDAN_PEWTER_ENCOUNTER1, 0x5013
 .equ VAR_BRENDAN_PEWTER_ENCOUNTER2, 0x502F
 .equ BRENDAN, 0x4
@@ -722,6 +734,211 @@ EventScript_PlayerSmile:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Steven
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Pewter_Steven:
+    lock
+    faceplayer
+    checkflag FLAG_PEWTER_STEVEN_BELDUM
+    if SET _goto EventScript_Pewter_Steven_AfterIntro
+    textcolor BLUE
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    call StevenNameBox
+    showpokepic SPECIES_BELDUM 0xA 0x3
+    msgbox gText_Pewter_Steven_Speak2 MSG_YESNO
+    compare LASTRESULT 0x1
+    if FALSE _call EventScript_Pewter_Steven_DontWantBeldum
+    callasm RemoveNameBox
+    fanfare 0x13E
+    givepokemoncustom SPECIES_BELDUM 5 ITEM_NONE MOVE_TACKLE MOVE_NONE MOVE_NONE MOVE_NONE NATURE_JOLLY 0 31 31 31 31 31 31 0 0
+    signmsg
+    textcolor BLACK
+    msgbox gText_Pewter_Steven_PlayerReceivedBeldum MSG_KEEPOPEN
+    waitfanfare
+    closeonkeypress
+    hidepokepic
+    callasm RemoveNameBox
+    normalmsg
+    textcolor BLUE
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak3 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag FLAG_PEWTER_STEVEN_BELDUM
+    release
+    end
+
+EventScript_Pewter_Steven_DontWantBeldum:
+    hidepokepic
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_DontWantBeldum MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag FLAG_PEWTER_STEVEN_BELDUM
+    release
+    end
+
+EventScript_Pewter_Steven_AfterIntro:
+    lock
+    faceplayer
+    textcolor BLUE
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak4 MSG_KEEPOPEN
+    callasm RemoveNameBox
+    setvar 0x8000 0x1A
+    setvar 0x8001 0x3
+    setvar 0x8004 0x0
+    special 0x158
+    waitstate
+    compare LASTRESULT 0x3
+    if greaterorequal _goto EventScript_Pewter_Steven_End
+    switch LASTRESULT
+    case 0, EventScript_Pewter_Steven_General
+    case 1, EventScript_Pewter_Steven_Quests
+    case 2, EventScript_Pewter_Steven_End
+    release
+    end
+
+EventScript_Pewter_Steven_General:
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak5 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_Pewter_Steven_Quests:
+    checkflag FLAG_QUEST_HEATRAN
+    if NOT_SET _goto EventScript_Pewter_Steven_Quests_MagmaStone
+    checkflag FLAG_QUEST_LATITWINS
+    if NOT_SET _goto EventScript_Pewter_Steven_Quests_LatiTwins
+    checkflag FLAG_QUEST_REGIS
+    if NOT_SET _goto EventScript_Pewter_Steven_Quests_Regis
+    checkflag FLAG_QUEST_WEATHERTRIO
+    if NOT_SET _goto EventScript_Pewter_Steven_Quests_WeatherTrio
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak15 MSG_YESNO
+    compare LASTRESULT 0x1
+    if FALSE _goto EventScript_Pewter_Steven_End
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_Pewter_Steven_Quests_MagmaStone:
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak6 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    checkitem ITEM_MAGMA_STONE 0x1
+    compare LASTRESULT 0x1
+    if FALSE _goto EventScript_Pewter_Steven_End
+    pause 30
+    sound 0x15
+    applymovement 0x3 Move_Pewter_Steven_1
+    waitmovement 0x3
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak7 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    giveitem ITEM_SOUL_DEW 0x1 MSG_OBTAIN
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak8 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag FLAG_QUEST_HEATRAN
+    release
+    end
+
+EventScript_Pewter_Steven_Quests_LatiTwins:
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak8 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    callasm CheckLatiasLatios
+    compare 0x8004 0x1
+    if FALSE _goto EventScript_Pewter_Steven_End
+    pause 30
+    sound 0x15
+    applymovement 0x3 Move_Pewter_Steven_1
+    waitmovement 0x3
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak9 MSG_KEEPOPEN
+    msgbox gText_Pewter_Steven_Speak10 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag FLAG_QUEST_LATITWINS
+    clearflag FLAG_REGIROCK_ROCKTUNNEL
+    clearflag FLAG_REGICE_SEAFOAM
+    clearflag FLAG_REGISTEEL_MTMOON
+    release
+    end
+
+EventScript_Pewter_Steven_Quests_Regis:
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak10 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    callasm CheckRegis
+    compare 0x8004 0x1
+    if FALSE _goto EventScript_Pewter_Steven_End
+    pause 30
+    sound 0x15
+    applymovement 0x3 Move_Pewter_Steven_1
+    waitmovement 0x3
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak11 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    giveitem ITEM_BLUE_ORB 0x1 MSG_OBTAIN
+    giveitem ITEM_RED_ORB 0x1 MSG_OBTAIN
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak12 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag FLAG_QUEST_REGIS
+    checkflag 0x4BC
+    if NOT_SET _goto EventScript_Pewter_Steven_End
+    clearflag FLAG_GROUDON_ROUTE3
+    clearflag FLAG_KYOGRE_ROUTE21
+    setflag FLAG_ROUTE21_THUNDERSTORMS
+    setflag FLAG_ROUTE3_STEAM
+    release
+    end
+
+EventScript_Pewter_Steven_Quests_WeatherTrio:
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak12 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    callasm CheckWeatherTrio
+    compare 0x8004 0x1
+    if FALSE _goto EventScript_Pewter_Steven_End
+    pause 30
+    sound 0x15
+    applymovement 0x3 Move_Pewter_Steven_1
+    waitmovement 0x3
+    call StevenNameBox
+    msgbox gText_Pewter_Steven_Speak13 MSG_KEEPOPEN
+    msgbox gText_Pewter_Steven_Speak14 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag FLAG_QUEST_WEATHERTRIO
+    release
+    end
+
+EventScript_Pewter_Steven_End:
+    release
+    end
+
+Move_Pewter_Steven_1:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Pewter NameBox
 @@@@@@@@@@@@@@@@@@@@@@
 BrockNameBox:
@@ -732,6 +949,12 @@ BrockNameBox:
 
 BrendanNameBox:
     setvar 0x8000 3
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
+StevenNameBox:
+    setvar 0x8000 26
     setvar 0x8001 LEFT
     callasm DrawNameBox
     return

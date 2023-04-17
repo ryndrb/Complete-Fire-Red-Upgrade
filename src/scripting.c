@@ -3317,6 +3317,11 @@ extern const u8 gRandomizeLearnset[];
 extern const u8 gRandomizeAbility[];
 extern const u8 gCheatCode[];
 
+// Steven Quest Dialogues (from Ren. Plat.)
+extern const u8 gGeneral[];
+extern const u8 gQuests[];
+extern const u8 gNothing[];
+
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
 {
@@ -3744,6 +3749,12 @@ static const u8* GameBoyConsolePalletTown[] = {
 	gCheatCode,
 };
 
+static const u8* StevenDialogues[] = {
+	gGeneral,
+	gQuests,
+	gNothing,
+};
+
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
@@ -3773,6 +3784,7 @@ const struct ScrollingMulti gScrollingSets[] =
 	{HiddenPowerTpyes, ARRAY_COUNT(HiddenPowerTpyes)},//24
 	{SaffronElevator, ARRAY_COUNT(SaffronElevator)},//25
 	{GameBoyConsolePalletTown, ARRAY_COUNT(GameBoyConsolePalletTown)},//26
+	{StevenDialogues, ARRAY_COUNT(StevenDialogues)},//27
 };
 
 //Link number of opts shown at once to the box height

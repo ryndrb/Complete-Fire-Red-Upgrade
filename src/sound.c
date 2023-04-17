@@ -108,6 +108,15 @@ u16 GetLocationMusicNew(struct WarpData* warp)
                 }
             }
             break;
+        case BGM_MT_MOON:
+            if(day || night){
+                // ROCK TUNNEL
+                if((1 == warp->mapGroup && 81 == warp->mapNum)
+                || (1 == warp->mapGroup && 82 == warp->mapNum)){
+                    music = BGM_RSE_METEOR_FALLS;
+                }
+            }
+            break;
     }
 
     /*
@@ -122,6 +131,59 @@ u16 GetLocationMusicNew(struct WarpData* warp)
     }else if(night){
         if(warp->mapGroup == 4 && warp->mapNum == 4){
             music = BGM_RSE_LITTLEROOT_TOWN_ALT;
+        }
+    }
+
+    if(day || night){
+        // Marine Cave Kyogre
+        if(43 == warp->mapGroup
+        && 0 == warp->mapNum){
+            music = BGM_RSE_HEAVY_RAINFALL;
+        }
+        // Terra Cave Groudon
+        if(43 == warp->mapGroup
+        && 1 == warp->mapNum){
+            music = BGM_RSE_DROUGHT;
+        }
+        // Mt. Moon Registeel
+        if(43 == warp->mapGroup
+        && 2 == warp->mapNum){
+            music = BGM_RSE_REGI_CHAMBER;
+        }
+        // Seafoam Regice
+        if(43 == warp->mapGroup
+        && 3 == warp->mapNum){
+            music = BGM_RSE_REGI_CHAMBER;
+        }
+        // Mt Ember Heatran
+        if(43 == warp->mapGroup
+        && 4 == warp->mapNum){
+            music = BGM_MT_EMBER;
+        }
+        // Fullmoon Island Cresslia, Lati Twins
+        if(43 == warp->mapGroup
+        && 5 == warp->mapNum){
+            music = BGM_RSE_THEN_END;
+        }
+        // Newmoon Island Darkrai
+        if(43 == warp->mapGroup
+        && 8 == warp->mapNum){
+            music = BGM_LAVENDER_TOWN;
+        }
+
+
+        /*
+            Houses etc.
+        */
+        // Cinnabar Family House (Cresselia Event)
+        if(43 == warp->mapGroup
+        && 6 == warp->mapNum){
+            music = BGM_RSE_VENDATURF_TOWN;
+        }
+        // Cinnabar Abandoned House (Darkrai Event)
+        if(43 == warp->mapGroup
+        && 7 == warp->mapNum){
+            music = BGM_RSE_MT_PYRE;
         }
     }
 

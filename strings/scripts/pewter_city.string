@@ -81,3 +81,54 @@ Yes, it did! Thank you!\nLet me give you back your Pok\emon,\lsir.
 
 #org @gText_BrendanSpeaks9
 And you, [PLAYER][.] Thank you so\nmuch for coming with me.\pIt was was all thanks to you that\nI was able to catch a Pok\emon.\pMy very own Pok\emon[.] I will\nalways, always treasure it!\pOh! My mom's waiting for me, so I\nhave to go! Bye, [PLAYER]!
+
+#org @gText_Pewter_Steven_Speak1
+Hi! My name is Steven Stone.\nThe Champion from the Hoenn\lRegion.\pI'm interested in rare stones, so\nI travel here and there.\pPewter City's Gym Leader Brock is\na master of the Rock-type.\pI wanted to be here to ask whether\nhe had an interest in rare stones.\p[.] [.]\n[.] [.]\pOh! You have a Pok\edex.\nSo you are also in search of\lPok\emon.\pLet me see[.]\nI think I can help you with that.
+
+#org @gText_Pewter_Steven_Speak2
+This is my favourite Pok\emon.\nIt's name is Beldum.\pWould you be willing to raise it?\nIt'll be useful for your Pok\edex.
+
+#org @gText_Pewter_Steven_PlayerReceivedBeldum
+[PLAYER] received a Beldum!
+
+#org @gText_Pewter_Steven_DontWantBeldum
+Oh? Well, that's too bad[.]\p[.] [.]\n[.] [.]\pNow, if you want to talk about\nstones[.]\pPlease come and talk to me at any\ntime.
+
+#org @gText_Pewter_Steven_Speak3
+Take good care of it.\pYour caring for it will make me\nvery happy.\pNow, if you want to talk about\nstones[.]\pPlease come and talk to me at any\ntime.
+
+#org @gText_Pewter_Steven_Speak4
+Ah, we meet again!\nWhat did you want to talk about?
+
+#org @gText_Pewter_Steven_Speak5
+Have you ever been to the Unova\nregion before?\pThere's a place called Driftveil\nCity where you can mine emeralds.\pI'd love to visit there.\nIf only I had a good excuse[.]
+
+#org @gText_Pewter_Steven_Speak6
+There's a particular stone that\nI'm interested in[.]\pIt is native in the Sinnoh region\nbut I've heard some rumors of it\lbeing found here in Kanto.\pHave you heard of the Magma Stone?\pIt's a big, red stone formed by\nrocks melting in intensely hot\lmagma.\pLegends say that the stone is able\nto control a legendary Pok\emon.\pIt's meant to be one-of-a-kind.\nI'd love to see it.
+
+#org @gText_Pewter_Steven_Speak7
+That rock you have there[.]\nThat's the Magma Stone, isn't it!?\pYou've captured the Pok\emon it was\nmeant to control? Very impressive.\pIn that case[.]\pI would very much appreciate some\ntime to inspect that Magma Stone.\p[PLAYER] handed the Magma Stone.\pLet me share an equally valuable\nstone with you.\pBehold this beautiful gem.\nThis is the Soul Dew!
+
+#org @gText_Pewter_Steven_Speak8
+Have you heard of the two Pok\emon\ncalled Latias and Latios?\pThe Sould Dew is said to be the\nspirits of these two Pok\emon.\pThe spirits of these Pok\emon and\nthe Soul Dew are said to call out\lto one another[.]\pLatias and Latios make their\nhome in a place known as\lSouthern Island.\pBut that's in the Hoenn region[.]\nAnd this is Kanto[.]\pDoes Kanto have any secluded\nislands you could take the\lSoul Dew to?\pIt might be worth a try if you\nwant to complete your Pok\edex.\pIf you do manage to capture both\nof those Pok\emon, show them to me.
+
+#org @gText_Pewter_Steven_Speak9
+That's Latias and Latios in your\nparty, isn't it!?\pVery impressive. You really are\nthe real deal, young Trainer!\pIn that case, I have another\nrequest.
+
+#org @gText_Pewter_Steven_Speak10
+Have you heard of the Pok\emon\nknown as the legendary titans?\pRegirock, Regice, and Registeel.\nPok\emon of Rock, Ice, and Steel.\pI've had reports that these three\nPok\emon may be sleeping in Kanto.\pThey would likely be sleeping in\ncaverns thoughout the region.\pThough they won't be easy to find.\pYou may need to fulfill a\ncondition[.]\pI seem to remember an old reading\nabout Relicanth and Wailord.\pMaybe you should visit places with\nthose Pok\emon in your party?\pPlease show me these legendary\ntians.\pI'll have a reward waiting for\nyou.
+
+#org @gText_Pewter_Steven_Speak11
+Ah, your party[.]\nThe legendary titans!\pYou truly are a legendary Trainer.\nIn every sense of the word.\pYour Registeel in particular[.]\nIt's very beautiful, isn't it?\pAs promised, here's a reward.\nThe ancient artifacts of Hoenn!
+
+#org @gText_Pewter_Steven_Speak12
+In Hoenn, legends say the battle\nbetween Groudon and Kyogre is what\lshaped the lands and seas.\pBut then the Pok\emon that rules\nthe skies, known as Rayquaza, came\ldown and halted the battle.\pEach of those Orbs I gave you\nhas a connection with\lGroudon and Kyogre.\pPerhaps fate will allow you to\nmeet them for yourself.\pHmm[.]\pA cave surrounded by the seas[.]\pA deep and heated mountain,\nsurrounded by molten rocks[.]\pA place that stretches into the\nsky, where only powerful Trainers\lgather[.]\pIf you were to visit places like\nthat[.]\pYou may be able to find them.
+
+#org @gText_Pewter_Steven_Speak13
+Remarkable!\nAbsolutely remarkable!\pTo see the legendary Weather Trio\nin your care[.]\pIt is truly a sight to behold.\pIt's clear that you are indeed a\nTrainer of great skill and power.\pYou have proven yourself worthy of\ntheir loyalty and strength.
+
+#org @gText_Pewter_Steven_Speak14
+[.] [.]\n[.] [.]\p[PLAYER].\pYour willingness to complete all\nof my request shows a true spirit\lof adventure and perseverance.\pIf you so desire, I would be\nhonored to battle you.\pI can see the fire in your eyes,\nthe passion for battle that burns\lwithin you.\pI too share that passion, and I\nwould relish the opportunity to\ltest my skills againts yours.\pSo, what do you say?\pAre you ready to prove yourself as\na truly legendary Trainer?\pPlease come and talk to me at any\ntime.
+
+#org @gText_Pewter_Steven_Speak15
+I can see the fire in your eyes,\nthe passion for battle that burns\lwithin you.\pI too share that passion, and I\nwould relish the opportunity to\ltest my skills againts yours.\pSo, what do you say?\pAre you ready to prove yourself as\na truly legendary Trainer?
