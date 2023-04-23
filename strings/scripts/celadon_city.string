@@ -66,3 +66,45 @@ Hello[.]\pLovely weather isn't it?\pIt's so pleasant[.]\pOh, dear[.]\nI must hav
 
 #org @gText_Celadon_ErikaSpeak3
 But enough talk.\pLet us see if your skills are a\nmatch for mine.\pI may specialize in Grass-type\nPok\emon, but don't think that\lmakes me an easy opponent.\pI look forward to a challenging\nbattle.
+
+#org @gText_Celadon_RoamingDogs_Eusine_Speak_1
+My name is Eusine.\pI'm on the trail of the legendary\ndogs: Raikou, Entei, and Suicune.\pAnd you are[.]?\p[.][PLAYER]?\nGlad to meet you.\pHmmm[.]
+
+#org @gText_Celadon_RoamingDogs_Eusine_Speak_2
+There seems to be more than meets\nthe eye with you[.]\pYou see, I've been studying the\nmovements of these legendary\lPok\emon for many years.\pRecently, I've detected unusual\nenergy readings that suggests\lthey may be in this region.\pIf you have a Pokedex, I can\nupdate your map to detect them.\pIt's important that we find and\nprotect them[.]\l[.]before it's too late.\pIf you're up for it, I could\nuse your help in tracking them.
+
+#org @gText_Celadon_RoamingDogs_Eusine_Speak_3
+And[.] [PAUSE][30]done!\pI've added a functionality to\ndetect their whereabouts.\pThese legendary beasts are\nincredibly powerful.\pWe, as Trainers, need to make sure\nthey are safe from harm.\pI'll continue my own research for\nthem.\pBut if you happen to come across\nany of these beasts[.]\p[.]Or perhaps even capture them, be\nsure to let me know.\pYou can find me inside Celadon's\nrestaurant.\pSo long[.]
+
+#org @gText_Celadon_RoamingDogs_TooManyRoamers
+[PLAYER]'s map cannot handle too\nmuch data!
+
+#org @gText_Celadon_RoamingDogs_Narrator_Speak_1
+[PLAYER] handed the town map to\nEusine.
+
+#org @gText_Celadon_Eusine_InsideResto_Speak_1
+Ah, [PLAYER], good to see you again.\pHave you had any luck in your\nsearch for the legendary beasts?\pDon't worry if you haven't made\nmuch progress.\pThey're incredibly elusive\ncreatures.\pBut I'm confident that with your\nskills as a Trainer, you'll be\lable to track them down.
+
+#org @gText_Celadon_Eusine_InsideResto_Speak_2
+Your party[.]\pSo you have managed to capture all\nthree of the legendary beasts.\p[.] [.]\n[.] [.]\pThey are beautiful, aren't they?
+
+#org @gText_Celadon_Eusine_InsideResto_Speak_3
+[.] [.]\n[.] [.]\pAs I predicted[.]\pSince the first time I met you[.]\pI've sort of had this feeling that\nthey would choose you.\pYou truly are a remarkable\ntrainer.\pThese Pok\emon are in good hands\nwith you.\p[.] [.]\n[.] [.]\pThank you for your help in this\nmatter.\pPlease accept this as a token of\nmy gratitude.
+
+#org @gText_Celadon_Eusine_InsideResto_Speak_4
+Use it wisely, [PLAYER].
+
+#org @gText_Celadon_Eusine_InsideResto_Speak_5
+I'm glad to have been able to meet\nyou, [PLAYER].\pWith the beasts safety ensured, my\nmission is complete[.]\p[.] [.]\n[.] [.]\pAs for myself, I think I'll stick\naround Kanto for a bit longer.\pThere's still so much to discover\nhere[.]\l[.]and I'm quite fond of the\nweather. Haha.
+
+#org @gText_Celadon_Eusine_InsideResto_Speak_6
+Ah, [PLAYER]!\nI've watched your battle on TV.\pCongratulations on becoming the\nLeague Champion!\pIt's good to see that you've\ncontinued your journey with\lsuch passion.\pSay, would you be up for a battle?
+
+#org @gText_Celadon_Eusine_InsideResto_Battle_Defeated
+Well done, [PLAYER].\nYou truly are a worthy opponent.
+
+#org @gText_Celadon_Eusine_InsideResto_PlayerDontWantBattle
+I see, I understand.\pThere's no need to push yourself\ninto a battle if you're not\lfeeling up for it.\pPerhaps some other time, then.
+
+#org @gText_Celadon_Eusine_InsideResto_Speak_7
+I have to admit, battling you has\nrekindled my passion for training.\p[.] [.]\n[.] [.]\pWhat are your plans now that\nyou're the League Champion?\pRegardless, I have no doubt that\nyou'll achieve greatness!\pUntil we meet again, [PLAYER]!

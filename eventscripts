@@ -181,8 +181,10 @@ npc 10 16 8 EventScript_Cut
 npc 10 16 9 EventScript_Cut
 npc 10 16 10 EventScript_Cut
 npc 10 16 11 EventScript_GymGuyAbomasite
+npc 10 17 5 EventScript_Celadon_Eusine_InsideResto
 npc 3 6 16 EventScript_Celadon_May
 tile 1 45 0 EventScript_RocketHQ_Ariana
+map 3 6 MapScript_Celadon
 
 # FUSCHIA CITY
 npc 3 7 10 EventScript_Cut
@@ -468,7 +470,7 @@ npc 1 99 4 EventScript_RockSmash
 npc 1 99 5 EventScript_RockSmash
 npc 1 99 6 EventScript_RockSmash
 npc 1 99 7 EventScript_RockSmash
-npc 1 99 9 EventScript_RockSmash
+npc 1 99 8 EventScript_RockSmash
 npc 1 103 0 EventScript_RockSmash
 npc 1 103 1 EventScript_RockSmash
 npc 1 103 2 EventScript_RockSmash

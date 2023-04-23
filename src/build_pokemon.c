@@ -5694,3 +5694,26 @@ void CheckWeatherTrio(void){
 		}
     }
 }
+
+void CheckRoamingDogs(void){
+    u8 i, j, k;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_RAIKOU){
+			for(j = 0; j < gPlayerPartyCount; j++){
+				if(gPlayerParty[j].species == SPECIES_ENTEI){
+					for(k = 0; k < gPlayerPartyCount; k++){
+						if(gPlayerParty[k].species == SPECIES_SUICUNE){
+							VarSet(0x8004, 1);
+							break;
+						}
+					}
+					break;
+				}
+			}
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}

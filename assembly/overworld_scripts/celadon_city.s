@@ -6,10 +6,14 @@
 .include "../asm_defines.s"
 
 .equ FLAG_MAY_CELADON_SPRITE1, 0x943
+.equ FLAG_EUSINE_SPRITE_CELADON_OUTSIDE, 0x959
 .equ FLAG_OBTAIN_ABOMASITE, 0x95F
 .equ FLAG_ENCOUNTER_ROCKETHQ_ARIANA, 0x9B7
+.equ FLAG_EUSINE_SPRITE_CELADON_RESTO, 0x9D1
+.equ FLAG_ROAMING_DOGS_EVENT_FINISHED, 0x9D2
 .equ VAR_ARIANA_BATTLES, 0x5035
 .equ VAR_ENCOUNTER_ROCKETHQ_ARIANA, 0x5036
+.equ VAR_ROAMING_DOGS_EVENT, 0x5041
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Erika
@@ -63,6 +67,8 @@ EventScript_0x816D0C6:
     giveitem_msg 0x81973BA ITEM_TM19
     setflag 0x293
     setvar 0x502E 0x1
+    setvar VAR_ROAMING_DOGS_EVENT 0x1
+    clearflag FLAG_EUSINE_SPRITE_CELADON_OUTSIDE
     release
     end
 
@@ -852,8 +858,258 @@ Move_RocketHQ_Ariana3:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Eusine | Roaming Dogs | Outside
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_Celadon:
+    mapscript MAP_SCRIPT_ON_TRANSITION MapEventScript_Celadon
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_Celadon_RoamingDogs
+    .byte MAP_SCRIPT_TERMIN
+
+MapEventScript_Celadon:
+    setworldmapflag 0x896
+    end
+
+LevelScript_Celadon_RoamingDogs:
+    levelscript VAR_ROAMING_DOGS_EVENT, 1, EventScript_Celadon_RoamingDogs
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_Celadon_RoamingDogs:
+    lock
+    textcolor BLUE
+    applymovement 18 Move_Celadon_RoamingDogs_Eusine_1
+    applymovement PLAYER Move_Celadon_RoamingDogs_Player_1
+    waitmovement 18
+    sound 0x15
+    applymovement 18 Move_Celadon_RoamingDogs_Eusine_2
+    waitmovement 18
+    call EusineNameBox
+    msgbox gText_Celadon_RoamingDogs_Eusine_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 18 Move_Celadon_RoamingDogs_Eusine_3
+    waitmovement 18
+    call EusineNameBox
+    msgbox gText_Celadon_RoamingDogs_Eusine_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    pause 30
+    applymovement PLAYER Move_Celadon_RoamingDogs_Player_2
+    waitmovement PLAYER
+    signmsg
+    textcolor BLACK
+    msgbox gText_Celadon_RoamingDogs_Narrator_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    normalmsg
+    textcolor BLUE
+    sound 0x2
+    pause 30
+    setvar 0x8000 SPECIES_RAIKOU
+    setvar 0x8001 50
+    setvar 0x8002 0x1
+    setvar 0x8003 0x0
+    special 0x129
+    compare LASTRESULT 0x0
+    if TRUE _goto EventScript_Celadon_RoamingDogs_TooManyRoamers
+    sound 0x2
+    pause 30
+    setvar 0x8000 SPECIES_ENTEI
+    setvar 0x8001 50
+    setvar 0x8002 0x1
+    setvar 0x8003 0x0
+    special 0x129
+    compare LASTRESULT 0x0
+    if TRUE _goto EventScript_Celadon_RoamingDogs_TooManyRoamers
+    sound 0x2
+    pause 30
+    setvar 0x8000 SPECIES_SUICUNE
+    setvar 0x8001 50
+    setvar 0x8002 0x1
+    setvar 0x8003 0x0
+    special 0x129
+    compare LASTRESULT 0x0
+    if TRUE _goto EventScript_Celadon_RoamingDogs_TooManyRoamers
+    call EusineNameBox
+    msgbox gText_Celadon_RoamingDogs_Eusine_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 18 Move_Celadon_RoamingDogs_Eusine_4
+    waitmovement 18
+    hidesprite 18
+    setflag FLAG_EUSINE_SPRITE_CELADON_OUTSIDE
+    setvar VAR_ROAMING_DOGS_EVENT 0x2
+    clearflag FLAG_EUSINE_SPRITE_CELADON_RESTO
+    release
+    end
+
+EventScript_Celadon_RoamingDogs_TooManyRoamers:
+    signmsg
+    textcolor BLACK
+    msgbox gText_Celadon_RoamingDogs_TooManyRoamers MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+Move_Celadon_RoamingDogs_Player_1:
+    .byte pause_long
+    .byte say_question
+    .byte end_m
+
+Move_Celadon_RoamingDogs_Eusine_1:
+    .byte pause_long
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte walk_right
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+Move_Celadon_RoamingDogs_Eusine_2:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_Celadon_RoamingDogs_Eusine_3:
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte say_question
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_Celadon_RoamingDogs_Player_2:
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Celadon_RoamingDogs_Eusine_4:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Eusine | Roaming Dogs | Resto
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Celadon_Eusine_InsideResto:
+    lock
+    faceplayer
+    textcolor BLUE
+    checkflag FLAG_ROAMING_DOGS_EVENT_FINISHED
+    if SET _goto EventScript_Celadon_RoamingDogs_Finished
+    callasm CheckRoamingDogs
+    compare 0x8004 1
+    if TRUE _goto EventScript_Celadon_InsideResto_DogInParty_1
+    call EusineNameBox
+    msgbox gText_Celadon_Eusine_InsideResto_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_Celadon_InsideResto_DogInParty_1:
+    pause 30
+    sound 0x15
+    applymovement 6 Move_Celadon_Eusine_InsideResto_1
+    waitmovement 6
+    call EusineNameBox
+    msgbox gText_Celadon_Eusine_InsideResto_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 6 Move_Celadon_Eusine_InsideResto_2
+    waitmovement 6
+    faceplayer
+    call EusineNameBox
+    msgbox gText_Celadon_Eusine_InsideResto_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    giveitem ITEM_MASTER_BALL 0x1 MSG_OBTAIN
+    call EusineNameBox
+    msgbox gText_Celadon_Eusine_InsideResto_Speak_4 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag FLAG_ROAMING_DOGS_EVENT_FINISHED
+    release
+    end
+
+EventScript_Celadon_RoamingDogs_Finished:
+    checkflag 0x4BC
+    if SET _goto EventScrit_Celadon_Eusine_InsideResto_Battle
+    call EusineNameBox
+    msgbox gText_Celadon_Eusine_InsideResto_Speak_5 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    release
+    end
+
+EventScript_Celadon_Eusine_InsideResto_PlayerDontWantBattle:
+    call EusineNameBox
+    msgbox gText_Celadon_Eusine_InsideResto_PlayerDontWantBattle MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    release
+    end
+
+EventScrit_Celadon_Eusine_InsideResto_Battle:
+    textcolor BLUE
+    call EusineNameBox
+    trainerbattle1 0x3 0x9 0x0 gText_Celadon_Eusine_InsideResto_Speak_6 gText_Celadon_Eusine_InsideResto_Battle_Defeated EventScript_Celadon_Eusine_InsideResto_Battle_After
+    release
+    end
+
+EventScript_Celadon_Eusine_InsideResto_Battle_After:
+    call EusineNameBox
+    msgbox gText_Celadon_Eusine_InsideResto_Speak_7 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadescreen 0x1
+    hidesprite 0x6
+    setflag FLAG_EUSINE_SPRITE_CELADON_RESTO
+    fadescreen 0x0
+    release
+    end
+
+Move_Celadon_Eusine_InsideResto_1:
+    .byte exclaim
+    .byte end_m
+
+Move_Celadon_Eusine_InsideResto_2:
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte say_question
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Celadon NameBox
 @@@@@@@@@@@@@@@@@@@@@@
+UnknownNameBox:
+    setvar 0x8000 0
+    setvar 0x8001 LEFT
+    callasm DrawNameBox
+    return
+
 MayNameBox:
     setvar 0x8000 2
     setvar 0x8001 LEFT
@@ -878,8 +1134,8 @@ ArianaNameBox:
     callasm DrawNameBox
     return
 
-UnknownNameBox:
-    setvar 0x8000 0
+EusineNameBox:
+    setvar 0x8000 28
     setvar 0x8001 LEFT
     callasm DrawNameBox
     return

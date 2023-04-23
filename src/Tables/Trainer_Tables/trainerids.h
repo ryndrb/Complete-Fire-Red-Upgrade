@@ -84,7 +84,8 @@
 #define TRAINER_PROTON                             6
 #define TRAINER_ARCHER                             7
 #define TRAINER_ARIANA                             8
-#define TRAINER_RS_COOLTRAINER_M                   9
+// #define TRAINER_RS_COOLTRAINER_M                   9
+#define TRAINER_EUSINE                             9
 #define TRAINER_RS_COOLTRAINER_F                  10
 #define TRAINER_HEX_MANIAC                        11
 #define TRAINER_RS_LADY                           12

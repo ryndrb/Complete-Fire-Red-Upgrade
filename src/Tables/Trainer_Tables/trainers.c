@@ -118,17 +118,17 @@ const struct Trainer gTrainers[] =
         .partySize = NELEMS(sParty_Ariana),
         .party = {.ItemCustomMoves = sParty_Ariana}
     },
-    [TRAINER_RS_COOLTRAINER_M] = {
+    [TRAINER_EUSINE] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
         .trainerClass = CLASS_COOLTRAINER,
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_COOL,
         .trainerPic = TRAINER_PIC_RS_COOLTRAINER_M,
-        .trainerName = NO_NAME,
-        .items = {},
+        .trainerName = {_E,_u,_s,_i,_n,_e,_END},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_RSCooltrainerM),
-        .party = {.ItemCustomMoves = sParty_RSCooltrainerM}
+        .partySize = NELEMS(sParty_Eusine),
+        .party = {.ItemCustomMoves = sParty_Eusine}
     },
     [TRAINER_RS_COOLTRAINER_F] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,

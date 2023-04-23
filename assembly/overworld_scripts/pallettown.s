@@ -1458,8 +1458,10 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x9B7 @ ariana rocket hq
     setflag 0x9B9 @ may league sprite
     setflag 0x9CD @ littleboy dad cinnabar sprite inside house
+    setflag 0x9D1 @ eusine sprite celadon outside gym after deafting erika
+    setflag 0x9D2 @ eusine sprite celadon resto after starting event
+    
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
-
     setvar 0x5030 0x1 @ Route 1 May encounter
     setvar 0x5013 0x1 @ Brendan Pewter Encounter Inside Gym
     setvar 0x502F 0x1 @ Brendan Pewter Encounter Outside Gym

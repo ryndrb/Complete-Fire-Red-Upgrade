@@ -47,6 +47,7 @@ extern const u8 gEventObjectPic_LatiasTiles[];
 extern const u8 gEventObjectPic_LatiosTiles[];
 extern const u8 gEventObjectPic_CresseliaTiles[];
 extern const u8 gEventObjectPic_DarkraiTiles[];
+extern const u8 gEventObjectPic_EusineTiles[];
 
 static const struct SpriteFrameImage gEventObjectPicTable_NurseJoy[] =
 {
@@ -703,5 +704,39 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Darkrai =
     .subspriteTables = gEventObjectSpriteOamTables_32x32,
     .anims = gEventObjectImageAnimTable_Standard,
     .images = gEventObjectPicTable_Darkrai,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+static const struct SpriteFrameImage gEventObjectPicTable_Eusine[] =
+{
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 0),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 1),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 2),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 3),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 4),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 5),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 6),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 7),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 8),
+    overworld_frame(gEventObjectPic_EusineTiles, 2, 4, 9),
+};
+
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Eusine =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag1 = 0x1217,
+    .paletteTag2 = EVENT_OBJ_PAL_TAG_NONE,
+    .size = (16 * 32) / 2,
+    .width = 16,
+    .height = 32,
+    .shadowSize = SHADOW_SIZE_M, //Can also be SHADOW_SIZE_S, SHADOW_SIZE_L, or SHADOW_SIZE_XL
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT, //Can also be TRACKS_TIRE
+    .gender = MALE, //Can also be FEMALE
+    .oam = gEventObjectBaseOam_16x32,
+    .subspriteTables = gEventObjectSpriteOamTables_16x32,
+    .anims = gEventObjectImageAnimTable_Standard,
+    .images = gEventObjectPicTable_Eusine,
     .affineAnims = gDummySpriteAffineAnimTable,
 };

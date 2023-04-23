@@ -321,7 +321,74 @@ static const struct TrainerMonItemCustomMoves sParty_Ariana[] = {
     // },
 };
 
-static const struct TrainerMonItemCustomMoves sParty_RSCooltrainerM[] = {DUMMY_TRAINER_MON_IV};
+static const struct TrainerMonItemCustomMoves sParty_Eusine[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_NINETALES,
+        .ability = Ability_Hidden, // drought
+        .nature = NATURE_TIMID,
+        .ivSpread = {IV_HP_ICE},
+        .evSpread = {0, 0, 0, 252, 4, 252},
+        .heldItem = ITEM_CHARCOAL,
+        .moves = {MOVE_NASTYPLOT, MOVE_SOLARBEAM, MOVE_FIREBLAST, MOVE_HIDDENPOWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_DRAPION,
+        .ability = Ability_2, // sniper
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 252, 4, 0, 0, 252},
+        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_EARTHQUAKE, MOVE_PURSUIT, MOVE_WICKEDBLOW, MOVE_POISONJAB},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_YANMEGA,
+        .ability = Ability_1, // speed boost
+        .nature = NATURE_MODEST,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 0, 0, 252, 4, 252},
+        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_PROTECT, MOVE_BUGBUZZ, MOVE_AIRSLASH, MOVE_GIGADRAIN},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_FLYGON,
+        .ability = Ability_Hidden, // tinted lens
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_HP_FLYING},
+        .evSpread = {252, 0, 0, 0, 4, 252},
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_UTURN, MOVE_EARTHQUAKE, MOVE_OUTRAGE, MOVE_HIDDENPOWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_COFAGRIGUS,
+        .ability = Ability_Hidden, // mummy
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_MAX},
+        .evSpread = {252, 0, 200, 0, 56, 0},
+        .heldItem = ITEM_COLBUR_BERRY,
+        .moves = {MOVE_WILLOWISP, MOVE_SHADOWBALL, MOVE_PAINSPLIT, MOVE_HAZE},
+    },
+    {
+        .iv = 0,
+        .lvl = 2,
+        .species = SPECIES_ALTARIA,
+        .ability = Ability_Hidden, // cloud nine / pixilate
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_HP_FIRE},
+        .evSpread = {0, 252, 4, 0, 0, 252},
+        .heldItem = ITEM_ALTARIANITE,
+        .moves = {MOVE_DRAGONDANCE, MOVE_BODYSLAM, MOVE_HIDDENPOWER, MOVE_ROOST},
+    },
+};
 static const struct TrainerMonItemCustomMoves sParty_RSCooltrainerF[] = {DUMMY_TRAINER_MON_IV};
 static const struct TrainerMonItemCustomMoves sParty_HexManiac[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_RSLady[] = {DUMMY_TRAINER_MON};
