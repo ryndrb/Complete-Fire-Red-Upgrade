@@ -902,7 +902,7 @@ EventScript_Celadon_RoamingDogs:
     normalmsg
     textcolor BLUE
     sound 0x2
-    pause 30
+    pause 60
     setvar 0x8000 SPECIES_RAIKOU
     setvar 0x8001 50
     setvar 0x8002 0x1
@@ -911,7 +911,7 @@ EventScript_Celadon_RoamingDogs:
     compare LASTRESULT 0x0
     if TRUE _goto EventScript_Celadon_RoamingDogs_TooManyRoamers
     sound 0x2
-    pause 30
+    pause 60
     setvar 0x8000 SPECIES_ENTEI
     setvar 0x8001 50
     setvar 0x8002 0x1
@@ -920,7 +920,7 @@ EventScript_Celadon_RoamingDogs:
     compare LASTRESULT 0x0
     if TRUE _goto EventScript_Celadon_RoamingDogs_TooManyRoamers
     sound 0x2
-    pause 30
+    pause 60
     setvar 0x8000 SPECIES_SUICUNE
     setvar 0x8001 50
     setvar 0x8002 0x1
