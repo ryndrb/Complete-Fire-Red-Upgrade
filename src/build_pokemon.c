@@ -5717,3 +5717,81 @@ void CheckRoamingDogs(void){
 		}
     }
 }
+
+void CheckFireHeadMons(void){
+    u8 i;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_PONYTA){
+			VarSet(0x8004, SPECIES_PONYTA);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_RAPIDASH){
+			VarSet(0x8004, SPECIES_RAPIDASH);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_MOLTRES){
+			VarSet(0x8004, SPECIES_MOLTRES);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_QUILAVA){
+			VarSet(0x8004, SPECIES_QUILAVA);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_INFERNAPE){
+			VarSet(0x8004, SPECIES_INFERNAPE);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_EMBOAR){
+			VarSet(0x8004, SPECIES_EMBOAR);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_LITWICK){
+			VarSet(0x8004, SPECIES_LITWICK);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_CHANDELURE){
+			VarSet(0x8004, SPECIES_CHANDELURE);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_PYROAR){
+			VarSet(0x8004, SPECIES_PYROAR);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_CENTISKORCH){
+			VarSet(0x8004, SPECIES_CENTISKORCH);
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}
+
+void CheckMeanLookingMons(void){
+    u8 i;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_GYARADOS){
+			VarSet(0x8004, SPECIES_GYARADOS);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_CARVANHA){
+			VarSet(0x8004, SPECIES_CARVANHA);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_SHARPEDO){
+			VarSet(0x8004, SPECIES_SHARPEDO);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_BASCULIN_RED){
+			VarSet(0x8004, SPECIES_BASCULIN_RED);
+			break;
+		}else if(gPlayerParty[i].species == SPECIES_BARRASKEWDA){
+			VarSet(0x8004, SPECIES_BARRASKEWDA);
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}
+
+void CheckJigglypuff(void){
+    u8 i;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_JIGGLYPUFF){
+			VarSet(0x8004, SPECIES_JIGGLYPUFF);
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}

@@ -10,6 +10,7 @@
 .equ FLAG_MAY_CERULEAN_SPRITE, 0x93D
 .equ FLAG_OBTAIN_GYARADOSITE, 0x95D
 .equ FLAG_OBTAIN_GIFT_SANDILE, 0x9B4
+.equ FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM, 0x9D3
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Misty
@@ -310,6 +311,79 @@ EventScript_0x81664CC:
     hidesprite 0x8
     releaseall
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Clefairy Lady | Jirachi Event
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Ceruleann_TeachDazzlingGleam_Clefairy:
+    faceplayer
+    textcolor BLACK
+    cry SPECIES_CLEFAIRY 0x0
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Clefairy_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_Ceruleann_TeachDazzlingGleam_Lady:
+    lock
+    faceplayer
+    textcolor RED
+    checkflag FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM
+    if SET _goto EventScript_Ceruleann_TeachDazzlingGleam_Done
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_1 MSG_YESNO
+    compare LASTRESULT 0x1
+    if FALSE _goto EventScript_Ceruleann_TeachDazzlingGleam_Rejected
+    pause 45
+    checkitem ITEM_TM102 0x1
+    compare LASTRESULT 0x1
+    if FALSE _goto EventScript_Ceruleann_TeachDazzlingGleam_PlayerDoesntHaveIt
+    textcolor BLACK
+    sound 0x2
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Narrator_1 MSG_KEEPOPEN
+    closeonkeypress
+    fanfare 0x13E
+    waitfanfare
+    applymovement 0x6 Move_Ceruleann_TeachDazzlingGleam_Clefairy
+    waitmovement 0x6
+    cry SPECIES_CLEFAIRY 0x0
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Clefairy_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    textcolor RED
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    pause 60
+    fadescreenspeed 0x3 5
+    cry SPECIES_JIRACHI 0x0
+    fadescreenspeed 0x2 5
+    textcolor BLACK
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Narrator_2 MSG_KEEPOPEN
+    closeonkeypress
+    setflag FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM
+    release
+    end
+
+EventScript_Ceruleann_TeachDazzlingGleam_Rejected:
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Lady_Rejected MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_Ceruleann_TeachDazzlingGleam_Done:
+    msgbox gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_Ceruleann_TeachDazzlingGleam_PlayerDoesntHaveIt:
+    msgbox gText_Ceruleann_TeachDazzlingGleam_PlayerDoesntHaveIt MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+Move_Ceruleann_TeachDazzlingGleam_Clefairy:
+    .byte jump_onspot_down
+    .byte jump_onspot_down
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Cerulean NameBox

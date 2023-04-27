@@ -88,6 +88,8 @@ npc 7 3 7 EventScript_PokemonCenterClerk
 npc 7 3 8 EventScript_UtilityOldMan
 npc 7 5 2 EventScript_GymLeaderMisty
 npc 7 5 3 EventScript_GymGuyGyaradosite
+npc 7 7 4 EventScript_Ceruleann_TeachDazzlingGleam_Lady
+npc 7 7 5 EventScript_Ceruleann_TeachDazzlingGleam_Clefairy
 npc 7 8 1 EventScript_CeruleanTMMerchant
 npc 7 2 2 EventScript_Brendan_Mom
 npc 7 2 3 EventScript_Brendan_Uncle
@@ -121,12 +123,15 @@ npc 1 82 25 EventScript_RockSmash
 npc 1 82 26 EventScript_RockSmash
 npc 1 82 26 EventScript_Sablenite
 npc 1 82 27 EventScript_RockTunnel_Regirock
+npc 43 9 0 EventScript_RockTunnel_Jirachi_Event
+sign 43 9 0 EventScript_RockTunnel_Jirachi_Signpost
 
 # LAVENDER TOWN
 npc 1 88 1 EventScript_PokeTowerLady
 npc 3 4 1 EventScript_LavenderTownMerchant
 npc 8 2 0 EventScript_Lavender_MrFuji
 npc 8 2 6 EventScript_ShadowClaw
+npc 8 4 1 EventScript_Lavender_FireHead
 npc 8 5 0 EventScript_PokeMartMain
 npc 8 5 4 EventScript_LavenderTown
 npc 8 0 5 EventScript_PokemonCenterClerk
@@ -212,6 +217,7 @@ map 1 47 MapScript_SilphCo_Proton
 npc 1 47 0 EventScipt_SaffronDrainPunch
 npc 1 49 0 EventScript_SilphCo_Ariana
 npc 1 53 11 EventScript_TrickRoom
+npc 3 10 15 EventScript_Saffron_MeanLookingFish
 npc 14 3 6 EventScript_GymLeaderSabrina
 npc 14 5 0 EventScript_PokeMartMain
 npc 14 5 3 EventScript_SaffronCity

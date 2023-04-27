@@ -66,3 +66,30 @@ Newmoon Island
 
 #org @gText_Newmoon_Narrator_Speak_1
 [.]A voice called out from\nsomewhere[.]\p???: Darkrai[.]\nYour power is strong.\pThough you don't will it, you make\npeople and Pok\emon around you see\lterrible nightmares[.]\pThat is why you came here[.]\pNewmoon Island[.]\nThere is no one but you here[.]\pThere is none that can be drawn\ninto your nightmare[.]\pIf anyone were to fall into a\nnightmare, the Fullmoon Island is\lclose by[.]\p[.] [.]\n[.] [.]
+
+#org @gText_RockTunnel_Jirachi_1
+This Pok\emon appears to be in a\ndeep slumber[.]
+
+#org @gText_RockTunnel_Jirachi_2
+Do you want to ask Jigglypuff to\nsing to the Pok\emon?
+
+#org @gText_RockTunnel_Jirachi_Jigglypuff_1
+Pwff!
+
+#org @gText_RockTunnel_Jirachi_3
+The Pok\emon woke up!
+
+#org @gText_RockTunnel_Jirachi_4
+Raa raa!
+
+#org @gText_RockTunnel_Jirachi_Signpost_1
+Ye who desires a wish fulfilled\nmust first be one who grants three\lwishes.
+
+#org @gText_RockTunnel_Jirachi_Signpost_2
+Ye who had a wish fulfilled were\nthe one who granted three.
+
+#org @gText_RockTunnel_Jirachi_Narrator_1
+The writing on the sign changed[.]
+
+#org @gText_RockTunnel_Jirachi_Start_Speak_1
+Dear Trainer.\nI have a request.\pBring me the Pok\emon with the most\npleasant voice[.]

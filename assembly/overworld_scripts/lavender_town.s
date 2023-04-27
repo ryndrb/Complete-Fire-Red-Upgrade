@@ -8,6 +8,7 @@
 .equ FLAG_LAVENDER_MECHANT_1, 0x97A
 .equ FLAG_LAVENDER_MECHANT_2, 0x97B
 .equ FLAG_MAY_POKETOWER_SPRITE, 0x93F
+.equ FLAG_OLD_WOMAN_FIRE_HEAD, 0x9D4
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Lavender Town Items Merchant
@@ -527,6 +528,53 @@ EventScript_0x816B1A0:
     callasm RemoveNameBox
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pokemon head on fire | Jirachi Event
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Lavender_FireHead:
+    lock
+    faceplayer
+    checkflag FLAG_OLD_WOMAN_FIRE_HEAD
+    if SET _goto EventScript_Lavender_FireHead_Done
+    msgbox gText_Lavender_FireHead_Granny_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm CheckFireHeadMons
+    compare 0x8004 0
+    if equal _goto EventScript_Lavender_FireHead_End
+    pause 30
+    sound 0x15
+    applymovement 0x2 Move_Lavender_FireHead_Granny_1
+    waitmovement 0x2
+    bufferpokemon 0x0 0x8004
+    msgbox gText_Lavender_FireHead_Granny_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    pause 60
+    fadescreenspeed 0x3 5
+    cry SPECIES_JIRACHI 0x0
+    fadescreenspeed 0x2 5
+    textcolor BLACK
+    msgbox gText_Lavender_FireHead_Narrator_1 MSG_KEEPOPEN
+    closeonkeypress
+    setflag FLAG_OLD_WOMAN_FIRE_HEAD
+    release
+    end
+
+EventScript_Lavender_FireHead_Done:
+    msgbox gText_Lavender_FireHead_Granny_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_Lavender_FireHead_End:
+    release
+    end
+
+Move_Lavender_FireHead_Granny_1:
+    .byte exclaim
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Pokemon Tower NameBox

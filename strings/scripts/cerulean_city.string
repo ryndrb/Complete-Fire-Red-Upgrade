@@ -54,3 +54,24 @@ Oh, yeah, right.\pI feel sorry for you. No, really.\nYou're always plodding behi
 
 #org @gText_Cerulean_RivalSpeaks4
 A chatty gossip like you...\nThat thing's perfect.\pI don't need it because I don't\ngive a hoot about others.\p[.] [.]\n[.] [.]\pI just saw May on my way here.\pShe was running around trying to\ncatch some cute Pok\emon.\l\lHeh[.]!\pI doubt she'll make it far.\pBut who cares!\nI'm on a roll!\pAll right, this time I really am\ngone.\pSmell ya!
+
+#org @gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_1
+Hello, Trainer!\nI have a wish.\pCould you help my Clefairy learn\nDazzling Gleam?
+
+#org @gText_Ceruleann_TeachDazzlingGleam_Narrator_1
+[PLAYER] booted up the TM.\p[.] [.]\n[.] [.]\p[.] [.]\n[.] [.]\pClefairy learned Dazzling Gleam!
+
+#org @gText_Ceruleann_TeachDazzlingGleam_Clefairy_Speak_1
+Pip piiih!
+
+#org @gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_2
+Ah! My wish has been realized!\nThank you so much, Trainer!
+
+#org @gText_Ceruleann_TeachDazzlingGleam_Narrator_2
+Someone, somewhere, saw that you\nmade somebody's wish come true.
+
+#org @gText_Ceruleann_TeachDazzlingGleam_Lady_Rejected
+Oh, I see.\pThat's alright, I understand[.]
+
+#org @gText_Ceruleann_TeachDazzlingGleam_PlayerDoesntHaveIt
+Oh[.]\pIt seems you're not quite able[.]

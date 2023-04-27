@@ -87,3 +87,15 @@ Has my Pok\e Flute\nhelped you?
 
 #org @gText_Lavender_MrFujiSpeak4
 You must make room for this!
+
+#org @gText_Lavender_FireHead_Granny_Speak_1
+Greetings, young Trainer.\nI have a desire.\pCould you show me a Pok\emon whose\nhead is on fire?
+
+#org @gText_Lavender_FireHead_Granny_Speak_2
+Oh, your [BUFFER1][.]\pThere is a truly dazzling flame\nthat burns upon its head!\pWhat a sight to behold!\nAbsolutely ravishing!\pAh! My desire has been realized!\nThank you so much, Trainer!
+
+#org @gText_Lavender_FireHead_Narrator_1
+Someone, somewhere, saw that you\nmade somebody's wish come true.
+
+#org @gText_Lavender_FireHead_Granny_Speak_3
+Ah! My desire has been realized!\nThank you so much, Trainer!

@@ -13,6 +13,7 @@
 .equ VAR_ARIANA_BATTLES, 0x5035
 .equ VAR_ENCOUNTER_SIPHCO_PROTON, 0x503E
 .equ FLAG_ENCOUNTER_SIPHCO_PROTON, 0x9B8
+.equ FLAG_MEAN_LOOKING_FISH, 0x9D5
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Sabrina
@@ -573,6 +574,54 @@ Move_SilphCo_Archer6:
     .byte pause_long
     .byte pause_long
     .byte walk_right_onspot_fastest
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pokemon Mean Looking | Jirachi Event
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Saffron_MeanLookingFish:
+    lock
+    faceplayer
+    textcolor BLUE
+    checkflag FLAG_MEAN_LOOKING_FISH
+    if SET _goto EventScript_Saffron_MeanLookingFish_Done
+    msgbox gText_Saffron_MeanLookingFish_Boy_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm CheckMeanLookingMons
+    compare 0x8004 0
+    if equal _goto EventScript_Saffron_MeanLookingFish_End
+    pause 30
+    sound 0x15
+    applymovement 16 Move_Saffron_MeanLookingFish_Boy_1
+    waitmovement 16
+    bufferpokemon 0x0 0x8004
+    msgbox gText_Saffron_MeanLookingFish_Boy_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    pause 60
+    fadescreenspeed 0x3 5
+    cry SPECIES_JIRACHI 0x0
+    fadescreenspeed 0x2 5
+    textcolor BLACK
+    msgbox gText_Saffron_MeanLookingFish_Narrator_1 MSG_KEEPOPEN
+    closeonkeypress
+    setflag FLAG_MEAN_LOOKING_FISH
+    release
+    end
+
+EventScript_Saffron_MeanLookingFish_Done:
+    msgbox gText_Saffron_MeanLookingFish_Boy_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_Saffron_MeanLookingFish_End:
+    release
+    end
+
+Move_Saffron_MeanLookingFish_Boy_1:
+    .byte exclaim
+    .byte pause_long
+    .byte pause_long
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@

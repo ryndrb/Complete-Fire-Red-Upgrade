@@ -17,6 +17,12 @@
 .equ FLAG_CRESSELIA_FULLMOON, 0x9C9
 .equ FLAG_DARKRAI_NEWMOON, 0x9CA
 .equ FLAG_ROUTE3_STEAM, 0x9D0
+.equ FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM, 0x9D3
+.equ FLAG_OLD_WOMAN_FIRE_HEAD, 0x9D4
+.equ FLAG_MEAN_LOOKING_FISH, 0x9D5
+.equ FLAG_READ_SIGNPOST, 0x9D6
+.equ FLAG_JIRACHI_ROCKTUNNEL, 0x9D7
+.equ FLAG_JIGGLYPUFF_ROCKTUNNEL, 0x9D8
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Kyogre Route 21 Marine Cave
@@ -429,12 +435,162 @@ EventScript_NewmoonIsland_Sign:
     release
     end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Jirachi Rock Tunnel
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_RockTunnel_Jirachi_Event:
+    lock
+    signmsg
+    textcolor BLACK
+    msgbox gText_RockTunnel_Jirachi_1 MSG_KEEPOPEN
+    callasm CheckJigglypuff
+    compare 0x8004 0
+    if equal _goto EventScript_Legendaries_End
+    msgbox gText_RockTunnel_Jirachi_2 MSG_YESNO
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Legendaries_End
+    fadescreenspeed 0x3 0
+    showsprite 0x2
+    fadescreenspeed 0x2 0
+    cry SPECIES_JIGGLYPUFF 0x0
+    msgbox gText_RockTunnel_Jirachi_Jigglypuff_1 MSG_KEEPOPEN
+    closeonkeypress
+    fadenewbgm 0x114
+    pause 30
+    applymovement 0x2 Move_RockTunnel_Jirachi_Event_Jigglypuff_1
+    waitmovement 0x2
+    pause 30
+    applymovement 0x2 Move_RockTunnel_Jirachi_Event_Jigglypuff_2
+    waitmovement 0x2
+    cry SPECIES_JIGGLYPUFF 0x0
+    fadescreenspeed 0x3 0
+    hidesprite 0x2
+    fadescreenspeed 0x2 0
+    pause 30
+    applymovement 0x1 Move_RockTunnel_Jirachi_Event_Jirachi_1
+    waitmovement 0x1
+    msgbox gText_RockTunnel_Jirachi_3 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    sound 0x15
+    applymovement 0x1 Move_RockTunnel_Jirachi_Event_Jirachi_2
+    waitmovement 0x1
+    cry SPECIES_JIRACHI 0x0
+    msgbox gText_RockTunnel_Jirachi_4 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    wildbattle SPECIES_JIRACHI 40 ITEM_NONE
+    special2 LASTRESULT 0xB4
+    compare LASTRESULT 0x1
+    if TRUE _goto EventScript_Legendaries_End
+    compare LASTRESULT 0x4
+    if TRUE _goto EventScript_Legendaries_End
+    fadescreen 0x1
+    hidesprite LASTTALKED
+    setflag FLAG_JIRACHI_ROCKTUNNEL
+    fadescreen 0x0
+    release
+    end
+
+EventScript_RockTunnel_Jirachi_Signpost:
+    lock
+    signmsg
+    textcolor BLACK
+    checkflag FLAG_READ_SIGNPOST
+    if SET _goto EventScript_RockTunnel_Jirachi_Start
+    msgbox gText_RockTunnel_Jirachi_Signpost_1 MSG_KEEPOPEN
+    closeonkeypress
+    checkflag FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM
+    if NOT_SET _goto EventScript_Legendaries_End
+    checkflag FLAG_OLD_WOMAN_FIRE_HEAD
+    if NOT_SET _goto EventScript_Legendaries_End
+    checkflag FLAG_MEAN_LOOKING_FISH
+    if NOT_SET _goto EventScript_Legendaries_End
+    pause 60
+    fadescreenspeed 0x3 5
+    cry SPECIES_JIRACHI 0x0
+    showsprite 0x1
+    clearflag FLAG_JIRACHI_ROCKTUNNEL
+    fadescreenspeed 0x2 5
+    msgbox gText_RockTunnel_Jirachi_Narrator_1 MSG_KEEPOPEN
+    closeonkeypress
+    setflag FLAG_READ_SIGNPOST
+    release
+    end
+
+EventScript_RockTunnel_Jirachi_Start:
+    checkflag FLAG_JIRACHI_ROCKTUNNEL
+    if SET _goto EventScript_RockTunnel_Jirachi_Signpost_Done
+    msgbox gText_RockTunnel_Jirachi_Start_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_RockTunnel_Jirachi_Signpost_Done:
+    msgbox gText_RockTunnel_Jirachi_Signpost_2 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
 
 Move_PlayerExclaim:
     .byte exclaim
     .byte pause_long
     .byte pause_long
     .byte end_m
+
+Move_RockTunnel_Jirachi_Event_Jigglypuff_1:
+    .byte walk_left_slow
+    .byte walk_left_slow
+    .byte walk_up_onspot_fastest
+    .byte jump_onspot_up
+    .byte pause_long
+    .byte walk_right_slow
+    .byte walk_right_slow
+    .byte walk_right_slow
+    .byte walk_right_slow
+    .byte walk_up_onspot_fastest
+    .byte jump_onspot_up
+    .byte pause_long
+    .byte walk_left_slow
+    .byte walk_left_slow
+    .byte walk_up_onspot_fastest
+    .byte jump_onspot_up
+    .byte jump_onspot_up
+    .byte pause_long
+    .byte end_m
+
+Move_RockTunnel_Jirachi_Event_Jigglypuff_2:
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte walk_up_onspot_fastest
+    .byte walk_up_onspot_fastest
+    .byte walk_up_onspot_fastest
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte jump_onspot_up
+    .byte jump_onspot_up
+    .byte pause_long
+    .byte end_m
+
+Move_RockTunnel_Jirachi_Event_Jirachi_1:
+    .byte say_smile
+    .byte say_double_exclaim
+    .byte end_m
+
+Move_RockTunnel_Jirachi_Event_Jirachi_2:
+    .byte exclaim
+    .byte end_m
+
 
 EventScript_Legendaries_End:
     release

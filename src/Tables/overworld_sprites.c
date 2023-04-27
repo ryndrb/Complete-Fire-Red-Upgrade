@@ -48,6 +48,7 @@ extern const u8 gEventObjectPic_LatiosTiles[];
 extern const u8 gEventObjectPic_CresseliaTiles[];
 extern const u8 gEventObjectPic_DarkraiTiles[];
 extern const u8 gEventObjectPic_EusineTiles[];
+extern const u8 gEventObjectPic_JirachiTiles[];
 
 static const struct SpriteFrameImage gEventObjectPicTable_NurseJoy[] =
 {
@@ -738,5 +739,31 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Eusine =
     .subspriteTables = gEventObjectSpriteOamTables_16x32,
     .anims = gEventObjectImageAnimTable_Standard,
     .images = gEventObjectPicTable_Eusine,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+static const struct SpriteFrameImage gEventObjectPicTable_Jirachi[] =
+{
+    overworld_frame(gEventObjectPic_JirachiTiles, 4, 4, 0),
+
+};
+
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Jirachi =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag1 = 0x1218,
+    .paletteTag2 = EVENT_OBJ_PAL_TAG_NONE,
+    .size = (32 * 32) / 2,
+    .width = 32,
+    .height = 32,
+    .shadowSize = SHADOW_SIZE_M, //Can also be SHADOW_SIZE_S, SHADOW_SIZE_L, or SHADOW_SIZE_XL
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT, //Can also be TRACKS_TIRE
+    .gender = MALE, //Can also be FEMALE
+    .oam = gEventObjectBaseOam_32x32,
+    .subspriteTables = gEventObjectSpriteOamTables_32x32,
+    .anims = gEventObjectImageAnimTable_Standard,
+    .images = gEventObjectPicTable_Jirachi,
     .affineAnims = gDummySpriteAffineAnimTable,
 };

@@ -1474,4 +1474,6 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x9BF @ registeel
     setflag 0x9C7 @ latias
     setflag 0x9C8 @ latios
+    setflag 0x9D7 @ jirachi
+    setflag 0x9D8 @ jigglypuff (jirachi event)
     return

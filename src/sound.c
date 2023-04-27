@@ -170,7 +170,11 @@ u16 GetLocationMusicNew(struct WarpData* warp)
         && 8 == warp->mapNum){
             music = BGM_LAVENDER_TOWN;
         }
-
+        // Rock Tunnel Jirachi
+        if(43 == warp->mapGroup
+        && 9 == warp->mapNum){
+            music = BGM_RSE_METEOR_FALLS;
+        }
 
         /*
             Houses etc.
