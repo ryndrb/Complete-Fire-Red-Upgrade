@@ -93,3 +93,18 @@ The writing on the sign changed[.]
 
 #org @gText_RockTunnel_Jirachi_Start_Speak_1
 Dear Trainer.\nI have a request.\pBring me the Pok\emon with the most\npleasant voice[.]
+
+#org @gText_NavelRock_Rayquaza_Narrator_1
+It's a rift across time and space.\pYou can feel oxygen-deprived air\npassing through from the other\lside.\pDo you want to extend your arms\ninside the portal?
+
+#org @gText_NavelRock_Rayquaza_Narrator_2
+The portal is reacting to your\nparty[.]
+
+#org @gText_NavelRock_Rayquaza_End
+It didn't do anything[.]
+
+#org @gText_NavelRock_Rayquaza_1
+Kiyuryursheeah!
+
+#org @gText_NavelRock_Rayquaza_Narrator_3
+The rift across time and space\ndisappeared.

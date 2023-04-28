@@ -23,6 +23,7 @@
 .equ FLAG_READ_SIGNPOST, 0x9D6
 .equ FLAG_JIRACHI_ROCKTUNNEL, 0x9D7
 .equ FLAG_JIGGLYPUFF_ROCKTUNNEL, 0x9D8
+.equ FLAG_RAYQUAZA_NAVELROCK, 0x9D9
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Kyogre Route 21 Marine Cave
@@ -532,12 +533,6 @@ EventScript_RockTunnel_Jirachi_Signpost_Done:
     release
     end
 
-Move_PlayerExclaim:
-    .byte exclaim
-    .byte pause_long
-    .byte pause_long
-    .byte end_m
-
 Move_RockTunnel_Jirachi_Event_Jigglypuff_1:
     .byte walk_left_slow
     .byte walk_left_slow
@@ -591,6 +586,67 @@ Move_RockTunnel_Jirachi_Event_Jirachi_2:
     .byte exclaim
     .byte end_m
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rayquaza Navel Rock
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_NavelRock_Rayquaza:
+    lock
+    signmsg
+    textcolor BLACK
+    msgbox gText_NavelRock_Rayquaza_Narrator_1 MSG_YESNO
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Legendaries_End
+    closeonkeypress
+    callasm CheckWeatherDuo
+    compare 0x8004 0
+    if equal _goto EventScript_NavelRock_Rayquaza_End
+    fadescreenspeed 0x3 0
+    fadescreenspeed 0x2 0
+    pause 30
+    msgbox gText_NavelRock_Rayquaza_Narrator_2 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_PlayerExclaim
+    waitmovement PLAYER
+    fadescreenspeed 0x3 0
+    fadescreenspeed 0x2 0
+    cry SPECIES_RAYQUAZA 0x0
+    msgbox gText_NavelRock_Rayquaza_1 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    wildbattle SPECIES_RAYQUAZA 70 ITEM_NONE
+    special2 LASTRESULT 0xB4
+    compare LASTRESULT 0x1
+    if TRUE _goto EventScript_Legendaries_End
+    compare LASTRESULT 0x4
+    if TRUE _goto EventScript_Legendaries_End
+    fadescreenspeed 0x3 0
+    hidesprite LASTTALKED
+    setflag FLAG_RAYQUAZA_NAVELROCK
+    fadescreenspeed 0x2 0
+    msgbox gText_NavelRock_Rayquaza_Narrator_3 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_NavelRock_Rayquaza_End:
+    pause 30
+    fadescreenspeed 0x3 0
+    fadescreenspeed 0x2 0
+    msgbox gText_NavelRock_Rayquaza_End MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Legendary General
+@@@@@@@@@@@@@@@@@@@@@@
+Move_PlayerExclaim:
+    .byte exclaim
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
 
 EventScript_Legendaries_End:
     release

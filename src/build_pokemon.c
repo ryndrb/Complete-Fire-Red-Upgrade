@@ -5795,3 +5795,21 @@ void CheckJigglypuff(void){
 		}
     }
 }
+
+void CheckWeatherDuo(void){
+    u8 i, j;
+
+    for(i = 0; i < gPlayerPartyCount; i++){
+        if(gPlayerParty[i].species == SPECIES_GROUDON){
+			for(j = 0; j < gPlayerPartyCount; j++){
+				if(gPlayerParty[j].species == SPECIES_KYOGRE){
+					VarSet(0x8004, 1);
+					break;
+				}
+			}
+			break;
+		}else{
+			VarSet(0x8004, 0);
+		}
+    }
+}

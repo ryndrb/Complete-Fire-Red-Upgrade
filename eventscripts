@@ -526,3 +526,6 @@ npc 1 109 7 EventScript_Cut
 npc 1 109 8 EventScript_Cut
 npc 1 109 9 EventScript_Cut
 npc 1 109 10 EventScript_Cut
+
+# NAVEL ROCK
+npc 2 55 0 EventScript_NavelRock_Rayquaza
