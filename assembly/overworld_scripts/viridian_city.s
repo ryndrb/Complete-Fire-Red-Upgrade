@@ -9,6 +9,8 @@
 .equ FLAG_OBTAIN_SWORDS_DANCE, 0x9A3
 .equ FLAG_NURSE_JOY_POKE_VIAL, 0x971
 .equ FLAG_MAY_ROUTE1_SPRITE, 0x93B
+.equ FLAG_GS_BALL, 0x9DA
+.equ FLAG_CELEBI_VIRIDIAN_FOREST, 0x9DB
 .equ VAR_MAY_ROUTE1_ENCOUNTER, 0x5030
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -201,6 +203,52 @@ EventScript_Viridian_OldRod:
     msgbox 0x8194028 MSG_KEEPOPEN
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ GS Ball Woman
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Viridian_GSBall:
+    lock
+    faceplayer
+    checkflag 0x4B3
+    if NOT_SET _goto EventScript_Viridian_GSBall_PlayerNotChampion
+    checkflag FLAG_GS_BALL
+    if SET _goto EventScript_Viridian_GSBall_Done
+    pause 45
+    sound 0x15
+    applymovement 0x4 Move_Viridian_GSBall
+    waitmovement 0x4
+    msgbox gText_Viridian_GSBall_Woman_Speak_1 MSG_KEEPOPEN
+    msgbox gText_Viridian_GSBall_Woman_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    fanfare 0x13E
+    textcolor BLACK
+    msgbox gText_Viridian_GSBall_Narrator_1 MSG_KEEPOPEN
+    textcolor RED
+    waitfanfare
+    msgbox gText_Viridian_GSBall_Woman_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    setflag FLAG_GS_BALL
+    clearflag FLAG_CELEBI_VIRIDIAN_FOREST
+    release
+    end
+
+EventScript_Viridian_GSBall_PlayerNotChampion:
+    msgbox gText_Viridian_GSBall_PlayerNotChampion MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+EventScript_Viridian_GSBall_Done:
+    msgbox gText_Viridian_GSBall_Woman_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+Move_Viridian_GSBall:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Viridian NameBox

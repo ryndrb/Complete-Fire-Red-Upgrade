@@ -12,3 +12,18 @@ Player received Pok\e Vial.
 
 #org @gText_NurseJoyExplainsVial
 That Pok\e Vial contains very\npotent medicine.\pIt's strong enough to heal your\nentire party, but you can't use it\lin battles.\pEvery time you heal up at a\nPok\emon Center, we'll refill it\lfor free.\pIt's like a portable Pok\emon\nCenter, don't you think?
+
+#org @gText_Viridian_GSBall_Woman_Speak_1
+Oh my, my, my!\pIt seems fate has brought you to\nme at this very moment!\pDo you believe in legends, dear?\pLegends of a Pok\emon that roams\nacross time and space?\pI do believe in such things, you\nsee.\pI've been searching for this\nmystical Pok\emon for a long time.
+
+#org @gText_Viridian_GSBall_Woman_Speak_2
+And just now, as I saw you walking\nby - I had a vision.\pI know it sounds peculiar, but\ntrust me, dear.\pThe winds of destiny are blowing\nin your favor.\pHere, take this.
+
+#org @gText_Viridian_GSBall_Narrator_1
+[PLAYER] obtained\nthe GS Ball!
+
+#org @gText_Viridian_GSBall_Woman_Speak_3
+It's a mysterious ball I've had\nsince I was a child.\pIt's said to be connected to the\nPok\emon I've been seeking.\pTake it with you on your journey,\nand who knows?\pPerhaps you'll be the one to\nunlock its secrets.
+
+#org @gText_Viridian_GSBall_PlayerNotChampion
+Hello, dear.\nAre you in a Pok\emon journey?\pIt's so nice to see young trainers\nexploring the world and making new\lfriends.

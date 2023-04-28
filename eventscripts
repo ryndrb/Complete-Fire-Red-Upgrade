@@ -31,6 +31,7 @@ npc 3 1 7 EventScript_Cut
 npc 3 1 2 EventScript_ViridianSwordsDance
 npc 3 1 9 EventScript_Aggronite
 npc 3 1 10 EventScript_WorkUp
+npc 5 0 3 EventScript_Viridian_GSBall
 npc 5 3 0 EventScript_PokeMartMain
 npc 5 3 3 EventScript_ViridianCity
 npc 5 4 0 EventScript_NurseJoyViridian
@@ -44,6 +45,7 @@ map 5 3 MapScript_0x16A1DE
 
 # VIRIDIAN FOREST
 npc 1 0 10 EventScript_DeletedKid
+npc 1 0 17 EventScript_VidianForest_Celebi
 
 npc 1 0 11 EventScript_BigRoot
 npc 1 0 12 EventScript_ShellBell

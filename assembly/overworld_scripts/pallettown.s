@@ -1516,4 +1516,5 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x9D7 @ jirachi
     setflag 0x9D8 @ jigglypuff (jirachi event)
     setflag 0x9D9 @ rayquaza
+    setflag 0x9DB @ celebi
     return

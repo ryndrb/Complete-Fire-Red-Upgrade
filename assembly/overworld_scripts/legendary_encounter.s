@@ -24,6 +24,7 @@
 .equ FLAG_JIRACHI_ROCKTUNNEL, 0x9D7
 .equ FLAG_JIGGLYPUFF_ROCKTUNNEL, 0x9D8
 .equ FLAG_RAYQUAZA_NAVELROCK, 0x9D9
+.equ FLAG_CELEBI_VIRIDIAN_FOREST, 0x9DB
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Kyogre Route 21 Marine Cave
@@ -638,6 +639,53 @@ EventScript_NavelRock_Rayquaza_End:
     closeonkeypress
     release
     end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Celebi Viridian Forest
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_VidianForest_Celebi:
+    lock
+    signmsg
+    textcolor BLACK
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_VidianForest_Celebi_Player_1
+    waitmovement PLAYER
+    msgbox gText_VidianForest_Celebi_Narrator_1 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreenspeed 0x3 5
+    cry SPECIES_CELEBI 0x0
+    fadescreenspeed 0x2 5
+    pause 30
+    msgbox gText_VidianForest_Celebi_Narrator_2 MSG_YESNO
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Legendaries_End
+    closeonkeypress
+    pause 30
+    fadescreenspeed 0x3 3
+    fadescreenspeed 0x2 3
+    cry SPECIES_CELEBI 0x0
+    msgbox gText_VidianForest_Celebi_1 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    wildbattle SPECIES_CELEBI 40 ITEM_NONE
+    special2 LASTRESULT 0xB4
+    compare LASTRESULT 0x1
+    if TRUE _goto EventScript_Legendaries_End
+    compare LASTRESULT 0x4
+    if TRUE _goto EventScript_Legendaries_End
+    fadescreenspeed 0x3 0
+    hidesprite LASTTALKED
+    setflag FLAG_CELEBI_VIRIDIAN_FOREST
+    fadescreenspeed 0x2 0
+    msgbox gText_VidianForest_Celebi_Narrator_3 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+Move_VidianForest_Celebi_Player_1:
+    .byte exclaim
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Legendary General
