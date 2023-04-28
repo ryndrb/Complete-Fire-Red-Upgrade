@@ -151,6 +151,15 @@ Oh, good! You and your\nPok\emon are looking great.\lTake care now!
 #org @gText_MomAllGirls
 [.]Right.\nAll girls dream of traveling.\lIt said so on TV.\pOh, yes. Prof. Oak, next door, was\nlooking for you.
 
+#org @gText_PalletTown_Champion_Mom_Speak_1
+Oh my dear [PLAYER], I'm so proud\nof you!\pCongratulations on becoming the\nLeague Champion!\lI knew you had it in you!\p[.] [.]\n[.] [.]\pYour father would have been so\nproud of you too[.]\pHe always believed in your\npotential and would have loved to\lsee you reach this point[.]\p[.] [.]\n[.] [.]\pThese are gifts from your father -\nthe Aurora and Mystic ticket.
+
+#org @gText_PalletTown_Champion_Mom_Speak_2
+These tickets will allow you to\ntravel to special locations.\pAt least that's what he told me\nbefore he-\p[.] [.]\n[.] [.]
+
+#org @gText_PalletTown_Champion_Mom_Speak_3
+I know it's not the same as having\nhim here to celebrate with us[.]\pBut I hope these gifts will\nremind you of him and the support\lhe had in you.\p[.] [.]\n[.] [.]\pAnd remember, I'll always cheer\nfor you! So don't ever give up!
+
 #org @gText_Daisy_BrotherIsOut
 Hi, [PLAYER]!\pMy brother, [RIVAL], is out at\nGrandpa's Lab.
 

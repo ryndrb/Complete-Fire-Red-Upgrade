@@ -27,6 +27,7 @@
 .equ FLAG_QUEST_REGIS, 0x9C4
 .equ FLAG_QUEST_WEATHERTRIO, 0x9C5
 .equ FLAG_ROUTE3_STEAM, 0x9D0
+.equ FLAG_RAYQUAZA_NAVELROCK, 0x9D9
 .equ VAR_BRENDAN_PEWTER_ENCOUNTER1, 0x5013
 .equ VAR_BRENDAN_PEWTER_ENCOUNTER2, 0x502F
 .equ BRENDAN, 0x4
@@ -903,6 +904,7 @@ EventScript_Pewter_Steven_Quests_Regis:
     if NOT_SET _goto EventScript_Pewter_Steven_End
     clearflag FLAG_GROUDON_ROUTE3
     clearflag FLAG_KYOGRE_ROUTE21
+    clearflag FLAG_RAYQUAZA_NAVELROCK
     setflag FLAG_ROUTE21_THUNDERSTORMS
     setflag FLAG_ROUTE3_STEAM
     release

@@ -221,7 +221,6 @@ EventScript_MomDone:
     .byte walk_left
     .byte walk_down
     .byte walk_down
-    .byte walk_down
     .byte walk_left_onspot_fastest
     .byte end_m
 
@@ -1163,6 +1162,8 @@ EventScript_0x8169581:
 EventScript_Mom:
     lock
     faceplayer
+    checkflag 0x2A7
+    if NOT_SET _goto EventScript_PalletTown_Champion_Mom
     checkflag 0x258
     if 0x1 _goto EventScript_0x8168C4A
     checkgender
@@ -1199,6 +1200,44 @@ EventScript_0x8168C41:
     msgbox gText_MomAllGirls MSG_KEEPOPEN
     callasm RemoveNameBox
     return
+
+EventScript_PalletTown_Champion_Mom:
+    checkflag 0x4BC
+    if NOT_SET _goto EventScript_0x8168C4A
+    call MomNameBox
+    msgbox gText_PalletTown_Champion_Mom_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    pause 30
+    giveitem ITEM_AURORA_TICKET 0x1 MSG_OBTAIN
+    giveitem ITEM_MYSTIC_TICKET 0x1 MSG_OBTAIN
+    call MomNameBox
+    msgbox gText_PalletTown_Champion_Mom_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    applymovement 0x1 Move_PalletTown_Champion_Mom_1
+    waitmovement 0x1
+    faceplayer
+    call MomNameBox
+    msgbox gText_PalletTown_Champion_Mom_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    setflag 0x2A7
+    setflag 0x2A8
+    setflag 0x84A
+    setflag 0x84B
+    release
+    end
+
+Move_PalletTown_Champion_Mom_1:
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Daisy
@@ -1476,4 +1515,5 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x9C8 @ latios
     setflag 0x9D7 @ jirachi
     setflag 0x9D8 @ jigglypuff (jirachi event)
+    setflag 0x9D9 @ rayquaza
     return
