@@ -285,6 +285,7 @@ extern const u16 gEventObjectPic_DarkraiPal[];
 extern const u16 gEventObjectPic_EusinePal[];
 extern const u16 gEventObjectPic_JirachiPal[];
 extern const u16 gEventObjectPic_PortalPal[];
+extern const u16 gEventObjectPic_MomPal[];
 
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Archer;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ariana;
@@ -360,6 +361,7 @@ static const struct SpritePalette sObjectEventSpritePalettes12[] = {
 	{gEventObjectPic_EusinePal, 0x1217},
 	{gEventObjectPic_JirachiPal, 0x1218},
 	{gEventObjectPic_PortalPal, 0x1219},
+	{gEventObjectPic_MomPal, 0x121A},
 	{NULL, 0x11FF},
 };
 

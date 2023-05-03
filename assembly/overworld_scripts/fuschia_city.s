@@ -5,9 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_GENGARITE, 0x961
-.equ FLAG_OBTAIN_SUBSTITUTE, 0x9A4
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Koga
 @@@@@@@@@@@@@@@@@@@@@@
@@ -88,7 +85,6 @@ Obtained:
 @ Substitute
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_FuschiaSubstitute:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_SUBSTITUTE
@@ -128,7 +124,6 @@ EventScript_FormerSubstituteKid:
 EventScript_RetiredFisherMan:
     lock
     faceplayer
-    textcolor BLUE
     msgbox gText_RetireFisherManSpeak1 MSG_KEEPOPEN
     msgbox gText_RetireFisherManSpeak2 MSG_KEEPOPEN
     release

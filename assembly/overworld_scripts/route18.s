@@ -5,13 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_WEATHER_ROCKS, 0x986
-
 @@@@@@@@@@@@@@@@@@@@
 @ Damp Rock | Icy Rock | Smooth Rock | Heat Rock | Route 18
 @@@@@@@@@@@@@@@@@@@@
 EventScript_HoennWeatherGuy:
-    textcolor BLUE
     lock
     faceplayer
     msgbox gText_EventScript_HoennWeatherGuyIntro MSG_KEEPOPEN

@@ -6,7 +6,7 @@
 .include "../asm_defines.s"
 
 .equ VAR_MEW_VERMILLION_CITY_ENCOUNTER, 0x5014
-.equ VAR_VERMILLION_CITY_GYM_LOCKED, 0x502C
+.equ VAR_VERMILLION_CITY_GYM_LOCKED, 0x5044
 .equ VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING, 0x503F
 .equ FLAG_BRENDAN_VERMILLION_ENCOUTER, 0x935
 .equ FLAG_BRENDAN_VERMILLION_SPRITE, 0x936
@@ -99,7 +99,6 @@ Obtained:
 @ Eviolite
 @@@@@@@@@@@@@@@@@@@@
 EventScript_Eviolite:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_EVIOLITE
@@ -126,7 +125,6 @@ EventScript_GiveEvioliteNPCMove:
 @ Power Items Seller Old Man
 @@@@@@@@@@@@@@@@@@@@
 EventScript_PowerItemsSeller:
-    textcolor BLUE
     lock
     faceplayer
     msgbox gText_EventScript_PowerItemsSeller MSG_KEEPOPEN
@@ -196,7 +194,6 @@ EventScript_DidNotBeatCatchMew:
 @ Vermillion City TM Merchant
 @@@@@@@@@@@@@@@@@@@@
 EventScript_VermillionTMMerchant:
-    textcolor RED
     lock
     faceplayer
     msgbox gText_VermillionTMMerchantGreet MSG_KEEPOPEN
@@ -241,12 +238,10 @@ EventScript_PlayerBack:
 @ SS Anne Captain
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x160B3A:
-    textcolor BLUE
     lock
     checkflag 0x237
     if 0x1 _goto 0x8160BB5
     msgbox 0x8173646 MSG_KEEPOPEN
-    textcolor 0x3
     preparemsg 0x8173676
     waitmsg
     fanfare 0x100
@@ -274,7 +269,6 @@ EventScript_Vermillion_Brendan:
     playsong 0x1D5
     checkflag FLAG_BRENDAN_VERMILLION_ENCOUTER
     if SET _goto EventScript_Vermillion_Brendan_AskAgain
-    textcolor BLUE
     spriteface 0x9, RIGHT
     call BrendanNameBox
     msgbox gText_BrendanVermillionSpeaks1 MSG_KEEPOPEN
@@ -498,7 +492,6 @@ EventScript_SSAnne_Rival2:
     goto EventScript_0x8160903
 
 EventScript_0x8160903:
-    textcolor 0x0
     sound 0x9
     pause 0x5
     playsong 0x13B 0x0
@@ -590,7 +583,6 @@ EventScript_0x1668F1:
 
 EventScript_Vermillion_MegaRingResearcher:
     lock
-    textcolor BLUE
     applymovement 8 Move_Vermillion_Researcher1
     applymovement PLAYER Move_Vermillion_Player1
     waitmovement 8

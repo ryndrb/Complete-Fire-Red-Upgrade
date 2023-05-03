@@ -5,35 +5,30 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_MAY_ROUTE9_SPRITE, 0x93E
-.equ VAR_MAY_ROUTE9_ENCOUNTER, 0x5031
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ May Route 9 battle
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route9_MayBattle:
     lock
-    textcolor RED
-    playsong 0x1A7
-    applymovement 16 EventScript_Route9_MayLookingAroundNoticePlayer
+    applymovement 16 Move_Route9_May_1
     waitmovement 16
+    sound 0x15
+    applymovement 16 Move_Route9_May_2
+    waitmovement 16
+    playsong 0x1A7 0x1
     call MayNameBox
     trainerbattle1 0x1 63 0x0 gText_Route9_MayIntro gText_Route9_MayLost EventScript_Route9_MayAfter
     release
     end
 
 EventScript_Route9_MayAfter:
-    textcolor RED
-    playsong 0x1A7
     call MayNameBox
     msgbox gText_Route9_MayAfterSpeaks1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
-    fadescreen 0x1
     fanfare 0x0100
     special 0x1
     waitfanfare
-    fadescreen 0x0
     call MayNameBox
     msgbox gText_Route9_MayAfterSpeaks2 MSG_KEEPOPEN
     closeonkeypress
@@ -47,23 +42,27 @@ EventScript_Route9_MayAfter:
     msgbox gText_Route9_MayAfterSpeaks3 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
-    applymovement 16 EventScript_Route9_MayLeaves
+    applymovement 16 Move_Route9_May_3
     waitmovement 16
     hidesprite 16
     setflag FLAG_MAY_ROUTE9_SPRITE
-    setvar VAR_MAY_ROUTE9_ENCOUNTER 0x1
+    setvar VAR_MAY_ENCOUNTER 0x4
     fadedefaultbgm
     release
     end
 
-EventScript_Route9_MayLookingAroundNoticePlayer:
+Move_Route9_May_1:
     .byte walk_right_onspot_fastest
     .byte pause_long
     .byte walk_down
     .byte pause_long
     .byte walk_left_onspot_fastest
-    .byte jump_onspot_left
+    .byte pause_long
+    .byte end_m
+
+Move_Route9_May_2:
     .byte exclaim
+    .byte jump_onspot_left
     .byte pause_long
     .byte run_down
     .byte run_down
@@ -76,7 +75,7 @@ EventScript_Route9_MayLookingAroundNoticePlayer:
     .byte run_left
     .byte end_m
 
-EventScript_Route9_MayLeaves:
+Move_Route9_May_3:
     .byte say_smile
     .byte walk_right
     .byte walk_right

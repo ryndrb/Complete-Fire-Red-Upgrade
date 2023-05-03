@@ -5,31 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_BRENDAN_VERMILLION_SPRITE, 0x936
-.equ FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE, 0x937
-.equ FLAG_BRENDAN_PEWTER_SPRITE2, 0x953
-.equ FLAG_BRENDAN_PEWTER_SPRITE1, 0x954
-.equ FLAG_BRENDAN_PEWTER_SPRITE3, 0x955
-.equ FLAG_BRENDAN_PEWTER_ENCOUNTER, 0x956
-.equ FLAG_BRENDAN_CATCH_FIRST_MON, 0x957
-.equ FLAG_OBTAIN_AERODACTYLITE, 0x958
-.equ FLAG_LANCE_SPRITE_PEWTER, 0x959
-.equ FLAG_OBTAIN_ROOST, 0x95A
-.equ FLAG_KYOGRE_ROUTE21, 0x9BB
-.equ FLAG_GROUDON_ROUTE3, 0x9BC
-.equ FLAG_REGIROCK_ROCKTUNNEL, 0x9BD
-.equ FLAG_REGICE_SEAFOAM, 0x9BE
-.equ FLAG_REGISTEEL_MTMOON, 0x9BF
-.equ FLAG_ROUTE21_THUNDERSTORMS, 0x9C0
-.equ FLAG_PEWTER_STEVEN_BELDUM, 0x9C1
-.equ FLAG_QUEST_HEATRAN, 0x9C2
-.equ FLAG_QUEST_LATITWINS, 0x9C3
-.equ FLAG_QUEST_REGIS, 0x9C4
-.equ FLAG_QUEST_WEATHERTRIO, 0x9C5
-.equ FLAG_ROUTE3_STEAM, 0x9D0
-.equ FLAG_RAYQUAZA_NAVELROCK, 0x9D9
-.equ VAR_BRENDAN_PEWTER_ENCOUNTER1, 0x5013
-.equ VAR_BRENDAN_PEWTER_ENCOUNTER2, 0x502F
 .equ BRENDAN, 0x4
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -44,12 +19,19 @@ EventScript_GymLeaderBrock:
     trainerbattle1 0x1 0x19E 0x0 0x8190CD4 0x8190E4F EventScript_0x816A5C5
     checkflag 0x254
     if 0x0 _goto EventScript_0x816A5F3
+    compare VAR_BRENDAN_ENCOUNTER 0x1
+    if equal _goto EventScript_GymLeaderBrock_HelpBrendan
     call BrockNameBox
-    msgbox 0x819110F MSG_NORMAL
+    msgbox gText_0x819110F MSG_KEEPOPEN
+    closeonkeypress
     callasm RemoveNameBox
-    checkflag FLAG_BRENDAN_PEWTER_ENCOUNTER
-    if SET _goto End
-    goto EventScript_Pewter_Brendan @ Brendan Event
+    release
+    end
+
+EventScript_GymLeaderBrock_HelpBrendan:
+    call BrockNameBox
+    msgbox gText_GymLeaderBrock_HelpBrendan MSG_NORMAL
+    callasm RemoveNameBox
     release
     end
 
@@ -76,8 +58,6 @@ EventScript_0x816A5F3:
     if 0x1 _goto 0x816A634
     giveitem_msg 0x8190FDB ITEM_TM39
     setflag 0x254
-    setflag FLAG_BRENDAN_PEWTER_ENCOUNTER
-    clearflag FLAG_BRENDAN_PEWTER_SPRITE1
     clearflag FLAG_BRENDAN_PEWTER_SPRITE2
     clearflag FLAG_BRENDAN_VERMILLION_SPRITE
     clearflag FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE
@@ -123,7 +103,6 @@ Obtained:
 @ Brendan Pewter City
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Pewter_Brendan:
-    textcolor BLUE
     lock
     playsong 0x1D5
     showsprite BRENDAN
@@ -147,7 +126,9 @@ EventScript_Pewter_Brendan:
     msgbox gText_BrockSpeaks3 MSG_KEEPOPEN
     callasm RemoveNameBox
     fanfare 0x13E
+    msgbox gText_BrendanReceivedMon MSG_KEEPOPEN
     waitfanfare
+    closeonkeypress
     call BrendanNameBox
     msgbox gText_BrendanSpeaks3 MSG_KEEPOPEN
     callasm RemoveNameBox
@@ -155,12 +136,14 @@ EventScript_Pewter_Brendan:
     msgbox gText_BrockSpeaks4 MSG_KEEPOPEN
     callasm RemoveNameBox
     fanfare 0x101
+    msgbox gText_BrendanReceivedBall MSG_KEEPOPEN
     waitfanfare
+    closeonkeypress
     spriteface 0x1, DOWN
     spriteface 0x4, DOWN
     spriteface PLAYER, UP
-    call BrockNameBox
-    msgbox gText_BrockSpeaks5 MSG_KEEPOPEN
+    call BrendanNameBox
+    msgbox gText_BrendanSpeaks5 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     applymovement 0x4 EventScript_BrendanExitGym1
@@ -172,27 +155,29 @@ EventScript_Pewter_Brendan:
     waitmovement 0x4
     sound 0x9
     hidesprite BRENDAN
-    setflag FLAG_BRENDAN_PEWTER_SPRITE1
-    setvar VAR_BRENDAN_PEWTER_ENCOUNTER1 0x0
+    setvar VAR_BRENDAN_ENCOUNTER 0x1
     fadedefaultbgm
     release
     end
 
-MapScript_BrendanOutsideGym:
+MapScript_Pewter:
+    mapscript MAP_SCRIPT_ON_TRANSITION Map_Pewter
     mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_BrendanOutsideGym
     .byte MAP_SCRIPT_TERMIN
 
+Map_Pewter:
+    setworldmapflag 0x892
+    setvar 0x4061 0x0
+    end
+
 LevelScript_BrendanOutsideGym:
-    levelscript VAR_BRENDAN_PEWTER_ENCOUNTER1, 0, EventScript_BrendanOutsideGym
+    levelscript VAR_BRENDAN_ENCOUNTER, 1, EventScript_BrendanOutsideGym
     .hword LEVEL_SCRIPT_TERMIN
 
 EventScript_BrendanOutsideGym:
     lock
-    playsong 0x1D5
-    textcolor BLUE
-    checkflag FLAG_BRENDAN_PEWTER_ENCOUNTER
-    if NOT_SET _goto End
     showsprite 0x9
+    pause 30
     applymovement 0x9 EventScript_BrendanHeadingToCatchMon
     applymovement PLAYER EventScript_FollowBrendanToCatchMon
     waitmovement 0x9
@@ -204,12 +189,11 @@ EventScript_BrendanOutsideGym:
     call BrendanNameBox
     msgbox gText_BrendanSpeaks7 MSG_KEEPOPEN
     callasm RemoveNameBox
-    setvar VAR_BRENDAN_PEWTER_ENCOUNTER1 0x1
-    setvar VAR_BRENDAN_PEWTER_ENCOUNTER2 0x0
-    setflag FLAG_BRENDAN_CATCH_FIRST_MON
+    setvar VAR_BRENDAN_ENCOUNTER 0x2
     clearflag FLAG_BRENDAN_PEWTER_SPRITE3
     fadedefaultbgm
-    warp 0x6 0x2 0xFF 0x6 0x6
+    warpmuted 0x6 0x2 0xFF 0x6 0x6
+    waitstate
     release
     end
 
@@ -218,17 +202,15 @@ MapScript_BrendanAfterCatchingMonInsideGym:
     .byte MAP_SCRIPT_TERMIN
 
 LevelScript_BrendanAfterCatchingMonInsideGym:
-    levelscript VAR_BRENDAN_PEWTER_ENCOUNTER2, 0, EventScript_BrendanAfterCatchingMonInsideGym
+    levelscript VAR_BRENDAN_ENCOUNTER, 2, EventScript_BrendanAfterCatchingMonInsideGym
     .hword LEVEL_SCRIPT_TERMIN
 
 EventScript_BrendanAfterCatchingMonInsideGym:
     lock
-    textcolor BLUE
-    playsong 0x1D5
-    checkflag FLAG_BRENDAN_CATCH_FIRST_MON
-    if NOT_SET _goto End
     showsprite BRENDAN
     spriteface PLAYER, UP
+    spriteface 0x1, RIGHT
+    pause 15
     call BrockNameBox
     msgbox gText_BrockSpeaks6 MSG_KEEPOPEN
     callasm RemoveNameBox
@@ -241,9 +223,15 @@ EventScript_BrendanAfterCatchingMonInsideGym:
     applymovement 0x5 EventScript_BrendanExitGymAfterCatchingMon
     waitmovement 0x5
     sound 0x9
+    pause 15
+    spriteface 0x1, DOWN
+    call BrockNameBox
+    msgbox gText_BrockSpeaks7 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
     hidesprite 0x5
     hidesprite BRENDAN
-    setvar VAR_BRENDAN_PEWTER_ENCOUNTER2 0x1
+    setvar VAR_BRENDAN_ENCOUNTER 0x3
     setflag FLAG_BRENDAN_PEWTER_SPRITE2
     setflag FLAG_BRENDAN_PEWTER_SPRITE3
     fadedefaultbgm
@@ -402,7 +390,6 @@ EventScript_BrendanExitGymAfterCatchingMon:
 @ Roost | Pewter City Repel Guy
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PewterRoostGuy:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_ROOST
@@ -466,7 +453,6 @@ EventScript_RoostGuy2:
 @ Did you check Museam guy | Fix
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x16607E:
-    textcolor BLUE
     lock
     faceplayer
     msgbox 0x817E53E MSG_YESNO
@@ -578,7 +564,6 @@ EventScript_0x8166140:
 @ Check Brock Guy | Fix
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x165B9D:
-    textcolor BLUE
     lock
     faceplayer
     msgbox gText_0x817E67E MSG_KEEPOPEN
@@ -609,7 +594,6 @@ EventScript_0x165DA6:
     goto EventScript_0x165DBE
 
 EventScript_0x165DBE:
-    textcolor BLUE
     applymovement 0x5 EventScript_LookDown
     waitmovement 0x5
     msgbox gText_0x817E67E MSG_KEEPOPEN
@@ -644,7 +628,6 @@ EventScript_LookDown:
 @ Prof. Aide Dex Nav
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_0x1662A9:
-    textcolor BLUE
     lock
     faceplayer
     setvar 0x4001 0x0
@@ -674,7 +657,6 @@ EventScript_0x1662D1:
     end
 
 EventScrit_0x81662DE:
-    textcolor BLUE
     compare 0x4001 0x1
     if 0x1 _call 0x81663CA
     compare 0x4001 0x2
@@ -697,7 +679,6 @@ EventScrit_0x81662DE:
     compare 0x4001 0x3
     if 0x1 _call 0x81663FC
     msgbox 0x817E90C MSG_KEEPOPEN
-    textcolor 0x3
     fanfare 0x13E
     preparemsg gText_ReceivedDexNav
     waitmsg
@@ -718,7 +699,6 @@ EventScrit_0x81662DE:
     compare 0x4001 0x3
     if 0x1 _call 0x8166433
     pause 0x1E
-    textcolor 0x3
     signmsg
     msgbox gText_MomLetter MSG_KEEPOPEN
     msgbox gText_PlayerFeelWarm MSG_KEEPOPEN
@@ -742,7 +722,6 @@ EventScript_Pewter_Steven:
     faceplayer
     checkflag FLAG_PEWTER_STEVEN_BELDUM
     if SET _goto EventScript_Pewter_Steven_AfterIntro
-    textcolor BLUE
     call StevenNameBox
     msgbox gText_Pewter_Steven_Speak1 MSG_KEEPOPEN
     closeonkeypress
@@ -756,14 +735,12 @@ EventScript_Pewter_Steven:
     fanfare 0x13E
     givepokemoncustom SPECIES_BELDUM 5 ITEM_NONE MOVE_TACKLE MOVE_NONE MOVE_NONE MOVE_NONE NATURE_JOLLY 0 31 31 31 31 31 31 0 0
     signmsg
-    textcolor BLACK
     msgbox gText_Pewter_Steven_PlayerReceivedBeldum MSG_KEEPOPEN
     waitfanfare
     closeonkeypress
     hidepokepic
     callasm RemoveNameBox
     normalmsg
-    textcolor BLUE
     call StevenNameBox
     msgbox gText_Pewter_Steven_Speak3 MSG_KEEPOPEN
     closeonkeypress
@@ -785,7 +762,6 @@ EventScript_Pewter_Steven_DontWantBeldum:
 EventScript_Pewter_Steven_AfterIntro:
     lock
     faceplayer
-    textcolor BLUE
     call StevenNameBox
     msgbox gText_Pewter_Steven_Speak4 MSG_KEEPOPEN
     callasm RemoveNameBox

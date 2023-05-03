@@ -5,22 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_TRAYNEE_ROUTE5_GREET, 0x967
-.equ FLAG_TRAYNEE_EXP_TRAINING_NO_EV, 0x968
-.equ FLAG_TRAYNEE_HP_TEAM, 0x969
-.equ FLAG_TRAYNEE_ATT_TEAM, 0x96A
-.equ FLAG_TRAYNEE_DEF_TEAM, 0x96B
-.equ FLAG_TRAYNEE_SPA_TEAM, 0x96C
-.equ FLAG_TRAYNEE_SPD_TEAM, 0x96D
-.equ FLAG_TRAYNEE_SPE_TEAM, 0x96E
-.equ FLAG_IVY_ROUTE5_GREET, 0x96F
-.equ FLAG_IVY_MAX_IVS, 0x970
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Traynee Services | Drayano inspired
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Traynee:
-    textcolor RED
     checkflag FLAG_TRAYNEE_ROUTE5_GREET
     if NOT_SET _goto EventScipt_ExpLadyGreet
     faceplayer
@@ -321,7 +309,6 @@ EventScript_ThisIsAnEggTraynee:
 @ Ivy Services
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Ivy:
-    textcolor RED
     checkflag FLAG_IVY_ROUTE5_GREET
     if NOT_SET _goto EventScript_IvyGreet
     faceplayer

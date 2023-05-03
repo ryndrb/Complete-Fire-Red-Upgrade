@@ -50,6 +50,7 @@ extern const u8 gEventObjectPic_DarkraiTiles[];
 extern const u8 gEventObjectPic_EusineTiles[];
 extern const u8 gEventObjectPic_JirachiTiles[];
 extern const u8 gEventObjectPic_PortalTiles[];
+extern const u8 gEventObjectPic_MomTiles[];
 
 static const struct SpriteFrameImage gEventObjectPicTable_NurseJoy[] =
 {
@@ -799,5 +800,39 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Portal =
     .subspriteTables = gEventObjectSpriteOamTables_32x32,
     .anims = gEventObjectImageAnimTable_Standard,
     .images = gEventObjectPicTable_Portal,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+static const struct SpriteFrameImage gEventObjectPicTable_Mom[] =
+{
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 0),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 1),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 2),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 3),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 4),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 5),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 6),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 7),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 8),
+    overworld_frame(gEventObjectPic_MomTiles, 2, 4, 9),
+};
+
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Mom =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag1 = 0x121A,
+    .paletteTag2 = EVENT_OBJ_PAL_TAG_NONE,
+    .size = (16 * 32) / 2,
+    .width = 16,
+    .height = 32,
+    .shadowSize = SHADOW_SIZE_M, //Can also be SHADOW_SIZE_S, SHADOW_SIZE_L, or SHADOW_SIZE_XL
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT, //Can also be TRACKS_TIRE
+    .gender = MALE, //Can also be FEMALE
+    .oam = gEventObjectBaseOam_16x32,
+    .subspriteTables = gEventObjectSpriteOamTables_16x32,
+    .anims = gEventObjectImageAnimTable_Standard,
+    .images = gEventObjectPicTable_Mom,
     .affineAnims = gDummySpriteAffineAnimTable,
 };

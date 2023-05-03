@@ -1867,6 +1867,13 @@ u8 GetTrainerBattleTransition(void)
 {
 	u8 minPartyCount, transitionType, enemyLevel, playerLevel;
 
+	// mugshots for all
+	if(1){
+		VarSet(VAR_PRE_BATTLE_MUGSHOT_STYLE, MUGSHOT_TWO_BARS);
+		VarSet(VAR_PRE_BATTLE_MUGSHOT_SPRITE, MUGSHOT_PLAYER);
+		return B_TRANSITION_LORELEI;
+	}
+
 	if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
 		return B_TRANSITION_CHAMPION;
 

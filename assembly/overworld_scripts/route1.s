@@ -5,10 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ VAR_MAY_ROUTE1_ENCOUNTER, 0x5030
-.equ FLAG_MAY_ROUTE1_SPRITE, 0x93B
-.equ FLAG_MAY_PALLET_TOWN_TALKED, 0x9BA
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ May Battle After Receiving Parcel
 @@@@@@@@@@@@@@@@@@@@@@
@@ -17,12 +13,11 @@ MapScript_Route1_May:
     .byte MAP_SCRIPT_TERMIN
 
 LevelScript_Route1_May:
-    levelscript VAR_MAY_ROUTE1_ENCOUNTER, 0, EventScript_Route1_May
+    levelscript VAR_MAY_ENCOUNTER, 1, EventScript_Route1_May
     .hword LEVEL_SCRIPT_TERMIN
 
 EventScript_Route1_May:
     lock
-    textcolor RED
     showsprite 0x5
     getplayerpos 0x8000 0x8001
     compare 0x8000 10
@@ -33,7 +28,6 @@ EventScript_Route1_May:
     if equal _call MoveMaySprite3
     compare 0x8000 13
     if equal _call MoveMaySprite4
-    sound 0x15
     applymovement PLAYER EventScript_Route1_PlayerNoticeMay
     waitmovement PLAYER
     applymovement 0x5 EventScrsipt_Route1_MayNoticePlayer
@@ -44,13 +38,13 @@ EventScript_Route1_May:
     playsong 0x1A7
     checkflag FLAG_MAY_PALLET_TOWN_TALKED
     if SET _goto EventScript_Route1_MetMayInPalletTown
-    call UnknownNameBox
+    call MayNameBox
     msgbox gText_Route1_NotMetMayInPalletTownSpeaks1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     applymovement 0x5 EventScript_MaySighing
     waitmovement 0x5
-    call UnknownNameBox
+    call MayNameBox
     msgbox gText_Route1_NotMetMayInPalletTownSpeaks2 MSG_KEEPOPEN
     callasm RemoveNameBox
     call MayNameBox
@@ -70,19 +64,19 @@ EventScript_Route1_May:
     waitmovement 0x5
     hidesprite 0x5
     setflag FLAG_MAY_ROUTE1_SPRITE
-    setvar VAR_MAY_ROUTE1_ENCOUNTER 0x1
+    setvar VAR_MAY_ENCOUNTER 0x2
     fadedefaultbgm
     release
     end
 
 EventScript_Route1_MetMayInPalletTown:
-    call UnknownNameBox
+    call MayNameBox
     msgbox gText_Route1_MetMayInPalletTownSpeaks1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     applymovement 0x5 EventScript_MaySighing
     waitmovement 0x5
-    call UnknownNameBox
+    call MayNameBox
     msgbox gText_Route1_MetMayInPalletTownSpeaks2 MSG_KEEPOPEN
     callasm RemoveNameBox
     call MayNameBox
@@ -102,7 +96,7 @@ EventScript_Route1_MetMayInPalletTown:
     waitmovement 0x5
     hidesprite 0x5
     setflag FLAG_MAY_ROUTE1_SPRITE
-    setvar VAR_MAY_ROUTE1_ENCOUNTER 0x1
+    setvar VAR_MAY_ENCOUNTER 0x2
     fadedefaultbgm
     release
     end
@@ -112,6 +106,8 @@ EventScript_MaySighing:
     .byte walk_down_onspot_fastest
     .byte pause_long
     .byte say_question
+    .byte pause_long
+    .byte pause_long
     .byte pause_long
     .byte walk_up_onspot_fastest
     .byte end_m
@@ -161,7 +157,7 @@ EventScript_Route1_MayGotCloserToPlayer:
     .byte end_m
 
 EventScript_Route1_PlayerNoticeMay:
-    .byte exclaim
+    .byte say_question
     .byte pause_long
     .byte end_m
 
@@ -201,16 +197,19 @@ End:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Route 1 Sign Post
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Route1_Signpost:
+    signmsg
+    msgbox gText_Route1_Signpost MSG_NORMAL
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Route 1 NameBox
 @@@@@@@@@@@@@@@@@@@@@@
 MayNameBox:
     setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-UnknownNameBox:
-    setvar 0x8000 0
     setvar 0x8001 LEFT
     callasm DrawNameBox
     return

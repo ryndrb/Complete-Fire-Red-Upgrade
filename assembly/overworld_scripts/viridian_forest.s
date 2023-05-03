@@ -11,7 +11,6 @@
 EventScript_DeletedKid:
     lock
     faceplayer
-    textcolor BLUE
     msgbox gText_DeletedKid MSG_KEEPOPEN
     closeonkeypress
     release

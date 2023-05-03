@@ -5,8 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_ROUTE21_THUNDERSTORMS, 0x9C0
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Route 21 Thunderstorms (Kyogre)
 @@@@@@@@@@@@@@@@@@@@@@

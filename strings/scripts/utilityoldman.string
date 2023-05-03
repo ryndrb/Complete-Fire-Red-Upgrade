@@ -56,7 +56,7 @@ Which ability do you want?\nCurrent: [BUFFER1]
 Change [BUFFER1]'s ability to\n[BUFFER2]?
 
 #org @gText_FeedingAbilityPill
-Alright then, let's feed it\nan ability pill.\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]
+Alright then, let's feed it\nan ability pill.\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]
 
 #org @gText_AbilityChangedSucessful
 [BUFFER1]'s ability has been changed\nto [BUFFER2].

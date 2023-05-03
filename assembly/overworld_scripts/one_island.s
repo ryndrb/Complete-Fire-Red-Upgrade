@@ -29,7 +29,6 @@ EventScript_OneIsland_PokeCenter_Event3:
     goto EventScript_0x81711DA
 
 EventScript_0x81711DA:
-    textcolor BLUE
     sound 0x15
     applymovement 0x2 0x81A75DB
     waitmovement 0x0

@@ -80,7 +80,7 @@ Ivy: Which one of [BUFFER1] stats do you\nwant to change?
 Ivy: What would you like to change\nit to?
 
 #org @gText_IVChanging
-Ivy: Alright let's do this!\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.]\n[.] [.] [.] [.] [.]
+Ivy: Alright let's do this!\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]
 
 #org @gText_IVChanged
 Ivy: Finished! The training made\n[BUFFER1] stronger!

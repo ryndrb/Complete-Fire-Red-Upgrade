@@ -5,14 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_STEELIXITE, 0x963
-.equ FLAG_OBTAIN_SWORDS_DANCE, 0x9A3
-.equ FLAG_NURSE_JOY_POKE_VIAL, 0x971
-.equ FLAG_MAY_ROUTE1_SPRITE, 0x93B
-.equ FLAG_GS_BALL, 0x9DA
-.equ FLAG_CELEBI_VIRIDIAN_FOREST, 0x9DB
-.equ VAR_MAY_ROUTE1_ENCOUNTER, 0x5030
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Goivanni
 @@@@@@@@@@@@@@@@@@@@@@
@@ -97,7 +89,6 @@ Obtained:
 @ Swords Dance | Viridian City Old Man | Beat Giovanni
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_ViridianSwordsDance:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_SWORDS_DANCE
@@ -128,10 +119,9 @@ EventScript_GiveSwordsDance:
 @ Nurse Joy Give Poke Vial
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_NurseJoyViridian:
-    textcolor RED
     lock
     faceplayer
-    setvar 0x502D 0xA
+    setvar 0x5045 0xA
     checkflag FLAG_NURSE_JOY_POKE_VIAL
     if 0x0 _goto EventScript_GiveVial
     call 0x81A6578
@@ -170,7 +160,6 @@ EventScript_0x816A1E8:
 
 EventScript_0x16A205:
     lockall
-    textcolor 0x0
     applymovement 0x1 0x81A75ED
     waitmovement 0x0
     msgbox 0x819021A MSG_KEEPOPEN
@@ -184,7 +173,7 @@ EventScript_0x16A205:
     loadpointer 0x0 0x8190289
     giveitemwithfanfare 0x15D 0x1 0x13E
     setvar 0x4055 0x5
-    setvar VAR_MAY_ROUTE1_ENCOUNTER 0x0
+    setvar VAR_MAY_ENCOUNTER 0x1
     clearflag FLAG_MAY_ROUTE1_SPRITE
     releaseall
     end
@@ -222,9 +211,7 @@ EventScript_Viridian_GSBall:
     msgbox gText_Viridian_GSBall_Woman_Speak_2 MSG_KEEPOPEN
     closeonkeypress
     fanfare 0x13E
-    textcolor BLACK
     msgbox gText_Viridian_GSBall_Narrator_1 MSG_KEEPOPEN
-    textcolor RED
     waitfanfare
     msgbox gText_Viridian_GSBall_Woman_Speak_3 MSG_KEEPOPEN
     closeonkeypress

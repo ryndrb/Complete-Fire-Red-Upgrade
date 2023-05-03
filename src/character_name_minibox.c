@@ -17,7 +17,7 @@ void RemoveNameBox(void);
 extern u8 sTimeWindowId;
 
 // Text Colors
-static const u8 sDarkTextColor[3]    = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY};
+static const u8 sDarkTextColor[3]    = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_GREEN, TEXT_COLOR_LIGHT_GREY};
 
 extern u8 gText_Name_Unknown[];
 

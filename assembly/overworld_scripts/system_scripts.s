@@ -271,7 +271,6 @@ SystemScript_FindItem: @Originally at 0x81A67B3
 	return
 
 SystemScript_PickUpItem:
-	textcolor BLACK
 	hidesprite LASTTALKED
 	pause 0x1
 	special SPECIAL_SHOW_ITEM_SPRITE_ON_FIND_OBTAIN
@@ -306,7 +305,6 @@ SystemScript_ObtainItem:
 	copyvar 0x8013 0x8012
 	copyvar 0x8004 0x8000 @;Copy item to 0x8004
 	copyvar 0x8005 0x8001 @;Copy amount to 0x8005
-	textcolor BLACK
 	additem 0x8000 0x8001
 	copyvar 0x8007 LASTRESULT
 	call 0x81A6697

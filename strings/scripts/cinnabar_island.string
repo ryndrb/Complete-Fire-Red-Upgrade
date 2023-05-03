@@ -5,7 +5,7 @@ I don't intend to be going nowhere\nfast in the sticks like this\lforever.\pYou 
 For a long time, I've taught\nPok\emon how to use Explosion, but\lI have yet to ignite my own\lExplosion[.]\pMaybe it's because deep down, I\nwould rather stay here[.]
 
 #org @gText_Cinnabar_MaySpeaks1
-[PLAYER]!\nYou made it to Cinnabar Island!\p[.] [.]\n[.] [.]
+[PLAYER]!\nYou made it to Cinnabar Island!\p[.]
 
 #org @gText_Cinnabar_MaySpeaks2
 You know, I thought we were\nsupposed to have set out from\lPallet Town together, but[.]\pBut you, [PLAYER][.]\pIt seems like you just keep\ngetting further and further ahead\lof me[.]\pWhich is funny because I'm always\nthe first to arrive at your next\ldestination.
@@ -14,13 +14,13 @@ You know, I thought we were\nsupposed to have set out from\lPallet Town together
 [.]Hee hee.
 
 #org @gText_Cinnabar_MaySpeaks4
-[.] [.]\n[.] [.]\pI even started to feel like you'd\ngone somewhere I can't even reach.\pIt's pretty lonely, you know?\pNot!\pWhat would you think if I said\nsomething like that!?\p[.]Hee hee!\p[.] [.]\n[.] [.]\pI guess what I'm trying to say is,\ndespite all of that, thank you[.]\p[.]for being such a great friend\nand for always inspiring me to do\lbetter.\pGah! I'm being emotional again[.]\pBut I'm exited to see what the\nfuture holds for us.\pI think we've both grown a lot\nsince we first set out on this\ladventure.\p[.] [.]\n[.] [.]\pAnyway, I don't want to get too\nsappy or anything.\pJust know that I'm p-proud of you,\n[PLAYER], and I'm honored to have\lbeen part of your journey.\pLet's catch up more soon, 'kay?\nSmell 'ya later!
+[.]\pI even started to feel like you'd\ngone somewhere I can't even reach.\pIt's pretty lonely, you know?\pNot!\pWhat would you think if I said\nsomething like that!?\p[.]\pI guess what I'm trying to say is,\ndespite all of that, thank you[.]\p[.]for being such a great friend\nand for always inspiring me to do\lbetter.\pGah! I'm being emotional again[.]\pBut I'm exited to see what the\nfuture holds for us.\pI think we've both grown a lot\nsince we first set out on this\ladventure.\p[.]\pAnyway, I don't want to get too\nsappy or anything.\pJust know that I'm proud of you,\n[PLAYER], and I'm honored to have\lbeen part of your journey.\pLet's catch up more soon, 'kay?\nSmell 'ya later!
 
 #org @gText_Cinnabar_BillSpeaks1
 Huh?\nHey, if it isn't Bace!
 
 #org @gText_Cinnabar_BillSpeaks2
-Look, it's me, Bill.\nLong time no see!\pI hope you're still using my\nPC system.\p[.] [.]\n[.] [.]\pWell, listen, since we met up here,\nhow about spending time with me?\pThere's this little island in the\nfar south called One Island.\pA friend invited me, so I'm on my\nway out there.\pHow about it?\nDo you feel like coming with me?
+Look, it's me, Bill.\nLong time no see!\pI hope you're still using my\nPC system.\p[.]\pWell, listen, since we met up here,\nhow about spending time with me?\pThere's this little island in the\nfar south called One Island.\pA friend invited me, so I'm on my\nway out there.\pHow about it?\nDo you feel like coming with me?
 
 #org @gText_Cinnabar_BillSpeaks3
 What, are you too busy?\pWell, all right.\nThe boat hasn't arrived yet anyway.\pI'll be waiting at the Pok\emon\nCenter over there.\pCome see me when you're done with\nyour business here.
@@ -62,7 +62,7 @@ Thank you! We can't thank you\nenough, but thank you!
 [.]You[.]\pYou're going to Fullmoon island\nfor us?
 
 #org @gText_Cinnabar_LittleBoyDad_Speak2
-We're both counting on you!\pOnly you can awaken my son from\nhis awful nightmare[.]\pPlease, I need the Lunar Wing from\nFullmoon Island to awaken him!\pI went, but I failed to find it[.]\pAnchors aweigh!
+Oh, thank heavens!\nMy family is counting on you!\pOnly you can awaken my son from\nhis awful nightmare[.]\pPlease, I need the Lunar Wing from\nFullmoon Island to awaken him!\pI went, but I failed to find it[.]\pAnchors aweigh!
 
 #org @gText_Cinnabar_LittleBoyDad_Speak3
 Oh, my gosh!\nYou're awake!\pOh, my son[.]\nI[.] I don't know what to say[.]\pThank you!\nWe'll never forget you!\pSeeing you back to normal makes me\nfeel great!\pI've regained my spirit as a\nSailor! Come sail with me later!
@@ -90,3 +90,6 @@ Oh[.]\pI understand[.]
 
 #org @gText_Cinnabar_Sailor_Speak_1
 You've been asleep for a long,\nlong time[.] What happened to you?\pAnd what were you doing here?\pNo one's lived here for fifty\nyears.
+
+#org @gText_Cinnabar_AbandonedHouseEntry_Door
+[BLACK]The door is tightly shut.\nIt appears impossible to open.

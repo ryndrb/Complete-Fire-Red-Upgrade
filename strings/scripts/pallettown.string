@@ -2,97 +2,184 @@
 Hmm[.]\pIt appears you do not have a\nPok\edex yet.\pIf you acquire one, come and see\nme.
 
 #org @gText_HavePokedex1
-[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\etch!\pIt allows trainers like yourself\nto change the current time for\lsuitable wild Pok\emon encounters.\pThough not yet fully optimized, it's\na rather convenient tool, don't\lyou think?\p[.]\n[.]\pAnyway, press [F8][04] and [F8][09] to\naccess it.\pGood luck on your adventure!
+I see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\etch!\pIt allows trainers like yourself\nto change the current time for\lsuitable wild Pok\emon encounters.\pThough not yet fully optimized, it's\na rather convenient tool, don't\lyou think?\p[.]\n[.]\pAnyway, press [F8][04] and [F8][09] to\naccess it.\pGood luck on your adventure!
 
 #org @gText_HavePokedex2
-[.]\n[.]\pI see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\estat!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyway, press [F8][04] and [F8][09] to\naccess it.\pGood luck on your adventure!
+I see that you have acquired a\nPok\edex. Well then[.]\pWhat I have here is an exquisite\ndevice called a Pok\estat!\pIt allows trainers like yourself\nto view various statistics of\ltheir Pok\emon.\pPretty neat, huh?\p[.]\n[.]\pAnyway, press [F8][04] and [F8][09] to\naccess it.\pGood luck on your adventure!
 
-#org @gText_OakStopPlayer
-Hey! Wait!\nDon't go out!
+#org @gText_0x817D72C
+Wait, [PLAYER]!\nDon't go out!
 
-#org @gText_OakSayUnsafe
-It's unsafe!\nWild Pok\emon live in tall grass!\pYou need your own Pok\emon for\nyour protection.\pI know!\nHere, come with me!
+#org @gText_0x817D74A
+It's unsafe!\nWild Pok\emon live in tall grass!\pDidn't your mother tell you that I\nwas going to give you a Pokemon\lbefore you head out?\pHere, come with me!
 
-#org @gText_InsideOakLab_OakSpeak1
+#org @gText_0x818E177
 Hey!\nDon't go away yet!
 
-#org @gText_RivalTiredWaiting
+#org @gText_0x818DC94
 Gramps!\nI'm fed up with waiting!
 
-#org @gText_OakExplaining
-[RIVAL]?\nLet me think[.]\pOh, that's right, I told you to\ncome! Just wait!\pHere, [PLAYER].\pThere are three Pok\emon here.\pHaha!\pThe Pok\emon are held inside\nthese Pok\e Balls.\pWhen I was young, I was a serious\nPok\emon Trainer.\pBut now, in my old age, I have\nonly these three left.\pYou can have one.\nGo on, choose!
+#org @gText_0x818DFBC
+[RIVAL]? Let me think[.]\pOh, that's right, I told you to\ncome!\pHmm, where's May?\nI told her to come, too.
 
-#org @gText_RivalSayNoFair
-Hey! Gramps! No fair!\nWhat about me?
+#org @gText_PalletTown_InsideOakLab_May_Speak_1
+Right here, Grandpa!
 
-#org @gText_OakPatient
-Be patient, [RIVAL].\nYou can have one, too!
+#org @gText_PalletTown_InsideOakLab_Oak_Speak_1
+Alright! Now that we have everyone\nhere, let us begin.\p[PLAYER], [RIVAL], and May!\pOn the table to your right, there\nare three Pok\e Balls. Each one of\lthem contains a Pok\emon.\pWhen I was young, I was a serious\nPok\emon trainer.\pBut as I got older, I couldn't do\nit anymore[.]\lSo I went and became a researcher!\pNow, each one of you can have one.\nSo go on, choose!
 
-#org @gText_GrassChoice
+#org @gText_0x818DCB9
+Hey, Gramps!\pRemember, I want a Pok\emon native\nin Kanto only!
+
+#org @gText_0x818E0EA
+I know, I know.\nBe patient, [RIVAL].\pWhichever you choose should\ncontain the Pokemon you want.
+
+#org @gText_PalletTown_InsideOakLab_May_Speak_2
+Umm, Grandpa[.]?\nI would love mine to be an Eevee[.]
+
+#org @gText_PalletTown_InsideOakLab_Oak_Speak_2
+The same goes to you May.\pSo go on, each one of you.\nChoose your Pok\emon!
+
+#org @gText_PalletTown_InsideOakLab_PlayerChoseMon_Oak_Speak_Grass
 I see! [BUFFER1] is your choice.\nIt's very easy to raise.\pSo, [PLAYER], you want to go with\nthe Grass Pok\emon [BUFFER1]?
 
-#org @gText_WaterChoice
+#org @gText_PalletTown_InsideOakLab_PlayerChoseMon_Oak_Speak_Water
 Hm! [BUFFER1] is your choice.\nIt's one worth raising.\pSo, [PLAYER], you've decided on the\nWater Pok\emon [BUFFER1]?
 
-#org @gText_FireChoice
+#org @gText_PalletTown_InsideOakLab_PlayerChoseMon_Oak_Speak_Fire
 Ah! [BUFFER1] is your choice.\nYou should raise it patiently.\pSo, [PLAYER], you're claiming the\nFire Pok\emon [BUFFER1]?
 
-#org @gText_RivalTakeIt
+#org @gText_0x818DD34
 I'll take this one, then!
 
-#org @gText_InsideOakLab_OakSpeak2
+#org @gText_PalletTown_InsideOakLab_May_TookMon_Speak_1
+I guess this one is mine!
+
+#org @gText_0x818DD52
+[RIVAL] received the Pok\emon from\nProf. Oak!
+
+#org @gText_PalletTown_InsideOakLab_May_ReceivedMon
+May received the Pok\emon from\nProf. Oak!
+
+#org @gText_PalletTown_InsideOakLab_TookMon_Oak_Speak_1
+Now, I have more things to give\nyou three.\pHowever, there is something I need\ntaken care of first.\pA parcel that I ordered just\narrived at Viridian City's\lPok\e Mart.\pIf one of you three could go\nretrieve that package, I would\lgreatly appreciate it!
+
+#org @gText_PalletTown_InsideOakLab_May_TookMon_Speak_2
+Oh no! I forgot!\pI was supposed to help Mom clean\nthe house after receiving my\lPok\emon.\pI have to go.\nThanks again Grandpa!\pI'll see you later!
+
+#org @gText_0x818DDA4
+Wait, [PLAYER]!\nLet's check out our Pok\emon!\pCome on, I'll take you on!
+
+#org @gText_0x818DE38
+I'll make my Pok\emon battle to\ntoughen it up!\pSmell 'ya!
+
+#org @gText_0x81A72F2
 Ah, welcome!\pTell me, how is your Pok\edex\ncoming along?\pWahaha!\pActually, I know how it is, but I\nlove seeing it anyway!\pLet's see[.]
 
-#org @gText_InsideOakLab_OakSpeak3
+#org @gText_0x81A6C51
 Good to see you!\nHow is your Pok\edex coming along?\pHere, let me take a look.
 
-#org @gText_EventScript_GiveAmuletCoin
-[.]\n[.]\pSo you're an aspiring Pok\emon\ntrainer?\pI see[.]\pYou might find this useful then.
+#org @gText_GiveAmuletCoin
+[.]\pSo you're an aspiring Pok\emon\nTrainer?\lHmm[.]\pHere, you might find this useful.
 
-#org @gText_MomChooseRegion
-Oh sweetie[.] what have you been\ndoing this past week[.]\pIs the PWC really that great?\pBut enough about that for now,\ntoday is finally the day you\lreceive your very first Pok\emon!\pProfessor Oak has already sent me\na message.\pHe wants to know which region has\nimpressed you the most during this\lyears PWC?\pErr[.] I'm not sure why but he\nmentioned that it will determine\lwhich batch of Pok\emon you'll get\lto choose from.\pI know you're an avid fan of the\nPWC.\pSo, sweetie, do you have a\npreference?
+#org @gText_ChooseStarterRegion_Mom_Speak_1
+Oh sweetie[.]\pWhat have you been doing this past\nweek[.]?\pIs the World Championship really\nthat great?\p[.]\pBut enough about that for now, you\nneed to get ready!\pProf. Oak said that he's going to\ngive you a Pok\emon before you\lleave for your journey.\pWow, did I really just say that?\pI can't believe this is happening!\pMy little [PLAYER], leaving to\ntravel the Kanto region and to\ltake on the Pok\emon League!\pI guess it's really true, all kids\nhave to grow up some day.\lIt said so on TV[.]
+
+#org @gText_ChooseStarterRegion_Mom_Speak_2
+[.]\pOh, I almost forgot!\pProf. Oak also sent me another\nmessage.\pHe wants to know which region has\nimpressed you the most during this\lyears World Championships[.]?\pErr[.] I'm not sure why but he\nmentioned that it will determine\lwhich batch of Pok\emon you'll get\lto choose from.\pDo you have a preference honey?\pI'll be sure to let him know if\nyou do.
 
 #org @gText_MomDone
-Okay, I'll let him know!\p[.] [.]\n[.] [.]\pAnd[.] done!\pGood luck and take care sweetie!
+Alright, I'll let him know!\p[.]\pAnd[.] [PAUSE][30]done!\pYou need to get going!
 
-#org @gText_OakSayChoosePokeball
+#org @gText_PalletTown_Mom_Speak_2
+[PLAYER]!\nYou should take a quick rest.
+
+#org @gText_PalletTown_Mom_Speak_3
+Oh, good! You and your\nPok\emon are looking great.\lTake care now!
+
+#org @gText_PalletTown_Mom_Speak_1
+Prof. Oak said that he's going to\ngive you a Pokemon before you\lleave for your journey.
+
+#org @gText_PalletTown_Champion_Mom_Speak_1
+Oh my dear [PLAYER], I'm so proud\nof you!\pCongratulations on becoming the\nLeague Champion!\lI knew you had it in you!\p[.]\pYour father would have been so\nproud of you too[.]\pHe always believed in your\npotential and would have loved to\lsee you reach this point[.]\p[.]\pThese are gifts from your father -\nthe Aurora and Mystic ticket.
+
+#org @gText_PalletTown_Champion_Mom_Speak_2
+These tickets will allow you to\ntravel to special locations.\pAt least that's what he told me\nbefore he-\p[.]
+
+#org @gText_PalletTown_Champion_Mom_Speak_3
+I know it's not the same as having\nhim here to celebrate with us[.]\pBut I hope these gifts will\nremind you of him and the support\lhe had in you.\p[.]\pAnd remember, I'll always cheer\nfor you! So don't ever give up!
+
+#org @gText_0x818E116
 Now, [PLAYER].\pInside those three Pok\e Balls are\nPok\emon.\pWhich one will you choose for\nyourself?
 
-#org @gText_PlayerDeliveredParcelToOak
-Oh, [PLAYER]!\nHow is my old Pok\emon?\pWell, it seems to be growing more\nattached to you.\pYou must be talented as a Pok\emon\nTrainer.\pWhat's that?\nYou have something for me?
+#org @gText_0x818E405
+Oh, [PLAYER]!\nHow is my old Pok\emon?\pWell, it seems to be growing more\nattached to you.\pYou must be talented as a Pok\emon\nTrainer.\pWhat's that?\nOh, right! My package!
 
-#org @gText_OakSayCustomPokeball
-Ah! \nIt's the custom Pok\e Ball!\pI had it on order.\nThank you!
+#org @gText_0x818E4CA
+Ah! Finally!\nThese are custom Pok\e Balls made\lby the Saffron Corporation!
 
-#org @gText_RivalArrivedAtLab
+#org @gText_0x818DE8D
 Gramps!
 
-#org @gText_RivalForgotOakMessage
+#org @gText_0x818DE99
 I almost forgot!\nWhat did you call me for?
 
-#org @gText_OakSayRequest
-Oh, right!\nI have a request for you two.
+#org @gText_0x818E508
+Before you guys leave for your\njourneys, I have more things to\lgive you!\pHmm[.]\nBut where is May?\lWell, we should wait for her first.
 
-#org @gText_OakGavePlayerAndRivalDex
-[PLAYER] and [RIVAL].\nTake these with you.
+#org @gText_0x818E536
+Alright, good!\nAll of you are here.\pNow as I'm sure you already know,\nchallenging the Pok\emon League\lrequires having obtained eight Gym\lBadges.\pDuring your journey, you will end\nup seeing many different kinds of\lPok\emon.\pOn the desk behind me, is my\ninvention, the Pok\edex!
 
-#org @gText_OakExplainDex
-You can't get detailed data\non Pok\emon by just seeing them.\pYou must catch them to obtain\ncomplete data.\pSo, here are some tools for\ncatching wild Pok\emon.
+#org @gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_OnlyTwoDex
+Gramps!\pI only see two Pok\edex at the\ntable. There's three of us!
 
-#org @gText_OakExplainPokeball
-When a wild Pok\emon appears,\nit's fair game.\pJust throw a Pok\e Ball at it and\ntry to catch it!\pThis won't always work, however.\pA healthy Pok\emon can escape.\nYou have to be lucky!
+#org @gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_RealizeTwoDex
+It seems I must have forgotten[.]\pLooks like I'll have to make\nanother one.\pHmm[.]\nLet me think[.]\p[RIVAL], do you mind receiving your\nPok\edex later today?
 
-#org @gText_OakEmotional
-To make a complete guide on all\nthe Pok\emon in the world[.]\pThat was my dream!\pBut, I'm too old.\nI can't get the job done.\pSo, I want you two to fulfill my\ndream for me.\pGet moving, you two.\pThis is a great undertaking in\nPok\emon history!
+#org @gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_NoFair
+No fair, Gramps!
 
-#org @gText_RivalConfident
-All right, Gramps!\nLeave it all to me!
+#org @gText_PalletTown_InsideOakLab_ReceivingPokedex_May_OKWithIt
+It's OK Grandpa.\pYou can give [PLAYER] and [RIVAL]\ntheir Pok\edex. I'll have mine\llater.
 
-#org @gText_RivalSayTownMapDaisy
-[PLAYER], I hate to say it, but you\nwon't be necessary for this.\pI know! I'll borrow a Town Map\nfrom my sis!\pI'll tell her not to lend you one,\n[PLAYER]! Hahaha!\pDon't bother coming around to\nmy place after this!
+#org @gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_ThanksMay
+Oh, my dear May, always being\nconsiderate.\pThank you for understanding.\pNow then, let's get started!
 
 #org @gText_RecentSightings
-Recently, there have been\nsightings of many rare Pok\emon\lspecies all around Kanto.\pAs I have mentioned before, it\nwould be wonderful if I can go and\lsee things for myself, but I'm\lmuch too old[.]\pOn the desk there is my invention,\nthe Pok\edex!\pIt automatically records data on\nPok\emon you've seen or caught.\pIt's a high-tech encyclopedia!
+Recently, there have been\nsightings of many rare Pok\emon\lspecies all around Kanto.\pAs I have mentioned before, it\nwould be wonderful if I can go and\lsee things for myself, but I'm\lmuch too old[.]
+
+#org @gText_0x818E5C5
+[PLAYER] and [RIVAL].\nTake these with you.
+
+#org @gText_0x818E612
+You can't get detailed data\non Pok\emon by just seeing them.\pYou must catch them to obtain\ncomplete data.\pSo, here are some tools for\ncatching wild Pok\emon.
+
+#org @gText_0x818E6D0
+When a wild Pok\emon appears,\nit's fair game.\pJust throw a Pok\e Ball at it and\ntry to catch it!\pThis won't always work, however.\pA healthy Pok\emon can escape.\nYou have to be lucky!
+
+#org @gText_0x818E784
+To make a complete guide on all\nthe Pok\emon in the world[.]\pThat was my dream!\pBut, I'm too old.\nI can't get the job done.\pSo, I want you three to fulfill my\ndream for me.\pGet moving, you three.\pThis is a great undertaking in\nPok\emon history!
+
+#org @gText_0x818DEC8
+All right, Gramps!\nLeave it all to me!
+
+#org @gText_0x818DEF3
+I hate to say it, but you two\nwon't be necessary for this.\pOh, I know!\nI'll borrow a Town Map from sis!\pHahaha! Don't bother coming around\nto my place after this!
+
+#org @gText_PalletTown_InsideOakLab_May_ThanksOak
+Thanks for everything, Grandpa!\nI'll be sure to pick up my Pok\edex\llater.
+
+#org @gText_PalletTown_InsideOakLab_May_LeavingForAdventure
+Let's both do our best to become\nthe best Pok\emon trainers we can\lbe, [PLAYER]!
+
+#org @gText_0x818E98E
+Come see me sometime.\pAfter all, I want to know how your\nPok\edex is coming along.
+
+#org @gText_0x818E3AD
+[PLAYER], raise your young\nPok\emon by making it battle.\pIt has to battle for it to grow.
+
+#org @gText_0x818E330
+If a wild Pok\emon appears,\nyour Pok\emon can battle it.\pWith it at your side, you should be\nable to reach the next town.
 
 #org @gTetxt_ConsolePrompt
 [PLAYER] boots up the console.\pWhich of these options would you like\nto edit?
@@ -125,66 +212,54 @@ Randomize Ability is currently\nenabled.\pDisable Randomize Ability?
 May's House
 
 #org @gText_PalletTown_MaySpeaks1
-[.]Ugh[.]\pThat jerk [RIVAL][.]
+[.]Ugh[.]\pThat jerk [RIVAL] is inside\nalready[.]
 
 #org @gText_PalletTown_MaySpeaks2
-Eek!\p[PLAYER], w-what are you staring at?
+Eek!\pU-umm, what are you staring at?
 
-#org @gText_PalletTown_RivalSpeak1
-What, it's only [PLAYER]?\nGramps isn't around.\p[.] [.]\n[.] [.]\pHey, wait a sec.\nJust had a thought[.]\pYou haven't met my cousin yet,\nhave 'ya?\pShe's May, from Hoenn.\nBeen livin' next door for about a\lweek now.\pBut I guess you wouldn't know\nthat, huh?\pYou've been glued crazy in your\nroom watching PWC.
+#org @gText_0x818DC67
+What, it's only [PLAYER]?\nGramps isn't around.\p[.]\pHey, wait a sec.\nJust had a thought[.]\pYou haven't met my cousin yet,\nhave 'ya?\pShe's May, from Hoenn.\nBeen livin' next door for about a\lweek now.\pBut I guess you wouldn't know\nthat, huh?\pYou've been glued crazy in your\nroom watching PWC.
 
-#org @gText_PalletTown_RivalSpeak2
+#org @gText_0x818DD75
 My Pok\emon looks a lot\ntougher than yours.
 
-#org @gText_PalletTown_RivalSpeak3
+#org @gText_0x818DCE2
 Heh, I don't need to be\ngreedy like you. I'm mature!\pGo ahead and choose, [PLAYER]!
 
-#org @gText_MomTakeAQuickRest
-[PLAYER]!\nYou should take a quick rest.
+#org @gText_PalletTown_InsideOakLab_Standing_May_Speak_1
+My Eevee looks so cute!
 
-#org @gText_MomTakeCare
-Oh, good! You and your\nPok\emon are looking great.\lTake care now!
+#org @gText_PalletTown_InsideOakLab_Standing_May_Speak_2
+Umm, which Pok\emon will you\nchoose?\pMe, personally, I like cute\nPokemon[.]
 
-#org @gText_MomAllBoys
-[.]Right.\nAll boys leave home someday.\lIt said so on TV.\pOh, yes. Prof. Oak, next door, was\nlooking for you.
+#org @gText_PalletTown_InsideOakLab_Standing_May_Speak_3
+Umm, this is so exciting[.]!\nWe've finally got our own Pok\emon!
 
-#org @gText_MomAllGirls
-[.]Right.\nAll girls dream of traveling.\lIt said so on TV.\pOh, yes. Prof. Oak, next door, was\nlooking for you.
-
-#org @gText_PalletTown_Champion_Mom_Speak_1
-Oh my dear [PLAYER], I'm so proud\nof you!\pCongratulations on becoming the\nLeague Champion!\lI knew you had it in you!\p[.] [.]\n[.] [.]\pYour father would have been so\nproud of you too[.]\pHe always believed in your\npotential and would have loved to\lsee you reach this point[.]\p[.] [.]\n[.] [.]\pThese are gifts from your father -\nthe Aurora and Mystic ticket.
-
-#org @gText_PalletTown_Champion_Mom_Speak_2
-These tickets will allow you to\ntravel to special locations.\pAt least that's what he told me\nbefore he-\p[.] [.]\n[.] [.]
-
-#org @gText_PalletTown_Champion_Mom_Speak_3
-I know it's not the same as having\nhim here to celebrate with us[.]\pBut I hope these gifts will\nremind you of him and the support\lhe had in you.\p[.] [.]\n[.] [.]\pAnd remember, I'll always cheer\nfor you! So don't ever give up!
-
-#org @gText_Daisy_BrotherIsOut
+#org @gText_0x818D58C
 Hi, [PLAYER]!\pMy brother, [RIVAL], is out at\nGrandpa's Lab.
 
-#org @gText_Daisy_JoinSomeTea
+#org @gText_0x818D7D3
 Hi, [PLAYER]!\nGood timing.\pI'm about to have some tea.\nWould you like to join me?\pOh, but look.\nYour Pok\emon are a little dirty.\pWould you like me to groom one?
 
-#org @gText_Daisy_WhichOneToGroom
+#org @gText_0x818D8B2
 Which one should I groom?
 
-#org @gText_Daisy_PlayerAnsweredYes
+#org @gText_0x818D8CC
 Okay, I'll get it looking\nnice in no time.
 
-#org @gText_Daisy_DoneGrooming
+#org @gText_0x818D8FE
 There you go! All done.\nSee? Doesn't it look nice?\pGiggle[.]\nIt's such a cute Pok\emon.
 
-#org @gText_Daisy_GrandpaErrand
+#org @gText_0x818D60A
 Grandpa asked you to run an\nerrand?\pGee, that's lazy of him.\nHere, this will help you.
 
-#org @gText_Daisy_PokemonLivingThing
+#org @gText_0x818D701
 Just like people, Pok\emon\nare living things.\pWhen they get tired, please give\nthem a rest.
 
-#org @gText_Daisy_WishedSeenBattle
+#org @gText_0x818D5C4
 [PLAYER], I heard you had\na battle against [RIVAL].\pI wish I'd seen that!
 
-#org @gText_Daisy_SeeFirstMon
+#org @gText_0x818D9A5
 Your Pok\emon grow to love\nyou if you raise them with love.\pFor example, [PLAYER], may I see\nyour first Pok\emon?
 
 #org @gText_PalletTown_MayMom

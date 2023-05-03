@@ -5,13 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_BRENDAN_CERULEAN_SPRITE, 0x938
-.equ FLAG_BRENDAN_UNCLE_CERULEAN_SPRITE, 0x939
-.equ FLAG_MAY_CERULEAN_SPRITE, 0x93D
-.equ FLAG_OBTAIN_GYARADOSITE, 0x95D
-.equ FLAG_OBTAIN_GIFT_SANDILE, 0x9B4
-.equ FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM, 0x9D3
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Misty
 @@@@@@@@@@@@@@@@@@@@@@
@@ -92,7 +85,6 @@ EventScript_GiveGyaradosite:
 @ Sandile Gift | Wise Glasses | Cerulean City
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_SandileGift:
-    textcolor BLUE
     lock
     checkflag FLAG_OBTAIN_GIFT_SANDILE
     if 0x0 _goto EventScript_GiveSandile
@@ -157,7 +149,6 @@ EndScript:
 @ Cerulean TM Merchant
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_CeruleanTMMerchant:
-    textcolor BLUE
     msgbox gText_CeruleanTMMerchantGreet MSG_KEEPOPEN
     pokemart EventScript_CeruleanTMMerchantList
     msgbox gText_CeruleanTMMerchantEnd MSG_KEEPOPEN
@@ -185,7 +176,6 @@ EventScript_CeruleanTMMerchantList:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Brendan_Mom:
     lock
-    textcolor RED
     faceplayer
     msgbox gText_Brendan_Mom MSG_FACE
     release
@@ -197,7 +187,6 @@ EventScript_Brendan_Mom:
 EventScript_Brendan_Uncle:
     lock
     faceplayer
-    textcolor BLUE
     checkflag 0x935
     if SET _goto EventScript_Brendan_Uncle_AfterVermillion
     msgbox gtext_Brendan_Uncle1 MSG_FACE
@@ -217,7 +206,6 @@ EventScript_Brendan_Uncle_AfterVermillion:
 EventScript_Cerulean_Brendan:
     lock
     faceplayer
-    textcolor BLUE
     call BrendanNameBox
     msgbox gText_Cerulean_BrendanSpeaks1 MSG_FACE
     callasm RemoveNameBox
@@ -231,9 +219,34 @@ EventsScript_Cerulean_May:
     lock
     faceplayer
     playsong 0x1A7
-    textcolor RED
+    checkflag 0x4B1
+    if SET _goto EventScript_Cerulean_PlayerDefeatMisty
+    checkflag 0x29B
+    if SET _goto EventScript_Cerulean_PlayerMetRival
     call MayNameBox
-    msgbox gText_Cerulean_MaySpeaks1 MSG_KEEPOPEN
+    msgbox gText_Cerulean_May_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadedefaultbgm
+    release
+    end
+
+EventScript_Cerulean_PlayerMetRival:
+    call MayNameBox
+    msgbox gText_Cerulean_May_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    callasm RemoveNameBox
+    fadedefaultbgm
+    release
+    end
+
+EventScript_Cerulean_PlayerDefeatMisty:
+    pause 15
+    sound 0x15
+    applymovement 14 Move_Cerulean_May_1
+    waitmovement 14
+    call MayNameBox
+    msgbox gText_Cerulean_May_Speak_3 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
     fadescreen 0x1
@@ -243,6 +256,11 @@ EventsScript_Cerulean_May:
     fadedefaultbgm
     release
     end
+
+Move_Cerulean_May_1:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Rival Cerulean
@@ -265,7 +283,6 @@ EventScript_Cerulean_Rival2:
     goto EventScript_0x81664CC
 
 EventScript_0x81664CC:
-    textcolor 0x0
     setvar 0x4054 0x2
     playsong 0x13B 0x0
     showsprite 0x8
@@ -309,6 +326,8 @@ EventScript_0x81664CC:
     waitmovement 0x0
     fadedefault
     hidesprite 0x8
+    hidesprite 14
+    setflag FLAG_MAY_CERULEAN_SPRITE
     releaseall
     end
 
@@ -317,7 +336,6 @@ EventScript_0x81664CC:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Ceruleann_TeachDazzlingGleam_Clefairy:
     faceplayer
-    textcolor BLACK
     cry SPECIES_CLEFAIRY 0x0
     msgbox gText_Ceruleann_TeachDazzlingGleam_Clefairy_Speak_1 MSG_KEEPOPEN
     closeonkeypress
@@ -327,7 +345,6 @@ EventScript_Ceruleann_TeachDazzlingGleam_Clefairy:
 EventScript_Ceruleann_TeachDazzlingGleam_Lady:
     lock
     faceplayer
-    textcolor RED
     checkflag FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM
     if SET _goto EventScript_Ceruleann_TeachDazzlingGleam_Done
     msgbox gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_1 MSG_YESNO
@@ -337,7 +354,6 @@ EventScript_Ceruleann_TeachDazzlingGleam_Lady:
     checkitem ITEM_TM102 0x1
     compare LASTRESULT 0x1
     if FALSE _goto EventScript_Ceruleann_TeachDazzlingGleam_PlayerDoesntHaveIt
-    textcolor BLACK
     sound 0x2
     msgbox gText_Ceruleann_TeachDazzlingGleam_Narrator_1 MSG_KEEPOPEN
     closeonkeypress
@@ -348,14 +364,12 @@ EventScript_Ceruleann_TeachDazzlingGleam_Lady:
     cry SPECIES_CLEFAIRY 0x0
     msgbox gText_Ceruleann_TeachDazzlingGleam_Clefairy_Speak_1 MSG_KEEPOPEN
     closeonkeypress
-    textcolor RED
     msgbox gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_2 MSG_KEEPOPEN
     closeonkeypress
     pause 60
     fadescreenspeed 0x3 5
     cry SPECIES_JIRACHI 0x0
     fadescreenspeed 0x2 5
-    textcolor BLACK
     msgbox gText_Ceruleann_TeachDazzlingGleam_Narrator_2 MSG_KEEPOPEN
     closeonkeypress
     setflag FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM

@@ -1,17 +1,20 @@
 #org @gText_Route1_MetMayInPalletTownSpeaks1
-[.] [.]\n[.] [.]\pI-I'm sorry for pushing you earlier!\nI didn't mean it!\p[.] [.]\n[.] [.]
+[.]\pI-I'm sorry for pushing you earlier!\nI didn't mean it!\p[.]
 
 #org @gText_Route1_MetMayInPalletTownSpeaks2
-Pheew[.] I think I've calmed down\na little[.]\pOh!\n[PLAYER], right?\pWell, I'm May!\nGlad to meet you!
+Umm, I know we've received our\nPok\emon at Grandpa Oak's lab\ltogether, but we haven't really\lproperly met before.\pMy name is May!\nGlad to meet you again, [PLAYER]!
 
 #org @gText_Route1_MetMayInPalletTownSpeaks3
-You got a Pok\emon at the lab, huh?\p[.] [.]\n[.] [.]\pI [.]I actually have this dream of\nbecoming friends with Pok\emon all\lover the world.\pAnd then when [RIVAL] told me about\nyou when I first got here[.]\pWell, I was hoping you would be\nnice and we could be friends[.]\p[.]B-but that's just silly, isn't\nit?\pI mean[.] I've just met you[.]!\n[.]though proper this time[.]\pBut still[.]\nRight, [PLAYER]?\pSo what am I talking about[.]\pHee hee[.]\p[.] [.]\n[.] [.]\pOh no! I forgot!\pI'll see 'ya later!\nGood luck, [PLAYER]!
+I[.] I actually have this dream of\nbecoming friends with Pok\emon all\lover the world.\pAnd then when [RIVAL] told me about\nyou when I first got here[.]\pWell, I was hoping you would be\nnice and we could be friends[.]\p[.]B-but that's just silly, isn't\nit?\pI mean[.] I've just met you[.]!\n[.]though proper this time[.]\pBut still[.]\nRight, [PLAYER]?\pSo what am I talking about[.]\pHee hee[.]\p[.]\pOh no! I forgot!\pI'll see 'ya later!\nGood luck, [PLAYER]!
 
 #org @gText_Route1_NotMetMayInPalletTownSpeaks1
-[.] [.]\n[.] [.]\p[.] [.]\n[.] [.]\p[.] [.]\n[.] [.]!
+[.]\p[.]\p!!!
 
 #org @gText_Route1_NotMetMayInPalletTownSpeaks2
-Pheew[.] I think I've calmed down\na little[.]\pOh!\n[PLAYER], right?\pI don't think we've properly met\nbefore[.]\pWell, I'm May!\nGlad to meet you!
+Umm, I know we've received our\nPok\emon at Grandpa Oak's lab\ltogether, but we haven't really\lproperly met before.\pMy name is May!\nGlad to meet you again, [PLAYER]!
 
 #org @gText_Route1_NotMetMayInPalletTownSpeaks3
-You got a Pok\emon at the lab, huh?\p[.] [.]\n[.] [.]\pI [.]I actually have this dream of\nbecoming friends with Pok\emon all\lover the world.\pAnd then when [RIVAL] told me about\nyou when I first got here[.]\pWell, I was hoping you would be\nnice and we could be friends[.]\p[.]B-but that's just silly, isn't\nit?\pI mean[.] I've just met you[.]!\nRight, [PLAYER]?\pSo what am I talking about[.]\pHee hee[.]\p[.] [.]\n[.] [.]\pOh no! I forgot!\pI'll see 'ya later!\nGood luck, [PLAYER]!
+I[.] I actually have this dream of\nbecoming friends with Pok\emon all\lover the world.\pAnd then when [RIVAL] told me about\nyou when I first got here[.]\pWell, I was hoping you would be\nnice and we could be friends[.]\p[.]B-but that's just silly, isn't\nit?\pI mean[.] I've just met you[.]!\n[.]though proper this time[.]!\pBut still[.]\nRight, [PLAYER]?\pSo what am I talking about[.]\pHee hee[.]\p[.]\pOh no! I forgot!\pI'll see 'ya later!\nGood luck, [PLAYER]!
+
+#org @gText_Route1_Signpost
+[UP_ARROW_2] Viridian City\n[DOWN_ARROW_2] Pallet Town

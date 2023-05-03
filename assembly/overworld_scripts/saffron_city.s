@@ -5,16 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_ALAKAZITE, 0x960
-.equ FLAG_OBTAIN_DRAIN_PUNCH, 0x981
-.equ FLAG_OBTAIN_SLEEP_TALK, 0x980
-.equ VAR_PROTON_BATTLES, 0x5033
-.equ VAR_ARCHER_BATTLES, 0x5034
-.equ VAR_ARIANA_BATTLES, 0x5035
-.equ VAR_ENCOUNTER_SIPHCO_PROTON, 0x503E
-.equ FLAG_ENCOUNTER_SIPHCO_PROTON, 0x9B8
-.equ FLAG_MEAN_LOOKING_FISH, 0x9D5
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Sabrina
 @@@@@@@@@@@@@@@@@@@@@@
@@ -98,7 +88,6 @@ Obtained:
 @ Drain Punch | Saffron City Desk Lady
 @@@@@@@@@@@@@@@@@@@@@@
 EventScipt_SaffronDrainPunch:
-    textcolor RED
     lock
     faceplayer
     checkflag FLAG_OBTAIN_DRAIN_PUNCH
@@ -126,7 +115,6 @@ EventScript_TooBad:
 @ Sleep Talk | Saffron City
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_SaffronSleepTalk:
-    textcolor BLUE
     lock
     checkflag FLAG_OBTAIN_SLEEP_TALK
     if 0x0 _goto EventScript_GiveSleepTalk
@@ -308,7 +296,6 @@ EventScript_Saffron_Rival1:
     goto EventScript_0x81619D4
 
 EventScript_0x81619D4:
-    textcolor 0x0
     playsong 0x13B 0x0
     applymovement 0x1 0x81A75DB
     waitmovement 0x0
@@ -367,7 +354,6 @@ LevelScript_SilphCo_Proton:
 
 EventScript_SilphCo_Proton:
     lock
-    textcolor BLUE
     setflag 0x9B5
     applymovement 2 Move_SilphCo_Proton1
     waitmovement 2
@@ -434,7 +420,6 @@ Move_SilphCo_Player1:
 EventScript_SilphCo_Ariana:
     lock
     faceplayer
-    textcolor RED
     setflag 0x9B5
     playsong 0x181 1
     call ArianaNameBox
@@ -468,7 +453,6 @@ EventScript_SilphCo_Archer1:
     goto EventScript_Archer
 
 EventScript_Archer:
-    textcolor BLUE
     applymovement 0x3 Move_SilphCo_Archer1
     waitmovement 0x0
     playsong 0x181 1
@@ -582,7 +566,6 @@ Move_SilphCo_Archer6:
 EventScript_Saffron_MeanLookingFish:
     lock
     faceplayer
-    textcolor BLUE
     checkflag FLAG_MEAN_LOOKING_FISH
     if SET _goto EventScript_Saffron_MeanLookingFish_Done
     msgbox gText_Saffron_MeanLookingFish_Boy_Speak_1 MSG_KEEPOPEN
@@ -601,7 +584,6 @@ EventScript_Saffron_MeanLookingFish:
     fadescreenspeed 0x3 5
     cry SPECIES_JIRACHI 0x0
     fadescreenspeed 0x2 5
-    textcolor BLACK
     msgbox gText_Saffron_MeanLookingFish_Narrator_1 MSG_KEEPOPEN
     closeonkeypress
     setflag FLAG_MEAN_LOOKING_FISH

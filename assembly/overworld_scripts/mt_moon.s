@@ -5,15 +5,11 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ VAR_PROTON_BATTLES, 0x5033
-.equ FLAG_ENCOUNTER_MTMOON_PROTON, 0x9B6
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Proton Encounter
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_MtMoon_Proton:
     lock
-    textcolor BLUE
     applymovement 13 Move_MtMoon_Proton1
     waitmovement 13
     sound 0x15

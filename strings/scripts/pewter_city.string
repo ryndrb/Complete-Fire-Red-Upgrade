@@ -5,7 +5,7 @@ Just as I thought!\nYou're a Pok\emon champ material!\pHere, take this.
 I found it lying around outside.\pI don't know what it is, but it\nlooks fancy and valuable!\pAnyway, goodluck on your journey,\nchamp!
 
 #org @gText_GiveRoost
-[.] [.]\n[.] [.]\pUgh!\pThose damn birds are back.\pYou're a trainer, right?\nHere, take this.
+[.]\pUgh!\pThose damn birds are back.\pYou're a trainer, right?\nHere, take this.
 
 #org @gText_GiveRoost2
 My brother taught it'd be funny if\nhe gave me something like this[.]
@@ -53,19 +53,28 @@ Y-yes[.] I'm supposed to stay with\nmy relatives in Cerulean City for\la while.\
 Mm-hmm. I see.\p[PLAYER]! You heard all that, right?\nYou go with Brendan, and make sure\lthat he safely catches a Pok\emon.
 
 #org @gText_BrockSpeaks3
-Brendan, here. I'll lend you one\nof my Pok\emon.\p[BLACK]Brendan received a Geodude!
+Brendan, here. I'll lend you one\nof my Pok\emon.
+
+#org @gText_BrendanReceivedMon
+[BLACK]Brendan received a Geodude!
 
 #org @gText_BrendanSpeaks3
 Oh, wow[.] Your Pok\emon, sir?
 
 #org @gText_BrockSpeaks4
-Hmm[.] I'll give you a Pokeball,\ntoo, so go give it your best!\p[BLACK]Brendan received a Pok\eball!
+Hmm[.] I'll give you a Pokeball,\ntoo, so go give it your best!
+
+#org @gText_BrendanReceivedBall
+[BLACK]Brendan received a Pok\eball!
 
 #org @gText_BrendanSpeaks4
 Th-thank you, Mr. Brock!
 
-#org @gText_BrockSpeaks5
+#org @gText_BrendanSpeaks5
 Um[.] [PLAYER]? You will[.]\nYou will come with me, right?
+
+#org @gText_GymLeaderBrock_HelpBrendan
+Go and help that boy, [PLAYER].
 
 #org @gText_BrendanSpeaks6
 [PLAYER][.] Pok\emon hide in tall\ngrass like this, don't they?\pPlease watch me and see if I can\ncatch one properly. [.]Whoa!
@@ -76,6 +85,12 @@ Um[.] [PLAYER]? You will[.]\nYou will come with me, right?
 #org @gText_BrockSpeaks6
 So, did it go well?
 
+#org @gText_BrockSpeaks7
+Hmm. That boy will be worth\nkeeping an eye on.\pBut for now[.] [PLAYER]!\pIf you want to become a strong\nTrainer, listen to my advice.\pThere are all kinds of Trainers in\nthis huge world of ours.\pYou appear to be very gifted as a\nPok\emon Trainer.\pSo let me make a suggestion.\pFirst head for Cerulean City,\nwhich lies beyond this town.\pThere you should challenge the\nGym Leader, Misty.\pAfter her, go on to other Pok\emon\nGyms and defeat their leaders as\lwell.
+
+#org @gText_0x819110F
+If you want to become a strong\nTrainer, listen to my advice.\pThere are all kinds of Trainers in\nthis huge world of ours.\pYou appear to be very gifted as a\nPok\emon Trainer.\pSo let me make a suggestion.\pFirst head for Cerulean City,\nwhich lies beyond this town.\pThere you should challenge the\nGym Leader, Misty.\pAfter her, go on to other Pok\emon\nGyms and defeat their leaders as\lwell.
+
 #org @gText_BrendanSpeaks8
 Yes, it did! Thank you!\nLet me give you back your Pok\emon,\lsir.
 
@@ -83,7 +98,7 @@ Yes, it did! Thank you!\nLet me give you back your Pok\emon,\lsir.
 And you, [PLAYER][.] Thank you so\nmuch for coming with me.\pIt was was all thanks to you that\nI was able to catch a Pok\emon.\pMy very own Pok\emon[.] I will\nalways, always treasure it!\pOh! My mom's waiting for me, so I\nhave to go! Bye, [PLAYER]!
 
 #org @gText_Pewter_Steven_Speak1
-Hi! My name is Steven Stone.\nThe Champion from the Hoenn\lRegion.\pI'm interested in rare stones, so\nI travel here and there.\pPewter City's Gym Leader Brock is\na master of the Rock-type.\pI wanted to be here to ask whether\nhe had an interest in rare stones.\p[.] [.]\n[.] [.]\pOh! You have a Pok\edex.\nSo you are also in search of\lPok\emon.\pLet me see[.]\nI think I can help you with that.
+Hi! My name is Steven Stone.\nThe Champion from the Hoenn\lRegion.\pI'm interested in rare stones, so\nI travel here and there.\pPewter City's Gym Leader Brock is\na master of the Rock-type.\pI wanted to be here to ask whether\nhe had an interest in rare stones.\p[.]\pOh! You have a Pok\edex.\nSo you are also in search of\lPok\emon.\pLet me see[.]\nI think I can help you with that.
 
 #org @gText_Pewter_Steven_Speak2
 This is my favourite Pok\emon.\nIt's name is Beldum.\pWould you be willing to raise it?\nIt'll be useful for your Pok\edex.
@@ -92,7 +107,7 @@ This is my favourite Pok\emon.\nIt's name is Beldum.\pWould you be willing to ra
 [PLAYER] received a Beldum!
 
 #org @gText_Pewter_Steven_DontWantBeldum
-Oh? Well, that's too bad[.]\p[.] [.]\n[.] [.]\pNow, if you want to talk about\nstones[.]\pPlease come and talk to me at any\ntime.
+Oh? Well, that's too bad[.]\p[.]\pNow, if you want to talk about\nstones[.]\pPlease come and talk to me at any\ntime.
 
 #org @gText_Pewter_Steven_Speak3
 Take good care of it.\pYour caring for it will make me\nvery happy.\pNow, if you want to talk about\nstones[.]\pPlease come and talk to me at any\ntime.
@@ -128,7 +143,7 @@ In Hoenn, legends say the battle\nbetween Groudon and Kyogre is what\lshaped the
 Remarkable!\nAbsolutely remarkable!\pTo see the legendary Weather Trio\nin your care[.]\pIt is truly a sight to behold.\pIt's clear that you are indeed a\nTrainer of great skill and power.\pYou have proven yourself worthy of\ntheir loyalty and strength.
 
 #org @gText_Pewter_Steven_Speak14
-[.] [.]\n[.] [.]\p[PLAYER].\pYour willingness to complete all\nof my request shows a true spirit\lof adventure and perseverance.\pIf you so desire, I would be\nhonored to battle you.\pI can see the fire in your eyes,\nthe passion for battle that burns\lwithin you.\pI too share that passion, and I\nwould relish the opportunity to\ltest my skills againts yours.\pSo, what do you say?\pAre you ready to prove yourself as\na truly legendary Trainer?\pPlease come and talk to me at any\ntime.
+[.]\p[PLAYER].\pYour willingness to complete all\nof my request shows a true spirit\lof adventure and perseverance.\pIf you so desire, I would be\nhonored to battle you.\pI can see the fire in your eyes,\nthe passion for battle that burns\lwithin you.\pI too share that passion, and I\nwould relish the opportunity to\ltest my skills againts yours.\pSo, what do you say?\pAre you ready to prove yourself as\na truly legendary Trainer?\pPlease come and talk to me at any\ntime.
 
 #org @gText_Pewter_Steven_Speak15
 I can see the fire in your eyes,\nthe passion for battle that burns\lwithin you.\pI too share that passion, and I\nwould relish the opportunity to\ltest my skills againts yours.\pSo, what do you say?\pAre you ready to prove yourself as\na truly legendary Trainer?

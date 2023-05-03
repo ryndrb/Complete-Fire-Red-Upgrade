@@ -5,15 +5,11 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-
-.equ FLAG_BRENDAN_VICTORYROAD_SPRITE, 0x939
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Brendan Victory Road Battle
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_VictoryRoad_Brendan:
     lock
-    textcolor BLUE
     applymovement 0xE EventScript_BrendanVictoryRoadNoticePlayer
     waitmovement 0xE
     faceplayer
@@ -24,7 +20,6 @@ EventScript_VictoryRoad_Brendan:
 
 EventScript_BrendanVictoryRoadAfter:
     lock
-    textcolor BLUE
     spriteface 0xE, DOWN
     call BrendanNameBox
     msgbox gText_BrendanVictoryRoadDefeatedSpeaks1 MSG_KEEPOPEN

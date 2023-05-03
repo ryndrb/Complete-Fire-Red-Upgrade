@@ -5,16 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_LAVENDER_MECHANT_1, 0x97A
-.equ FLAG_LAVENDER_MECHANT_2, 0x97B
-.equ FLAG_MAY_POKETOWER_SPRITE, 0x93F
-.equ FLAG_OLD_WOMAN_FIRE_HEAD, 0x9D4
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Lavender Town Items Merchant
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_LavenderTownMerchant:
-    textcolor BLUE
     lock
     faceplayer
     checkflag 0x23C
@@ -81,7 +75,6 @@ EventScript_DoesntMatter:
 @ Pokemon Tower Lady Preventing Enter
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PokeTowerLady:
-    textcolor RED
     lock
     faceplayer
     checkflag 0x5F @ Have Silph Scope?
@@ -143,7 +136,6 @@ EventScript_MrFuji:
 EventScript_PokeTower_RivalBattle1:
     lockall
     setvar 0x4001 0x0
-    textcolor BLUE
     @playsong 0x13B 0x0
     compare 0x4001 0x0
     if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
@@ -157,43 +149,33 @@ EventScript_PokeTower_RivalBattle1:
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
     callasm RemoveNameBox
@@ -207,27 +189,21 @@ EventScript_PokeTower_RivalBattle1:
     if 0x1 _call EventScrit_RivalBulbasaur
     compare 0x4031 0x0
     if 0x1 _call EventScrit_RivalCharmander
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
     closeonkeypress
@@ -256,7 +232,6 @@ EventScript_PokeTower_RivalBattle1:
 EventScript_PokeTower_RivalBattle2:
     lockall
     setvar 0x4001 0x1
-    textcolor BLUE
     @playsong 0x13B 0x0
     compare 0x4001 0x0
     if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
@@ -270,43 +245,33 @@ EventScript_PokeTower_RivalBattle2:
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
     callasm RemoveNameBox
@@ -320,27 +285,21 @@ EventScript_PokeTower_RivalBattle2:
     if 0x1 _call EventScrit_RivalBulbasaur
     compare 0x4031 0x0
     if 0x1 _call EventScrit_RivalCharmander
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
     callasm RemoveNameBox
-    textcolor BLUE
     call RivalNameBox
     msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
     closeonkeypress
@@ -355,7 +314,6 @@ EventScript_PokeTower_RivalBattle2:
     if equal _call EventScript_PokeTower_MayFacePlayer1
     compare 0x4001 0x1
     if equal _call EventScript_PokeTower_MayFacePlayer2
-    textcolor RED
     call MayNameBox
     msgbox gText_PokeTower_MaySpeaks9 MSG_KEEPOPEN
     closeonkeypress
@@ -553,7 +511,6 @@ EventScript_Lavender_FireHead:
     fadescreenspeed 0x3 5
     cry SPECIES_JIRACHI 0x0
     fadescreenspeed 0x2 5
-    textcolor BLACK
     msgbox gText_Lavender_FireHead_Narrator_1 MSG_KEEPOPEN
     closeonkeypress
     setflag FLAG_OLD_WOMAN_FIRE_HEAD

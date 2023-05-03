@@ -40,8 +40,14 @@ Oh! [PLAYER]!\nBrendan's right there.\pBut, boy, there's something I have\nto te
 #org @gText_Cerulean_BrendanSpeaks1
 I lost to you, [PLAYER], but I'm not\nfeeling down anymore.\pBecause I have a new purpose in\nlife.\pTogether with my Pok\emon, I'm\ngoing to challenge Pok\emon Gyms\land become a great trainer.\pPlease watch me, [PLAYER].\pI'm going to be stronger than you.\pWhen I do, I'm going to challenge\nyou to another battle.\pThat's a promise!
 
-#org @gText_Cerulean_MaySpeaks1
-So you made it here to Cerulean,\ntoo, [PLAYER]!\pIt's really big here, isn't it?\nPallet Town can't even compare.\pAre you off to challenge Misty?\pOnce I catch a couple more\nPok\emon, I'll be sure to take\lher on with my team!\p[.] [.]\n[.] [.]\pOh, and more thing[.]\pThat jerk [PLAYER] is just up ahead.\pGrandpa wanted us to travel\ntogether in filling the Pok\edex,\lbut he's just a total jerk!\pHe told me to buzz off and I'll\njust be weighing him down.\pCan you imagine that?\nI can't stand him[.]\p[.] [.]\n[.] [.]\pWell, I digress.\nIt was nice seeing you again.\pSee 'ya later!
+#org @gText_Cerulean_May_Speak_1
+So you made it here to Cerulean,\ntoo, [PLAYER]!\pIt's really big here, isn't it?\nPallet Town can't even compare.\pAre you off to challenge Misty?\pOnce I catch a couple more\nPok\emon, I'll be sure to take\lher on with my team!\p[.]\pOh, and more thing[.]\pThat jerk [PLAYER] is just up ahead.\pGrandpa wanted us to travel\ntogether in filling the Pok\edex,\lbut he's just a total jerk!\pHe told me to buzz off and I'll\njust be weighing him down.\pCan you imagine that?\nI can't stand him[.]\p[.]\pWell, I digress.\nIt was nice seeing you again.\pSee 'ya later!
+
+#org @gText_Cerulean_May_Speak_2
+So you made it here to Cerulean,\ntoo, [PLAYER]!\pIt's really big here, isn't it?\nPallet Town can't even compare.\pAre you off to challenge Misty?\pOnce I catch a couple more\nPok\emon, I'll be sure to take\lher on with my team!
+
+#org @gText_Cerulean_May_Speak_3
+Wow!\nThat's a Cascade Badge!\pSo you've defeated Misty, huh?\pI'm still working on my team so I\nhaven't challenged her yet, but\lseeing you win makes me want to\ltry even harder.\p[.]\pAnyway, congratulations on your\nwin!\pAnd I'm sure you'll keep doing\ngreat things!\pTake care, [PLAYER]!\nSee 'ya later!
 
 #org @gText_Cerulean_RivalSpeaks1
 Yo! [PLAYER]!\pYou're still struggling along back\nhere?\pI'm doing great! I caught a bunch\nof strong and smart Pok\emon!\pHere, let me see what you caught,\n[PLAYER]!
@@ -53,13 +59,13 @@ Hey, guess what?\pI went to Bill's and got him to\nshow me his rare Pok\emon.\pT
 Oh, yeah, right.\pI feel sorry for you. No, really.\nYou're always plodding behind me.\pSo here, I'll give you a little\npresent as a favor.
 
 #org @gText_Cerulean_RivalSpeaks4
-A chatty gossip like you...\nThat thing's perfect.\pI don't need it because I don't\ngive a hoot about others.\p[.] [.]\n[.] [.]\pI just saw May on my way here.\pShe was running around trying to\ncatch some cute Pok\emon.\l\lHeh[.]!\pI doubt she'll make it far.\pBut who cares!\nI'm on a roll!\pAll right, this time I really am\ngone.\pSmell ya!
+A chatty gossip like you[.]\nThat thing's perfect.\pI don't need it because I don't\ngive a hoot about others.\p[.]\pI just saw May on my way here.\pShe was running around trying to\ncatch some cute Pok\emon.\l\lHah[.]!\pI doubt she'll make it far.\pBut who cares!\nI'm on a roll!\pAll right, this time I really am\ngone.\pSmell ya!
 
 #org @gText_Ceruleann_TeachDazzlingGleam_Lady_Speak_1
 Hello, Trainer!\nI have a wish.\pCould you help my Clefairy learn\nDazzling Gleam?
 
 #org @gText_Ceruleann_TeachDazzlingGleam_Narrator_1
-[PLAYER] booted up the TM.\p[.] [.]\n[.] [.]\p[.] [.]\n[.] [.]\pClefairy learned Dazzling Gleam!
+[PLAYER] booted up the TM.\p[.]\p[.]\pClefairy learned Dazzling Gleam!
 
 #org @gText_Ceruleann_TeachDazzlingGleam_Clefairy_Speak_1
 Pip piiih!

@@ -11,7 +11,6 @@
 @ Rock Smash | Inside Poke Center | Route 10
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route10RockSmash:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_GOT_HM06

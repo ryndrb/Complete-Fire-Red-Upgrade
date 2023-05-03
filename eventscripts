@@ -3,6 +3,7 @@
 ## still testing scripts
 # PALLET TOWN
 map 4 0 MapScript_ChooseStarterRegion
+map 4 1 Map_PalletTown_PlayerRoom
 map 4 3 MapScript_InsideOakLab
 npc 3 0 3 EventScript_PalletTown_May
 npc 3 0 1 EventScript_AmuletCoin
@@ -11,10 +12,11 @@ npc 4 2 0 EventScript_Daisy
 npc 4 3 0 EventScript_ProfOakAidLabTimeTurner
 npc 4 3 2 EventScript_ProfOakAidLabStatScanner
 npc 4 3 3 EventScript_0x169595
-npc 4 3 4 EventScript_StarterGrass
-npc 4 3 5 EventScript_StarterWater
-npc 4 3 6 EventScript_StarterFire
-npc 4 3 7 EventScript_PalletTown_Rival
+npc 4 3 4 EventScript_PalletTown_InsideOakLab_StarterGrass
+npc 4 3 5 EventScript_PalletTown_InsideOakLab_StarterWater
+npc 4 3 6 EventScript_PalletTown_InsideOakLab_StarterFire
+npc 4 3 7 EventScript_PalletTown_InsideOakLab_Rival
+npc 4 3 10 EventScript_PalletTown_InsideOakLab_May
 npc 4 4 0 EventScript_PalletTown_MayMom
 npc 4 4 1 EventScript_PalletTown_MayBrother
 sign 4 1 0 EventScript_GameBoyConsole
@@ -24,6 +26,9 @@ tile 3 0 1 EventScript_PalletTown_OakStopPlayer2
 tile 4 3 0 EventScript_InsideOakLab_DontGoAway
 tile 4 3 1 EventScript_InsideOakLab_DontGoAway
 tile 4 3 2 EventScript_InsideOakLab_DontGoAway
+tile 4 3 3 EventScript_PalletTown_InsideOakLab_Rival_Battle_1
+tile 4 3 4 EventScript_PalletTown_InsideOakLab_Rival_Battle_2
+tile 4 3 5 EventScript_PalletTown_InsideOakLab_Rival_Battle_3
 
 # VIRIDIAN CITY
 npc 3 1 1 EventScript_Cut
@@ -73,7 +78,7 @@ npc 6 3 3 EventScript_ViridianCity
 npc 6 5 7 EventScript_PokemonCenterClerk
 npc 6 5 8 EventScript_UtilityOldMan
 npc 6 7 2 EventScript_Pewter_Steven
-map 3 2 MapScript_BrendanOutsideGym
+map 3 2 MapScript_Pewter
 map 6 2 MapScript_BrendanAfterCatchingMonInsideGym
 
 # MT MOON
@@ -269,11 +274,13 @@ npc 43 6 1 EventScript_Cinnabar_LittleBoy
 map 3 8 MapScript_Cinnabar
 map 12 1 MapScript_Cinnabar_FossilCenter
 map 43 7 MapScript_Cinnabar_AbandonedHouse
+tile 3 8 1 EventScript_Cinnabar_AbandonedHouseEntry_Door
 
 # ROUTE 1
 npc 3 19 2 EventScript_SootheBell
 npc 3 19 3 EventScript_SludgeWave
 map 3 19 MapScript_Route1_May
+sign 3 19 0 EventScript_Route1_Signpost
 
 # ROUTE 2
 npc 3 20 0 EventScript_Cut

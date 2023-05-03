@@ -5,9 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_TURN_DAY      , 0x931
-.equ FLAG_TURN_NIGHT    , 0x932
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Pocket PC
 @@@@@@@@@@@@@@@@@@@@@@
@@ -79,8 +76,8 @@ EventScript_StatScanner:
 @@@@@@@@@@@@@@@@@@@@@@
 .global EventScript_PokeVial
 EventScript_PokeVial:
-    buffernumber 0x0 0x502D
-    compare 0x502D 0x0
+    buffernumber 0x0 0x5045
+    compare 0x5045 0x0
     if equal _goto EventScript_RefillVial
     msgbox gText_CurrentCharges MSG_YESNO
     compare LASTRESULT 0x1

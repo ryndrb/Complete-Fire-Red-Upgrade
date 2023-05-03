@@ -17,13 +17,13 @@ Hi, there!\pWe have an all new exclusive items\nfrom the Galar and Alola region!
 Scram kid! Adults are playing!
 
 #org @gText_Celadon_MaySpeaks1
-Hey, [PLAYER]!\nDon't tell me[.]\pAre you here for the shopping,\ntoo?\pWe're right in front of the famous\nLilycove Department Store, after\lall!\pSince you're here, I figured maybe\nyou'd come here to do some\lshopping, same as me.\pI'm afraid I already bought up\ntons of stuff!\pLike Pok\emon Dolls[.] and\nposters[.] and[.]\pB-but- That's not all I've been\ndoing of course!\pI've also caught tons of Pok\emon,\nand I've been raising them well,\ltoo!\p[.] [.]\n[.] [.]\pAughhh! You think I'm lying, don't\nyou!\pThat little hum totally said you\nthink I'm lying!\p[.]Harsh!
+Hey, [PLAYER]!\nDon't tell me[.]\pAre you here for the shopping,\ntoo?\pWe're right in front of the famous\nLilycove Department Store, after\lall!\pSince you're here, I figured maybe\nyou'd come here to do some\lshopping, same as me.\pI'm afraid I already bought up\ntons of stuff!\pLike Pok\emon Dolls[.] and\nposters[.] and[.]\pB-but- That's not all I've been\ndoing of course!\pI've also caught tons of Pok\emon,\nand I've been raising them well,\ltoo!\p[.]\pAughhh! You think I'm lying, don't\nyou!\pThat little hum totally said you\nthink I'm lying!\p[.]Harsh!
 
 #org @gText_Celadon_MaySpeaks2
 I think the bigger question here\nis whether you're raising your\lPok\emon right, not me!\pS-so that's settles it!\nLet's have a battle!\p[.] [.]\n[.]Eek!\pI just realized my Pok\emon are not\nhealthy!\p[.]Sorry Snorlax[.] Azumarill[.]
 
 #org @gText_Celadon_MaySpeaks3
-[.] [.]\n[.] [.]\pGah! You have so many badges\nalready!\pAhhh, I remember the battle I had\nwith you back on Route 1.\pYou were able to become this\nstrong because you battled me back\lthen, right, [PLAYER]?\p[.]!\p[.]What would you think if I said\nsomething like that?\p[.]Hee hee[.]\pI'm actually thinking that it's\nabout time I went back to\lPallet Town, though.\pI've caught a lot of different\nPok\emon, and my Pok\edex looks\lpretty filled up, so I think I\lshould go show it to Grandpa.\p[PLAYER], what are you going to do?\pYou going to collect all the Gym\nBadges and take on the Pok\emon\lLeague challenge?
+[.]\pGah! You have so many badges\nalready!\pAhhh, I remember the battle I had\nwith you back in Route 9.\pYou were able to become this\nstrong because you battled me back\lthen, right, [PLAYER]?\p[.]!\p[.]What would you think if I said\nsomething like that?\p[.]Hee hee[.]\pI'm actually thinking that it's\nabout time I went back to\lPallet Town, though.\pI've caught a lot of different\nPok\emon, and my Pok\edex looks\lpretty filled up, so I think I\lshould go show it to Grandpa.\p[PLAYER], what are you going to do?\pYou going to collect all the Gym\nBadges and take on the Pok\emon\lLeague challenge?
 
 #org @gText_Celadon_MaySpeaks4
 Typical, [PLAYER]!\pThen while you're collecting your\nBadges, I guess I'll go and\lcomplete my Pok\edex!\pI guess I'll be off, then!
@@ -35,7 +35,7 @@ What, really?\pWell, now you've got me curious!\pIf you aren't focusing on the\n
 So! I must say, I am impressed you\ngot here.\pTeam Rocket captures Pok\emon from\naround the world.\pThey're important tools for keeping\nour criminal enterprise going.\pI am the leader, Giovanni!
 
 #org @gText_gText_Celadon_GiovanniSpeak2
-[.] [.]\n[.] [.]\pWell, well, well[.]\nLook what we have here.\pIt seems you have a Mega Ring.\pThat is quite an impressive piece\nof technology.\pIt's a shame that such  power is\nwasted on someone like you.\pYou are here to battle me, are you\nnot?\pBe warned, I will not go easy on\nyou.\pFor your insolence, you will feel\na world of pain!
+[.]\pWell, well, well[.]\nLook what we have here.\pIt seems you have a Mega Ring.\pThat is quite an impressive piece\nof technology.\pIt's a shame that such  power is\nwasted on someone like you.\pYou are here to battle me, are you\nnot?\pBe warned, I will not go easy on\nyou.\pFor your insolence, you will feel\na world of pain!
 
 #org @gText_gText_Celadon_GiovanniSpeak3
 I see that you raise Pok\emon with\nutmost care.\pA child like you would never\nunderstand what I hope to achieve.\pI shall step aside this time!\pI hope we meet again[.]
@@ -53,28 +53,28 @@ Now get ready to be thrashed!
 Tch, you really are strong.
 
 #org @gText_RocketHQ_ArianaSpeak4
-It's too bad.\pIf you were to join Team Rocket,\nyou could become an Executive.\p[.] [.]\n[.] [.]\p[.]I'm sorry Boss Giovanni, but\nthis hideout is done for[.]\pBut that's fine[.] I'm sure he\nwill give you a beating.
+It's too bad.\pIf you were to join Team Rocket,\nyou could become an Executive.\p[.]\p[.]I'm sorry Boss Giovanni, but\nthis hideout is done for[.]\pBut that's fine[.] I'm sure he\nwill give you a beating.
 
 #org @gText_RocketHQ_ArianaSpeak5
-[.] [.]\n[.] [.]\pIt doesn't matter what happens to\nthis hideout now.\pWe have much bigger plans.\pYou'll come to appreciate Team\nRocket's true power soon enough.\pFor now, I'll just leave you to\nour boss.\pEnjoy yourself while you can[.]\nFufufufu[.]
+[.]\pIt doesn't matter what happens to\nthis hideout now.\pWe have much bigger plans.\pYou'll come to appreciate Team\nRocket's true power soon enough.\pFor now, I'll just leave you to\nour boss.\pEnjoy yourself while you can[.]\nFufufufu[.]
 
 #org @gText_Celadon_ErikaSpeak1
-Hello[.]\pLovely weather isn't it?\pIt's so pleasant[.]\pOh, dear[.]\nI must have dozed off.\pWelcome.\p[.] [.]\n[.] [.]\pI couldn't help but notice the\nMega Ring on your hand.\pIt appears you have a great deal\nof skill as a Pok\emon trainer.\pI, too, have a Mega Ring that I\nuse to enhance the power of my\lGrass-type Pok\emon.\pIt was a gift we Gym Leaders\nreceived when we traveled to the\lKalos region for a gathering.
+Hello[.]\pLovely weather isn't it?\pIt's so pleasant[.]\pOh, dear[.]\nI must have dozed off.\pWelcome.\p[.]\pI couldn't help but notice the\nMega Ring on your hand.\pIt appears you have a great deal\nof skill as a Pok\emon trainer.\pI, too, have a Mega Ring that I\nuse to enhance the power of my\lGrass-type Pok\emon.\pIt was a gift we Gym Leaders\nreceived when we traveled to the\lKalos region for a gathering.
 
 #org @gText_Celadon_ErikaSpeak2
-[.] [.]\n[.] [.]\pYou see, I have always been\nfascinated by the power and beauty\lof nature.\pAnd what better way to harness\nthat power than through Mega\lEvolution?\pWith it, my Pok\emon can reach new\nheights of strength and grace, and\lI can push myself to become a\lbetter trainer.
+[.]\pYou see, I have always been\nfascinated by the power and beauty\lof nature.\pAnd what better way to harness\nthat power than through Mega\lEvolution?\pWith it, my Pok\emon can reach new\nheights of strength and grace, and\lI can push myself to become a\lbetter trainer.
 
 #org @gText_Celadon_ErikaSpeak3
 But enough talk.\pLet us see if your skills are a\nmatch for mine.\pI may specialize in Grass-type\nPok\emon, but don't think that\lmakes me an easy opponent.\pI look forward to a challenging\nbattle.
 
 #org @gText_Celadon_RoamingDogs_Eusine_Speak_1
-You[.]\p[.] [.]\n[.] [.]\pMy name is Eusine.\pI'm currently on the trail of\nRaikou, Entei, and Suicune.\p[.] [.]\n[.] [.]\pAnd you are[.]?\p[.][PLAYER]?\pGlad to meet you.\p[.] [.]\n[.] [.]\pHmmm[.]
+You[.]\p[.]\pMy name is Eusine.\pI'm currently on the trail of\nRaikou, Entei, and Suicune.\p[.]\pAnd you are[.]?\p[.][PLAYER]?\pGlad to meet you.\p[.]\pHmmm[.]
 
 #org @gText_Celadon_RoamingDogs_Eusine_Speak_2
 There seems to be more than meets\nthe eye with you[.]\pYou see, I've been studying the\nmovements of these legendary\lPok\emon for many years.\pRecently, I've detected unusual\nenergy readings that suggests\lthey may be in this region.\pIf you have a Pokedex, I can\nupdate your map to detect them.\pIt's important that we find and\nprotect these Pok\emon[.]\l[.]before it's too late.\pIf you're up for it, I could\nuse your help.
 
 #org @gText_Celadon_RoamingDogs_Eusine_Speak_3
-And[.] [PAUSE][30]done!\pThese legendary Pok\emon are\nincredibly powerful and elegant.\pWe, as trainers, need to make sure\nthey are safe from harm.\p[.] [.]\n[.] [.]\pI will continue my research on\nthese legedary Pok\emon.\pBut if you happen to come accross\nthese Pok\emon[.]\p[.]Or perhaps even capture them,\nbe sure to let me know.\pYou can find me inside Celadon's\nrestaurant.\pSo long[.]
+And[.] [PAUSE][30]done!\pThese legendary Pok\emon are\nincredibly powerful and elegant.\pWe, as trainers, need to make sure\nthey are safe from harm.\p[.]\pI will continue my research on\nthese legedary Pok\emon.\pBut if you happen to come accross\nthese Pok\emon[.]\p[.]Or perhaps even capture them,\nbe sure to let me know.\pYou can find me inside Celadon's\nrestaurant.\pSo long[.]
 
 #org @gText_Celadon_RoamingDogs_TooManyRoamers
 [PLAYER]'s map cannot handle too\nmuch data!
@@ -86,16 +86,16 @@ And[.] [PAUSE][30]done!\pThese legendary Pok\emon are\nincredibly powerful and e
 Ah, [PLAYER], good to see you again.\pHave you had any luck in your\nsearch for the legendary beasts?\pDon't worry if you haven't made\nmuch progress.\pThey're incredibly elusive\ncreatures.
 
 #org @gText_Celadon_Eusine_InsideResto_Speak_2
-You[.]\pYour party[.]\pYou've managed to capture all\nthree of the legendary beasts.\p[.] [.]\n[.] [.]\p[.] [.]\n[.] [.]\pAren't they beautiful[.]?
+You[.]\pYour party[.]\pYou've managed to capture all\nthree of the legendary beasts.\p[.]\p[.]\pAren't they beautiful[.]?
 
 #org @gText_Celadon_Eusine_InsideResto_Speak_3
-[.] [.]\n[.] [.]\pAs I predicted[.]\pSince the first time I met you[.]\pI've sort of had this feeling that\nthey would choose you.\p[.] [.]\n[.] [.]\pI've spent my entire life chasing\nafter these Pok\emon.\pBut it seems they were meant to be\nin your hands all along.\pIt's bittersweet, but I'm glad\nthey have someone as capable as\lyou looking after them.\pIt's truly remarkable.\pYou are a skilled trainer, and I'm\nhonored to have met you.\pPlease accept this as a token of\nmy gratitude.
+[.]\pAs I predicted[.]\pSince the first time I met you[.]\pI've sort of had this feeling that\nthey would choose you.\p[.]\pI've spent my entire life chasing\nafter these Pok\emon.\pBut it seems they were meant to be\nin your hands all along.\pIt's bittersweet, but I'm glad\nthey have someone as capable as\lyou looking after them.\pIt's truly remarkable.\pYou are a skilled trainer, and I'm\nhonored to have met you.\pPlease accept this as a token of\nmy gratitude.
 
 #org @gText_Celadon_Eusine_InsideResto_Speak_4
 Use it wisely, [PLAYER].
 
 #org @gText_Celadon_Eusine_InsideResto_Speak_5
-I'm glad to have been able to meet\nyou, [PLAYER].\pWith the beasts safety ensured, my\nmission is complete[.]\p[.] [.]\n[.] [.]\pAs for myself, I think I'll stick\naround Kanto for a bit longer.\pThere's still so much to discover\nhere[.]\l[.]and I'm quite fond of the weather.
+I'm glad to have been able to meet\nyou, [PLAYER].\pWith the beasts safety ensured, my\nmission is complete[.]\p[.]\pAs for myself, I think I'll stick\naround Kanto for a bit longer.\pThere's still so much to discover\nhere[.]\l[.]and I'm quite fond of the weather.
 
 #org @gText_Celadon_Eusine_InsideResto_Speak_6
 Ah, [PLAYER]!\nI've watched your battle on TV.\pCongratulations on becoming the\nLeague Champion!\pIt's good to see that you've\ncontinued your journey with\lsuch passion.\pSay, would you be up for a battle?
@@ -107,4 +107,4 @@ Well done, [PLAYER].\nYou truly are a worthy opponent.
 I see, I understand.\pThere's no need to push yourself\ninto a battle if you're not\lfeeling up for it.\pPerhaps some other time, then.
 
 #org @gText_Celadon_Eusine_InsideResto_Speak_7
-I have to admit, battling you has\nrekindled my passion for training.\p[.] [.]\n[.] [.]\pWhat are your plans now that\nyou're the League Champion?\pRegardless, I have no doubt that\nyou'll achieve greatness!\pUntil we meet again, [PLAYER]!
+I have to admit, battling you has\nrekindled my passion for training.\p[.]\pWhat are your plans now that\nyou're the League Champion?\pRegardless, I have no doubt that\nyou'll achieve greatness!\pUntil we meet again, [PLAYER]!

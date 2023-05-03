@@ -701,6 +701,13 @@
 080CBB84 84 42 05 D1
 #endif
 
+##Player Initial Spawn Location
+08054A08 02
+08054A00 05
+
+##Remove Gendered Text Color
+0813CD24 00 B5 0F E0
+
 ##Needed for iv ranking summary screen
 #ifdef IV_RANKING_SUMMARY_SCREEN
 08137BF0 00 49 08 47 01 00 90 08

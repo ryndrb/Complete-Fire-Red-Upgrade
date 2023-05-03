@@ -5,19 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_HOUNDOOMINITE, 0x962
-.equ FLAG_OBTAIN_EXPLOSION, 0x9A6
-.equ FLAG_MAY_CINNABAR_SPRITE, 0x944
-.equ FLAG_LATIAS_FULLMOON, 0x9C7
-.equ FLAG_LATIOS_FULLMOON, 0x9C8
-.equ FLAG_CRESSELIA_FULLMOON, 0x9C9
-.equ FLAG_CRESSELIA_EVENT_STARTED, 0x9CB
-.equ FLAG_CRESSELIA_EVENT_FINISHED, 0x9CC
-.equ FLAG_LITTLEBOYDAD_CINNABAR_SPRITE, 0x9CD
-.equ FLAG_WEIRDO_CINNABAR, 0x9CF
-.equ VAR_MAY_CINNABAR_ENCOUNTER, 0x5032
-.equ VAR_DARKRAI_EVENT, 0x5040
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Blaine
 @@@@@@@@@@@@@@@@@@@@@@
@@ -99,7 +86,6 @@ Obtained:
 @ Explosion | Cinnabar Island
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_CinnabarExplosion:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_EXPLOSION
@@ -125,7 +111,7 @@ MapScript_Cinnabar_FossilCenter:
     .byte MAP_SCRIPT_TERMIN
 
 LevelScript_Cinnabar_May:
-    levelscript VAR_MAY_CINNABAR_ENCOUNTER, 0, EventSript_Cinnabar_May
+    levelscript VAR_MAY_ENCOUNTER, 4, EventSript_Cinnabar_May
     .hword LEVEL_SCRIPT_TERMIN
 
 MapScript_0x16E279:
@@ -139,7 +125,6 @@ MapScript_0x16E285:
 
 EventSript_Cinnabar_May:
     lock
-    textcolor RED
     sound 0x15
     applymovement 2 EventScript_Cinnabar_MayNoticePlayer
     applymovement PLAYER EventScript_Cinnabar_PlayerGetCloseToMay
@@ -171,7 +156,7 @@ EventSript_Cinnabar_May:
     waitmovement 2
     sound 9
     hidesprite 2
-    setvar VAR_MAY_CINNABAR_ENCOUNTER 0x1
+    setvar VAR_MAY_ENCOUNTER 0x5
     setflag FLAG_MAY_CINNABAR_SPRITE
     fadedefaultbgm
     release
@@ -233,6 +218,8 @@ MapScript_Cinnabar:
 
 MapScript_Cinnabar1:
     setworldmapflag 0x898
+    checkflag FLAG_ROUTE16_MEMBERCARD
+    if SET _call EventScript_Cinnabar_AbandonedHouseEntry
     call EventScript_0x8166F5E
     compare VAR_DARKRAI_EVENT 0x2
     if TRUE _call Move_RepositionSailor
@@ -243,6 +230,16 @@ MapScript_Cinnabar1:
     compare 0x408A 0x1
     if 0x1 _call EventScript_0x8166F0B
     end
+
+EventScript_Cinnabar_AbandonedHouseEntry:
+    setvar 0x4009 0x1
+    checkflag FLAG_DARKRAI_NEWMOON
+    if SET _call EventScript_Cinnabar_AbandonedHouseEntry_CantEnter
+    return
+
+EventScript_Cinnabar_AbandonedHouseEntry_CantEnter:
+    setvar 0x4009 0x0
+    return
 
 EventScript_0x8166F5E:
     checkflag 0x1A8
@@ -292,7 +289,6 @@ LevelScript_Cinnabar_Bill:
 EventSript_Cinnabar_Bill:
     lockall
     clearflag 0x4001
-    textcolor BLUE
     pause 0x14
     sound 0x15
     applymovement 0x3 Move_BillNoticePlayer
@@ -549,7 +545,6 @@ Move_PlayerGetOnBoat:
 EventScript_Cinnabar_BillPokeCenter:
     lock
     faceplayer
-    textcolor BLUE
     call BillNameBox
     msgbox 0x819A725 MSG_YESNO
     compare LASTRESULT 0x0
@@ -575,7 +570,6 @@ EventScript_Cinnabar_BillPokeCenter:
 
 EventScript_Cinnabar_OutsidePokeCenter:
     callasm RemoveNameBox
-    textcolor BLUE
     clearflag 0x6B
     movesprite2 0x4 0x27 0x28
     applymovement 3 Move_BillGoToBoatAgain
@@ -797,7 +791,6 @@ EventScript_Cinnabar_Bill_AfterSevii:
     lock
     spriteface PLAYER, LEFT
     clearflag 0x4001
-    textcolor BLUE
     call BillNameBox
     msgbox gText_Cinnabar_BillSpeaks6 MSG_KEEPOPEN
     closeonkeypress
@@ -832,13 +825,11 @@ Move_BillFarewell:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Cinnabar_LittleBoy:
     lock
-    textcolor BLACK
     checkflag 0x4BC
     if NOT_SET _goto EventScript_Cinnabar_LittleBoy_Before
     checkflag FLAG_CRESSELIA_FULLMOON
     if SET _goto EventScript_Cinnabar_LittleBoy_After
     msgbox gText_Cinnabar_LittleBoy_Speak1 MSG_KEEPOPEN
-    textcolor BLUE
     msgbox gText_Cinnabar_LittleBoy_Speak2 MSG_KEEPOPEN
     closeonkeypress
     setflag FLAG_CRESSELIA_EVENT_STARTED
@@ -847,7 +838,6 @@ EventScript_Cinnabar_LittleBoy:
 
 EventScript_Cinnabar_LittleBoy_Before:
     faceplayer
-    textcolor BLUE
     msgbox gText_Cinnabar_LittleBoy_Speak5 MSG_KEEPOPEN
     closeonkeypress
     release
@@ -868,7 +858,6 @@ EventScript_Cinnabar_LittleBoy_After:
     waitmovement 0x3
     spriteface 0x1, RIGHT
     spriteface 0x2, RIGHT
-    textcolor BLUE
     msgbox gText_Cinnabar_LittleBoyDad_Speak3 MSG_KEEPOPEN
     closeonkeypress
     applymovement 0x3 Move_Cinnabar_LittleBoyDad_Inside_2
@@ -884,7 +873,6 @@ EventScript_Cinnabar_LittleBoy_After:
 
 EventScript_Cinnabar_LittleBoy_Healed:
     faceplayer
-    textcolor BLUE
     msgbox gText_Cinnabar_LittleBoy_Speak4 MSG_KEEPOPEN
     closeonkeypress
     release
@@ -893,7 +881,6 @@ EventScript_Cinnabar_LittleBoy_Healed:
 EventScript_Cinnabar_LittleBoyMom:
     lock
     faceplayer
-    textcolor RED
     checkflag 0x4BC
     if NOT_SET _goto EventScript_Cinnabar_LittleBoyMom_Before
     checkflag FLAG_CRESSELIA_FULLMOON
@@ -905,7 +892,6 @@ EventScript_Cinnabar_LittleBoyMom:
     end
 
 EventScript_Cinnabar_LittleBoyMom_Before:
-    textcolor RED
     msgbox gText_Cinnabar_LittleBoyMom_Speak3 MSG_KEEPOPEN
     closeonkeypress
     release
@@ -921,7 +907,6 @@ EventScript_Cinnabar_LittleBoyMom_After:
 EventScript_Cinnabar_LittleBoyDad:
     lock
     faceplayer
-    textcolor BLUE
     checkflag 0x4BC
     if NOT_SET _goto EventScript_Cinnabar_LittleBoyDad_Before
     checkflag FLAG_CRESSELIA_FULLMOON
@@ -952,7 +937,6 @@ EventScript_Cinnabar_LittleBoyDad:
     end
 
 EventScript_Cinnabar_LittleBoyDad_Before:
-    textcolor BLUE
     clearflag 0x1A8
     msgbox gText_Cinnabar_LittleBoyDad_Speak6 MSG_KEEPOPEN
     closeonkeypress
@@ -960,21 +944,18 @@ EventScript_Cinnabar_LittleBoyDad_Before:
     end
 
 EventScript_Cinnabar_LittleBoyDad_After:
-    textcolor BLUE
     msgbox gText_Cinnabar_LittleBoyDad_Speak5 MSG_KEEPOPEN
     closeonkeypress
     release
     end
 
 EventScript_Cinnabar_LittleBoyDad_Sad:
-    textcolor BLUE  
     msgbox gText_Cinnabar_LittleBoyDad_Speak4 MSG_KEEPOPEN
     closeonkeypress
     release
     end
 
 EventScript_LittleBoyDad_Unfortunate:
-    textcolor BLUE
     msgbox gText_LittleBoyDad_Unfortunate MSG_KEEPOPEN
     closeonkeypress
     release
@@ -1042,14 +1023,12 @@ LevelScript_Cinnabar_AbandonedHouse:
 
 EventScript_Cinnabar_AbandonedHouse1:
     lock
-    textcolor BLUE
     pause 30
     msgbox gText_Cinnabar_AbandonedHouse_Weirdo_Speak_1 MSG_KEEPOPEN
     closeonkeypress
     applymovement 0x1 Move_Cinnabar_AbandonedHouse_Weirdo_1
     applymovement PLAYER Move_Cinnabar_AbandonedHouse_Player_1
     waitmovement 0x1
-    textcolor BLACK
     signmsg
     msgbox gText_Cinnabar_AbandonedHouse_Narrator_Speak_1 MSG_KEEPOPEN
     closeonkeypress
@@ -1073,7 +1052,6 @@ EventScript_Cinnabar_AbandonedHouse2:
     pause 30
     fanfare 0x100
     waitfanfare
-    textcolor BLACK
     signmsg
     msgbox gText_Cinnabar_AbandonedHouse_Narrator_Speak_2 MSG_KEEPOPEN
     closeonkeypress
@@ -1085,7 +1063,8 @@ EventScript_Cinnabar_AbandonedHouse2:
 
 EventScript_Cinnabar_SailorAfterDarkrai:
     lock
-    textcolor BLUE
+    applymovement PLAYER Move_Cinnabar_Player_2
+    waitmovement PLAYER
     pause 30
     sound 0x15
     applymovement 0x6 Move_Cinnabar_Sailor_1
@@ -1098,6 +1077,11 @@ EventScript_Cinnabar_SailorAfterDarkrai:
     setvar VAR_DARKRAI_EVENT 0x3
     release
     end
+
+Move_Cinnabar_Player_2:
+    .byte pause_long
+    .byte walk_down
+    .byte end_m
 
 Move_Cinnabar_Sailor_1:
     .byte exclaim
@@ -1149,6 +1133,30 @@ Move_Cinnabar_AbandonedHouse_Player_1:
     .byte walk_left
     .byte walk_left
     .byte walk_down_onspot_fastest
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Abandoned House entry
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Cinnabar_AbandonedHouseEntry_Door:
+    lock
+    applymovement PLAYER Move_Cinnabar_AbandonedHouseEntry_Door_Player_1
+    waitmovement PLAYER
+    pause 15
+    msgbox gText_Cinnabar_AbandonedHouseEntry_Door MSG_KEEPOPEN
+    closeonkeypress
+    applymovement PLAYER Move_Cinnabar_AbandonedHouseEntry_Door_Player_2
+    waitmovement PLAYER
+    release
+    end
+
+Move_Cinnabar_AbandonedHouseEntry_Door_Player_1:
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_Cinnabar_AbandonedHouseEntry_Door_Player_2:
+    .byte walk_down_onspot_fastest
+    .byte walk_down
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@

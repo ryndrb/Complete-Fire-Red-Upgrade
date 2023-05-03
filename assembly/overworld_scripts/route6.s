@@ -5,14 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_PAYBACK, 0x9A2
-.equ FLAG_OBTAIN_GYRO_BALL, 0x9A7
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Payback | Route 6
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route6Payback:
-    textcolor RED
     lock
     faceplayer
     checkflag FLAG_OBTAIN_PAYBACK
@@ -39,7 +35,6 @@ EventScript_GivePaybackMove:
 @ Gyro Ball | Route 6 Underground Path
 @@@@@@@@@@@@@@@@@@@@@@
 EventScipt_Route6GyroBall:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_GYRO_BALL

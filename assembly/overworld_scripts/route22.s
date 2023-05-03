@@ -9,7 +9,6 @@
 @ Rival | Route 22 | First Encounter
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x16828C:
-    textcolor BLUE
     lockall
     spriteface PLAYER, LEFT
     setvar 0x4001 0x0
@@ -28,7 +27,6 @@ EventScript_0x1682AB:
     goto EventScript_0x81682BE
 
 EventScript_0x81682BE:
-    textcolor BLUE
     playsong 0x13B 0x0
     showsprite 0x1
     compare 0x4001 0x0
@@ -205,7 +203,6 @@ EventScript_0x81683C5:
 @ Rival | Route 22 | Second Encounter
 @@@@@@@@@@@@@@@@@@@@
 EventScript_0x1683ED:
-    textcolor BLUE
     lockall
     spriteface PLAYER, LEFT
     setvar 0x4001 0x0
@@ -224,7 +221,6 @@ EventScript_0x16840C:
     goto EventScript_0x16841F
 
 EventScript_0x16841F:
-    textcolor BLUE
     playsong 0x13B 0x0
     showsprite 0x1
     compare 0x4001 0x0

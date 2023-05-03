@@ -5,7 +5,7 @@
 Huh?\pWait[.] what?\p[PLAYER][.] Could it be that[.]\nIt's already over?\pNo waaay!
 
 #org @gText_League_MaySpeak3
-[.] [.]\n[.] [.]\pYou aren't the Champion yet?\p[.] [.]\n[.] [.]\p[RIVAL] is waiting for you up ahead[.]?\p[.] [.]\n[.] [.]\pUgh[.]\nHe managed to be Champion then[.]\pWell, whatever.\pI'm sure it won't be for too long\nthough. Right, [PLAYER]?\pHeehee[.]\nGood luck!
+[.]\pYou aren't the Champion yet?\p[.]\p[RIVAL] is waiting for you up ahead[.]?\p[.]\pUgh[.]\nHe managed to be Champion then[.]\pWell, whatever.\pI'm sure it won't be for too long\nthough. Right, [PLAYER]?\pHeehee[.]\nGood luck!
 
 #org @gText_League_MaySpeak4
 I would love to watch your battle,\nbut it's okay.\pIt's fine!\pRules are rules, right?\pGood luck!

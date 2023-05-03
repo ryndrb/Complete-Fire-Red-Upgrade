@@ -5,10 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_GIFT_TIMBURR, 0x95B
-.equ FLAG_GROUDON_ROUTE3, 0x9BC
-.equ FLAG_ROUTE3_STEAM, 0x9D0
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Route 3 Steam (Groudon)
 @@@@@@@@@@@@@@@@@@@@@@
@@ -32,7 +28,6 @@ EventScript_Route3_End:
 @ Timburr Gift | Muscle Band | Route 3
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_TimburrGift:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_GIFT_TIMBURR

@@ -5,8 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_CRESSELIA_FULLMOON, 0x9C9
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Fullmoon Island
 @@@@@@@@@@@@@@@@@@@@@@

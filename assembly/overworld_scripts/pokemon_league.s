@@ -5,8 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_MAY_LEAGUE_SPRITE, 0x9B9
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Pokemon League Lorelei
 @@@@@@@@@@@@@@@@@@@@@@
@@ -330,7 +328,6 @@ EventScript_0x8162AAB:
     waitmovement 2
     applymovement PLAYER Move_League_Player1
     waitmovement PLAYER
-    textcolor RED
     call MayNameBox
     msgbox gText_League_MaySpeak1 MSG_KEEPOPEN
     closeonkeypress
@@ -432,7 +429,6 @@ LevelScript1_League_FinalRoom:
 
 EventScript_League_0x162B76:
     lockall
-    textcolor 0x0
     setflag 0x2
     applymovement PLAYER 0x8162D07
     waitmovement 0x0
@@ -533,7 +529,6 @@ LevelScript2_League_HallOfFameRoom:
 
 EventScript_League_HallOfFameRoom:
     lockall
-    textcolor 0x0
     applymovement PLAYER 0x8162DCD
     waitmovement 0x0
     applymovement 0x1 0x81A75E7

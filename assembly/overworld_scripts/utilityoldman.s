@@ -15,7 +15,6 @@
 .equ FLAG_DEFEATED_LEADER_GIOVANNI, 0x4B7   
 
 EventScript_UtilityOldMan: @will probably add more? inspired by inclement emerald
-	textcolor BLUE
     lock
 	faceplayer
 	checkflag 0x946

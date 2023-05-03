@@ -5,16 +5,6 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_MAY_CELADON_SPRITE1, 0x943
-.equ FLAG_EUSINE_SPRITE_CELADON_OUTSIDE, 0x959
-.equ FLAG_OBTAIN_ABOMASITE, 0x95F
-.equ FLAG_ENCOUNTER_ROCKETHQ_ARIANA, 0x9B7
-.equ FLAG_EUSINE_SPRITE_CELADON_RESTO, 0x9D1
-.equ FLAG_ROAMING_DOGS_EVENT_FINISHED, 0x9D2
-.equ VAR_ARIANA_BATTLES, 0x5035
-.equ VAR_ENCOUNTER_ROCKETHQ_ARIANA, 0x5036
-.equ VAR_ROAMING_DOGS_EVENT, 0x5041
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Erika
 @@@@@@@@@@@@@@@@@@@@@@
@@ -66,7 +56,7 @@ EventScript_0x816D0C6:
     if 0x1 _goto 0x816D107
     giveitem_msg 0x81973BA ITEM_TM19
     setflag 0x293
-    setvar 0x502E 0x1
+    setvar 0x5046 0x1
     setvar VAR_ROAMING_DOGS_EVENT 0x1
     clearflag FLAG_EUSINE_SPRITE_CELADON_OUTSIDE
     release
@@ -143,7 +133,6 @@ EventScript_Celadon_Giovanni:
 @ Poke Ball Types Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StorePokeBalls:
-    textcolor BLUE
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -180,7 +169,6 @@ EventScript_StorePokeBallsList:
 @ TMs Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StoreTM:
-    textcolor BLUE
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -207,7 +195,6 @@ EventScript_StoreTMList:
 @ TMs Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerTM:
-    textcolor BLUE
     lock
     faceplayer
     preparemsg 0x81A6211
@@ -235,7 +222,6 @@ EventScript_GameCornerTMList:
 @ Mega Stones Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerMegaStones:
-    textcolor BLUE
     lock
     faceplayer
     checkflag 0x243
@@ -438,7 +424,6 @@ EventScript_ObtainedStone:
 @ Pseudo Legendaries Celadon Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_GameCornerPseudo:
-    textcolor BLUE
     lock
     faceplayer
     checkflag 0x243
@@ -649,7 +634,6 @@ EventScript_ObtainedPseudo:
 @ Galar Items Celadon Dep. Store
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_StoreGalarItems:
-    textcolor BLUE
     lock
     faceplayer
     msgbox gText_GalarExclusive MSG_KEEPOPEN
@@ -683,7 +667,6 @@ EventScript_StoreGalarItemsList:
 @ Team Rocket Grunt Game Corner
 @@@@@@@@@@@@@@@@@@@@@@
 EvenScript_0x16CAF5:
-    textcolor BLUE
     checkflag 0x4B3
     if NOT_SET _goto EventScript_CantEnterRocketHideoutYet
     trainerbattle2 0x2 0x165 0x0 0x8196E69 0x8196E95 0x816CB10
@@ -705,7 +688,6 @@ EventScript_Celadon_May:
     lock
     faceplayer
     playsong 0x1A7
-    textcolor RED
     call MayNameBox
     msgbox gText_Celadon_MaySpeaks1 MSG_KEEPOPEN
     closeonkeypress
@@ -726,7 +708,7 @@ EventScript_Celadon_May:
     callasm RemoveNameBox
     fadescreen 0x1
     hidesprite 17
-    setflag FLAG_MAY_CELADON_SPRITE1
+    setflag FLAG_MAY_CELADON_SPRITE
     fadescreen 0x0
     fadedefaultbgm
     release
@@ -739,7 +721,7 @@ EventScript_PlayerAnsweredNo:
     callasm RemoveNameBox
     fadescreen 0x1
     hidesprite 17
-    setflag FLAG_MAY_CELADON_SPRITE1
+    setflag FLAG_MAY_CELADON_SPRITE
     fadescreen 0x0
     fadedefaultbgm
     release
@@ -760,7 +742,6 @@ EventScript_Celadon_PlayerSmile:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_RocketHQ_Ariana:
     lock
-    textcolor RED
     sound 0x9
     pause 30
     call UnknownNameBox
@@ -795,7 +776,7 @@ EventScript_RocketHQ_Ariana:
     hidesprite 11
     setflag FLAG_ENCOUNTER_ROCKETHQ_ARIANA
     setvar VAR_ARIANA_BATTLES 1
-    setvar VAR_ENCOUNTER_ROCKETHQ_ARIANA 1
+    setvar VAR_ENCOUNTER_ARIANA 1
     release
     end
 
@@ -875,7 +856,6 @@ LevelScript_Celadon_RoamingDogs:
 
 EventScript_Celadon_RoamingDogs:
     lock
-    textcolor BLUE
     applymovement 18 Move_Celadon_RoamingDogs_Eusine_1
     applymovement PLAYER Move_Celadon_RoamingDogs_Player_1
     waitmovement 18
@@ -896,11 +876,9 @@ EventScript_Celadon_RoamingDogs:
     applymovement PLAYER Move_Celadon_RoamingDogs_Player_2
     waitmovement PLAYER
     signmsg
-    textcolor BLACK
     msgbox gText_Celadon_RoamingDogs_Narrator_Speak_1 MSG_KEEPOPEN
     closeonkeypress
     normalmsg
-    textcolor BLUE
     sound 0x2
     pause 60
     setvar 0x8000 SPECIES_RAIKOU
@@ -943,7 +921,6 @@ EventScript_Celadon_RoamingDogs:
 
 EventScript_Celadon_RoamingDogs_TooManyRoamers:
     signmsg
-    textcolor BLACK
     msgbox gText_Celadon_RoamingDogs_TooManyRoamers MSG_KEEPOPEN
     closeonkeypress
     release
@@ -1012,7 +989,6 @@ Move_Celadon_RoamingDogs_Eusine_4:
 EventScript_Celadon_Eusine_InsideResto:
     lock
     faceplayer
-    textcolor BLUE
     checkflag FLAG_ROAMING_DOGS_EVENT_FINISHED
     if SET _goto EventScript_Celadon_RoamingDogs_Finished
     callasm CheckRoamingDogs
@@ -1069,7 +1045,6 @@ EventScript_Celadon_Eusine_InsideResto_PlayerDontWantBattle:
     end
 
 EventScrit_Celadon_Eusine_InsideResto_Battle:
-    textcolor BLUE
     call EusineNameBox
     trainerbattle1 0x3 0x9 0x0 gText_Celadon_Eusine_InsideResto_Speak_6 gText_Celadon_Eusine_InsideResto_Battle_Defeated EventScript_Celadon_Eusine_InsideResto_Battle_After
     release

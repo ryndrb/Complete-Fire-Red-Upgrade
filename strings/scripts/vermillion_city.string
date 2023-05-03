@@ -77,13 +77,13 @@ Bonjour!\n[PLAYER]!\pImagine seeing you here!\n[PLAYER], were you really invited
 I heard there was a Cut\nmaster on board.\pBut he was just a seasick old man!\pCut itself is really useful.\nYup, it'll be handy.\pYou should go see him, too.\nSmell ya!
 
 #org @gText_Vermillion_MegaRingResearcherSpeak1
-Hello there, young trainer!\pI couldn't help but notice your\nstrong Pok\emon and battling\lskills.\p[.] [.]\n[.] [.]\pHave you heard of Mega Evolution?\pIt's a fascinating phenomenon\nthat was discovered in the\lKalos region.\pAs a researcher of Pok\emon\nbattles, I have come to Kanto to\lstudy this incredible power.
+Hello there, young trainer!\pI couldn't help but notice your\nstrong Pok\emon and battling\lskills.\p[.]\pHave you heard of Mega Evolution?\pIt's a fascinating phenomenon\nthat was discovered in the\lKalos region.\pAs a researcher of Pok\emon\nbattles, I have come to Kanto to\lstudy this incredible power.
 
 #org @gText_Vermillion_MegaRingResearcherSpeak2
-[.] [.]\n[.] [.]\pIf you're interested, I could give\nyou a special device called a Mega\lRing that will allow you to Mega\levolve your Pok\emon in battle.\pI have given this device to\nvarious strong and capable\ltrainers throughout Kanto as I\ldeemed them to have what it takes\lto master this incredible power.\pHaving watched your battling\nskills and bond with your Pok\emon,\lI think you also have what it\ltakes.\pHere, take it.
+[.]\pIf you're interested, I could give\nyou a special device called a Mega\lRing that will allow you to Mega\levolve your Pok\emon in battle.\pI have given this device to\nvarious strong and capable\ltrainers throughout Kanto as I\ldeemed them to have what it takes\lto master this incredible power.\pHaving watched your battling\nskills and bond with your Pok\emon,\lI think you also have what it\ltakes.\pHere, take it.
 
 #org @gText_Vermillion_MegaRingResearcherSpeak3
-Remember, Mega Evolution is not\nsomething to be taken lightly.\pIt requires a strong bond between\nyou and your Pok\emon, and can only\lbe used once per battle.\pTake some time to experiment with\ndifferent Mega Stones and see\lwhich Pok\emon and strategies work\lbest for you.\p[.] [.]\n[.] [.]\pI wish you the best of luck to\nbecome a true Mega Evolution\lmaster!
+Remember, Mega Evolution is not\nsomething to be taken lightly.\pIt requires a strong bond between\nyou and your Pok\emon, and can only\lbe used once per battle.\pTake some time to experiment with\ndifferent Mega Stones and see\lwhich Pok\emon and strategies work\lbest for you.\p[.]\pI wish you the best of luck to\nbecome a true Mega Evolution\lmaster!
 
 #org @gTest_gText_Vermillion_MegaRingResearcherSpeak4
-[.] [.]\n[.] [.]\pWait a minute, I can see that you\nhave a Mega Stone in your\lpossesion!\pHow did you come across it?\pDid you discover it while\ntraveling through Kalos or another\lregion that's familiar with Mega\lEvolution?\p[.] [.]\n[.] [.]\pYou discovered it here in Kanto?\pHuh[.] It seems my hypotheses was\ncorrect after all!
+[.]\pWait a minute, I can see that you\nhave a Mega Stone in your\lpossesion!\pHow did you come across it?\pDid you discover it while\ntraveling through Kalos or another\lregion that's familiar with Mega\lEvolution?\p[.]\pYou discovered it here in Kanto?\pHuh[.] It seems my hypotheses was\ncorrect after all!

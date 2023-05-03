@@ -5,13 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_OBTAIN_X_SCISSOR, 0x9A5
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ X Scissor | Route 8
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route8XScissor:
-    textcolor BLUE
     lock
     faceplayer
     checkflag FLAG_OBTAIN_X_SCISSOR

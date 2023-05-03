@@ -5,34 +5,12 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
-.equ FLAG_KYOGRE_ROUTE21, 0x9BB
-.equ FLAG_GROUDON_ROUTE3, 0x9BC
-.equ FLAG_REGIROCK_ROCKTUNNEL, 0x9BD
-.equ FLAG_REGICE_SEAFOAM, 0x9BE
-.equ FLAG_REGISTEEL_MTMOON, 0x9BF
-.equ FLAG_ROUTE21_THUNDERSTORMS, 0x9C0
-.equ FLAG_HEATRAN_MTEMBER, 0x9C6
-.equ FLAG_LATIAS_FULLMOON, 0x9C7
-.equ FLAG_LATIOS_FULLMOON, 0x9C8
-.equ FLAG_CRESSELIA_FULLMOON, 0x9C9
-.equ FLAG_DARKRAI_NEWMOON, 0x9CA
-.equ FLAG_ROUTE3_STEAM, 0x9D0
-.equ FLAG_TEACH_CLEFAIRY_DAZZLING_GLEAM, 0x9D3
-.equ FLAG_OLD_WOMAN_FIRE_HEAD, 0x9D4
-.equ FLAG_MEAN_LOOKING_FISH, 0x9D5
-.equ FLAG_READ_SIGNPOST, 0x9D6
-.equ FLAG_JIRACHI_ROCKTUNNEL, 0x9D7
-.equ FLAG_JIGGLYPUFF_ROCKTUNNEL, 0x9D8
-.equ FLAG_RAYQUAZA_NAVELROCK, 0x9D9
-.equ FLAG_CELEBI_VIRIDIAN_FOREST, 0x9DB
-
 @@@@@@@@@@@@@@@@@@@@@@
 @ Kyogre Route 21 Marine Cave
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route21_Kyogre:
     lock
     signmsg
-    textcolor BLACK
     msgbox gText_Route3_Groudon_BlueOrbReacting MSG_KEEPOPEN
     closeonkeypress
     pause 30
@@ -75,7 +53,6 @@ EventScript_Route21_MarineCave:
 EventScript_Route3_Groudon:
     lock
     signmsg
-    textcolor BLACK
     msgbox gText_Route3_Groudon_RedOrbReacting MSG_KEEPOPEN
     closeonkeypress
     pause 30
@@ -118,7 +95,6 @@ EventScript_Route3_TerraCave:
 EventScript_RockTunnel_Regirock:
     lock
     signmsg
-    textcolor BLACK
     callasm CheckRelicantWailord
     compare 0x8004 0x1
     if notequal _goto EventScript_RegirockSleep
@@ -148,7 +124,6 @@ EventScript_RockTunnel_Regirock:
 
 EventScript_RegirockSleep:
     signmsg
-    textcolor BLACK
     msgbox gText_RegisSleeping MSG_NORMAL
     release
     end
@@ -159,7 +134,6 @@ EventScript_RegirockSleep:
 EventScript_Seafoam_Regice:
     lock
     signmsg
-    textcolor BLACK
     callasm CheckRelicantWailord
     compare 0x8004 0x1
     if notequal _goto EventScript_RegiceSleep
@@ -189,7 +163,6 @@ EventScript_Seafoam_Regice:
 
 EventScript_RegiceSleep:
     signmsg
-    textcolor BLACK
     msgbox gText_RegisSleeping MSG_NORMAL
     release
     end
@@ -200,7 +173,6 @@ EventScript_RegiceSleep:
 EventScript_MtMoon_Registeel:
     lock
     signmsg
-    textcolor BLACK
     callasm CheckRelicantWailord
     compare 0x8004 0x1
     if notequal _goto EventScript_RegisteelSleep
@@ -230,7 +202,6 @@ EventScript_MtMoon_Registeel:
 
 EventScript_RegisteelSleep:
     signmsg
-    textcolor BLACK
     msgbox gText_RegisSleeping MSG_NORMAL
     release
     end
@@ -241,7 +212,6 @@ EventScript_RegisteelSleep:
 EventScript_MtEmber_Heatran:
     lock
     signmsg
-    textcolor BLACK
     applymovement PLAYER Move_PlayerExclaim
     waitmovement PLAYER
     cry SPECIES_HEATRAN 0x0
@@ -275,7 +245,6 @@ EventScript_MtEmber_Heatran:
 EventScript_Fullmoon_Latias:
     lock
     signmsg
-    textcolor BLACK
     checkitem ITEM_SOUL_DEW 0x1
     compare LASTRESULT 0x1
     if FALSE _goto EventScript_Legendaries_End
@@ -315,7 +284,6 @@ EventScript_Fullmoon_Latias:
 EventScript_Fullmoon_Latios:
     lock
     signmsg
-    textcolor BLACK
     checkitem ITEM_SOUL_DEW 0x1
     compare LASTRESULT 0x1
     if FALSE _goto EventScript_Legendaries_End
@@ -355,7 +323,6 @@ EventScript_Fullmoon_Latios:
 EventScript_Fullmoon_Cresselia:
     lock
     signmsg
-    textcolor BLACK
     cry SPECIES_CRESSELIA 0x0
     msgbox gText_Fullmoon_Cresselia MSG_KEEPOPEN
     closeonkeypress
@@ -400,7 +367,6 @@ EventScript_FullmoonIsland_Sign:
 EventScript_Newmoon_Darkrai:
     lock
     signmsg
-    textcolor BLACK
     msgbox gText_Newmoon_Darkrai MSG_KEEPOPEN
     closeonkeypress
     pause 30
@@ -443,7 +409,6 @@ EventScript_NewmoonIsland_Sign:
 EventScript_RockTunnel_Jirachi_Event:
     lock
     signmsg
-    textcolor BLACK
     msgbox gText_RockTunnel_Jirachi_1 MSG_KEEPOPEN
     callasm CheckJigglypuff
     compare 0x8004 0
@@ -497,7 +462,6 @@ EventScript_RockTunnel_Jirachi_Event:
 EventScript_RockTunnel_Jirachi_Signpost:
     lock
     signmsg
-    textcolor BLACK
     checkflag FLAG_READ_SIGNPOST
     if SET _goto EventScript_RockTunnel_Jirachi_Start
     msgbox gText_RockTunnel_Jirachi_Signpost_1 MSG_KEEPOPEN
@@ -593,7 +557,6 @@ Move_RockTunnel_Jirachi_Event_Jirachi_2:
 EventScript_NavelRock_Rayquaza:
     lock
     signmsg
-    textcolor BLACK
     msgbox gText_NavelRock_Rayquaza_Narrator_1 MSG_YESNO
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Legendaries_End
@@ -646,7 +609,6 @@ EventScript_NavelRock_Rayquaza_End:
 EventScript_VidianForest_Celebi:
     lock
     signmsg
-    textcolor BLACK
     pause 30
     sound 0x15
     applymovement PLAYER Move_VidianForest_Celebi_Player_1
