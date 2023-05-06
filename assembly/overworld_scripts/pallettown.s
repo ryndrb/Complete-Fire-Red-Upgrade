@@ -1722,6 +1722,10 @@ EventScript_0x816961E:
     setvar 0x4051 0x1
     setvar 0x4058 0x1
     setvar 0x4054 0x1
+    clearflag 0x9DD @ jessie viridian
+    clearflag 0x9DE @ james viridian
+    clearflag 0x9DF @ meowth viridian
+    setvar 0x5043 0x1
     release
     end
 
@@ -2307,7 +2311,6 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x9DC @ may oak lab sprite
     
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
-    setvar 0x503F 0x1 @ vermillion kalos researcher mega ring
 
     setflag 0x9BB @ kyogre
     setflag 0x9BC @ groudon
@@ -2320,4 +2323,7 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x9D8 @ jigglypuff (jirachi event)
     setflag 0x9D9 @ rayquaza
     setflag 0x9DB @ celebi
+    setflag 0x9DD @ jessie viridian
+    setflag 0x9DE @ james viridian
+    setflag 0x9DF @ meowth viridian
     return

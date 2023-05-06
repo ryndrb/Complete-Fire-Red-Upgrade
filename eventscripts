@@ -47,6 +47,9 @@ npc 5 1 7 EventScript_GymLeaderGiovanni
 npc 5 1 9 EventScript_GymGuySteelixite
 npc 3 1 11 EventScript_Viridian_OldRod
 map 5 3 MapScript_0x16A1DE
+sign 3 1 5 EventScript_Viridian_Wated_Signpost
+tile 3 1 4 EventScript_Viridian_RocketGang_Left
+tile 3 1 5 EventScript_Viridian_RocketGang_Right
 
 # VIRIDIAN FOREST
 npc 1 0 10 EventScript_DeletedKid

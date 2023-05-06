@@ -24,6 +24,7 @@
 #include "../include/wild_encounter.h"
 #include "../include/window.h"
 #include "../include/constants/abilities.h"
+#include "../include/constants/flags.h"
 #include "../include/constants/hold_effects.h"
 #include "../include/constants/items.h"
 #include "../include/constants/item_effects.h"
@@ -1013,7 +1014,7 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 		}
 	}
 
-	if (CanMonLearnTMHM(&mons[slotId], TMIdFromItemId(ITEM_HM02_FLY)))
+	if (FlagGet(FLAG_JESSIE_VIRIDIAN_SPRITE) && CanMonLearnTMHM(&mons[slotId], TMIdFromItemId(ITEM_HM02_FLY)))
     {
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_MOVES + FIELD_MOVE_FLY);
     }

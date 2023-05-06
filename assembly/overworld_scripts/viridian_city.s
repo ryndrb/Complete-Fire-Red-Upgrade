@@ -12,14 +12,11 @@ EventScript_GymLeaderGiovanni:
     setvar 0x8004 0xF
     setvar 0x8005 0x2
     special 0x174
-    call GiovanniNameBox
     trainerbattle1 0x1 0x15E 0x0 0x818F352 0x818F43F EventScript_0x8169F04
     checkflag 0x298
     if 0x0 _goto 0x8169F2F
-    call GiovanniNameBox
-    msgbox 0x818F4A2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg 0x818F4A2 MSG_KEEPOPEN 18 LEFT
+    closemsg
     fadescreen 0x1
     hidesprite 0x8
     fadescreen 0x0
@@ -40,17 +37,15 @@ EventScript_0x8169F04:
     end
 
 EventScript_0x8169F2F:
-    call GiovanniNameBox
-    msgbox 0x818F586 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818F586 MSG_KEEPOPEN 18 LEFT
+    closemsg
     checkitemspace 0x13A 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x8169F70
     giveitem_msg 0x818F675 ITEM_TM26
     setflag 0x298
-    call GiovanniNameBox
-    msgbox 0x818F695 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818F695 MSG_KEEPOPEN 18 LEFT
+    closemsg
     release
     end
 
@@ -238,10 +233,294 @@ Move_Viridian_GSBall:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ Viridian NameBox
+@ Viridian Wanted Signpost
 @@@@@@@@@@@@@@@@@@@@@@
-GiovanniNameBox:
-    setvar 0x8000 18
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
+EventScript_Viridian_Wated_Signpost:
+    signmsg
+    msgbox gText_Viridian_Wated_Signpost MSG_NORMAL
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rocket Gang
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Viridian_RocketGang_Left:
+    setvar 0x4001 0x1
+    goto EventScript_Viridian_RocketGang
+    end
+
+EventScript_Viridian_RocketGang_Right:
+    setvar 0x4001 0x2
+    goto EventScript_Viridian_RocketGang
+    end
+
+EventScript_Viridian_RocketGang:
+    lock
+    special 0x113
+    compare 0x4001 0x1
+    if equal _call EventScript_Viridian_RocketGang_Camera_Left
+    compare 0x4001 0x2
+    if equal _call EventScript_Viridian_RocketGang_Camera_Right
+    special 0x114
+    playsong 0x184 0x0
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_James_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    applymovement 14 Move_Viridian_RocketGang_James_1
+    waitmovement 14
+    npcmsg gText_Viridian_RocketGang_James_Speak_2 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    applymovement 13 Move_Viridian_RocketGang_Jessie_1
+    waitmovement 13
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_James_Speak_3 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    applymovement 13 Move_Viridian_RocketGang_Jessie_2
+    waitmovement 13
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_James_Speak_4 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    applymovement 15 Move_Viridian_RocketGang_Meowth_1
+    waitmovement 15    
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_James_Speak_5 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_James_Speak_6 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    pause 30
+    goto EventScript_Viridian_RocketGang_NoticePlayer
+
+EventScript_Viridian_RocketGang_NoticePlayer:
+    sound 0x15
+    applymovement 13 Move_Viridian_RocketGang_Jessie_3
+    applymovement 14 Move_Viridian_RocketGang_James_2
+    applymovement 15 Move_Viridian_RocketGang_Meowth_2
+    compare 0x4001 0x1
+    if equal _call EventScript_Viridian_RocketGang_Player_Left
+    compare 0x4001 0x2
+    if equal _call EventScript_Viridian_RocketGang_Player_Right
+    waitmovement 15
+    pause 15
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    pause 15
+    spriteface 13, RIGHT
+    spriteface 14, LEFT
+    spriteface 15, LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_7 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    pause 15
+    spriteface 13, DOWN
+    spriteface 14, DOWN
+    spriteface 15, DOWN
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_6 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    applymovement 13 Move_Viridian_RocketGang_Jessie_4
+    waitmovement 13
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_7 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    applymovement 14 Move_Viridian_RocketGang_James_3
+    waitmovement 14
+    npcmsg gText_Viridian_RocketGang_James_Speak_8 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    pause 30
+    spriteface 13, LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_8 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    spriteface 14, RIGHT
+    npcmsg gText_Viridian_RocketGang_James_Speak_9 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    spriteface 13, UP
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_9 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    spriteface 14, UP
+    npcmsg gText_Viridian_RocketGang_James_Speak_10 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    spriteface 13, DOWN
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_10 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    spriteface 14, DOWN
+    npcmsg gText_Viridian_RocketGang_James_Speak_11 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_11 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_James_Speak_12 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    applymovement 15 Move_Viridian_RocketGang_Meowth_3
+    waitmovement 15
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    sound 0x15
+    applymovement 14 Move_Viridian_RocketGang_James_4
+    waitmovement 14
+    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    pause 30
+    spriteface 13, RIGHT
+    spriteface 14, LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    spriteface 14, RIGHT
+    spriteface 15, LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    spriteface 13, DOWN
+    spriteface 14, DOWN
+    spriteface 15, DOWN
+    npcmsg gText_Viridian_RocketGang_James_Speak_14 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_4 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_12 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    npcmsg gText_Viridian_RocketGang_James_Speak_15 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    pause 30
+    fadescreen 0x1
+    hidesprite 13
+    hidesprite 14
+    hidesprite 15
+    setflag FLAG_JESSIE_VIRIDIAN_SPRITE
+    setflag FLAG_JAMES_VIRIDIAN_SPRITE
+    setflag FLAG_MEOWTH_VIRIDIAN_SPRITE
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x2
+    fadescreen 0x0
+    fadedefaultbgm
+    release
+    end
+
+EventScript_Viridian_RocketGang_Camera_Left:
+    applymovement CAMERA Move_Viridian_RocketGang_Camera_1
+    waitmovement CAMERA
     return
+
+EventScript_Viridian_RocketGang_Camera_Right:
+    applymovement CAMERA Move_Viridian_RocketGang_Camera_2
+    waitmovement CAMERA
+    return
+
+EventScript_Viridian_RocketGang_Player_Left:
+    applymovement PLAYER Move_Viridian_RocketGang_Player_1
+    special 0x113
+    applymovement CAMERA Move_Viridian_RocketGang_Camera_3
+    waitmovement CAMERA
+    special 0x114
+    return
+
+EventScript_Viridian_RocketGang_Player_Right:
+    applymovement PLAYER Move_Viridian_RocketGang_Player_2
+    special 0x113
+    applymovement CAMERA Move_Viridian_RocketGang_Camera_3
+    waitmovement CAMERA
+    special 0x114
+    return
+
+Move_Viridian_RocketGang_Camera_1:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+Move_Viridian_RocketGang_Camera_2:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_right
+    .byte end_m
+
+Move_Viridian_RocketGang_James_1:
+    .byte say_question
+    .byte walk_up_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_Viridian_RocketGang_Jessie_1:
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Viridian_RocketGang_Jessie_2:
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_Viridian_RocketGang_Meowth_1:
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_Viridian_RocketGang_Jessie_3:
+    .byte exclaim
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte walk_left
+    .byte walk_down
+    .byte end_m
+
+Move_Viridian_RocketGang_James_2:
+    .byte pause_long
+    .byte say_question
+    .byte walk_down_onspot_fastest
+    .byte walk_left
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Viridian_RocketGang_Meowth_2:
+    .byte pause_long
+    .byte say_question
+    .byte walk_down
+    .byte walk_left
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Viridian_RocketGang_Player_1:
+    .byte walk_right
+    .byte walk_up
+    .byte end_m
+
+Move_Viridian_RocketGang_Player_2:
+    .byte walk_up
+    .byte end_m
+
+Move_Viridian_RocketGang_Camera_3:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte end_m
+
+Move_Viridian_RocketGang_Jessie_4:
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Viridian_RocketGang_James_3:
+    .byte walk_down_onspot_fastest
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Viridian_RocketGang_Meowth_3:
+    .byte pause_long
+    .byte jump_onspot_down
+    .byte end_m
+
+Move_Viridian_RocketGang_James_4:
+    .byte exclaim
+    .byte pause_long
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte end_m

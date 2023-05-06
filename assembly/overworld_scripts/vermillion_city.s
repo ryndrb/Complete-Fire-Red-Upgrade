@@ -38,8 +38,6 @@ EventScript_0x816B97C:
     setvar 0x8004 0x4
     setvar 0x8005 0x1
     special 0x173
-    @checkflag 0x23B // flash stuff, replaced for kalos researcher
-    @if 0x0 _call 0x816B9AB
     clearflag 0xA0
     setflag 0x4B2
     setflag 0x822
@@ -60,7 +58,8 @@ EventScript_0x816B9AF:
     call LtSurgeNameBox
     msgbox 0x8194DA8 MSG_KEEPOPEN
     callasm RemoveNameBox
-    setvar VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING 0
+    clearflag 0xA1
+    setvar VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING 0x1
     release
     end
 
@@ -560,17 +559,11 @@ MapScript_Vermillion:
     
 MapScript_0x166906:
     setworldmapflag 0x895
-    @checkflag 0x2F9
-    @if 0x1 _call EventScript_0x8166913
     end
 
-@EventScript_0x8166913:
-@    setflag 0xA1
-@    return
-
 LevelScript_0x1668F1:
-    levelscript 0x407E, 0, EventScript_0x1668F1
-    levelscript VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING, 0, EventScript_Vermillion_MegaRingResearcher
+    levelscript 0x407E, 2, EventScript_0x1668F1
+    levelscript VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING, 1, EventScript_Vermillion_MegaRingResearcher
     .hword LEVEL_SCRIPT_TERMIN
 
 EventScript_0x1668F1:
@@ -583,6 +576,8 @@ EventScript_0x1668F1:
 
 EventScript_Vermillion_MegaRingResearcher:
     lock
+    pause 30
+    sound 0x15
     applymovement 8 Move_Vermillion_Researcher1
     applymovement PLAYER Move_Vermillion_Player1
     waitmovement 8
@@ -611,7 +606,7 @@ EventScript_Vermillion_MegaRingResearcher2:
     waitmovement 8
     hidesprite 8
     setflag 0xA1
-    setvar VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING 1
+    setvar VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING 2
     release
     end
 
@@ -633,13 +628,20 @@ EventScript_Vermillion_PlayerHasStones:
     waitmovement 8
     msgbox gTest_gText_Vermillion_MegaRingResearcherSpeak4 MSG_KEEPOPEN
     closeonkeypress
+    sound 0x15
+    applymovement 8 Move_Vermillion_Researcher3
+    waitmovement 8
+    msgbox gTest_gText_Vermillion_MegaRingResearcherSpeak5 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement 8 Move_Vermillion_Researcher4
+    waitmovement 8
+    msgbox gTest_gText_Vermillion_MegaRingResearcherSpeak6 MSG_KEEPOPEN
+    closeonkeypress
     goto EventScript_Vermillion_MegaRingResearcher2
     release
     end
 
 Move_Vermillion_Researcher1:
-    .byte pause_long
-    .byte pause_long
     .byte exclaim
     .byte pause_long
     .byte walk_right_onspot_fastest
@@ -654,8 +656,6 @@ Move_Vermillion_Player1:
     .byte pause_long
     .byte pause_long
     .byte walk_left_onspot_fastest
-    .byte pause_long
-    .byte pause_long
     .byte pause_long
     .byte pause_long
     .byte pause_long
@@ -674,6 +674,12 @@ Move_Vermillion_Researcher2:
 
 Move_Vermillion_Researcher3:
     .byte exclaim
+    .byte pause_long
+    .byte end_m
+
+Move_Vermillion_Researcher4:
+    .byte jump_onspot_up
+    .byte walk_up_onspot_fastest
     .byte pause_long
     .byte end_m
 

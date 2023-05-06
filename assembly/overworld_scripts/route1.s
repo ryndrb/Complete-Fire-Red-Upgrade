@@ -51,16 +51,15 @@ EventScript_Route1_May:
     msgbox gText_Route1_NotMetMayInPalletTownSpeaks3 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
-    applymovement 0x5 EventScript_Route1_MayLeaving1
     getplayerpos 0x8000 0x8001
     compare 0x8000 10
     if equal _call EventScript_Route1_MovePlayer1
-    compare 0x8000 13
-    if equal _call EventScript_Route1_MovePlayer2
     compare 0x8000 11
-    if equal _call EventScript_Route1_MovePlayer3
+    if equal _call EventScript_Route1_MovePlayer2
     compare 0x8000 12
     if equal _call EventScript_Route1_MovePlayer3
+    compare 0x8000 13
+    if equal _call EventScript_Route1_MovePlayer4
     waitmovement 0x5
     hidesprite 0x5
     setflag FLAG_MAY_ROUTE1_SPRITE
@@ -83,16 +82,15 @@ EventScript_Route1_MetMayInPalletTown:
     msgbox gText_Route1_MetMayInPalletTownSpeaks3 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
-    applymovement 0x5 EventScript_Route1_MayLeaving1
     getplayerpos 0x8000 0x8001
     compare 0x8000 10
     if equal _call EventScript_Route1_MovePlayer1
-    compare 0x8000 13
-    if equal _call EventScript_Route1_MovePlayer2
     compare 0x8000 11
-    if equal _call EventScript_Route1_MovePlayer3
+    if equal _call EventScript_Route1_MovePlayer2
     compare 0x8000 12
     if equal _call EventScript_Route1_MovePlayer3
+    compare 0x8000 13
+    if equal _call EventScript_Route1_MovePlayer4
     waitmovement 0x5
     hidesprite 0x5
     setflag FLAG_MAY_ROUTE1_SPRITE
@@ -129,16 +127,24 @@ MoveMaySprite4:
     return
 
 EventScript_Route1_MovePlayer1:
-    applymovement PLAYER EventScript_Route1_PlayerStepAside1
+    applymovement 0x5 Move_Route1_May_Leaving_1
+    applymovement PLAYER Move_Route1_PlayerStepAside1
     return
 
 EventScript_Route1_MovePlayer2:
-    applymovement PLAYER EventScript_Route1_PlayerStepAside2
+    applymovement 0x5 Move_Route1_May_Leaving_1
+    applymovement PLAYER Move_Route1_PlayerStepAside1
     return 
 
 EventScript_Route1_MovePlayer3:
-    applymovement PLAYER EventScript_Route1_PlayerStepAside3
+    applymovement 0x5 Move_Route1_May_Leaving_2
+    applymovement PLAYER Move_Route1_PlayerStepAside2
     return 
+
+EventScript_Route1_MovePlayer4:
+    applymovement 0x5 Move_Route1_May_Leaving_3
+    applymovement PLAYER Move_Route1_PlayerStepAside3
+    return
 
 EventScrsipt_Route1_MayNoticePlayer:
     .byte walk_up
@@ -161,33 +167,62 @@ EventScript_Route1_PlayerNoticeMay:
     .byte pause_long
     .byte end_m
 
-EventScript_Route1_MayLeaving1:
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte end_m
-
-EventScript_Route1_PlayerStepAside1:
-    .byte walk_right
-    .byte walk_left_onspot_fastest
+Move_Route1_May_Leaving_1:
     .byte pause_long
-    .byte walk_up_onspot_fastest
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
     .byte end_m
 
-EventScript_Route1_PlayerStepAside2:
+Move_Route1_May_Leaving_2:
     .byte walk_left
-    .byte walk_right_onspot_fastest
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_Route1_May_Leaving_3:
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_Route1_PlayerStepAside1:
+    .byte walk_right
+    .byte walk_left_onspot_fastest
     .byte pause_long
     .byte walk_up_onspot_fastest
     .byte end_m
 
-EventScript_Route1_PlayerStepAside3:
-    .byte walk_right
+Move_Route1_PlayerStepAside2:
+    .byte pause_long
     .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_Route1_PlayerStepAside3:
+    .byte pause_long
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
     .byte pause_long
     .byte walk_up_onspot_fastest
     .byte end_m

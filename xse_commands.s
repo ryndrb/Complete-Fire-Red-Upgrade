@@ -2119,3 +2119,16 @@ setvar 0x800B, \spdefIv
 setvar 0x800C, \abilityNum
 givepokemon \species, \level, \item, 0x0, 0x1, \ball 
 .endm
+
+.macro npcmsg text:req type:req index=0 pos=0
+pause 0xA
+setvar 0x8000, \index
+setvar 0x8001, \pos
+callasm DrawNameBox
+msgbox \text, \type
+.endm
+
+.macro closemsg
+closeonkeypress
+callasm RemoveNameBox
+.endm
