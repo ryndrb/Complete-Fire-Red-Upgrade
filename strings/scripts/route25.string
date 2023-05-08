@@ -24,3 +24,21 @@ Yeehah!\nThanks, bud! I owe you one!\pSo, did you come to see my\nPok\emon colle
 
 #org @gText_Route25_BillSpeak6
 Yeehah!\nThanks, lady! I owe you one!\pSo, did you come to see my\nPok\emon collection?\pYou didn't?\nThat's a bummer.\pI've got to thank you[.]\nOh, here, maybe this'll do.
+
+#org @gText_Route25_Brawly_Speak_1
+Well, well, well[.]\pLook what the waves washed up!\pWhat brings you here at Cerulean\nCape?\p[.]\pAh, a fellow trainer, I see.\nYou look like you can handle some\lrough seas.
+
+#org @gText_Route25_Brawly_Speak_2
+I'm Brawly, the Gym Leader of\nDewford Town in Hoenn.\pI came here to ride the waves of\nadventure!\pI heard there were some strong\ntrainers in these parts, and I'm\lalways up for a good battle.\pWhat about you? What brings you\nhere?\p[.]\pAh, I see. You're on a journey to\nbecome a Pok\emon Master.\lJust like me!\pThat's awesome!\pWe're awesome!\pIf you're up for it, I'd love to\nhave a battle with you.
+
+#org @gText_Route25_Brawly_Defeat
+Whoa, wow!\pYou made a much bigger splash than\nI expected!
+
+#org @gText_Route25_Brawly_Speak_3
+You gave me a run for my money\nthere!\pI can tell you put a lot of effort\ninto your training.\pYour Pok\emon are like the waves,\nstrong and unrelenting.\pPlease, take this with you.
+
+#org @gText_Route25_Brawly_Speak_4
+I'm always looking for new\nchallenges, and battling you was\ldefinitely the highlight of my\ljourney so far.\pYou have a real talent for Pok\emon\nbattles, and I'm sure you'll go\lfar as a trainer!\p[.]\pI have to keep training if I want\nto reach my full potential.\pI have some other battles lined up\nhere in Kanto, but maybe our\lpaths will cross again someday.\pIf they do, you can count on me\nfor a rematch!\pTake care!
+
+#org @gText_Route25_Brawly_PlayerDontWantToBattle
+No worries!\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me!

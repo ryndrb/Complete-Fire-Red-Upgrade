@@ -99,3 +99,27 @@ Someone, somewhere, saw that you\nmade somebody's wish come true.
 
 #org @gText_Lavender_FireHead_Granny_Speak_3
 Ah! My desire has been realized!\nThank you so much, Trainer!
+
+#org @gText_Lavender_Flannery_Speak_1
+Hey there!\p[.]\pThis place is so restful, don't\nyou think?\pI've always wanted to come to\nKanto and see eveything it has to\loffer.\p[.]
+
+#org @gText_Lavender_Flannery_Speak_2
+I'm Flannery, the Gym Leader of\nLavaridge Town in Hoenn.\pI'm here in Kanto to learn more\nabout the region and its trainers.\pAnd to hopefully have some fun\nbattles along the way!
+
+#org @gText_Lavender_Flannery_Speak_3
+Wow, you've got some strong\nPok\emon with you!\pThat's awesome!\pI bet we'd have a great battle if\nwe ever faced off!\p[.]\pOh, having said that, what do you\nsay? Care for a battle?
+
+#org @gText_Lavender_Flannery_Defeat
+Whew! On the verge of eruption!
+
+#org @gText_Lavender_Flannery_Speak_4
+That was a great battle!\pYou and your Pok\emon have have\nsome real, hot-potential!\pHere, take this with you.
+
+#org @gText_Lavender_Flannery_Speak_5
+You know, I've been thinking\na lot about what it means to be\la Gym Leader.\pIt's not just about winning\nbattles[.] it's about connecting\lwith other trainers, and helping\lthem become better.\pI think you have what it takes to\nbecome a great trainer.
+
+#org @gText_Lavender_Flannery_Speak_6
+[.]\pAnyways, thank you for the battle!\pI have a feeling we'll meet again\nsomeday, and I look forward to it.\pBut for now, I have to say\ngoodbye.\pFarewell, and good luck on your\njourney!
+
+#org @gText_Lavender_Flannery_PlayerDontWantToBattle
+No worries!\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me!

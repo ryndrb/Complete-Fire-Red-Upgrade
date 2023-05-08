@@ -534,6 +534,58 @@ Move_Lavender_FireHead_Granny_1:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Flannery Lavender Town
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Lavender_Flannery:
+    lock
+    pause 30
+    sound 0x15
+    applymovement 8 Move_Lavender_Flannery_1
+    waitmovement 8
+    npcmsg gText_Lavender_Flannery_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Lavender_Flannery_Speak_2 MSG_KEEPOPEN 35 LEFT
+    closemsg
+    applymovement 8 Move_Lavender_Flannery_2
+    waitmovement 8
+    npcmsg gText_Lavender_Flannery_Speak_3 MSG_YESNO 35 LEFT
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Lavender_Flannery_PlayerDontWantToBattle
+    closemsg
+    trainerbattle3 0x3 83 0x0 gText_Lavender_Flannery_Defeat
+    npcmsg gText_Lavender_Flannery_Speak_4 MSG_KEEPOPEN 35 LEFT
+    closemsg
+    giveitem ITEM_CHARCOAL 0x1 MSG_OBTAIN
+    npcmsg gText_Lavender_Flannery_Speak_5 MSG_KEEPOPEN 35 LEFT
+    closemsg
+    npcmsg gText_Lavender_Flannery_Speak_6 MSG_KEEPOPEN 35 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite 8
+    setflag FLAG_FLANNERY_LAVENDER_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScript_Lavender_Flannery_PlayerDontWantToBattle:
+    npcmsg gText_Lavender_Flannery_PlayerDontWantToBattle MSG_KEEPOPEN 35 LEFT
+    closemsg
+    spriteface 8, UP
+    release
+    end
+
+Move_Lavender_Flannery_1:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+Move_Lavender_Flannery_2:
+    .byte say_question
+    .byte pause_long
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Pokemon Tower NameBox
 @@@@@@@@@@@@@@@@@@@@@@
 RivalNameBox:

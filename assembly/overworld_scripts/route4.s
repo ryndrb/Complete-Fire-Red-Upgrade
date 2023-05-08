@@ -160,6 +160,59 @@ EventScript_GirlInWater:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Roxanne Route 4
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Route4_Roxanne:
+    lock
+    npcmsg gText_Route4_Roxanne_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement 10 Move_Route4_Roxanne_1
+    waitmovement 10
+    npcmsg gText_Route4_Roxanne_Speak_2 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    applymovement 10 Move_Route4_Roxanne_2
+    waitmovement 10
+    npcmsg gText_Route4_Roxanne_Speak_3 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Route4_Roxanne_Speak_4 MSG_KEEPOPEN 32 LEFT
+    closemsg
+    npcmsg gText_Route4_Roxanne_Speak_5 MSG_YESNO 32 LEFT
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Route4_Roxanne_PlayerDontWantToBattle
+    closemsg
+    trainerbattle3 0x3 27 0x0 gText_Route4_Roxanne_Defeat
+    npcmsg gText_Route4_Roxanne_Speak_6 MSG_KEEPOPEN 32 LEFT
+    closemsg
+    giveitem ITEM_HARD_STONE 0x1 MSG_OBTAIN
+    npcmsg gText_Route4_Roxanne_Speak_7 MSG_KEEPOPEN 32 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite 10
+    setflag FLAG_ROXANNE_ROUTE4_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScript_Route4_Roxanne_PlayerDontWantToBattle:
+    npcmsg gText_Route4_Roxanne_PlayerDontWantToBattle MSG_KEEPOPEN 32 LEFT
+    closemsg
+    release
+    end
+
+Move_Route4_Roxanne_1:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+Move_Route4_Roxanne_2:
+    .byte say_question
+    .byte pause_long
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Route 4 NameBox
 @@@@@@@@@@@@@@@@@@@@@@
 MayNameBox:

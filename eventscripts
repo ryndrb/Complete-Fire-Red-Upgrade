@@ -141,6 +141,7 @@ npc 1 88 1 EventScript_PokeTowerLady
 npc 3 4 1 EventScript_LavenderTownMerchant
 npc 8 2 0 EventScript_Lavender_MrFuji
 npc 8 2 6 EventScript_ShadowClaw
+npc 8 2 7 EventScript_Lavender_Flannery
 npc 8 4 1 EventScript_Lavender_FireHead
 npc 8 5 0 EventScript_PokeMartMain
 npc 8 5 4 EventScript_LavenderTown
@@ -155,17 +156,18 @@ tile 1 89 1 EventScript_PokeTower_RivalBattle2
 npc 1 11 0 EventScript_0x160B3A
 npc 3 5 2 EventScript_PowerItemsSeller
 npc 3 5 6 EventScript_Cut
-npc 9 0 1 EventScript_VermillionTMMerchant
-npc 9 4 1 EventScript_Eviolite
-npc 9 5 0 EventScript_PokeMartMain
-npc 9 5 3 EventScript_VermillionCity
-npc 9 1 7 EventScript_PokemonCenterClerk
-npc 9 1 8 EventScript_UtilityOldMan
-npc 9 6 0 EventScript_GymLeaderSurge
-npc 9 6 3 EventScript_GymGuyManectite
 npc 3 5 8 EventScript_Vermillion_Brendan
 npc 3 5 9 EventScript_Vermillion_Brendan
 npc 9 0 0 EventScript_Vermillion_GoodRod
+npc 9 0 1 EventScript_VermillionTMMerchant
+npc 9 1 7 EventScript_PokemonCenterClerk
+npc 9 1 8 EventScript_UtilityOldMan
+npc 9 3 6 EventScript_Vermillion_Wattson
+npc 9 4 1 EventScript_Eviolite
+npc 9 5 0 EventScript_PokeMartMain
+npc 9 5 3 EventScript_VermillionCity
+npc 9 6 0 EventScript_GymLeaderSurge
+npc 9 6 3 EventScript_GymGuyManectite
 tile 3 5 4 EventScript_MewUnderTruckEncounter
 tile 3 5 5 EventScript_VermillionCityGymLocked
 tile 1 6 0 EventScript_SSAnne_Rival0
@@ -306,6 +308,7 @@ npc 3 22 7 EventScript_Snarl
 npc 16 0 6 EventScript_PokemonCenterClerk
 npc 16 0 7 EventScript_UtilityOldMan
 npc 3 22 0 EventScript_GirlInWater
+npc 3 22 9 EventScript_Route4_Roxanne
 
 # ROUTE 5
 npc 3 23 0 EventScript_FlameCharge
@@ -410,6 +413,7 @@ npc 3 43 8 EventScript_Slowbronite
 
 # ROUTE 25
 npc 3 44 10 EventScript_Cut
+npc 3 44 13 EventScript_Route25_Brawly
 npc 30 0 0 EventScript_Route25_Bill
 npc 30 0 1 EventScript_Route25_Bill
 sign 30 0 1 EventScript_RotomEncounter

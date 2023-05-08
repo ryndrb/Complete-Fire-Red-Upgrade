@@ -188,6 +188,46 @@ EventScript_0x8170621:
     return
 
 @@@@@@@@@@@@@@@@@@@@
+@ Brawly Route 25
+@@@@@@@@@@@@@@@@@@@@
+EventScript_Route25_Brawly:
+    lock
+    pause 30
+    sound 0x15
+    applymovement 14 Move_Route25_Brawly_1
+    waitmovement 14
+    npcmsg gText_Route25_Brawly_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Route25_Brawly_Speak_2 MSG_YESNO 33 LEFT
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Route25_Brawly_PlayerDontWantToBattle
+    closemsg
+    trainerbattle3 0x3 28 0x0 gText_Route25_Brawly_Defeat
+    npcmsg gText_Route25_Brawly_Speak_3 MSG_KEEPOPEN 33 LEFT
+    closemsg
+    giveitem ITEM_BLACK_BELT 0x1 MSG_OBTAIN
+    npcmsg gText_Route25_Brawly_Speak_4 MSG_KEEPOPEN 33 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite 14
+    setflag FLAG_BRAWLY_ROUTE25_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScript_Route25_Brawly_PlayerDontWantToBattle:
+    npcmsg gText_Route25_Brawly_PlayerDontWantToBattle MSG_KEEPOPEN 33 LEFT
+    closemsg
+    release
+    end
+
+Move_Route25_Brawly_1:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@
 @ Route 25 NameBox
 @@@@@@@@@@@@@@@@@@@@
 BillNameBox:

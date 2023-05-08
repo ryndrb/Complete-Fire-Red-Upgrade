@@ -406,8 +406,109 @@ static const struct TrainerMonItemCustomMoves sParty_RSPsychicF[] = {DUMMY_TRAIN
 static const struct TrainerMonItemCustomMoves sParty_RSGentleman[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_EliteFourSidney[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_EliteFourPhoebe[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_LeaderRoxanne[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_LeaderBrawly[] = {DUMMY_TRAINER_MON};
+static const struct TrainerMonItemCustomMoves sParty_Route4_LeaderRoxanne[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CORSOLA,
+        .ability = Ability_Hidden, // regenerator
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_BERRY_JUICE,
+        .moves = {MOVE_RECOVER, MOVE_CONFUSERAY, MOVE_BARRIER, MOVE_WATERPULSE},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_MAGCARGO,
+        .ability = Ability_Hidden, // weak armor
+        .nature = NATURE_MODEST,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_CHESTO_BERRY,
+        .moves = {MOVE_ANCIENTPOWER, MOVE_FLAMEBURST},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_ARCHEN,
+        .ability = Ability_Hidden, // tough claws
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_EXPERT_BELT,
+        .moves = {MOVE_WINGATTACK, MOVE_ROCKTHROW, MOVE_KNOCKOFF, MOVE_STEELWING},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_TYRUNT,
+        .ability = Ability_1, // strong jaw
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_PASSHO_BERRY,
+        .moves = {MOVE_ICEFANG, MOVE_FIREFANG, MOVE_THUNDERFANG, MOVE_BITE},
+    },
+};
+static const struct TrainerMonItemCustomMoves sParty_Route25_LeaderBrawly[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_MEDITITE,
+        .ability = Ability_Hidden, // pure power
+        .nature = NATURE_IMPISH,
+        .ivSpread = {IV_HP_ICE},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_LIGHT_CLAY,
+        .moves = {MOVE_REFLECT, MOVE_LIGHTSCREEN, MOVE_DRAINPUNCH, MOVE_HIDDENPOWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_HAKAMO_O,
+        .ability = Ability_Hidden, // multiscale
+        .nature = NATURE_IMPISH,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_SKYUPPERCUT, MOVE_DRAGONTAIL, MOVE_WORKUP, MOVE_PROTECT},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_BRELOOM,
+        .ability = Ability_Hidden, // technician
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_EXPERT_BELT,
+        .moves = {MOVE_MACHPUNCH, MOVE_SPORE, MOVE_BULLETSEED, MOVE_DRAINPUNCH},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_HITMONCHAN,
+        .ability = Ability_2, // iron fist
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_COBA_BERRY,
+        .moves = {MOVE_MACHPUNCH, MOVE_BULLETPUNCH, MOVE_PURSUIT, MOVE_FAKEOUT},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_HARIYAMA,
+        .ability = Ability_1, // thick fat
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .moves = {MOVE_KNOCKOFF, MOVE_CROSSCHOP, MOVE_BULLETPUNCH},
+    },
+};
 static const struct TrainerMonItemCustomMoves sParty_LeaderTateLiza[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_SchoolKidM[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_SchoolKidF[] = {DUMMY_TRAINER_MON};
@@ -632,8 +733,131 @@ static const struct TrainerMonItemCustomMoves sParty_AquaAdminMatt[] = {DUMMY_TR
 static const struct TrainerMonItemCustomMoves sParty_AquaAdminShelly[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_MagmaAdminTabitha[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_MagmaAdminCourtney[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_LeaderWattson[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_LeaderFlannery[] = {DUMMY_TRAINER_MON};
+static const struct TrainerMonItemCustomMoves sParty_Vermillion_LeaderWattson[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_DEDENNE,
+        .ability = Ability_Hidden, // electric surge
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_HP_ICE},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_TERRAIN_EXTENDER,
+        .moves = {MOVE_SNARL, MOVE_THUNDERWAVE, MOVE_ROAR, MOVE_HIDDENPOWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_ROTOM_FROST,
+        .ability = Ability_1, // levitate
+        .nature = NATURE_MODEST,
+        .ivSpread = {IV_HP_ICE},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_SHADOWBALL, MOVE_VOLTSWITCH, MOVE_HIDDENPOWER, MOVE_PAINSPLIT},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_RAICHU_A,
+        .ability = Ability_1, // surge surfer
+        .nature = NATURE_MODEST,
+        .ivSpread = {IV_HP_FIGHTING},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_VOLTSWITCH, MOVE_PSYSHOCK, MOVE_AGILITY, MOVE_HIDDENPOWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_ELECTIVIRE,
+        .ability = Ability_1, // motor drive
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_DRAINPUNCH, MOVE_THUNDERPUNCH, MOVE_MACHPUNCH, MOVE_ICEPUNCH},
+    },
+    {
+        .iv = 0,
+        .lvl = 2,
+        .species = SPECIES_MANECTRIC,
+        .ability = Ability_Hidden, // intimidate
+        .nature = NATURE_MODEST,
+        .ivSpread = {IV_HP_ICE},
+        .evSpread = {EV_60},
+        .heldItem = ITEM_AIR_BALLOON,
+        .moves = {MOVE_FLAMETHROWER, MOVE_VOLTSWITCH, MOVE_HIDDENPOWER, MOVE_SIGNALBEAM},
+    },
+};
+static const struct TrainerMonItemCustomMoves sParty_LeaderFlannery[] = {
+    {
+        .iv = 0,
+        .lvl = 2,
+        .species = SPECIES_TORKOAL,
+        .ability = Ability_2, // drought
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_HP_GROUND},
+        .evSpread = {EV_80},
+        .heldItem = ITEM_HEAT_ROCK,
+        .moves = {MOVE_LAVAPLUME, MOVE_YAWN, MOVE_STEALTHROCK, MOVE_HIDDENPOWER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_BLAZIKEN,
+        .ability = Ability_Hidden, // speed boost
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_80},
+        .heldItem = ITEM_WEAKNESS_POLICY,
+        .moves = {MOVE_PROTECT, MOVE_OVERHEAT, MOVE_LOWKICK, MOVE_UTURN},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_TALONFLAME,
+        .ability = Ability_Hidden, // gale wings
+        .nature = NATURE_MODEST,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_80},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .moves = {MOVE_FLAREBLITZ, MOVE_ACROBATICS, MOVE_ROOST, MOVE_UTURN},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_ROTOM_HEAT,
+        .ability = Ability_Hidden, // levitate
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_80},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_PAINSPLIT, MOVE_VOLTSWITCH, MOVE_OVERHEAT, MOVE_WILLOWISP},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_ARCANINE,
+        .ability = Ability_1, // intimidate
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_80},
+        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_EXTREMESPEED, MOVE_MORNINGSUN, MOVE_WILDCHARGE, MOVE_FLAREBLITZ},
+    },
+        {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CHANDELURE,
+        .ability = Ability_Hidden, // infiltrator
+        .nature = NATURE_MODEST,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_80},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_FLAMETHROWER, MOVE_SHADOWBALL, MOVE_CALMMIND, MOVE_SUBSTITUTE},
+    },
+};
 static const struct TrainerMonItemCustomMoves sParty_LeaderNorman[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_LeaderWinona[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_LeaderWallace[] = {DUMMY_TRAINER_MON};
@@ -10454,8 +10678,8 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
         .nature = NATURE_IMPISH,
         .ability = Ability_1, // sturdy
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
+        .evSpread = {EV_20},
+        .heldItem = ITEM_RED_CARD,
         .moves = {MOVE_STEALTHROCK, MOVE_ROCKTOMB, MOVE_ROAR},
     },
     {
@@ -10465,8 +10689,8 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
         .nature = NATURE_ADAMANT,
         .ability = Ability_2, // sturdy
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
+        .evSpread = {EV_20},
+        .heldItem = ITEM_CHESTO_BERRY,
         .moves = {MOVE_SPARK, MOVE_TACKLE},
     },
     {
@@ -10476,8 +10700,8 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
         .nature = NATURE_IMPISH,
         .ability = Ability_Hidden, // weakarmor
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
+        .evSpread = {EV_20},
+        .heldItem = ITEM_QUICK_BALL,
         .moves = {MOVE_FURYCUTTER, MOVE_SMACKDOWN},
     },
     {
@@ -10487,8 +10711,8 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
         .nature = NATURE_QUIET,
         .ability = Ability_Hidden, // storm drain
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
+        .evSpread = {EV_20},
+        .heldItem = ITEM_SITRUS_BERRY,
         .moves = {MOVE_CONFUSERAY, MOVE_GIGADRAIN, MOVE_INGRAIN, MOVE_ATTRACT},
     },  
     {
@@ -10498,8 +10722,8 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
         .nature = NATURE_QUIET,
         .ability = Ability_1, // sturdy
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
+        .evSpread = {EV_20},
+        .heldItem = ITEM_CHOPLE_BERRY,
         .moves = {MOVE_SMACKDOWN, MOVE_BIND, MOVE_SANDSTORM, MOVE_TAUNT},
     },
     {
@@ -10510,7 +10734,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
         .ability = Ability_1, // defeatist
         .ivSpread = {IV_MAX},
         .evSpread = {EV_20},
-        .heldItem = ITEM_ORAN_BERRY,
+        .heldItem = ITEM_BERRY_JUICE,
         .moves = {MOVE_WINGATTACK, MOVE_ROCKTHROW},
     },     
 };
@@ -10523,7 +10747,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .nature = NATURE_BOLD,
         .ability = Ability_Hidden, // drizzle
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_40},
         .heldItem = ITEM_NONE,
         .moves = {MOVE_WATERPULSE, MOVE_ROOST, MOVE_AIRCUTTER, MOVE_UTURN},
     },        
@@ -10534,7 +10758,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .nature = NATURE_ADAMANT,
         .ability = Ability_2, // huge power
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_40},
         .heldItem = ITEM_NONE,
         .moves = {MOVE_AQUAJET, MOVE_SLAM, MOVE_REST, MOVE_SLEEPTALK},
     },   
@@ -10545,7 +10769,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .nature = NATURE_RELAXED,
         .ability = Ability_2, // stamina
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_40},
         .heldItem = ITEM_NONE,
         .moves = {MOVE_STEALTHROCK, MOVE_BARRIER, MOVE_YAWN, MOVE_BULLDOZE},
     },       
@@ -10556,7 +10780,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .nature = NATURE_ADAMANT,
         .ability = Ability_Hidden, // protean
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_40},
         .heldItem = ITEM_NONE,
         .moves = {MOVE_TOXICSPIKES, MOVE_WATERPULSE, MOVE_PROTECT, MOVE_UTURN},
     },
@@ -10567,7 +10791,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .nature = NATURE_ADAMANT,
         .ability = Ability_2, // unaware
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_40},
         .heldItem = ITEM_NONE,
         .moves = {MOVE_QUICKATTACK, MOVE_AQUAJET, MOVE_REST, MOVE_WORKUP},
     },  
@@ -10578,7 +10802,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .nature = NATURE_MODEST,
         .ability = Ability_2, // natural cure
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_40},
         .heldItem = ITEM_NONE,
         .moves = {MOVE_BUBBLEBEAM, MOVE_RECOVER, MOVE_POWERGEM, MOVE_PSYBEAM},
     },        
@@ -10592,7 +10816,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderLtSurge[] = {
         .ability = Ability_Hidden, // electric surge
         .nature = NATURE_BOLD,
         .ivSpread = {IV_HP_FIRE},
-        .evSpread = {EV_20},
+        .evSpread = {EV_60},
         .heldItem = ITEM_ELECTRIC_SEED,
         .moves = {MOVE_DISCHARGE, MOVE_SCALD, MOVE_HIDDENPOWER, MOVE_SPIKES},
     },
@@ -10603,7 +10827,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderLtSurge[] = {
         .ability = Ability_1, // surge surfer
         .nature = NATURE_MODEST,
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_60},
         .heldItem = ITEM_TWISTED_SPOON,
         .moves = {MOVE_PSYCHIC, MOVE_KNOCKOFF, MOVE_VOLTSWITCH, MOVE_SURF},
     },
@@ -10614,7 +10838,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderLtSurge[] = {
         .ability = Ability_Hidden, // swarm
         .nature = NATURE_MODEST,
         .ivSpread = {IV_HP_WATER},
-        .evSpread = {EV_20},
+        .evSpread = {EV_60},
         .heldItem = ITEM_LEPPA_BERRY,
         .moves = {MOVE_STICKYWEB, MOVE_VOLTSWITCH, MOVE_HIDDENPOWER, MOVE_SIGNALBEAM},
     },
@@ -10625,7 +10849,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderLtSurge[] = {
         .ability = Ability_1, // levitate
         .nature = NATURE_BOLD,
         .ivSpread = {IV_HP_GROUND},
-        .evSpread = {EV_20},
+        .evSpread = {EV_60},
         .heldItem = ITEM_LEFTOVERS,
         .moves = {MOVE_VOLTSWITCH, MOVE_WILLOWISP, MOVE_PAINSPLIT, MOVE_HIDDENPOWER},
     },
@@ -10636,7 +10860,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderLtSurge[] = {
         .ability = Ability_1, // levitate
         .nature = NATURE_TIMID,
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
+        .evSpread = {EV_60},
         .heldItem = ITEM_SHUCA_BERRY,
         .moves = {MOVE_VOLTSWITCH, MOVE_TOXIC, MOVE_REFLECT, MOVE_LIGHTSCREEN},
     },
@@ -10647,7 +10871,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderLtSurge[] = {
         .ability = Ability_1, // strong jaw
         .nature = NATURE_ADAMANT,
         .ivSpread = {IV_MAX},
-        .evSpread = {EV_40},
+        .evSpread = {EV_60},
         .heldItem = ITEM_EXPERT_BELT,
         .moves = {MOVE_PSYCHICFANGS, MOVE_ICEFANG, MOVE_THUNDERFANG, MOVE_FIREFANG},
     },

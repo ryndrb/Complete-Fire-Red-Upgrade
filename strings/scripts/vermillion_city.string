@@ -93,3 +93,27 @@ You've discovered it here in\nKanto!?
 
 #org @gTest_gText_Vermillion_MegaRingResearcherSpeak6
 Very good!\pThis is very good, young trainer!\p[.]\pIt seems my hypotheses was correct\nafter all!
+
+#org @gText_Vermillion_Wattson_Speak_1
+Ah, a new face in Vermillion City!\nWelcome, welcome!\pI was just talking to my friend\nhere, the chairman of the Pok\emon\lFan Club.\pWe go way back, and we always\nenjoy swapping stories about our\lfavorite Pok\emon! Wahahahah!
+
+#org @gText_Vermillion_Wattson_Speak_2
+My name is Wattson, the Gym Leader\nof Mauville City in Hoenn.\pNow, what are you doing here?\p[.]\pWhat's that?\pYou say you want to challenge me\nto a Pok\emon battle?\pWahahahah! Now that is amusing!\pThen, I, Wattson, shall electrify\nyou!\pReady?
+
+#org @gText_Vermillion_Wattson_Defeat
+Wahahahah!\pFine, I lost!
+
+#org @gText_Vermillion_Wattson_Speak_3
+Wahahahah!\nThat was an electrifying battle!\pYou really know how to handle your\nPok\emon.\pI must say, I'm impressed by your\nskills as a trainer!\pPlease, take this with you.
+
+#org @gText_Vermillion_Wattson_Speak_4
+It's always a thrill to battle\nsomeone who is as passionate about\lPok\emon as I am. Wahahahah!\pI could feel the energy in the air\nduring our battle!
+
+#org @gText_Vermillion_Wattson_Speak_5
+And my dear friend, it was great\nto see you again.\pI always enjoy our discussion\nabout Pok\emon and reminiscing\labout the good old times!\pWahahahah!
+
+#org @gText_Vermillion_Wattson_Speak_6
+It was a pleasure to meet you,\nyoung trainer.\pI hope to cross paths with you\nagain someday.\pUntil then, keep training hard and\nnever give up on your dreams!\pTake care! Wahahahah!
+
+#org @gText_Vermillion_Wattson_PlayerDontWantToBattle
+Wahahahah!\nNo worries!\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me!

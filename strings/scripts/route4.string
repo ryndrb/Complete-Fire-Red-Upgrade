@@ -27,3 +27,30 @@ She's the Gym Leader in Cerulean\nCity, isn't she?\pMaybe I should try to take h
 
 #org @gText_GirlInWater
 Be careful, the water's really\nslippery here!
+
+#org @gText_Route4_Roxanne_Speak_1
+Hmm[.]\pThe rock formations here are quite\ndifferent from Hoenn[.]\pPerhaps the presence of calcium\nis causing this variation? Hmm[.]
+
+#org @gText_Route4_Roxanne_Speak_2
+Oh, excuse me.\pI got lost in my thoughts again.
+
+#org @gText_Route4_Roxanne_Speak_3
+[.]\pIt's my first time meating a\nLeague Challenger here in Kanto.
+
+#org @gText_Route4_Roxanne_Speak_4
+My name is Roxanne, the Gym Leader\nof Rustboro City in Hoenn.\pI've come to Kanto to learn more\nabout its geology.\pI've been exploring Mt. Moon for a\nwhile now, studying the rocks and\lsearching for native Pok\emon.\pAnd I must say, it's been a great\nlearning experience so far!
+
+#org @gText_Route4_Roxanne_Speak_5
+[.]\p[.]\pYou're on a journey to become a\nPok\emon Master? That's noble a goal.\pI wish you the best of luck!\pOh, but before I forget, would you\nlike to have a battle?\pI think a battle with you would be\na great learning experience.
+
+#org @gText_Route4_Roxanne_Defeat
+So[.] I lost[.]\pIt seems that I still have much\nmore to learn[.]
+
+#org @gText_Route4_Roxanne_Speak_6
+I must say, I'm impressed with\nyour skills as a trainer.\pPlease, take this with you.
+
+#org @gText_Route4_Roxanne_Speak_7
+You have a bright future ahead of\nyou.\pAnd don't forget to keep learning\nabout the different types of\lPok\emon and their environments.\pThat knowledge will serve you well\nin your journey.\p[.]\pWell, I should be on my way.\pI still have much to learn about\nKanto's geology, and I don't want\lto miss any opportunities to study\lnew Pokemon.\pIf our paths cross again, I'd be\nhappy to battle once more.\pTake care!
+
+#org @gText_Route4_Roxanne_PlayerDontWantToBattle
+No worries!\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me!

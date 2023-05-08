@@ -684,6 +684,54 @@ Move_Vermillion_Researcher4:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@
+@ Wattson Vermillion City
+@@@@@@@@@@@@@@@@@@@@
+EventScript_Vermillion_Wattson:
+    lock
+    pause 30
+    sound 0x15
+    applymovement 7 Move_Vermillion_Wattson_1
+    waitmovement 7
+    npcmsg gText_Vermillion_Wattson_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Vermillion_Wattson_Speak_2 MSG_YESNO 34 LEFT
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Vermillion_Wattson_PlayerDontWantToBattle
+    closemsg
+    trainerbattle3 0x3 82 0x0 gText_Vermillion_Wattson_Defeat
+    npcmsg gText_Vermillion_Wattson_Speak_3 MSG_KEEPOPEN 34 LEFT
+    closemsg
+    giveitem ITEM_MAGNET 0x1 MSG_OBTAIN
+    npcmsg gText_Vermillion_Wattson_Speak_4 MSG_KEEPOPEN 34 LEFT
+    closemsg
+    spriteface 7, LEFT
+    spriteface 1, RIGHT
+    npcmsg gText_Vermillion_Wattson_Speak_5 MSG_KEEPOPEN 34 LEFT
+    closemsg
+    faceplayer
+    npcmsg gText_Vermillion_Wattson_Speak_6 MSG_KEEPOPEN 34 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite 7
+    setflag FLAG_WATTSON_VERMILLION_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScript_Vermillion_Wattson_PlayerDontWantToBattle:
+    npcmsg gText_Vermillion_Wattson_PlayerDontWantToBattle MSG_KEEPOPEN 34 LEFT
+    closemsg
+    spriteface 7, DOWN
+    release
+    end
+
+Move_Vermillion_Wattson_1:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@
 @ Vermillion NameBox
 @@@@@@@@@@@@@@@@@@@@
 BrendanNameBox:

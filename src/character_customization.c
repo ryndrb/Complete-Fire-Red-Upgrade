@@ -289,6 +289,10 @@ extern const u16 gEventObjectPic_MomPal[];
 extern const u16 gEventObjectPic_JessiePal[];
 extern const u16 gEventObjectPic_JamesPal[];
 extern const u16 gEventObjectPic_MeowthPal[];
+extern const u16 gEventObjectPic_RoxannePal[];
+extern const u16 gEventObjectPic_BrawlyPal[];
+extern const u16 gEventObjectPic_WattsonPal[];
+extern const u16 gEventObjectPic_FlanneryPal[];
 
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Archer;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ariana;
@@ -310,6 +314,10 @@ extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Portal;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Jessie;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_James;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Meowth;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Roxanne;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Brawly;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Wattson;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Flannery;
 
 static NPCPtr sOverworldTable2[] = {
 	/*  0 */ &gEventObjectGraphicsInfo_Archer,
@@ -332,6 +340,10 @@ static NPCPtr sOverworldTable2[] = {
 	/* 17 */ &gEventObjectGraphicsInfo_Jessie,
 	/* 18 */ &gEventObjectGraphicsInfo_James,
 	/* 19 */ &gEventObjectGraphicsInfo_Meowth,
+	/* 20 */ &gEventObjectGraphicsInfo_Roxanne,
+	/* 21 */ &gEventObjectGraphicsInfo_Brawly,
+	/* 22 */ &gEventObjectGraphicsInfo_Wattson,
+	/* 23 */ &gEventObjectGraphicsInfo_Flannery,
 };
 
 // create 255 OW tables
@@ -374,6 +386,10 @@ static const struct SpritePalette sObjectEventSpritePalettes12[] = {
 	{gEventObjectPic_JessiePal, 0x121B},
 	{gEventObjectPic_JamesPal, 0x121C},
 	{gEventObjectPic_MeowthPal, 0x121D},
+	{gEventObjectPic_RoxannePal, 0x121E},
+	{gEventObjectPic_BrawlyPal, 0x121F},
+	{gEventObjectPic_WattsonPal, 0x1220},
+	{gEventObjectPic_FlanneryPal, 0x1221},
 	{NULL, 0x11FF},
 };
 

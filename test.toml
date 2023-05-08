@@ -1,6 +1,6 @@
 [General]
 ApplicationVersion = '''0.5.1.5'''
-FreeSpaceSearch = '''2F43C0'''
+FreeSpaceSearch = '''35F440'''
 FreeSpaceBuffer = '''100'''
 NextExportID = '''0'''
 ShowRawIVByteForTrainer = False
@@ -55,10 +55,10 @@ Format = '''[name""11]823'''
 DefaultHash = '''747F95CC'''
 
 [[NamedAnchors]]
-Name = '''data.pokemon.moves.names'''
-Address = 0x14E0DDC
-Format = '''^[name""13]923'''
-DefaultHash = '''C4BD7B07'''
+Name = '''data.menus.text.pokemon'''
+Address = 0x45A2E8
+Format = '''[text<"">]27'''
+DefaultHash = '''A66C82FB'''
 
 [[NamedAnchors]]
 Name = '''data.abilities.names'''
@@ -107,12 +107,6 @@ Name = '''data.pokemon.moves.descriptions'''
 Address = 0x143AAA8
 Format = '''[description<"">]data.pokemon.moves.names-1'''
 DefaultHash = '''BD0C8971'''
-
-[[NamedAnchors]]
-Name = '''data.menus.text.pokemon'''
-Address = 0x45A2E8
-Format = '''[text<"">]27'''
-DefaultHash = '''A66C82FB'''
 
 [[NamedAnchors]]
 Name = '''data.menus.text.pcoptions'''
@@ -3011,6 +3005,12 @@ Name = '''data.statstages.critical'''
 Address = 0x250530
 Format = '''[rate:]!0000'''
 DefaultHash = '''DE7D5917'''
+
+[[NamedAnchors]]
+Name = '''data.pokemon.moves.names'''
+Address = 0x14E0DDC
+Format = '''^[name""13]923'''
+DefaultHash = '''C4BD7B07'''
 
 #################################
 #################################

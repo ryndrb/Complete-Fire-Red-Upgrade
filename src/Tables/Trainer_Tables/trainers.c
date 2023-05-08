@@ -343,8 +343,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_LeaderRoxanne),
-        .party = {.ItemCustomMoves = sParty_LeaderRoxanne}
+        .partySize = NELEMS(sParty_Route4_LeaderRoxanne),
+        .party = {.ItemCustomMoves = sParty_Route4_LeaderRoxanne}
     },
     [TRAINER_LEADER_BRAWLY] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -355,8 +355,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_LeaderBrawly),
-        .party = {.ItemCustomMoves = sParty_LeaderBrawly}
+        .partySize = NELEMS(sParty_Route25_LeaderBrawly),
+        .party = {.ItemCustomMoves = sParty_Route25_LeaderBrawly}
     },
     [TRAINER_LEADER_TATE_LIZA] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -1003,8 +1003,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_LeaderWattson),
-        .party = {.ItemCustomMoves = sParty_LeaderWattson}
+        .partySize = NELEMS(sParty_Vermillion_LeaderWattson),
+        .party = {.ItemCustomMoves = sParty_Vermillion_LeaderWattson}
     },
     [TRAINER_LEADER_FLANNERY] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
