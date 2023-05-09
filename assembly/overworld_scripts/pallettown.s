@@ -2033,7 +2033,6 @@ EventScript_PalletTown_MayBrother:
 @ May Pallet Town
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PalletTown_May:
-    setvar 0x5043 1
     lock
     call UnknownNameBox
     msgbox gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN

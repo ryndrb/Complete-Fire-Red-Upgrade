@@ -1014,7 +1014,7 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 		}
 	}
 
-	if (FlagGet(FLAG_JESSIE_VIRIDIAN_SPRITE) && CanMonLearnTMHM(&mons[slotId], TMIdFromItemId(ITEM_HM02_FLY)))
+	if (CanMonLearnTMHM(&mons[slotId], TMIdFromItemId(ITEM_HM02_FLY)))
     {
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_MOVES + FIELD_MOVE_FLY);
     }

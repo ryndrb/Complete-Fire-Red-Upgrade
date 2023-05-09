@@ -63,7 +63,7 @@ const struct Trainer gTrainers[] =
         .trainerClass = CLASS_AROMA_LADY,
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_AROMA_LADY,
-        .trainerName = {_T,_r,_a,_y,_n,_e,_e,_END},
+        .trainerName = NO_NAME,
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
@@ -802,17 +802,17 @@ const struct Trainer gTrainers[] =
         .partySize = NELEMS(sParty_RSPkmnBreederM),
         .party = {.ItemCustomMoves = sParty_RSPkmnBreederM}
     },
-    [TRAINER_RS_PKMN_BREEDER_F] = {
+    [TRAINER_TRAYNEE] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
         .trainerClass = CLASS_PKMN_BREEDER_RS,
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_RS_BREEDER_F,
-        .trainerName = NO_NAME,
+        .trainerName = {_T,_r,_a,_y,_n,_e,_e,_END},
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_RSPkmnBreederF),
-        .party = {.ItemCustomMoves = sParty_RSPkmnBreederF}
+        .aiFlags = 0,
+        .partySize = NELEMS(sParty_Route5_Traynee),
+        .party = {.ItemCustomMoves = sParty_Route5_Traynee}
     },
     [TRAINER_RS_PKMN_RANGER_M] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,

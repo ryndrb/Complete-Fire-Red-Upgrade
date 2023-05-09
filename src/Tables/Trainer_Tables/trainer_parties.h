@@ -67,74 +67,7 @@
 static const struct TrainerMonItemCustomMoves sParty_AquaLeader[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_AquaGruntM[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_AquaGruntF[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_RSAromaLady[] = {
-    {
-        .iv = 0,
-        .lvl = 0,
-        .species = SPECIES_CHANSEY,
-        .ability = Ability_RandomAll,
-        .nature = NATURE_ADAMANT,
-        .ivSpread = {IV_ZERO},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_HEALINGWISH},
-    },
-    {
-        .iv = 0,
-        .lvl = 0,
-        .species = SPECIES_CHANSEY,
-        .ability = Ability_RandomAll,
-        .nature = NATURE_ADAMANT,
-        .ivSpread = {IV_ZERO},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_HEALINGWISH},
-    },
-    {
-        .iv = 0,
-        .lvl = 0,
-        .species = SPECIES_CHANSEY,
-        .ability = Ability_RandomAll,
-        .nature = NATURE_ADAMANT,
-        .ivSpread = {IV_ZERO},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_HEALINGWISH},
-    },
-    {
-        .iv = 0,
-        .lvl = 0,
-        .species = SPECIES_CHANSEY,
-        .ability = Ability_RandomAll,
-        .nature = NATURE_ADAMANT,
-        .ivSpread = {IV_ZERO},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_HEALINGWISH},
-    },
-    {
-        .iv = 0,
-        .lvl = 0,
-        .species = SPECIES_CHANSEY,
-        .ability = Ability_RandomAll,
-        .nature = NATURE_ADAMANT,
-        .ivSpread = {IV_ZERO},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_HEALINGWISH},
-    },
-    {
-        .iv = 0,
-        .lvl = 0,
-        .species = SPECIES_CHANSEY,
-        .ability = Ability_RandomAll,
-        .nature = NATURE_ADAMANT,
-        .ivSpread = {IV_ZERO},
-        .evSpread = {EV_0},
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_HEALINGWISH},
-    },
-};
+static const struct TrainerMonItemCustomMoves sParty_RSAromaLady[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_RSRuinManiac[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_Proton[] = {
     {
@@ -717,7 +650,74 @@ static const struct TrainerMonItemCustomMoves sParty_May3[] = {
     },
 };
 static const struct TrainerMonItemCustomMoves sParty_RSPkmnBreederM[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonItemCustomMoves sParty_RSPkmnBreederF[] = {DUMMY_TRAINER_MON};
+static const struct TrainerMonItemCustomMoves sParty_Route5_Traynee[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CHANSEY,
+        .ability = Ability_RandomAll,
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_ZERO},
+        .evSpread = {EV_0},
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_HEALINGWISH},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CHANSEY,
+        .ability = Ability_RandomAll,
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_ZERO},
+        .evSpread = {EV_0},
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_HEALINGWISH},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CHANSEY,
+        .ability = Ability_RandomAll,
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_ZERO},
+        .evSpread = {EV_0},
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_HEALINGWISH},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CHANSEY,
+        .ability = Ability_RandomAll,
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_ZERO},
+        .evSpread = {EV_0},
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_HEALINGWISH},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CHANSEY,
+        .ability = Ability_RandomAll,
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_ZERO},
+        .evSpread = {EV_0},
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_HEALINGWISH},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_CHANSEY,
+        .ability = Ability_RandomAll,
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_ZERO},
+        .evSpread = {EV_0},
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_HEALINGWISH},
+    },
+};
 static const struct TrainerMonItemCustomMoves sParty_RSPkmnRangerM[] = {DUMMY_TRAINER_MON_IV};
 static const struct TrainerMonItemCustomMoves sParty_RSPkmnRangerF[] = {DUMMY_TRAINER_MON_IV};
 static const struct TrainerMonItemCustomMoves sParty_MagmaLeader[] = {DUMMY_TRAINER_MON};

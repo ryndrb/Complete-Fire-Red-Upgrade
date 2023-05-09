@@ -313,8 +313,8 @@ npc 3 22 9 EventScript_Route4_Roxanne
 # ROUTE 5
 npc 3 23 0 EventScript_FlameCharge
 npc 3 23 1 EventScript_Mawilite
-npc 17 0 1 EventScript_Traynee
-npc 17 0 2 EventScript_Ivy
+npc 17 0 1 EventScript_Route5_Traynee
+npc 17 0 2 EventScript_Route5_Ivy
 
 # ROUTE 6
 npc 1 31 0 EventScipt_Route6GyroBall

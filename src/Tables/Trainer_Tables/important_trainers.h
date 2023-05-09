@@ -783,10 +783,10 @@ const struct MultiRaidTrainer gImportantTrainers[] =
 {
     {
 		.owNum = EVENT_OBJ_GFX_AROMA_LADY,
-		.trainerClass = CLASS_AROMA_LADY,
+		.trainerClass = CLASS_PKMN_BREEDER_RS,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = FEMALE,
-		.otId = 0x04,
+		.otId = 66,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -799,10 +799,10 @@ const struct MultiRaidTrainer gImportantTrainers[] =
     },
     {
 		.owNum = EVENT_OBJ_GFX_AROMA_LADY,
-		.trainerClass = CLASS_AROMA_LADY,
+		.trainerClass = CLASS_PKMN_BREEDER_RS,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = FEMALE,
-		.otId = 0x04,
+		.otId = 66,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -815,10 +815,10 @@ const struct MultiRaidTrainer gImportantTrainers[] =
     },
     {
 		.owNum = EVENT_OBJ_GFX_AROMA_LADY,
-		.trainerClass = CLASS_AROMA_LADY,
+		.trainerClass = CLASS_PKMN_BREEDER_RS,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = FEMALE,
-		.otId = 0x04,
+		.otId = 66,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -831,10 +831,10 @@ const struct MultiRaidTrainer gImportantTrainers[] =
     },
     {
 		.owNum = EVENT_OBJ_GFX_AROMA_LADY,
-		.trainerClass = CLASS_AROMA_LADY,
+		.trainerClass = CLASS_PKMN_BREEDER_RS,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = FEMALE,
-		.otId = 0x04,
+		.otId = 66,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -847,10 +847,10 @@ const struct MultiRaidTrainer gImportantTrainers[] =
     },
     {
 		.owNum = EVENT_OBJ_GFX_AROMA_LADY,
-		.trainerClass = CLASS_AROMA_LADY,
+		.trainerClass = CLASS_PKMN_BREEDER_RS,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = FEMALE,
-		.otId = 0x04,
+		.otId = 66,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{
@@ -863,10 +863,10 @@ const struct MultiRaidTrainer gImportantTrainers[] =
     },
     {
 		.owNum = EVENT_OBJ_GFX_AROMA_LADY,
-		.trainerClass = CLASS_AROMA_LADY,
+		.trainerClass = CLASS_PKMN_BREEDER_RS,
 		.backSpriteId = SINGLE_BATTLE,
 		.gender = FEMALE,
-		.otId = 0x04,
+		.otId = 66,
 		.name = sTrainerName_Madeline,
 		.spreads =
 		{

@@ -142,7 +142,8 @@
 #define TRAINER_MAY_2                             63
 #define TRAINER_MAY_3                             64
 #define TRAINER_RS_PKMN_BREEDER_M                 65
-#define TRAINER_RS_PKMN_BREEDER_F                 66
+// #define TRAINER_RS_PKMN_BREEDER_F                 66
+#define TRAINER_TRAYNEE                           66
 #define TRAINER_RS_PKMN_RANGER_M                  67
 #define TRAINER_RS_PKMN_RANGER_F                  68
 #define TRAINER_MAGMA_LEADER                      69

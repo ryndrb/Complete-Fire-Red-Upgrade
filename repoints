@@ -308,30 +308,6 @@ gText_TextSpeedInstant 083cc338
 #endif
 
 ##Trainer Battle Sprites
-BrockTiles 823991C
-BrockPal 8239DBC
-
-MistyTiles 8239924
-MistyPal 8239DC4
-
-SurgeTiles 823992C
-SurgePal 8239DCC
-
-ErikaTiles 8239934
-ErikaPal 8239DD4
-
-KogaTiles 823993C
-KogaPal 8239DDC
-
-BlaineTiles 8239944
-BlainePal 8239DE4
-
-SabrinaTiles 823994C
-SabrinaPal 8239DEC
-
-GiovanniTiles 82398DC
-GiovanniPal 8239D7C
-
 ProtonTiles 82395A4
 ProtonPal 8239A44
 

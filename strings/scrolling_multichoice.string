@@ -601,9 +601,6 @@ Snom[SHRINK][ALIGN][53][GREEN]1250 [RED]Coins
 #org @T_EXPERIENCE
 Experience
 
-#org @T_BUYEVS
-Buy EVs
-
 #org @T_CLEAREVS
 Clear EVs
 
@@ -628,22 +625,22 @@ Speed
 #org @T_CANCEL
 Cancel
 
-#org @EV_HP
+#org @MON_HP
 Hp
 
-#org @EV_ATTACK
+#org @MON_ATTACK
 Attack
 
-#org @EV_DEFENSE
+#org @MON_DEFENSE
 Defense
 
-#org @EV_SPEED
+#org @MON_SPEED
 Speed
 
-#org @EV_SPATTACK
+#org @MON_SPATTACK
 Sp Attack
 
-#org @EV_SPDEFENSE
+#org @MON_SPDEFENSE
 Sp Defense
 
 #org @EV_4

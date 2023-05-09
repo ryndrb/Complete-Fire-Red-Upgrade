@@ -8,367 +8,206 @@
 @@@@@@@@@@@@@@@@@@@@@@
 @ Traynee Services | Drayano inspired
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_Traynee:
+EventScript_Route5_Traynee:
     checkflag FLAG_TRAYNEE_ROUTE5_GREET
-    if NOT_SET _goto EventScipt_ExpLadyGreet
+    if NOT_SET _goto EventScript_Route5_Traynee_Greet
     faceplayer
-    msgbox gText_ExpTrain MSG_KEEPOPEN
+    npcmsg gText_Route5_Traynee_WhichToTrain MSG_KEEPOPEN 9 LEFT
+    closemsg
     setvar 0x8000 0x12
     setvar 0x8001 0x6
     setvar 0x8004 0x0
     special 0x158
     waitstate
     compare LASTRESULT 0xA
-    if greaterorequal _goto EventScript_TrayneeSeeYa
+    if greaterorequal _goto EventScript_Route5_Traynee_SeeYa
     switch LASTRESULT
-    case 0, EventScript_Exp
-    case 1, EventScript_BuyEv
-    case 2, EvetnScript_ResetEv
-    case 3, EventScript_EvHP
-    case 4, EventScript_EvAttack
-    case 5, EventScript_EvDefense
-    case 6, EventScript_EvSpAttack
-    case 7, EventScript_EvSpDefense
-    case 8, EventScript_EvSpeed
-    case 9, EventScript_TrayneeSeeYa
+    case 0, EventScript_Route5_Traynee_Exp
+    case 1, EventScript_Route5_Traynee_ResetEv
+    case 2, EventScript_Route5_Traynee_EvHP
+    case 3, EventScript_Route5_Traynee_EvAttack
+    case 4, EventScript_Route5_Traynee_EvDefense
+    case 5, EventScript_Route5_Traynee_EvSpAttack
+    case 6, EventScript_Route5_Traynee_EvSpDefense
+    case 7, EventScript_Route5_Traynee_EvSpeed
+    case 8, EventScript_Route5_Traynee_SeeYa
     end
 
-EventScipt_ExpLadyGreet:
+EventScript_Route5_Traynee_Greet:
     faceplayer
-    msgbox gText_ExpLadyGreet MSG_KEEPOPEN
+    npcmsg gText_Route5_Traynee_Greet_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Route5_Traynee_Greet_2 MSG_KEEPOPEN 9 LEFT
+    closemsg 
     setflag FLAG_TRAYNEE_ROUTE5_GREET
     release
     end
 
-EventScript_Exp:
+EventScript_Route5_Traynee_Exp:
     setflag FLAG_TRAYNEE_EXP_TRAINING_NO_EV
-    msgbox gText_Exp MSG_KEEPOPEN
-    trainerbattle9 0x9 0x04 0x0 gText_TrainingCompleted gText_Dummy
+    npcmsg gText_Route5_Traynee_Exp MSG_KEEPOPEN 9 LEFT
+    closemsg
+    trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
     clearflag FLAG_TRAYNEE_EXP_TRAINING_NO_EV
     release
     end
 
-EventScript_BuyEv:
-    msgbox gText_BuyForWhichMon MSG_KEEPOPEN
+EventScript_Route5_Traynee_ResetEv:
+    npcmsg gText_Route5_Traynee_WhichMonToReset MSG_KEEPOPEN 9 LEFT
+    closemsg
     special 0x9F
     waitstate
-    copyvar 0x8005 0x8004
     compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_TrayneeSeeYa
-    special 0x148
-	compare LASTRESULT 0x1
-	if 0x1 _goto EventScript_ThisIsAnEggTraynee
-    msgbox gText_WhichMonStat MSG_KEEPOPEN
-    setvar 0x8000 0x13
-    setvar 0x8001 0x6
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    copyvar 0x8006 LASTRESULT
-    compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_TrayneeSeeYa
-    switch LASTRESULT
-    case 0, EventScript_BuyHP
-    case 1, EventScript_BuyAttack
-    case 2, EventScript_BuyDefense
-    case 3, EventScript_BuySpeed
-    case 4, EventScript_BuySpAttack
-    case 5, EventScript_BuySpDefense
-    end
-
-EventScript_BuyHP:
-    msgbox gText_HowManyEV MSG_KEEPOPEN
-    call EventScript_ChooseEVAmount
-    end
-
-EventScript_BuyAttack:
-    msgbox gText_HowManyEV MSG_KEEPOPEN
-    call EventScript_ChooseEVAmount
-    end
-
-EventScript_BuyDefense:
-    msgbox gText_HowManyEV MSG_KEEPOPEN
-    call EventScript_ChooseEVAmount
-    end
-
-EventScript_BuySpeed:
-    msgbox gText_HowManyEV MSG_KEEPOPEN
-    call EventScript_ChooseEVAmount
-    end
-
-EventScript_BuySpAttack:
-    msgbox gText_HowManyEV MSG_KEEPOPEN
-    call EventScript_ChooseEVAmount
-    end
-
-EventScript_BuySpDefense:
-    msgbox gText_HowManyEV MSG_KEEPOPEN
-    call EventScript_ChooseEVAmount
-    end
-
-EventScript_ChooseEVAmount:
-    setvar 0x8000 0x14
-    setvar 0x8001 0x6
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_TrayneeSeeYa
-    switch LASTRESULT
-    case 0, EventScript_4
-    case 1, EventScript_8
-    case 2, EventScript_12
-    case 3, EventScript_64
-    case 4, EventScript_128
-    case 5, EventScript_252
-    return
-
-EventScript_4:
-    setvar 0x8008 0x190
-    buffernumber 0x0 0x8008
-    checkmoney 0x190 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyTraynee MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_BuyEv
-    removemoney 0x190 0x00
-    msgbox gText_AllDone MSG_KEEPOPEN
-    setvar 0x8007 0x4
-    callasm AddEVsTraynee
+    if greaterorequal _goto EventScript_Route5_Traynee_SeeYa
+    special2 LASTRESULT 0x147
+	compare LASTRESULT 0x19C
+	if equal _goto EventScript_Route5_Traynee_ThisIsAnEgg
+    callasm ResetAllEVs
+    pause 30
+    copyvar 0x8003 0x0
+    special 0x7C
+    fanfare 0x13E
+    waitfanfare
+    npcmsg gText_Route5_Traynee_EVResetDone MSG_KEEPOPEN 9 LEFT
+    closemsg
     release
     end
 
-EventScript_8:
-    setvar 0x8008 0x320
-    buffernumber 0x0 0x8008
-    checkmoney 0x320 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyTraynee MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_BuyEv
-    removemoney 0x320 0x00
-    msgbox gText_AllDone MSG_KEEPOPEN
-    setvar 0x8007 0x8
-    callasm AddEVsTraynee
-    release
-    end
-
-EventScript_12:
-    setvar 0x8008 0x640
-    buffernumber 0x0 0x8008
-    checkmoney 0x640 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyTraynee MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_BuyEv
-    removemoney 0x640 0x00
-    msgbox gText_AllDone MSG_KEEPOPEN
-    setvar 0x8007 0xC
-    callasm AddEVsTraynee
-    release
-    end
-
-EventScript_64:
-    setvar 0x8008 0x1900
-    buffernumber 0x0 0x8008
-    checkmoney 0x1900 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyTraynee MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_BuyEv
-    removemoney 0x1900 0x00
-    msgbox gText_AllDone MSG_KEEPOPEN
-    setvar 0x8007 0x40
-    callasm AddEVsTraynee
-    release
-    end
-
-EventScript_128:
-    setvar 0x8008 0x3200
-    buffernumber 0x0 0x8008
-    checkmoney 0x3200 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyTraynee MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_BuyEv
-    removemoney 0x3200 0x00
-    msgbox gText_AllDone MSG_KEEPOPEN
-    setvar 0x8007 0x80
-    callasm AddEVsTraynee
-    release
-    end
-
-EventScript_252:
-    setvar 0x8008 0x6270
-    buffernumber 0x0 0x8008
-    checkmoney 0x6270 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyTraynee MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_BuyEv
-    removemoney 0x6270 0x00
-    msgbox gText_AllDone MSG_KEEPOPEN
-    setvar 0x8007 0xFC
-    callasm AddEVsTraynee
-    release
-    end
-
-EventScript_NotEnoughMoney:
-    msgbox gText_NotEnoughMoney MSG_KEEPOPEN
-    release
-    end
-
-EventScript_EvHP:
+EventScript_Route5_Traynee_EvHP:
     setflag FLAG_TRAYNEE_HP_TEAM
-    msgbox gText_Hp MSG_KEEPOPEN
-    trainerbattle9 0x9 0x04 0x0 gText_TrainingCompleted gText_Dummy
+    npcmsg gText_Route5_Traynee_EvHP MSG_KEEPOPEN 9 LEFT
+    closemsg
+    trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
     clearflag FLAG_TRAYNEE_HP_TEAM
     release
     end
 
-EventScript_EvAttack:
+EventScript_Route5_Traynee_EvAttack:
     setflag FLAG_TRAYNEE_ATT_TEAM
-    msgbox gText_Attack MSG_KEEPOPEN
-    trainerbattle9 0x9 0x04 0x0 gText_TrainingCompleted gText_Dummy
+    npcmsg gText_Route5_Traynee_EvAttack MSG_KEEPOPEN 9 LEFT
+    closemsg
+    trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
     clearflag FLAG_TRAYNEE_ATT_TEAM
     release
     end
 
-EventScript_EvDefense:
+EventScript_Route5_Traynee_EvDefense:
     setflag FLAG_TRAYNEE_DEF_TEAM
-    msgbox gText_Defense MSG_KEEPOPEN
-    trainerbattle9 0x9 0x04 0x0 gText_TrainingCompleted gText_Dummy
+    npcmsg gText_Route5_Traynee_EvDefense MSG_KEEPOPEN 9 LEFT
+    closemsg
+    trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
     clearflag FLAG_TRAYNEE_DEF_TEAM
     release
     end
 
-EventScript_EvSpAttack:
+EventScript_Route5_Traynee_EvSpAttack:
     setflag FLAG_TRAYNEE_SPA_TEAM
-    msgbox gText_SpAttack MSG_KEEPOPEN
-    trainerbattle9 0x9 0x04 0x0 gText_TrainingCompleted gText_Dummy
+    npcmsg gText_Route5_Traynee_EvSpAttack MSG_KEEPOPEN 9 LEFT
+    closemsg
+    trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
     clearflag FLAG_TRAYNEE_SPA_TEAM
     release
     end
 
-EventScript_EvSpDefense:
+EventScript_Route5_Traynee_EvSpDefense:
     setflag FLAG_TRAYNEE_SPD_TEAM
-    msgbox gText_SpDefense MSG_KEEPOPEN
-    trainerbattle9 0x9 0x04 0x0 gText_TrainingCompleted gText_Dummy
+    npcmsg gText_Route5_Traynee_EvSpDefense MSG_KEEPOPEN 9 LEFT
+    closemsg
+    trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
     clearflag FLAG_TRAYNEE_SPD_TEAM
     release
     end
 
-EventScript_EvSpeed:
+EventScript_Route5_Traynee_EvSpeed:
     setflag FLAG_TRAYNEE_SPE_TEAM
-    msgbox gText_Speed MSG_KEEPOPEN
-    trainerbattle9 0x9 0x04 0x0 gText_TrainingCompleted gText_Dummy
+    npcmsg gText_Route5_Traynee_EvSpeed MSG_KEEPOPEN 9 LEFT
+    closemsg
+    trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
     clearflag FLAG_TRAYNEE_SPE_TEAM
     release
     end
 
-EvetnScript_ResetEv:
-    msgbox gText_ResetEV MSG_KEEPOPEN
-    special 0x9F
-    waitstate
-    compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_TrayneeSeeYa
-    special 0x148
-	compare LASTRESULT 0x1
-	if 0x1 _goto EventScript_ThisIsAnEggTraynee
-    callasm ResetAllEVs
-    copyvar 0x8003 0x0
-    special 0x7C
-    msgbox gText_EVReset MSG_KEEPOPEN
+EventScript_Route5_Traynee_ThisIsAnEgg:
+    npcmsg gText_Route5_ThisIsAnEgg MSG_KEEPOPEN 9 LEFT
+    closemsg
     release
     end
 
-EventScript_TrayneeSeeYa:
-    msgbox gText_TrayneeSeeYa MSG_KEEPOPEN
-    release
-    end
-
-EventScript_ThisIsAnEggTraynee:
-    msgbox gText_ThisIsAnEggTraynee MSG_KEEPOPEN
+EventScript_Route5_Traynee_SeeYa:
+    npcmsg gText_Route5_Traynee_Seeya MSG_KEEPOPEN 9 LEFT
+    closemsg
     release
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Ivy Services
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_Ivy:
+EventScript_Route5_Ivy:
     checkflag FLAG_IVY_ROUTE5_GREET
-    if NOT_SET _goto EventScript_IvyGreet
+    if NOT_SET _goto EventScript_Route5_Ivy_Greet
     faceplayer
-    msgbox gText_IvyService MSG_KEEPOPEN
+    npcmsg gText_Route5_Ivy_WhatService MSG_KEEPOPEN 10 LEFT
+    closemsg
     setvar 0x8000 0x15
     setvar 0x8001 0x4
     setvar 0x8004 0x0
     special 0x158
     waitstate
     compare LASTRESULT 0x4
-    if greaterorequal _goto EventScript_TrayneeSeeYa
+    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
     switch LASTRESULT
-    case 0, EventScript_MaxAllIV
-    case 1, EventScript_ChangeIV
-    case 2, EventScript_ChangeHiddenPower
-    case 3, EventScript_TrayneeSeeYa
+    case 0, EventScript_Route5_Ivy_MaxAllIV
+    case 1, EventScript_Route5_Ivy_ChangeIV
+    case 2, EventScript_Route5_Ivy_ChangeHiddenPower
+    case 3, EventScript_Route5_Ivy_SeeYa
     end
 
-EventScript_IvyGreet:
-    msgbox gText_IvyHumming MSG_KEEPOPEN
-    applymovement 0x3 EventScript_IvyExclaim
+EventScript_Route5_Ivy_Greet:
+    npcmsg gText_Route5_Ivy_Humming MSG_KEEPOPEN 0 LEFT
+    closemsg
+    sound 0x15
+    applymovement 0x3 Move_Route5_Ivy_Startled
     waitmovement 0x3
-    faceplayer
-    msgbox gText_IvyGreet MSG_KEEPOPEN
+    npcmsg gText_Route5_Ivy_Greet_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Route5_Ivy_Greet_2 MSG_KEEPOPEN 10 LEFT
+    closemsg
+    npcmsg gText_Route5_Ivy_Greet_3 MSG_KEEPOPEN 10 LEFT
+    closemsg
     setflag FLAG_IVY_ROUTE5_GREET
     release
     end
 
-EventScript_MaxAllIV:
-    msgbox gText_ChangeIVForWhichMon MSG_KEEPOPEN
-    call EventScript_ChoosePokemon
-    setvar 0x8008 0xEA60
-    buffernumber 0x0 0x8008
-    checkmoney 0xEA60 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyIvy MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_TrayneeSeeYa
-    removemoney 0xEA60 0x00
-    msgbox gText_IVChanging MSG_KEEPOPEN
+EventScript_Route5_Ivy_MaxAllIV:
+    npcmsg gText_Route5_Ivy_ChangeIVForWhichMon MSG_KEEPOPEN 10 LEFT
+    closemsg
+    call EventScript_Route5_ChoosePokemon
+    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN 10 LEFT
+    closemsg
     fadescreen 0x1
-    pause 60
+    fanfare 0x13E
+    waitfanfare
     fadescreen 0x0
-    setflag FLAG_IVY_MAX_IVS
+    setvar 0x8008 0x1
     callasm ChangeIV
-    clearflag FLAG_IVY_MAX_IVS
-    copyvar 0x8004 0x8005
-    copyvar 0x8003 0x0
-    special 0x7C
-    msgbox gText_IVChanged MSG_KEEPOPEN
+    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN 10 LEFT
+    closemsg
     release
     end
 
-EventScript_ChangeIV:
-    msgbox gText_ChangeIVForWhichMon MSG_KEEPOPEN
-    call EventScript_ChoosePokemon
-    setvar 0x8003 0x0
-    special 0x7C
-    msgbox gText_WhichStatToChangeIV MSG_KEEPOPEN
+EventScript_Route5_Ivy_ChangeIV:
+    npcmsg gText_Route5_Ivy_ChangeIVForWhichMon MSG_KEEPOPEN 10 LEFT
+    closemsg
+    call EventScript_Route5_ChoosePokemon
+    npcmsg gText_Route5_Ivy_WhichStatToChange MSG_KEEPOPEN 10 LEFT
+    closemsg
     setvar 0x8000 0x13
     setvar 0x8001 0x6
     setvar 0x8004 0x0
@@ -376,18 +215,19 @@ EventScript_ChangeIV:
     waitstate
     copyvar 0x8006 LASTRESULT
     compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_TrayneeSeeYa
+    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
     switch LASTRESULT
-    case 0, EventScript_ChooseIVAmount @hp
-    case 1, EventScript_ChooseIVAmount @att
-    case 2, EventScript_ChooseIVAmount @def
-    case 3, EventScript_ChooseIVAmount @spe
-    case 4, EventScript_ChooseIVAmount @spa
-    case 5, EventScript_ChooseIVAmount @spd
+    case 0, EventScript_Route5_Ivy_ChooseIVAmount @hp
+    case 1, EventScript_Route5_Ivy_ChooseIVAmount @att
+    case 2, EventScript_Route5_Ivy_ChooseIVAmount @def
+    case 3, EventScript_Route5_Ivy_ChooseIVAmount @spe
+    case 4, EventScript_Route5_Ivy_ChooseIVAmount @spa
+    case 5, EventScript_Route5_Ivy_ChooseIVAmount @spd
     end
 
-EventScript_ChooseIVAmount:
-    msgbox gText_HowManyIvy MSG_KEEPOPEN
+EventScript_Route5_Ivy_ChooseIVAmount:
+    npcmsg gText_Route5_Ivy_HowManyIvy MSG_KEEPOPEN 10 LEFT
+    closemsg
     setvar 0x8000 0x16
     setvar 0x8001 0x6
     setvar 0x8004 0x0
@@ -395,42 +235,35 @@ EventScript_ChooseIVAmount:
     waitstate
     copyvar 0x8007 LASTRESULT
     compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_TrayneeSeeYa
+    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
     switch LASTRESULT
-    case 0, EventScript_CallIVFunc @0
-    case 1, EventScript_CallIVFunc @1
-    case 2, EventScript_CallIVFunc @14
-    case 3, EventScript_CallIVFunc @15
-    case 4, EventScript_CallIVFunc @30
-    case 5, EventScript_CallIVFunc @31
+    case 0, EventScript_Route5_IvyCallIVFunc @0
+    case 1, EventScript_Route5_IvyCallIVFunc @1
+    case 2, EventScript_Route5_IvyCallIVFunc @14
+    case 3, EventScript_Route5_IvyCallIVFunc @15
+    case 4, EventScript_Route5_IvyCallIVFunc @30
+    case 5, EventScript_Route5_IvyCallIVFunc @31
     return
 
-EventScript_CallIVFunc:
-    setvar 0x8008 0x2710
-    buffernumber 0x0 0x8008
-    checkmoney 0x2710 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyIvy MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_TrayneeSeeYa
-    removemoney 0x2710 0x00
-    msgbox gText_IVChanging MSG_KEEPOPEN
+EventScript_Route5_IvyCallIVFunc:
+    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN 10 LEFT
+    closemsg
     fadescreen 0x1
-    pause 60
+    fanfare 0x13E
+    waitfanfare
     fadescreen 0x0
     callasm ChangeIV
-    copyvar 0x8004 0x8005
-    copyvar 0x8003 0x0
-    special 0x7C
-    msgbox gText_IVChanged MSG_KEEPOPEN
+    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN 10 LEFT
+    closemsg
     release
     end
 
-EventScript_ChangeHiddenPower:
-    msgbox gText_ChangeHiddenPowerForWhichMon MSG_KEEPOPEN
-    call EventScript_ChoosePokemon
-    msgbox gText_WhichHiddenPower MSG_KEEPOPEN
+EventScript_Route5_Ivy_ChangeHiddenPower:
+    npcmsg gText_Route5_Ivy_ChangeHiddenPowerForWhichMon MSG_KEEPOPEN 10 LEFT
+    closemsg
+    call EventScript_Route5_ChoosePokemon
+    npcmsg gText_Route5_Ivy_WhichHiddenPower MSG_KEEPOPEN 10 LEFT
+    closemsg
     setvar 0x8000 0x17
     setvar 0x8001 0x6
     setvar 0x8004 0x0
@@ -438,39 +271,44 @@ EventScript_ChangeHiddenPower:
     waitstate
     copyvar 0x8006 LASTRESULT
     compare LASTRESULT 0x10
-    if greaterorequal _goto EventScript_TrayneeSeeYa
-    setvar 0x8008 0xC350
-    buffernumber 0x0 0x8008
-    checkmoney 0xC350 0x00
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_NotEnoughMoney
-    msgbox gText_AreYouSureToBuyIvy MSG_YESNO
-    compare LASTRESULT 0x1
-    if 0x0 _goto EventScript_TrayneeSeeYa
-    removemoney 0xC350 0x00
-    msgbox gText_IVChanging MSG_KEEPOPEN
+    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
+    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN 10 LEFT
+    closemsg
     fadescreen 0x1
-    pause 60
+    fanfare 0x13E
+    waitfanfare
     fadescreen 0x0
     callasm ChangeHiddenPower
-    copyvar 0x8004 0x8005
-    copyvar 0x8003 0x0
-    special 0x7C
-    msgbox gText_IVChanged MSG_KEEPOPEN
+    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN 10 LEFT
+    closemsg
     release
     end
 
-EventScript_ChoosePokemon:
+EventScript_Route5_ChoosePokemon:
     special 0x9F
     waitstate
     copyvar 0x8005 0x8004
     compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_TrayneeSeeYa
-    special 0x148
-	compare LASTRESULT 0x1
-	if 0x1 _goto EventScript_ThisIsAnEggTraynee
+    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
+    special2 LASTRESULT 0x147
+	compare LASTRESULT 0x19C
+	if equal _goto EventScript_Route5_Ivy_ThisIsAnEgg
     return
 
-EventScript_IvyExclaim:
+EventScript_Route5_Ivy_ThisIsAnEgg:
+    npcmsg gText_Route5_ThisIsAnEgg MSG_KEEPOPEN 10 LEFT
+    closemsg
+    release
+    end
+
+EventScript_Route5_Ivy_SeeYa:
+    npcmsg gText_Route5_Ivy_SeeYa MSG_KEEPOPEN 10 LEFT
+    closemsg
+    release
+    end
+
+Move_Route5_Ivy_Startled:
     .byte exclaim
+    .byte pause_long
+    .byte face_player
     .byte end_m

@@ -5462,7 +5462,7 @@ void ChangeIV(void){
 	else if(statId == 5)	
 		mon->spDefenseIV = IV;
 
-	if(FlagGet(FLAG_IVY_MAX_IVS)){
+	if(Var8008 == 1){
 		mon->hpIV = 31;
 		mon->attackIV = 31;
 		mon->defenseIV = 31;

@@ -117,7 +117,7 @@ static u8 GetTextCaretPosition(void);
 	#endif
 #endif
 
-enum EVStatChecker
+enum MonStatsChecker
 {
 	CheckEVs_HP,
 	CheckEVs_Atk,
@@ -3238,7 +3238,6 @@ extern const u8 PSEUDO_SNOM[];
 
 // Traynee service list
 extern const u8 T_EXPERIENCE[];
-extern const u8 T_BUYEVS[];
 extern const u8 T_CLEAREVS[];
 extern const u8 T_HP[];
 extern const u8 T_ATTACK[];
@@ -3248,15 +3247,15 @@ extern const u8 T_SPDEFENSE[];
 extern const u8 T_SPEED[];
 extern const u8 T_CANCEL[];
 
-// EV Stat
-extern const u8 EV_HP[];
-extern const u8 EV_ATTACK[];
-extern const u8 EV_DEFENSE[];
-extern const u8 EV_SPATTACK[];
-extern const u8 EV_SPDEFENSE[];
-extern const u8 EV_SPEED[];
+// Mon Stats
+extern const u8 MON_HP[];
+extern const u8 MON_ATTACK[];
+extern const u8 MON_DEFENSE[];
+extern const u8 MON_SPATTACK[];
+extern const u8 MON_SPDEFENSE[];
+extern const u8 MON_SPEED[];
 
-// Number of EVs
+// Number of EVs // UNUSED
 extern const u8 EV_4[];
 extern const u8 EV_8[];
 extern const u8 EV_12[];
@@ -3657,7 +3656,6 @@ static const u8* GameCornerPseudo[] = {
 // Traynee service list
 static const u8* TrayneeService[] = {
 	T_EXPERIENCE,
-	T_BUYEVS,
 	T_CLEAREVS,
 	T_HP,
 	T_ATTACK,
@@ -3669,13 +3667,13 @@ static const u8* TrayneeService[] = {
 };
 
 // EV Stat
-static const u8* EVStat[] = {
-	EV_HP,
-	EV_ATTACK,
-	EV_DEFENSE,
-	EV_SPEED,
-	EV_SPATTACK,
-	EV_SPDEFENSE,
+static const u8* MonStats[] = {
+	MON_HP,
+	MON_ATTACK,
+	MON_DEFENSE,
+	MON_SPEED,
+	MON_SPATTACK,
+	MON_SPDEFENSE,
 };
 
 // Number of EV
@@ -3777,8 +3775,8 @@ const struct ScrollingMulti gScrollingSets[] =
 	{GameCornerMegaStones, ARRAY_COUNT(GameCornerMegaStones)},//17
 	{GameCornerPseudo, ARRAY_COUNT(GameCornerPseudo)},//18
 	{TrayneeService, ARRAY_COUNT(TrayneeService)},//19
-	{EVStat, ARRAY_COUNT(EVStat)},//20
-	{NumEV, ARRAY_COUNT(NumEV)},//21
+	{MonStats, ARRAY_COUNT(MonStats)},//20 // UNUSED
+	{NumEV, ARRAY_COUNT(NumEV)},//21 // UNUSED
 	{IvyService, ARRAY_COUNT(IvyService)},//22
 	{NumIV, ARRAY_COUNT(NumIV)},//23
 	{HiddenPowerTpyes, ARRAY_COUNT(HiddenPowerTpyes)},//24
