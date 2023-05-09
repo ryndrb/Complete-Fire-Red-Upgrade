@@ -17,7 +17,7 @@ void RemoveNameBox(void);
 extern u8 sTimeWindowId;
 
 // Text Colors
-static const u8 sDarkTextColor[3]    = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_GREEN, TEXT_COLOR_LIGHT_GREY};
+static const u8 sTextColor[3]    = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_GREEN, TEXT_COLOR_LIGHT_GREY};
 
 extern u8 gText_Name_Unknown[];
 
@@ -106,17 +106,18 @@ u8* CharacterNames[] = {
 */
 void DrawNameBox(void) {
     u8* name = CharacterNames[Var8000];
-    u8 nameLen = StringLength(name);
+    u8 width = GetStringWidth(2, name, 0);
+    width = width / 8 + 1;
 
     // 3 = Left, 4 = Right
     if(Var8001 == 3){
-        struct WindowTemplate Left = SetWindowTemplateFields(0, 1, 11, nameLen, 2, 15, 0x008);
+        struct WindowTemplate Left = SetWindowTemplateFields(0, 1, 11, width, 2, 15, 0x008);
         if(Var8000 == 1){
             Left.width = StringLength(gSaveBlock1->rivalName);
         }
 	    sTimeWindowId = AddWindow(&Left);
     }else if(Var8001 == 4){
-        struct WindowTemplate Right = SetWindowTemplateFields(0, 19 + (10 - nameLen), 11, nameLen, 2, 15, 0x008);
+        struct WindowTemplate Right = SetWindowTemplateFields(0, 19 + (10 - width), 11, width, 2, 15, 0x008);
         if(Var8000 == 1){
             Right.width = StringLength(gSaveBlock1->rivalName);
             Right.tilemapLeft = 19 + (10 - StringLength(gSaveBlock1->rivalName));
@@ -125,16 +126,17 @@ void DrawNameBox(void) {
     }
 
 	if (sTimeWindowId != 0xFF){
-        DrawStdWindowFrame(sTimeWindowId, FALSE);
 		PutWindowTilemap(sTimeWindowId);
 		FillWindowPixelBuffer(sTimeWindowId, PIXEL_FILL(1));
+        TextWindow_SetStdFrame0_WithPal(sTimeWindowId, 0x21D, 0xD0);
+        DrawStdFrameWithCustomTileAndPalette(sTimeWindowId, FALSE, 0x21D, 0xD);
 	}
 
     if(Var8000 == 1){
         name = gSaveBlock1->rivalName;
     }
 
-    AddTextPrinterParameterized3(sTimeWindowId, 2, nameLen, 0, sDarkTextColor, 0xFF, name);
+    AddTextPrinterParameterized3(sTimeWindowId, 2, 3, 0, sTextColor, 0xFF, name);
 	CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 }
 

@@ -326,14 +326,14 @@ EventScript_0x8165605:
     if 0x1 _call EventScript_0x81656CE
     compare 0x4001 0x1
     if 0x1 _call EventScript_0x81656E0
-    setdooropen 0x12 0xD
-    opendoor 0x12 0xD
+    setdooropen 0x1B 0x6
+    opendoor 0x1B 0x6
     waitdooranim
     applymovement 0x3 Move_PalletTown_Outside_Oak_5
     applymovement PLAYER Move_PalletTown_Outside_Player_3
     waitmovement 0x0
-    setdoorclosed 0x12 0xD
-    closedoor 0x12 0xD
+    setdoorclosed 0x1B 0x6
+    closedoor 0x1B 0x6
     waitdooranim
     setvar 0x4055 0x1
     clearflag 0x2B
@@ -368,42 +368,44 @@ EventScript_0x81656E0:
     return
 
 Move_PalletTown_Outside_Oak_1:
-    .byte walk_right
-    .byte walk_right
     .byte walk_up
     .byte walk_up
     .byte walk_up
     .byte walk_up
-    .byte walk_up
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
     .byte walk_up
     .byte end_m
 
 Move_PalletTown_Outside_Oak_2:
-    .byte walk_right
-    .byte walk_right
-    .byte walk_right
     .byte walk_up
     .byte walk_up
     .byte walk_up
     .byte walk_up
-    .byte walk_up
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
     .byte walk_up
     .byte end_m
 
 Move_PalletTown_Outside_Oak_3:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_right
@@ -415,19 +417,21 @@ Move_PalletTown_Outside_Oak_3:
 
 Move_PalletTown_Outside_Player_1:
     .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_right
@@ -438,20 +442,20 @@ Move_PalletTown_Outside_Player_1:
     .byte end_m
 
 Move_PalletTown_Outside_Oak_4:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
-    .byte walk_left
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_right
@@ -463,20 +467,20 @@ Move_PalletTown_Outside_Oak_4:
 
 Move_PalletTown_Outside_Player_2:
     .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte walk_down
-    .byte walk_left
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_right
@@ -906,10 +910,15 @@ EventScript_0x8169C74:
     waitfanfare
     msgbox 0x81A56A7 MSG_YESNO @ nickname?
     compare LASTRESULT 0x1
-    if 0x1 _goto 0x8169CCC @ nickname scene
+    if 0x1 _goto EventScript_0x8169CCC @ nickname scene
     compare LASTRESULT 0x0
     if 0x1 _goto EventScript_0x8169CDC
     end
+
+EventScript_0x8169CCC:
+    setvar 0x8004 0x0
+    call 0x81A74EB
+    goto EventScript_0x8169CDC
 
 EventScript_0x8169CDC:
     closeonkeypress
@@ -961,8 +970,13 @@ EventScript_0x8169D2F:
     msgbox gText_PalletTown_InsideOakLab_May_ReceivedMon MSG_KEEPOPEN
     waitfanfare
     closeonkeypress
+    pause 15
+    sound 0x15
     applymovement 0x4 Move_PalletTown_InsideOakLab_Oak_TookMon_1
     waitmovement 0x4
+    spriteface 8, LEFT
+    spriteface 11, LEFT
+    spriteface PLAYER, LEFT
     call OakNameBox
     msgbox gText_PalletTown_InsideOakLab_TookMon_Oak_Speak_1 MSG_KEEPOPEN
     closeonkeypress
@@ -979,7 +993,10 @@ EventScript_0x8169D2F:
     fadescreenspeed 0x3 3
     hidesprite 11
     fadescreenspeed 0x2 3
+    applymovement 0x4 Move_PalletTown_InsideOakLab_Oak_TookMon_2
+    waitmovement 0x4
     setvar 0x4055 0x3
+    spriteface 0x4, DOWN
     checkflag 0x83E
     if 0x1 _call 0x8169D5C
     release
@@ -1057,9 +1074,16 @@ Move_PalletTown_InsideOakLab_May_TookMon_1:
     .byte end_m
 
 Move_PalletTown_InsideOakLab_Oak_TookMon_1:
-    .byte walk_right
-    .byte walk_right
-    .byte walk_right
+    .byte exclaim
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+Move_PalletTown_InsideOakLab_Oak_TookMon_2:
+    .byte walk_up
+    .byte walk_up
     .byte walk_down_onspot_fastest
     .byte end_m
 
@@ -1707,7 +1731,6 @@ EventScript_0x816961E:
     spriteface 11, UP
     call MayNameBox
     msgbox gText_PalletTown_InsideOakLab_May_ThanksOak MSG_KEEPOPEN
-    faceplayer
     spriteface 11, LEFT
     spriteface PLAYER, RIGHT
     msgbox gText_PalletTown_InsideOakLab_May_LeavingForAdventure MSG_KEEPOPEN
@@ -2010,6 +2033,7 @@ EventScript_PalletTown_MayBrother:
 @ May Pallet Town
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PalletTown_May:
+    setvar 0x5043 1
     lock
     call UnknownNameBox
     msgbox gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN

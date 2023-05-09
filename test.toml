@@ -1,5 +1,5 @@
 [General]
-ApplicationVersion = '''0.5.1.5'''
+ApplicationVersion = '''0.5.2'''
 FreeSpaceSearch = '''35F440'''
 FreeSpaceBuffer = '''100'''
 NextExportID = '''0'''
@@ -105,7 +105,7 @@ DefaultHash = '''FB906E1D'''
 [[NamedAnchors]]
 Name = '''data.pokemon.moves.descriptions'''
 Address = 0x143AAA8
-Format = '''[description<"">]data.pokemon.moves.names-1'''
+Format = ''''''
 DefaultHash = '''BD0C8971'''
 
 [[NamedAnchors]]
@@ -499,10 +499,10 @@ Format = '''`ucs4x8x8|graphics.items.fossils.palette2`'''
 DefaultHash = '''03CB9517'''
 
 [[NamedAnchors]]
-Name = '''graphics.pokemon.sprites.back_copy1'''
+Name = '''graphics.pokemon.sprites.back'''
 Address = 0x19778E0
-Format = ''''''
-DefaultHash = '''15316515'''
+Format = '''[sprite<`lzs4x8x8`> uncompressedLength: index:]data.pokemon.names+28'''
+DefaultHash = '''8DF98E0A'''
 
 [[NamedAnchors]]
 Name = '''data.pokemon.deoxys.stats'''
@@ -2749,10 +2749,10 @@ Format = '''[variable::|h]21'''
 DefaultHash = '''36CE58B7'''
 
 [[NamedAnchors]]
-Name = '''scripts.battle.thumb'''
-Address = 0x143B910
-Format = '''[code<>]248'''
-DefaultHash = '''3BF7C718'''
+Name = '''graphics.trainers.animations.back'''
+Address = 0x1503408
+Format = '''[animationPointer<[animation<[frame: time:]!FFFF0000>]2>]graphics.trainers.sprites.back.enter'''
+DefaultHash = '''E2699D55'''
 
 [[NamedAnchors]]
 Name = '''scripts.battle.ai.trainer'''
@@ -2877,8 +2877,8 @@ DefaultHash = '''CA82776B'''
 [[NamedAnchors]]
 Name = '''data.maps.banks'''
 Address = 0x7207A4
-Format = '''[maps<[map<[layout<[width:: height:: borderblock<> blockmap<`blm`> blockdata1<[isCompressed. isSecondary. padding: tileset<> pal<`ucp4:0123456789ABCDEF`> blockset<> animation<> attributes<>]1> blockdata2<[isCompressed. isSecondary. padding: tileset<> pal<`ucp4:0123456789ABCDEF`> blockset<> animation<> attributes<>]1> borderwidth. borderheight. unused:]1> events<[objectCount.100 warpCount.100 scriptCount.100 signpostCount.100 objects<[id. graphics. kind: x:|z y:|z elevation.10 moveType. range:|t|x::|y:: trainerType: trainerRangeOrBerryID: script<`xse`> flag: unused:]/objectCount> warps<[x:|z y:|z elevation.10 warpID. map. bank.]/warpCount> scripts<[x:|z y:|z elevation:10 trigger: index:: script<`xse`>]/scriptCount> signposts<[x:|z y:|z elevation.10 kind. unused:1 arg::|s=kind(0=<>|1=<>|2=<>|3=<>|4=<>)]/signpostCount>]1> mapscripts<[type. pointer<>]!00> connections<[count:: connections<[direction::mapdirections offset:: mapGroup. mapNum. unused:]/count>]1> music:songnames layoutID:data.maps.layouts+1 regionSectionID.data.maps.names+88 cave. weather. mapType. allowBiking. flags.|t|allowEscaping.|allowRunning.|showMapName. floorNum. battleType.]1>]?>]43'''
-DefaultHash = '''2F312CDB'''
+Format = '''[maps<[map<[layout<[width:: height:: borderblock<> blockmap<`blm`> blockdata1<[isCompressed. isSecondary. padding: tileset<> pal<`ucp4:0123456789ABCDEF`> blockset<> animation<> attributes<>]1> blockdata2<[isCompressed. isSecondary. padding: tileset<> pal<`ucp4:0123456789ABCDEF`> blockset<> animation<> attributes<>]1> borderwidth. borderheight. unused:]1> events<[objectCount.100 warpCount.100 scriptCount.100 signpostCount.100 objects<[id. graphics.graphics.overworld.sprites kind: x:|z y:|z elevation.10 moveType. range:|t|x::|y:: trainerType: trainerRangeOrBerryID: script<`xse`> flag: padding:]/objectCount> warps<[x:|z y:|z elevation.10 warpID. map. bank.]/warpCount> scripts<[x:|z y:|z elevation:10 trigger: index:: script<`xse`>]/scriptCount> signposts<[x:|z y:|z elevation.10 kind. unused:1 arg::|s=kind(0=<>|1=<>|2=<>|3=<>|4=<>)]/signpostCount>]1> mapscripts<[type. pointer<>]!00> connections<[count:: connections<[direction::mapdirections offset:: mapGroup. mapNum. unused:]/count>]1> music:songnames layoutID:data.maps.layouts+1 regionSectionID.data.maps.names+88 cave. weather. mapType. allowBiking. flags.|t|allowEscaping.|allowRunning.|showMapName. floorNum. battleType.]1>]?>]43'''
+DefaultHash = '''EFC86D22'''
 
 [[NamedAnchors]]
 Name = '''data.maps.layouts'''
@@ -2971,10 +2971,10 @@ Format = '''[thumb<>]60'''
 DefaultHash = '''4912A7E0'''
 
 [[NamedAnchors]]
-Name = '''scripts.text.stringvars'''
-Address = 0x158B254
-Format = '''[ram::|h]3'''
-DefaultHash = '''35212DF9'''
+Name = '''graphics.pokemon.type.icons'''
+Address = 0x1589EC4
+Format = '''`ucs4x16x16|graphics.pokemon.type.palettes`'''
+DefaultHash = '''3CE0BFB0'''
 
 [[NamedAnchors]]
 Name = '''scripts.text.daycare.compatibility.messages'''
@@ -3008,9 +3008,57 @@ DefaultHash = '''DE7D5917'''
 
 [[NamedAnchors]]
 Name = '''data.pokemon.moves.names'''
-Address = 0x14E0DDC
-Format = '''^[name""13]923'''
+Address = 0x14E12EC
+Format = '''^[name""13]952'''
 DefaultHash = '''C4BD7B07'''
+
+[[NamedAnchors]]
+Name = '''graphics.moves.surf.palette'''
+Address = 0x15315A8
+Format = '''`lzp4:8`'''
+DefaultHash = '''4196E8C6'''
+
+[[NamedAnchors]]
+Name = '''scripts.battle.thumb'''
+Address = 0x143B910
+Format = '''[code<>]248'''
+DefaultHash = '''3BF7C718'''
+
+[[NamedAnchors]]
+Name = '''graphics.menu.tms.hm_logo'''
+Address = 0xE99118
+Format = '''`ucs4x2x2`'''
+DefaultHash = '''46C5724F'''
+
+[[NamedAnchors]]
+Name = '''graphics.moves.substitute.sprite.front'''
+Address = 0x152FCB4
+Format = '''`lzs4x8x8|graphics.moves.substitute.palette`'''
+DefaultHash = '''0BAF314C'''
+
+[[NamedAnchors]]
+Name = '''graphics.moves.substitute.palette'''
+Address = 0x152FF2C
+Format = '''`lzp4`'''
+DefaultHash = '''B8A62814'''
+
+[[NamedAnchors]]
+Name = '''graphics.moves.substitute.sprite.back'''
+Address = 0x1531290
+Format = '''`lzs4x8x8|graphics.moves.substitute.palette`'''
+DefaultHash = '''0BAF314C'''
+
+[[NamedAnchors]]
+Name = '''graphics.text.font.buttons.data'''
+Address = 0x1EA6CC
+Format = '''[tileOffset: width. height.]13'''
+DefaultHash = '''2B3A40CF'''
+
+[[NamedAnchors]]
+Name = '''scripts.text.stringvars'''
+Address = 0x1590094
+Format = '''[ram::|h]3'''
+DefaultHash = '''35212DF9'''
 
 #################################
 #################################
@@ -5999,6 +6047,48 @@ DefaultHash = '''5070A296'''
    '''basement 3''',
    '''basement 2''',
    '''basement 1''',
+]
+
+[[List]]
+Name = '''MapLayerOptions'''
+DefaultHash = '''E3ADB58F'''
+0 = [
+   '''Normal''',
+   '''Covered''',
+   '''Split''',
+]
+
+[[List]]
+Name = '''MapTerrainOptions'''
+DefaultHash = '''0EC04F31'''
+0 = [
+   '''Normal''',
+   '''Grass''',
+   '''Water''',
+]
+
+[[List]]
+Name = '''MapEncounterOptions'''
+DefaultHash = '''0EC04F31'''
+0 = [
+   '''Normal''',
+   '''Grass''',
+   '''Water''',
+]
+
+[[List]]
+Name = '''MapSignpostKindOptions'''
+DefaultHash = '''855AA71E'''
+0 = [
+   '''Facing Any''',
+   '''Facing North''',
+   '''Facing South''',
+   '''Facing East''',
+   '''Facing West''',
+   '''Hidden Item (unused 1)''',
+   '''Hidden Item (unused 2)''',
+   '''Hidden Item''',
+   '''Secret Base''',
 ]
 
 #################################
