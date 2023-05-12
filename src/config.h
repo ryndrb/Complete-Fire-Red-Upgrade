@@ -327,5 +327,3 @@ enum //These vars need to be one after the other (hence the enum)
 //See "include/new/dexnav_config.h"
 
 #define INSTANT_TEXT // Enable Instant Text. Some Hack Authors might want this disabled because of the effects instant text has on pacing
-#define SQUEETZ // Squeetz Music Patch
-#define IV_RANKING_SUMMARY_SCREEN // IV Ranking in Summary Screen
