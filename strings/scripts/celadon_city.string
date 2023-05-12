@@ -108,3 +108,21 @@ I see, I understand.\pThere's no need to push yourself\ninto a battle if you're 
 
 #org @gText_Celadon_Eusine_InsideResto_Speak_7
 I have to admit, battling you has\nrekindled my passion for training.\p[.]\pWhat are your plans now that\nyou're the League Champion?\pRegardless, I have no doubt that\nyou'll achieve greatness!\pUntil we meet again, [PLAYER]!
+
+#org @gText_Celadon_Norman_Speak_1
+Ah, greetings.\p[.]\pYou must be a trainer, judging by\nthe look of your Pok\emon.
+
+#org @gText_Celadon_Norman_Speak_2
+My name is Norman, the Gym Leader\nof Petalburg City in Hoenn.\pI'm here in Kanto on a journey of\nsorts[.] to see how other trainers\llive and train their Pok\emon.\pI have to say, I've been impressed\nby the trainers I've encountered\lhere in Kanto.\pYou have a certain[.] [PAUSE][15]tenacity.\pA willingness to push yourself\nbeyond your limits.\p[.]\pIt's clear that you're a strong\nopponent, and I'd love to test my\lskills against yours.\pWhat do you say?\nShall we a battle?
+
+#org @gText_Celadon_Norman_Defeat
+I never imagined losing.
+
+#org @gText_Celadon_Norman_Speak_3
+That was a great battle.\pYou're a skilled trainer, no doubt\nabout it.\pPlease, take this.
+
+#org @gText_Celadon_Norman_Speak_4
+You know, I have a daughter who's\nalso a trainer.\pShe's quite talented, but\nsometimes I worry about her[.]\pThe world of Pok\emon can be tough,\nyou know?\p[.]\pBut seeing you in action today has\ngiven me hope.\p[.]\pWell, I should be going.\pIt was a pleasure to meet you, and\nhave a battle with you.\pI hope we can do it again someday.\nTake care!
+
+#org @gText_Celadon_Norman_PlayerDontWantToBattle
+No worries.\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me.

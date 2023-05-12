@@ -18,3 +18,27 @@ Keh! How dare you!\pI was enjoying that lovely\nnightmare!\pYou! You don't get i
 
 #org @gText_Route16_Lady_MemberCard_Speak_3
 Go to the abandoned house in\nCinnabar!\pMeet the amazing Darkrai for\nyourself!
+
+#org @gText_Route16_Winona_Speak_1
+Ah, the beauty of flying Pok\emon.\pThey possess such grace and\nfreedom.
+
+#org @gText_Route16_Winona_Speak_2
+My apologies, I got lost in my\nthoughts for a moment there.\p[.]\pI get the impression that you are\na very capable Pok\emon trainer[.]
+
+#org @gText_Route16_Winona_Speak_3
+My name is Winona, the Gym Leader\nof Fortree City in Hoenn.\pI like to travel a lot, so I've\ncome to Kanto to experience the\ldiverese Pok\emon this region has\lto offer.\p[.]\pI'd like to ask you something.\pWhat do you think makes a trainer\ntruly skilled?\pIs it their strength in battle?\pTheir understading of their\nPok\emon?\pOr perhaps it is something else\nentirely?
+
+#org @gText_Route16_Winona_Speak_4
+[.]\pI see.\pIt's an important question to\nponder, isn't it?\p[.]\pActually, I have an idea.\pWhat do you say we put our\ntheories to the test?\pI want you to witness the elegant\nchoreography of my Pok\emon and I.
+
+#org @gText_Route16_Winona_Defeat
+A trainer that commands Pok\emon\nwith more grace than I[.]
+
+#org @gText_Route16_Winona_Speak_5
+Never before have I seen a trainer\ncommand Pok\emon with more grace\lthan I[.]\pYour dedication and strategy were\ntruly impressive.\pPlease, take this.
+
+#org @gText_Route16_Winona_Speak_6
+Keep nurturing that bond with your\nPok\emon, and embrace the freedom\lthey provide.\pI must continue my journey through\nKanto, but I hope our paths cross\lagain.
+
+#org @gText_Route16_Winona_PlayerDontWantToBattle
+No worries.\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me.

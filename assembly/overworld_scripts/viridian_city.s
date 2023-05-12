@@ -378,7 +378,7 @@ EventScript_Viridian_RocketGang_NoticePlayer:
     closemsg
     npcmsg gText_Viridian_RocketGang_Meowth_Speak_4 MSG_KEEPOPEN 31 LEFT
     closemsg
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_12 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_12 MSG_KEEPOPEN 29 LEFT
     closemsg
     npcmsg gText_Viridian_RocketGang_James_Speak_15 MSG_KEEPOPEN 30 LEFT
     closemsg

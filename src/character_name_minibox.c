@@ -56,6 +56,11 @@ extern u8 gText_Name_Roxanne[];
 extern u8 gText_Name_Brawly[];
 extern u8 gText_Name_Wattson[];
 extern u8 gText_Name_Flannery[];
+extern u8 gText_Name_Norman[];
+extern u8 gText_Name_Winona[];
+extern u8 gText_Name_Tate[];
+extern u8 gText_Name_Liza[];
+extern u8 gText_Name_Wallace[];
 
 // Add Character names here
 u8* CharacterNames[] = {
@@ -95,6 +100,11 @@ u8* CharacterNames[] = {
     /* 33 */ gText_Name_Brawly,
     /* 34 */ gText_Name_Wattson,
     /* 35 */ gText_Name_Flannery,
+    /* 36 */ gText_Name_Norman,
+    /* 37 */ gText_Name_Winona,
+    /* 38 */ gText_Name_Tate,
+    /* 39 */ gText_Name_Liza,
+    /* 40 */ gText_Name_Wallace,
 };
 
 /*
@@ -107,7 +117,14 @@ u8* CharacterNames[] = {
 void DrawNameBox(void) {
     u8* name = CharacterNames[Var8000];
     u8 width = GetStringWidth(2, name, 0);
+    u8 xOff = width;
+    u8 rem = width % 8;
+    if(rem < 3)
+        width = width - rem;
+    else
+        width = width + 8 - rem;
     width = width / 8 + 1;
+    xOff = (width * 8 - xOff) / 2;
 
     // 3 = Left, 4 = Right
     if(Var8001 == 3){
@@ -136,7 +153,7 @@ void DrawNameBox(void) {
         name = gSaveBlock1->rivalName;
     }
 
-    AddTextPrinterParameterized3(sTimeWindowId, 2, 3, 0, sTextColor, 0xFF, name);
+    AddTextPrinterParameterized3(sTimeWindowId, 2, xOff, 0, sTextColor, 0xFF, name);
 	CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 }
 

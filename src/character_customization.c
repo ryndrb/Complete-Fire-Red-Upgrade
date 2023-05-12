@@ -293,6 +293,11 @@ extern const u16 gEventObjectPic_RoxannePal[];
 extern const u16 gEventObjectPic_BrawlyPal[];
 extern const u16 gEventObjectPic_WattsonPal[];
 extern const u16 gEventObjectPic_FlanneryPal[];
+extern const u16 gEventObjectPic_NormanPal[];
+extern const u16 gEventObjectPic_WinonaPal[];
+extern const u16 gEventObjectPic_TatePal[];
+extern const u16 gEventObjectPic_LizaPal[];
+extern const u16 gEventObjectPic_WallacePal[];
 
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Archer;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ariana;
@@ -318,6 +323,11 @@ extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Roxanne;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Brawly;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Wattson;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Flannery;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Norman;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Winona;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Tate;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Liza;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Wallace;
 
 static NPCPtr sOverworldTable2[] = {
 	/*  0 */ &gEventObjectGraphicsInfo_Archer,
@@ -344,6 +354,11 @@ static NPCPtr sOverworldTable2[] = {
 	/* 21 */ &gEventObjectGraphicsInfo_Brawly,
 	/* 22 */ &gEventObjectGraphicsInfo_Wattson,
 	/* 23 */ &gEventObjectGraphicsInfo_Flannery,
+	/* 24 */ &gEventObjectGraphicsInfo_Norman,
+	/* 25 */ &gEventObjectGraphicsInfo_Winona,
+	/* 26 */ &gEventObjectGraphicsInfo_Tate,
+	/* 27 */ &gEventObjectGraphicsInfo_Liza,
+	/* 28 */ &gEventObjectGraphicsInfo_Wallace,
 };
 
 // create 255 OW tables
@@ -390,6 +405,11 @@ static const struct SpritePalette sObjectEventSpritePalettes12[] = {
 	{gEventObjectPic_BrawlyPal, 0x121F},
 	{gEventObjectPic_WattsonPal, 0x1220},
 	{gEventObjectPic_FlanneryPal, 0x1221},
+	{gEventObjectPic_NormanPal, 0x1222},
+	{gEventObjectPic_WinonaPal, 0x1223},
+	{gEventObjectPic_TatePal, 0x1224},
+	{gEventObjectPic_LizaPal, 0x1225},
+	{gEventObjectPic_WallacePal, 0x1226},
 	{NULL, 0x11FF},
 };
 

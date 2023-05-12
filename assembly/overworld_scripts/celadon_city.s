@@ -1077,6 +1077,47 @@ Move_Celadon_Eusine_InsideResto_2:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Normal Celadon
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Celadon_Norman:
+    lock
+    pause 30
+    sound 0x15
+    applymovement 3 Move_Celadon_Norman_1
+    waitmovement 3
+    npcmsg gText_Celadon_Norman_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Celadon_Norman_Speak_2 MSG_YESNO 36 LEFT
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Celadon_Norman_PlayerDontWantToBattle
+    closemsg
+    trainerbattle3 0x3 84 0x0 gText_Celadon_Norman_Defeat
+    npcmsg gText_Celadon_Norman_Speak_3 MSG_KEEPOPEN 36 LEFT
+    closemsg
+    giveitem ITEM_SILK_SCARF 0x1 MSG_OBTAIN
+    npcmsg gText_Celadon_Norman_Speak_4 MSG_KEEPOPEN 36 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite 3
+    setflag FLAG_NORMAN_CELADON_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScript_Celadon_Norman_PlayerDontWantToBattle:
+    npcmsg gText_Celadon_Norman_PlayerDontWantToBattle MSG_KEEPOPEN 36 LEFT
+    spriteface 3, DOWN
+    closemsg
+    release
+    end
+
+Move_Celadon_Norman_1:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Celadon NameBox
 @@@@@@@@@@@@@@@@@@@@@@
 UnknownNameBox:

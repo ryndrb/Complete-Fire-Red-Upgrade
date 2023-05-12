@@ -18,3 +18,54 @@ Ahoy there, lad!\pI'm a fisherman here in good ol'\nKanto, and I've spent me ent
 
 #org @gText_RetireFisherManSpeak2
 And who knows? Maybe I'll even\ntake up a new hobby in me\lretirement.\pBut for now, I'll be content just\nwatching the waves and reminiscing\labout all the good times I've 'ad.
+
+#org @gText_Fuschia_Tate_Speak_1
+Oh, hello there!\p[.]\pHeh heh heh[.]\nWere you surprised?
+
+#org @gText_Fuschia_Liza_Speak_1
+Tee hee hee[.]\nWere you surprised?
+
+#org @gText_Fuschia_Tate_Speak_2
+We don't need to talk because[.]
+
+#org @gText_Fuschia_Liza_Speak_2
+[.]we can each tell[.]
+
+#org @gText_Fuschia_Tate_Speak_3
+[.]what the other is thinking[.]
+
+#org @gText_Fuschia_Liza_Speak_3
+[.]all in our minds!
+
+#org @gText_Fuschia_Tate_Speak_4
+My name is Tate, and this is my\ntwin sister Liza.\pWe're the Gym Leaders of Mossdeep\nCity in Hoenn!
+
+#org @gText_Fuschia_Liza_Speak_4
+We're currently taking a break\nfrom our usual routine to explore\lKanto.\pIt's always good to see new places\nand Pok\emon!
+
+#org @gText_Fuschia_Tate_Speak_5
+[.]\pWhat is that?\pYou want to test your Pok\emon\nstrength against us?\pHeh heh heh[.]
+
+#org @gText_Fuschia_Liza_Speak_5
+Tee hee hee[.]\nWe're gonna surprise you!\pCan you beat this combination?
+
+#org @gText_Fuschia_TateAndLiza_Defeat
+Our[.] [PAUSE][15]Our[.]\pTeamwork[.]
+
+#org @gText_Fuschia_Tate_Speak_6
+You're an excellent trainer! Your\nskill with your Pok\emon is truly\limpressive!
+
+#org @gText_Fuschia_Liza_Speak_6
+Yes, we can see that you've put in\na lot of effort to get there.\pPlease, take this.
+
+#org @gText_Fuschia_Tate_Speak_7
+Well, we should get back to our\ntraining.\pThanks you for the great battle!
+
+#org @gText_Fuschia_Liza_Speak_7
+It was really fun!\pWe'll see you around, maybe in the\nHoenn region next time!
+
+#org @gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_1
+No worries!\pI think we'll spend some more time\nhere.
+
+#org @gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_2
+If you change your mind, feel free\nto talk to us.

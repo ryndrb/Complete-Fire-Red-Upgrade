@@ -130,6 +130,74 @@ EventScript_RetiredFisherMan:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Tate and Liza Fuschia
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Fuschia_TateAndLiza:
+    lock
+    pause 30
+    sound 0x15
+    applymovement 5 Move_Fuschia_Tate_1
+    applymovement 6 Move_Fuschia_Liza_1
+    waitmovement 6
+    npcmsg gText_Fuschia_Tate_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Fuschia_Liza_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Fuschia_Tate_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Fuschia_Liza_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Fuschia_Tate_Speak_3 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Fuschia_Liza_Speak_3 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_Fuschia_Tate_Speak_4 MSG_KEEPOPEN 38 LEFT
+    closemsg
+    npcmsg gText_Fuschia_Liza_Speak_4 MSG_KEEPOPEN 39 LEFT
+    closemsg
+    npcmsg gText_Fuschia_Tate_Speak_5 MSG_KEEPOPEN 38 LEFT
+    closemsg
+    npcmsg gText_Fuschia_Liza_Speak_5 MSG_YESNO 39 LEFT
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Fuschia_TateAndLiza_PlayerDontWantToBattle
+    closemsg
+    trainerbattle3 0x3 29 0x0 gText_Fuschia_TateAndLiza_Defeat
+    npcmsg gText_Fuschia_Tate_Speak_6 MSG_KEEPOPEN 38 LEFT
+    closemsg
+    npcmsg gText_Fuschia_Liza_Speak_6 MSG_KEEPOPEN 39 LEFT
+    closemsg
+    giveitem ITEM_TWISTED_SPOON 0x1 MSG_OBTAIN
+    npcmsg gText_Fuschia_Tate_Speak_7 MSG_KEEPOPEN 38 LEFT
+    closemsg
+    npcmsg gText_Fuschia_Liza_Speak_7 MSG_KEEPOPEN 39 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite 5
+    hidesprite 6
+    setflag FLAG_TATE_LIZA_FUSCHIA_SPRITE
+    fadescreen 0x0
+    release
+    end
+
+EventScript_Fuschia_TateAndLiza_PlayerDontWantToBattle:
+    npcmsg gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_1 MSG_KEEPOPEN 38 LEFT
+    closemsg
+    npcmsg gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_2 MSG_KEEPOPEN 39 LEFT
+    closemsg
+    spriteface 5 LEFT
+    spriteface 6 LEFT
+    release
+    end
+
+Move_Fuschia_Tate_1:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+Move_Fuschia_Liza_1:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Fuschia NameBox
 @@@@@@@@@@@@@@@@@@@@@@
 KogaNameBox:

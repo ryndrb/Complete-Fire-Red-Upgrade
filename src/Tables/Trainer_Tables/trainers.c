@@ -363,12 +363,12 @@ const struct Trainer gTrainers[] =
         .trainerClass = CLASS_LEADER_RS,
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LIZA_AND_TATE,
-        .trainerName = {_T,_a,_t,_e,_SPACE,_L,_i,_z,_a,_END},
-        .items = {},
+        .trainerName = {_T,_a,_t,_e,_SPACE,_HYPHEN,_SPACE,_L,_i,_z,_a,_END},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = TRUE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_LeaderTateLiza),
-        .party = {.ItemCustomMoves = sParty_LeaderTateLiza}
+        .partySize = NELEMS(sParty_Fuschia_LeaderTateLiza),
+        .party = {.ItemCustomMoves = sParty_Fuschia_LeaderTateLiza}
     },
     [TRAINER_SCHOOL_KID_M] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -1024,11 +1024,11 @@ const struct Trainer gTrainers[] =
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_NORMAN,
         .trainerName = {_N,_o,_r,_m,_a,_n,_END},
-        .items = {},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_LeaderNorman),
-        .party = {.ItemCustomMoves = sParty_LeaderNorman}
+        .partySize = NELEMS(sParty_Celadon_LeaderNorman),
+        .party = {.ItemCustomMoves = sParty_Celadon_LeaderNorman}
     },
     [TRAINER_LEADER_WINONA] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -1036,11 +1036,11 @@ const struct Trainer gTrainers[] =
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_WINONA,
         .trainerName = {_W,_i,_n,_o,_n,_a,_END},
-        .items = {},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_LeaderWinona),
-        .party = {.ItemCustomMoves = sParty_LeaderWinona}
+        .partySize = NELEMS(sParty_Route16_LeaderWinona),
+        .party = {.ItemCustomMoves = sParty_Route16_LeaderWinona}
     },
     [TRAINER_LEADER_WALLACE] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -1048,11 +1048,11 @@ const struct Trainer gTrainers[] =
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_WALLACE,
         .trainerName = {_W,_a,_l,_l,_a,_c,_e,_END},
-        .items = {},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_LeaderWallace),
-        .party = {.ItemCustomMoves = sParty_LeaderWallace}
+        .partySize = NELEMS(sParty_Route20_LeaderWallace),
+        .party = {.ItemCustomMoves = sParty_Route20_LeaderWallace}
     },
     [TRAINER_ELITE_FOUR_GLACIA] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
