@@ -14,7 +14,7 @@ EventScript_Route5_Traynee:
     faceplayer
     npcmsg gText_Route5_Traynee_WhichToTrain MSG_KEEPOPEN 9 LEFT
     closemsg
-    setvar 0x8000 0x12
+    setvar 0x8000 15
     setvar 0x8001 0x6
     setvar 0x8004 0x0
     special 0x158
@@ -58,7 +58,7 @@ EventScript_Route5_Traynee_ResetEv:
     closemsg
     special 0x9F
     waitstate
-    compare LASTRESULT 0x6
+    compare 0x8004 0x6
     if greaterorequal _goto EventScript_Route5_Traynee_SeeYa
     special2 LASTRESULT 0x147
 	compare LASTRESULT 0x19C
@@ -155,13 +155,11 @@ EventScript_Route5_Ivy:
     faceplayer
     npcmsg gText_Route5_Ivy_WhatService MSG_KEEPOPEN 10 LEFT
     closemsg
-    setvar 0x8000 0x15
-    setvar 0x8001 0x4
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    compare LASTRESULT 0x4
-    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
+    multichoiceoption gText_Route5_Ivy_MaxAllIv 0
+    multichoiceoption gText_Route5_Ivy_ChangeIv 1
+    multichoiceoption gText_Route5_Ivy_ChangeHiddenPower 2
+    multichoiceoption gText_Route5_Ivy_SeeYa 3
+    multichoice 0x0 0x0 FOUR_MULTICHOICE_OPTIONS 0x0
     switch LASTRESULT
     case 0, EventScript_Route5_Ivy_MaxAllIV
     case 1, EventScript_Route5_Ivy_ChangeIV
@@ -208,14 +206,14 @@ EventScript_Route5_Ivy_ChangeIV:
     call EventScript_Route5_ChoosePokemon
     npcmsg gText_Route5_Ivy_WhichStatToChange MSG_KEEPOPEN 10 LEFT
     closemsg
-    setvar 0x8000 0x13
-    setvar 0x8001 0x6
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    copyvar 0x8006 LASTRESULT
-    compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
+    multichoiceoption gText_Route5_Ivy_ChangeIV_Hp 0
+    multichoiceoption gText_Route5_Ivy_ChangeIV_Attack 1
+    multichoiceoption gText_Route5_Ivy_ChangeIV_Defense 2
+    multichoiceoption gText_Route5_Ivy_ChangeIV_Speed 3
+    multichoiceoption gText_Route5_Ivy_ChangeIV_SpaAttack 4
+    multichoiceoption gText_Route5_Ivy_ChangeIV_SpDefense 5
+    multichoice 0x0 0x0 SIX_MULTICHOICE_OPTIONS 0x0
+    copyvar 0x8009 LASTRESULT
     switch LASTRESULT
     case 0, EventScript_Route5_Ivy_ChooseIVAmount @hp
     case 1, EventScript_Route5_Ivy_ChooseIVAmount @att
@@ -223,19 +221,20 @@ EventScript_Route5_Ivy_ChangeIV:
     case 3, EventScript_Route5_Ivy_ChooseIVAmount @spe
     case 4, EventScript_Route5_Ivy_ChooseIVAmount @spa
     case 5, EventScript_Route5_Ivy_ChooseIVAmount @spd
+    release
     end
 
 EventScript_Route5_Ivy_ChooseIVAmount:
     npcmsg gText_Route5_Ivy_HowManyIvy MSG_KEEPOPEN 10 LEFT
     closemsg
-    setvar 0x8000 0x16
-    setvar 0x8001 0x6
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
+    multichoiceoption gText_Route5_Ivy_ChangeIV_0 0
+    multichoiceoption gText_Route5_Ivy_ChangeIV_1 1
+    multichoiceoption gText_Route5_Ivy_ChangeIV_14 2
+    multichoiceoption gText_Route5_Ivy_ChangeIV_15 3
+    multichoiceoption gText_Route5_Ivy_ChangeIV_30 4
+    multichoiceoption gText_Route5_Ivy_ChangeIV_31 5
+    multichoice 0x0 0x0 SIX_MULTICHOICE_OPTIONS 0x0
     copyvar 0x8007 LASTRESULT
-    compare LASTRESULT 0x6
-    if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
     switch LASTRESULT
     case 0, EventScript_Route5_IvyCallIVFunc @0
     case 1, EventScript_Route5_IvyCallIVFunc @1
@@ -243,7 +242,8 @@ EventScript_Route5_Ivy_ChooseIVAmount:
     case 3, EventScript_Route5_IvyCallIVFunc @15
     case 4, EventScript_Route5_IvyCallIVFunc @30
     case 5, EventScript_Route5_IvyCallIVFunc @31
-    return
+    release
+    end
 
 EventScript_Route5_IvyCallIVFunc:
     npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN 10 LEFT
@@ -264,7 +264,7 @@ EventScript_Route5_Ivy_ChangeHiddenPower:
     call EventScript_Route5_ChoosePokemon
     npcmsg gText_Route5_Ivy_WhichHiddenPower MSG_KEEPOPEN 10 LEFT
     closemsg
-    setvar 0x8000 0x17
+    setvar 0x8000 16
     setvar 0x8001 0x6
     setvar 0x8004 0x0
     special 0x158
@@ -302,7 +302,7 @@ EventScript_Route5_Ivy_ThisIsAnEgg:
     end
 
 EventScript_Route5_Ivy_SeeYa:
-    npcmsg gText_Route5_Ivy_SeeYa MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_ComeBackAnytime MSG_KEEPOPEN 10 LEFT
     closemsg
     release
     end

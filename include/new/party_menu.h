@@ -40,7 +40,7 @@ void sp10A_CanUseCutOnTree(void);
 void sp10B_CanUseRockSmashOnRock(void);
 void sp10C_CanUseStrengthOnBoulder(void);
 
-void __attribute__((long_call)) Task_WaitForFadeOut(u8 taskId);
+void __attribute__((long_call)) DisplayMoveTutorMenu(void);
 
 //Exported Data Structures
 //extern const struct XX gPartyMenuCursorOptions[];

@@ -290,11 +290,9 @@ extern u8 GetCurrentLevelCap(void); //Must be implemented yourself
 static void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum);
 static void SetEVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
 static void SetIVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
-void AddEVsTraynee(void);
 void ResetAllEVs(void);
 void ChangeIV(void);
 void ChangeHiddenPower(void);
-void DisplayCurrentMonAbility(void);
 
 #ifdef OPEN_WORLD_TRAINERS
 
@@ -5312,105 +5310,12 @@ void ChangeMonNature(void){
 void ChangeMonAbility(void){
 	struct Pokemon* mon = &gPlayerParty[Var8004];
 	u8 nature = GetNature(mon);
-	bool8 forceShiny = IsMonShiny(mon);
-	bool8 keepGender = TRUE;
-	bool8 keepLetterCore = FALSE;
-
-	u32 personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-	u16 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
-	u32 trainerId = GetMonData(mon, MON_DATA_OT_ID, NULL);
-	u16 sid = HIHALF(trainerId);
-	u16 tid = LOHALF(trainerId);
-	u8 gender = GetGenderFromSpeciesAndPersonality(species, personality);
-	u8 letter = GetUnownLetterFromPersonality(personality);
-	bool8 isMinior = IsMinior(species);
-	u8 miniorCore = GetMiniorCoreFromPersonality(personality);
-
-	u8 changeTo = ABILITY_NONE;
-	u8 abilityNum = Var8005; // From script
-	if (abilityNum == 2){ //Hidden Ability
-		mon->hiddenAbility = TRUE;
-		changeTo = gBaseStats[species].hiddenAbility;
+	if(mon->hiddenAbility == TRUE){
+		mon->hiddenAbility = FALSE;
+		GiveMonNatureAndAbility(mon, nature, 0, IsMonShiny(mon), TRUE, FALSE);
 	}
-	else{
-		mon->hiddenAbility = FALSE; // turn off, will get stuck otherwise
-		abilityNum = MathMin(1, abilityNum); //Either First or Second
-		if(abilityNum == 0)
-			changeTo = gBaseStats[species].ability1;
-		else
-			changeTo = gBaseStats[species].ability2;
-	}
-
-	GetMonNickname(mon, gStringVar1);
-	CopyAbilityName(gStringVar2, changeTo, species);
-
-	do
-	{
-		personality = Random32();
-		if (forceShiny)
-		{
-			u8 shinyRange = RandRange(0,8);
-			personality = (((shinyRange ^ (sid ^ tid)) ^ LOHALF(personality)) << 16) | LOHALF(personality);
-		}
-
-		if (abilityNum != 2)
-		{
-			personality &= ~(1);
-			personality |= abilityNum; 
-		}
-	} while (GetNatureFromPersonality(personality) != nature
-	|| (keepGender && GetGenderFromSpeciesAndPersonality(species, personality) != gender)
-	|| (keepLetterCore && species == SPECIES_UNOWN && GetUnownLetterFromPersonality(personality) != letter) //Make sure the Unown letter doesn't change
-	|| (keepLetterCore && isMinior && GetMiniorCoreFromPersonality(personality) != miniorCore)); //Make sure the Minior core doesn't change
-
-	mon->personality = personality;
-}
-
-void DisplayCurrentMonAbility(void){
-	struct Pokemon* mon = &gPlayerParty[Var8004];
-	u16 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
-	u8 ability = GetMonAbility(mon);
-	u8 changeTo = ABILITY_NONE;
-
-	if (ability == gBaseStats[species].ability1){
-		changeTo = gBaseStats[species].ability1;
-	}
-	else if (ability == gBaseStats[species].ability2){
-		changeTo = gBaseStats[species].ability2;
-	}
-	else if (ability == gBaseStats[species].hiddenAbility){
-		changeTo = gBaseStats[species].hiddenAbility;
-	}
-
-	CopyAbilityName(gStringVar1, changeTo, species);
-}
-
-void DisplayCurrentMonAbility2(void){
-	struct Pokemon* mon = &gPlayerParty[Var8004];
-	u16 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
-	u8 changeTo = ABILITY_NONE;
-	u8 abilityNum = Var8005;
-
-	if(abilityNum == 2){
-		changeTo = gBaseStats[species].hiddenAbility;
-	}else{
-		abilityNum = MathMin(1, abilityNum);
-		if(abilityNum == 0)
-			changeTo = gBaseStats[species].ability1;
-		else
-			changeTo = gBaseStats[species].ability2;
-	}
-
-	GetMonNickname(mon, gStringVar1);
-	CopyAbilityName(gStringVar2, changeTo, species);
-}
-
-void AddEVsTraynee(void)
-{
-	u8 i = Var8006;
-	u8 EV = Var8007;
-	AddEVs(&gPlayerParty[Var8005], i, EV);
-	CalculateMonStatsNew(&gPlayerParty[Var8005]);
+	else
+		GiveMonNatureAndAbility(mon, nature, 0xFF, IsMonShiny(mon), TRUE, FALSE);
 }
 
 void ResetAllEVs(void)
@@ -5423,7 +5328,7 @@ void ResetAllEVs(void)
 
 void ChangeIV(void){
 	struct Pokemon* mon = &gPlayerParty[Var8005];
-	u8 statId = Var8006;
+	u8 statId = Var8009;
 	u8 IVid = Var8007;
 	u8 IV = 0;
 

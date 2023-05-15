@@ -185,27 +185,42 @@ If a wild Pok\emon appears,\nyour Pok\emon can battle it.\pWith it at your side,
 [PLAYER] boots up the console.\pWhich of these options would you like\nto edit?
 
 #org @gText_MinimalGrinding
-Enabling Minimal Grinding assures\nall Pok\emon to have perfect IVs,\land EVs cannot be obtained.\pEnable Minimal Grinding?
-
-#org @gText_DisableMinimalGrinding
-Minimal Grinding is currently\nenabled.\pDisable Minimal Grinding?
+Minimal Grinding
 
 #org @gText_RandomizePokemon
-Randomize Pok\emon randomizes\nencounters, trainers, and gifts.\pEnable Randomize Pok\emon?
+Randomize Pok\emon
 
 #org @gText_RandomizeLearnset
-Randomize Learnset randomizes\nPok\emon learnsets.\pIt does not randomize TMs or Move\nTutor moves.\pEnable Randomize Learnset?
-
-#org @gText_DisableRandomizeLearnset
-Randomize Learnset is currently\nenabled.\pDisable Randomize Learnset?
-
-#org @gText_DisableRandomizePokemon
-Randomize Pok\emon is currently\nenabled.\pDisable Randomize Pok\emon?
+Randomize Learnset
 
 #org @gText_RandomizeAbility
+Randomize Ability
+
+#org @gText_EnterCode
+Enter Code
+
+#org @gText_GameBoyConsole_MinimalGrinding
+Enabling Minimal Grinding assures\nall Pok\emon to have perfect IVs,\land EVs cannot be obtained.\pEnable Minimal Grinding?
+
+#org @gText_GameBoyConsole_DisableMinimalGrinding
+Minimal Grinding is currently\nenabled.\pDisable Minimal Grinding?
+
+#org @gText_GameBoyConsole_RandomizePokemon
+Randomize Pok\emon randomizes\nencounters, trainers, and gifts.\pEnable Randomize Pok\emon?
+
+#org @gText_GameBoyConsole_RandomizeLearnset
+Randomize Learnset randomizes\nPok\emon learnsets.\pIt does not randomize TMs or Move\nTutor moves.\pEnable Randomize Learnset?
+
+#org @gText_GameBoyConsole_DisableRandomizeLearnset
+Randomize Learnset is currently\nenabled.\pDisable Randomize Learnset?
+
+#org @gText_GameBoyConsole_DisableRandomizePokemon
+Randomize Pok\emon is currently\nenabled.\pDisable Randomize Pok\emon?
+
+#org @gText_GameBoyConsole_RandomizeAbility
 Randomize Ability randomizes\nPok\emon abilities.\pEnable Randomize Ability?
 
-#org @gText_DisableRandomizeAbility
+#org @gText_GameBoyConsole_DisableRandomizeAbility
 Randomize Ability is currently\nenabled.\pDisable Randomize Ability?
 
 #org @gText_PalletTown_MayHouseSign

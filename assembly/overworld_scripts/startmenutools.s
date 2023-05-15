@@ -24,42 +24,35 @@ EventScript_PCMainMenu:
 EventScript_TimeTurner:
     preparemsg gText_TimeOfDay
     waitmsg
-    setvar 0x8000 0x4
-    setvar 0x8001 0x4
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    compare LASTRESULT 0x3
-    if greaterorequal _goto End
-    switch LASTRESULT 
-    case 0, EventScript_Day
-    case 1, EventScript_Night
-    case 2, EventScript_Reset
+    multichoiceoption gText_TimeTurner_Day 0
+    multichoiceoption gText_TimeTurner_Night 1
+    multichoiceoption gText_TimeTurner_Reset 2
+    multichoice 0x0 0x0 THREE_MULTICHOICE_OPTIONS 0x0
+    switch LASTRESULT
+    case 0, EventScript_TimeTurner_Day
+    case 1, EventScript_TimeTurner_Night
+    case 2, EventScript_TimeTurner_Reset
     release
     end
 
-EventScript_Day:
+EventScript_TimeTurner_Day:
     clearflag FLAG_TURN_NIGHT
     setflag FLAG_TURN_DAY
     sound 0x2
     release
     end
 
-EventScript_Night:
+EventScript_TimeTurner_Night:
     clearflag FLAG_TURN_DAY
     setflag FLAG_TURN_NIGHT
     sound 0x2
     release
     end
 
-EventScript_Reset:
+EventScript_TimeTurner_Reset:
     clearflag FLAG_TURN_DAY
     clearflag FLAG_TURN_NIGHT
     sound 0x2
-    release
-    end
-
-End:
     release
     end
 

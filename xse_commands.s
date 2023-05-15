@@ -2132,3 +2132,9 @@ msgbox \text, \type
 closeonkeypress
 callasm RemoveNameBox
 .endm
+
+.macro signbox text:req type:req
+signmsg
+msgbox \text, \type
+normalmsg
+.endm

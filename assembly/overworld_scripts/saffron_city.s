@@ -143,7 +143,7 @@ EventScript_Elevator:
     special 0x132
     preparemsg 0x81A535C
     waitmsg
-    setvar 0x8000 0x18
+    setvar 0x8000 17
     setvar 0x8001 0x6
     setvar 0x8004 0x0
     special 0x158

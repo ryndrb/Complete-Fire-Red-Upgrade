@@ -765,13 +765,10 @@ EventScript_Pewter_Steven_AfterIntro:
     call StevenNameBox
     msgbox gText_Pewter_Steven_Speak4 MSG_KEEPOPEN
     callasm RemoveNameBox
-    setvar 0x8000 0x1A
-    setvar 0x8001 0x3
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    compare LASTRESULT 0x3
-    if greaterorequal _goto EventScript_Pewter_Steven_End
+    multichoiceoption gText_Pewter_Steven_General 0
+    multichoiceoption gText_Pewter_Steven_Quests 1
+    multichoiceoption gText_Pewter_Steven_End 2
+    multichoice 0x0 0x0 THREE_MULTICHOICE_OPTIONS 0x0
     switch LASTRESULT
     case 0, EventScript_Pewter_Steven_General
     case 1, EventScript_Pewter_Steven_Quests

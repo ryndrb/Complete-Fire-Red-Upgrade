@@ -115,6 +115,15 @@ Take good care of it.\pYour caring for it will make me\nvery happy.\pNow, if you
 #org @gText_Pewter_Steven_Speak4
 Ah, we meet again!\nWhat did you want to talk about?
 
+#org @gText_Pewter_Steven_General
+General
+
+#org @gText_Pewter_Steven_Quests
+Quests
+
+#org @gText_Pewter_Steven_End
+End
+
 #org @gText_Pewter_Steven_Speak5
 Have you ever been to the Unova\nregion before?\pThere's a place called Driftveil\nCity where you can mine emeralds.\pI'd love to visit there.\nIf only I had a good excuse[.]
 

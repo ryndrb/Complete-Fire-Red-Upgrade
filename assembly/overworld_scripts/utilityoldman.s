@@ -19,26 +19,29 @@ EventScript_UtilityOldMan: @will probably add more? inspired by inclement emeral
 	faceplayer
 	checkflag 0x946
 	if NOT_SET _goto EventScript_UtilityOldMan_FirstEncounter
-    msgbox gText_EventScript_UtilityOldManGreetings MSG_KEEPOPEN
-    setvar 0x8000 0xE
-    setvar 0x8001 0x5
-	setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    compare LASTRESULT 5
-    if greaterorequal _goto EventScript_ComeAgain
-    switch LASTRESULT
-	case 0, EventScript_NameRater
-    case 1, EventScript_MoveTutor
-    case 2, EventScript_NatureChanger
-	case 3, EventScript_AbilityChanger
-    case 4, EventScript_ComeAgain
+	preparemsg gText_EventScript_UtilityOldManGreetings
+	waitmsg
+	multichoiceoption gText_UtilityOldMan_Nickname 0
+	multichoiceoption gText_UtilityOldMan_MoveTutor 1
+	multichoiceoption gText_UtilityOldMan_NatureChanger 2
+	multichoiceoption gText_UtilityOldMan_AbilityChanger 3
+	multichoiceoption gText_UtilityOldMan_SeeYa 4
+	multichoice 0x0 0x0 FIVE_MULTICHOICE_OPTIONS 0x0
+	switch LASTRESULT
+	case 0, EventScript_UtilityOldMan_Nickname
+	case 1, EventScript_UtilityOldMan_MoveTutor
+	case 2, EventScript_UtilityOldMan_NatureChanger
+	case 3, EventScript_UtilityOldMan_AbilityChanger
+	case 4, EventScript_UtilityOldMan_SeeYa
+	release
     end
 
 EventScript_UtilityOldMan_FirstEncounter:
 	msgbox gText_UtilityOldManSpeak1 MSG_KEEPOPEN
 	msgbox gText_UtilityOldManSpeak2 MSG_KEEPOPEN
 	msgbox gText_UtilityOldManSpeak3 MSG_KEEPOPEN
+	msgbox gText_UtilityOldManSpeak4 MSG_KEEPOPEN
+	msgbox gText_UtilityOldManSpeak5 MSG_KEEPOPEN
 	closeonkeypress
 	setflag 0x946
 	release
@@ -47,7 +50,7 @@ EventScript_UtilityOldMan_FirstEncounter:
 @@@@@@@@@@@@@@@@@@@@@@
 @ Name Rater
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_NameRater:
+EventScript_UtilityOldMan_Nickname:
 	msgbox gText_WhichPokemonToChangeNickname MSG_KEEPOPEN
 	special 0x9F
 	waitstate
@@ -71,13 +74,13 @@ EventScript_NameRater:
 EventScript_ThisIsAnEggNameRater:
 	msgbox gText_EventScript_ThisIsAnEgg MSG_KEEPOPEN
 	closeonkeypress
-	goto EventScript_NameRater
+	goto EventScript_UtilityOldMan_Nickname
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Move Tutor
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_MoveTutor:
+EventScript_UtilityOldMan_MoveTutor:
 	checkflag FLAG_DEFEATED_BROCK
 	if 0x0 _goto EventScript_NoBrockBadge
 	msgbox gText_SelectWhichBadge MSG_KEEPOPEN
@@ -85,7 +88,7 @@ EventScript_MoveTutor:
 	end
 
 EventScript_SelectBadge:
-	setvar 0x8000 0x5
+	setvar 0x8000 3
 	setvar 0x8001 0x5
 	setvar 0x8004 0x0
 	special 0x158
@@ -105,12 +108,12 @@ EventScript_SelectBadge:
 
 EventScript_FirstBadgeTutorMoves:
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0x6
+	setvar 0x8000 4
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 8
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT 
 	case 0,  Learn_AfterYou
 	case 1,  Learn_Bind
@@ -146,12 +149,12 @@ EventScript_SecondBadgeTutorMoves:
 	checkflag FLAG_DEFEATED_MISTY
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0x7
+	setvar 0x8000 5
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 12
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT
 	case 0,  Learn_BarbBarrage
 	case 1,  Learn_BreakingSwipe
@@ -187,12 +190,12 @@ EventScript_ThirdBadgeTutorMoves:
 	checkflag FLAG_DEFEATED_LT_SURGE
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0x8
+	setvar 0x8000 6
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 14
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT
 	case 0,  Learn_BurningJealousy
 	case 1,  Learn_CeaselessEdge
@@ -228,12 +231,12 @@ EventScript_FourthBadgeTutorMoves:
 	checkflag FLAG_DEFEATED_ERIKA
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0x9
+	setvar 0x8000 7
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 15
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT
 	case 0,  Learn_Agility
 	case 1,  Learn_AirSlash
@@ -269,12 +272,12 @@ EventScript_FifthBadgeTutorMoves:
 	checkflag FLAG_DEFEATED_SABRINA
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0xA
+	setvar 0x8000 8
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 7
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT
 	case 0,  Learn_AquaTail
 	case 1,  Learn_BlazeKick
@@ -297,12 +300,12 @@ EventScript_SixthBadgeTutorMoves:
 	checkflag FLAG_DEFEATED_KOGA
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0xB
+	setvar 0x8000 9
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 6
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT
 	case 0,  Learn_BleakwindStorm
 	case 1,  Learn_BugBuzz
@@ -325,12 +328,12 @@ EventScript_SeventhBadgeTutorMoves:
 	checkflag FLAG_DEFEATED_BLAINE
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0xC
+	setvar 0x8000 10
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 12
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT
 	case 0,  Learn_BraveBird
 	case 1,  Learn_CloseCombat
@@ -353,12 +356,12 @@ EventScript_EightBadgeTutorMoves:
 	checkflag FLAG_DEFEATED_LEADER_GIOVANNI
 	if 0x0 _goto EventScript_DontHaveThisBadgeYet
 	msgbox gText_WhichMoveDoYouWantToLearn MSG_KEEPOPEN
-	setvar 0x8000 0xD
+	setvar 0x8000 11
 	setvar 0x8001 0x5
 	special 0x158
 	waitstate
 	compare LASTRESULT 10
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	switch LASTRESULT
 	case 0,  Learn_BlastBurn
 	case 1,  Learn_Chloroblast
@@ -1065,7 +1068,7 @@ EventScript_TutorScreen:
 	special 0x18D
 	waitstate
 	compare 0x8004 0x6
-	if greaterorequal _goto EventScript_MoveTutor
+	if greaterorequal _goto EventScript_UtilityOldMan_MoveTutor
 	goto EventScript_End
 	end
 
@@ -1078,14 +1081,13 @@ EventScript_NoBrockBadge:
 EventScript_DontHaveThisBadgeYet:
 	msgbox gText_EventScript_DontHaveThisBadgeYet MSG_NORMAL
 	closeonkeypress
-	goto EventScript_MoveTutor
+	goto EventScript_UtilityOldMan_MoveTutor
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Nature Changer
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_NatureChanger:
-	sound 0x2
+EventScript_UtilityOldMan_NatureChanger:
 	checkflag FLAG_DEFEATED_MISTY
 	if 0x0 _goto EventScript_NoMistyBadge
     msgbox gText_NatureChangerQuestion MSG_YESNO 
@@ -1094,7 +1096,7 @@ EventScript_NatureChanger:
     special 0x9F
     waitstate
     compare 0x8004 0x6
-	if greaterorequal _goto EventScript_ComeAgain
+	if greaterorequal _goto EventScript_UtilityOldMan_SeeYa
 	special 0x148
 	compare LASTRESULT 0x1
 	if 0x1 _goto EventScript_ThisIsAnEggNatureChanger
@@ -1102,7 +1104,7 @@ EventScript_NatureChanger:
     end
 
 EventScript_NatureList:
-    setvar 0x8000 0x2
+    setvar 0x8000 2
     setvar 0x8001 0x6
     copyvar 0x5106 0x8004
     setvar 0x8004 0x0
@@ -1111,7 +1113,7 @@ EventScript_NatureList:
     waitstate 
     copyvar 0x8004 0x5106 
     compare LASTRESULT 0x25
-    if greaterorequal _goto EventScript_ComeAgain
+    if greaterorequal _goto EventScript_UtilityOldMan_SeeYa
     copyvar 0x8005 LASTRESULT
     callasm ChangeMonNature
 	sound 0x2
@@ -1133,24 +1135,27 @@ EventScript_NoMistyBadge:
 EventScript_ThisIsAnEggNatureChanger:
 	msgbox gText_EventScript_ThisIsAnEgg MSG_KEEPOPEN
 	closeonkeypress
-	goto EventScript_NatureChanger
+	goto EventScript_UtilityOldMan_NatureChanger
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Ability Changer
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_AbilityChanger:
-	sound 0x2
+EventScript_UtilityOldMan_AbilityChanger:
+	additem ITEM_ABILITY_CAPSULE 99
 	checkflag FLAG_DEFEATED_LT_SURGE
-	if 0x0 _goto EventScript_NoSurgeBadge
-	msgbox gText_AbilityChangerQuestion MSG_YESNO
+	if 0x0 _goto EventScript_AbilityChanger_PokemonNotStrongEnough
+	msgbox gText_UtilityOldMan_AbilityChanger_WantToChange MSG_YESNO
 	compare LASTRESULT 0x1
-	if 0x0 _goto EventScript_ComeAgain
+	if notequal _goto EventScript_UtilityOldMan_SeeYa
+	checkitem ITEM_ABILITY_CAPSULE 0x5
+	compare LASTRESULT 0x1
+	if notequal _goto EventScript_UtilityOldMan_AbilityChanger_NotEnoughPills
 	special 0x9F
 	waitstate
 	copyvar 0x8006 0x8004
 	compare 0x8004 0x6
-	if greaterorequal _goto EventScript_ComeAgain
+	if greaterorequal _goto EventScript_UtilityOldMan_SeeYa
 	special 0x148
 	compare LASTRESULT 0x1
 	if 0x1 _goto EventScript_ThisIsAnEggAbilityChanger
@@ -1159,55 +1164,45 @@ EventScript_AbilityChanger:
 	end
 
 EventScript_DoChangeAbility:
-	callasm DisplayCurrentMonAbility
-	msgbox gText_WhichAbility MSG_KEEPOPEN
-	setvar 0x8000 0x3
-	setvar 0x8001 0x3
-	copyvar 0x5106 0x8004
-	setvar 0x8004 0x0
-	special 0x158
-	waitstate
-	copyvar 0x8004 0x5106
-	compare LASTRESULT 0x3
-	if greaterorequal _goto EventScript_ComeAgain
-	copyvar 0x8005 LASTRESULT
-	switch LASTRESULT
-	case 0, EventScript_SelectedAbility 
-	case 1, EventScript_SelectedAbility
-	case 2, EventScript_SelectedAbility
-	release
-	end
-
-EventScript_SelectedAbility:
-	sound 0x2
-	callasm DisplayCurrentMonAbility2
-	msgbox gText_SelectedAbility MSG_YESNO
-	compare LASTRESULT 0x1
-	if 0x0 _goto EventScript_DoChangeAbility
+	msgbox gText_UtilityOldMan_AbilityChanger_LetsDoThis MSG_KEEPOPEN
+	closeonkeypress
+	fadescreen 0x1
 	copyvar 0x8004 0x8006
 	callasm ChangeMonAbility
-	msgbox gText_FeedingAbilityPill MSG_KEEPOPEN
-	sound 0x2
-	msgbox gText_AbilityChangedSucessful MSG_KEEPOPEN
+	msgbox gText_UtilityOldMan_AbilityChanger_ChangingToHidden MSG_KEEPOPEN
+	closeonkeypress
+	sound 0x1
+	pause 60
+	fadescreen 0x0
+	signbox gText_UtilityOldMan_AbilityChanger_PokemonAte MSG_KEEPOPEN
+	msgbox gText_UtilityOldMan_AbilityChanger_LikedMedicine MSG_KEEPOPEN
+	closeonkeypress
+	removeitem ITEM_ABILITY_CAPSULE 0x5
 	release
 	end
 
-EventScript_NoSurgeBadge:
-	msgbox gText_EventScript_NoSurgeBadge MSG_KEEPOPEN 
+EventScript_AbilityChanger_PokemonNotStrongEnough:
+	msgbox gText_AbilityChanger_PokemonNotStrongEnough MSG_KEEPOPEN 
 	closeonkeypress
-	goto EventScript_End
+	release
+	end
+
+EventScript_UtilityOldMan_AbilityChanger_NotEnoughPills:
+	msgbox gText_UtilityOldMan_AbilityChanger_NotEnoughPills MSG_KEEPOPEN
+	closeonkeypress
+	release
 	end
 
 EventScript_ThisIsAnEggAbilityChanger:
 	msgbox gText_EventScript_ThisIsAnEgg MSG_KEEPOPEN
 	closeonkeypress
-	goto EventScript_AbilityChanger
+	goto EventScript_UtilityOldMan_AbilityChanger
 	end
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ End Script Dialogue
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_ComeAgain:
+EventScript_UtilityOldMan_SeeYa:
 	msgbox gText_EventScript_ComeAgain MSG_KEEPOPEN
 	closeonkeypress
 	release

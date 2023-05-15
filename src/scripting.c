@@ -3193,13 +3193,6 @@ extern const u8 TUTOR_SKYATTACK[];
 extern const u8 TUTOR_SOLARBLADE[];
 extern const u8 TUTOR_STEELROLLER[];
 
-// Utility Old Man Tool List
-extern const u8 MOVE_TUTOR[];
-extern const u8 NATURE_CHANGER[];
-extern const u8 NAME_RATER[];
-extern const u8 ABILITY_CHANGER[];
-extern const u8 EXIT[];
-
 // Chosee Starter Region
 extern const u8 REGION_KANTO[];
 extern const u8 REGION_JOHTO[];
@@ -3247,36 +3240,6 @@ extern const u8 T_SPDEFENSE[];
 extern const u8 T_SPEED[];
 extern const u8 T_CANCEL[];
 
-// Mon Stats
-extern const u8 MON_HP[];
-extern const u8 MON_ATTACK[];
-extern const u8 MON_DEFENSE[];
-extern const u8 MON_SPATTACK[];
-extern const u8 MON_SPDEFENSE[];
-extern const u8 MON_SPEED[];
-
-// Number of EVs // UNUSED
-extern const u8 EV_4[];
-extern const u8 EV_8[];
-extern const u8 EV_12[];
-extern const u8 EV_64[];
-extern const u8 EV_128[];
-extern const u8 EV_252[];
-
-// Ivy Service
-extern const u8 I_MAX[];
-extern const u8 I_IV[];
-extern const u8 I_HP[];
-extern const u8 I_CANCEL[];
-
-// Number of IVs
-extern const u8 IV_0[];
-extern const u8 IV_1[];
-extern const u8 IV_14[];
-extern const u8 IV_15[];
-extern const u8 IV_30[];
-extern const u8 IV_31[];
-
 // Hidden Power Types
 extern const u8 IV_HP_DARK[];
 extern const u8 IV_HP_DRAGON[];
@@ -3308,18 +3271,6 @@ extern const u8 LEVEL3[];
 extern const u8 LEVEL2[];
 extern const u8 LEVEL1[];
 extern const u8 gEXIT[];
-
-// Game Boy Consol Pallet Town
-extern const u8 gMinimalGrindingMode[];
-extern const u8 gRandomizePokemon[];
-extern const u8 gRandomizeLearnset[];
-extern const u8 gRandomizeAbility[];
-extern const u8 gCheatCode[];
-
-// Steven Quest Dialogues (from Ren. Plat.)
-extern const u8 gGeneral[];
-extern const u8 gQuests[];
-extern const u8 gNothing[];
 
 //Scrolling Lists
 static const u8* sMultichoiceSet1[] =
@@ -3377,19 +3328,6 @@ static const u8* NatureChangerSet[] = {
     NATURE_SASSY_23,
     NATURE_CAREFUL_24,
     NATURE_QUIRKY_25,
-};
-
-// Ability Changer
-static const u8* AbilityChangerSet[] = {
-	ABILITY_FIRST,
-	ABILITY_SECOND,
-	ABILITY_HIDDEN,
-};
-
-static const u8* TimeTurner[] = {
-	TIME_DAY,
-	TIME_NIGHT,
-	TIME_RESET,
 };
 
 // Badge Tutor Moves
@@ -3604,14 +3542,6 @@ static const u8* EightBadgeTutorMoves[] = {
 	TUTOR_STEELROLLER,
 };
 
-static const u8* UtilityOldManTools[] = {
-	NAME_RATER,
-	MOVE_TUTOR,
-	NATURE_CHANGER,
-	ABILITY_CHANGER,
-	EXIT,
-};
-
 static const u8* ChooseStarterRegion[] = {
 	REGION_KANTO,
 	REGION_JOHTO,
@@ -3666,44 +3596,6 @@ static const u8* TrayneeService[] = {
 	T_CANCEL,
 };
 
-// EV Stat
-static const u8* MonStats[] = {
-	MON_HP,
-	MON_ATTACK,
-	MON_DEFENSE,
-	MON_SPEED,
-	MON_SPATTACK,
-	MON_SPDEFENSE,
-};
-
-// Number of EV
-static const u8* NumEV[] = {
-	EV_4,
-	EV_8,
-	EV_12,
-	EV_64,
-	EV_128,
-	EV_252,
-};
-
-// Ivy Service
-static const u8* IvyService[] = {
-	I_MAX,
-	I_IV,
-	I_HP,
-	I_CANCEL,
-};
-
-// Number of IV
-static const u8* NumIV[] = {
-	IV_0,
-	IV_1,
-	IV_14,
-	IV_15,
-	IV_30,
-	IV_31,
-};
-
 // Hidden Power Types
 static const u8* HiddenPowerTpyes[] = {
 	IV_HP_DARK,
@@ -3739,50 +3631,27 @@ static const u8* SaffronElevator[] = {
 	gEXIT,
 };
 
-static const u8* GameBoyConsolePalletTown[] = {
-	gMinimalGrindingMode,
-	gRandomizePokemon,
-	gRandomizeLearnset,
-	gRandomizeAbility,
-	gCheatCode,
-};
-
-static const u8* StevenDialogues[] = {
-	gGeneral,
-	gQuests,
-	gNothing,
-};
-
 // Multichoice Lists
 const struct ScrollingMulti gScrollingSets[] =
 {
-	{sMultichoiceSet1, ARRAY_COUNT(sMultichoiceSet1)},//1
-	{sMultichoiceSet2, ARRAY_COUNT(sMultichoiceSet2)},//2
-	{NatureChangerSet, ARRAY_COUNT(NatureChangerSet)},//3
-	{AbilityChangerSet, ARRAY_COUNT(AbilityChangerSet)},//4
-	{TimeTurner, ARRAY_COUNT(TimeTurner)},//5
-	{BadgeTutorMoves, ARRAY_COUNT(BadgeTutorMoves)},//6
-	{FirstBadgeTutorMoves, ARRAY_COUNT(FirstBadgeTutorMoves)},//7
-	{SecondBadgeTutorMoves, ARRAY_COUNT(SecondBadgeTutorMoves)},//8
-	{ThirdBadgeTutorMoves, ARRAY_COUNT(ThirdBadgeTutorMoves)},//9
-	{FourthBadgeTutorMoves, ARRAY_COUNT(FourthBadgeTutorMoves)},//10
-	{FifthBadgeTutorMoves, ARRAY_COUNT(FifthBadgeTutorMoves)},//11
-	{SixthBadgeTutorMoves, ARRAY_COUNT(SixthBadgeTutorMoves)},//12
-	{SeventhBadgeTutorMoves, ARRAY_COUNT(SeventhBadgeTutorMoves)},//13
-	{EightBadgeTutorMoves, ARRAY_COUNT(EightBadgeTutorMoves)},//14
-	{UtilityOldManTools, ARRAY_COUNT(UtilityOldManTools)},//15
-	{ChooseStarterRegion, ARRAY_COUNT(ChooseStarterRegion)},//16
-	{GameCornerMegaStones, ARRAY_COUNT(GameCornerMegaStones)},//17
-	{GameCornerPseudo, ARRAY_COUNT(GameCornerPseudo)},//18
-	{TrayneeService, ARRAY_COUNT(TrayneeService)},//19
-	{MonStats, ARRAY_COUNT(MonStats)},//20 // UNUSED
-	{NumEV, ARRAY_COUNT(NumEV)},//21 // UNUSED
-	{IvyService, ARRAY_COUNT(IvyService)},//22
-	{NumIV, ARRAY_COUNT(NumIV)},//23
-	{HiddenPowerTpyes, ARRAY_COUNT(HiddenPowerTpyes)},//24
-	{SaffronElevator, ARRAY_COUNT(SaffronElevator)},//25
-	{GameBoyConsolePalletTown, ARRAY_COUNT(GameBoyConsolePalletTown)},//26
-	{StevenDialogues, ARRAY_COUNT(StevenDialogues)},//27
+	/*  0 */ {sMultichoiceSet1, ARRAY_COUNT(sMultichoiceSet1)},
+	/*  1 */ {sMultichoiceSet2, ARRAY_COUNT(sMultichoiceSet2)},
+	/*  2 */ {NatureChangerSet, ARRAY_COUNT(NatureChangerSet)},
+	/*  3 */ {BadgeTutorMoves, ARRAY_COUNT(BadgeTutorMoves)},
+	/*  4 */ {FirstBadgeTutorMoves, ARRAY_COUNT(FirstBadgeTutorMoves)},
+	/*  5 */ {SecondBadgeTutorMoves, ARRAY_COUNT(SecondBadgeTutorMoves)},
+	/*  6 */ {ThirdBadgeTutorMoves, ARRAY_COUNT(ThirdBadgeTutorMoves)},
+	/*  7 */ {FourthBadgeTutorMoves, ARRAY_COUNT(FourthBadgeTutorMoves)},
+	/*  8 */ {FifthBadgeTutorMoves, ARRAY_COUNT(FifthBadgeTutorMoves)},
+	/*  9 */ {SixthBadgeTutorMoves, ARRAY_COUNT(SixthBadgeTutorMoves)},
+	/* 10 */ {SeventhBadgeTutorMoves, ARRAY_COUNT(SeventhBadgeTutorMoves)},
+	/* 11 */ {EightBadgeTutorMoves, ARRAY_COUNT(EightBadgeTutorMoves)},
+	/* 12 */ {ChooseStarterRegion, ARRAY_COUNT(ChooseStarterRegion)},
+	/* 13 */ {GameCornerMegaStones, ARRAY_COUNT(GameCornerMegaStones)},
+	/* 14 */ {GameCornerPseudo, ARRAY_COUNT(GameCornerPseudo)},
+	/* 15 */ {TrayneeService, ARRAY_COUNT(TrayneeService)},
+	/* 16 */ {HiddenPowerTpyes, ARRAY_COUNT(HiddenPowerTpyes)},
+	/* 17 */ {SaffronElevator, ARRAY_COUNT(SaffronElevator)},
 };
 
 //Link number of opts shown at once to the box height

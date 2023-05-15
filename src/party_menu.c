@@ -1105,7 +1105,8 @@ SKIP_FIELD_MOVES:
 	}
 
 	// move relearner
-	AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MOVE_RELEARNER);
+	if(GetNumberOfRelearnableMoves(&mons[slotId]) != 0)
+		AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MOVE_RELEARNER);
 	AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
 }
 
@@ -2769,7 +2770,10 @@ void FieldUseFunc_VsSeeker(u8 taskId)
 
 void CursorCb_MoveRelearner(u8 taskId)
 {
-	PlaySE(SE_SELECT);
-	Var8004 = gPartyMenu.slotId;
-	gTasks[taskId].func = Task_WaitForFadeOut;
+    PlaySE(SE_SELECT);
+    Var8004 = gPartyMenu.slotId;
+	Var8005 = GetNumberOfRelearnableMoves(&gPlayerParty[Var8004]);
+	DisplayMoveTutorMenu();
+    sPartyMenuInternal->exitCallback = DisplayMoveTutorMenu;
+    Task_ClosePartyMenu(taskId);
 }

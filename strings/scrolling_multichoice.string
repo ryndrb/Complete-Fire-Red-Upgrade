@@ -107,24 +107,6 @@ Careful[SHRINK][ALIGN][38][GREEN]+SPD [SHRINK][ALIGN][38][RED]-SPE
 #org @NATURE_QUIRKY_25
 Quirky
 
-#org @ABILITY_FIRST
-First
-
-#org @ABILITY_SECOND
-Second
-
-#org @ABILITY_HIDDEN
-Hidden
-
-#org @TIME_DAY
-Day/Morning
-
-#org @TIME_NIGHT
-Eve/Nightime
-
-#org @TIME_RESET
-Reset
-
 #org @BROCK_BADGE
 Brock's Badge
 
@@ -493,21 +475,6 @@ Solar Blade
 #org @TUTOR_STEELROLLER
 Steel Roller
 
-#org @NAME_RATER
-Name Rater
-
-#org @MOVE_TUTOR
-Move Tutor
-
-#org @NATURE_CHANGER
-Nature Changer
-
-#org @ABILITY_CHANGER
-Ability Changer
-
-#org @EXIT
-Exit
-
 #org @REGION_KANTO
 Kanto
 
@@ -625,72 +592,6 @@ Speed
 #org @T_CANCEL
 Cancel
 
-#org @MON_HP
-Hp
-
-#org @MON_ATTACK
-Attack
-
-#org @MON_DEFENSE
-Defense
-
-#org @MON_SPEED
-Speed
-
-#org @MON_SPATTACK
-Sp Attack
-
-#org @MON_SPDEFENSE
-Sp Defense
-
-#org @EV_4
-[ALIGN][C]4[ALIGN][15]EVs
-
-#org @EV_8
-[ALIGN][C]8[ALIGN][15]EVs
-
-#org @EV_12
-[ALIGN][6]12[ALIGN][15]EVs
-
-#org @EV_64
-[ALIGN][6]64[ALIGN][15]EVs
-
-#org @EV_128
-[ALIGN][0]128[ALIGN][15]EVs
-
-#org @EV_252
-[ALIGN][0]252[ALIGN][15]EVs
-
-#org @I_MAX
-Max IVs
-
-#org @I_IV
-Change IVs
-
-#org @I_HP
-Change Hidden Power
-
-#org @I_CANCEL
-Cancel
-
-#org @IV_0
-[ALIGN][6]0
-
-#org @IV_1
-[ALIGN][6]1
-
-#org @IV_14
-[ALIGN][0]14
-
-#org @IV_15
-[ALIGN][0]15
-
-#org @IV_30
-[ALIGN][0]30
-
-#org @IV_31
-[ALIGN][0]31
-
 #org @IV_HP_DARK
 Dark
 
@@ -789,14 +690,5 @@ Randomize Ability
 
 #org @gCheatCode
 Enter Code
-
-#org @gGeneral
-General
-
-#org @gQuests
-Quests
-
-#org @gNothing
-Nothing
 
 #endif

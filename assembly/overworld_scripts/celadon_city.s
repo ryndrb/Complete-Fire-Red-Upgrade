@@ -236,7 +236,7 @@ EventScript_GameCornerMegaStones:
 
 EventScript_MegaStoneList:
     msgbox gText_GameCornerStartMessage MSG_KEEPOPEN
-    setvar 0x8000 0x10
+    setvar 0x8000 13
     setvar 0x8001 0x5
     setvar 0x8004 0x0
     special 0x158
@@ -438,7 +438,7 @@ EventScript_GameCornerPseudo:
 
 EventScript_PseudoList:
     msgbox gText_GameCornerGivePseudo MSG_KEEPOPEN
-    setvar 0x8000 0x11
+    setvar 0x8000 14
     setvar 0x8001 0x5
     setvar 0x8004 0x0
     special 0x158

@@ -2122,3 +2122,5 @@ gText_FemaleSymbol = 0x8416221;
 SetMonIconTransparency = 0x808cfc4 | 1;
 gText_TMCase = 0x84166d3;
 SetPartyHPBarSprite = 0x8097414 | 1;
+
+DisplayMoveTutorMenu = 0x80e4634 | 1;

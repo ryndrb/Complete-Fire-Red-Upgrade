@@ -55,14 +55,62 @@ If you need help regarding Pok\emon\nIVs, I can help you with it.\pMy sister Tra
 #org @gText_Route5_Ivy_WhatService
 Hi there, [PLAYER]!\nWhat service do you want today?
 
+#org @gText_Route5_Ivy_MaxAllIv
+Max IVs
+
+#org @gText_Route5_Ivy_ChangeIv
+Change IVs
+
+#org @gText_Route5_Ivy_ChangeHiddenPower
+Change Hidden Power
+
+#org @gText_Route5_Ivy_SeeYa
+See Ya!
+
 #org @gText_Route5_Ivy_ChangeIVForWhichMon
 Which Pok\emon do you want\nits IVs change?
 
 #org @gText_Route5_Ivy_WhichStatToChange
 Which one of its stats do you want\nto change?
 
+#org @gText_Route5_Ivy_ChangeIV_Hp
+HP
+
+#org @gText_Route5_Ivy_ChangeIV_Attack
+Attack
+
+#org @gText_Route5_Ivy_ChangeIV_Defense
+Defense
+
+#org @gText_Route5_Ivy_ChangeIV_Speed
+Speed
+
+#org @gText_Route5_Ivy_ChangeIV_SpaAttack
+Sp Attack
+
+#org @gText_Route5_Ivy_ChangeIV_SpDefense
+Sp Defense
+
 #org @gText_Route5_Ivy_HowManyIvy
 What would you want to change it\nto?
+
+#org @gText_Route5_Ivy_ChangeIV_0
+[ALIGN][6]0
+
+#org @gText_Route5_Ivy_ChangeIV_1
+[ALIGN][6]1
+
+#org @gText_Route5_Ivy_ChangeIV_14
+[ALIGN][0]14
+
+#org @gText_Route5_Ivy_ChangeIV_15
+[ALIGN][0]15
+
+#org @gText_Route5_Ivy_ChangeIV_30
+[ALIGN][0]30
+
+#org @gText_Route5_Ivy_ChangeIV_31
+[ALIGN][0]31
 
 #org @gText_Route5_Ivy_DoIVChange
 Alright let's do this!\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]
@@ -76,7 +124,7 @@ Which Pok\emon do you want its\nHidden Power change?
 #org @gText_Route5_Ivy_WhichHiddenPower
 Which Hidden Power type do you\nwant its IVs set to?
 
-#org @gText_Route5_Ivy_SeeYa
+#org @gText_Route5_Ivy_ComeBackAnytime
 Come back anytime!
 
 #org @gText_Route5_ThisIsAnEgg

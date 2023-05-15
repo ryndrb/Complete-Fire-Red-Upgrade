@@ -1,11 +1,32 @@
 #org @gText_UtilityOldManSpeak1
-Ah, hello there young trainer!\pYou seem to be looking for some\nassistance with your Pok\emon.\pWell, you're just in luck!\pI happen to offer a few sevices\nthat might interest you.\p[.]\n[.]\pDon't be shy now, let me tell you\nwhat I can do for your Pok\emon.\pI am a Move Tutor, Nature Changer,\nand Ability Changer.\p[.]\n[.]\pAh, I see you're curious now.
+Ah, hello there, young trainer.\p[.]\pYou seem to be looking with some\nassistance with Pok\emon, correct?\pWell, you're just in luck!\pI happen to offer a few services\nthat will surely help a trainer\llike you.\p[.]\pI am a Move Tutor, Nature Changer,\nand an Ability Changer.
 
 #org @gText_UtilityOldManSpeak2
-As a Move Tutor, I can teach your\nPok\emon moves that they normally\lwouldn't be able to learn through\lleveling up or TM/HM.\p[.]\n[.]\pFor my nature changing services,\nI can alter the natural tendencies\lof your Pok\emon, affecting their\lstats in a positive way.\p[.]\n[.]\pFinally, as an Ability Changer, I\ncan alter the natural abilities of\lyour Pok\emon.
+As a Move Tutor, I can teach your\nPok\emon moves that they normally\lwouldn't be able to learn through\lleveling up or TM/HM.\pThis service is free of charge!\nSo long as you've acquired the\lnecessary Gym badges.
 
 #org @gText_UtilityOldManSpeak3
-[.]\n[.]\pWell, I can see that you're still\nhesitant.\pPerhaps you're worried about the\ncost?\pDon't you worry, my services comes\nfree of charge!\pGranted you have acquired the\nnecessary Gym badges.\p[.]\n[.]\pStill not convinced, huh?\pWell, if you change you mind, you\nknow where to find me.\pI'll be right here, ready to help\nyou and your Pok\emon become the\lstrongest you can be.\pGood luck on your journey!
+[.]\pAs a Nature Changer, I can alter\nthe natural tendencies of your\lPok\emon, affecting their stats in\la positive, or, negative way.\pThis service is free of charge,\nbut it requires you to have at\lleast obtained two Gym badges.
+
+#org @gText_UtilityOldManSpeak4
+[.]\pAs an Ability Changer, I can offer\nyou a medicine which allows your\lPok\emon to switch to its hidden\lability.\pBut this service comes at a cost.\pIt requires 5 Ability Pills per\nmedicine, and having obtained at\lleast 3 Gym badges
+
+#org @gText_UtilityOldManSpeak5
+[.]\pNow, if you need my services, you\nknow where to find me.\pI'll be right here, ready to help\nyou and your Pok\emon become the\lstrongest you can be.\pGood luck on your journey!
+
+#org @gText_UtilityOldMan_Nickname
+Nickname a Pokemon
+
+#org @gText_UtilityOldMan_MoveTutor
+Learn a new move
+
+#org @gText_UtilityOldMan_NatureChanger
+Change Nature
+
+#org @gText_UtilityOldMan_AbilityChanger
+Change Ability
+
+#org @gText_UtilityOldMan_SeeYa
+See Ya
 
 #org @gText_EventScript_UtilityOldManGreetings
 How may I help you?
@@ -46,26 +67,32 @@ Done! From now on, this Pok\emon shall\nbe known as [BUFFER1]!
 #org @gText_EventScript_ThisIsAnEgg
 Now, now.\nThat is merely an Egg!
 
-#org @gText_AbilityChangerQuestion
-Do you want to change your Pok\emon's\nability?
+#org @gText_UtilityOldMan_AbilityChanger_WantToChange
+Do you want to change your\nPok\emon's current ability?
 
-#org @gText_WhichAbility
-Which ability do you want?\nCurrent: [BUFFER1]
+#org @gText_UtilityOldMan_AbilityChanger_LetsDoThis
+Alright, take this medicine and\nfeed it to your Pok\emon.
 
-#org @gText_SelectedAbility
-Change [BUFFER1]'s ability to\n[BUFFER2]?
+#org @gText_UtilityOldMan_AbilityChanger_ChangingToHidden
+[.] [.] [.]\n[.] [.] [.]\p[.] [.] [.]\n[.] [.] [.]\p[.] [.] [.]\n[.] [.] [.]
 
-#org @gText_FeedingAbilityPill
-Alright then, let's feed it\nan ability pill.\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]\p[.] [.] [.] [.] [.] [.] [.]
+#org @gText_UtilityOldMan_AbilityChanger_PokemonAte
+Your Pok\emon ate the medicine you\ngave it.
 
-#org @gText_AbilityChangedSucessful
-[BUFFER1]'s ability has been changed\nto [BUFFER2].
+#org @gText_UtilityOldMan_AbilityChanger_LikedMedicine
+The medicine worked perfectly!
 
-#org @gText_EventScript_NoSurgeBadge
-I'm sorry, but I cannot not change\nyour Pok\emon's ability right now[.]\pCome back when you have at least\ndefeated Vermillion City's Gym\lLeader: Lt. Surge.
+#org @gText_AbilityChanger_PokemonNotStrongEnough
+Hmm[.]\pYou and your Pok\emon do not appear\nto be quite strong enough[.]\pCome back when you have at least\ndefeated Celadon City's Gym\lLeader: Erika.
+
+#org @gText_UtilityOldMan_AbilityChanger_NotEnoughPills
+You don't have enough Ability\nPills.
+
+#org @gText_UtilityOldMan_MoveRelearn_WhichMon
+Which Pok\emon needs to learn a\nmove?
+
+#org @gText_UtilityOldMan_NoMovesToLearn
+Sorry[.]\pIt appears that this Pok\emon has\nno move to learn.
 
 #org @gText_EventScript_ComeAgain 
 All right, see you then!
-
-#org @gText_Ability
-[BUFFER1] change to [BUFFER2]!

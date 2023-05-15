@@ -119,7 +119,7 @@ EventScript_ChooseStarterRegion:
     msgbox gText_ChooseStarterRegion_Mom_Speak_1 MSG_KEEPOPEN
     msgbox gText_ChooseStarterRegion_Mom_Speak_2 MSG_KEEPOPEN
     callasm RemoveNameBox
-    setvar 0x8000 0xF
+    setvar 0x8000 12
     setvar 0x8001 0x5
     setvar 0x8004 0x0
     special 0x158
@@ -1901,27 +1901,27 @@ Move_PalletTown_InsideOakLab_May_Leaving_1:
 EventScript_GameBoyConsole:
     lock
     sound 0x4
-    msgbox gTetxt_ConsolePrompt MSG_KEEPOPEN
-    setvar 0x8000 0x19
-    setvar 0x8001 0x5
-    setvar 0x8004 0x0
-    special 0x158
-    waitstate
-    compare LASTRESULT 0x5
-    if greaterorequal _goto EventScript_End
+    preparemsg gTetxt_ConsolePrompt
+    waitmsg
+    multichoiceoption gText_MinimalGrinding 0
+    multichoiceoption gText_RandomizePokemon 1
+    multichoiceoption gText_RandomizeLearnset 2
+    multichoiceoption gText_RandomizeAbility 3
+    multichoiceoption gText_EnterCode 4
+    multichoice 0x0 0x0 FIVE_MULTICHOICE_OPTIONS 0x0
     switch LASTRESULT
-    case 0, EventScript_MinimalGrinding
-    case 1, EventScript_RandomizePokemon
-    case 2, EventScript_RandomizeLearnset
-    case 3, EventScript_RandomizeAbility
-    case 4, EventScript_CheatCodes
+    case 0, EventScript_GameBoyConsole_MinimalGrinding
+    case 1, EventScript_GameBoyConsole_RandomizePokemon
+    case 2, EventScript_GameBoyConsole_RandomizeLearnset
+    case 3, EventScript_GameBoyConsole_RandomizeAbility
+    case 4, EventScript_GameBoyConsole_EnterCode
     release
     end
 
-EventScript_MinimalGrinding:
+EventScript_GameBoyConsole_MinimalGrinding:
     checkflag FLAG_MINIMAL_GRINDING
     if SET _goto DisableMinimalGrinding
-    msgbox gText_MinimalGrinding MSG_YESNO
+    msgbox gText_GameBoyConsole_MinimalGrinding MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1929,7 +1929,7 @@ EventScript_MinimalGrinding:
     release
     end
 DisableMinimalGrinding:
-    msgbox gText_DisableMinimalGrinding MSG_YESNO
+    msgbox gText_GameBoyConsole_DisableMinimalGrinding MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1937,10 +1937,10 @@ DisableMinimalGrinding:
     release
     end
 
-EventScript_RandomizePokemon:
+EventScript_GameBoyConsole_RandomizePokemon:
     checkflag FLAG_POKEMON_RANDOMIZER
     if SET _goto DisableRandomizePokemon
-    msgbox gText_RandomizePokemon MSG_YESNO
+    msgbox gText_GameBoyConsole_RandomizePokemon MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1948,7 +1948,7 @@ EventScript_RandomizePokemon:
     release
     end
 DisableRandomizePokemon:
-    msgbox gText_DisableRandomizePokemon MSG_YESNO
+    msgbox gText_GameBoyConsole_DisableRandomizePokemon MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1956,10 +1956,10 @@ DisableRandomizePokemon:
     release
     end
 
-EventScript_RandomizeLearnset:
+EventScript_GameBoyConsole_RandomizeLearnset:
     checkflag FLAG_POKEMON_LEARNSET_RANDOMIZER
     if SET _goto DisableRandomizeLearnset
-    msgbox gText_RandomizeLearnset MSG_YESNO
+    msgbox gText_GameBoyConsole_RandomizeLearnset MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1967,7 +1967,7 @@ EventScript_RandomizeLearnset:
     release
     end
 DisableRandomizeLearnset:
-    msgbox gText_DisableRandomizeLearnset MSG_YESNO
+    msgbox gText_GameBoyConsole_DisableRandomizeLearnset MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1975,10 +1975,10 @@ DisableRandomizeLearnset:
     release
     end
 
-EventScript_RandomizeAbility:
+EventScript_GameBoyConsole_RandomizeAbility:
     checkflag FLAG_ABILITY_RANDOMIZER
     if SET _goto DisableRandomizeAbility
-    msgbox gText_RandomizeAbility MSG_YESNO
+    msgbox gText_GameBoyConsole_RandomizeAbility MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1986,7 +1986,7 @@ EventScript_RandomizeAbility:
     release
     end
 DisableRandomizeAbility:
-    msgbox gText_DisableRandomizeAbility MSG_YESNO
+    msgbox gText_GameBoyConsole_DisableRandomizeAbility MSG_YESNO
     compare LASTRESULT 0x1
     if 0x0 _goto EventScript_End
     sound 0x2
@@ -1994,7 +1994,7 @@ DisableRandomizeAbility:
     release
     end
 
-EventScript_CheatCodes: @ In the future... if needed
+EventScript_GameBoyConsole_EnterCode: @ In the future... if needed
     end
 
 EventScript_End:
@@ -2041,33 +2041,58 @@ EventScript_PalletTown_May:
     sound 0x15
     applymovement 0x4 EventScript_PalletTown_MayNoticePlayer
     waitmovement 0x4
-    faceplayer
     call UnknownNameBox
     msgbox gText_PalletTown_MaySpeaks2 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
-    applymovement 0x4 EventScript_PalletTown_MayPushPlayer
-    applymovement PLAYER EventScript_PalletTown_Pushed
-    waitmovement 0x4
+    compare PLAYERFACING RIGHT
+    if equal _call EventScript_PalletTown_May_PlayerFacingRight
+    compare PLAYERFACING DOWN
+    if equal _call EventScript_PalletTown_May_PlayerFacingDown
     setflag FLAG_MAY_PALLET_TOWN_TALKED
     release
     end
 
+EventScript_PalletTown_May_PlayerFacingRight:
+    applymovement 0x4 Move_PalletTown_May_PushedPlayerRight
+    applymovement PLAYER Move_PalletTown_May_PlayerPushedRight
+    waitmovement 0x4
+    return
+
+EventScript_PalletTown_May_PlayerFacingDown:
+    applymovement 0x4 Move_PalletTown_May_PushedPlayerDown
+    applymovement PLAYER Move_PalletTown_May_PlayerPushedDown
+    waitmovement 0x4
+    return
+
 EventScript_PalletTown_MayNoticePlayer:
     .byte exclaim
     .byte pause_long
+    .byte face_player
     .byte end_m
 
-EventScript_PalletTown_MayPushPlayer:
+Move_PalletTown_May_PushedPlayerRight:
     .byte run_left
     .byte pause_long
     .byte walk_right
-    .byte walk_up_onspot_fastest
+    .byte walk_down_onspot_fastest
     .byte end_m
 
-EventScript_PalletTown_Pushed:
+Move_PalletTown_May_PlayerPushedRight:
     .byte jump_left
     .byte walk_right_onspot_fastest
+    .byte end_m
+
+Move_PalletTown_May_PushedPlayerDown:
+    .byte run_up
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_PalletTown_May_PlayerPushedDown:
+    .byte jump_up
+    .byte walk_down_onspot_fastest
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
