@@ -2357,6 +2357,7 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x9D1 @ eusine sprite celadon outside gym after deafting erika
     setflag 0x9D2 @ eusine sprite celadon resto after starting event
     setflag 0x9DC @ may oak lab sprite
+    setflag FLAG_ROCKET_GANG_ROUTE25_SPRITE
     
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
 

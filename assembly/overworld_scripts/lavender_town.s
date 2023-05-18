@@ -5,6 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ JESSIE, 4
+.equ JAMES, 5
+.equ MEOWTH, 6
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Lavender Town Items Merchant
 @@@@@@@@@@@@@@@@@@@@@@
@@ -583,6 +587,225 @@ Move_Lavender_Flannery_1:
 Move_Lavender_Flannery_2:
     .byte say_question
     .byte pause_long
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Lavender Town Rocket Gang
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_Lavender:
+    mapscript MAP_SCRIPT_ON_TRANSITION Map_Lavender
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_Lavender_RocketGang
+    .byte MAP_SCRIPT_TERMIN
+
+Map_Lavender:
+    setworldmapflag 0x894
+    setvar 0x405B 0x1
+    setflag 0x3D
+    end
+
+LevelScript_Lavender_RocketGang:
+    levelscript VAR_ROCKET_GANG_ENCOUNTER, 2, EventScript_Lavender_RocketGang
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_Lavender_RocketGang:
+    lock
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_Lavender_RocketGang_Player_1
+    waitmovement PLAYER
+    special 0x113
+    getplayerpos 0x8000 0x8001
+    compare 0x8000 0xB
+    if equal _call EventScript_Lavender_RocketGang_PlayerPos1
+    compare 0x8000 0xC
+    if equal _call EventScript_Lavender_RocketGang_PlayerPos2
+    special 0x114
+    copyvar 0x4001 0x8000
+    pause 30
+    playsong 0x184 0x1
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    sound 0x15
+    applymovement JESSIE Move_Lavender_RocketGang_Jessie_1
+    waitmovement JESSIE
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 30
+    applymovement MEOWTH Move_Lavender_RocketGang_Meowth_2
+    waitmovement MEOWTH
+    npcmsg gText_Lavender_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    pause 30
+    spriteface JAMES RIGHT
+    spriteface MEOWTH RIGHT
+    npcmsg gText_Lavender_RocketGang_James_Speak_1 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 30
+    spriteface JAMES LEFT
+    spriteface MEOWTH DOWN
+    npcmsg gText_Lavender_RocketGang_James_Speak_2 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    npcmsg gText_Lavender_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement JESSIE Move_Lavender_RocketGang_Jessie_2
+    waitmovement JESSIE
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 30
+    npcmsg gText_Lavender_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    applymovement JESSIE Move_Lavender_RocketGang_Jessie_3
+    applymovement JAMES Move_Lavender_RocketGang_James_1
+    applymovement MEOWTH Move_Lavender_RocketGang_Meowth_1
+    waitmovement JESSIE
+    hidesprite JESSIE
+    hidesprite JAMES
+    hidesprite MEOWTH
+    setflag FLAG_ROCKET_LAVENDER_SPRITE
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x3
+    fadedefaultbgm
+    pause 30
+    special 0x113
+    compare 0x8002 0xB
+    if equal _call EventScript_Lavender_RocketGang_PlayerPos3
+    compare 0x8002 0xC
+    if equal _call EventScript_Lavender_RocketGang_PlayerPos4
+    special 0x114
+    release
+    end
+
+EventScript_Lavender_RocketGang_PlayerPos1:
+    applymovement CAMERA Move_Lavender_RocketGang_Camera_1
+    waitmovement CAMERA
+    setvar 0x8002 0xB
+    return
+
+EventScript_Lavender_RocketGang_PlayerPos2:
+    applymovement CAMERA Move_Lavender_RocketGang_Camera_2
+    waitmovement CAMERA
+    setvar 0x8002 0xC
+    return
+
+EventScript_Lavender_RocketGang_PlayerPos3:
+    applymovement CAMERA Move_Lavender_RocketGang_Camera_3
+    waitmovement CAMERA
+    return
+
+EventScript_Lavender_RocketGang_PlayerPos4:
+    applymovement CAMERA Move_Lavender_RocketGang_Camera_4
+    waitmovement CAMERA
+    return
+
+Move_Lavender_RocketGang_Jessie_1:
+    .byte say_double_exclaim
+    .byte pause_long
+    .byte end_m
+
+Move_Lavender_RocketGang_Jessie_2:
+    .byte say_question
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_Lavender_RocketGang_Jessie_3:
+    .byte walk_right
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_Lavender_RocketGang_James_1:
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_Lavender_RocketGang_Meowth_1:
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_Lavender_RocketGang_Meowth_2:
+    .byte jump_onspot_down
+    .byte pause_long
+    .byte end_m
+
+Move_Lavender_RocketGang_Player_1:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
+
+Move_Lavender_RocketGang_Camera_1:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte end_m
+
+Move_Lavender_RocketGang_Camera_2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_Lavender_RocketGang_Camera_3:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
+    .byte end_m
+
+Move_Lavender_RocketGang_Camera_4:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@

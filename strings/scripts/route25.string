@@ -11,19 +11,22 @@
 Feel like checking out some\nof my rare Pok\emon on my PC?\pGo on, check out my PC.
 
 #org @gText_Route25_BillSpeak2
-Hiya! I'm a Pok\emon[.]\n[.]No I'm not!\pCall me Bill!
+That cruise ship S.S. Anne is in\nVermilion City.\pI hear there are lots of Trainers\non board, too.\pThey invited me to their party, but\nI can't stand fancy do's.\pWhy don't you go instead of me?\nGo on and have a good time.
 
 #org @gText_Route25_BillSpeak3
-I'm a true-blue Pok\emaniac!\pHey!\nWhat's with that skeptical look?\pI'm not joshing you, pal.\pI screwed up an experiment and got\ncombined with a Pok\emon!\pSo, how about it?\nHelp me out here!
+I'm a true-blue Pok\emaniac!\pHey!\nWhat's with that skeptical look?\pI'm not joshing you, pal.\pI screwed up an experiment and got\ncombined with a Pok\emon!
 
 #org @gText_Route25_BillSpeak4
-I'm a true-blue Pok\emaniac!\pHey!\nWhat's with that skeptical look?\pI'm not joshing you, lady.\pI screwed up an experiment and got\ncombined with a Pok\emon!\pSo, how about it?\nHelp me out here!
+I'm a true-blue Pok\emaniac!\pHey!\nWhat's with that skeptical look?\pI'm not joshing you, lady.\pI screwed up an experiment and got\ncombined with a Pok\emon!
 
 #org @gText_Route25_BillSpeak5
 Yeehah!\nThanks, bud! I owe you one!\pSo, did you come to see my\nPok\emon collection?\pYou didn't?\nThat's a bummer.\pI've got to thank you[.]\nOh, here, maybe this'll do.
 
 #org @gText_Route25_BillSpeak6
 Yeehah!\nThanks, lady! I owe you one!\pSo, did you come to see my\nPok\emon collection?\pYou didn't?\nThat's a bummer.\pI've got to thank you[.]\nOh, here, maybe this'll do.
+
+#org @gText_Route25_BillSpeak7
+So, how about it?\nHelp me out here!
 
 #org @gText_Route25_Brawly_Speak_1
 Well, well, well[.]\pLook what the waves washed up!\pWhat brings you here at Cerulean\nCape?\p[.]\pAh, a fellow trainer, I see.\nYou look like you can handle some\lrough seas.
@@ -42,3 +45,78 @@ I'm always looking for new\nchallenges, and battling you was\ldefinitely the hig
 
 #org @gText_Route25_Brawly_PlayerDontWantToBattle
 No worries!\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me!
+
+#org @gText_Route25_RocketGang_Jessie_Speak_1
+Sorry to break in on you, Bill[.]
+
+#org @gText_Route25_RocketGang_James_Speak_1
+Allow us to introduce ourselves.
+
+#org @gText_Route25_RocketGang_Jessie_Speak_2
+To protect the world from\ndevastation!
+
+#org @gText_Route25_RocketGang_James_Speak_2
+To unite all people within our\nnation!
+
+#org @gText_Route25_RocketGang_Jessie_Speak_3
+To denounce the evils of truth and\nlove!
+
+#org @gText_Route25_RocketGang_James_Speak_3
+To extend our reach to the stars\nabove!
+
+#org @gText_Route25_RocketGang_Jessie_Speak_4
+Jessie!
+
+#org @gText_Route25_RocketGang_James_Speak_4
+And James!
+
+#org @gText_Route25_RocketGang_Jessie_Speak_5
+Team Rocket, blast off at the\nspeed of light!
+
+#org @gText_Route25_RocketGang_James_Speak_5
+Surrender now, or prepare to\nfight!
+
+#org @gText_Route25_RocketGang_Meowth_Speak_1
+Meowth! That's right!
+
+#org @gText_Route25_RocketGang_Jessie_Speak_6
+Wait a minute[.]\pAren't you the twerp we met in\nViridian City?
+
+#org @gText_Route25_RocketGang_James_Speak_6
+It seems luck is on our side.\pWe've stumbled upon a rare\nopportunity, Meowth.
+
+#org @gText_Route25_RocketGang_Meowth_Speak_2
+That's right!\pA scientific breakthrough just\nripe for the picking! Meowth!
+
+#org @gText_Route25_RocketGang_Bill_Speak_1
+Team Rocket[.]?
+
+#org @gText_Route25_RocketGang_Bill_Speak_2
+Do you know these guys?\p[.]\pThey were the criminals you met at\nViridian City[.]?
+
+#org @gText_Route25_RocketGang_Bill_Speak_3
+Team Rocket, always causing\ntrouble!
+
+#org @gText_Route25_RocketGang_Bill_Speak_4
+Please, help me protect my\ncollections from these criminals!
+
+#org @gText_Route25_RocketGang_Jessie_Speak_7
+And we thought we'd lend a helping\nhand.\pOr should I say paw? Meowth, do\nthe honors!
+
+#org @gText_Route25_RocketGang_Meowth_Speak_3
+That's right!\pTime to make a quick getaway,\nwe'll snatch you up without delay!
+
+#org @gText_Route25_RocketGang_Bill_Speak_5
+Wait, what are you trying to do!?
+
+#org @gText_Route25_RocketGang_James_Speak_7
+We'll teach this twerp a lesson\nfirst!
+
+#org @gText_Route25_RocketGang_Defeat
+I can't believe it!\pA twerp beat us?
+
+#org @gText_Route25_RocketGang_Jessie_Speak_8
+Arghh!\pTeam Rocket, blast off at the\nspeed of light!
+
+#org @gText_Route25_RocketGang_Bill_Speak_6
+Phew, thank you, trainer, for\ncoming to my aid.\pThose pesky Team Rocket members\nnever learn!\p[.]\pBut let's get back to were we\nstarted, shall we!

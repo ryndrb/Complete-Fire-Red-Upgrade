@@ -343,9 +343,11 @@ EventScript_Viridian_RocketGang_NoticePlayer:
     spriteface 14, UP
     npcmsg gText_Viridian_RocketGang_James_Speak_10 MSG_KEEPOPEN 0 LEFT
     closemsg
+    sound 0x79
     spriteface 13, DOWN
     npcmsg gText_Viridian_RocketGang_Jessie_Speak_10 MSG_KEEPOPEN 29 LEFT
     closemsg
+    sound 0x79
     spriteface 14, DOWN
     npcmsg gText_Viridian_RocketGang_James_Speak_11 MSG_KEEPOPEN 30 LEFT
     closemsg
@@ -387,9 +389,7 @@ EventScript_Viridian_RocketGang_NoticePlayer:
     hidesprite 13
     hidesprite 14
     hidesprite 15
-    setflag FLAG_JESSIE_VIRIDIAN_SPRITE
-    setflag FLAG_JAMES_VIRIDIAN_SPRITE
-    setflag FLAG_MEOWTH_VIRIDIAN_SPRITE
+    setflag FLAG_ROCKET_GANG_VIRIDIAN_SPRITE
     setvar VAR_ROCKET_GANG_ENCOUNTER 0x2
     fadescreen 0x0
     fadedefaultbgm

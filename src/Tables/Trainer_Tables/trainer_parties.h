@@ -322,7 +322,52 @@ static const struct TrainerMonItemCustomMoves sParty_Eusine[] = {
         .moves = {MOVE_DRAGONDANCE, MOVE_BODYSLAM, MOVE_HIDDENPOWER, MOVE_ROOST},
     },
 };
-static const struct TrainerMonItemCustomMoves sParty_RSCooltrainerF[] = {DUMMY_TRAINER_MON_IV};
+static const struct TrainerMonItemCustomMoves sParty_Route25_JessieJames[] = {
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_FRILLISH_F,
+        .ability = Ability_Hidden, // water bubble
+        .nature = NATURE_BOLD,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_EVIOLITE,
+        .moves = {MOVE_WATERPULSE, MOVE_OMINOUSWIND, MOVE_STRENGTHSAP, MOVE_RECOVER},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_MORPEKO,
+        .ability = Ability_Hidden, // hunger switch
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .moves = {MOVE_SPARK, MOVE_BITE, MOVE_FAKEOUT, MOVE_SUPERFANG},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_SEVIPER,
+        .ability = Ability_Hidden, // fatal precision
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_EXPERT_BELT,
+        .moves = {MOVE_POISONFANG, MOVE_NIGHTSLASH, MOVE_IRONTAIL, MOVE_GLARE},
+    },
+    {
+        .iv = 0,
+        .lvl = 0,
+        .species = SPECIES_ZANGOOSE,
+        .ability = Ability_1, // tough claws
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {EV_40},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_SLASH, MOVE_NIGHTSLASH, MOVE_QUICKATTACK, MOVE_METALCLAW},
+    },
+};
 static const struct TrainerMonItemCustomMoves sParty_HexManiac[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_RSLady[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_RSBeauty[] = {DUMMY_TRAINER_MON};

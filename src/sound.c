@@ -119,6 +119,13 @@ u16 GetLocationMusicNew(struct WarpData* warp)
             break;
     }
 
+    if(day || night){
+        if((warp->mapGroup == 6 && warp->mapNum == 0)
+        || (warp->mapGroup == 6 && warp->mapNum == 1)){
+            music = BGM_RSE_ART_MUSUEM;
+        }
+    }
+
     /*
         Added Maps
     */
