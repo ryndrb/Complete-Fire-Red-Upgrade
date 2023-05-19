@@ -620,7 +620,6 @@ EventScript_Lavender_RocketGang:
     compare 0x8000 0xC
     if equal _call EventScript_Lavender_RocketGang_PlayerPos2
     special 0x114
-    copyvar 0x4001 0x8000
     pause 30
     playsong 0x184 0x1
     npcmsg gText_Lavender_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 29 LEFT
