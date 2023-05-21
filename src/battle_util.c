@@ -1156,10 +1156,17 @@ u8 GetIllusionPartyNumber(u8 bank)
 		struct Pokemon* party = LoadPartyRange(bank, &firstMonId, &lastMonId);
 		useBattleParty = (side == B_SIDE_PLAYER && !(gBattleTypeFlags & BATTLE_TYPE_LINK));
 		illusionMonId = (useBattleParty) ? GetBattlePartyIdFromPartyId(gBattlerPartyIndexes[bank]) : gBattlerPartyIndexes[bank];
+		bool8 isTagBattle = IsTagBattle();
+	
+		if (useBattleParty && isTagBattle)
+			lastMonId += 1; //Because team is slots 0, 2, 3
 
 		for (u8 i = lastMonId - 1; i >= firstMonId; --i) //Loop through party in reverse order
 		{
 			u8 monId = i; //Mon id may get overwritten later
+
+			if (i == 1 && useBattleParty && isTagBattle)
+				--i;
 
 			if (monId == illusionMonId) //Finished checking mons after
 				return gBattlerPartyIndexes[bank];
@@ -1310,6 +1317,22 @@ bool8 CanTransferItem(u16 species, u16 item)
 			break;
 		#endif
 
+	#ifdef PLA_HELD_ORIGIN_ORBS
+		#ifdef NATIONAL_DEX_DIALGA
+		case ITEM_EFFECT_ADAMANT_ORB:
+			if (dexNum == NATIONAL_DEX_DIALGA)
+				return FALSE;
+			break;
+		#endif
+
+		#ifdef NATIONAL_DEX_PALKIA
+		case ITEM_EFFECT_LUSTROUS_ORB:
+			if (dexNum == NATIONAL_DEX_PALKIA)
+				return FALSE;
+			break;
+		#endif
+	#endif
+
 		#ifdef NATIONAL_DEX_ARCEUS
 		case ITEM_EFFECT_PLATE:
 			if (dexNum == NATIONAL_DEX_ARCEUS)
@@ -1357,15 +1380,8 @@ bool8 CanTransferItem(u16 species, u16 item)
 			break;
 
 		case ITEM_EFFECT_PRIMAL_ORB:
-			for (i = 0; i < EVOS_PER_MON; ++i)
-			{
-				if (evolutions[i].method == EVO_NONE) //Most likely end of entries
-					break; //Break now to save time
-				else if ((evolutions[i].method == MEGA_EVOLUTION && evolutions[i].unknown == MEGA_VARIANT_PRIMAL && evolutions[i].param == item) //Can Primal Evolve
-				||  (evolutions[i].method == MEGA_EVOLUTION && evolutions[i].unknown == MEGA_VARIANT_PRIMAL && evolutions[i].param == 0)) //Is Primal
-					return FALSE;
-			}
-			break;
+			return !IsPrimalSpecies(species)
+				&& GetPrimalSpecies(species, item) == SPECIES_NONE; //Can't primal evolve
 	}
 
 	return TRUE;
@@ -2461,29 +2477,29 @@ bool8 IsWaterSportActive(void)
 
 bool8 IsDeltaStreamBattle(void)
 {
-	#ifdef FLAG_DELTA_STREAM_BATTLE
-	if(FLAG_DELTA_STREAM_BATTLE)
-		return FlagGet(FLAG_DELTA_STREAM_BATTLE) || (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_DELTA_STREAM);
-	#endif
-	return (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_DELTA_STREAM);
+	return 
+		#ifdef FLAG_DELTA_STREAM_BATTLE
+		FlagGet(FLAG_DELTA_STREAM_BATTLE) ||
+		#endif
+		(IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_DELTA_STREAM);
 }
 
 bool8 IsMagnetRiseBattle(void)
 {
-	#ifdef FLAG_MAGNET_RISE_BATTLE
-	if(FLAG_MAGNET_RISE_BATTLE)
-		return FlagGet(FLAG_MAGNET_RISE_BATTLE) || (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_MAGNET_RISE);
-	#endif
-	return (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_MAGNET_RISE);
+	return 
+		#ifdef FLAG_MAGNET_RISE_BATTLE
+		FlagGet(FLAG_MAGNET_RISE_BATTLE) ||
+		#endif
+		(IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_MAGNET_RISE);
 }
 
 bool8 IsBadThoughtsBattle(void)
 {
-	#ifdef FLAG_BAD_THOUGHTS_BATTLE
-	if(FLAG_BAD_THOUGHTS_BATTLE)
-		return FlagGet(FLAG_BAD_THOUGHTS_BATTLE) || (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_BAD_THOUGHTS);
-	#endif
-	return (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_BAD_THOUGHTS);
+	return
+		#ifdef FLAG_BAD_THOUGHTS_BATTLE
+		FlagGet(FLAG_BAD_THOUGHTS_BATTLE) ||
+		#endif
+		(IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_BAD_THOUGHTS);
 }
 
 bool8 IsShadowShieldBattle(void)
@@ -2497,20 +2513,20 @@ bool8 IsShadowShieldBattle(void)
 
 bool8 IsPixieBattle(void)
 {
-	#ifdef FLAG_PIXIE_BATTLE
-	if(FLAG_PIXIE_BATTLE)
-		return FlagGet(FLAG_PIXIE_BATTLE) || (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_PIXIES);
-	#endif
-	return (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_PIXIES);
+	return
+		#ifdef FLAG_PIXIE_BATTLE
+		FlagGet(FLAG_PIXIE_BATTLE) ||
+		#endif
+		(IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_PIXIES);
 }
 
 bool8 IsInverseBattle(void)
 {
-	#ifdef FLAG_INVERSE
-	if(FLAG_INVERSE)
-		return FlagGet(FLAG_INVERSE) || (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_INVERSE);
-	#endif
-	return (IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_INVERSE);
+	return
+		#ifdef FLAG_INVERSE
+		FlagGet(FLAG_INVERSE) ||
+		#endif
+		(IS_BATTLE_CIRCUS && gBattleCircusFlags & BATTLE_CIRCUS_INVERSE);
 }
 
 bool8 BankSideHasSafeguard(u8 bank)

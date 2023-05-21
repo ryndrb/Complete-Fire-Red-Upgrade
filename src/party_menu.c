@@ -1,4 +1,5 @@
 #include "defines.h"
+#include "defines_battle.h"
 #include "../include/evolution_scene.h"
 #include "../include/field_control_avatar.h"
 #include "../include/field_player_avatar.h"
@@ -511,6 +512,17 @@ bool8 SummaryScreen_IsMultiBattlePartner(void)
 		return TRUE;
 	#endif
 
+	#ifdef FLAG_USE_HALF_PARTNER_TEAM
+	if (FlagGet(FLAG_USE_HALF_PARTNER_TEAM))
+	{
+		u8 multiTrainerId = gTrainers[VarGet(VAR_PARTNER)].encounterMusic;
+
+		if (multiTrainerId > 0
+		&& GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_OT_ID, NULL) == gFrontierMultiBattleTrainers[multiTrainerId - 1].otId)
+			return TRUE;
+	}
+	#endif
+
     return IsMultiBattle()
 		&& (sLastViewedMonIndex >= 4 || sLastViewedMonIndex == 1);
 }
@@ -969,9 +981,9 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 {
 	u8 i, j, k;
 	#ifdef ONLY_CHECK_ITEM_FOR_HM_USAGE
-	bool8 knowsFly = FALSE;
+	//bool8 knowsFly = FALSE;
 	bool8 knowsDig = FALSE;
-	bool8 knowsCut = FALSE;
+	//bool8 knowsCut = FALSE;
 	#endif
 
 	sPartyMenuInternal->numActions = 0;
@@ -1003,12 +1015,12 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 				++k;
 
 				#ifdef ONLY_CHECK_ITEM_FOR_HM_USAGE
-				if (gFieldMoves[j] == MOVE_FLY)
-					knowsFly = TRUE; //No point in appending Fly if it is already there
-				else if (gFieldMoves[j] == MOVE_DIG)
+				if (gFieldMoves[j] == MOVE_DIG)
 					knowsDig = TRUE;
-				else if (gFieldMoves[j] == MOVE_CUT)
-					knowsCut = TRUE;
+				//else if (gFieldMoves[j] == MOVE_FLY)
+				//	knowsFly = TRUE; //No point in appending Fly if it is already there
+				//else if (gFieldMoves[j] == MOVE_CUT)
+				//	knowsCut = TRUE;
 				#endif
 			}
 		}
@@ -1046,27 +1058,6 @@ void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 			}
 		}
 		#endif
-
-		// if (k < MAX_MON_MOVES && !knowsFly) //Doesn't know 4 field moves
-		// {
-		// 	if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) //Only add if usable
-		// 	#ifndef DEBUG_HMS
-		// 	&& HasBadgeToUseFieldMove(FIELD_MOVE_FLY)
-		// 	&& (
-		// 	 #ifdef FLAG_BOUGHT_ADM
-		// 	 FlagGet(FLAG_BOUGHT_ADM) ||
-		// 	 #endif
-		// 	 #ifdef FLAG_SANDBOX_MODE
-		// 	 FlagGet(FLAG_SANDBOX_MODE) ||
-		// 	 #endif
-		// 	 (CheckBagHasItem(ITEM_HM02_FLY, 1) > 0 && CanMonLearnTMTutor(&mons[slotId], ITEM_HM02_FLY, 0) == CAN_LEARN_MOVE))
-		// 	#endif
-		// 	)
-		// 	{
-		// 		AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_MOVES + FIELD_MOVE_FLY);
-		// 		++k;
-		// 	}
-		// }
 
 		if (k < MAX_MON_MOVES && !knowsDig) //Doesn't know 4 field moves
 		{

@@ -76,6 +76,7 @@ extern const struct SwarmData gSwarmTable[];
 
 //External functions
 extern void sp09A_StopSounds(void);
+const u8* __attribute__((long_call)) GetCoordEventScriptAtPosition(struct MapHeader * mapHeader, u16 x, u16 y, u8 z);
 
 //This file's functions
 static void DexNavGetMon(u16 species, u8 potential, u8 level, u8 ability, u16* moves, u8 searchLevel, u8 chain);
@@ -127,6 +128,7 @@ static bool8 TryAddSpeciesToArray(u16 species, u8 encounterMethod, u8 indexCount
 static void DexNavPopulateEncounterList(void);
 static void RegisterSpecies(u16 species, u8 taskId);
 static bool8 CanWaterMonBeSearched(void);
+static void CopySpeciesNameToStringVar1_AdjustUnownName(u16 species);
 static void CleanWindow(u8 windowId);
 static void CleanWindows(void);
 static void CommitWindow(u8 windowId);
@@ -347,6 +349,9 @@ static bool8 IsEncounterTile(s16 x, s16 y, u8 targetBehaviour)
 {
 	if (MetatileBehavior_IsStairs(MapGridGetMetatileBehaviorAt(x, y)))
 		return FALSE; //Can't encounter on stairs because it's wonky on side stairs
+
+	if (GetCoordEventScriptAtPosition(&gMapHeader, x - 7, y - 7, MapGridGetZCoordAt(x, y)))
+		return FALSE; //Better not to start an enounter on spot that a script should be activated on
 
 	u32 tileBehaviour = MapGridGetMetatileField(x, y, 0xFF);
 	u8 blockProperties = GetMetatileAttributeFromRawMetatileBehavior(tileBehaviour, METATILE_ATTRIBUTE_ENCOUNTER_TYPE);
@@ -729,11 +734,17 @@ static void DexNavShowFieldMessage(u8 id)
 		case FIELD_MSG_GOT_AWAY:
 			gLoadPointer = gText_GotAway;
 			break;
+		case FIELD_MSG_GOT_AWAY_DETECTOR:
+			gLoadPointer = gText_PokemonGotAway;
+			break;
 		case FIELD_MSG_LOST_SIGNAL:
 			gLoadPointer = gText_LostSignal;
 			break;
 		case FIELD_MSG_SNEAK_NEXT_TIME:
 			gLoadPointer = gText_GotAwayShouldSneak;
+			break;
+		case FIELD_MSG_SNEAK_NEXT_TIME_DETECTOR:
+			gLoadPointer = gText_PokemonGotAwayShouldSneak;
 			break;
 	}
 }
@@ -1041,7 +1052,10 @@ static void Task_ManageDexNavHUD(u8 taskId)
 		gCurrentDexNavChain = 0; //A Pokemon running like this resets the chain
 		DestroyTask(taskId);
 		DexNavFreeHUD();
-		DexNavShowFieldMessage(FIELD_MSG_GOT_AWAY);
+		if (gTasks[taskId].data[7]) //Detector Mode
+			DexNavShowFieldMessage(FIELD_MSG_GOT_AWAY_DETECTOR);
+		else
+			DexNavShowFieldMessage(FIELD_MSG_GOT_AWAY);
 		return;
 	}
 
@@ -1049,7 +1063,10 @@ static void Task_ManageDexNavHUD(u8 taskId)
 	{
 		gCurrentDexNavChain = 0; //A Pokemon running like this resets the chain
 		DexNavFreeHUD();
-		DexNavShowFieldMessage(FIELD_MSG_SNEAK_NEXT_TIME);
+		if (gTasks[taskId].data[7]) //Detector Mode
+			DexNavShowFieldMessage(FIELD_MSG_SNEAK_NEXT_TIME_DETECTOR);
+		else
+			DexNavShowFieldMessage(FIELD_MSG_SNEAK_NEXT_TIME);
 		DestroyTask(taskId);
 		return;
 	}
@@ -1896,7 +1913,10 @@ bool8 InitDexNavHUD(u16 species, u8 environment, bool8 detectorMode)
 	// task update HUD
 	u8 taskId = CreateTask(Task_ManageDexNavHUD, 1);
 	if (taskId != 0xFF)
+	{
 		gTasks[taskId].data[0] = gSprites[gPlayerAvatar->spriteId].pos1.x;
+		gTasks[taskId].data[7] = detectorMode;
+	}
 
 	IncrementGameStat(GAME_STAT_DEXNAV_SCANNED);
 	return TRUE; //HUD has been started
@@ -2328,7 +2348,7 @@ static void RegisterSpecies(u16 species, u8 taskId)
 	sDexNavGUIPtr->registeredIconVisible = TRUE;
 
 	TryRandomizeSpecies(&species);
-	StringCopy(gStringVar1, gSpeciesNames[species]);
+	CopySpeciesNameToStringVar1_AdjustUnownName(species);
 	PrintDexNavMessage(MESSAGE_REGISTERED);
 	PlaySE(SE_POKENAV_SEARCHING);
 	gTasks[taskId].func = Task_WaitForErrorMessage;
@@ -2342,12 +2362,25 @@ static bool8 CanWaterMonBeSearched(void)
 	{
 		u16 species = GetSpeciesAtCursorPos();
 		TryRandomizeSpecies(&species);
-		StringCopy(gStringVar1, gSpeciesNames[species]);
+		CopySpeciesNameToStringVar1_AdjustUnownName(species);
 		StringCopy(gStringVar2, ItemId_GetName(sDexNavGUIPtr->waterItemRequired[GetWaterSlotSelected()]));
 		return FALSE;
 	}
 
 	return TRUE;
+}
+
+static void CopySpeciesNameToStringVar1_AdjustUnownName(u16 species)
+{
+	StringCopy(gStringVar1, gSpeciesNames[species]);
+
+	#ifdef SPECIES_UNOWN
+	if (InTanobyRuins() && species == SPECIES_UNOWN)
+	{
+		const u8 aSuffix[] = {CHAR_SPACE, CHAR_A, EOS};
+		StringAppend(gStringVar1, aSuffix);
+	}
+	#endif
 }
 
 //GUI Util//
@@ -3240,7 +3273,7 @@ static void Task_DexNavWaitForKeyPress(u8 taskId)
 			PlaySE(SE_SELECT);
 			gTasks[taskId].data[1] = species;
 			TryRandomizeSpecies(&species);
-			StringCopy(gStringVar1, gSpeciesNames[species]);
+			CopySpeciesNameToStringVar1_AdjustUnownName(species);
 			PrintDexNavMessage(MESSAGE_POKEMON_SELECTED);
 			gTasks[taskId].func = Task_WaitForContextMenuPreMessage;
 		}
@@ -3463,6 +3496,9 @@ static void DexNavLoadMonIcons(void)
 		{
 			UpdateSpritePosition(&gSprites[spriteId], AREA_LAND, i);
 
+			if (letter > 1) //This slot is an Unown greater than A
+				species = SPECIES_UNOWN_B + letter - 2;
+
 			if (species != SPECIES_NONE)
 			{
 				if (registeredArea == AREA_LAND && registeredSpecies == species && registeredSpecies != SPECIES_NONE)
@@ -3517,6 +3553,9 @@ static void DexNavLoadMonIcons(void)
 
 			if (species != SPECIES_NONE)
 			{
+				if (letter > 1) //This slot is an Unown greater than A
+					species = SPECIES_UNOWN_B + letter - 2;
+
 				if (registeredArea == AREA_WATER && registeredSpecies == species && registeredSpecies != SPECIES_NONE)
 				{
 					if (!sDexNavGUIPtr->registeredIconVisible
@@ -3567,6 +3606,8 @@ static void CreateCursor(void)
 		LoadSpritePalette(&sCursorSpritePalette);
 		sDexNavGUIPtr->cursorSpriteId = CreateSprite(&sGUICursorTemplate, 30, 48, 0);
 	}
+	else
+		sDexNavGUIPtr->cursorSpriteId = MAX_SPRITES;
 }
 
 static void CreateRegisteredIcon(void)

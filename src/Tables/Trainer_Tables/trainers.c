@@ -17,7 +17,7 @@
 
 #define NO_NAME {_END,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE}
 
-const struct Trainer gTrainers[] = 
+struct Trainer gTrainers[] = 
 {
     [TRAINER_NONE] = {
         .trainerName = NO_NAME,

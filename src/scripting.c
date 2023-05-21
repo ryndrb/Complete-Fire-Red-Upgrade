@@ -5,7 +5,6 @@
 #include "../include/field_message_box.h"
 #include "../include/field_weather.h"
 #include "../include/gpu_regs.h"
-#include "../include/hall_of_fame.h"
 #include "../include/item_icon.h"
 #include "../include/item_menu.h"
 #include "../include/list_menu.h"
@@ -16,7 +15,6 @@
 #include "../include/overworld.h"
 #include "../include/pokemon_storage_system.h"
 #include "../include/region_map.h"
-#include "../include/save.h"
 #include "../include/script.h"
 #include "../include/script_menu.h"
 #include "../include/sound.h"
@@ -117,7 +115,7 @@ static u8 GetTextCaretPosition(void);
 	#endif
 #endif
 
-enum MonStatsChecker
+enum EVStatChecker
 {
 	CheckEVs_HP,
 	CheckEVs_Atk,
@@ -1752,8 +1750,8 @@ void sp0A1_UpdateTimeInVars(void)
 //					  2 - Get day difference.
 //					  3 - Get month difference.
 //					  4 - Get year difference.
-//@Returns: The time difference between the current time and the time stored in the given var.
-u32 sp0A2_GetTimeDifference(void)
+//@Returns: The time difference between the current time and the time stored in the given var. Max 65535.
+u16 sp0A2_GetTimeDifference(void)
 {
 	u32 difference = 0;
 	u16 eventVar = Var8000; //Var contained in Var8000
@@ -1782,6 +1780,9 @@ u32 sp0A2_GetTimeDifference(void)
 			difference = GetYearDifference(startYear, gClock.year);
 			break;
 	}
+
+	if (difference > 0xFFFF)
+		difference = 0xFFFF; //Quantize to two bytes
 
 	return difference;
 }
@@ -2646,7 +2647,6 @@ bool8 ScrCmd_message(struct ScriptContext* ctx)
 	if (msg == NULL)
 		msg = (const u8*) ctx->data[0];
 
-	//SetTextboxSignpostDesign();
 	ShowFieldMessage(msg);
 	return FALSE;
 }

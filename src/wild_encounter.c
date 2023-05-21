@@ -208,8 +208,6 @@ static const struct WildPokemonHeader* GetCurrentMapWildMonHeader(void)
 			headerTable = gWildMonNightHeaders;
 		else if (IsMorning() || IsDayTime())
 			headerTable = gWildMonMorningHeaders;
-		// else if (IsEvening())
-		// 	headerTable = gWildMonEveningHeaders;
 
 		if (headerTable != NULL) //Not Daytime
 		{

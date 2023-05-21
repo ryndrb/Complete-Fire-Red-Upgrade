@@ -596,6 +596,7 @@ bool8 IsTrappedByAbility(u8 bankDef, u8 trapAbility)
 
 bool8 BankHasEvaporate(u8 bank)
 {
+	(void) bank; // Get rid of warning since not using
 	#ifdef ABILITY_EVAPORATE
 	return ABILITY(bank) == ABILITY_EVAPORATE
 		&& SpeciesHasEvaporate(GetProperAbilityPopUpSpecies(bank));

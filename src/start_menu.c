@@ -15,6 +15,7 @@
 
 #include "../include/new/dexnav.h"
 #include "../include/string_util.h"
+#include "../include/text.h"
 #include "config.h"
 
 /*
@@ -100,6 +101,33 @@ extern u8 sStartMenuOrder[];
 extern s8 sDrawStartMenuState[2];
 extern u8 sStartMenuOpen;
 
+// Time Box stuff
+extern u8 gText_StartMenu_TimeBase[];
+extern u8 gText_StartMenu_TimeBase_12Hr[];
+extern u8 gText_StartMenu_AM[];
+extern u8 gText_StartMenu_PM[];
+extern u8 gText_StartMenu_RedText[];
+extern u8 gText_StartMenu_NormalText[];
+extern u8 gText_StartMenu_Sunday[];
+extern u8 gText_StartMenu_Monday[];
+extern u8 gText_StartMenu_Tuesday[];
+extern u8 gText_StartMenu_Wednesday[];
+extern u8 gText_StartMenu_Thursday[];
+extern u8 gText_StartMenu_Friday[];
+extern u8 gText_StartMenu_Saturday[];
+extern u8 gText_StartMenu_Error[];
+
+static u8* sDayNames[] =
+{
+    gText_StartMenu_Sunday,
+    gText_StartMenu_Monday,
+    gText_StartMenu_Tuesday,
+    gText_StartMenu_Wednesday,
+    gText_StartMenu_Thursday,
+    gText_StartMenu_Friday,
+    gText_StartMenu_Saturday,
+};
+
 //Vanilla functions:
 void __attribute__((long_call)) SetUpStartMenu_Link(void);
 void __attribute__((long_call)) SetUpStartMenu_UnionRoom(void);
@@ -138,21 +166,11 @@ static bool8 CloseAndReloadStartMenu(void);
 static bool8 ReloadStartMenu(void);
 static bool8 ReloadStartMenuItems(void);
 
-void DrawTime(void);
-static void UpdateTimeText(void);
+static void DrawTime(void);
 static void RemoveTimeBox(void);
 void DecreseCharges(void);
 
 extern u8 sTimeWindowId;
-static const struct WindowTemplate sTimeBoxWindowTemplate = {
-	.bg = 0,
-	.tilemapLeft = 1,
-	.tilemapTop = 1,
-	.width = 10,
-	.height = 2,
-	.paletteNum = 15,
-	.baseBlock = 0x008
-};
 
 const struct MenuAction sStartMenuActionTable[] =
 {
@@ -265,7 +283,6 @@ static void SetUpStartMenu_NormalField(void)
 		AppendToStartMenuItems(STARTMENU_EXIT);
 
 	DrawTime();
-	//CharName();
 }
 
 static void SetUpStartMenu_SafariZone(void)
@@ -465,81 +482,36 @@ static bool8 ReloadStartMenuItems(void)
 	return FALSE;
 }
 
-void DrawTime(void) {
+static void DrawTime(void) {
+	const u8* amPMString = (gClock.hour >= 12) ? gText_StartMenu_PM : gText_StartMenu_AM;
+
+	ConvertIntToDecimalStringN(gStringVar1, (gClock.hour == 0) ? 12 : (gClock.hour > 12) ? gClock.hour - 12 : gClock.hour, STR_CONV_MODE_RIGHT_ALIGN, 2); // Hour - 12hr format
+	ConvertIntToDecimalStringN(gStringVar2, gClock.minute, STR_CONV_MODE_LEADING_ZEROS, 2); // Minute
+
+	StringCopy(gStringVar3, amPMString);
+	StringCopy(gStringVarC, (gClock.dayOfWeek >= 7) ? gText_StartMenu_Error : sDayNames[gClock.dayOfWeek]); // Day of Week
+	StringExpandPlaceholders(gStringVar4, gText_StartMenu_TimeBase_12Hr);
+
+	u8 width = GetStringWidth(2, gStringVar4, 0);
+	u8 xOff = width;
+    u8 rem = width % 8;
+    if(rem < 3)
+        width = width - rem;
+    else
+        width = width + 8 - rem;
+    width = width / 8 + 1;
+    xOff = (width * 8 - xOff) / 2;
+
+	struct WindowTemplate sTimeBoxWindowTemplate = SetWindowTemplateFields(0, 1, 1, width, 2, 15, 0x008);
 	sTimeWindowId = AddWindow(&sTimeBoxWindowTemplate);
 	if (sTimeWindowId != 0xFF)
 	{
 		DrawStdWindowFrame(sTimeWindowId, FALSE);
 		PutWindowTilemap(sTimeWindowId);
 		FillWindowPixelBuffer(sTimeWindowId, PIXEL_FILL(1));
-		//CopyWindowToVram(sTimeWindowId, COPYWIN_BOTH);
 	}
 
-	//Print Text
-	UpdateTimeText();
-}
-
-extern u8 gText_StartMenu_TimeBase[];
-extern u8 gText_StartMenu_TimeBase_12Hr[];
-extern u8 gText_StartMenu_AM[];
-extern u8 gText_StartMenu_PM[];
-extern u8 gText_StartMenu_RedText[];
-extern u8 gText_StartMenu_NormalText[];
-extern u8 gText_StartMenu_Sunday[];
-extern u8 gText_StartMenu_Monday[];
-extern u8 gText_StartMenu_Tuesday[];
-extern u8 gText_StartMenu_Wednesday[];
-extern u8 gText_StartMenu_Thursday[];
-extern u8 gText_StartMenu_Friday[];
-extern u8 gText_StartMenu_Saturday[];
-extern u8 gText_StartMenu_Error[];
-
-static u8* sDayNames[] =
-{
-    gText_StartMenu_Sunday,
-    gText_StartMenu_Monday,
-    gText_StartMenu_Tuesday,
-    gText_StartMenu_Wednesday,
-    gText_StartMenu_Thursday,
-    gText_StartMenu_Friday,
-    gText_StartMenu_Saturday,
-};
-
-static void UpdateTimeText()
-{
-
-	//#ifdef HR12_CLOCK
-	const u8* amPMString = (gClock.hour >= 12) ? gText_StartMenu_PM : gText_StartMenu_AM;
-
-	//Prepare string: "DOW. HH:MM AM"
-	ConvertIntToDecimalStringN(gStringVar1, (gClock.hour == 0) ? 12 : (gClock.hour > 12) ? gClock.hour - 12 : gClock.hour, STR_CONV_MODE_RIGHT_ALIGN, 2); //Hour - 12hr format
-	ConvertIntToDecimalStringN(gStringVar2, gClock.minute, STR_CONV_MODE_LEADING_ZEROS, 2); //Minute
-
-	// if(FlagGet(FLAG_TIME_TURNER))
-	// {
-	// 	StringCopy(gStringVar3, gText_StartMenu_Red);
-	// 	StringAppend(gStringVar3, amPMString);
-	// 	StringAppend(gStringVar3, gText_StartMenu_Normal);
-	// }
-	// else
-	// {
-		StringCopy(gStringVar3, amPMString);
-	//}
-
-	StringCopy(gStringVarC, (gClock.dayOfWeek >= 7) ? gText_StartMenu_Error : sDayNames[gClock.dayOfWeek]); //Day of Week
-	StringExpandPlaceholders(gStringVar4, gText_StartMenu_TimeBase_12Hr);
-	/*#else
-	//Prepare string: "DOW. HH:MM:SS"
-	ConvertIntToDecimalStringN(gStringVar1, gClock.hour, STR_CONV_MODE_LEADING_ZEROS, 2); //Hour - 24hr format
-	ConvertIntToDecimalStringN(gStringVar2, gClock.minute, STR_CONV_MODE_LEADING_ZEROS, 2); //Minute
-	ConvertIntToDecimalStringN(gStringVar3, gClock.second, STR_CONV_MODE_LEADING_ZEROS, 2); //Seconds
-	StringCopy(gStringVarC, (gClock.dayOfWeek >= 7) ? gText_StartMenu_Error : sDayNames[gClock.dayOfWeek]); //Day of Week
-	StringExpandPlaceholders(gStringVar4, gText_StartMenu_TimeBase);
-	/#endif*/
-
-	//FillWindowPixelBuffer(sTimeWindowId, PIXEL_FILL(1));
-	AddTextPrinterParameterized(sTimeWindowId, 2, gStringVar4, 4, 0, 0xFF, NULL);
-	//WindowPrint(sTimeWindowId, 1, 3, 1, &sTextColour, 0xFF, gStringVar4);
+	AddTextPrinterParameterized(sTimeWindowId, 2, gStringVar4, xOff, 0, 0xFF, NULL);
 	CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 }
 
@@ -547,7 +519,6 @@ static void RemoveTimeBox(void)
 {
 	if (sTimeWindowId != 0xFF)
 	{
-		//ClearStdWindowAndFrameToTransparent(sTimeWindowId, FALSE);
 		ClearStdWindowAndFrame(sTimeWindowId, TRUE);
 		CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 		RemoveWindow(sTimeWindowId);

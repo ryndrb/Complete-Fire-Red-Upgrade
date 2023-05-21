@@ -340,7 +340,7 @@ void __attribute__((long_call)) *DecompressAndCopyTileDataToVram(u8 bgId, const 
 bool8 __attribute__((long_call)) FreeTempTileDataBuffersIfPossible(void);
 void __attribute__((long_call)) PlayCry7(u16 species, u8 mode);
 void __attribute__((long_call)) FreeResourcesAndDestroySprite(struct Sprite * sprite, u8 spriteId);
-u8 __attribute__((long_call)) CreateMonSprite_FieldMove(u16 species, u32 otId, u32 personality, s16 x, s16 y); 
+u8 __attribute__((long_call)) CreateMonSprite_FieldMove(u16 species, u32 otId, u32 personality, s16 x, s16 y, u8 subpriority);
 
 /*
 u16 AllocTilesForSpriteSheet(struct SpriteSheet *sheet);

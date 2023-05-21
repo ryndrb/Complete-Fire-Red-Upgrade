@@ -17,7 +17,6 @@ Credit to Navenatox
 #define Green(Color)	((Color >> 5) & 31)
 #define Blue(Color)		((Color >> 10) & 31)
 
-// #define LoadNPCPalette(PalTag, PalSlot) ((void(*)(u16, u8)) (0x805F538 | 1))(PalTag, PalSlot)
 #define TintOBJPalette(PalSlot) ((void(*)(u8))0x8083598+1)(PalSlot)
 
 #define OverworldIsActive FuncIsActiveTask(Task_WeatherMain)
@@ -386,7 +385,6 @@ u8 FindOrLoadNPCPalette(u16 palTag)
 	if (palSlot == 0xFF)
 		return PalRefIncreaseCount(0);
 
-	// LoadNPCPalette(palTag, palSlot);
 	PatchObjectPalette(palTag, palSlot);
 	#ifdef UNBOUND
 	if (IsPaletteTagAffectedByCharacterCustomization(palTag))
@@ -408,7 +406,6 @@ u8 FindOrCreateReflectionPalette(u8 palSlotNPC)
 	if (palSlot == 0xFF)
 		return PalRefIncreaseCount(0);
 
-	// LoadNPCPalette(palTag, palSlot);
 	PatchObjectPalette(palTag, palSlot);
 	#ifdef UNBOUND
 	if (IsPaletteTagAffectedByCharacterCustomization(palTag))

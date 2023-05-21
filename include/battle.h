@@ -297,7 +297,7 @@ struct Trainer
 #define PARTY_FLAG_HAS_ITEM         0x2
 
 
-extern const struct Trainer gTrainers[];
+extern struct Trainer gTrainers[];
 
 #define TRAINER_ENCOUNTER_MUSIC(trainer)((gTrainers[trainer].encounterMusic_gender & 0x7F))
 
@@ -911,6 +911,7 @@ struct NewBattleStruct
 	bool8 printedStrongWindsWeakenedAttack : 1;
 	bool8 isTrainerBattle : 1;
 	bool8 cottonDownActive : 1;
+	bool8 cramorantTransformed : 1;
 
 	//Other
 	u16 LastUsedMove;

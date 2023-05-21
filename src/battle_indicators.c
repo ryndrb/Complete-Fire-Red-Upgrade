@@ -1720,19 +1720,13 @@ static bool8 CanShowEnemyMonIcon(u8 monId)
 		if (!IsRandomBattleTowerBattle()
 		&& BATTLE_FACILITY_NUM != IN_BATTLE_MINE //No team preview here
 		&& VarGet(VAR_BATTLE_FACILITY_POKE_NUM) >= PARTY_SIZE) //Normal 6v6 Battle
-		{
 			return TRUE; //Gain access to team preview
-		}
 	}
 	else if (gBattleTypeFlags & BATTLE_TYPE_LINK)
-	{
 		return TRUE; //Can always see link opponent's team
-	}
 	#ifdef FLAG_SANDBOX_MODE
 	else if (FlagGet(FLAG_SANDBOX_MODE)) //Doesn't help in Frontier
-	{
 		return TRUE;
-	}
 	#endif
 
 	return (gNewBS->revealedEnemyMons & gBitTable[monId]) != 0;

@@ -295,6 +295,11 @@ void MoldBreakerRestoreAbilitiesOnForceSwitchIn(void)
 	}
 }
 
+void SetDynamicTypeForPursuitSwitch(void)
+{
+	gBattleStruct->dynamicMoveType = GetMoveTypeSpecial(gBankAttacker, gCurrentMove);
+}
+
 void TrainerSlideOut(void)
 {
 	gActiveBattler = B_POSITION_OPPONENT_LEFT;
@@ -1248,7 +1253,7 @@ void TryExecuteInstruct(void)
 
 	if (gSpecialMoveFlags[move].gInstructBannedMoves
 	||  gSpecialMoveFlags[move].gMovesThatCallOtherMoves
-	||  gBattleMoves[move].effect == EFFECT_RECHARGE
+	|| gBattleMoves[move].effect == EFFECT_RECHARGE
 	|| IsZMove(move)
 	|| IsAnyMaxMove(move)
 	|| IsDynamaxed(gBankTarget)
@@ -1795,7 +1800,12 @@ void HandleForfeitYesNoBox(void)
 		PlaySE(SE_SELECT);
 
 		if (gBattleCommunication[CURSOR_POSITION] == 0)
+		{
+			if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
+				gBattleOutcome = B_OUTCOME_RAN;
+
 			gBattleMainFunc = HandleEndTurn_RanFromBattle;
+		}
 
 		gBattleCommunication[CURSOR_POSITION] = 0; //So the game doesn't crash when selecting a move
 		HandleBattleWindow(0x17, 0x8, 0x1D, 0xD, WINDOW_CLEAR);

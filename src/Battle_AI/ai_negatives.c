@@ -55,6 +55,18 @@ ai_negatives.c
                                     && gChosenMovesByBanks[bankAtkPartner] != MOVE_NONE \
                                     && (gBattleMoves[partnerMove].effect == EFFECT_SET_TERRAIN \
                                      || IsMaxMoveWithTerrainEffect(partnerMove)))
+#define PARTNER_MOVE_EFFECT_IS_MISTY_TERRAIN (IS_DOUBLE_BATTLE \
+                                    && gChosenMovesByBanks[bankAtkPartner] != MOVE_NONE \
+                                    && (partnerMove == MOVE_MISTYTERRAIN \
+                                     || IsMaxMoveWithMistyTerrainEffect(partnerMove)) \
+                                    && CheckGrounding(bankDef)) //Target to be chosen will be protected by the terrain to be set up
+#define PARTNER_MOVE_EFFECT_IS_SLEEP_BLOCKING_TERRAIN (IS_DOUBLE_BATTLE \
+                                    && gChosenMovesByBanks[bankAtkPartner] != MOVE_NONE \
+                                    && ((partnerMove == MOVE_MISTYTERRAIN && CheckGrounding(bankDef)) \
+                                     || (partnerMove == MOVE_ELECTRICTERRAIN && IsAffectedByElectricTerrain(bankDef)) \
+                                     || (IsMaxMoveWithMistyTerrainEffect(partnerMove) && CheckGrounding(bankDef)) \
+                                     || (IsMaxMoveWithElectricTerrainEffect(partnerMove) && IsAffectedByElectricTerrain(bankDef))))
+
 #define PARTNER_MOVE_IS_TAILWIND_TRICKROOM (IS_DOUBLE_BATTLE \
                                     && gChosenMovesByBanks[bankAtkPartner] != MOVE_NONE \
                                     && (partnerMove == MOVE_TAILWIND || partnerMove == MOVE_TRICKROOM))
@@ -764,7 +776,8 @@ SKIP_CHECK_TARGET:
 		AI_CHECK_SLEEP:
 			if (!CanBePutToSleep(bankDef, bankAtk, TRUE)
 			|| (MoveBlockedBySubstitute(move, bankAtk, bankDef))
-			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET)
+			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET
+			|| PARTNER_MOVE_EFFECT_IS_SLEEP_BLOCKING_TERRAIN)
 				DECREASE_VIABILITY(10);
 			break;
 
@@ -1512,7 +1525,8 @@ SKIP_CHECK_TARGET:
 		AI_POISON_CHECK: ;
 			if (!CanBePoisoned(bankDef, bankAtk, TRUE)
 			|| MoveBlockedBySubstitute(move, bankAtk, bankDef)
-			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET)
+			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET
+			|| PARTNER_MOVE_EFFECT_IS_MISTY_TERRAIN)
 				DECREASE_VIABILITY(10);
 			break;
 
@@ -1590,6 +1604,7 @@ SKIP_CHECK_TARGET:
 			if (!CanBeConfused(bankDef, bankAtk, TRUE)
 			|| MoveBlockedBySubstitute(move, bankAtk, bankDef)
 			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET
+			|| PARTNER_MOVE_EFFECT_IS_MISTY_TERRAIN
 			|| PARTNER_MOVE_IS_CONFUSION_MAX_MOVE)
 			{
 				DECREASE_VIABILITY(10);
@@ -1630,7 +1645,8 @@ SKIP_CHECK_TARGET:
 		AI_PARALYZE_CHECK: ;
 			if (!CanBeParalyzed(bankDef, bankAtk, TRUE)
 			|| MoveBlockedBySubstitute(move, bankAtk, bankDef)
-			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET)
+			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET
+			|| PARTNER_MOVE_EFFECT_IS_MISTY_TERRAIN)
 				DECREASE_VIABILITY(10);
 			else if (move != MOVE_GLARE
 				&& AI_SpecialTypeCalc(move, bankAtk, bankDef) & MOVE_RESULT_NO_EFFECT)
@@ -2085,7 +2101,8 @@ SKIP_CHECK_TARGET:
 
 		case EFFECT_SANDSTORM:
 			if (gBattleWeather & (WEATHER_SANDSTORM_ANY | WEATHER_PRIMAL_ANY | WEATHER_CIRCUS)
-			|| PARTNER_MOVE_EFFECT_IS_WEATHER)
+			|| PARTNER_MOVE_EFFECT_IS_WEATHER
+			|| IsCurrentWeatherPartnersWeather(data->bankAtkPartner, data->atkPartnerAbility)) //Don't override the partner's weather with your own
 				DECREASE_VIABILITY(10);
 			break;
 
@@ -2201,14 +2218,16 @@ SKIP_CHECK_TARGET:
 
 		case EFFECT_RAIN_DANCE:
 			if (gBattleWeather & (WEATHER_RAIN_ANY | WEATHER_PRIMAL_ANY | WEATHER_CIRCUS)
-			|| BankHasEvaporate(bankDef)
-			|| PARTNER_MOVE_EFFECT_IS_WEATHER)
+			|| BankOnFieldHasEvaporate()
+			|| PARTNER_MOVE_EFFECT_IS_WEATHER
+			|| IsCurrentWeatherPartnersWeather(data->bankAtkPartner, data->atkPartnerAbility)) //Don't override the partner's weather with your own
 				DECREASE_VIABILITY(10);
 			break;
 
 		case EFFECT_SUNNY_DAY:
 			if (gBattleWeather & (WEATHER_SUN_ANY | WEATHER_PRIMAL_ANY | WEATHER_CIRCUS)
-			|| PARTNER_MOVE_EFFECT_IS_WEATHER)
+			|| PARTNER_MOVE_EFFECT_IS_WEATHER
+			|| IsCurrentWeatherPartnersWeather(data->bankAtkPartner, data->atkPartnerAbility)) //Don't override the partner's weather with your own
 				DECREASE_VIABILITY(10);
 			break;
 
@@ -2329,7 +2348,8 @@ SKIP_CHECK_TARGET:
 
 		case EFFECT_HAIL:
 			if (gBattleWeather & (WEATHER_HAIL_ANY | WEATHER_PRIMAL_ANY | WEATHER_CIRCUS)
-			|| PARTNER_MOVE_EFFECT_IS_WEATHER)
+			|| PARTNER_MOVE_EFFECT_IS_WEATHER
+			|| IsCurrentWeatherPartnersWeather(data->bankAtkPartner, data->atkPartnerAbility)) //Don't override the partner's weather with your own
 				DECREASE_VIABILITY(10);
 			break;
 
@@ -2359,7 +2379,8 @@ SKIP_CHECK_TARGET:
 		AI_BURN_CHECK: ;
 			if (!CanBeBurned(bankDef, bankAtk, TRUE)
 			|| MoveBlockedBySubstitute(move, bankAtk, bankDef)
-			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET)
+			|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET
+			|| PARTNER_MOVE_EFFECT_IS_MISTY_TERRAIN)
 				DECREASE_VIABILITY(10);
 			break;
 
@@ -2642,7 +2663,8 @@ SKIP_CHECK_TARGET:
 				{
 					if (!CanBeFrozen(bankDef, bankAtk, TRUE)
 					|| MoveBlockedBySubstitute(move, bankAtk, bankDef)
-					|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET)
+					|| PARTNER_MOVE_EFFECT_IS_STATUS_SAME_TARGET
+					|| PARTNER_MOVE_EFFECT_IS_MISTY_TERRAIN)
 						DECREASE_VIABILITY(10);
 				}
 				#endif

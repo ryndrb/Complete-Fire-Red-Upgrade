@@ -24,7 +24,7 @@ typedef bool8 IgnoredPalT[16];
 
 //This file's functions:
 #ifdef TIME_ENABLED
-static void FadeDayNightPalettes();
+static void FadeDayNightPalettes(void);
 static void BlendFadedPalettes(u32 selectedPalettes, u8 coeff, u32 color);
 static void BlendFadedPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor);
 static u16 FadeColourForDNS(struct PlttData* blend, u8 coeff, s8 r, s8 g, s8 b);
@@ -52,7 +52,7 @@ void TransferPlttBuffer(void)
 }
 
 #ifdef TIME_ENABLED
-static void FadeDayNightPalettes()
+static void FadeDayNightPalettes(void)
 {
 	u32 palsToFade;
 	bool8 inOverworld, fadePalettes;
@@ -141,7 +141,7 @@ static void BlendFadedPalettes(u32 selectedPalettes, u8 coeff, u32 color)
 {
 	u16 paletteOffset;
 
-	for (paletteOffset = 256; selectedPalettes; paletteOffset += 16)
+	for (paletteOffset = 256; selectedPalettes; paletteOffset += 16) //Sprites
 	{
 		if (selectedPalettes & 1)
 		{
@@ -156,6 +156,7 @@ static void BlendFadedPalettes(u32 selectedPalettes, u8 coeff, u32 color)
 					BlendFadedPalette(paletteOffset, 16, coeff, color);
 			}
 		}
+
 		selectedPalettes >>= 1;
 	}
 }
@@ -203,10 +204,11 @@ static void BlendFadedUnfadedPalette(u16 palOffset, u16 numEntries, u8 coeff, u3
 		s8 g = data1->g;
 		s8 b = data1->b;
 
-		gPlttBufferUnfaded[index] = FadeColourForDNS(data2, coeff, r, g, b);
+		u16 newColour = FadeColourForDNS(data2, coeff, r, g, b);
+		gPlttBufferUnfaded[index] = newColour;
 
 		if (!palFadeActive)
-			gPlttBufferFaded[index] = FadeColourForDNS(data2, coeff, r, g, b);
+			gPlttBufferFaded[index] = newColour;
 	}
 }
 

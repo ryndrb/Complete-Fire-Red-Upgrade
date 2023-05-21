@@ -1404,8 +1404,9 @@ u8 VisualTypeCalc(u16 move, u8 bankAtk, u8 bankDef)
 		flags |= MOVE_RESULT_DOESNT_AFFECT_FOE;
 
 	//Primal Weather Check
-	if ((gBattleWeather & WEATHER_SUN_PRIMAL && moveType == TYPE_WATER)
-	|| (gBattleWeather & WEATHER_RAIN_PRIMAL && moveType == TYPE_FIRE))
+	if (WEATHER_HAS_EFFECT
+	&& ((gBattleWeather & WEATHER_SUN_PRIMAL && moveType == TYPE_WATER)
+	 || (gBattleWeather & WEATHER_RAIN_PRIMAL && moveType == TYPE_FIRE)))
 		flags |= MOVE_RESULT_DOESNT_AFFECT_FOE;
 
 	return flags;
@@ -4590,7 +4591,7 @@ void CalculateHiddenPowerSplits(void)
 			else
 				split = (Random() & 1) ? SPLIT_PHYSICAL : SPLIT_SPECIAL;
 
-			gNewBS->hiddenPowerSplit[bankAtk][bankDef] = split; //Calculate for all because any Pokemon could call Shell Side Arm from another move (eg. Metronome)
+			gNewBS->hiddenPowerSplit[bankAtk][bankDef] = split;
 		}
 	}
 }
