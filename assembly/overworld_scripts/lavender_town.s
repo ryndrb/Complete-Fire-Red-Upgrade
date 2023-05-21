@@ -8,6 +8,14 @@
 .equ JESSIE, 4
 .equ JAMES, 5
 .equ MEOWTH, 6
+.equ MAY, 7
+.equ CUBONE, 8
+
+.equ RIVAL_TOWER_1, 1
+.equ MAY_TOWER_1, 3
+
+.equ MAY_TOWER_2, 5
+.equ CUBONE_TOWER, 6
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Lavender Town Items Merchant
@@ -135,322 +143,207 @@ EventScript_MrFuji:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ Rival, May, and Player all meet in side PokeTower
+@ May Poke Tower 1st Floor
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_PokeTower_RivalBattle1:
-    lockall
-    setvar 0x4001 0x0
-    @playsong 0x13B 0x0
-    compare 0x4001 0x0
-    if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
-    compare 0x4001 0x1
-    if equal _call EventScript_PokeTower_MoveRivalAndPlayer2
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    compare 0x4001 0x0
-    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
-    compare 0x4001 0x1
-    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
-    callasm RemoveNameBox
+EventScript_PokeTower_1stFloor_May:
+    lock
+    faceplayer
+    npcmsg gText_PokeTower_1stFloor_May_Speak_13 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rival Poke Tower 1st Floor
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_PokeTower_1stFloor:
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_PokeTower_1stFloor
+    .byte MAP_SCRIPT_TERMIN
+
+LevelScript_PokeTower_1stFloor:
+    levelscript 0x405D, 0, EventScript_PokeTower_1stFloor_Rival
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_PokeTower_1stFloor_Rival:
+    lock
+    pause 30
+    applymovement RIVAL_TOWER_1 Move_PokeTower_1stFloor_Rival_1
+    waitmovement RIVAL_TOWER_1
+    spriteface PLAYER UP
+    sound 0x15
+    applymovement RIVAL_TOWER_1 Move_PokeTower_1stFloor_Rival_2
+    waitmovement RIVAL_TOWER_1
+    pause 30
+    spriteface PLAYER UP
+    applymovement PLAYER Move_PokeTower_1stFloor_Player_1
+    waitmovement PLAYER
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_1 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement RIVAL_TOWER_1 Move_PokeTower_1stFloor_Rival_2
+    waitmovement RIVAL_TOWER_1
+    pause 30
+    spriteface PLAYER DOWN
+    showsprite MAY_TOWER_1
+    applymovement MAY_TOWER_1 Move_PokeTower_1stFloor_May_1
+    waitmovement MAY_TOWER_1
+    sound 0x9
+    pause 30
+    sound 0x15
+    applymovement MAY_TOWER_1 Move_PokeTower_1stFloor_May_2
+    waitmovement MAY_TOWER_1
+    spriteface RIVAL_TOWER_1 RIGHT
+    spriteface PLAYER RIGHT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_1 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    spriteface MAY_TOWER_1 UP
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_2 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_May_Speak_2 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_3 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_May_Speak_3 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_4 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_May_Speak_4 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_5 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_May_Speak_5 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_6 MSG_KEEPOPEN 1 LEFT
+    closemsg
     setvar LASTTALKED 0x1
     setflag 0x908
     setvar 0x5011 64
     setvar 0x5012 0x3
-    compare 0x4031 0x2
-    if 0x1 _call EventScrit_RivalSquirtle
+    pause 30
+    if 0x1 _call EventScript_PokeTower_1stFloor_Rival_Squirtle
     compare 0x4031 0x1
-    if 0x1 _call EventScrit_RivalBulbasaur
+    if 0x1 _call EventScript_PokeTower_1stFloor_Rival_Bulbasaur
     compare 0x4031 0x0
-    if 0x1 _call EventScrit_RivalCharmander
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    fadescreen 0x1
-    hidesprite 1
+    if 0x1 _call EventScript_PokeTower_1stFloor_Rival_Charmander
+    npcmsg gText_PokeTower_1stFloor_May_Speak_6 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_7 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_May_Speak_7 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_8 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_May_Speak_8 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_9 MSG_KEEPOPEN 1 LEFT
+    closemsg
+    applymovement RIVAL_TOWER_1 Move_PokeTower_1stFloor_Rival_3
+    applymovement PLAYER Move_PokeTower_1stFloor_Player_2
+    applymovement MAY_TOWER_1 Move_PokeTower_1stFloor_May_3
+    waitmovement RIVAL_TOWER_1
+    sound 0x9
+    hidesprite RIVAL_TOWER_1
     setflag 0x51
-    setvar 0x405D 0x1
-    fadescreen 0x0
     special 0x0
-    compare 0x4001 0x0
-    if equal _call EventScript_PokeTower_MayFacePlayer1
-    compare 0x4001 0x1
-    if equal _call EventScript_PokeTower_MayFacePlayer2
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks9 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    fadescreen 0x1
-    hidesprite 3
-    setflag FLAG_MAY_POKETOWER_SPRITE
-    fadescreen 0x0
+    pause 30
+    spriteface PLAYER RIGHT
+    spriteface MAY_TOWER_1 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_9 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    sound 0x15
+    applymovement MAY_TOWER_1 Move_PokeTower_1stFloor_May_4
+    waitmovement RIVAL_TOWER_1
+    npcmsg gText_PokeTower_1stFloor_May_Speak_10 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    pause 30
+    spriteface MAY_TOWER_1 DOWN
+    npcmsg gText_PokeTower_1stFloor_May_Speak_11 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    pause 15
+    spriteface MAY_TOWER_1 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_12 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    setvar 0x405D 0x1
     release
     end
 
-EventScript_PokeTower_RivalBattle2:
-    lockall
-    setvar 0x4001 0x1
-    @playsong 0x13B 0x0
-    compare 0x4001 0x0
-    if equal _call EventScript_PokeTower_MoveRivalAndPlayer1
-    compare 0x4001 0x1
-    if equal _call EventScript_PokeTower_MoveRivalAndPlayer2
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    compare 0x4001 0x0
-    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay1
-    compare 0x4001 0x1
-    if equal _call EventScript_PokeTower_RivalPlayerNoticeMay2
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks1 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks2 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks2 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks3 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks3 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks4 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks4 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks5 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks5 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks6 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    setvar LASTTALKED 0x1
-    setflag 0x908
-    setvar 0x5011 64
-    setvar 0x5012 0x3
-    compare 0x4031 0x2
-    if 0x1 _call EventScrit_RivalSquirtle
-    compare 0x4031 0x1
-    if 0x1 _call EventScrit_RivalBulbasaur
-    compare 0x4031 0x0
-    if 0x1 _call EventScrit_RivalCharmander
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks6 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks7 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks7 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks8 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks8 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_PokeTower_RivalSpeaks9 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    fadescreen 0x1
-    hidesprite 1
-    setflag 0x51
-    setvar 0x405D 0x1
-    fadescreen 0x0
-    special 0x0
-    compare 0x4001 0x0
-    if equal _call EventScript_PokeTower_MayFacePlayer1
-    compare 0x4001 0x1
-    if equal _call EventScript_PokeTower_MayFacePlayer2
-    call MayNameBox
-    msgbox gText_PokeTower_MaySpeaks9 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    fadescreen 0x1
-    hidesprite 3
-    setflag FLAG_MAY_POKETOWER_SPRITE
-    fadescreen 0x0
-    release
-    end
-
-EventScrit_RivalSquirtle:
-    trainerbattle3 0x3 429 0x0 gText_PokeTower_RivalLost
+EventScript_PokeTower_1stFloor_Rival_Squirtle:
+    trainerbattle3 0x3 429 0x0 gText_PokeTower_1stFloor_Rival_Defeat
     return
 
-EventScrit_RivalBulbasaur:
-    trainerbattle3 0x3 430 0x0 gText_PokeTower_RivalLost
-    return
-    
-EventScrit_RivalCharmander:
-    trainerbattle3 0x3 431 0x0 gText_PokeTower_RivalLost
+EventScript_PokeTower_1stFloor_Rival_Bulbasaur:
+    trainerbattle3 0x3 430 0x0 gText_PokeTower_1stFloor_Rival_Defeat
     return
 
-EventScript_PokeTower_MoveRivalAndPlayer1:
-    applymovement 1 EventScript_PokeTower_RivalNoticePlayer1
-    applymovement PLAYER EventScript_PokeTower_PlayerFaceRival1
-    waitmovement 1
+EventScript_PokeTower_1stFloor_Rival_Charmander:
+    trainerbattle3 0x3 431 0x0 gText_PokeTower_1stFloor_Rival_Defeat
     return
 
-EventScript_PokeTower_MoveRivalAndPlayer2:
-    applymovement 1 EventScript_PokeTower_RivalNoticePlayer2
-    applymovement PLAYER EventScript_PokeTower_PlayerFaceRival2
-    waitmovement 1
-    return
-
-EventScript_PokeTower_RivalPlayerNoticeMay1:
-    applymovement 1 EventScript_PokeTower_RivalFaceMayDir1
-    applymovement PLAYER EventScript_PokeTower_PlayerFaceMayDir1
-    waitmovement 1
-    applymovement 3 EventScript_PokeTower_MayMoveToBoth1
-    waitmovement 3
-    return
-
-EventScript_PokeTower_RivalPlayerNoticeMay2:
-    applymovement 1 EventScript_PokeTower_RivalFaceMayDir2
-    applymovement PLAYER EventScript_PokeTower_PlayerFaceMayDir2
-    applymovement 3 EventScript_PokeTower_MayMoveToBoth2
-    waitmovement 1
-    @applymovement 3 EventScript_PokeTower_MayMoveToBoth2
-    @waitmovement 3
-    return
-
-EventScript_PokeTower_MayFacePlayer1:
-    applymovement 3 MayFacePlayer1
-    waitmovement 3
-    return
-
-EventScript_PokeTower_MayFacePlayer2:
-    applymovement 3 MayFacePlayer1
-    waitmovement 3
-    return
-
-EventScript_PokeTower_RivalNoticePlayer1:
-    .byte walk_right_onspot_fastest
-    .byte exclaim
-    .byte end_m
-
-EventScript_PokeTower_RivalNoticePlayer2:
-    .byte walk_down_onspot_fastest
-    .byte exclaim
-    .byte end_m
-
-EventScript_PokeTower_PlayerFaceRival1:
+Move_PokeTower_1stFloor_Rival_1:
     .byte walk_left_onspot_fastest
-    .byte end_m
-
-EventScript_PokeTower_PlayerFaceRival2:
+    .byte pause_long
     .byte walk_up_onspot_fastest
-    .byte end_m
-
-EventScript_PokeTower_RivalFaceMayDir1:
-    .byte exclaim
-    .byte walk_down_onspot_fastest
-    .byte end_m
-
-EventScript_PokeTower_RivalFaceMayDir2:
-    .byte exclaim
-    .byte pause_long
-    .byte walk_down_onspot_fastest
-    .byte pause_long
     .byte pause_long
     .byte pause_long
     .byte walk_right_onspot_fastest
+    .byte pause_long
     .byte end_m
 
-EventScript_PokeTower_PlayerFaceMayDir1:
+Move_PokeTower_1stFloor_Rival_2:
     .byte exclaim
+    .byte pause_long
     .byte walk_down_onspot_fastest
     .byte end_m
 
-EventScript_PokeTower_PlayerFaceMayDir2:
-    .byte pause_long
-    .byte pause_long
-    .byte walk_down_onspot_fastest
-    .byte pause_long
-    .byte pause_long
-    .byte walk_right_onspot_fastest
+Move_PokeTower_1stFloor_Player_1:
+    .byte walk_left
+    .byte walk_up
     .byte end_m
 
-EventScript_PokeTower_MayMoveToBoth1:
+Move_PokeTower_1stFloor_May_1:
     .byte walk_left
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_left
+    .byte end_m
+
+Move_PokeTower_1stFloor_May_2:
+    .byte exclaim
+    .byte pause_long
     .byte walk_up_onspot_fastest
-    .byte end_m
-
-EventScript_PokeTower_MayMoveToBoth2:
-    .byte walk_left
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
+    .byte pause_long
     .byte walk_up
     .byte walk_left_onspot_fastest
     .byte end_m
 
-MayFacePlayer1:
+Move_PokeTower_1stFloor_Rival_3:
     .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
     .byte end_m
 
-MayFacePlayer2:
-    .byte walk_up
+Move_PokeTower_1stFloor_Player_2:
+    .byte walk_up_onspot_fastest
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_1stFloor_May_3:
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_1stFloor_May_4:
+    .byte exclaim
+    .byte pause_long
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -604,9 +497,177 @@ Map_Lavender:
     end
 
 LevelScript_Lavender_RocketGang:
-    levelscript VAR_ROCKET_GANG_ENCOUNTER, 2, EventScript_Lavender_RocketGang
+    levelscript VAR_ROCKET_GANG_ENCOUNTER, 2, EventScript_Lavender_Cubone
+    levelscript VAR_ROCKET_GANG_ENCOUNTER, 4, EventScript_Lavender_RocketGang
     .hword LEVEL_SCRIPT_TERMIN
 
+@ CUBONE AND MAY ENTER POKETOWER
+EventScript_Lavender_Cubone:
+    lock
+    pause 30
+    special 0x113
+    getplayerpos 0x8000 0x8001
+    compare 0x8000 0xB
+    if equal _call EventScript_Lavender_Cubone_PlayerPos1
+    compare 0x8000 0xC
+    if equal _call EventScript_Lavender_Cubone_PlayerPos2
+    special 0x114
+    pause 30
+    applymovement CUBONE Move_Lavender_Cubone_1
+    waitmovement CUBONE
+    sound 0x9
+    hidesprite CUBONE
+    setflag FLAG_CUBONE_LAVENDER_SPRITE
+    showsprite MAY
+    applymovement MAY Move_Lavender_May_1
+    waitmovement MAY
+    npcmsg gText_Lavender_Cubone_May_Speak_1 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    applymovement MAY Move_Lavender_May_2
+    waitmovement MAY
+    sound 0x9
+    hidesprite MAY
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x3
+    special 0x113
+    compare 0x8002 0xB
+    if equal _call EventScript_Lavender_Cubone_PlayerPos3
+    compare 0x8002 0xC
+    if equal _call EventScript_Lavender_Cubone_PlayerPos4
+    special 0x114
+    release
+    end
+
+EventScript_Lavender_Cubone_PlayerPos1:
+    applymovement CAMERA Move_Lavender_Cubone_Camera_1
+    waitmovement CAMERA
+    setvar 0x8002 0xB
+    return
+
+EventScript_Lavender_Cubone_PlayerPos2:
+    applymovement CAMERA Move_Lavender_Cubone_Camera_2
+    waitmovement CAMERA
+    setvar 0x8002 0xC
+    return
+
+EventScript_Lavender_Cubone_PlayerPos3:
+    applymovement CAMERA Move_Lavender_Cubone_Camera_3
+    waitmovement CAMERA
+    return
+
+EventScript_Lavender_Cubone_PlayerPos4:
+    applymovement CAMERA Move_Lavender_Cubone_Camera_4
+    waitmovement CAMERA
+    return
+
+Move_Lavender_Cubone_Camera_1:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+Move_Lavender_Cubone_Camera_2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+Move_Lavender_Cubone_Camera_3:
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_Lavender_Cubone_Camera_4:
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_Lavender_Cubone_1:
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte say_question
+    .byte pause_long
+    .byte pause_long
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_Lavender_May_1:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte pause_long
+    .byte pause_long
+    .byte say_question
+    .byte pause_long
+    .byte end_m
+
+Move_Lavender_May_2:
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+@ ROCKET GANG
 EventScript_Lavender_RocketGang:
     lock
     pause 30
@@ -614,11 +675,8 @@ EventScript_Lavender_RocketGang:
     applymovement PLAYER Move_Lavender_RocketGang_Player_1
     waitmovement PLAYER
     special 0x113
-    getplayerpos 0x8000 0x8001
-    compare 0x8000 0xB
-    if equal _call EventScript_Lavender_RocketGang_PlayerPos1
-    compare 0x8000 0xC
-    if equal _call EventScript_Lavender_RocketGang_PlayerPos2
+    applymovement CAMERA Move_Lavender_RocketGang_Camera_1
+    waitmovement CAMERA 
     special 0x114
     pause 30
     playsong 0x184 0x1
@@ -648,6 +706,7 @@ EventScript_Lavender_RocketGang:
     closemsg
     npcmsg gText_Lavender_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 31 LEFT
     closemsg
+    pause 30
     npcmsg gText_Lavender_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN 29 LEFT
     closemsg
     pause 30
@@ -667,39 +726,15 @@ EventScript_Lavender_RocketGang:
     hidesprite JAMES
     hidesprite MEOWTH
     setflag FLAG_ROCKET_LAVENDER_SPRITE
-    setvar VAR_ROCKET_GANG_ENCOUNTER 0x3
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x5
     fadedefaultbgm
     pause 30
     special 0x113
-    compare 0x8002 0xB
-    if equal _call EventScript_Lavender_RocketGang_PlayerPos3
-    compare 0x8002 0xC
-    if equal _call EventScript_Lavender_RocketGang_PlayerPos4
+    applymovement CAMERA Move_Lavender_RocketGang_Camera_2
+    waitmovement CAMERA
     special 0x114
     release
     end
-
-EventScript_Lavender_RocketGang_PlayerPos1:
-    applymovement CAMERA Move_Lavender_RocketGang_Camera_1
-    waitmovement CAMERA
-    setvar 0x8002 0xB
-    return
-
-EventScript_Lavender_RocketGang_PlayerPos2:
-    applymovement CAMERA Move_Lavender_RocketGang_Camera_2
-    waitmovement CAMERA
-    setvar 0x8002 0xC
-    return
-
-EventScript_Lavender_RocketGang_PlayerPos3:
-    applymovement CAMERA Move_Lavender_RocketGang_Camera_3
-    waitmovement CAMERA
-    return
-
-EventScript_Lavender_RocketGang_PlayerPos4:
-    applymovement CAMERA Move_Lavender_RocketGang_Camera_4
-    waitmovement CAMERA
-    return
 
 Move_Lavender_RocketGang_Jessie_1:
     .byte say_double_exclaim
@@ -763,48 +798,164 @@ Move_Lavender_RocketGang_Player_1:
 
 Move_Lavender_RocketGang_Camera_1:
     .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_right
-    .byte end_m
-
-Move_Lavender_RocketGang_Camera_2:
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte end_m
-
-Move_Lavender_RocketGang_Camera_3:
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
     .byte walk_left
     .byte end_m
 
-Move_Lavender_RocketGang_Camera_4:
+Move_Lavender_RocketGang_Camera_2:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_up
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Inside Poke Tower Cubone Event
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_PokeTower_2ndFloor:
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_PokeTower
+    .byte MAP_SCRIPT_TERMIN
+
+LevelScript_PokeTower:
+    levelscript VAR_ROCKET_GANG_ENCOUNTER, 3, EventScript_PokeTower_Cubone
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_PokeTower_Cubone:
+    lock
+    pause 30
+    applymovement PLAYER Move_PokeTower_Cubone_Player_1
+    waitmovement PLAYER
+    showsprite MAY_TOWER_2
+    applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_1
+    waitmovement MAY_TOWER_2
+    spriteface MAY_TOWER_2 DOWN
+    npcmsg gText_PokeTower_Cubone_May_Speak_1 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_2
+    waitmovement MAY_TOWER_2
+    npcmsg gText_PokeTower_Cubone_May_Speak_2 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_3
+    waitmovement MAY_TOWER_2
+    npcmsg gText_PokeTower_Cubone_May_Speak_3 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    pause 30
+    spriteface PLAYER UP
+    npcmsg gText_PokeTower_Cubone_May_Speak_4 MSG_KEEPOPEN 2 LEFT
+    closemsg
+    spriteface MAY_TOWER_2 LEFT
+    npcmsg gText_PokeTower_Cubone_May_Speak_5 MSG_KEEPOPEN 2 LEFT
+    applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_4
+    waitmovement MAY_TOWER_2
+    sound 0x9
+    closemsg
+    hidesprite MAY_TOWER_2
+    setflag FLAG_MAY_POKETOWER_SPRITE_2
+    pause 30
+    signbox gText_PokeTower_Cubone_Ghost_Speak_1 MSG_NORMAL
+    pause 30
+    applymovement CUBONE_TOWER Move_PokeTower_Cubone_Cubone_1
+    waitmovement CUBONE_TOWER
+    cry SPECIES_CUBONE 0x0
+    msgbox gText_PokeTower_Cubone_Cubone_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    sound 0x15
+    applymovement CUBONE_TOWER Move_PokeTower_Cubone_Cubone_2
+    waitmovement CUBONE_TOWER
+    spriteface PLAYER LEFT
+    cry SPECIES_CUBONE 0x0
+    msgbox gText_PokeTower_Cubone_Cubone_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement CUBONE_TOWER Move_PokeTower_Cubone_Cubone_3
+    waitmovement CUBONE_TOWER
+    sound 0x9
+    hidesprite CUBONE_TOWER
+    setflag FLAG_CUBONE_POKETOWER_SPRITE
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x4
+    clearflag FLAG_ROCKET_LAVENDER_SPRITE
+    signbox gText_PokeTower_Cubone_Narrator_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x1
+    pause 15
+    fadescreen 0x0
+    release
+    end
+
+Move_PokeTower_Cubone_Player_1:
+    .byte walk_right
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_Cubone_May_1:
+    .byte pause_long
+    .byte walk_right
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+Move_PokeTower_Cubone_May_2:
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_Cubone_May_3:
+    .byte say_question
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_Cubone_May_4:
+    .byte run_left
+    .byte end_m
+
+Move_PokeTower_Cubone_Cubone_1:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
     .byte walk_up
     .byte walk_up
     .byte walk_up
     .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
+    .byte pause_long
+    .byte jump_onspot_up
+    .byte jump_onspot_up
+    .byte end_m
+
+Move_PokeTower_Cubone_Cubone_2:
+    .byte say_question
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_PokeTower_Cubone_Cubone_3:
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte say_question
+    .byte pause_long
+    .byte pause_long
+    .byte walk_left
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@

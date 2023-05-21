@@ -2351,14 +2351,17 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag 0x93B @ May route 1 sprite
     setflag 0x93C @ May route 4 sprite
     setflag 0x933 @ team preview
-    setflag 0x9B7 @ ariana rocket hq
     setflag 0x9B9 @ may league sprite
     setflag 0x9CD @ littleboy dad cinnabar sprite inside house
     setflag 0x9D1 @ eusine sprite celadon outside gym after deafting erika
     setflag 0x9D2 @ eusine sprite celadon resto after starting event
     setflag 0x9DC @ may oak lab sprite
+    setflag FLAG_MAY_POKETOWER_SPRITE
     setflag FLAG_ROCKET_GANG_ROUTE25_SPRITE
-    
+    setflag FLAG_MAY_LAVENDER_SPRITE
+    setflag FLAG_MAY_POKETOWER_SPRITE_2
+    setflag FLAG_ROCKET_LAVENDER_SPRITE
+
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
 
     setflag 0x9BB @ kyogre

@@ -820,12 +820,8 @@ void sp06B_ReplacePlayerTeamWithMultiTrainerTeam(void)
 // rad red implemention, cred soupercell
 static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainerId, const struct MultiRaidTrainer trainerData){
 	for(u8 i = 0; i < trainerData.spreadSizes[0]; i++) {
-		u8 level = 0;
-		if(FlagGet(FLAG_CUSTOM_TRAINERS)){
-			level = GetHighestMonLevel(gPlayerParty) + trainerData.spreads[0][i].level;
-		}else{
-			level = trainerData.spreads[0][i].level;
-		}
+		u8 level = GetHighestMonLevel(gPlayerParty) + trainerData.spreads[0][i].level;
+
 		if (trainerData.backSpriteId == DOUBLE_BATTLE && ViableMonCount(gPlayerParty) >= 2 ) {
 			gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
 		}
@@ -847,6 +843,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 	const struct Trainer* trainer;
 	u32 otid = 0;
 	u8 otIdType = OT_ID_RANDOM_NO_SHINY;
+	u8 val = VarGet(VAR_FURTHER_TRAINER_BATTLES);
 
 	// Custom Trainer
 	if(FlagGet(FLAG_CUSTOM_TRAINERS) && side == B_SIDE_OPPONENT){
@@ -1106,14 +1103,21 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 						#else
 
 						switch(trainerId)
-						{
+						{	/* 	val value -> current battle times
+								val = 2 means second battle, and so on.
+								easy to remember
+							*/
 							case 0x6:
-								if(VarGet(VAR_PROTON_BATTLES) == 1) // just used var if decided for more future encounters (sevii)
+								if(val == 2) // Proton Silph Co.
 									return BuildCustomTrainerParty(party, gImportantTrainers[6].otId, gImportantTrainers[6]); 
 								break;
 							case 0x8:
-								if(VarGet(VAR_ARIANA_BATTLES) == 1) // just used var if decided for more future encounters (sevii)
+								if(val == 2) // Ariana Silph Co.
 									return BuildCustomTrainerParty(party, gImportantTrainers[7].otId, gImportantTrainers[7]); 
+								break;
+							case 10:
+								if(val == 2) // rocket hq battle
+									return BuildCustomTrainerParty(party, gImportantTrainers[8].otId, gImportantTrainers[8]); 
 								break;
 							default:
 								break;

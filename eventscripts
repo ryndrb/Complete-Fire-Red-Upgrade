@@ -147,11 +147,12 @@ npc 8 5 0 EventScript_PokeMartMain
 npc 8 5 4 EventScript_LavenderTown
 npc 8 0 5 EventScript_PokemonCenterClerk
 npc 8 0 6 EventScript_UtilityOldMan
+npc 1 89 2 EventScript_PokeTower_1stFloor_May
 npc 1 94 0 EventScript_MrFuji
 tile 1 88 0 EventScript_PokeTowerLadyTile
-tile 1 89 0 EventScript_PokeTower_RivalBattle1
-tile 1 89 1 EventScript_PokeTower_RivalBattle2
 map 3 4 MapScript_Lavender
+map 1 89 MapScript_PokeTower_1stFloor
+map 1 90 MapScript_PokeTower_2ndFloor
 
 # VERMILLION CITY
 npc 1 11 0 EventScript_0x160B3A
@@ -177,8 +178,9 @@ tile 1 6 2 EventScript_SSAnne_Rival2
 map 3 5 MapScript_Vermillion
 
 # CELADON CITY
-npc 1 45 0 EventScript_Celadon_Giovanni
+npc 1 45 0 EventScript_RocketHQ_Giovanni
 npc 1 45 9 EventScript_DarkPulse
+npc 1 45 14 EventScript_RocketHQ_Cubone
 npc 3 6 9 EventScript_Cut
 npc 3 6 10 EventScript_Cut
 npc 3 6 15 EventScript_Waterfall
@@ -202,7 +204,8 @@ npc 10 16 10 EventScript_Cut
 npc 10 16 11 EventScript_GymGuyAbomasite
 npc 10 17 5 EventScript_Celadon_Eusine_InsideResto
 npc 3 6 16 EventScript_Celadon_May
-tile 1 45 0 EventScript_RocketHQ_Ariana
+tile 1 45 0 EventScript_RocketHQ_Admin
+map 1 45 MapScript_RocketHQ_4thFloor
 map 3 6 MapScript_Celadon
 
 # FUSCHIA CITY

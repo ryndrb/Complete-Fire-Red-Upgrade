@@ -5,6 +5,13 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ GIOVANNI, 1
+.equ ARIANA, 11
+.equ JESSIE, 12
+.equ JAMES, 14
+.equ MEOWTH, 13
+.equ CUBONE, 15
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Erika
 @@@@@@@@@@@@@@@@@@@@@@
@@ -91,42 +98,6 @@ EventScript_GiveAbomasite:
 
 Obtained:
     goto 0x816A67F
-    end
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Celadon Giovanni
-@@@@@@@@@@@@@@@@@@@@@@
-EventScript_Celadon_Giovanni:
-    lock
-    faceplayer
-    setvar 0x8004 0xF
-    setvar 0x8005 0x0
-    special 0x173
-    call UnknownNameBox
-    msgbox gText_Celadon_GiovanniSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    call GiovanniNameBox
-    msgbox gText_gText_Celadon_GiovanniSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    playsong 0x11B 0x0
-    waitkeypress
-    trainerbattle3 0x3 0x15C 0x0 0x8175318
-    call GiovanniNameBox
-    msgbox gText_gText_Celadon_GiovanniSpeak3 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    fadescreen 0x1
-    closeonkeypress
-    hidesprite 0x1
-    showsprite 0x2
-    clearflag 0x37
-    setflag 0x5F
-    setvar 0x8004 0xF
-    setvar 0x8005 0x2
-    special 0x174
-    fadescreen 0x0
-    release
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -738,104 +709,220 @@ EventScript_Celadon_PlayerSmile:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ Ariana Rocket Hideout
+@ Admin Ariana Rocket Hideout
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_RocketHQ_Ariana:
+EventScript_RocketHQ_Admin:
     lock
-    sound 0x9
     pause 30
-    call UnknownNameBox
-    msgbox gText_RocketHQ_ArianaSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    applymovement 11 Move_RocketHQ_Ariana1
+    special 0x113
+    applymovement CAMERA Move_RocketHQ_Admin_Camera_1
+    waitmovement CAMERA
+    special 0x114
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_Admin_Giovanni_Speak_1 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_2 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    pause 15
+    cry SPECIES_CUBONE 0x0
+    pause 15
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_3 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_Admin_Giovanni_Speak_2 MSG_KEEPOPEN 0 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_4 MSG_KEEPOPEN 25 LEFT
+    closemsg
+    pause 30
+    applymovement ARIANA Move_RocketHQ_Admin_Ariana_1
+    waitmovement ARIANA
+    special 0x113
+    applymovement CAMERA Move_RocketHQ_Admin_Camera_2
+    waitmovement CAMERA
+    special 0x114
     sound 0x15
-    applymovement PLAYER Move_RocketHQ_Player1
-    waitmovement 11
+    applymovement ARIANA Move_RocketHQ_Admin_Ariana_2
+    waitmovement ARIANA
     playsong 0x181 1
-    call UnknownNameBox
-    msgbox gText_RocketHQ_ArianaSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    applymovement 11 Move_RocketHQ_Ariana2
-    waitmovement 11
-    call ArianaNameBox
-    msgbox gText_RocketHQ_ArianaSpeak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    trainerbattle3 0x3 0x8 0x0 gText_RocketHQ_ArianaDefeated
-    call ArianaNameBox
-    msgbox gText_RocketHQ_ArianaSpeak4 MSG_KEEPOPEN
-    msgbox gText_RocketHQ_ArianaSpeak5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    applymovement 11 Move_RocketHQ_Ariana3
-    waitmovement 11
-    sound 0x9
-    fadedefaultbgm
-    hidesprite 11
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_5 MSG_KEEPOPEN 25 LEFT
+    closemsg
+    trainerbattle3 0x3 0x8 0x0 gText_RocketHQ_Admin_Ariana_Defeated
+    pause 30
+    spriteface ARIANA UP
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_6 MSG_KEEPOPEN 25 LEFT
+    closemsg
+    pause 30
+    spriteface ARIANA DOWN
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_7 MSG_KEEPOPEN 25 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_8 MSG_KEEPOPEN 25 LEFT
+    closemsg
+    applymovement PLAYER Move_RocketHQ_Admin_Player_1
+    applymovement ARIANA Move_RocketHQ_Admin_Ariana_3
+    waitmovement ARIANA
+    hidesprite ARIANA
     setflag FLAG_ENCOUNTER_ROCKETHQ_ARIANA
-    setvar VAR_ARIANA_BATTLES 1
-    setvar VAR_ENCOUNTER_ARIANA 1
+    setvar VAR_ENCOUNTER_ARIANA 0x1
+    fadedefaultbgm
     release
     end
 
-Move_RocketHQ_Player1:
-    .byte exclaim
-    .byte pause_long
+Move_RocketHQ_Admin_Camera_1:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_RocketHQ_Admin_Camera_2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_RocketHQ_Admin_Ariana_1:
     .byte walk_down_onspot_fastest
     .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_Admin_Ariana_2:
+    .byte exclaim
     .byte pause_long
-    .byte pause_long
-    .byte pause_long
-    .byte pause_long
-    .byte pause_long
-    .byte pause_long
-    .byte pause_long
-    .byte walk_up
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_RocketHQ_Admin_Player_1:
     .byte walk_right
     .byte walk_left_onspot_fastest
     .byte end_m
 
-Move_RocketHQ_Ariana1:
+Move_RocketHQ_Admin_Ariana_3:
+    .byte walk_down
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte walk_down
     .byte walk_left
     .byte walk_left
     .byte walk_left
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_up
-    .byte walk_right_onspot_fastest
     .byte end_m
 
-Move_RocketHQ_Ariana2:
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rocket HQ Cubone
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_RocketHQ_Cubone:
+    lock
+    faceplayer
+    pause 15
+    cry SPECIES_CUBONE 0x0
+    msgbox gText_RocketHQ_Cubone_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rocket HQ Giovanni
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_RocketHQ_Giovanni:
+    lock
+    faceplayer
+    setvar 0x8004 0xF
+    setvar 0x8005 0x0
+    special 0x173
+    npcmsg gText_RocketHQ_Giovanni_Speak_1 MSG_KEEPOPEN 18 LEFT
+    closemsg
+    pause 15
+    spriteface CUBONE LEFT
+    cry SPECIES_CUBONE 0x0
+    pause 15
+    sound 0x15
+    applymovement GIOVANNI Move_RocketHQ_Giovanni_1
+    waitmovement GIOVANNI
+    npcmsg gText_RocketHQ_Giovanni_Speak_2 MSG_KEEPOPEN 18 LEFT
+    closemsg
+    playsong 0x11B 0x0
+    trainerbattle3 0x3 0x15C 0x0 0x8175318
+    npcmsg gText_RocketHQ_Giovanni_Speak_3 MSG_KEEPOPEN 18 LEFT
+    closemsg
+    pause 15
+    cry SPECIES_CUBONE 0x0
+    applymovement CUBONE Move_RocketHQ_Giovanni_Cubone_1
+    waitmovement CUBONE
+    npcmsg gText_RocketHQ_Giovanni_Speak_4 MSG_KEEPOPEN 18 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite 0x1
+    showsprite 0x2
+    clearflag 0x37
+    setflag 0x5F
+    setvar 0x8004 0xF
+    setvar 0x8005 0x2
+    special 0x174
+    fadescreen 0x0
+    pause 30
+    spriteface CUBONE DOWN
+    cry SPECIES_CUBONE 0x0
+    msgbox gText_RocketHQ_Giovanni_Cubone_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    applymovement CUBONE Move_RocketHQ_Giovanni_Cubone_2
+    applymovement PLAYER Move_RocketHQ_Giovanni_Player_1
+    waitmovement CUBONE
+    fadescreen 0x1
+    hidesprite CUBONE
+    setflag FLAG_CUBONE_ROCKETHQ_SPRITE
+    signbox gText_RocketHQ_Narrator_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    fadescreen 0x0
+    release
+    end
+
+Move_RocketHQ_Giovanni_1:
+    .byte say_question
+    .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_Giovanni_Cubone_1:
+    .byte say_smile
+    .byte jump_onspot_down
+    .byte jump_onspot_down
+    .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_Giovanni_Cubone_2:
+    .byte say_smile
+    .byte jump_onspot_down
+    .byte jump_onspot_down
+    .byte pause_long
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_RocketHQ_Giovanni_Player_1:
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte pause_long
     .byte pause_long
     .byte walk_down_onspot_fastest
-    .byte pause_long
-    .byte pause_long
-    .byte pause_long
-    .byte walk_right_onspot_fastest
-    .byte pause_long
-    .byte end_m
-
-Move_RocketHQ_Ariana3:
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_down
-    .byte walk_right
-    .byte walk_right
-    .byte walk_right
-    .byte walk_up
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -1115,6 +1202,180 @@ Move_Celadon_Norman_1:
     .byte exclaim
     .byte pause_long
     .byte face_player
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rocket Hideout Rocket Gang
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_RocketHQ_4thFloor:
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_RocketHQ_4thFloor
+    .byte MAP_SCRIPT_TERMIN
+
+LevelScript_RocketHQ_4thFloor:
+    levelscript VAR_ROCKET_GANG_ENCOUNTER, 0x5, EventScript_RocketHQ_RocketGang
+    .hword LEVEL_SCRIPT_TERMIN
+
+EventScript_RocketHQ_RocketGang:
+    lock
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_RocketHQ_RocketGang_Player_1
+    waitmovement PLAYER
+    special 0x113
+    applymovement CAMERA Move_RocketHQ_RocketGang_Camera_1
+    waitmovement CAMERA
+    special 0x114
+    playsong 0x184 0x1
+    sound 0x15
+    applymovement JESSIE Move_RocketHQ_RocketGang_Jessie_1
+    waitmovement JESSIE
+    pause 30
+    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_1 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement MEOWTH Move_RocketHQ_RocketGang_Meowth_1
+    waitmovement MEOWTH
+    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    applymovement JESSIE Move_RocketHQ_RocketGang_Jessie_2
+    applymovement JAMES Move_RocketHQ_RocketGang_James_1
+    waitmovement JAMES
+    special 0x113
+    applymovement CAMERA Move_RocketHQ_RocketGang_Camera_2
+    waitmovement CAMERA
+    special 0x114
+    sound 0x15
+    applymovement JESSIE Move_RocketHQ_RocketGang_Jessie_3
+    applymovement JAMES Move_RocketHQ_RocketGang_James_2
+    applymovement MEOWTH Move_RocketHQ_RocketGang_Meowth_2
+    waitmovement MEOWTH
+    pause 30
+    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_2 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    setvar VAR_FURTHER_TRAINER_BATTLES 0x2
+    trainerbattle3 0x3 10 0x0 gText_RocketHQ_RocketGang_Defeat
+    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_3 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement JAMES Move_RocketHQ_RocketGang_James_3
+    waitmovement JAMES
+    spriteface JESSIE DOWN
+    spriteface MEOWTH UP
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_4 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    fadescreen 0x1
+    hidesprite JESSIE
+    hidesprite JAMES
+    hidesprite MEOWTH
+    setflag FLAG_ROCKET_ROCKETHQ_SPRITE
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x6
+    fadescreen 0x0
+    fadedefaultbgm
+    special 0x113
+    applymovement CAMERA Move_RocketHQ_RocketGang_Camera_3
+    waitmovement CAMERA
+    special 0x114
+    release
+    end
+
+Move_RocketHQ_RocketGang_Player_1:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Camera_1:
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Jessie_1:
+    .byte say_question
+    .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Meowth_1:
+    .byte exclaim
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Jessie_2:
+    .byte pause_long
+    .byte pause_long
+    .byte say_question
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_RocketGang_James_1:
+    .byte pause_long
+    .byte pause_long
+    .byte say_question
+    .byte pause_long
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Jessie_3:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+Move_RocketHQ_RocketGang_James_2:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Meowth_2:
+    .byte pause_long
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+Move_RocketHQ_RocketGang_James_3:
+    .byte exclaim
+    .byte pause_long
+    .byte jump_onspot_right
+    .byte say_question
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Camera_2:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte end_m
+
+Move_RocketHQ_RocketGang_Camera_3:
+    .byte walk_right
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@

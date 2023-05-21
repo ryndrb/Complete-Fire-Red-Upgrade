@@ -31,33 +31,6 @@ Typical, [PLAYER]!\pThen while you're collecting your\nBadges, I guess I'll go a
 #org @gText_Celadon_MaySpeaks5
 What, really?\pWell, now you've got me curious!\pIf you aren't focusing on the\nLeague, then what else are hoping\lto achieve?\pI can't wait to see what you'll\ndo!\pBut let's definitely meet up again\nsomewhere!
 
-#org @gText_Celadon_GiovanniSpeak1
-So! I must say, I am impressed you\ngot here.\pTeam Rocket captures Pok\emon from\naround the world.\pThey're important tools for keeping\nour criminal enterprise going.\pI am the leader, Giovanni!
-
-#org @gText_gText_Celadon_GiovanniSpeak2
-[.]\pWell, well, well[.]\nLook what we have here.\pIt seems you have a Mega Ring.\pThat is quite an impressive piece\nof technology.\pIt's a shame that such  power is\nwasted on someone like you.\pYou are here to battle me, are you\nnot?\pBe warned, I will not go easy on\nyou.\pFor your insolence, you will feel\na world of pain!
-
-#org @gText_gText_Celadon_GiovanniSpeak3
-I see that you raise Pok\emon with\nutmost care.\pA child like you would never\nunderstand what I hope to achieve.\pI shall step aside this time!\pI hope we meet again[.]
-
-#org @gText_RocketHQ_ArianaSpeak1
-Hold it right there!
-
-#org @gText_RocketHQ_ArianaSpeak2
-We can't have a brat like you on\nthe loose.\pIt's harmful to Team Rocket's\npride, you see.\pHowever strong you may be, you\ncan't take me, Ariana, by your-\l-self.
-
-#org @gText_RocketHQ_ArianaSpeak3
-Now get ready to be thrashed!
-
-#org @gText_RocketHQ_ArianaDefeated
-Tch, you really are strong.
-
-#org @gText_RocketHQ_ArianaSpeak4
-It's too bad.\pIf you were to join Team Rocket,\nyou could become an Executive.\p[.]\p[.]I'm sorry Boss Giovanni, but\nthis hideout is done for[.]\pBut that's fine[.] I'm sure he\nwill give you a beating.
-
-#org @gText_RocketHQ_ArianaSpeak5
-[.]\pIt doesn't matter what happens to\nthis hideout now.\pWe have much bigger plans.\pYou'll come to appreciate Team\nRocket's true power soon enough.\pFor now, I'll just leave you to\nour boss.\pEnjoy yourself while you can[.]\nFufufufu[.]
-
 #org @gText_Celadon_ErikaSpeak1
 Hello[.]\pLovely weather isn't it?\pIt's so pleasant[.]\pOh, dear[.]\nI must have dozed off.\pWelcome.\p[.]\pI couldn't help but notice the\nMega Ring on your hand.\pIt appears you have a great deal\nof skill as a Pok\emon trainer.\pI, too, have a Mega Ring that I\nuse to enhance the power of my\lGrass-type Pok\emon.\pIt was a gift we Gym Leaders\nreceived when we traveled to the\lKalos region for a gathering.
 
@@ -126,3 +99,90 @@ You know, I have a daughter who's\nalso a trainer.\pShe's quite talented, but\ns
 
 #org @gText_Celadon_Norman_PlayerDontWantToBattle
 No worries.\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me.
+
+#org @gText_RocketHQ_RocketGang_Jessie_Speak_1
+Did you hear something just know?
+
+#org @gText_RocketHQ_RocketGang_James_Speak_1
+I did!\nThere was definitely a noise!\pCould it be[.] [PAUSE][45]an intruder!?
+
+#org @gText_RocketHQ_RocketGang_Meowth_Speak_1
+Wait a minute[.]
+
+#org @gText_RocketHQ_RocketGang_Jessie_Speak_2
+You[.]\pYou're that twerp from Bill's\nhouse!\pJust how long are you gonna follow\nus around?\pI know I'm beautiful, but what do\nyou want?\p[.]\pWhat!?\nThat Cubone?\pHa! We already gave the poor thing\nto the boss!
+
+#org @gText_RocketHQ_RocketGang_Meowth_Speak_2
+That's right!\pThere's no way we're letting you\nthrough to see the boss!
+
+#org @gText_RocketHQ_RocketGang_James_Speak_2
+It's payback time for what you did\nto us, you twerp!
+
+#org @gText_RocketHQ_RocketGang_Defeat
+Jessie: Such a dreadful twerp!\pJames: But I was so confident this\ntime!
+
+#org @gText_RocketHQ_RocketGang_Jessie_Speak_3
+Hmph!\nHow infuriating!\pDon't let it get to your head just\nbecause your Pok\emon were a teeny\ltiny bit stronger!
+
+#org @gText_RocketHQ_RocketGang_James_Speak_3
+Exactly!\pAnd even if you did defeat us in\nbattle, we're still bigger and\lstronger than you!\pWe'll just use brute force to-
+
+#org @gText_RocketHQ_RocketGang_James_Speak_4
+Eeek!
+
+#org @gText_RocketHQ_RocketGang_Meowth_Speak_3
+Looks like Team Rocket is blasting\noff again!
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_1
+Where did this Cubone come from,\nBoss?
+
+#org @gText_RocketHQ_Admin_Giovanni_Speak_1
+My underlings decided to bring it\nhere, without my permission.
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_2
+The skull on its head is very\nbeautiful[.]\pWe should be able to sell it for a\ngood price once it becomes a\lMarowak.
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_3
+[.]\pJust one look at this Silph Scope\nand it's plain to see[.]\pSilph Co. definitely has the\ntechnology and skill Team Rocket\lwill need to make our wishes come\ltrue.
+
+#org @gText_RocketHQ_Admin_Giovanni_Speak_2
+Hmph[.]\pA machine that lets you see what\notherwise cannot be seen[.]\pIt's nothing but a useless toy.\pStill[.] Yes, this could do.\pCarry on, Ariana, with your plans\nwith Archer to take over Silph Co.\lfor Team Rocket.
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_4
+Yes, sir!
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_5
+What is a child doing here?\pYou listened in our conversation\nwithout saying a word?\p[.]\pWe can't have brats like you on\nthe loose.\pIt's harmful to Team Rocket's\npride, you see.\pI am Ariana, an Admin of Team\nRocket.\pAnd I do not go easy even on\nchildren!
+
+#org @gText_RocketHQ_Admin_Ariana_Defeated
+What a blunder!
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_6
+F-forgive me, Boss Giovanni[.]\pFor me to be defeated by a simple\nchild[.]
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_7
+But it's too bad[.]\pIf you were to join Team Rocket,\nyou could become an Executive.
+
+#org @gText_RocketHQ_Admin_Ariana_Speak_8
+[.]\pIt doesn't matter what happens to\nthis hideout now.\pWe have much bigger plans.\pYou'll come to appreciate Team\nRocket's true power soon enough.\pFor now, I'll just leave you to\nour boss.\pEnjoy yourself while you can[.]\nFufufufu[.]
+
+#org @gText_RocketHQ_Cubone_Speak_1
+Ma-!
+
+#org @gText_RocketHQ_Giovanni_Speak_1
+So! You defeated Ariana[.]\pI must say - I am impressed you\ngot here.\pTeam Rocket captures Pokemon from\naround the world.\pThey are important tools for\nkeeping our criminal enterprise\lgoing.\pAnd I am the leader of this\nenterprise[.] Giovanni!\
+
+#org @gText_RocketHQ_Giovanni_Speak_2
+[.]What? You want me to release\nthe Cubone?\pFwahahahaha! You came barging into\nour hideout just for that?\pWhat an amusing child.\pBut[.] For your insolence, you\nwill feel a world of pain!
+
+#org @gText_RocketHQ_Giovanni_Speak_3
+So I too am defeated by a child[.]\pDo as you wish with that Cubone.
+
+#org @gText_RocketHQ_Giovanni_Speak_4
+[.]I can see that you raise\nPok\emon with utmost care.\pBut you would never understand\nwhat I hope to achieve.\p[.]\p[.]\p[.]\pI shall step aside this time!\pBut I hope we meet and battle\nagain!
+
+#org @gText_RocketHQ_Giovanni_Cubone_Speak_1
+Maaa maff!
+
+#org @gText_RocketHQ_Narrator_Speak_1
+Cubone headed back to Lavender\nTown.

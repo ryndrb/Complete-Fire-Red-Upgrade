@@ -365,6 +365,7 @@ EventScript_SilphCo_Proton:
     msgbox gText_SilphCo_ProtonSpeak1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
+    setvar VAR_FURTHER_TRAINER_BATTLES 0x2
     trainerbattle3 0x3 0x6 0x0 gText_SilphCo_ProtonDefeated
     call ProtonNameBox
     msgbox gText_SilphCo_ProtonSpeak2 MSG_KEEPOPEN
@@ -378,7 +379,6 @@ EventScript_SilphCo_Proton:
     hidesprite 2
     setflag FLAG_ENCOUNTER_SIPHCO_PROTON
     setvar VAR_ENCOUNTER_SIPHCO_PROTON 1
-    setvar VAR_PROTON_BATTLES 2
     fadedefaultbgm
     release
     end
@@ -426,6 +426,7 @@ EventScript_SilphCo_Ariana:
     msgbox gText_SilphCo_ArianaSpeak1 MSG_KEEPOPEN
     closeonkeypress
     callasm RemoveNameBox
+    setvar VAR_FURTHER_TRAINER_BATTLES 0x2
     trainerbattle3 0x3 0x8 0x0 gText_SilphCo_ArianaDefeated
     call ArianaNameBox
     msgbox gText_SilphCo_ArianaSpeak2 MSG_KEEPOPEN
@@ -434,7 +435,6 @@ EventScript_SilphCo_Ariana:
     fadescreen 0x1
     hidesprite 1
     fadescreen 0x0
-    setvar VAR_ARIANA_BATTLES 2
     fadedefaultbgm
     release
     end
@@ -494,7 +494,6 @@ EventScript_Archer:
     setvar 0x4060 0x1
     setflag 0x3E
     clearflag 0x3F
-    setvar VAR_ARCHER_BATTLES 1
     fadedefaultbgm
     releaseall
     end

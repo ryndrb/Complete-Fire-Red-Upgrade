@@ -36,7 +36,6 @@ EventScript_MtMoon_Proton:
     sound 9
     hidesprite 13
     setflag FLAG_ENCOUNTER_MTMOON_PROTON
-    setvar VAR_PROTON_BATTLES 1 @ for saffron battle
     fadedefaultbgm
     release
     end

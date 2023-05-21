@@ -19,62 +19,101 @@ I am a Channeler.\pThere are spirits up to mischief.\nI sense them high in the T
 #org @gText_CheckWorthiness
 [.]\n[.]\pYou are not worthy.
 
-#org @gText_PokeTower_RivalSpeaks1
-Yo, [PLAYER]! What's up?\pHeh, you got a Mega Ring, too.\pYour Pok\emon still kickin', or\nwhat?\pI can take 'em down easy!\nLet's battle!
+#org @gText_PokeTower_1stFloor_Rival_Speak_1
+Yo, [PLAYER]! What's up?\pSo, you've got a Mega Ring too,\nhuh?\pYour Pok\emon still kickin', or\nwhat?\pI can take 'em down easy!\nLet's battle!
 
-#org @gText_PokeTower_MaySpeaks1
+#org @gText_PokeTower_1stFloor_May_Speak_1
 Hey, [PLAYER]!\nHo-\p[.]Ugh[.] it's you, [RIVAL][.]\nWhat are you doing here?
 
-#org @gText_PokeTower_RivalSpeaks2
+#org @gText_PokeTower_1stFloor_Rival_Speak_2
 I'm here to train my Pok\emon,\nwhat's it to you?
 
-#org @gText_PokeTower_MaySpeaks2
+#org @gText_PokeTower_1stFloor_May_Speak_2
 I'm here to catch some Ghost-type\nPok\emon.\pSomething you wouldn't know\nanything about, since you're\lobsessed with being the best.
 
-#org @gText_PokeTower_RivalSpeaks3
-Heh, see where I am now?\pWhat have your wimpy Pok\emon ever\nachieved?
+#org @gText_PokeTower_1stFloor_Rival_Speak_3
+Hah, see where I am now?\pWhat have your wimpy Pok\emon ever\nachieved?
 
-#org @gText_PokeTower_MaySpeaks3
-My Pok\emon may be cute, but\nthey're tough and graceful.\pUnlike your brash and aggresive\ntactics.
+#org @gText_PokeTower_1stFloor_May_Speak_3
+My Pok\emon may be cute, but\nthey're tough and graceful!\pUnlike your brash and aggresive\ntactics[.]
 
-#org @gText_PokeTower_RivalSpeaks4
-Hah! My tactics will take me all\nthe way to the top, no question!\pYou should try it sometime, May.\nYou're too busy playin' it soft.
+#org @gText_PokeTower_1stFloor_Rival_Speak_4
+Hah! My tactics will take me all\nthe way to the top, no question!
 
-#org @gText_PokeTower_MaySpeaks4
+#org @gText_PokeTower_1stFloor_May_Speak_4
 You only care about winning at any\ncost[.]
 
-#org @gText_PokeTower_RivalSpeaks5
+#org @gText_PokeTower_1stFloor_Rival_Speak_5
 Winning is everything, May.\pThat's what separates the champs\nfrom the chumps!\pMaybe if you focused on that\ninstead of flouncing around in\lyour frilly outfits, you might\lactually stand a chance.
 
-#org @gText_PokeTower_MaySpeaks5
+#org @gText_PokeTower_1stFloor_May_Speak_5
 I don't need your approval, [RIVAL]!\pI know what I'm capable of, and so\ndo my Pok\emon.\pI don't have to stoop to your\nlevel to prove myself.
 
-#org @gText_PokeTower_RivalSpeaks6
+#org @gText_PokeTower_1stFloor_Rival_Speak_6
 Hah! Why don't we settle this with\na battle?\pI'll take on both of you at once!
 
-#org @gText_PokeTower_RivalLost
+#org @gText_PokeTower_1stFloor_Rival_Defeat
 [.]Yikes!\nI took it easy on you two!
 
-#org @gText_PokeTower_MaySpeaks6
+#org @gText_PokeTower_1stFloor_May_Speak_6
 Looks like we won, [RIVAL][.]
 
-#org @gText_PokeTower_RivalSpeaks7
+#org @gText_PokeTower_1stFloor_Rival_Speak_7
 I don't get it, I wasn't\neven trying my hardest!\pIt must have been a fluke.\nYeah, that's it.
 
-#org @gText_PokeTower_MaySpeaks7
-Pfft, typical[.]\pAlways making excuses when you\nlose.\pFace it, [RIVAL], you're not as good\nas you think you are.\p[PLAYER] here is certainly better\nthan you.
+#org @gText_PokeTower_1stFloor_May_Speak_7
+Pfft, typical[.]\pAlways making excuses when you\nlose.\pFace it, [RIVAL], you're not as good\nas you think you are.
 
-#org @gText_PokeTower_RivalSpeaks8
-Heh.
+#org @gText_PokeTower_1stFloor_Rival_Speak_8
+Heh!
 
-#org @gText_PokeTower_MaySpeaks8
-We'll be ready for you, [RIVAL].\pBut next time, don't "hold back."\pI want to see what you're really\ncapable of.\pRemember?\nI'm just playing it soft.
+#org @gText_PokeTower_1stFloor_May_Speak_8
+We'll be ready for you, [RIVAL].\pBut next time, don't "hold back."\pWe want to see what you're really\ncapable of[.]
 
-#org @gText_PokeTower_RivalSpeaks9
+#org @gText_PokeTower_1stFloor_Rival_Speak_9
 It's luck. All there is to it.\nSmell 'ya.
 
-#org @gText_PokeTower_MaySpeaks9
-What a jerk.\pIt's nice seeing him get humbled a\nbit[.]\pSorry you had to hear all of that\nearlier.\pWe aren't particularly close[.]\nHa[.] Ha.\p[.]\pAnyways, look at this place.\nIt's so eerie yet intriguing.\pI've heard that the Pok\emon Tower\nholds the spirits of departed\lPok\emon.\pIt gives me goosebumps just\nthinking about it.\pI wonder if there are any rare\nGhost-type Pok\emon in here?\pDo you think we could find any?\pMaybe we should explore the tower\nand find out for ourselves.\pBut let's be careful, we don't\nwant to upset any spirits that\lmight be lurking around.\pTake care and good luck, [PLAYER]!
+#org @gText_PokeTower_1stFloor_May_Speak_9
+[RIVAL] is such a jerk[.]\pIt was nice seeing him get humbled\na bit.\pSorry you had to hear all of that\nearlier.
+
+#org @gText_PokeTower_1stFloor_May_Speak_10
+Aww, shoot!\pThe Cubone! We must've scared it\noff when we battled[.]\pYou know Cubone, right, [PLAYER]?\pIt's a Pok\emon that's always\nwearing a skull!
+
+#org @gText_PokeTower_1stFloor_May_Speak_11
+That Cubone looked like it was\nsearching for something[.]\pMaybe it's up on one of the higher\nfloors[.]?
+
+#org @gText_PokeTower_1stFloor_May_Speak_12
+[.]\pBut look at this place. It's so\neerie yet intriguing.\pI've heard that the Pok\emon Tower\nholds the sprits of departed\lPok\emon.\pIt gives me goosebumps just thinking\nabout it.\pI wonder if there are any\nGhost-type Pok\emon in here?\pI'll explore the tower to search\nfor Cubone.\pIf you wanna explore it too, then\nwe should both be careful.\pWe don't want to upset any spirits\nthat might be lurking around[.]
+
+#org @gText_PokeTower_1stFloor_May_Speak_13
+I'll explore the tower to search\nfor Cubone.\pIf you wanna explore it too, then\nwe should both be careful.\pWe don't want to upset any spirits\nthat might be lurking around[.]
+
+#org @gText_PokeTower_Cubone_May_Speak_1
+Cubone! Cuuubone!\pCome out[.] come out[.] wherever\nyou are!
+
+#org @gText_PokeTower_Cubone_May_Speak_2
+I don't see any sign of it[.]
+
+#org @gText_PokeTower_Cubone_May_Speak_3
+[.]Huh?\pIs that[.]?
+
+#org @gText_PokeTower_Cubone_May_Speak_4
+I-it's a[.]\pIt's a[.] It's a[.]\pGh-gh-gh-gho[.]
+
+#org @gText_PokeTower_Cubone_May_Speak_5
+GHOOOOOOSSST!!!\nYAAAAAARRRGGGHHHHHH!!!
+
+#org @gText_PokeTower_Cubone_Ghost_Speak_1
+Get out[.]\nBegone[.]
+
+#org @gText_PokeTower_Cubone_Cubone_Speak_1
+Mee! Mee!
+
+#org @gText_PokeTower_Cubone_Cubone_Speak_2
+Ma-!
+
+#org @gText_PokeTower_Cubone_Narrator_Speak_1
+Cubone sadly trudge away down the\nstairs[.]
 
 #org @gText_Lavender_MrFujiSpeak1
 [PLAYER][.]\pYour Pok\edex quest is one that\nrequires strong dedication.\pWithout deep love for Pok\emon,\nyour quest may fail.\pI'm not sure if this will help you,\nbut I'd like you to have it.
@@ -124,6 +163,9 @@ You know, I've been thinking\na lot about what it means to be\la Gym Leader.\pIt
 #org @gText_Lavender_Flannery_PlayerDontWantToBattle
 No worries!\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me!
 
+#org @gText_Lavender_Cubone_May_Speak_1
+Cubone!
+
 #org @gText_Lavender_RocketGang_Jessie_Speak_1
 We came all the way to Lavender\nTown on the boss's orders, but[.]
 
@@ -140,16 +182,16 @@ The only place left is this spooky\nold Pok\emon Tower, right[.]?
 That's right[.]\pWe couldn't get to the top because\nof that strange ghost getting in\lthe way.
 
 #org @gText_Lavender_RocketGang_James_Speak_2
-Well, we couldn't find that old\nman, but at least we found a\lCubone earlier!\pLet get it back to our hideout.\pAt least we'll have something to\nshow for our trouble.
+Well, we couldn't find that old\nman, but at least we found a\lCubone!\pLet get it back to our hideout.\pAt least we'll have something to\nshow for our trouble.
 
 #org @gText_Lavender_RocketGang_Meowth_Speak_2
 That's right!\pLet's head back to the Rocket Game\nCorner in Celadon City!
 
 #org @gText_Lavender_RocketGang_Jessie_Speak_4
-Oh?
+[.]
 
 #org @gText_Lavender_RocketGang_Jessie_Speak_5
-The Pok\e Ball is shaking[.]\p[.]\pAww, does the wittle Cubone want\nits mommy?\pYour mommy's in Celadon City.\pYou'll be coming with us!
+The Pok\e Ball is shaking[.]\p[.]\pAww, does the wittle Cubone want\nits mommy?\pYour mommy's in Celadon City.\nYou'll be coming with us!
 
 #org @gText_Lavender_RocketGang_Meowth_Speak_3
 That's right!\pNow that that's decided, I think\nwe'd better blast off!
