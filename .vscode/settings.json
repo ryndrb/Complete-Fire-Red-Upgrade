@@ -31,7 +31,9 @@
         "hold_effects.h": "c",
         "battle_anim.h": "c",
         "scanline_effect.h": "c",
-        "hooks": "c"
+        "hooks": "c",
+        "wild_encounter.h": "c",
+        "event_data.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

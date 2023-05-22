@@ -771,3 +771,6 @@ TMCaseMonIconPalChangeHook 8131E5C 0
 
 GetLocationMusicNew 8055D6C 1
 IVRankingASM 8900000 1
+
+##Pokedex Region Map Fix
+GetSpeciesPokedexAreaMarkers 0813c9dc 2
