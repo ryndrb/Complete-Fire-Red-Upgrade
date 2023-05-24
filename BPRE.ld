@@ -332,6 +332,10 @@ sTimeWindowId = 0x2037101;
 /* Trade RAM */
 gSelectedTradeMonPositions = 0x2031DA4;
 sTradeData = 0x2031DAC;
+GetInGameTradeMail = 0x8053cd4 | 1;
+gLinkPartnerMail = 0x2031ccc | 1;
+ItemIsMail = 0x80980f8 | 1;
+sTradeAnim = 0x2031dac | 1;
 
 /* Other RAM */
 sWarpDestination = 0x2031DBC;

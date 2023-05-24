@@ -31,6 +31,7 @@ void TryRandomizeSpecies(u16* species);
 u16 GenerateWildMonHeldItem(u16 species, u8 bonus);
 void SetWildMonHeldItem(void);
 u8 TryRandomizeAbility(u8 ability, u16 species);
+void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum);
 
 //Functions Hooked In
 void BuildTrainerPartySetup(void);

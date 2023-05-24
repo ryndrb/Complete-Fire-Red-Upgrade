@@ -774,3 +774,9 @@ IVRankingASM 8900000 1
 
 ##Pokedex Region Map Fix
 GetSpeciesPokedexAreaMarkers 0813c9dc 2
+
+##In-Game Trades
+GetInGameTradeSpeciesInfo 08053a9c 0
+BufferInGameTradeMonName 08053ae4 0
+TradeBufferOTnameAndNicknames 08050e24 0
+CreateInGameTradePokemonInternal 08053b48 2

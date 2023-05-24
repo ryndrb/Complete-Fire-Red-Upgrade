@@ -286,7 +286,6 @@ extern void TryGiveSpecialTrainerHiddenPower(u16 trainerId, struct Pokemon* mon)
 extern void TryGiveSpecialTrainerStatusCondition(u16 trainerId, struct Pokemon* mon);
 extern u8 GetCurrentLevelCap(void); //Must be implemented yourself
 #endif
-static void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum);
 static void SetEVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
 static void SetIVSpread(struct Pokemon* mon, u8 hp, u8 atk, u8 def, u8 spa, u8 spdef, u8 spd);
 void ResetAllEVs(void);
@@ -4838,7 +4837,7 @@ void PartySpreadPokerus(struct Pokemon *party)
 	}
 }
 
-static void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum) {
+void SetAbilityFromEnum(struct Pokemon* mon, u8 abilityNum, u8 natureNum) {
 	switch(abilityNum) {
 		case Ability_Hidden:
 		GIVE_HIDDEN_ABILITY:
