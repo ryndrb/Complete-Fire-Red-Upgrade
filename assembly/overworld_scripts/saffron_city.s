@@ -32,7 +32,6 @@ EventScript_0x816EE0A:
     clearflag 0xAE
     setflag 0x4B5
     setflag 0x825
-    clearflag 0x035
     setvar 0x8008 0x6
     call 0x81A6B18
     goto EventScript_0x816EE3D

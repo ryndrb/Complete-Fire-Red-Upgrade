@@ -1140,7 +1140,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 									return BuildCustomTrainerParty(party, gImportantTrainers[7].otId, gImportantTrainers[7]); 
 								break;
 							case 10:
-								if(val == 2) // rocket hq battle
+								if(val == 2) // rocket gang hq battle
+									return BuildCustomTrainerParty(party, gImportantTrainers[8].otId, gImportantTrainers[8]); 
+								else if(val == 3) // rocket gang poke tower battle
 									return BuildCustomTrainerParty(party, gImportantTrainers[8].otId, gImportantTrainers[8]); 
 								break;
 							default:

@@ -17,6 +17,11 @@
 .equ MAY_TOWER_2, 5
 .equ CUBONE_TOWER, 6
 
+.equ FUJI, 1
+.equ JESSIE_TOWER_TOP, 5
+.equ JAMES_TOWER_TOP, 6
+.equ MEOWTH_TOWER_TOP, 7
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Lavender Town Items Merchant
 @@@@@@@@@@@@@@@@@@@@@@
@@ -123,24 +128,232 @@ EventScript_MovePlayer:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
-@ Mr Fuji PokeTower | After Sabrina Now
+@ Poke Tower Top Floor Rocket Gang and Fuji
 @@@@@@@@@@@@@@@@@@@@@@
-EventScript_MrFuji:
+EventScript_PokeTower_TopFloor_RocketGang:
     lock
-    faceplayer
+    compare VAR_ROCKET_GANG_ENCOUNTER 0x7
+    if greaterorequal _goto EventScript_PokeTower_TopFloor_MrFuji
+    pause 30
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_PokeTower_TopFloor_RocketGang_Player_1
+    waitmovement PLAYER
+    showsprite JESSIE_TOWER_TOP
+    showsprite MEOWTH_TOWER_TOP
+    showsprite JAMES_TOWER_TOP
+    fadescreen 0x1
+    applymovement PLAYER Move_PokeTower_TopFloor_RocketGang_Player_2
+    applymovement JESSIE_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Jessie_2
+    applymovement JAMES_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_James_3
+    applymovement MEOWTH_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Meowth_3
+    waitmovement MEOWTH_TOWER_TOP
+    pause 15
+    fadescreen 0x0
+    playsong 0x184 0x0
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_1 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    pause 15
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    pause 30
+    spriteface JESSIE_TOWER_TOP UP
+    spriteface MEOWTH_TOWER_TOP UP
+    spriteface JAMES_TOWER_TOP UP
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 15
+    sound 0x15
+    applymovement JAMES_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_James_1
+    waitmovement JAMES_TOWER_TOP
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_2 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    applymovement MEOWTH_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Meowth_1
+    waitmovement MEOWTH_TOWER_TOP
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    pause 15
+    spriteface JESSIE_TOWER_TOP DOWN
+    spriteface MEOWTH_TOWER_TOP DOWN
+    spriteface JAMES_TOWER_TOP DOWN
+    pause 15
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_3 MSG_KEEPOPEN 30 LEFT
+    closemsg
+    pause 15
+    setvar VAR_FURTHER_TRAINER_BATTLES 0x3
+    trainerbattle3 0x3 10 0x0 gText_PokeTower_TopFloor_RocketGang_Defeat
+    playsong 0x184 0x0
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 15
+    spriteface JESSIE_TOWER_TOP RIGHT
+    spriteface MEOWTH_TOWER_TOP LEFT
+    spriteface JAMES_TOWER_TOP LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    closemsg
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_6 MSG_KEEPOPEN 29 LEFT
+    closemsg
+    pause 15
+    spriteface JESSIE_TOWER_TOP DOWN
+    spriteface MEOWTH_TOWER_TOP DOWN
+    spriteface JAMES_TOWER_TOP DOWN
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_4 MSG_KEEPOPEN 30 LEFT
+    applymovement JESSIE_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Jessie_1
+    applymovement MEOWTH_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Meowth_2
+    applymovement JAMES_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_James_2
+    applymovement PLAYER Move_PokeTower_TopFloor_RocketGang_Player_3
+    waitmovement MEOWTH_TOWER_TOP
+    closemsg
+    pause 15
+    fadedefaultbgm
+    hidesprite JESSIE_TOWER_TOP
+    hidesprite MEOWTH_TOWER_TOP
+    hidesprite JAMES_TOWER_TOP
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x7
+    release
+    end
+
+Move_PokeTower_TopFloor_RocketGang_Player_1:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_Player_2:
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_James_1:
+    .byte say_question
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_Meowth_1:
+    .byte pause_long
+    .byte jump_onspot_up
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_Player_3:
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte walk_right_onspot_fastest
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_Jessie_1:
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_Meowth_2:
+    .byte run_right
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_James_2:
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte run_down
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_Jessie_2:
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_James_3:
+    .byte run_right
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_PokeTower_TopFloor_RocketGang_Meowth_3:
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_left
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+EventScript_PokeTower_TopFloor_MrFuji:
+    pause 30
     setvar 0x8004 0xE
     setvar 0x8005 0x2
     special 0x174
     setflag 0x34
+    clearflag 0x035
     setflag 0x23C
-    call MrFujiNameBox
-    msgbox 0x817A529 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    warp 0x8 0x2 0xFF 0x4 0x7
+    sound 0x15
+    applymovement FUJI Move_PokeTower_TopFloor_MrFuji_1
+    waitmovement FUJI
+    npcmsg gText_0x817A529 MSG_KEEPOPEN 8 LEFT
+    closemsg
+    pause 30
+    spriteface FUJI UP
+    pause 15
+    npcmsg gText_PokeTower_TopFloor_MrFuji_Speak_1 MSG_KEEPOPEN 8 LEFT
+    closemsg
+    pause 60
+    spriteface FUJI DOWN
+    npcmsg gText_PokeTower_TopFloor_MrFuji_Speak_2 MSG_KEEPOPEN 8 LEFT
+    closemsg
+    pause 30
+    warpmuted 0x8 0x2 0xFF 0x4 0x7
     waitstate
     release
     end
+
+Move_PokeTower_TopFloor_MrFuji_1:
+    .byte say_question
+    .byte pause_long
+    .byte face_player
+    .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ May Poke Tower 1st Floor
@@ -725,7 +938,7 @@ EventScript_Lavender_RocketGang:
     hidesprite JESSIE
     hidesprite JAMES
     hidesprite MEOWTH
-    setflag FLAG_ROCKET_LAVENDER_SPRITE
+    setflag FLAG_ROCKET_GANG_LAVENDER_SPRITE
     setvar VAR_ROCKET_GANG_ENCOUNTER 0x5
     fadedefaultbgm
     pause 30
@@ -882,7 +1095,7 @@ EventScript_PokeTower_Cubone:
     hidesprite CUBONE_TOWER
     setflag FLAG_CUBONE_POKETOWER_SPRITE
     setvar VAR_ROCKET_GANG_ENCOUNTER 0x4
-    clearflag FLAG_ROCKET_LAVENDER_SPRITE
+    clearflag FLAG_ROCKET_GANG_LAVENDER_SPRITE
     signbox gText_PokeTower_Cubone_Narrator_Speak_1 MSG_KEEPOPEN
     closeonkeypress
     fadescreen 0x1

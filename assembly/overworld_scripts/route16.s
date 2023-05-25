@@ -113,3 +113,55 @@ Move_Route16_Winona_1:
     .byte pause_long
     .byte face_player
     .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Sleeping Lax
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Route16_Snorlax:
+    lock
+    faceplayer
+    checkflag 0x23D
+    if 0x0 _goto 0x81681A3
+    special 0x187
+    compare LASTRESULT 0x2
+    if 0x1 _goto 0x81A7AE0
+    special 0x188
+    msgbox 0x81853CC MSG_YESNO
+    compare LASTRESULT 0x0
+    if 0x1 _goto 0x8168197
+    call EventScript_0x81A924B
+    setwildbattle 0x8F 0x1E 0x0
+    checksound
+    cry 0x8F 0x2
+    pause 0x28
+    waitcry
+    setflag 0x80
+    setflag 0x807
+    dowildbattle
+    clearflag 0x807
+    special2 LASTRESULT 0xB4
+    compare LASTRESULT 0x1
+    if 0x1 _goto 0x8168199
+    compare LASTRESULT 0x4
+    if 0x1 _goto 0x8168199
+    compare LASTRESULT 0x5
+    if 0x1 _goto 0x8168199
+    release
+    end
+
+.global EventScript_0x81A924B @ shared with route 12
+EventScript_0x81A924B:
+    preparemsg 0x81853E8
+    waitmsg
+    fanfare 0x152
+    waitfanfare
+    checkflag 0x4B5
+    if NOT_SET _goto EventScript_Route16_Snorlax_NoSabrinaBadge
+    msgbox 0x8185354 MSG_KEEPOPEN
+    return
+
+EventScript_Route16_Snorlax_NoSabrinaBadge:
+    msgbox gText_Route16_Snorlax_NoSabrinaBadge MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end

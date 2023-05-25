@@ -148,7 +148,7 @@ npc 8 5 4 EventScript_LavenderTown
 npc 8 0 5 EventScript_PokemonCenterClerk
 npc 8 0 6 EventScript_UtilityOldMan
 npc 1 89 2 EventScript_PokeTower_1stFloor_May
-npc 1 94 0 EventScript_MrFuji
+npc 1 94 0 EventScript_PokeTower_TopFloor_RocketGang
 tile 1 88 0 EventScript_PokeTowerLadyTile
 map 3 4 MapScript_Lavender
 map 1 89 MapScript_PokeTower_1stFloor
@@ -358,6 +358,7 @@ npc 21 0 7 EventScript_Route10RockSmash
 
 # ROUTE 11
 # ROUTE 12
+npc 3 30 4 EventScript_Route12_Snorlax
 npc 3 30 8 EventScript_Cut
 npc 3 30 14 EventScript_Defog
 npc 3 30 15 EventScript_Heracronite
@@ -379,6 +380,7 @@ npc 24 1 1 EventScript_Pidgeotite
 
 # ROUTE 16
 npc 3 34 6 EventScript_Cut
+npc 3 34 9 EventScript_Route16_Snorlax
 npc 3 34 10 EventScript_ProtectivePads
 npc 25 0 0 EventScript_Route16_Fly
 npc 25 2 3 EventScript_Route16_Winona
