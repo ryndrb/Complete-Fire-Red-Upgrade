@@ -12,13 +12,11 @@ EventScript_GymLeaderBlaine:
     setvar 0x8004 0x8
     setvar 0x8005 0x2
     special 0x174
-    call BlaineNameBox
     trainerbattle1 0x1 0x1A3 0x0 0x8199543 0x81995FA EventScript_0x816DA06
     checkflag 0x24E
     if 0x0 _goto 0x816DA34
-    call BlaineNameBox
-    msgbox 0x819971D MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x819971D MSG_KEEPOPEN gText_Name_Blaine
+    closemsg
     release
     end
 
@@ -37,17 +35,15 @@ EventScript_0x816DA06:
     end
 
 EventScript_0x816DA34:
-    call BlaineNameBox
-    msgbox 0x819969E MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x819969E MSG_KEEPOPEN gText_Name_Blaine
+    closemsg
     checkitemspace 0x146 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816DA75
     giveitem_msg 0x81996FF ITEM_TM38
     setflag 0x24E
-    call BlaineNameBox
-    msgbox 0x8199652 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8199652 MSG_KEEPOPEN gText_Name_Blaine
+    closemsg
     release
     end
 
@@ -130,27 +126,19 @@ EventSript_Cinnabar_May:
     applymovement PLAYER EventScript_Cinnabar_PlayerGetCloseToMay
     waitmovement 2
     playsong 0x1A7
-    call MayNameBox
-    msgbox gText_Cinnabar_MaySpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_MaySpeaks1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 2 EventScript_Cinnabar_MayPonders
     waitmovement 2
-    call MayNameBox
-    msgbox gText_Cinnabar_MaySpeaks2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_MaySpeaks2 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 2 EventScript_Cinnabar_MaySmiles
     waitmovement 2
-    call MayNameBox
-    msgbox gText_Cinnabar_MaySpeaks3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_MaySpeaks3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     spriteface 2, LEFT
-    call MayNameBox
-    msgbox gText_Cinnabar_MaySpeaks4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_MaySpeaks4 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 2 EventScript_Cinnabar_MayLeave
     applymovement PLAYER EventScript_Cinnabar_PlayerSeeMayLeave
     waitmovement 2
@@ -294,21 +282,16 @@ EventSript_Cinnabar_Bill:
     applymovement 0x3 Move_BillNoticePlayer
     applymovement PLAYER Move_PlayerFaceBill
     waitmovement 0x3
-    call BillNameBox
-    msgbox gText_Cinnabar_BillSpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_BillSpeaks1 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement 0x3 Move_BillMoveTowardsPlayer
     waitmovement 0x3
-    call BillNameBox
-    msgbox gText_Cinnabar_BillSpeaks2 MSG_YESNO
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_BillSpeaks2 MSG_YESNO gText_Name_Bill
+    closemsg
     compare LASTRESULT 0x1
     if TRUE _goto EventScript_0x1670E6
-    call BillNameBox
-    msgbox gText_Cinnabar_BillSpeaks3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_BillSpeaks3 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement 0x3 Move_BillWentToPokeCenter
     waitmovement 0x3
     setvar 0x4071 0x1
@@ -320,10 +303,8 @@ EventSript_Cinnabar_Bill:
 EventScript_0x1670E6:
     clearflag 0x6B
     movesprite2 0x4 0x27 0x28
-    call BillNameBox
-    msgbox gText_Cinnabar_BillSpeaks4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_BillSpeaks4 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement 0x3 Move_BillGoToBoat
     applymovement PLAYER Move_PlayerGoToBoat
     waitmovement PLAYER
@@ -331,10 +312,8 @@ EventScript_0x1670E6:
     waitmovement 0x4
     spriteface 0x3, RIGHT
     spriteface PLAYER, LEFT
-    call BillNameBox
-    msgbox gText_Cinnabar_BillSpeaks5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_BillSpeaks5 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement 0x3 Move_BillGetOnBoat
     applymovement PLAYER Move_PlayerGetOnBoat
     waitmovement 0x3
@@ -545,14 +524,11 @@ Move_PlayerGetOnBoat:
 EventScript_Cinnabar_BillPokeCenter:
     lock
     faceplayer
-    call BillNameBox
-    msgbox 0x819A725 MSG_YESNO
+    npcmsg 0x819A725 MSG_YESNO gText_Name_Bill
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816E9A5
-    call BillNameBox
-    msgbox 0x819A785 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg 0x819A785 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     setflag 0x4001
     pause 0x14
     compare PLAYERFACING 0x1
@@ -569,7 +545,7 @@ EventScript_Cinnabar_BillPokeCenter:
     end
 
 EventScript_Cinnabar_OutsidePokeCenter:
-    callasm RemoveNameBox
+    closemsg
     clearflag 0x6B
     movesprite2 0x4 0x27 0x28
     applymovement 3 Move_BillGoToBoatAgain
@@ -579,10 +555,8 @@ EventScript_Cinnabar_OutsidePokeCenter:
     waitmovement 0x4
     spriteface 0x3, RIGHT
     spriteface PLAYER, LEFT
-    call BillNameBox
-    msgbox gText_Cinnabar_BillSpeaks5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_BillSpeaks5 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement 0x3 Move_BillGetOnBoat
     applymovement PLAYER Move_PlayerGetOnBoat
     waitmovement 0x3
@@ -791,10 +765,8 @@ EventScript_Cinnabar_Bill_AfterSevii:
     lock
     spriteface PLAYER, LEFT
     clearflag 0x4001
-    call BillNameBox
-    msgbox gText_Cinnabar_BillSpeaks6 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cinnabar_BillSpeaks6 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement 0x3 Move_BillFarewell
     waitmovement 0x3
     hidesprite 0x3
@@ -1158,24 +1130,3 @@ Move_Cinnabar_AbandonedHouseEntry_Door_Player_2:
     .byte walk_down_onspot_fastest
     .byte walk_down
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Cinnabar NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-BillNameBox:
-    setvar 0x8000 7
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-BlaineNameBox:
-    setvar 0x8000 17
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

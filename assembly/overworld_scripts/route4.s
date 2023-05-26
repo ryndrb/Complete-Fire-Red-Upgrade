@@ -10,10 +10,8 @@
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route4_May:
     lock
-    call UnknownNameBox
-    msgbox gText_Route4_MaySpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route4_MaySpeaks1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
     sound 0x15
     applymovement PLAYER Move_Route4_Player_1
     waitmovement PLAYER
@@ -24,47 +22,35 @@ EventScript_Route4_May:
     applymovement PLAYER Move_Route4_Player_2
     waitmovement 0x9
     playsong 0x1A7
-    call MayNameBox
-    msgbox gText_Route4_MaySpeaks2 MSG_KEEPOPEN
-    msgbox gText_Route4_MaySpeaks3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route4_MaySpeaks2 MSG_KEEPOPEN gText_Name_May
+    npcmsg gText_Route4_MaySpeaks3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     sound 0x15
     applymovement 0x9 Move_Route4_May_2
     applymovement PLAYER Move_Route4_Player_3
     waitmovement 0x9
-    call MayNameBox
-    msgbox gText_Route4_MaySpeaks4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route4_MaySpeaks4 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 0x9 Move_Route4_May_3
     applymovement PLAYER Move_Route4_Player_4
     waitmovement 0x9
-    call MayNameBox
-    msgbox gText_Route4_MaySpeaks5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route4_MaySpeaks5 MSG_KEEPOPEN gText_Name_May
+    closemsg
     pause 30
     sound 0x15
     applymovement 0x9 Move_Route4_May_4
     applymovement PLAYER Move_Route4_Player_5
     waitmovement 0x9
-    call MayNameBox
-    msgbox gText_Route4_MaySpeaks7 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route4_MaySpeaks7 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement PLAYER Move_Route4_Player_6
     waitmovement 0x9
-    call MayNameBox
-    msgbox gText_Route4_MaySpeaks8 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route4_MaySpeaks8 MSG_KEEPOPEN gText_Name_May
+    closemsg
     spriteface 0x9, DOWN
     spriteface PLAYER, UP
-    call MayNameBox
-    msgbox gText_Route4_MaySpeaks9 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route4_MaySpeaks9 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 0x9 Move_Route4_May_5
     applymovement PLAYER Move_Route4_Player_7
     waitmovement 0x9
@@ -164,29 +150,29 @@ EventScript_GirlInWater:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route4_Roxanne:
     lock
-    npcmsg gText_Route4_Roxanne_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route4_Roxanne_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     pause 30
     sound 0x15
     applymovement 10 Move_Route4_Roxanne_1
     waitmovement 10
-    npcmsg gText_Route4_Roxanne_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route4_Roxanne_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     applymovement 10 Move_Route4_Roxanne_2
     waitmovement 10
-    npcmsg gText_Route4_Roxanne_Speak_3 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route4_Roxanne_Speak_3 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Route4_Roxanne_Speak_4 MSG_KEEPOPEN 32 LEFT
+    npcmsg gText_Route4_Roxanne_Speak_4 MSG_KEEPOPEN gText_Name_Roxanne
     closemsg
-    npcmsg gText_Route4_Roxanne_Speak_5 MSG_YESNO 32 LEFT
+    npcmsg gText_Route4_Roxanne_Speak_5 MSG_YESNO gText_Name_Roxanne
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Route4_Roxanne_PlayerDontWantToBattle
     closemsg
     trainerbattle3 0x3 27 0x0 gText_Route4_Roxanne_Defeat
-    npcmsg gText_Route4_Roxanne_Speak_6 MSG_KEEPOPEN 32 LEFT
+    npcmsg gText_Route4_Roxanne_Speak_6 MSG_KEEPOPEN gText_Name_Roxanne
     closemsg
     giveitem ITEM_HARD_STONE 0x1 MSG_OBTAIN
-    npcmsg gText_Route4_Roxanne_Speak_7 MSG_KEEPOPEN 32 LEFT
+    npcmsg gText_Route4_Roxanne_Speak_7 MSG_KEEPOPEN gText_Name_Roxanne
     closemsg
     fadescreen 0x1
     hidesprite 10
@@ -196,7 +182,7 @@ EventScript_Route4_Roxanne:
     end
 
 EventScript_Route4_Roxanne_PlayerDontWantToBattle:
-    npcmsg gText_Route4_Roxanne_PlayerDontWantToBattle MSG_KEEPOPEN 32 LEFT
+    npcmsg gText_Route4_Roxanne_PlayerDontWantToBattle MSG_KEEPOPEN gText_Name_Roxanne
     closemsg
     release
     end
@@ -211,18 +197,3 @@ Move_Route4_Roxanne_2:
     .byte say_question
     .byte pause_long
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Route 4 NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-UnknownNameBox:
-    setvar 0x8000 0
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

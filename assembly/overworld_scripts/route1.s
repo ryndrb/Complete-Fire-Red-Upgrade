@@ -38,19 +38,14 @@ EventScript_Route1_May:
     playsong 0x1A7
     checkflag FLAG_MAY_PALLET_TOWN_TALKED
     if SET _goto EventScript_Route1_MetMayInPalletTown
-    call MayNameBox
-    msgbox gText_Route1_NotMetMayInPalletTownSpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route1_NotMetMayInPalletTownSpeaks1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 0x5 EventScript_MaySighing
     waitmovement 0x5
-    call MayNameBox
-    msgbox gText_Route1_NotMetMayInPalletTownSpeaks2 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_Route1_NotMetMayInPalletTownSpeaks3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route1_NotMetMayInPalletTownSpeaks2 MSG_KEEPOPEN gText_Name_May
+    closemsg
+    npcmsg gText_Route1_NotMetMayInPalletTownSpeaks3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     getplayerpos 0x8000 0x8001
     compare 0x8000 10
     if equal _call EventScript_Route1_MovePlayer1
@@ -69,19 +64,14 @@ EventScript_Route1_May:
     end
 
 EventScript_Route1_MetMayInPalletTown:
-    call MayNameBox
-    msgbox gText_Route1_MetMayInPalletTownSpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route1_MetMayInPalletTownSpeaks1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 0x5 EventScript_MaySighing
     waitmovement 0x5
-    call MayNameBox
-    msgbox gText_Route1_MetMayInPalletTownSpeaks2 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call MayNameBox
-    msgbox gText_Route1_MetMayInPalletTownSpeaks3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route1_MetMayInPalletTownSpeaks2 MSG_KEEPOPEN gText_Name_May
+    closemsg
+    npcmsg gText_Route1_MetMayInPalletTownSpeaks3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     getplayerpos 0x8000 0x8001
     compare 0x8000 10
     if equal _call EventScript_Route1_MovePlayer1
@@ -239,12 +229,3 @@ EventScript_Route1_Signpost:
     msgbox gText_Route1_Signpost MSG_NORMAL
     release
     end
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Route 1 NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

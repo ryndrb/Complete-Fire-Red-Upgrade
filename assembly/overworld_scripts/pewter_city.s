@@ -15,23 +15,19 @@ EventScript_GymLeaderBrock:
     setvar 0x8004 0x2
     setvar 0x8005 0x2
     special 0x174
-    call BrockNameBox
     trainerbattle1 0x1 0x19E 0x0 0x8190CD4 0x8190E4F EventScript_0x816A5C5
     checkflag 0x254
     if 0x0 _goto EventScript_0x816A5F3
     compare VAR_BRENDAN_ENCOUNTER 0x1
     if equal _goto EventScript_GymLeaderBrock_HelpBrendan
-    call BrockNameBox
-    msgbox gText_0x819110F MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x819110F MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     release
     end
 
 EventScript_GymLeaderBrock_HelpBrendan:
-    call BrockNameBox
-    msgbox gText_GymLeaderBrock_HelpBrendan MSG_NORMAL
-    callasm RemoveNameBox
+    npcmsg gText_GymLeaderBrock_HelpBrendan MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     release
     end
 
@@ -50,9 +46,8 @@ EventScript_0x816A5C5:
     end
 
 EventScript_0x816A5F3:
-    call BrockNameBox
-    msgbox 0x8190FC1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8190FC1 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     checkitemspace 0x147 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816A634
@@ -61,9 +56,8 @@ EventScript_0x816A5F3:
     clearflag FLAG_BRENDAN_PEWTER_SPRITE2
     clearflag FLAG_BRENDAN_VERMILLION_SPRITE
     clearflag FLAG_BRENDAN_UNCLE_VERMILLION_SPRITE
-    call BrockNameBox
-    msgbox 0x8190FF8 MSG_NORMAL
-    callasm RemoveNameBox
+    npcmsg 0x8190FF8 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     goto EventScript_Pewter_Brendan @ Brendan Event
     release
     end
@@ -110,31 +104,26 @@ EventScript_Pewter_Brendan:
     waitmovement 0x4
     spriteface PLAYER, RIGHT
     spriteface 0x1, RIGHT
-    call BrendanNameBox
-    msgbox gText_BrendanSpeaks1 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call BrockNameBox
-    msgbox gText_BrockSpeaks1 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call BrendanNameBox
-    msgbox gText_BrendanSpeaks2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_BrendanSpeaks1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
+    npcmsg gText_BrockSpeaks1 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
+    npcmsg gText_BrendanSpeaks2 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     spriteface 0x1, DOWN
-    call BrockNameBox
-    msgbox gText_BrockSpeaks2 MSG_KEEPOPEN
+    npcmsg gText_BrockSpeaks2 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     spriteface 0x1, RIGHT
-    msgbox gText_BrockSpeaks3 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_BrockSpeaks3 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     fanfare 0x13E
     msgbox gText_BrendanReceivedMon MSG_KEEPOPEN
     waitfanfare
     closeonkeypress
-    call BrendanNameBox
-    msgbox gText_BrendanSpeaks3 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call BrockNameBox
-    msgbox gText_BrockSpeaks4 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_BrendanSpeaks3 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
+    npcmsg gText_BrockSpeaks4 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     fanfare 0x101
     msgbox gText_BrendanReceivedBall MSG_KEEPOPEN
     waitfanfare
@@ -142,10 +131,8 @@ EventScript_Pewter_Brendan:
     spriteface 0x1, DOWN
     spriteface 0x4, DOWN
     spriteface PLAYER, UP
-    call BrendanNameBox
-    msgbox gText_BrendanSpeaks5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrendanSpeaks5 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     applymovement 0x4 EventScript_BrendanExitGym1
     waitmovement 0x4
     applymovement PLAYER EventScript_PlayerFollowBrendanGym1
@@ -181,14 +168,12 @@ EventScript_BrendanOutsideGym:
     applymovement 0x9 EventScript_BrendanHeadingToCatchMon
     applymovement PLAYER EventScript_FollowBrendanToCatchMon
     waitmovement 0x9
-    call BrendanNameBox
-    msgbox gText_BrendanSpeaks6 MSG_NORMAL
-    callasm RemoveNameBox
+    npcmsg gText_BrendanSpeaks6 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     applymovement 0x9 EventScript_BrendanCatchingMon
     waitmovement 0x9
-    call BrendanNameBox
-    msgbox gText_BrendanSpeaks7 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_BrendanSpeaks7 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     setvar VAR_BRENDAN_ENCOUNTER 0x2
     clearflag FLAG_BRENDAN_PEWTER_SPRITE3
     fadedefaultbgm
@@ -211,24 +196,19 @@ EventScript_BrendanAfterCatchingMonInsideGym:
     spriteface PLAYER, UP
     spriteface 0x1, RIGHT
     pause 15
-    call BrockNameBox
-    msgbox gText_BrockSpeaks6 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call BrendanNameBox
-    msgbox gText_BrendanSpeaks8 MSG_KEEPOPEN
+    npcmsg gText_BrockSpeaks6 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
+    npcmsg gText_BrendanSpeaks8 MSG_KEEPOPEN gText_Name_Brendan
     spriteface 0x5, DOWN
-    msgbox gText_BrendanSpeaks9 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrendanSpeaks9 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     applymovement 0x5 EventScript_BrendanExitGymAfterCatchingMon
     waitmovement 0x5
     sound 0x9
     pause 15
     spriteface 0x1, DOWN
-    call BrockNameBox
-    msgbox gText_BrockSpeaks7 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrockSpeaks7 MSG_KEEPOPEN gText_Name_Brock
+    closemsg
     hidesprite 0x5
     hidesprite BRENDAN
     setvar VAR_BRENDAN_ENCOUNTER 0x3
@@ -722,16 +702,13 @@ EventScript_Pewter_Steven:
     faceplayer
     checkflag FLAG_PEWTER_STEVEN_BELDUM
     if SET _goto EventScript_Pewter_Steven_AfterIntro
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    call StevenNameBox
+    npcmsg gText_Pewter_Steven_Speak1 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     showpokepic SPECIES_BELDUM 0xA 0x3
-    msgbox gText_Pewter_Steven_Speak2 MSG_YESNO
+    npcmsg gText_Pewter_Steven_Speak2 MSG_YESNO gText_Name_Steven
     compare LASTRESULT 0x1
     if FALSE _call EventScript_Pewter_Steven_DontWantBeldum
-    callasm RemoveNameBox
+    closemsg
     fanfare 0x13E
     givepokemoncustom SPECIES_BELDUM 5 ITEM_NONE MOVE_TACKLE MOVE_NONE MOVE_NONE MOVE_NONE NATURE_JOLLY 0 31 31 31 31 31 31 0 0
     signmsg
@@ -739,22 +716,17 @@ EventScript_Pewter_Steven:
     waitfanfare
     closeonkeypress
     hidepokepic
-    callasm RemoveNameBox
     normalmsg
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak3 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     setflag FLAG_PEWTER_STEVEN_BELDUM
     release
     end
 
 EventScript_Pewter_Steven_DontWantBeldum:
     hidepokepic
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_DontWantBeldum MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_DontWantBeldum MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     setflag FLAG_PEWTER_STEVEN_BELDUM
     release
     end
@@ -762,9 +734,8 @@ EventScript_Pewter_Steven_DontWantBeldum:
 EventScript_Pewter_Steven_AfterIntro:
     lock
     faceplayer
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak4 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak4 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     multichoiceoption gText_Pewter_Steven_General 0
     multichoiceoption gText_Pewter_Steven_Quests 1
     multichoiceoption gText_Pewter_Steven_End 2
@@ -777,10 +748,8 @@ EventScript_Pewter_Steven_AfterIntro:
     end
 
 EventScript_Pewter_Steven_General:
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak5 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     release
     end
 
@@ -793,19 +762,16 @@ EventScript_Pewter_Steven_Quests:
     if NOT_SET _goto EventScript_Pewter_Steven_Quests_Regis
     checkflag FLAG_QUEST_WEATHERTRIO
     if NOT_SET _goto EventScript_Pewter_Steven_Quests_WeatherTrio
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak15 MSG_YESNO
+    npcmsg gText_Pewter_Steven_Speak15 MSG_YESNO gText_Name_Steven
     compare LASTRESULT 0x1
     if FALSE _goto EventScript_Pewter_Steven_End
-    callasm RemoveNameBox
+    closemsg
     release
     end
 
 EventScript_Pewter_Steven_Quests_MagmaStone:
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak6 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak6 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     checkitem ITEM_MAGMA_STONE 0x1
     compare LASTRESULT 0x1
     if FALSE _goto EventScript_Pewter_Steven_End
@@ -813,24 +779,18 @@ EventScript_Pewter_Steven_Quests_MagmaStone:
     sound 0x15
     applymovement 0x3 Move_Pewter_Steven_1
     waitmovement 0x3
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak7 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak7 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     giveitem ITEM_SOUL_DEW 0x1 MSG_OBTAIN
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak8 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak8 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     setflag FLAG_QUEST_HEATRAN
     release
     end
 
 EventScript_Pewter_Steven_Quests_LatiTwins:
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak8 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak8 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     callasm CheckLatiasLatios
     compare 0x8004 0x1
     if FALSE _goto EventScript_Pewter_Steven_End
@@ -838,11 +798,9 @@ EventScript_Pewter_Steven_Quests_LatiTwins:
     sound 0x15
     applymovement 0x3 Move_Pewter_Steven_1
     waitmovement 0x3
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak9 MSG_KEEPOPEN
-    msgbox gText_Pewter_Steven_Speak10 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak9 MSG_KEEPOPEN gText_Name_Steven
+    npcmsg gText_Pewter_Steven_Speak10 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     setflag FLAG_QUEST_LATITWINS
     clearflag FLAG_REGIROCK_ROCKTUNNEL
     clearflag FLAG_REGICE_SEAFOAM
@@ -851,10 +809,8 @@ EventScript_Pewter_Steven_Quests_LatiTwins:
     end
 
 EventScript_Pewter_Steven_Quests_Regis:
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak10 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak10 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     callasm CheckRegis
     compare 0x8004 0x1
     if FALSE _goto EventScript_Pewter_Steven_End
@@ -862,16 +818,12 @@ EventScript_Pewter_Steven_Quests_Regis:
     sound 0x15
     applymovement 0x3 Move_Pewter_Steven_1
     waitmovement 0x3
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak11 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak11 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     giveitem ITEM_BLUE_ORB 0x1 MSG_OBTAIN
     giveitem ITEM_RED_ORB 0x1 MSG_OBTAIN
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak12 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak12 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     setflag FLAG_QUEST_REGIS
     checkflag 0x4BC
     if NOT_SET _goto EventScript_Pewter_Steven_End
@@ -884,10 +836,8 @@ EventScript_Pewter_Steven_Quests_Regis:
     end
 
 EventScript_Pewter_Steven_Quests_WeatherTrio:
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak12 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak12 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     callasm CheckWeatherTrio
     compare 0x8004 0x1
     if FALSE _goto EventScript_Pewter_Steven_End
@@ -895,11 +845,9 @@ EventScript_Pewter_Steven_Quests_WeatherTrio:
     sound 0x15
     applymovement 0x3 Move_Pewter_Steven_1
     waitmovement 0x3
-    call StevenNameBox
-    msgbox gText_Pewter_Steven_Speak13 MSG_KEEPOPEN
-    msgbox gText_Pewter_Steven_Speak14 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Pewter_Steven_Speak13 MSG_KEEPOPEN gText_Name_Steven
+    npcmsg gText_Pewter_Steven_Speak14 MSG_KEEPOPEN gText_Name_Steven
+    closemsg
     setflag FLAG_QUEST_WEATHERTRIO
     release
     end
@@ -912,24 +860,3 @@ Move_Pewter_Steven_1:
     .byte exclaim
     .byte pause_long
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Pewter NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-BrockNameBox:
-    setvar 0x8000 11
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-BrendanNameBox:
-    setvar 0x8000 3
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-StevenNameBox:
-    setvar 0x8000 26
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

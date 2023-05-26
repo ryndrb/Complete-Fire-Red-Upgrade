@@ -21,27 +21,20 @@ EventScript_VictoryRoad_Brendan:
 EventScript_BrendanVictoryRoadAfter:
     lock
     spriteface 0xE, DOWN
-    call BrendanNameBox
-    msgbox gText_BrendanVictoryRoadDefeatedSpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVictoryRoadDefeatedSpeaks1 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     pause 60
     faceplayer
-    call BrendanNameBox
-    msgbox gText_BrendanVictoryRoadDefeatedSpeaks2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVictoryRoadDefeatedSpeaks2 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     applymovement 0xE EventScript_BrendanVictoryRoadNoticePlayer
     waitmovement 0xE
-    call BrendanNameBox
-    msgbox gText_BrendanVictoryRoadDefeatedSpeaks3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVictoryRoadDefeatedSpeaks3 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     giveitem ITEM_GALLADITE 0x1 MSG_OBTAIN
     giveitem ITEM_GARDEVOIRITE 0x1 MSG_OBTAIN
-    call BrendanNameBox
-    msgbox gText_BrendanVictoryRoadDefeatedSpeaks4 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVictoryRoadDefeatedSpeaks4 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     closeonkeypress
     fadescreen 0x1
     hidesprite 0xE
@@ -54,12 +47,3 @@ EventScript_BrendanVictoryRoadNoticePlayer:
     .byte pause_long
     .byte exclaim
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Victory Road NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-BrendanNameBox:
-    setvar 0x8000 3
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

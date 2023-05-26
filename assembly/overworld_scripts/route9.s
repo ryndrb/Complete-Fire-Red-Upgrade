@@ -16,32 +16,23 @@ EventScript_Route9_MayBattle:
     applymovement 16 Move_Route9_May_2
     waitmovement 16
     playsong 0x1A7 0x1
-    call MayNameBox
-    trainerbattle1 0x1 63 0x0 gText_Route9_MayIntro gText_Route9_MayLost EventScript_Route9_MayAfter
-    release
-    end
-
-EventScript_Route9_MayAfter:
-    call MayNameBox
-    msgbox gText_Route9_MayAfterSpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route9_MayIntro MSG_KEEPOPEN gText_Name_May
+    closemsg
+    trainerbattle3 0x3 63 0x0 gText_Route9_MayLost
+    npcmsg gText_Route9_MayAfterSpeaks1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     fanfare 0x0100
     special 0x1
     waitfanfare
-    call MayNameBox
-    msgbox gText_Route9_MayAfterSpeaks2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route9_MayAfterSpeaks2 MSG_KEEPOPEN gText_Name_May
+    closemsg
     giveitem ITEM_POKE_BALL 50 MSG_OBTAIN
     pause 10
     giveitem ITEM_GREAT_BALL 25 MSG_OBTAIN
     pause 10
     giveitem ITEM_ULTRA_BALL 10 MSG_OBTAIN
-    call MayNameBox
-    msgbox gText_Route9_MayAfterSpeaks3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Route9_MayAfterSpeaks3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 16 Move_Route9_May_3
     waitmovement 16
     hidesprite 16
@@ -91,12 +82,3 @@ Move_Route9_May_3:
     .byte walk_down
     .byte walk_right
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Route 9 NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

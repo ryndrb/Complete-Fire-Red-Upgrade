@@ -16,21 +16,15 @@ EventScript_MtMoon_Proton:
     applymovement 13 Move_MtMoon_Proton2
     waitmovement 13
     playsong 0x184 1
-    call UnknownNameBox
-    msgbox gText_MtMoon_ProtonSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_MtMoon_ProtonSpeak1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
     applymovement 13 Move_MtMoon_Proton3
     waitmovement 13
-    call ProtonNameBox
-    msgbox gText_MtMoon_ProtonSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_MtMoon_ProtonSpeak2 MSG_KEEPOPEN gText_Name_Proton
+    closemsg
     trainerbattle3 0x3 0x6 0x0 gText_MtMoon_ProtonDefeated
-    call ProtonNameBox
-    msgbox gText_MtMoon_ProtonSpeak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_MtMoon_ProtonSpeak3 MSG_KEEPOPEN gText_Name_Proton
+    closemsg
     applymovement 13 Move_MtMoon_Proton4
     waitmovement 13
     sound 9
@@ -70,18 +64,3 @@ Move_MtMoon_Proton4:
     .byte pause_long
     .byte walk_left
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ MtMoon NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-UnknownNameBox:
-    setvar 0x8000 0
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-ProtonNameBox:
-    setvar 0x8000 23
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

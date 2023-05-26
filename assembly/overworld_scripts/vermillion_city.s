@@ -23,14 +23,11 @@ EventScript_GymLeaderSurge:
     setvar 0x8004 0x4
     setvar 0x8005 0x2
     special 0x174
-    call LtSurgeNameBox
     trainerbattle1 0x1 0x1A0 0x0 0x8194BA4 0x8194E03 EventScript_0x816B97C
-    callasm RemoveNameBox
     checkflag 0x231
     if 0x0 _goto EventScript_0x816B9AF
-    call LtSurgeNameBox
-    msgbox 0x8194C8E MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8194C8E MSG_KEEPOPEN gText_Name_LtSurge
+    closemsg
     release
     end
 
@@ -47,17 +44,15 @@ EventScript_0x816B97C:
     end
 
 EventScript_0x816B9AF:
-    call LtSurgeNameBox
-    msgbox 0x8194CFA MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8194CFA MSG_KEEPOPEN gText_Name_LtSurge
+    closemsg
     checkitemspace 0x142 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816B9F0
     giveitem_msg 0x8194D87 ITEM_TM34
     setflag 0x231
-    call LtSurgeNameBox
-    msgbox 0x8194DA8 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8194DA8 MSG_KEEPOPEN gText_Name_LtSurge
+    closemsg
     clearflag 0xA1
     setvar VAR_ENCOUNTER_VERMILLION_KALOS_MEGARING 0x1
     release
@@ -269,14 +264,11 @@ EventScript_Vermillion_Brendan:
     checkflag FLAG_BRENDAN_VERMILLION_ENCOUTER
     if SET _goto EventScript_Vermillion_Brendan_AskAgain
     spriteface 0x9, RIGHT
-    call BrendanNameBox
-    msgbox gText_BrendanVermillionSpeaks1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVermillionSpeaks1 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     msgbox gText_UncleVermillionSpeaks1 MSG_KEEPOPEN
-    call BrendanNameBox
-    msgbox gText_BrendanVermillionSpeaks2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVermillionSpeaks2 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     applymovement 0x9 EventScript_BrendanVermillionNoticePlayer
     waitmovement 0x9
     getplayerpos 0x8000 0x8001
@@ -288,9 +280,8 @@ EventScript_Vermillion_Brendan:
     if equal _call CheckPlayerY3
     spriteface 0x9, DOWN
     spriteface 0xA, DOWN
-    call BrendanNameBox
-    msgbox gText_BrendanVermillionSpeaks3 MSG_YESNO
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVermillionSpeaks3 MSG_YESNO gText_Name_Brendan
+    closemsg
     compare LASTRESULT 0x1
     if 0x0 _goto PlayerAnsweredNo
     goto EventScript_Vermillion_BrendanFight
@@ -298,17 +289,15 @@ EventScript_Vermillion_Brendan:
     end
 
 PlayerAnsweredNo:
-    call BrendanNameBox
-    msgbox gText_BrendanVermillionSpeaks4 MSG_NORMAL
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVermillionSpeaks4 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     setflag FLAG_BRENDAN_VERMILLION_ENCOUTER
     end
 
 EventScript_Vermillion_Brendan_AskAgain:
     faceplayer
-    call BrendanNameBox
-    msgbox gText_BrendanVermillionSpeaks5 MSG_YESNO
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVermillionSpeaks5 MSG_YESNO gText_Name_Brendan
+    closemsg
     compare LASTRESULT 0x1
     if 0x0 _goto End
     goto EventScript_Vermillion_BrendanFight
@@ -316,32 +305,25 @@ EventScript_Vermillion_Brendan_AskAgain:
     end
 
 EventScript_Vermillion_BrendanFight:
-    call BrendanNameBox
-    trainerbattle1 0x1 59 0x0 gText_Vermillion_BrendanFight_Intro gText_Vermillion_BrendanFight_Lost EvenScript_Vermillion_BrendanFight_After
-    release
-    end
-
-EvenScript_Vermillion_BrendanFight_After:
+    npcmsg gText_Vermillion_BrendanFight_Intro MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
+    trainerbattle3 0x3 59 0x0  gText_Vermillion_BrendanFight_Lost
     playsong 0x1D5
-    callasm RemoveNameBox
     applymovement 0x9 EventScript_BrendanVermillionBattleLost
     waitmovement 0x9
     spriteface 0xA, LEFT
-    call BrendanNameBox
-    msgbox gText_BrendanVermillionSpeaks6 MSG_KEEPOPEN
+    npcmsg gText_BrendanVermillionSpeaks6 MSG_KEEPOPEN gText_Name_Brendan
     spriteface 0x9, DOWN
     spriteface 0xA, DOWN
-    msgbox gText_BrendanVermillionSpeaks7 MSG_KEEPOPEN
+    npcmsg gText_BrendanVermillionSpeaks7 MSG_KEEPOPEN gText_Name_Brendan
     spriteface 0x9, RIGHT
     spriteface 0xA, LEFT
-    callasm RemoveNameBox
+    closemsg
     msgbox gText_UncleVermillionSpeaks2 MSG_KEEPOPEN
     spriteface 0x9, DOWN
     spriteface 0xA, DOWN
-    call BrendanNameBox
-    msgbox gText_BrendanVermillionSpeaks8 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_BrendanVermillionSpeaks8 MSG_KEEPOPEN gText_Name_Brendan
+    closemsg
     applymovement 0xA EventScript_VermillionUncleLeaving
     applymovement 0x9 EventScript_VermillionBrendanLeaving
     waitmovement 0xA
@@ -505,9 +487,8 @@ EventScript_0x8160903:
     if 0x1 _call 0x81609B8
     compare 0x4001 0x2
     if 0x1 _call 0x81609CA
-    call RivalNameBox
-    msgbox gText_SSAnne_RivalSpeak1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_SSAnne_RivalSpeak1 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     setvar LASTTALKED 0x1
     compare 0x4031 0x2
     if 0x1 _call 0x81609DC
@@ -515,10 +496,8 @@ EventScript_0x8160903:
     if 0x1 _call 0x81609E7
     compare 0x4031 0x0
     if 0x1 _call 0x81609F2
-    call RivalNameBox
-    msgbox gText_SSAnne_RivalSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SSAnne_RivalSpeak2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 0xA
     playsong 0x13C 0x0
     compare 0x4001 0x0
@@ -692,24 +671,24 @@ EventScript_Vermillion_Wattson:
     sound 0x15
     applymovement 7 Move_Vermillion_Wattson_1
     waitmovement 7
-    npcmsg gText_Vermillion_Wattson_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Vermillion_Wattson_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Vermillion_Wattson_Speak_2 MSG_YESNO 34 LEFT
+    npcmsg gText_Vermillion_Wattson_Speak_2 MSG_YESNO gText_Name_Wattson
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Vermillion_Wattson_PlayerDontWantToBattle
     closemsg
     trainerbattle3 0x3 82 0x0 gText_Vermillion_Wattson_Defeat
-    npcmsg gText_Vermillion_Wattson_Speak_3 MSG_KEEPOPEN 34 LEFT
+    npcmsg gText_Vermillion_Wattson_Speak_3 MSG_KEEPOPEN gText_Name_Wattson
     closemsg
     giveitem ITEM_MAGNET 0x1 MSG_OBTAIN
-    npcmsg gText_Vermillion_Wattson_Speak_4 MSG_KEEPOPEN 34 LEFT
+    npcmsg gText_Vermillion_Wattson_Speak_4 MSG_KEEPOPEN gText_Name_Wattson
     closemsg
     spriteface 7, LEFT
     spriteface 1, RIGHT
-    npcmsg gText_Vermillion_Wattson_Speak_5 MSG_KEEPOPEN 34 LEFT
+    npcmsg gText_Vermillion_Wattson_Speak_5 MSG_KEEPOPEN gText_Name_Wattson
     closemsg
     faceplayer
-    npcmsg gText_Vermillion_Wattson_Speak_6 MSG_KEEPOPEN 34 LEFT
+    npcmsg gText_Vermillion_Wattson_Speak_6 MSG_KEEPOPEN gText_Name_Wattson
     closemsg
     fadescreen 0x1
     hidesprite 7
@@ -719,7 +698,7 @@ EventScript_Vermillion_Wattson:
     end
 
 EventScript_Vermillion_Wattson_PlayerDontWantToBattle:
-    npcmsg gText_Vermillion_Wattson_PlayerDontWantToBattle MSG_KEEPOPEN 34 LEFT
+    npcmsg gText_Vermillion_Wattson_PlayerDontWantToBattle MSG_KEEPOPEN gText_Name_Wattson
     closemsg
     spriteface 7, DOWN
     release
@@ -730,24 +709,3 @@ Move_Vermillion_Wattson_1:
     .byte pause_long
     .byte face_player
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@
-@ Vermillion NameBox
-@@@@@@@@@@@@@@@@@@@@
-BrendanNameBox:
-    setvar 0x8000 3
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-LtSurgeNameBox:
-    setvar 0x8000 13
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-RivalNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

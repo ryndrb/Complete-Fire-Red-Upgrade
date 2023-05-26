@@ -12,7 +12,7 @@ EventScript_Route5_Traynee:
     checkflag FLAG_TRAYNEE_ROUTE5_GREET
     if NOT_SET _goto EventScript_Route5_Traynee_Greet
     faceplayer
-    npcmsg gText_Route5_Traynee_WhichToTrain MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_WhichToTrain MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     setvar 0x8000 15
     setvar 0x8001 0x6
@@ -35,9 +35,9 @@ EventScript_Route5_Traynee:
 
 EventScript_Route5_Traynee_Greet:
     faceplayer
-    npcmsg gText_Route5_Traynee_Greet_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route5_Traynee_Greet_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Route5_Traynee_Greet_2 MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_Greet_2 MSG_KEEPOPEN gText_Name_Traynee
     closemsg 
     setflag FLAG_TRAYNEE_ROUTE5_GREET
     release
@@ -45,7 +45,7 @@ EventScript_Route5_Traynee_Greet:
 
 EventScript_Route5_Traynee_Exp:
     setflag FLAG_TRAYNEE_EXP_TRAINING_NO_EV
-    npcmsg gText_Route5_Traynee_Exp MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_Exp MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
@@ -54,7 +54,7 @@ EventScript_Route5_Traynee_Exp:
     end
 
 EventScript_Route5_Traynee_ResetEv:
-    npcmsg gText_Route5_Traynee_WhichMonToReset MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_WhichMonToReset MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     special 0x9F
     waitstate
@@ -69,14 +69,14 @@ EventScript_Route5_Traynee_ResetEv:
     special 0x7C
     fanfare 0x13E
     waitfanfare
-    npcmsg gText_Route5_Traynee_EVResetDone MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_EVResetDone MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     release
     end
 
 EventScript_Route5_Traynee_EvHP:
     setflag FLAG_TRAYNEE_HP_TEAM
-    npcmsg gText_Route5_Traynee_EvHP MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_EvHP MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
@@ -86,7 +86,7 @@ EventScript_Route5_Traynee_EvHP:
 
 EventScript_Route5_Traynee_EvAttack:
     setflag FLAG_TRAYNEE_ATT_TEAM
-    npcmsg gText_Route5_Traynee_EvAttack MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_EvAttack MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
@@ -96,7 +96,7 @@ EventScript_Route5_Traynee_EvAttack:
 
 EventScript_Route5_Traynee_EvDefense:
     setflag FLAG_TRAYNEE_DEF_TEAM
-    npcmsg gText_Route5_Traynee_EvDefense MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_EvDefense MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
@@ -106,7 +106,7 @@ EventScript_Route5_Traynee_EvDefense:
 
 EventScript_Route5_Traynee_EvSpAttack:
     setflag FLAG_TRAYNEE_SPA_TEAM
-    npcmsg gText_Route5_Traynee_EvSpAttack MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_EvSpAttack MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
@@ -116,7 +116,7 @@ EventScript_Route5_Traynee_EvSpAttack:
 
 EventScript_Route5_Traynee_EvSpDefense:
     setflag FLAG_TRAYNEE_SPD_TEAM
-    npcmsg gText_Route5_Traynee_EvSpDefense MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_EvSpDefense MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
@@ -126,7 +126,7 @@ EventScript_Route5_Traynee_EvSpDefense:
 
 EventScript_Route5_Traynee_EvSpeed:
     setflag FLAG_TRAYNEE_SPE_TEAM
-    npcmsg gText_Route5_Traynee_EvSpeed MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_EvSpeed MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     trainerbattle3 0x3 66 0x0 gText_Route5_Traynee_TrainingCompleted
     special 0x0
@@ -135,13 +135,13 @@ EventScript_Route5_Traynee_EvSpeed:
     end
 
 EventScript_Route5_Traynee_ThisIsAnEgg:
-    npcmsg gText_Route5_ThisIsAnEgg MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_ThisIsAnEgg MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     release
     end
 
 EventScript_Route5_Traynee_SeeYa:
-    npcmsg gText_Route5_Traynee_Seeya MSG_KEEPOPEN 9 LEFT
+    npcmsg gText_Route5_Traynee_Seeya MSG_KEEPOPEN gText_Name_Traynee
     closemsg
     release
     end
@@ -153,7 +153,7 @@ EventScript_Route5_Ivy:
     checkflag FLAG_IVY_ROUTE5_GREET
     if NOT_SET _goto EventScript_Route5_Ivy_Greet
     faceplayer
-    npcmsg gText_Route5_Ivy_WhatService MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_WhatService MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     multichoiceoption gText_Route5_Ivy_MaxAllIv 0
     multichoiceoption gText_Route5_Ivy_ChangeIv 1
@@ -168,26 +168,26 @@ EventScript_Route5_Ivy:
     end
 
 EventScript_Route5_Ivy_Greet:
-    npcmsg gText_Route5_Ivy_Humming MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route5_Ivy_Humming MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     sound 0x15
     applymovement 0x3 Move_Route5_Ivy_Startled
     waitmovement 0x3
-    npcmsg gText_Route5_Ivy_Greet_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route5_Ivy_Greet_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Route5_Ivy_Greet_2 MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_Greet_2 MSG_KEEPOPEN gText_Name_Ivy
     closemsg
-    npcmsg gText_Route5_Ivy_Greet_3 MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_Greet_3 MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     setflag FLAG_IVY_ROUTE5_GREET
     release
     end
 
 EventScript_Route5_Ivy_MaxAllIV:
-    npcmsg gText_Route5_Ivy_ChangeIVForWhichMon MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_ChangeIVForWhichMon MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     call EventScript_Route5_ChoosePokemon
-    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     fadescreen 0x1
     fanfare 0x13E
@@ -195,16 +195,16 @@ EventScript_Route5_Ivy_MaxAllIV:
     fadescreen 0x0
     setvar 0x8008 0x1
     callasm ChangeIV
-    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     release
     end
 
 EventScript_Route5_Ivy_ChangeIV:
-    npcmsg gText_Route5_Ivy_ChangeIVForWhichMon MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_ChangeIVForWhichMon MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     call EventScript_Route5_ChoosePokemon
-    npcmsg gText_Route5_Ivy_WhichStatToChange MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_WhichStatToChange MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     multichoiceoption gText_Route5_Ivy_ChangeIV_Hp 0
     multichoiceoption gText_Route5_Ivy_ChangeIV_Attack 1
@@ -225,7 +225,7 @@ EventScript_Route5_Ivy_ChangeIV:
     end
 
 EventScript_Route5_Ivy_ChooseIVAmount:
-    npcmsg gText_Route5_Ivy_HowManyIvy MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_HowManyIvy MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     multichoiceoption gText_Route5_Ivy_ChangeIV_0 0
     multichoiceoption gText_Route5_Ivy_ChangeIV_1 1
@@ -246,23 +246,23 @@ EventScript_Route5_Ivy_ChooseIVAmount:
     end
 
 EventScript_Route5_IvyCallIVFunc:
-    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     fadescreen 0x1
     fanfare 0x13E
     waitfanfare
     fadescreen 0x0
     callasm ChangeIV
-    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     release
     end
 
 EventScript_Route5_Ivy_ChangeHiddenPower:
-    npcmsg gText_Route5_Ivy_ChangeHiddenPowerForWhichMon MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_ChangeHiddenPowerForWhichMon MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     call EventScript_Route5_ChoosePokemon
-    npcmsg gText_Route5_Ivy_WhichHiddenPower MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_WhichHiddenPower MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     setvar 0x8000 16
     setvar 0x8001 0x6
@@ -272,14 +272,14 @@ EventScript_Route5_Ivy_ChangeHiddenPower:
     copyvar 0x8006 LASTRESULT
     compare LASTRESULT 0x10
     if greaterorequal _goto EventScript_Route5_Ivy_SeeYa
-    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_DoIVChange MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     fadescreen 0x1
     fanfare 0x13E
     waitfanfare
     fadescreen 0x0
     callasm ChangeHiddenPower
-    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_IVChanged MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     release
     end
@@ -296,13 +296,13 @@ EventScript_Route5_ChoosePokemon:
     return
 
 EventScript_Route5_Ivy_ThisIsAnEgg:
-    npcmsg gText_Route5_ThisIsAnEgg MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_ThisIsAnEgg MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     release
     end
 
 EventScript_Route5_Ivy_SeeYa:
-    npcmsg gText_Route5_Ivy_ComeBackAnytime MSG_KEEPOPEN 10 LEFT
+    npcmsg gText_Route5_Ivy_ComeBackAnytime MSG_KEEPOPEN gText_Name_Ivy
     closemsg
     release
     end

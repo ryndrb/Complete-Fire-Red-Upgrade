@@ -19,11 +19,11 @@ EventScript_GymLeaderErika:
     setvar 0x8004 0x5
     setvar 0x8005 0x2
     special 0x174
-    call ErikaNameBox
     checkflag 0x4B3
     if SET _goto EventScript_Celadon_GymLeaderErika2
-    msgbox gText_Celadon_ErikaSpeak1 MSG_KEEPOPEN
-    msgbox gText_Celadon_ErikaSpeak2 MSG_KEEPOPEN
+    npcmsg gText_Celadon_ErikaSpeak1 MSG_KEEPOPEN gText_Name_Erika
+    npcmsg gText_Celadon_ErikaSpeak2 MSG_KEEPOPEN gText_Name_Erika
+    closemsg
     trainerbattle1 0x1 0x1A1 0x0 gText_Celadon_ErikaSpeak3 0x8197260 EventScript_0x816D0A0
     checkflag 0x293
     if 0x0 _goto EventScript_0x816D0C6
@@ -35,9 +35,8 @@ EventScript_Celadon_GymLeaderErika2:
     setvar 0x8004 0x5
     setvar 0x8005 0x4
     special 0x173
-    call ErikaNameBox
-    msgbox 0x81972B8 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81972B8 MSG_KEEPOPEN gText_Name_Erika
+    closemsg
     release
     end
 
@@ -55,9 +54,8 @@ EventScript_0x816D0A0:
     end
 
 EventScript_0x816D0C6:
-    call ErikaNameBox
-    msgbox 0x8197327 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8197327 MSG_KEEPOPEN gText_Name_Erika
+    closemsg
     checkitemspace 0x133 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816D107
@@ -659,24 +657,19 @@ EventScript_Celadon_May:
     lock
     faceplayer
     playsong 0x1A7
-    call MayNameBox
-    msgbox gText_Celadon_MaySpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_MaySpeaks1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     pause 30
     applymovement 17 EventScript_Celadon_MaySmile
     applymovement PLAYER EventScript_Celadon_PlayerSmile
     waitmovement 17
-    call MayNameBox
-    msgbox gText_Celadon_MaySpeaks2 MSG_KEEPOPEN
-    msgbox gText_Celadon_MaySpeaks3 MSG_YESNO
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_MaySpeaks2 MSG_KEEPOPEN gText_Name_May
+    npcmsg gText_Celadon_MaySpeaks3 MSG_YESNO gText_Name_May
+    closemsg
     compare LASTRESULT 0x1
     if FALSE _goto EventScript_PlayerAnsweredNo
-    call MayNameBox
-    msgbox gText_Celadon_MaySpeaks4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_MaySpeaks4 MSG_KEEPOPEN gText_Name_May
+    closemsg
     fadescreen 0x1
     hidesprite 17
     setflag FLAG_MAY_CELADON_SPRITE
@@ -686,10 +679,8 @@ EventScript_Celadon_May:
     end
 
 EventScript_PlayerAnsweredNo:
-    call MayNameBox
-    msgbox gText_Celadon_MaySpeaks5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_MaySpeaks5 MSG_KEEPOPEN gText_Name_May
+    closemsg
     fadescreen 0x1
     hidesprite 17
     setflag FLAG_MAY_CELADON_SPRITE
@@ -718,20 +709,20 @@ EventScript_RocketHQ_Admin:
     applymovement CAMERA Move_RocketHQ_Admin_Camera_1
     waitmovement CAMERA
     special 0x114
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_RocketHQ_Admin_Giovanni_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_RocketHQ_Admin_Giovanni_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     pause 15
     cry SPECIES_CUBONE 0x0
     pause 15
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_3 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_3 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_RocketHQ_Admin_Giovanni_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_RocketHQ_Admin_Giovanni_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_4 MSG_KEEPOPEN 25 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_4 MSG_KEEPOPEN gText_Name_Ariana
     closemsg
     pause 30
     applymovement ARIANA Move_RocketHQ_Admin_Ariana_1
@@ -744,18 +735,18 @@ EventScript_RocketHQ_Admin:
     applymovement ARIANA Move_RocketHQ_Admin_Ariana_2
     waitmovement ARIANA
     playsong 0x181 1
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_5 MSG_KEEPOPEN 25 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_5 MSG_KEEPOPEN gText_Name_Ariana
     closemsg
     trainerbattle3 0x3 0x8 0x0 gText_RocketHQ_Admin_Ariana_Defeated
     pause 30
     spriteface ARIANA UP
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_6 MSG_KEEPOPEN 25 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_6 MSG_KEEPOPEN gText_Name_Ariana
     closemsg
     pause 30
     spriteface ARIANA DOWN
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_7 MSG_KEEPOPEN 25 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_7 MSG_KEEPOPEN gText_Name_Ariana
     closemsg
-    npcmsg gText_RocketHQ_Admin_Ariana_Speak_8 MSG_KEEPOPEN 25 LEFT
+    npcmsg gText_RocketHQ_Admin_Ariana_Speak_8 MSG_KEEPOPEN gText_Name_Ariana
     closemsg
     applymovement PLAYER Move_RocketHQ_Admin_Player_1
     applymovement ARIANA Move_RocketHQ_Admin_Ariana_3
@@ -833,7 +824,7 @@ EventScript_RocketHQ_Giovanni:
     setvar 0x8004 0xF
     setvar 0x8005 0x0
     special 0x173
-    npcmsg gText_RocketHQ_Giovanni_Speak_1 MSG_KEEPOPEN 18 LEFT
+    npcmsg gText_RocketHQ_Giovanni_Speak_1 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     pause 15
     spriteface CUBONE LEFT
@@ -842,17 +833,17 @@ EventScript_RocketHQ_Giovanni:
     sound 0x15
     applymovement GIOVANNI Move_RocketHQ_Giovanni_1
     waitmovement GIOVANNI
-    npcmsg gText_RocketHQ_Giovanni_Speak_2 MSG_KEEPOPEN 18 LEFT
+    npcmsg gText_RocketHQ_Giovanni_Speak_2 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     playsong 0x11B 0x0
     trainerbattle3 0x3 0x15C 0x0 0x8175318
-    npcmsg gText_RocketHQ_Giovanni_Speak_3 MSG_KEEPOPEN 18 LEFT
+    npcmsg gText_RocketHQ_Giovanni_Speak_3 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     pause 15
     cry SPECIES_CUBONE 0x0
     applymovement CUBONE Move_RocketHQ_Giovanni_Cubone_1
     waitmovement CUBONE
-    npcmsg gText_RocketHQ_Giovanni_Speak_4 MSG_KEEPOPEN 18 LEFT
+    npcmsg gText_RocketHQ_Giovanni_Speak_4 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     fadescreen 0x1
     hidesprite 0x1
@@ -949,16 +940,12 @@ EventScript_Celadon_RoamingDogs:
     sound 0x15
     applymovement 18 Move_Celadon_RoamingDogs_Eusine_2
     waitmovement 18
-    call EusineNameBox
-    msgbox gText_Celadon_RoamingDogs_Eusine_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_RoamingDogs_Eusine_Speak_1 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     applymovement 18 Move_Celadon_RoamingDogs_Eusine_3
     waitmovement 18
-    call EusineNameBox
-    msgbox gText_Celadon_RoamingDogs_Eusine_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_RoamingDogs_Eusine_Speak_2 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     pause 30
     applymovement PLAYER Move_Celadon_RoamingDogs_Player_2
     waitmovement PLAYER
@@ -993,10 +980,8 @@ EventScript_Celadon_RoamingDogs:
     special 0x129
     compare LASTRESULT 0x0
     if TRUE _goto EventScript_Celadon_RoamingDogs_TooManyRoamers
-    call EusineNameBox
-    msgbox gText_Celadon_RoamingDogs_Eusine_Speak_3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_RoamingDogs_Eusine_Speak_3 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     applymovement 18 Move_Celadon_RoamingDogs_Eusine_4
     waitmovement 18
     hidesprite 18
@@ -1081,10 +1066,8 @@ EventScript_Celadon_Eusine_InsideResto:
     callasm CheckRoamingDogs
     compare 0x8004 1
     if TRUE _goto EventScript_Celadon_InsideResto_DogInParty_1
-    call EusineNameBox
-    msgbox gText_Celadon_Eusine_InsideResto_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_Eusine_InsideResto_Speak_1 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     release
     end
 
@@ -1093,22 +1076,16 @@ EventScript_Celadon_InsideResto_DogInParty_1:
     sound 0x15
     applymovement 6 Move_Celadon_Eusine_InsideResto_1
     waitmovement 6
-    call EusineNameBox
-    msgbox gText_Celadon_Eusine_InsideResto_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_Eusine_InsideResto_Speak_2 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     applymovement 6 Move_Celadon_Eusine_InsideResto_2
     waitmovement 6
     faceplayer
-    call EusineNameBox
-    msgbox gText_Celadon_Eusine_InsideResto_Speak_3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_Eusine_InsideResto_Speak_3 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     giveitem ITEM_MASTER_BALL 0x1 MSG_OBTAIN
-    call EusineNameBox
-    msgbox gText_Celadon_Eusine_InsideResto_Speak_4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_Eusine_InsideResto_Speak_4 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     setflag FLAG_ROAMING_DOGS_EVENT_FINISHED
     release
     end
@@ -1116,32 +1093,22 @@ EventScript_Celadon_InsideResto_DogInParty_1:
 EventScript_Celadon_RoamingDogs_Finished:
     checkflag 0x4BC
     if SET _goto EventScrit_Celadon_Eusine_InsideResto_Battle
-    call EusineNameBox
-    msgbox gText_Celadon_Eusine_InsideResto_Speak_5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_Eusine_InsideResto_Speak_5 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     release
     end
 
 EventScript_Celadon_Eusine_InsideResto_PlayerDontWantBattle:
-    call EusineNameBox
-    msgbox gText_Celadon_Eusine_InsideResto_PlayerDontWantBattle MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_Eusine_InsideResto_PlayerDontWantBattle MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     release
     end
 
 EventScrit_Celadon_Eusine_InsideResto_Battle:
-    call EusineNameBox
-    trainerbattle1 0x3 0x9 0x0 gText_Celadon_Eusine_InsideResto_Speak_6 gText_Celadon_Eusine_InsideResto_Battle_Defeated EventScript_Celadon_Eusine_InsideResto_Battle_After
-    release
-    end
-
-EventScript_Celadon_Eusine_InsideResto_Battle_After:
-    call EusineNameBox
-    msgbox gText_Celadon_Eusine_InsideResto_Speak_7 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Celadon_Eusine_InsideResto_Speak_6 MSG_KEEPOPEN gText_Name_Eusine
+    trainerbattle3 0x3 0x9 0x0 gText_Celadon_Eusine_InsideResto_Battle_Defeated
+    npcmsg gText_Celadon_Eusine_InsideResto_Speak_7 MSG_KEEPOPEN gText_Name_Eusine
+    closemsg
     fadescreen 0x1
     hidesprite 0x6
     setflag FLAG_EUSINE_SPRITE_CELADON_RESTO
@@ -1172,17 +1139,17 @@ EventScript_Celadon_Norman:
     sound 0x15
     applymovement 3 Move_Celadon_Norman_1
     waitmovement 3
-    npcmsg gText_Celadon_Norman_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Celadon_Norman_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Celadon_Norman_Speak_2 MSG_YESNO 36 LEFT
+    npcmsg gText_Celadon_Norman_Speak_2 MSG_YESNO gText_Name_Norman
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Celadon_Norman_PlayerDontWantToBattle
     closemsg
     trainerbattle3 0x3 84 0x0 gText_Celadon_Norman_Defeat
-    npcmsg gText_Celadon_Norman_Speak_3 MSG_KEEPOPEN 36 LEFT
+    npcmsg gText_Celadon_Norman_Speak_3 MSG_KEEPOPEN gText_Name_Norman
     closemsg
     giveitem ITEM_SILK_SCARF 0x1 MSG_OBTAIN
-    npcmsg gText_Celadon_Norman_Speak_4 MSG_KEEPOPEN 36 LEFT
+    npcmsg gText_Celadon_Norman_Speak_4 MSG_KEEPOPEN gText_Name_Norman
     closemsg
     fadescreen 0x1
     hidesprite 3
@@ -1192,7 +1159,7 @@ EventScript_Celadon_Norman:
     end
 
 EventScript_Celadon_Norman_PlayerDontWantToBattle:
-    npcmsg gText_Celadon_Norman_PlayerDontWantToBattle MSG_KEEPOPEN 36 LEFT
+    npcmsg gText_Celadon_Norman_PlayerDontWantToBattle MSG_KEEPOPEN gText_Name_Norman
     spriteface 3, DOWN
     closemsg
     release
@@ -1230,15 +1197,15 @@ EventScript_RocketHQ_RocketGang:
     applymovement JESSIE Move_RocketHQ_RocketGang_Jessie_1
     waitmovement JESSIE
     pause 30
-    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
-    npcmsg gText_RocketHQ_RocketGang_James_Speak_1 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_1 MSG_KEEPOPEN gText_Name_James
     closemsg
     pause 30
     sound 0x15
     applymovement MEOWTH Move_RocketHQ_RocketGang_Meowth_1
     waitmovement MEOWTH
-    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     applymovement JESSIE Move_RocketHQ_RocketGang_Jessie_2
     applymovement JAMES Move_RocketHQ_RocketGang_James_1
@@ -1253,17 +1220,17 @@ EventScript_RocketHQ_RocketGang:
     applymovement MEOWTH Move_RocketHQ_RocketGang_Meowth_2
     waitmovement MEOWTH
     pause 30
-    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
-    npcmsg gText_RocketHQ_RocketGang_James_Speak_2 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_2 MSG_KEEPOPEN gText_Name_James
     closemsg
-    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     setvar VAR_FURTHER_TRAINER_BATTLES 0x2
     trainerbattle3 0x3 10 0x0 gText_RocketHQ_RocketGang_Defeat
-    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
-    npcmsg gText_RocketHQ_RocketGang_James_Speak_3 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_3 MSG_KEEPOPEN gText_Name_James
     closemsg
     pause 30
     sound 0x15
@@ -1271,9 +1238,9 @@ EventScript_RocketHQ_RocketGang:
     waitmovement JAMES
     spriteface JESSIE DOWN
     spriteface MEOWTH UP
-    npcmsg gText_RocketHQ_RocketGang_James_Speak_4 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_RocketHQ_RocketGang_James_Speak_4 MSG_KEEPOPEN gText_Name_James
     closemsg
-    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     fadescreen 0x1
     hidesprite JESSIE
@@ -1377,42 +1344,3 @@ Move_RocketHQ_RocketGang_Camera_2:
 Move_RocketHQ_RocketGang_Camera_3:
     .byte walk_right
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Celadon NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-UnknownNameBox:
-    setvar 0x8000 0
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-ErikaNameBox:
-    setvar 0x8000 14
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-GiovanniNameBox:
-    setvar 0x8000 18
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-ArianaNameBox:
-    setvar 0x8000 25
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-EusineNameBox:
-    setvar 0x8000 28
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

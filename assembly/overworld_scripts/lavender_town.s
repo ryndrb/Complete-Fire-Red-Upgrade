@@ -135,7 +135,7 @@ EventScript_PokeTower_TopFloor_RocketGang:
     compare VAR_ROCKET_GANG_ENCOUNTER 0x7
     if greaterorequal _goto EventScript_PokeTower_TopFloor_MrFuji
     pause 30
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 30
     sound 0x15
@@ -153,57 +153,57 @@ EventScript_PokeTower_TopFloor_RocketGang:
     pause 15
     fadescreen 0x0
     playsong 0x184 0x0
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
-    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_1 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_1 MSG_KEEPOPEN gText_Name_James
     closemsg
     pause 15
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     pause 30
     spriteface JESSIE_TOWER_TOP UP
     spriteface MEOWTH_TOWER_TOP UP
     spriteface JAMES_TOWER_TOP UP
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 15
     sound 0x15
     applymovement JAMES_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_James_1
     waitmovement JAMES_TOWER_TOP
-    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_2 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_2 MSG_KEEPOPEN gText_Name_James
     closemsg
     applymovement MEOWTH_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Meowth_1
     waitmovement MEOWTH_TOWER_TOP
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     pause 15
     spriteface JESSIE_TOWER_TOP DOWN
     spriteface MEOWTH_TOWER_TOP DOWN
     spriteface JAMES_TOWER_TOP DOWN
     pause 15
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
-    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_3 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_3 MSG_KEEPOPEN gText_Name_James
     closemsg
     pause 15
     setvar VAR_FURTHER_TRAINER_BATTLES 0x3
     trainerbattle3 0x3 10 0x0 gText_PokeTower_TopFloor_RocketGang_Defeat
     playsong 0x184 0x0
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 15
     spriteface JESSIE_TOWER_TOP RIGHT
     spriteface MEOWTH_TOWER_TOP LEFT
     spriteface JAMES_TOWER_TOP LEFT
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
-    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_6 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_6 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 15
     spriteface JESSIE_TOWER_TOP DOWN
     spriteface MEOWTH_TOWER_TOP DOWN
     spriteface JAMES_TOWER_TOP DOWN
-    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_4 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_4 MSG_KEEPOPEN gText_Name_James
     applymovement JESSIE_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Jessie_1
     applymovement MEOWTH_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_Meowth_2
     applymovement JAMES_TOWER_TOP Move_PokeTower_TopFloor_RocketGang_James_2
@@ -332,16 +332,16 @@ EventScript_PokeTower_TopFloor_MrFuji:
     sound 0x15
     applymovement FUJI Move_PokeTower_TopFloor_MrFuji_1
     waitmovement FUJI
-    npcmsg gText_0x817A529 MSG_KEEPOPEN 8 LEFT
+    npcmsg gText_0x817A529 MSG_KEEPOPEN gText_Name_MrFuji
     closemsg
     pause 30
     spriteface FUJI UP
     pause 15
-    npcmsg gText_PokeTower_TopFloor_MrFuji_Speak_1 MSG_KEEPOPEN 8 LEFT
+    npcmsg gText_PokeTower_TopFloor_MrFuji_Speak_1 MSG_KEEPOPEN gText_Name_MrFuji
     closemsg
     pause 60
     spriteface FUJI DOWN
-    npcmsg gText_PokeTower_TopFloor_MrFuji_Speak_2 MSG_KEEPOPEN 8 LEFT
+    npcmsg gText_PokeTower_TopFloor_MrFuji_Speak_2 MSG_KEEPOPEN gText_Name_MrFuji
     closemsg
     pause 30
     warpmuted 0x8 0x2 0xFF 0x4 0x7
@@ -361,7 +361,7 @@ Move_PokeTower_TopFloor_MrFuji_1:
 EventScript_PokeTower_1stFloor_May:
     lock
     faceplayer
-    npcmsg gText_PokeTower_1stFloor_May_Speak_13 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_13 MSG_KEEPOPEN gText_Name_May
     closemsg
     release
     end
@@ -390,7 +390,7 @@ EventScript_PokeTower_1stFloor_Rival:
     spriteface PLAYER UP
     applymovement PLAYER Move_PokeTower_1stFloor_Player_1
     waitmovement PLAYER
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_1 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_1 MSG_KEEPOPEN gText_Name_Rival
     closemsg
     pause 30
     sound 0x15
@@ -408,48 +408,49 @@ EventScript_PokeTower_1stFloor_Rival:
     waitmovement MAY_TOWER_1
     spriteface RIVAL_TOWER_1 RIGHT
     spriteface PLAYER RIGHT
-    npcmsg gText_PokeTower_1stFloor_May_Speak_1 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_1 MSG_KEEPOPEN gText_Name_May
     closemsg
     spriteface MAY_TOWER_1 UP
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_2 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_2 MSG_KEEPOPEN gText_Name_Rival
     closemsg
-    npcmsg gText_PokeTower_1stFloor_May_Speak_2 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_2 MSG_KEEPOPEN gText_Name_May
     closemsg
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_3 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_3 MSG_KEEPOPEN gText_Name_Rival
     closemsg
-    npcmsg gText_PokeTower_1stFloor_May_Speak_3 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_3 MSG_KEEPOPEN gText_Name_May
     closemsg
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_4 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_4 MSG_KEEPOPEN gText_Name_Rival
     closemsg
-    npcmsg gText_PokeTower_1stFloor_May_Speak_4 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_4 MSG_KEEPOPEN gText_Name_May
     closemsg
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_5 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_5 MSG_KEEPOPEN gText_Name_Rival
     closemsg
-    npcmsg gText_PokeTower_1stFloor_May_Speak_5 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_5 MSG_KEEPOPEN gText_Name_May
     closemsg
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_6 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_6 MSG_KEEPOPEN gText_Name_Rival
     closemsg
     setvar LASTTALKED 0x1
     setflag 0x908
     setvar 0x5011 64
     setvar 0x5012 0x3
     pause 30
+    compare 0x4031 0x2
     if 0x1 _call EventScript_PokeTower_1stFloor_Rival_Squirtle
     compare 0x4031 0x1
     if 0x1 _call EventScript_PokeTower_1stFloor_Rival_Bulbasaur
     compare 0x4031 0x0
     if 0x1 _call EventScript_PokeTower_1stFloor_Rival_Charmander
-    npcmsg gText_PokeTower_1stFloor_May_Speak_6 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_6 MSG_KEEPOPEN gText_Name_May
     closemsg
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_7 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_7 MSG_KEEPOPEN gText_Name_Rival
     closemsg
-    npcmsg gText_PokeTower_1stFloor_May_Speak_7 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_7 MSG_KEEPOPEN gText_Name_May
     closemsg
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_8 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_8 MSG_KEEPOPEN gText_Name_Rival
     closemsg
-    npcmsg gText_PokeTower_1stFloor_May_Speak_8 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_8 MSG_KEEPOPEN gText_Name_May
     closemsg
-    npcmsg gText_PokeTower_1stFloor_Rival_Speak_9 MSG_KEEPOPEN 1 LEFT
+    npcmsg gText_PokeTower_1stFloor_Rival_Speak_9 MSG_KEEPOPEN gText_Name_Rival
     closemsg
     applymovement RIVAL_TOWER_1 Move_PokeTower_1stFloor_Rival_3
     applymovement PLAYER Move_PokeTower_1stFloor_Player_2
@@ -462,20 +463,20 @@ EventScript_PokeTower_1stFloor_Rival:
     pause 30
     spriteface PLAYER RIGHT
     spriteface MAY_TOWER_1 LEFT
-    npcmsg gText_PokeTower_1stFloor_May_Speak_9 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_9 MSG_KEEPOPEN gText_Name_May
     closemsg
     sound 0x15
     applymovement MAY_TOWER_1 Move_PokeTower_1stFloor_May_4
     waitmovement RIVAL_TOWER_1
-    npcmsg gText_PokeTower_1stFloor_May_Speak_10 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_10 MSG_KEEPOPEN gText_Name_May
     closemsg
     pause 30
     spriteface MAY_TOWER_1 DOWN
-    npcmsg gText_PokeTower_1stFloor_May_Speak_11 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_11 MSG_KEEPOPEN gText_Name_May
     closemsg
     pause 15
     spriteface MAY_TOWER_1 LEFT
-    npcmsg gText_PokeTower_1stFloor_May_Speak_12 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_1stFloor_May_Speak_12 MSG_KEEPOPEN gText_Name_May
     closemsg
     setvar 0x405D 0x1
     release
@@ -567,9 +568,8 @@ EventScript_Lavender_MrFuji:
     faceplayer
     checkflag 0x23D
     if 0x1 _goto EventScript_0x816B196
-    call MrFujiNameBox
-    msgbox gText_Lavender_MrFujiSpeak1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Lavender_MrFujiSpeak1 MSG_KEEPOPEN gText_Name_MrFuji
+    closemsg
     checkitemspace 0x15E 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto EventScript_0x816B1A0
@@ -577,23 +577,20 @@ EventScript_Lavender_MrFuji:
     additem 0x15E 0x1
     loadpointer 0x0 0x81937BD
     giveitemwithfanfare 0x15E 0x1 0x13E
-    call MrFujiNameBox
-    msgbox gText_Lavender_MrFujiSpeak2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Lavender_MrFujiSpeak2 MSG_KEEPOPEN gText_Name_MrFuji
+    closemsg
     release
     end
 
 EventScript_0x816B196:
-    call MrFujiNameBox
-    msgbox gText_Lavender_MrFujiSpeak3 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Lavender_MrFujiSpeak3 MSG_KEEPOPEN gText_Name_MrFuji
+    closemsg
     release
     end
 
 EventScript_0x816B1A0:
-    call MrFujiNameBox
-    msgbox gText_Lavender_MrFujiSpeak4 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Lavender_MrFujiSpeak4 MSG_KEEPOPEN gText_Name_MrFuji
+    closemsg
     release
     end
 
@@ -652,23 +649,23 @@ EventScript_Lavender_Flannery:
     sound 0x15
     applymovement 8 Move_Lavender_Flannery_1
     waitmovement 8
-    npcmsg gText_Lavender_Flannery_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Lavender_Flannery_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Lavender_Flannery_Speak_2 MSG_KEEPOPEN 35 LEFT
+    npcmsg gText_Lavender_Flannery_Speak_2 MSG_KEEPOPEN gText_Name_Flannery
     closemsg
     applymovement 8 Move_Lavender_Flannery_2
     waitmovement 8
-    npcmsg gText_Lavender_Flannery_Speak_3 MSG_YESNO 35 LEFT
+    npcmsg gText_Lavender_Flannery_Speak_3 MSG_YESNO gText_Name_Flannery
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Lavender_Flannery_PlayerDontWantToBattle
     closemsg
     trainerbattle3 0x3 83 0x0 gText_Lavender_Flannery_Defeat
-    npcmsg gText_Lavender_Flannery_Speak_4 MSG_KEEPOPEN 35 LEFT
+    npcmsg gText_Lavender_Flannery_Speak_4 MSG_KEEPOPEN gText_Name_Flannery
     closemsg
     giveitem ITEM_CHARCOAL 0x1 MSG_OBTAIN
-    npcmsg gText_Lavender_Flannery_Speak_5 MSG_KEEPOPEN 35 LEFT
+    npcmsg gText_Lavender_Flannery_Speak_5 MSG_KEEPOPEN gText_Name_Flannery
     closemsg
-    npcmsg gText_Lavender_Flannery_Speak_6 MSG_KEEPOPEN 35 LEFT
+    npcmsg gText_Lavender_Flannery_Speak_6 MSG_KEEPOPEN gText_Name_Flannery
     closemsg
     fadescreen 0x1
     hidesprite 8
@@ -678,7 +675,7 @@ EventScript_Lavender_Flannery:
     end
 
 EventScript_Lavender_Flannery_PlayerDontWantToBattle:
-    npcmsg gText_Lavender_Flannery_PlayerDontWantToBattle MSG_KEEPOPEN 35 LEFT
+    npcmsg gText_Lavender_Flannery_PlayerDontWantToBattle MSG_KEEPOPEN gText_Name_Flannery
     closemsg
     spriteface 8, UP
     release
@@ -734,7 +731,7 @@ EventScript_Lavender_Cubone:
     showsprite MAY
     applymovement MAY Move_Lavender_May_1
     waitmovement MAY
-    npcmsg gText_Lavender_Cubone_May_Speak_1 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_Lavender_Cubone_May_Speak_1 MSG_KEEPOPEN gText_Name_May
     closemsg
     applymovement MAY Move_Lavender_May_2
     waitmovement MAY
@@ -893,43 +890,43 @@ EventScript_Lavender_RocketGang:
     special 0x114
     pause 30
     playsong 0x184 0x1
-    npcmsg gText_Lavender_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     sound 0x15
     applymovement JESSIE Move_Lavender_RocketGang_Jessie_1
     waitmovement JESSIE
-    npcmsg gText_Lavender_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 30
     applymovement MEOWTH Move_Lavender_RocketGang_Meowth_2
     waitmovement MEOWTH
-    npcmsg gText_Lavender_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_Lavender_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     pause 30
     spriteface JAMES RIGHT
     spriteface MEOWTH RIGHT
-    npcmsg gText_Lavender_RocketGang_James_Speak_1 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Lavender_RocketGang_James_Speak_1 MSG_KEEPOPEN gText_Name_James
     closemsg
-    npcmsg gText_Lavender_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 30
     spriteface JAMES LEFT
     spriteface MEOWTH DOWN
-    npcmsg gText_Lavender_RocketGang_James_Speak_2 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Lavender_RocketGang_James_Speak_2 MSG_KEEPOPEN gText_Name_James
     closemsg
-    npcmsg gText_Lavender_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_Lavender_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     pause 30
-    npcmsg gText_Lavender_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 30
     sound 0x15
     applymovement JESSIE Move_Lavender_RocketGang_Jessie_2
     waitmovement JESSIE
-    npcmsg gText_Lavender_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Lavender_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     pause 30
-    npcmsg gText_Lavender_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_Lavender_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     applymovement JESSIE Move_Lavender_RocketGang_Jessie_3
     applymovement JAMES Move_Lavender_RocketGang_James_1
@@ -1049,24 +1046,24 @@ EventScript_PokeTower_Cubone:
     applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_1
     waitmovement MAY_TOWER_2
     spriteface MAY_TOWER_2 DOWN
-    npcmsg gText_PokeTower_Cubone_May_Speak_1 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_Cubone_May_Speak_1 MSG_KEEPOPEN gText_Name_May
     closemsg
     applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_2
     waitmovement MAY_TOWER_2
-    npcmsg gText_PokeTower_Cubone_May_Speak_2 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_Cubone_May_Speak_2 MSG_KEEPOPEN gText_Name_May
     closemsg
     pause 30
     sound 0x15
     applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_3
     waitmovement MAY_TOWER_2
-    npcmsg gText_PokeTower_Cubone_May_Speak_3 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_Cubone_May_Speak_3 MSG_KEEPOPEN gText_Name_May
     closemsg
     pause 30
     spriteface PLAYER UP
-    npcmsg gText_PokeTower_Cubone_May_Speak_4 MSG_KEEPOPEN 2 LEFT
+    npcmsg gText_PokeTower_Cubone_May_Speak_4 MSG_KEEPOPEN gText_Name_May
     closemsg
-    spriteface MAY_TOWER_2 LEFT
-    npcmsg gText_PokeTower_Cubone_May_Speak_5 MSG_KEEPOPEN 2 LEFT
+    spriteface MAY_TOWER_1 LEFT
+    npcmsg gText_PokeTower_Cubone_May_Speak_5 MSG_KEEPOPEN gText_Name_May
     applymovement MAY_TOWER_2 Move_PokeTower_Cubone_May_4
     waitmovement MAY_TOWER_2
     sound 0x9
@@ -1170,24 +1167,3 @@ Move_PokeTower_Cubone_Cubone_3:
     .byte pause_long
     .byte walk_left
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Pokemon Tower NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-RivalNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-MrFujiNameBox:
-    setvar 0x8000 8
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

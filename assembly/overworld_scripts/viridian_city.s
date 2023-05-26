@@ -15,7 +15,7 @@ EventScript_GymLeaderGiovanni:
     trainerbattle1 0x1 0x15E 0x0 0x818F352 0x818F43F EventScript_0x8169F04
     checkflag 0x298
     if 0x0 _goto 0x8169F2F
-    npcmsg 0x818F4A2 MSG_KEEPOPEN 18 LEFT
+    npcmsg 0x818F4A2 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     fadescreen 0x1
     hidesprite 0x8
@@ -37,14 +37,14 @@ EventScript_0x8169F04:
     end
 
 EventScript_0x8169F2F:
-    npcmsg 0x818F586 MSG_KEEPOPEN 18 LEFT
+    npcmsg 0x818F586 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     checkitemspace 0x13A 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x8169F70
     giveitem_msg 0x818F675 ITEM_TM26
     setflag 0x298
-    npcmsg 0x818F695 MSG_KEEPOPEN 18 LEFT
+    npcmsg 0x818F695 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     release
     end
@@ -262,37 +262,37 @@ EventScript_Viridian_RocketGang:
     if equal _call EventScript_Viridian_RocketGang_Camera_Right
     special 0x114
     playsong 0x184 0x0
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Viridian_RocketGang_James_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     applymovement 14 Move_Viridian_RocketGang_James_1
     waitmovement 14
-    npcmsg gText_Viridian_RocketGang_James_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     applymovement 13 Move_Viridian_RocketGang_Jessie_1
     waitmovement 13
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Viridian_RocketGang_James_Speak_3 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_3 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     applymovement 13 Move_Viridian_RocketGang_Jessie_2
     waitmovement 13
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Viridian_RocketGang_James_Speak_4 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_4 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     applymovement 15 Move_Viridian_RocketGang_Meowth_1
     waitmovement 15    
-    npcmsg gText_Viridian_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Viridian_RocketGang_James_Speak_5 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_5 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Viridian_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Viridian_RocketGang_James_Speak_6 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_6 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     pause 30
     goto EventScript_Viridian_RocketGang_NoticePlayer
@@ -308,81 +308,81 @@ EventScript_Viridian_RocketGang_NoticePlayer:
     if equal _call EventScript_Viridian_RocketGang_Player_Right
     waitmovement 15
     pause 15
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     pause 15
     spriteface 13, RIGHT
     spriteface 14, LEFT
     spriteface 15, LEFT
-    npcmsg gText_Viridian_RocketGang_James_Speak_7 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_7 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     pause 15
     spriteface 13, DOWN
     spriteface 14, DOWN
     spriteface 15, DOWN
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_6 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_6 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     applymovement 13 Move_Viridian_RocketGang_Jessie_4
     waitmovement 13
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_7 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_7 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     applymovement 14 Move_Viridian_RocketGang_James_3
     waitmovement 14
-    npcmsg gText_Viridian_RocketGang_James_Speak_8 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_8 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     pause 30
     spriteface 13, LEFT
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_8 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_8 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     spriteface 14, RIGHT
-    npcmsg gText_Viridian_RocketGang_James_Speak_9 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_9 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     spriteface 13, UP
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_9 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_9 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     spriteface 14, UP
-    npcmsg gText_Viridian_RocketGang_James_Speak_10 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_10 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     sound 0x79
     spriteface 13, DOWN
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_10 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_10 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
     sound 0x79
     spriteface 14, DOWN
-    npcmsg gText_Viridian_RocketGang_James_Speak_11 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_11 MSG_KEEPOPEN gText_Name_James
     closemsg
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_11 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_11 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
-    npcmsg gText_Viridian_RocketGang_James_Speak_12 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_12 MSG_KEEPOPEN gText_Name_James
     closemsg
     applymovement 15 Move_Viridian_RocketGang_Meowth_3
     waitmovement 15
-    npcmsg gText_Viridian_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
     sound 0x15
     applymovement 14 Move_Viridian_RocketGang_James_4
     waitmovement 14
-    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN gText_Name_James
     closemsg
     pause 30
     spriteface 13, RIGHT
     spriteface 14, LEFT
-    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN gText_Name_James
     closemsg
     spriteface 14, RIGHT
     spriteface 15, LEFT
-    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_13 MSG_KEEPOPEN gText_Name_James
     closemsg
     spriteface 13, DOWN
     spriteface 14, DOWN
     spriteface 15, DOWN
-    npcmsg gText_Viridian_RocketGang_James_Speak_14 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_14 MSG_KEEPOPEN gText_Name_James
     closemsg
-    npcmsg gText_Viridian_RocketGang_Meowth_Speak_4 MSG_KEEPOPEN 31 LEFT
+    npcmsg gText_Viridian_RocketGang_Meowth_Speak_4 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
-    npcmsg gText_Viridian_RocketGang_Jessie_Speak_12 MSG_KEEPOPEN 29 LEFT
+    npcmsg gText_Viridian_RocketGang_Jessie_Speak_12 MSG_KEEPOPEN gText_Name_Jessie
     closemsg
-    npcmsg gText_Viridian_RocketGang_James_Speak_15 MSG_KEEPOPEN 30 LEFT
+    npcmsg gText_Viridian_RocketGang_James_Speak_15 MSG_KEEPOPEN gText_Name_James
     closemsg
     pause 30
     fadescreen 0x1

@@ -36,19 +36,16 @@ EventScript_0x81682BE:
     compare 0x4001 0x2
     if 0x1 _call EventScript_0x816835B
     pause 0x6
-    call RivalNameBox
-    msgbox gText_Route22_RivalSpeak1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Route22_RivalSpeak1 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     compare 0x4031 0x2
     if 0x1 _call EventScript_0x816836D
     compare 0x4031 0x1
     if 0x1 _call EventScript_0x816837C
     compare 0x4031 0x0
     if 0x1 _call EventScript_0x816838B
-    call RivalNameBox
-    msgbox gText_Route22_RivalSpeak2 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    closeonkeypress
+    npcmsg gText_Route22_RivalSpeak2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 0xA
     playsong 0x13C 0x0
     compare 0x4001 0x0
@@ -229,9 +226,8 @@ EventScript_0x16841F:
     if 0x1 _call EventScript_0x16849C
     compare 0x4001 0x2
     if 0x1 _call EventScript_0x1684A7
-    call RivalNameBox
-    msgbox gText_Route22_RivalSpeak3 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Route22_RivalSpeak3 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     setvar LASTTALKED 0x1
     compare 0x4031 0x2
     if 0x1 _call EventScript_0x1684B9
@@ -239,10 +235,8 @@ EventScript_0x16841F:
     if 0x1 _call EventScript_0x1684C4
     compare 0x4031 0x0
     if 0x1 _call EventScript_0x1684CF
-    call RivalNameBox
-    msgbox gText_Route22_RivalSpeak4 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    closeonkeypress
+    npcmsg gText_Route22_RivalSpeak4 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 0xA
     playsong 0x13C 0x0
     applymovement 0x1 EventScript_0x1684DA
@@ -321,12 +315,3 @@ EventScript_0x1683E3:
     .byte 0x1B
     .byte walk_up_onspot_fastest
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@
-@ Route 22 NameBox
-@@@@@@@@@@@@@@@@@@@@
-RivalNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

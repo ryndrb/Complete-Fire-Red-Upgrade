@@ -14,17 +14,17 @@ EventScript_Route20_Wallace:
     sound 0x15
     applymovement 14 Move_Route20_Wallace_1
     waitmovement 14
-    npcmsg gText_Route20_Wallace_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route20_Wallace_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Route20_Wallace_Speak_2 MSG_YESNO 40 LEFT
+    npcmsg gText_Route20_Wallace_Speak_2 MSG_YESNO gText_Name_Wallace
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Route20_Wallace_PlayerDontWantToBattle
     closemsg
     trainerbattle3 0x3 86 0x0 gText_Route20_Wallace_Defeat
-    npcmsg gText_Route20_Wallace_Speak_3 MSG_KEEPOPEN 40 LEFT
+    npcmsg gText_Route20_Wallace_Speak_3 MSG_KEEPOPEN gText_Name_Wallace
     closemsg
     giveitem ITEM_MYSTIC_WATER 0x1 MSG_OBTAIN
-    npcmsg gText_Route20_Wallace_Speak_4 MSG_KEEPOPEN 40 LEFT
+    npcmsg gText_Route20_Wallace_Speak_4 MSG_KEEPOPEN gText_Name_Wallace
     closemsg
     fadescreen 0x1
     hidesprite 14
@@ -34,7 +34,7 @@ EventScript_Route20_Wallace:
     end
 
 EventScript_Route20_Wallace_PlayerDontWantToBattle:
-    npcmsg gText_Route20_Wallace_PlayerDontWantToBattle MSG_KEEPOPEN 40 LEFT
+    npcmsg gText_Route20_Wallace_PlayerDontWantToBattle MSG_KEEPOPEN gText_Name_Wallace
     closemsg
     spriteface 14 RIGHT
     release

@@ -36,22 +36,19 @@ EventScript_League_Lorelei:
     goto EventScript_0x8162673
 
 EventScript_0x8162669:
-    call LoreleiNameBox
-    msgbox 0x81781B0 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81781B0 MSG_KEEPOPEN gText_Name_Lorelei
+    closemsg
     release
     end
 
 EventScript_0x8162641:
-    call LoreleiNameBox
-    msgbox 0x8177FA4 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8177FA4 MSG_KEEPOPEN gText_Name_Lorelei
+    closemsg
     return
 
 EventScript_0x816264A:
-    call LoreleiNameBox
-    msgbox 0x8178089 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8178089 MSG_KEEPOPEN gText_Name_Lorelei
+    closemsg
     return
 
 EventScript_0x8162653:
@@ -65,9 +62,8 @@ EventScript_0x816265E:
 EventScript_0x8162673:
     setflag 0x4B8
     call EventScript_0x81A7506
-    call LoreleiNameBox
-    msgbox 0x81781B0 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81781B0 MSG_KEEPOPEN gText_Name_Lorelei
+    closemsg
     release
     end
 
@@ -102,10 +98,8 @@ EventScript_League_Bruno:
     goto EventScript_0x81627B0
 
 EventScript_0x8162779:
-    call BrunoNameBox
-    msgbox 0x8178420 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg 0x8178420 MSG_KEEPOPEN gText_Name_Bruno
+    closemsg
     compare PLAYERFACING 0x2
     if 0x1 _call 0x81627FA
     compare PLAYERFACING 0x1
@@ -118,17 +112,13 @@ EventScript_0x8162779:
     end
 
 EventScript_0x8162751:
-    call BrunoNameBox
-    msgbox 0x817820F MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg 0x817820F MSG_KEEPOPEN gText_Name_Bruno
+    closemsg
     return
 
 EventScript_0x816275A:
-    call BrunoNameBox
-    msgbox 0x817830C MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg 0x817830C MSG_KEEPOPEN gText_Name_Bruno
+    closemsg
     return
 
 EventScript_0x8162763:
@@ -142,10 +132,8 @@ EventScript_0x816276E:
 EventScript_0x81627B0:
     setflag 0x4B9
     call EventScript_0x81A7506
-    call BrunoNameBox
-    msgbox 0x8178420 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg 0x8178420 MSG_KEEPOPEN gText_Name_Bruno
+    closemsg
     compare PLAYERFACING 0x2
     if 0x1 _call EventScript_0x81627FA
     compare PLAYERFACING 0x1
@@ -206,23 +194,20 @@ EventScript_League_Agatha:
     goto EventScript_0x816291B
 
 EventScript_0x8162911:
-    call AgathaNameBox
-    msgbox 0x8178700 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8178700 MSG_KEEPOPEN gText_Name_Agatha
+    closemsg
     special 0x0
     release
     end
 
 EventScript_0x81628E9:
-    call AgathaNameBox
-    msgbox 0x817844D MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x817844D MSG_KEEPOPEN gText_Name_Agatha
+    closemsg
     return
 
 EventScript_0x81628F2:
-    call AgathaNameBox
-    msgbox 0x817858D MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x817858D MSG_KEEPOPEN gText_Name_Agatha
+    closemsg
     return
 
 EventScript_0x81628FB:
@@ -236,9 +221,8 @@ EventScript_0x8162906:
 EventScript_0x816291B:
     setflag 0x4BA
     call EventScript_0x81A7506
-    call AgathaNameBox
-    msgbox 0x8178700 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8178700 MSG_KEEPOPEN gText_Name_Agatha
+    closemsg
     special 0x0
     release
     end
@@ -276,22 +260,19 @@ EventScript_League_Lance:
     end
 
 EventScript_0x8162AA1:
-    call LanceNameBox
-    msgbox 0x8178A52 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8178A52 MSG_KEEPOPEN gText_Name_Lance
+    closemsg
     release
     end
 
 EventScript_0x8162A79:
-    call LanceNameBox
-    msgbox 0x8178764 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8178764 MSG_KEEPOPEN gText_Name_Lance
+    closemsg
     return
 
 EventScript_0x8162A82:
-    call LanceNameBox
-    msgbox 0x81788BD MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81788BD MSG_KEEPOPEN gText_Name_Lance
+    closemsg
     return
 
 EventScript_0x8162A8B:
@@ -307,10 +288,8 @@ EventScript_0x8162AAB:
     special 0xAA
     setflag 0x4BB
     call EventScript_0x81A7563
-    call LanceNameBox
-    msgbox gText_League_LanceSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_LanceSpeak1 MSG_KEEPOPEN gText_Name_Lance
+    closemsg
     fadescreen 0x1
     fanfare 0x0100
 	special 0x0
@@ -319,25 +298,20 @@ EventScript_0x8162AAB:
     movesprite PLAYER 0x6 0x9
     spriteface PLAYER, UP
     fadescreen 0x0
-    call LanceNameBox
-    msgbox gText_League_LanceSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_LanceSpeak2 MSG_KEEPOPEN gText_Name_Lance
+    closemsg
     playsong 0x1A7
     applymovement 2 Move_League_May1
     waitmovement 2
     applymovement PLAYER Move_League_Player1
     waitmovement PLAYER
-    call MayNameBox
-    msgbox gText_League_MaySpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_MaySpeak1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     sound 0x15
     applymovement 2 Move_League_May2
     waitmovement 2
-    msgbox gText_League_MaySpeak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_MaySpeak3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     fadedefaultbgm
     release
     end
@@ -388,10 +362,8 @@ Move_League_May2:
 EventScript_League_May:
     lock
     faceplayer
-    call MayNameBox
-    msgbox gText_League_MaySpeak4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_MaySpeak4 MSG_KEEPOPEN gText_Name_May
+    closemsg
     release
     end
 
@@ -451,16 +423,12 @@ EventScript_League_0x162B76:
     clearflag 0x5
     setflag 0x4BC
     setflag 0x4
-    call RivalNameBox
-    msgbox gText_League_RivalSpeak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_RivalSpeak3 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     playsong 0x159 0x0
     showsprite 0x2
-    call OakNameBox
-    msgbox gText_League_OakSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_OakSpeak1 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement PLAYER 0x8162D1F
     applymovement 0x1 0x8162D41
     applymovement 0x2 0x8162D2A
@@ -468,24 +436,18 @@ EventScript_League_0x162B76:
     pause 0x19
     special2 LASTRESULT 0x162
     bufferpokemon 0x0 LASTRESULT
-    call OakNameBox
-    msgbox gText_League_OakSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_OakSpeak2 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement 0x2 0x81A75EB
     applymovement 0x1 0x81A75E7
     waitmovement 0x0
-    call OakNameBox
-    msgbox gText_League_OakSpeak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_OakSpeak3 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement 0x2 0x81A75ED
     waitmovement 0x0
     pause 0x14
-    call OakNameBox
-    msgbox gText_League_OakSpeak4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_OakSpeak4 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     pause 0xD
     applymovement 0x2 0x8162D37
     applymovement PLAYER 0x8162D12
@@ -498,17 +460,13 @@ EventScript_League_0x162B76:
     end
 
 EventScript_0x8162CB3:
-    call RivalNameBox
-    msgbox gText_League_RivalSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_RivalSpeak1 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     return
 
 EventScript_0x8162CBC:
-    call RivalNameBox
-    msgbox gText_League_RivalSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_RivalSpeak2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     return
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -535,10 +493,8 @@ EventScript_League_HallOfFameRoom:
     applymovement PLAYER 0x81A75EB
     waitmovement 0x0
     pause 0x12
-    call OakNameBox
-    msgbox gText_League_OakSpeak5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_League_OakSpeak5 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement 0x1 0x81A75E9
     applymovement PLAYER 0x81A75E9
     waitmovement 0x0
@@ -574,49 +530,4 @@ EventScript_0x81A7506:
 EventScript_0x81A7538:
     setmaptile 0x6 0x1 0x28E 0x1
     setmaptile 0x6 0x2 0x296 0x0
-    return
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Pokemon League NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-LanceNameBox:
-    setvar 0x8000 22
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-RivalNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-OakNameBox:
-    setvar 0x8000 4
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-AgathaNameBox:
-    setvar 0x8000 21
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-BrunoNameBox:
-    setvar 0x8000 20
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-LoreleiNameBox:
-    setvar 0x8000 19
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
     return

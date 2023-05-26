@@ -12,14 +12,11 @@ EventScript_GymLeaderMisty:
     setvar 0x8004 0x3
     setvar 0x8005 0x2
     special 0x174
-    call MistyNameBox
     trainerbattle1 0x1 0x19F 0x0 0x81921EF 0x819242D EventScript_0x816AAD3
-    callasm RemoveNameBox
     checkflag 0x297
     if 0x0 _goto EventScript_0x816AAF9
-    call MistyNameBox
-    msgbox 0x81922BF MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81922BF MSG_KEEPOPEN gText_Name_Misty
+    closemsg
     release
     end
 
@@ -36,17 +33,15 @@ EventScript_0x816AAD3:
     end
 
 EventScript_0x816AAF9:
-    call MistyNameBox
-    msgbox 0x81922F7 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81922F7 MSG_KEEPOPEN gText_Name_Misty
+    closemsg
     checkitemspace 0x123 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816AB3A
     giveitem_msg 0x81923F1 ITEM_TM03
     setflag 0x297
-    call MistyNameBox
-    msgbox 0x81922BF MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81922BF MSG_KEEPOPEN gText_Name_Misty
+    closemsg
     release
     end
 
@@ -206,9 +201,8 @@ EventScript_Brendan_Uncle_AfterVermillion:
 EventScript_Cerulean_Brendan:
     lock
     faceplayer
-    call BrendanNameBox
-    msgbox gText_Cerulean_BrendanSpeaks1 MSG_FACE
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_BrendanSpeaks1 MSG_KEEPOPEN gText_Name_Misty
+    closemsg
     release
     end
 
@@ -223,19 +217,15 @@ EventsScript_Cerulean_May:
     if SET _goto EventScript_Cerulean_PlayerDefeatMisty
     checkflag 0x29B
     if SET _goto EventScript_Cerulean_PlayerMetRival
-    call MayNameBox
-    msgbox gText_Cerulean_May_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_May_Speak_1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     fadedefaultbgm
     release
     end
 
 EventScript_Cerulean_PlayerMetRival:
-    call MayNameBox
-    msgbox gText_Cerulean_May_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_May_Speak_2 MSG_KEEPOPEN gText_Name_May
+    closemsg
     fadedefaultbgm
     release
     end
@@ -245,10 +235,8 @@ EventScript_Cerulean_PlayerDefeatMisty:
     sound 0x15
     applymovement 14 Move_Cerulean_May_1
     waitmovement 14
-    call MayNameBox
-    msgbox gText_Cerulean_May_Speak_3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_May_Speak_3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     fadescreen 0x1
     hidesprite 14
     setflag FLAG_MAY_CERULEAN_SPRITE
@@ -288,9 +276,8 @@ EventScript_0x81664CC:
     showsprite 0x8
     applymovement 0x8 0x81665D3
     waitmovement 0x0
-    call RivalNameBox
-    msgbox gText_Cerulean_RivalSpeaks1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_RivalSpeaks1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     setvar LASTTALKED 0x8
     compare 0x4031 0x2
     if 0x1 _call 0x8166582
@@ -301,10 +288,8 @@ EventScript_0x81664CC:
     setvar 0x8004 0xD
     setvar 0x8005 0x0
     special 0x173
-    call RivalNameBox
-    msgbox gText_Cerulean_RivalSpeaks2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_RivalSpeaks2 MSG_KEEPOPEN gText_Name_May
+    closemsg
     playsong 0x13C 0x0
     compare 0x4001 0x0
     if 0x1 _call 0x81665A3
@@ -312,16 +297,13 @@ EventScript_0x81664CC:
     if 0x1 _call 0x81665A3
     compare 0x4001 0x2
     if 0x1 _call 0x81665B5
-    call RivalNameBox
-    msgbox gText_Cerulean_RivalSpeaks3 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_RivalSpeaks3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     setvar 0x4052 0x1
     setflag 0x29B
     giveitem 0x16B 0x1 MSG_OBTAIN
-    call RivalNameBox
-    msgbox gText_Cerulean_RivalSpeaks4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Cerulean_RivalSpeaks4 MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 0x8 0x81665FB
     waitmovement 0x0
     fadedefault
@@ -398,30 +380,3 @@ Move_Ceruleann_TeachDazzlingGleam_Clefairy:
     .byte jump_onspot_down
     .byte jump_onspot_down
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Cerulean NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-RivalNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-MistyNameBox:
-    setvar 0x8000 12
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-BrendanNameBox:
-    setvar 0x8000 3
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

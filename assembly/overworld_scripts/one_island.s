@@ -32,10 +32,8 @@ EventScript_0x81711DA:
     sound 0x15
     applymovement 0x2 0x81A75DB
     waitmovement 0x0
-    call BillNameBox
-    msgbox gText_Oneisland_PokeCenter_Event_Bill_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Oneisland_PokeCenter_Event_Bill_Speak_1 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     compare 0x4001 0x1
     if 0x1 _call EventScript_0x81712E4
     compare 0x4001 0x2
@@ -45,35 +43,28 @@ EventScript_0x81711DA:
     compare 0x4001 0x4
     if 0x1 _call EventScript_0x8171305
     pause 0xA
-    call BillNameBox
-    msgbox gText_Oneisland_PokeCenter_Event_Bill_Speak_2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Oneisland_PokeCenter_Event_Bill_Speak_2 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement PLAYER 0x81A75ED
     waitmovement 0x0
-    call CelioNameBox
-    msgbox gText_Oneisland_PokeCenter_Event_Celio_Speak_1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Oneisland_PokeCenter_Event_Celio_Speak_1 MSG_KEEPOPEN gText_Name_Celio
+    closemsg
     applymovement 0x2 0x81A75ED
     waitmovement 0x0
     applymovement 0x3 0x81A75E9
     waitmovement 0x0
-    call BillNameBox
-    msgbox gText_Oneisland_PokeCenter_Event_Bill_Speak_3 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    call CelioNameBox
-    msgbox gText_Oneisland_PokeCenter_Event_Celio_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Oneisland_PokeCenter_Event_Bill_Speak_3 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
+    npcmsg gText_Oneisland_PokeCenter_Event_Celio_Speak_2 MSG_KEEPOPEN gText_Name_Celio
+    closemsg
     applymovement 0x2 0x81A75E7
     waitmovement 0x0
     pause 0xA
     applymovement PLAYER 0x81A75EB
     waitmovement 0x0
     pause 0xF
-    call BillNameBox
-    msgbox gText_Oneisland_PokeCenter_Event_Bill_Speak_4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Oneisland_PokeCenter_Event_Bill_Speak_4 MSG_KEEPOPEN gText_Name_Bill
+    closemsg
     applymovement 0x2 0x81A75ED
     waitmovement 0x0
     pause 0xF
@@ -81,10 +72,8 @@ EventScript_0x81711DA:
     waitmovement 0x0
     applymovement PLAYER 0x81A75ED
     waitmovement 0x0
-    call CelioNameBox
-    msgbox gText_Oneisland_PokeCenter_Event_Celio_Speak_3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Oneisland_PokeCenter_Event_Celio_Speak_3 MSG_KEEPOPEN gText_Name_Celio
+    closemsg
     pause 0x19
     applymovement PLAYER 0x8171326
     applymovement 0x2 0x817132D
@@ -135,18 +124,3 @@ EventScript_0x81A90DA:
 EventScript_0x81A7AE0:
     release
     end
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Cinnabar NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-BillNameBox:
-    setvar 0x8000 7
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-CelioNameBox:
-    setvar 0x8000 27
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

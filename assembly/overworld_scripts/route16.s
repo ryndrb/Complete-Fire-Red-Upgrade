@@ -74,25 +74,25 @@ Move_Route16_Lady_1:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_Route16_Winona:
     lock
-    npcmsg gText_Route16_Winona_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route16_Winona_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
     pause 30
     sound 0x15
     applymovement 4 Move_Route16_Winona_1
     waitmovement 4
-    npcmsg gText_Route16_Winona_Speak_2 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Route16_Winona_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Route16_Winona_Speak_3 MSG_KEEPOPEN 37 LEFT
+    npcmsg gText_Route16_Winona_Speak_3 MSG_KEEPOPEN gText_Name_Winona
     closemsg
-    npcmsg gText_Route16_Winona_Speak_4 MSG_YESNO 37 LEFT
+    npcmsg gText_Route16_Winona_Speak_4 MSG_YESNO gText_Name_Winona
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Route16_Winona_PlayerDontWantToBattle
     closemsg
     trainerbattle3 0x3 85 0x0 gText_Route16_Winona_Defeat
-    npcmsg gText_Route16_Winona_Speak_5 MSG_KEEPOPEN 37 LEFT
+    npcmsg gText_Route16_Winona_Speak_5 MSG_KEEPOPEN gText_Name_Winona
     closemsg
     giveitem ITEM_SHARP_BEAK 0x1 MSG_OBTAIN
-    npcmsg gText_Route16_Winona_Speak_6 MSG_KEEPOPEN 37 LEFT
+    npcmsg gText_Route16_Winona_Speak_6 MSG_KEEPOPEN gText_Name_Winona
     closemsg
     fadescreen 0x1
     hidesprite 4
@@ -102,7 +102,7 @@ EventScript_Route16_Winona:
     end
 
 EventScript_Route16_Winona_PlayerDontWantToBattle:
-    npcmsg gText_Route16_Winona_PlayerDontWantToBattle MSG_KEEPOPEN 37 LEFT
+    npcmsg gText_Route16_Winona_PlayerDontWantToBattle MSG_KEEPOPEN gText_Name_Winona
     closemsg
     spriteface 4, UP
     release

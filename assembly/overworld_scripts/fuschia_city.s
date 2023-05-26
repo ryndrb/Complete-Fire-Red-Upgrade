@@ -12,13 +12,11 @@ EventScript_GymLeaderKoga:
     setvar 0x8004 0x6
     setvar 0x8005 0x2
     special 0x174
-    call KogaNameBox
     trainerbattle1 0x1 0x1A2 0x0 0x819832E 0x8198444 EventScript_0x816D580
     checkflag 0x259
     if 0x0 _goto 0x816D5A6
-    call KogaNameBox
-    msgbox 0x8198481 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x8198481 MSG_KEEPOPEN gText_Name_Koga
+    closemsg
     release
     end
 
@@ -35,17 +33,15 @@ EventScript_0x816D580:
     end
 
 EventScript_0x816D5A6:
-    call KogaNameBox
-    msgbox 0x819850E MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x819850E MSG_KEEPOPEN gText_Name_Koga
+    closemsg
     checkitemspace 0x126 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816D5E7
     giveitem_msg 0x819858F ITEM_TM06
     setflag 0x259
-    call KogaNameBox
-    msgbox 0x81985AB MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x81985AB MSG_KEEPOPEN gText_Name_Koga
+    closemsg
     release
     end
 
@@ -139,33 +135,33 @@ EventScript_Fuschia_TateAndLiza:
     applymovement 5 Move_Fuschia_Tate_1
     applymovement 6 Move_Fuschia_Liza_1
     waitmovement 6
-    npcmsg gText_Fuschia_Tate_Speak_1 MSG_KEEPOPEN 0 LEFT
-    npcmsg gText_Fuschia_Liza_Speak_1 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Fuschia_Tate_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
+    npcmsg gText_Fuschia_Liza_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Fuschia_Tate_Speak_2 MSG_KEEPOPEN 0 LEFT
-    npcmsg gText_Fuschia_Liza_Speak_2 MSG_KEEPOPEN 0 LEFT
-    npcmsg gText_Fuschia_Tate_Speak_3 MSG_KEEPOPEN 0 LEFT
-    npcmsg gText_Fuschia_Liza_Speak_3 MSG_KEEPOPEN 0 LEFT
+    npcmsg gText_Fuschia_Tate_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
+    npcmsg gText_Fuschia_Liza_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
+    npcmsg gText_Fuschia_Tate_Speak_3 MSG_KEEPOPEN gText_Name_Unknown
+    npcmsg gText_Fuschia_Liza_Speak_3 MSG_KEEPOPEN gText_Name_Unknown
     closemsg
-    npcmsg gText_Fuschia_Tate_Speak_4 MSG_KEEPOPEN 38 LEFT
+    npcmsg gText_Fuschia_Tate_Speak_4 MSG_KEEPOPEN gText_Name_Tate
     closemsg
-    npcmsg gText_Fuschia_Liza_Speak_4 MSG_KEEPOPEN 39 LEFT
+    npcmsg gText_Fuschia_Liza_Speak_4 MSG_KEEPOPEN gText_Name_Liza
     closemsg
-    npcmsg gText_Fuschia_Tate_Speak_5 MSG_KEEPOPEN 38 LEFT
+    npcmsg gText_Fuschia_Tate_Speak_5 MSG_KEEPOPEN gText_Name_Tate
     closemsg
-    npcmsg gText_Fuschia_Liza_Speak_5 MSG_YESNO 39 LEFT
+    npcmsg gText_Fuschia_Liza_Speak_5 MSG_YESNO gText_Name_Liza
     compare LASTRESULT 0x1
     if notequal _goto EventScript_Fuschia_TateAndLiza_PlayerDontWantToBattle
     closemsg
     trainerbattle3 0x3 29 0x0 gText_Fuschia_TateAndLiza_Defeat
-    npcmsg gText_Fuschia_Tate_Speak_6 MSG_KEEPOPEN 38 LEFT
+    npcmsg gText_Fuschia_Tate_Speak_6 MSG_KEEPOPEN gText_Name_Tate
     closemsg
-    npcmsg gText_Fuschia_Liza_Speak_6 MSG_KEEPOPEN 39 LEFT
+    npcmsg gText_Fuschia_Liza_Speak_6 MSG_KEEPOPEN gText_Name_Liza
     closemsg
     giveitem ITEM_TWISTED_SPOON 0x1 MSG_OBTAIN
-    npcmsg gText_Fuschia_Tate_Speak_7 MSG_KEEPOPEN 38 LEFT
+    npcmsg gText_Fuschia_Tate_Speak_7 MSG_KEEPOPEN gText_Name_Tate
     closemsg
-    npcmsg gText_Fuschia_Liza_Speak_7 MSG_KEEPOPEN 39 LEFT
+    npcmsg gText_Fuschia_Liza_Speak_7 MSG_KEEPOPEN gText_Name_Liza
     closemsg
     fadescreen 0x1
     hidesprite 5
@@ -176,9 +172,9 @@ EventScript_Fuschia_TateAndLiza:
     end
 
 EventScript_Fuschia_TateAndLiza_PlayerDontWantToBattle:
-    npcmsg gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_1 MSG_KEEPOPEN 38 LEFT
+    npcmsg gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_1 MSG_KEEPOPEN gText_Name_Tate
     closemsg
-    npcmsg gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_2 MSG_KEEPOPEN 39 LEFT
+    npcmsg gText_Fuschia_TateAndLiza_PlayerDontWantToBattle_2 MSG_KEEPOPEN gText_Name_Liza
     closemsg
     spriteface 5 LEFT
     spriteface 6 LEFT
@@ -196,12 +192,3 @@ Move_Fuschia_Liza_1:
     .byte pause_long
     .byte face_player
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Fuschia NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-KogaNameBox:
-    setvar 0x8000 16
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return

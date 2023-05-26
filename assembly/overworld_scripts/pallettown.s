@@ -115,10 +115,9 @@ EventScript_ChooseStarterRegion:
     applymovement 0x1 Move_PalletTown_ChooseStarterRegion_Mom_1
     applymovement PLAYER Move_PalletTown_ChooseStarterRegion_Player_1
     waitmovement 0x1
-    call MomNameBox
-    msgbox gText_ChooseStarterRegion_Mom_Speak_1 MSG_KEEPOPEN
-    msgbox gText_ChooseStarterRegion_Mom_Speak_2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_ChooseStarterRegion_Mom_Speak_1 MSG_KEEPOPEN gText_Name_Mom
+    npcmsg gText_ChooseStarterRegion_Mom_Speak_2 MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     setvar 0x8000 12
     setvar 0x8001 0x5
     setvar 0x8004 0x0
@@ -174,10 +173,8 @@ EventScript_Gen8:
     goto MomScript_End
 
 MomScript_End:
-    call MomNameBox
-    msgbox gText_MomDone MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_MomDone MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     applymovement 0x1 Move_PalletTown_ChooseStarterRegion_Mom_2
     waitmovement 0x1
     release
@@ -219,48 +216,37 @@ EventScript_Mom:
     if SET _goto EventScript_PalletTown_Champion_Mom
     checkflag 0x258
     if 0x1 _goto EventScript_0x8168C4A
-    call MomNameBox
-    msgbox gText_PalletTown_Mom_Speak_1 MSG_KEEPOPEN
-    callasm RemoveNameBox
-    closeonkeypress
+    npcmsg gText_PalletTown_Mom_Speak_1 MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     applymovement 0x1 0x81A75E5
     waitmovement 0x0
     release
     end
 
 EventScript_0x8168C4A:
-    call MomNameBox
-    msgbox gText_PalletTown_Mom_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_Mom_Speak_2 MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     call 0x81A6C26
-    call MomNameBox
-    msgbox gText_PalletTown_Mom_Speak_3 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_Mom_Speak_3 MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     release
     end
 
 EventScript_PalletTown_Champion_Mom:
     checkflag 0x2A7
     if SET _goto EventScript_0x8168C4A
-    call MomNameBox
-    msgbox gText_PalletTown_Champion_Mom_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_Champion_Mom_Speak_1 MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     pause 30
     giveitem ITEM_AURORA_TICKET 0x1 MSG_OBTAIN
     giveitem ITEM_MYSTIC_TICKET 0x1 MSG_OBTAIN
-    call MomNameBox
-    msgbox gText_PalletTown_Champion_Mom_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_Champion_Mom_Speak_2 MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     applymovement 0x1 Move_PalletTown_Champion_Mom_1
     waitmovement 0x1
     faceplayer
-    call MomNameBox
-    msgbox gText_PalletTown_Champion_Mom_Speak_3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_Champion_Mom_Speak_3 MSG_KEEPOPEN gText_Name_Mom
+    closemsg
     setflag 0x2A7
     setflag 0x2A8
     setflag 0x84A
@@ -299,12 +285,9 @@ EventScript_0x8165605:
     special 0x174
     pause 0x1E
     playsong 0x12E 0x0
-    call OakNameBox
-    preparemsg gText_0x817D72C
-    waitmsg
+    npcmsg gText_0x817D72C MSG_KEEPOPEN gText_Name_ProfOak
     pause 0x55
-    closeonkeypress
-    callasm RemoveNameBox
+    closemsg
     applymovement PLAYER 0x81A75ED
     waitmovement 0x0
     sound 0x15
@@ -317,10 +300,8 @@ EventScript_0x8165605:
     compare 0x4001 0x1
     if 0x1 _call EventScript_0x81656C3
     pause 0x1E
-    call OakNameBox
-    msgbox gText_0x817D74A MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x817D74A MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     pause 0x1E
     compare 0x4001 0x0
     if 0x1 _call EventScript_0x81656CE
@@ -508,10 +489,8 @@ EventScript_InsideOakLab_DontGoAway:
     lockall
     applymovement 0x4 0x81A75F1
     waitmovement 0x0
-    call OakNameBox
-    msgbox gText_0x818E177 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E177 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement PLAYER 0x81692E5
     waitmovement 0x0
     releaseall
@@ -562,52 +541,36 @@ EventScript_LevelScript_InsideOakLab:
     clearflag 0x4001
     playsong2 0x0
     fadedefault
-    call RivalNameBox
-    msgbox gText_0x818DC94 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DC94 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 0x3C
-    call OakNameBox
-    msgbox gText_0x818DFBC MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DFBC MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     pause 30
     sound 0x9
     showsprite 11
     applymovement 11 Move_PalletTown_InsideOakLab_May_1
     waitmovement 11
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_May_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_May_Speak_1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     pause 30
-    call OakNameBox
-    msgbox gText_PalletTown_InsideOakLab_Oak_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_Oak_Speak_1 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     pause 30
     applymovement 0x8 Move_0x81692C0
     waitmovement 0x8
-    call RivalNameBox
-    msgbox gText_0x818DCB9 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DCB9 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 30
-    call OakNameBox
-    msgbox gText_0x818E0EA MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E0EA MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement 11 Move_PalletTown_InsideOakLab_May_2
     waitmovement 11
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_May_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_May_Speak_2 MSG_KEEPOPEN gText_Name_May
+    closemsg
     pause 30
-    call OakNameBox
-    msgbox gText_PalletTown_InsideOakLab_Oak_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_Oak_Speak_2 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     setvar 0x4055 0x2
     setflag FLAG_MAY_PALLETTOWN_SPRITE
     releaseall
@@ -946,10 +909,8 @@ EventScript_0x8169D0F:
     goto EventScript_0x8169D2F
 
 EventScript_0x8169D2F:
-    call RivalNameBox
-    msgbox gText_0x818DD34 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DD34 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     hidesprite 0x4004
     fanfare 0x13E
     msgbox gText_0x818DD52 MSG_KEEPOPEN
@@ -961,10 +922,8 @@ EventScript_0x8169D2F:
     if 0x1 _call EventScript_PalletTown_InsideOakLab_May_TakeEevee_Water
     compare 0x4001 0x2
     if 0x1 _call EventScript_PalletTown_InsideOakLab_May_TakeEevee_Fire
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_May_TookMon_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_May_TookMon_Speak_1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     hidesprite 0x4005
     fanfare 0x13E
     msgbox gText_PalletTown_InsideOakLab_May_ReceivedMon MSG_KEEPOPEN
@@ -977,18 +936,14 @@ EventScript_0x8169D2F:
     spriteface 8, LEFT
     spriteface 11, LEFT
     spriteface PLAYER, LEFT
-    call OakNameBox
-    msgbox gText_PalletTown_InsideOakLab_TookMon_Oak_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_TookMon_Oak_Speak_1 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     pause 15
     sound 0x15
     applymovement 11 Move_PalletTown_InsideOakLab_May_TookMon_1
     waitmovement 11
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_May_TookMon_Speak_2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_May_TookMon_Speak_2 MSG_KEEPOPEN gText_Name_May
+    closemsg
     pause 15
     fadescreenspeed 0x3 3
     hidesprite 11
@@ -1097,23 +1052,20 @@ EventScript_PalletTown_InsideOakLab_Rival:
     if 0x1 _goto EventScript_16958B
     compare 0x4055 0x2
     if 0x1 _goto EventScript_0x8169581
-    call RivalNameBox
-    msgbox gText_0x818DC67 MSG_KEEPOPEN @ added may info
-    callasm RemoveNameBox
+    npcmsg gText_0x818DC67 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     release
     end
 
 EventScript_16958B:
-    call RivalNameBox
-    msgbox gText_0x818DD75 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_0x818DD75 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     release
     end
 
 EventScript_0x8169581:
-    call RivalNameBox
-    msgbox gText_0x818DCE2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_0x818DCE2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     release
     end
 
@@ -1133,23 +1085,20 @@ EventScript_PalletTown_InsideOakLab_May:
     end
 
 EventScript_PalletTown_InsideOakLab_Standing_May_AfterGettingPokemon:
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_Standing_May_Speak_1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_Standing_May_Speak_1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     release
     end
 
 EventScript_PalletTown_InsideOakLab_Standing_May_BeforeGettingPokemon:
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_Standing_May_Speak_2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_Standing_May_Speak_2 MSG_KEEPOPEN gText_Name_May
+    closemsg
     release
     end
 
 EventScript_PalletTown_InsideOakLab_Standing_May_AfterRivalBattle:
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_Standing_May_Speak_3 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_Standing_May_Speak_3 MSG_KEEPOPEN gText_Name_May
+    closemsg
     release
     end
 
@@ -1175,10 +1124,8 @@ EventScript_0x816930B:
     playsong 0x13B 0x0
     applymovement 0x8 Move_0x81A75ED
     waitmovement 0x0
-    call RivalNameBox
-    msgbox gText_0x818DDA4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DDA4 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     applymovement PLAYER Move_0x81A75E9
     waitmovement 0x0
     compare 0x4031 0x0
@@ -1276,10 +1223,8 @@ EventScript_0x81693AC:
 EventScript_0x81694C2:
     special 0x0
     pause 30
-    call RivalNameBox
-    msgbox gText_0x818DE38 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DE38 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     playsong 0x13C 0x0
     compare 0x4002 0x1
     if 0x1 _call EventScript_0x8169504
@@ -1345,7 +1290,6 @@ Move_0x8169447:
     .byte walk_left
     .byte walk_left
     .byte walk_left
-    .byte walk_down
     .byte walk_down
     .byte end_m
 
@@ -1422,32 +1366,26 @@ EventScript_0x169595:
     if 0x1 _goto EventScript_0x8169614
     compare 0x4055 0x3
     if 0x1 _goto EventScript_0x816960A
-    call OakNameBox
-    msgbox gText_0x818E116 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_0x818E116 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     release
     end
 
 EventScript_0x8169614:
-    call OakNameBox
-    msgbox gText_0x818E3AD MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E3AD MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     release
     end
 
 EventScript_0x816960A:
-    call OakNameBox
-    msgbox gText_0x818E330 MSG_KEEPOPEN @ if wild mon appears
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E330 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     release
     end
 
 EventScript_0x8169600:
-    call OakNameBox
-    msgbox 0x81A72AD MSG_KEEPOPEN @ thank you dialogue
-    callasm RemoveNameBox
+    npcmsg 0x81A72AD MSG_KEEPOPEN gText_Name_ProfOak @ thank you dialogue
+    closemsg
     release
     end
 
@@ -1463,9 +1401,8 @@ EventScript_0x81698D6:
     goto EventScript_0x8169903
 
 EventScript_0x8169A6E:
-    call OakNameBox
-    msgbox 0x818E871 MSG_KEEPOPEN @ pokemon waiting dialogue
-    callasm RemoveNameBox
+    npcmsg 0x818E871 MSG_KEEPOPEN gText_Name_ProfOak @ pokemon waiting dialogue
+    closemsg
     release
     end
 
@@ -1505,26 +1442,20 @@ EventScript_0x8169913:
     waitmovement 0x0
     closeonkeypress
     pause 0x46
-    call OakNameBox
-    msgbox 0x81A72AD MSG_KEEPOPEN @ thank you dialogue
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg 0x81A72AD MSG_KEEPOPEN gText_Name_ProfOak @ thank you dialogue
+    closemsg
     setflag 0x2
     release
     end
 
 EventScript_0x81A73A4:
-    call OakNameBox
-    msgbox gText_0x81A72F2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x81A72F2 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     return
 
 EventScript_0x81A73AD:
-    call OakNameBox
-    msgbox gText_0x81A6C51 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x81A6C51 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     return
 
 EventScript_0x81A73E0:
@@ -1557,24 +1488,19 @@ EventScript_0x81A73E0:
     end
 
 EventScript_0x816961E:
-    call OakNameBox
-    msgbox gText_0x818E405 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_0x818E405 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     fanfare 0x105
     preparemsg 0x818E4AF @ player delivered message
     waitmsg
     waitfanfare
     call 0x81A6675 @ copy variable
     removeitem 0x15D 0x1
-    call OakNameBox
-    msgbox gText_0x818E4CA MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E4CA MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     playsong 0x13B 0x0
-    call RivalNameBox
-    msgbox gText_0x818DE8D MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DE8D MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     compare PLAYERFACING 0x2
     if 0x1 _call EventScript_0x8169A82
     compare PLAYERFACING 0x1
@@ -1584,10 +1510,8 @@ EventScript_0x816961E:
     compare PLAYERFACING 0x3
     if 0x1 _call EventScript_0x8169A9E_Left
     fadedefault
-    call RivalNameBox
-    msgbox gText_0x818DE99 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DE99 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 0x1E
     sound 0x15
     applymovement 0x4 0x81A75DB
@@ -1602,54 +1526,38 @@ EventScript_0x816961E:
     if 0x1 _call 0x8169B86
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169B86
-    call OakNameBox
-    msgbox gText_0x818E508 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E508 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     showsprite 11
     sound 0x9
     applymovement 11 Move_PalletTown_InsideOakLab_May_Entering_1
     waitmovement 11
     pause 15
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_May_Speak_1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_May_Speak_1 MSG_KEEPOPEN gText_Name_May
+    closemsg
     pause 15
-    call OakNameBox
-    msgbox gText_0x818E536 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E536 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement 0x8 Move_PalletTown_InsideOakLab_ReceivingPokedex_Rival_1
     waitmovement 0x8
-    call RivalNameBox
-    msgbox gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_OnlyTwoDex MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_OnlyTwoDex MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 15
     sound 0x15
     applymovement 0x4 Move_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_1
     waitmovement 0x4
-    call OakNameBox
-    msgbox gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_RealizeTwoDex MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_RealizeTwoDex MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement 0x8 Move_PalletTown_InsideOakLab_ReceivingPokedex_Rival_1
     waitmovement 0x8
-    call RivalNameBox
-    msgbox gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_NoFair MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_NoFair MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 15
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_ReceivingPokedex_May_OKWithIt MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_ReceivingPokedex_May_OKWithIt MSG_KEEPOPEN gText_Name_May
+    closemsg
     pause 15
-    call OakNameBox
-    msgbox gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_ThanksMay MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_ThanksMay MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     pause 30
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169882
@@ -1659,14 +1567,11 @@ EventScript_0x816961E:
     if 0x1 _call 0x8169882
     compare PLAYERFACING 0x3
     if 0x1 _call 0x8169882
-    call OakNameBox
-    msgbox gText_RecentSightings MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_RecentSightings MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     pause 0x28
-    msgbox gText_0x818E5C5 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E5C5 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     applymovement 0x4 0x81A75E9
     waitmovement 0x0
     hidesprite 0x9
@@ -1691,31 +1596,23 @@ EventScript_0x816961E:
     special 0x16F
     special 0x181
     setvar 0x407C 0x1
-    call OakNameBox
-    msgbox gText_0x818E612 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E612 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     giveitem ITEM_POKE_BALL 20 MSG_OBTAIN
-    call OakNameBox
-    msgbox gText_0x818E6D0 MSG_KEEPOPEN
+    npcmsg gText_0x818E6D0 MSG_KEEPOPEN gText_Name_ProfOak
     setvar 0x8004 0x0
     setvar 0x8005 0x1
     special 0x173
-    msgbox gText_0x818E784 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
-    call RivalNameBox
-    msgbox gText_0x818DEC8 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818E784 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
+    npcmsg gText_0x818DEC8 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     pause 15
     spriteface 0x8, RIGHT
     spriteface 11, LEFT
     spriteface PLAYER, LEFT
-    call RivalNameBox
-    msgbox gText_0x818DEF3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818DEF3 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     playsong 0x13C 0x0
     compare PLAYERFACING 0x2
     if 0x1 _call 0x8169B69
@@ -1729,13 +1626,11 @@ EventScript_0x816961E:
     fadedefault
     pause 15
     spriteface 11, UP
-    call MayNameBox
-    msgbox gText_PalletTown_InsideOakLab_May_ThanksOak MSG_KEEPOPEN
+    npcmsg gText_PalletTown_InsideOakLab_May_ThanksOak MSG_KEEPOPEN gText_Name_May
     spriteface 11, LEFT
     spriteface PLAYER, RIGHT
-    msgbox gText_PalletTown_InsideOakLab_May_LeavingForAdventure MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_InsideOakLab_May_LeavingForAdventure MSG_KEEPOPEN gText_Name_May
+    closemsg
     applymovement 11 Move_PalletTown_InsideOakLab_May_Leaving_1
     waitmovement 11
     sound 0x9
@@ -1767,9 +1662,8 @@ EventScript_0x81699FB:
     goto EventScript_0x8169A6E
 
 EventScript_0x8169A78:
-    call OakNameBox
-    msgbox gText_0x818E98E MSG_KEEPOPEN
-    closeonkeypress
+    npcmsg gText_0x818E98E MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
     release
     end
 
@@ -1779,10 +1673,8 @@ EventScript_0x8169A34:
     goto EventScript_0x8169A6E
 
 EventScript_0x8169A45:
-    call OakNameBox
-    msgbox 0x818E89C MSG_KEEPOPEN @ hows pokedex
-    closeonkeypress
-    closeonkeypress
+    npcmsg 0x818E89C MSG_KEEPOPEN gText_Name_ProfOak @ hows pokedex
+    closemsg
     giveitem ITEM_GREAT_BALL 10 MSG_OBTAIN
     setflag 0x247
     release
@@ -2034,17 +1926,13 @@ EventScript_PalletTown_MayBrother:
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_PalletTown_May:
     lock
-    call UnknownNameBox
-    msgbox gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_MaySpeaks1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
     sound 0x15
     applymovement 0x4 EventScript_PalletTown_MayNoticePlayer
     waitmovement 0x4
-    call UnknownNameBox
-    msgbox gText_PalletTown_MaySpeaks2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_PalletTown_MaySpeaks2 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
     compare PLAYERFACING RIGHT
     if equal _call EventScript_PalletTown_May_PlayerFacingRight
     compare PLAYERFACING DOWN
@@ -2114,10 +2002,8 @@ EventScript_Daisy:
     if 0x1 _goto EventScript_0x8168EF6
     compare 0x4055 0x1
     if 0x4 _goto EventScript_0x8168DAF
-    call DaisyNameBox
-    msgbox gText_0x818D58C MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818D58C MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     applymovement 0x1 0x81A75E5
     waitmovement 0x0
     release
@@ -2130,12 +2016,11 @@ EventScript_0x8168DB9:
     special 0x188
     compare 0x4025 0x1F4
     if 0x0 _goto EventScript_0x8168E46
-    call DaisyNameBox
-    msgbox gText_0x818D7D3 MSG_YESNO
+    npcmsg gText_0x818D7D3 MSG_YESNO gText_Name_Daisy
     compare LASTRESULT 0x0
     if 0x1 _goto EventScript_0x8168E3C
-    msgbox gText_0x818D8B2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_0x818D8B2 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     special 0x9F
     waitstate
     lock
@@ -2145,41 +2030,34 @@ EventScript_0x8168DB9:
     special2 LASTRESULT 0x147
     compare LASTRESULT 0x19C
     if 0x1 _goto EventScript_0x8168E32
-    call DaisyNameBox
-    msgbox gText_0x818D8CC MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818D8CC MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     fadescreen 0x1
     fanfare 0x100
     waitfanfare
     special 0x197
     fadescreen 0x0
     special 0x7C
-    call DaisyNameBox
-    msgbox gText_0x818D8FE MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_0x818D8FE MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168EEC:
-    call DaisyNameBox
-    msgbox gText_0x818D701 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_0x818D701 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168F59:
-    call DaisyNameBox
-    msgbox 0x818D6AF MSG_KEEPOPEN @ you can use town map
-    callasm RemoveNameBox
+    npcmsg 0x818D6AF MSG_KEEPOPEN gText_Name_Daisy @ you can use town map
+    closemsg
     release
     end
 
 EventScript_0x8168EF6:
-    call DaisyNameBox
-    msgbox gText_0x818D60A MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_0x818D60A MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     checkitemspace 0x169 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto EventScript_0x8168F4F
@@ -2198,16 +2076,14 @@ EventScript_0x8168EF6:
     end
 
 EventScript_0x8168DAF:
-    call DaisyNameBox
-    msgbox gText_0x818D5C4 MSG_KEEPOPEN @ wish seen battle
-    callasm RemoveNameBox
+    npcmsg gText_0x818D5C4 MSG_KEEPOPEN gText_Name_Daisy @ wish seen battle
+    closemsg
     release
     end
 
 EventScript_0x8168E46:
-    call DaisyNameBox
-    msgbox gText_0x818D9A5 MSG_KEEPOPEN @ see first mon
-    callasm RemoveNameBox
+    npcmsg gText_0x818D9A5 MSG_KEEPOPEN gText_Name_Daisy @ see first mon
+    closemsg
     special2 LASTRESULT 0xE6
     copyvar 0x8000 LASTRESULT
     compare 0x8000 0x0
@@ -2227,113 +2103,64 @@ EventScript_0x8168E46:
     end
 
 EventScript_0x8168E3C:
-    call DaisyNameBox
-    msgbox 0x818D875 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818D875 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168E32:
-    call DaisyNameBox
-    msgbox 0x818D97B MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818D97B MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168F4F:
-    call DaisyNameBox
-    msgbox 0x818D684 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818D684 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168EA6:
-    call DaisyNameBox
-    msgbox 0x818DBDD MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818DBDD MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168EB0:
-    call DaisyNameBox
-    msgbox 0x818DB88 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818DB88 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168EBA:
-    call DaisyNameBox
-    msgbox 0x818DB2E MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818DB2E MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168EC4:
-    call DaisyNameBox
-    msgbox 0x818DAF3 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818DAF3 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168ECE:
-    call DaisyNameBox
-    msgbox 0x818DABE MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818DABE MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168ED8:
-    call DaisyNameBox
-    msgbox 0x818DA73 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818DA73 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
 
 EventScript_0x8168EE2:
-    call DaisyNameBox
-    msgbox 0x818DA16 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x818DA16 MSG_KEEPOPEN gText_Name_Daisy
+    closemsg
     release
     end
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Pallet Town NameBoxes
-@@@@@@@@@@@@@@@@@@@@@@
-UnknownNameBox:
-    setvar 0x8000 0
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-MomNameBox:
-    setvar 0x8000 5
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-OakNameBox:
-    setvar 0x8000 4
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-RivalNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-MayNameBox:
-    setvar 0x8000 2
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-DaisyNameBox:
-    setvar 0x8000 6
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ GAME FLAGS

@@ -12,13 +12,11 @@ EventScript_GymLeaderSabrina:
     setvar 0x8004 0x7
     setvar 0x8005 0x2
     special 0x174
-    call SabrinaNameBox
     trainerbattle1 0x1 0x1A4 0x0 0x819B53C 0x819B602 EventScript_0x816EE0A
     checkflag 0x29A
     if 0x0 _goto 0x816EE3D
-    call SabrinaNameBox
-    msgbox 0x819B7F2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x819B7F2 MSG_KEEPOPEN gText_Name_Sabrina
+    closemsg
     release
     end
 
@@ -38,17 +36,15 @@ EventScript_0x816EE0A:
     end
 
 EventScript_0x816EE3D:
-    call SabrinaNameBox
-    msgbox 0x819B6FA MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x819B6FA MSG_KEEPOPEN gText_Name_Sabrina
+    closemsg
     checkitemspace 0x124 0x1
     compare LASTRESULT 0x0
     if 0x1 _goto 0x816EE7E
     giveitem_msg 0x819B7D3 ITEM_TM04
     setflag 0x29A
-    call SabrinaNameBox
-    msgbox 0x819B685 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg 0x819B685 MSG_KEEPOPEN gText_Name_Sabrina
+    closemsg
     release
     end
 
@@ -301,16 +297,14 @@ EventScript_0x81619D4:
     applymovement PLAYER 0x81A75ED
     applymovement 0x1 0x81A75DD
     waitmovement 0x0
-    call RivalNameBox
-    msgbox gText_Saffron_RivalSpeak1 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Saffron_RivalSpeak1 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     compare 0x4001 0x0
     if 0x1 _call 0x8161A73
     compare 0x4001 0x1
     if 0x1 _call 0x8161A7F
-    call RivalNameBox
-    msgbox gText_Saffron_RivalSpeak2 MSG_KEEPOPEN
-    callasm RemoveNameBox
+    npcmsg gText_Saffron_RivalSpeak2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     setvar LASTTALKED 0x1
     compare 0x4031 0x2
     if 0x1 _call 0x8161A80
@@ -318,10 +312,8 @@ EventScript_0x81619D4:
     if 0x1 _call 0x8161A8B
     compare 0x4031 0x0
     if 0x1 _call 0x8161A96
-    call RivalNameBox
-    msgbox gText_Saffron_RivalSpeak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_Saffron_RivalSpeak3 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
     playsong 0x13C 0x0
     compare 0x4001 0x0
     if 0x1 _call 0x8161AA1
@@ -360,16 +352,12 @@ EventScript_SilphCo_Proton:
     applymovement 2 Move_SilphCo_Proton2
     waitmovement 2
     playsong 0x184 1
-    call ProtonNameBox
-    msgbox gText_SilphCo_ProtonSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ProtonSpeak1 MSG_KEEPOPEN gText_Name_Proton
+    closemsg
     setvar VAR_FURTHER_TRAINER_BATTLES 0x2
     trainerbattle3 0x3 0x6 0x0 gText_SilphCo_ProtonDefeated
-    call ProtonNameBox
-    msgbox gText_SilphCo_ProtonSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ProtonSpeak2 MSG_KEEPOPEN gText_Name_Proton
+    closemsg
     applymovement PLAYER Move_SilphCo_Player1
     waitmovement PLAYER
     applymovement 2 Move_SilphCo_Proton3
@@ -421,16 +409,12 @@ EventScript_SilphCo_Ariana:
     faceplayer
     setflag 0x9B5
     playsong 0x181 1
-    call ArianaNameBox
-    msgbox gText_SilphCo_ArianaSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ArianaSpeak1 MSG_KEEPOPEN gText_Name_Ariana
+    closemsg
     setvar VAR_FURTHER_TRAINER_BATTLES 0x2
     trainerbattle3 0x3 0x8 0x0 gText_SilphCo_ArianaDefeated
-    call ArianaNameBox
-    msgbox gText_SilphCo_ArianaSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ArianaSpeak2 MSG_KEEPOPEN gText_Name_Ariana
+    closemsg
     fadescreen 0x1
     hidesprite 1
     fadescreen 0x0
@@ -455,36 +439,28 @@ EventScript_Archer:
     applymovement 0x3 Move_SilphCo_Archer1
     waitmovement 0x0
     playsong 0x181 1
-    call UnknownNameBox
-    msgbox gText_SilphCo_ArcherSpeak1 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ArcherSpeak1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
     compare 0x4001 0x0
     if 0x1 _call EventScript_SilphCo_ArcherVar0
     compare 0x4001 0x1
     if 0x1 _call EventScript_SilphCo_ArcherVar1
     setvar LASTTALKED 0x3
-    call UnknownNameBox
-    msgbox gText_SilphCo_ArcherSpeak2 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ArcherSpeak2 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
     trainerbattle3 0x3 0x7 0x0 gText_SilphCo_ArcherDefeated
     msgbox gText_SilphCo_PresidentSpeak1 MSG_KEEPOPEN
     closeonkeypress
     applymovement 3 Move_SilphCo_Archer4
     waitmovement 3
-    call ArcherNameBox
-    msgbox gText_SilphCo_ArcherSpeak3 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ArcherSpeak3 MSG_KEEPOPEN gText_Name_Archer
+    closemsg
     compare 0x4001 0x0
     if 0x1 _call EventScript_SilphCo_ArcherVar2
     compare 0x4001 0x1
     if 0x1 _call EventScript_SilphCo_ArcherVar3
-    call ArcherNameBox
-    msgbox gText_SilphCo_ArcherSpeak4 MSG_KEEPOPEN
-    closeonkeypress
-    callasm RemoveNameBox
+    npcmsg gText_SilphCo_ArcherSpeak4 MSG_KEEPOPEN gText_Name_Archer
+    closemsg
     fadescreen 0x1
     hidesprite 0x3
     hidesprite 0x4
@@ -603,48 +579,3 @@ Move_Saffron_MeanLookingFish_Boy_1:
     .byte pause_long
     .byte pause_long
     .byte end_m
-
-@@@@@@@@@@@@@@@@@@@@@@
-@ Saffron NameBox
-@@@@@@@@@@@@@@@@@@@@@@
-RivalNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-GiovanniNameBox:
-    setvar 0x8000 1
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-SabrinaNameBox:
-    setvar 0x8000 15
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-ArcherNameBox:
-    setvar 0x8000 24
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-ProtonNameBox:
-    setvar 0x8000 23
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-ArianaNameBox:
-    setvar 0x8000 25
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
-
-UnknownNameBox:
-    setvar 0x8000 0
-    setvar 0x8001 LEFT
-    callasm DrawNameBox
-    return
