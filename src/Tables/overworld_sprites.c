@@ -26,6 +26,7 @@
 extern const u8 gEventObjectPic_NurseJoyTiles[];
 extern const u8 gEventObjectPic_OakTiles[];
 extern const u8 gEventObjectPic_MomTiles[];
+extern const u8 gEventObjectPic_AshTiles[];
 
 extern const u8 gEventObjectPic_ArcherTiles[];
 extern const u8 gEventObjectPic_ArianaTiles[];
@@ -1253,5 +1254,39 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Wallace =
     .subspriteTables = gEventObjectSpriteOamTables_16x32,
     .anims = gEventObjectImageAnimTable_Standard,
     .images = gEventObjectPicTable_Wallace,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+static const struct SpriteFrameImage gEventObjectPicTable_Ash[] =
+{
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 0),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 1),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 2),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 3),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 4),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 5),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 6),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 7),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 8),
+    overworld_frame(gEventObjectPic_AshTiles, 2, 4, 9),
+};
+
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ash =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag1 = 0x1227,
+    .paletteTag2 = EVENT_OBJ_PAL_TAG_NONE,
+    .size = (16 * 32) / 2,
+    .width = 16,
+    .height = 32,
+    .shadowSize = SHADOW_SIZE_M, //Can also be SHADOW_SIZE_S, SHADOW_SIZE_L, or SHADOW_SIZE_XL
+    .inanimate = FALSE,
+    .disableReflectionPaletteLoad = FALSE,
+    .tracks = TRACKS_FOOT, //Can also be TRACKS_TIRE
+    .gender = MALE, //Can also be FEMALE
+    .oam = gEventObjectBaseOam_16x32,
+    .subspriteTables = gEventObjectSpriteOamTables_16x32,
+    .anims = gEventObjectImageAnimTable_Standard,
+    .images = gEventObjectPicTable_Ash,
     .affineAnims = gDummySpriteAffineAnimTable,
 };

@@ -88,7 +88,8 @@
 #define TRAINER_EUSINE                             9
 //#define TRAINER_RS_COOLTRAINER_F                  10
 #define TRAINER_JESSIE_JAMES                      10
-#define TRAINER_HEX_MANIAC                        11
+//#define TRAINER_HEX_MANIAC                        11
+#define TRAINER_ASH                               11
 #define TRAINER_RS_LADY                           12
 #define TRAINER_RS_BEAUTY                         13
 #define TRAINER_RICH_BOY                          14

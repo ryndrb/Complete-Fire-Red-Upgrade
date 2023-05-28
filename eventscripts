@@ -36,6 +36,7 @@ npc 3 1 7 EventScript_Cut
 npc 3 1 2 EventScript_ViridianSwordsDance
 npc 3 1 9 EventScript_Aggronite
 npc 3 1 10 EventScript_WorkUp
+npc 3 1 15 EventScrit_Viridian_Rival
 npc 5 0 3 EventScript_Viridian_GSBall
 npc 5 3 0 EventScript_PokeMartMain
 npc 5 3 3 EventScript_ViridianCity
@@ -46,6 +47,7 @@ npc 6 2 2 EventScript_GymGuyAerodactylite
 npc 5 1 7 EventScript_GymLeaderGiovanni
 npc 5 1 9 EventScript_GymGuySteelixite
 npc 3 1 11 EventScript_Viridian_OldRod
+map 3 1 MapScripts_Viridian
 map 5 3 MapScript_0x16A1DE
 sign 3 1 5 EventScript_Viridian_Wated_Signpost
 tile 3 1 4 EventScript_Viridian_RocketGang_Left
@@ -176,6 +178,7 @@ tile 1 6 0 EventScript_SSAnne_Rival0
 tile 1 6 1 EventScript_SSAnne_Rival1
 tile 1 6 2 EventScript_SSAnne_Rival2
 map 3 5 MapScript_Vermillion
+map 1 5 MapScript_SSAnne
 
 # CELADON CITY
 npc 1 45 0 EventScript_RocketHQ_Giovanni
@@ -234,7 +237,7 @@ npc 1 71 1 EventScript_WildCharge
 # SAFFRON CITY
 map 1 47 MapScript_SilphCo_Proton
 npc 1 47 0 EventScipt_SaffronDrainPunch
-npc 1 49 0 EventScript_SilphCo_Ariana
+npc 1 49 4 EventScript_SilphCo_Ariana
 npc 1 53 11 EventScript_TrickRoom
 npc 3 10 15 EventScript_Saffron_MeanLookingFish
 npc 14 3 6 EventScript_GymLeaderSabrina

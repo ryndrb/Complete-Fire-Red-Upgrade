@@ -71,7 +71,7 @@ Brendan, there's no need to be so\ndown on yourself.\pWhy, what's keeping you fr
 [PLAYER], it just dawned on me that\nyou must be the Trainer who kept\lan eye out for Brendan when he\lcaught his Pok\emon.\pWhy don't you visit us in Cerulean\nCity sometime?\pI'm sure Brendan would enjoy it.
 
 #org @gText_SSAnne_RivalSpeak1
-Bonjour!\n[PLAYER]!\pImagine seeing you here!\n[PLAYER], were you really invited?\pSo how's your Pok\edex coming?\pI already caught 40 kinds, pal.\nDifferent kinds are everywhere.\pCrawl around in grassy areas, and\nlook hard for them.
+Yo, [PLAYER]! You're still on board?\pHeh, since you've made it here,\nhow about a battle?
 
 #org @gText_SSAnne_RivalSpeak2
 I heard there was a Cut\nmaster on board.\pBut he was just a seasick old man!\pCut itself is really useful.\nYup, it'll be handy.\pYou should go see him, too.\nSmell ya!
@@ -117,3 +117,27 @@ It was a pleasure to meet you,\nyoung trainer.\pI hope to cross paths with you\n
 
 #org @gText_Vermillion_Wattson_PlayerDontWantToBattle
 Wahahahah!\nNo worries!\pI think I'll spend some more time\nhere.\pIf you change your mind, feel free\nto talk to me!
+
+#org @gText_SSAnne_Ash_Rival_Speak_1
+Bonjour!\n[PLAYER]!
+
+#org @gText_SSAnne_Ash_Rival_Speak_2
+Imagine seeing you here!\n[PLAYER], were you really invited?\pSo how's your Pok\edex coming?\pI already caught 40 kinds, pal.\nDifferent kinds are everywhere.\pCrawl around in grassy areas, and\nlook hard for them!
+
+#org @gText_SSAnne_Ash_Speak_1
+Bonjour!
+
+#org @gText_SSAnne_Ash_Speak_2
+Didn't think I'd be seeing the two\nof you here!
+
+#org @gText_SSAnne_Ash_Rival_Speak_3
+Heh, if it isn't Ash!\nYou takin' a cruise or what?
+
+#org @gText_SSAnne_Ash_Speak_3
+Not hardly.\pI got invited to the exclusive\nparty for Trainers, but I'm pretty\lmuch done with this scene.\pI got plenty of party favors, too.\pHere[.] I can even share some with\nyou.
+
+#org @gText_SSAnne_Ash_Speak_4
+More importantly, though[.]\nyou wanna know what I overheard at\lthe party?\pYou guys know about Team Rocket,\nright?\p[.]\pThere are rumors going around\nabout the things they get up to.\pAnyway, the point is this:\nTeam Rocket is a dangerous group,\land they're trying to use Pok\emon\lto make themselves rich.\pI might do some digging into what\nit is they're really after[.]\pAnd you two'd better stay out of\ntheir path!
+
+#org @gText_SSAnne_Ash_Rival_Speak_4
+Team Rocket, huh?\pHeh, that's their game, causing\ntrouble wherever they go.\pBut me? I'm more interested in\nbecoming the strongest Trainer.\pTeam Rocket can deal with their\nown mess! Smell ya!

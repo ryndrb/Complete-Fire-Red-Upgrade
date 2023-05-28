@@ -156,3 +156,18 @@ Remarkable!\nAbsolutely remarkable!\pTo see the legendary Weather Trio\nin your 
 
 #org @gText_Pewter_Steven_Speak15
 I can see the fire in your eyes,\nthe passion for battle that burns\lwithin you.\pI too share that passion, and I\nwould relish the opportunity to\ltest my skills againts yours.\pSo, what do you say?\pAre you ready to prove yourself as\na truly legendary Trainer?
+
+#org @gText_Pewter_Ash_Speak_1
+Hey, you there!
+
+#org @gText_Pewter_Ash_Speak_2
+Don't tell me[.]\nYou're name is [PLAYER], right?\p[.]\pHaha, I knew it!
+
+#org @gText_Pewter_Ash_Speak_3
+My name is Ash!\pI heard from Prof. Oak that three\nnew kids set out from Pallet Town\lto become Trainers, just like I\ldid once.\lSo I came to check you out!\pI was thinking you might want some\nadvice on how to beat my good\lfriend Brock's Gym, but looks like\lI showed up too late, huh?\pIt seems you're not too shabby\nyourself[.]\pSo I guess you've earned a reward!
+
+#org @gText_Pewter_Ash_Speak_4
+Those balls will be even better\nfor catching Pok\emon than\lPok\e Balls.
+
+#org @gText_Pewter_Ash_Speak_5
+And hey, that thing you've got\nthere[.]\lThat's a Pok\edex, right?\pSo Prof. Oak has finally went and\nmade one!\pHe used to make me just scribble\non a map with a pencil about where\lI encountered Pok\emon[.]\pYou'd better do a good job of\nhelping him out!\pI'll see you later, [PLAYER]!

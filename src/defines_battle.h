@@ -121,7 +121,7 @@ typedef u8 TrainerClassNames_t[13];
 #define gTrainerFrontPicPaletteTable ((struct CompressedSpritePalette*) 0x8239A1C)
 extern struct TrainerPicCoords gTrainerBackPicCoords[];
 
-extern struct Trainer gTrainers[];
+extern const struct Trainer gTrainers[];
 // #define gOriginalTrainers ((struct Trainer*) 0x823EAC8)
 // #define TRAINER_IS_BLANK(trainerId) (gTrainers[trainerId].partyFlags == 0  && gTrainers[trainerId].party.NoItemDefaultMoves == 0)
 // #define GET_TRAINER(trainerId) (TRAINER_IS_BLANK(trainerId) ?  gOriginalTrainers[trainerId] : gTrainers[trainerId])

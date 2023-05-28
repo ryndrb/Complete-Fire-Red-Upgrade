@@ -17,7 +17,7 @@
 
 #define NO_NAME {_END,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE,_SPACE}
 
-struct Trainer gTrainers[] = 
+const struct Trainer gTrainers[] = 
 {
     [TRAINER_NONE] = {
         .trainerName = NO_NAME,
@@ -142,17 +142,17 @@ struct Trainer gTrainers[] =
         .partySize = NELEMS(sParty_Route25_JessieJames),
         .party = {.ItemCustomMoves = sParty_Route25_JessieJames}
     },
-    [TRAINER_HEX_MANIAC] = {
+    [TRAINER_ASH] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
-        .trainerClass = CLASS_HEX_MANIAC,
-        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .trainerClass = CLASS_CHAMPION,
+        .encounterMusic = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_HEX_MANIAC,
-        .trainerName = NO_NAME,
-        .items = {},
+        .trainerName = {_A,_s,_h,_END},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_HexManiac),
-        .party = {.ItemCustomMoves = sParty_HexManiac}
+        .partySize = NELEMS(sParty_Viridian_Ash),
+        .party = {.ItemCustomMoves = sParty_Viridian_Ash}
     },
     [TRAINER_RS_LADY] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,

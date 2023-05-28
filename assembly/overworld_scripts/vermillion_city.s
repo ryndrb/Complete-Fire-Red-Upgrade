@@ -16,6 +16,9 @@
 .equ FLAG_OBTAIN_MANECTITE, 0x95E
 .equ FLAG_OBTAIN_EVIOLITE, 0x973
 
+.equ RIVAL, 3
+.equ ASH, 4
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Surge
 @@@@@@@@@@@@@@@@@@@@@@
@@ -708,4 +711,171 @@ Move_Vermillion_Wattson_1:
     .byte exclaim
     .byte pause_long
     .byte face_player
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ SS Anne Mapscripts
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_SSAnne:
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_SSAnne
+    .byte MAP_SCRIPT_TERMIN
+
+LevelScript_SSAnne:
+    levelscript VAR_ENCOUNTER_ASH, 2, EventScript_SSAnne_Ash
+    .hword LEVEL_SCRIPT_TERMIN
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ SS Anne Rival and Ash
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_SSAnne_Ash:
+    lock
+    pause 30
+    sound 0x15
+    applymovement RIVAL Move_SSAnne_Ash_Rival_1
+    waitmovement RIVAL
+    npcmsg gText_SSAnne_Ash_Rival_Speak_1 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    applymovement RIVAL Move_SSAnne_Ash_Rival_2
+    applymovement PLAYER Move_SSAnne_Ash_Player_1
+    waitmovement RIVAL
+    npcmsg gText_SSAnne_Ash_Rival_Speak_2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    pause 30
+    npcmsg gText_SSAnne_Ash_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
+    showsprite ASH
+    sound 0x15
+    applymovement RIVAL Move_SSAnne_Ash_Rival_3
+    applymovement PLAYER Move_SSAnne_Ash_Player_2
+    waitmovement RIVAL
+    pause 15
+    special 0x113
+    applymovement CAMERA Move_SSAnne_Ash_Camera_1
+    waitmovement CAMERA
+    special 0x114
+    pause 15
+    applymovement ASH Move_SSAnne_Ash_1
+    waitmovement ASH
+    spriteface PLAYER RIGHT
+    spriteface RIVAL RIGHT
+    special 0x113
+    applymovement CAMERA Move_SSAnne_Ash_Camera_2
+    waitmovement CAMERA
+    special 0x114
+    playsong 0x1D5 0x0
+    npcmsg gText_SSAnne_Ash_Speak_2 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    npcmsg gText_SSAnne_Ash_Rival_Speak_3 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    npcmsg gText_SSAnne_Ash_Speak_3 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 15
+    giveitem ITEM_PP_UP 0x5 MSG_OBTAIN
+    npcmsg gText_SSAnne_Ash_Speak_4 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    applymovement ASH Move_SSAnne_Ash_2
+    applymovement PLAYER Move_SSAnne_Ash_Player_3
+    applymovement RIVAL Move_SSAnne_Ash_Rival_4
+    waitmovement ASH
+    sound 0x9
+    fadescreen 0x1
+    hidesprite ASH
+    setflag FLAG_ASH_SSANNE_SPRITE
+    setvar VAR_ENCOUNTER_ASH 0x3
+    fadedefaultbgm
+    fadescreen 0x0
+    pause 30
+    spriteface PLAYER DOWN
+    pause 30
+    npcmsg gText_SSAnne_Ash_Rival_Speak_4 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    playsong 0x13B 0x0
+    applymovement RIVAL Move_SSAnne_Ash_Rival_5
+    waitmovement RIVAL
+    hidesprite RIVAL
+    setflag FLAG_RIVAL_SSANNE_SPRITE
+    fadedefaultbgm
+    release
+    end
+
+Move_SSAnne_Ash_Rival_1:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_SSAnne_Ash_Rival_2:
+    .byte pause_long
+    .byte walk_up
+    .byte end_m
+
+Move_SSAnne_Ash_Player_1:
+    .byte pause_long
+    .byte walk_down
+    .byte end_m
+
+Move_SSAnne_Ash_Rival_3:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_SSAnne_Ash_Player_2:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_SSAnne_Ash_Camera_1:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_SSAnne_Ash_1:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_right
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+Move_SSAnne_Ash_Camera_2:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
+Move_SSAnne_Ash_2:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_SSAnne_Ash_Player_3:
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_SSAnne_Ash_Rival_4:
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_SSAnne_Ash_Rival_5:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
     .byte end_m

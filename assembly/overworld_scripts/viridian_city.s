@@ -5,6 +5,55 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ RIVAL, 16
+.equ ASH, 17
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Viridian Map Scripts
+@@@@@@@@@@@@@@@@@@@@@@
+MapScripts_Viridian:
+    mapscript MAP_SCRIPT_ON_TRANSITION Map_Viridian
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_Viridian
+    .byte MAP_SCRIPT_TERMIN
+
+Map_Viridian:
+    setworldmapflag 0x891
+    compare 0x4051 0x0
+    if 0x1 _call 0x8165920
+    compare 0x4051 0x1
+    if 0x1 _call 0x816590F
+    compare 0x4051 0x2
+    if 0x4 _call 0x8165909
+    compare 0x405A 0x0
+    if 0x1 _call 0x8165931
+    end
+
+EventScript_0x8165931:
+    checkflag 0x821
+    if 0x0 _goto 0x81A77A9
+    checkflag 0x822
+    if 0x0 _goto 0x81A77A9
+    checkflag 0x823
+    if 0x0 _goto 0x81A77A9
+    checkflag 0x824
+    if 0x0 _goto 0x81A77A9
+    checkflag 0x825
+    if 0x0 _goto 0x81A77A9
+    checkflag 0x826
+    if 0x0 _goto 0x81A77A9
+    compare VAR_ENCOUNTER_ASH 0x5
+    if greaterorequal _goto EventScript_Viridian_CanEnterGym
+    return
+
+EventScript_Viridian_CanEnterGym:
+    setvar 0x405A 0x1
+    release
+    end
+
+LevelScript_Viridian:
+    levelscript VAR_ENCOUNTER_ASH, 6, EventScript_Viridian_Ash
+    .hword LEVEL_SCRIPT_TERMIN
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Goivanni
 @@@@@@@@@@@@@@@@@@@@@@
@@ -44,6 +93,8 @@ EventScript_0x8169F2F:
     if 0x1 _goto 0x8169F70
     giveitem_msg 0x818F675 ITEM_TM26
     setflag 0x298
+    clearflag FLAG_ASH_VIRIDIAN_SPRITE
+    setvar VAR_ENCOUNTER_ASH 0x6
     npcmsg 0x818F695 MSG_KEEPOPEN gText_Name_Giovanni
     closemsg
     release
@@ -523,4 +574,142 @@ Move_Viridian_RocketGang_James_4:
     .byte pause_long
     .byte pause_long
     .byte walk_up_onspot_fastest
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Rival Viridian City Gym
+@@@@@@@@@@@@@@@@@@@@@@
+EventScrit_Viridian_Rival:
+    lock
+    pause 30
+    npcmsg gText_Viridian_Rival_Speak_1 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    applymovement RIVAL Move_Viridian_Rival_1
+    waitmovement RIVAL
+    npcmsg gText_Viridian_Rival_Speak_2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement RIVAL Move_Viridian_Rival_2
+    waitmovement RIVAL
+    playsong 0x13B 0x0
+    npcmsg gText_Viridian_Rival_Speak_3 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    npcmsg gText_Viridian_Rival_Speak_4 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    pause 15
+    spriteface PLAYER UP
+    spriteface RIVAL UP
+    npcmsg gText_Viridian_Rival_Speak_5 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    pause 15
+    getplayerpos 0x8004 0x8005
+    compare 0x8004 0x22
+    if TRUE _call EventScrit_Viridian_Rival_PlayerFacingRight
+    compare 0x8004 0x24
+    if TRUE _call EventScrit_Viridian_Rival_PlayerFacingLeft
+    compare 0x8005 0xB
+    if TRUE _call EventScrit_Viridian_Rival_PlayerFacingUp
+    npcmsg gText_Viridian_Rival_Speak_6 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    pause 15
+    sound 0x15
+    applymovement RIVAL Move_Viridian_Rival_2
+    waitmovement RIVAL
+    npcmsg gText_Viridian_Rival_Speak_7 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    pause 15
+    fadescreen 0x1
+    hidesprite RIVAL
+    setflag FLAG_RIVAL_VIRIDIAN_SPRITE
+    sound 0x11
+    pause 15
+    fadescreen 0x0
+    setvar VAR_ENCOUNTER_ASH 0x4
+    fadedefaultbgm
+    release
+    end
+
+EventScrit_Viridian_Rival_PlayerFacingRight:
+    spriteface PLAYER RIGHT
+    spriteface RIVAL LEFT
+    return
+
+EventScrit_Viridian_Rival_PlayerFacingLeft:
+    spriteface PLAYER LEFT
+    spriteface RIVAL RIGHT
+    return
+    
+EventScrit_Viridian_Rival_PlayerFacingUp:
+    spriteface RIVAL DOWN
+    return
+
+Move_Viridian_Rival_1:
+    .byte pause_long
+    .byte jump_onspot_up
+    .byte jump_onspot_up
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+Move_Viridian_Rival_2:
+    .byte exclaim
+    .byte pause_long
+    .byte face_player
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Viridian Ash After 8th Badge
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Viridian_Ash:
+    lock
+    applymovement ASH Move_Viridian_Ash_1
+    waitmovement ASH
+    pause 15
+    playsong 0x1D5 0x1
+    npcmsg gText_Viridian_Ash_Speak_1 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 30
+    spriteface ASH LEFT
+    pause 45
+    spriteface ASH UP
+    npcmsg gText_Viridian_Ash_Speak_2 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    npcmsg gText_Viridian_Ash_Speak_3 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 15
+    trainerbattle3 0x3 11 0x0 gText_Viridian_Ash_Defeat
+    npcmsg gText_Viridian_Ash_Speak_4 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 15
+    npcmsg gText_Viridian_Ash_Speak_5 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    applymovement ASH Move_Viridian_Ash_2
+    waitmovement ASH
+    hidesprite ASH
+    setflag FLAG_ASH_VIRIDIAN_SPRITE
+    setvar VAR_ENCOUNTER_ASH 0x7
+    fadedefaultbgm
+    release
+    end
+
+Move_Viridian_Ash_1:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_up
+    .byte end_m
+
+Move_Viridian_Ash_2:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
     .byte end_m

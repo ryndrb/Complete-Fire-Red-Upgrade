@@ -42,6 +42,7 @@ EventScript_0x816DA34:
     if 0x1 _goto 0x816DA75
     giveitem_msg 0x81996FF ITEM_TM38
     setflag 0x24E
+    clearflag FLAG_RIVAL_VIRIDIAN_SPRITE
     npcmsg 0x8199652 MSG_KEEPOPEN gText_Name_Blaine
     closemsg
     release

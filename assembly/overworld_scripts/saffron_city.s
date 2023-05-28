@@ -5,6 +5,8 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ ASH, 3
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Sabrina
 @@@@@@@@@@@@@@@@@@@@@@
@@ -85,8 +87,10 @@ Obtained:
 EventScipt_SaffronDrainPunch:
     lock
     faceplayer
+    checkflag 0x53 @ archer defeated?
+    if NOT_SET _goto EventScript_SilphCo_Receptionist_Woman
     checkflag FLAG_OBTAIN_DRAIN_PUNCH
-    if 0x0 _goto EventScript_GiveDrainPunch
+    if NOT_SET _goto EventScript_GiveDrainPunch
     msgbox 0x81754F7 MSG_FACE
     end 
 
@@ -97,6 +101,11 @@ EventScript_GiveDrainPunch:
     msgbox gText_GiveDrainPunchAccept MSG_KEEPOPEN
     giveitem ITEM_TM60 0x1 MSG_OBTAIN
     setflag FLAG_OBTAIN_DRAIN_PUNCH
+    release
+    end
+
+EventScript_SilphCo_Receptionist_Woman:
+    msgbox gText_SilphCo_Receptionist_Woman MSG_FACE
     release
     end
 
@@ -345,7 +354,6 @@ LevelScript_SilphCo_Proton:
 
 EventScript_SilphCo_Proton:
     lock
-    setflag 0x9B5
     applymovement 2 Move_SilphCo_Proton1
     waitmovement 2
     sound 0x15
@@ -355,7 +363,7 @@ EventScript_SilphCo_Proton:
     npcmsg gText_SilphCo_ProtonSpeak1 MSG_KEEPOPEN gText_Name_Proton
     closemsg
     setvar VAR_FURTHER_TRAINER_BATTLES 0x2
-    trainerbattle3 0x3 0x6 0x0 gText_SilphCo_ProtonDefeated
+    @trainerbattle3 0x3 0x6 0x0 gText_SilphCo_ProtonDefeated
     npcmsg gText_SilphCo_ProtonSpeak2 MSG_KEEPOPEN gText_Name_Proton
     closemsg
     applymovement PLAYER Move_SilphCo_Player1
@@ -367,6 +375,8 @@ EventScript_SilphCo_Proton:
     setflag FLAG_ENCOUNTER_SIPHCO_PROTON
     setvar VAR_ENCOUNTER_SIPHCO_PROTON 1
     fadedefaultbgm
+    pause 90
+    call EventScript_SilphCo_Receptionist
     release
     end
 
@@ -402,12 +412,130 @@ Move_SilphCo_Player1:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Silph Co Ash
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_SilphCo_Receptionist:
+    msgbox gText_SilphCo_Receptionist_Woman_Speak_1 MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_SilphCo_Receptionist_Player_1
+    waitmovement PLAYER
+    pause 15
+    msgbox gText_SilphCo_Receptionist_Woman_Speak_2 MSG_KEEPOPEN
+    closeonkeypress
+    showsprite ASH
+    sound 0x9
+    pause 15
+    npcmsg gText_SilphCo_Receptionist_Ash_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
+    pause 15
+    sound 0x15
+    applymovement PLAYER Move_SilphCo_Receptionist_Player_2
+    applymovement ASH Move_SilphCo_Receptionist_Ash_1
+    waitmovement ASH
+    playsong 0x1D5 0x0
+    spriteface PLAYER RIGHT
+    npcmsg gText_SilphCo_Receptionist_Ash_Speak_2 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 5
+    msgbox gText_SilphCo_Receptionist_Woman_Speak_3 MSG_KEEPOPEN
+    closeonkeypress
+    pause 15
+    spriteface ASH LEFT
+    spriteface PLAYER RIGHT
+    npcmsg gText_SilphCo_Receptionist_Ash_Speak_3 MSG_KEEPOPEN gText_Name_Ash
+    npcmsg gText_SilphCo_Receptionist_Ash_Speak_4 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 15
+    spriteface ASH UP
+    spriteface PLAYER UP
+    npcmsg gText_SilphCo_Receptionist_Ash_Speak_5 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 15
+    spriteface ASH LEFT
+    spriteface PLAYER RIGHT
+    npcmsg gText_SilphCo_Receptionist_Ash_Speak_6 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    applymovement ASH Move_SilphCo_Receptionist_Ash_2
+    applymovement PLAYER Move_SilphCo_Receptionist_Player_3
+    waitmovement ASH
+    sound 0x9
+    hidesprite ASH
+    fadedefaultbgm
+    release
+    end
+
+Move_SilphCo_Receptionist_Player_1:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte pause_long
+    .byte say_question
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up
+    .byte end_m
+
+Move_SilphCo_Receptionist_Player_2:
+    .byte say_question
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Receptionist_Ash_1:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Receptionist_Player_3:
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte end_m
+
+Move_SilphCo_Receptionist_Ash_2:
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Ariana Silph Co
 @@@@@@@@@@@@@@@@@@@@@@
 EventScript_SilphCo_Ariana:
     lock
     faceplayer
-    setflag 0x9B5
     playsong 0x181 1
     npcmsg gText_SilphCo_ArianaSpeak1 MSG_KEEPOPEN gText_Name_Ariana
     closemsg
@@ -417,6 +545,7 @@ EventScript_SilphCo_Ariana:
     closemsg
     fadescreen 0x1
     hidesprite 1
+    setflag FLAG_ENCOUNTER_SILPHCO_ARIANA
     fadescreen 0x0
     fadedefaultbgm
     release

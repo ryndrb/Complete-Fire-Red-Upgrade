@@ -123,3 +123,42 @@ Well, well, it looks like it's\nyour lucky day.
 
 #org @gText_Viridian_RocketGang_James_Speak_15
 Oh, well[.]\pI guess we'll just have to catch\n'em all next time!
+
+#org @gText_Viridian_Rival_Speak_1
+What's the deal with this door?\nLocked, huh?\pLet me show you how it's done!
+
+#org @gText_Viridian_Rival_Speak_2
+[.]Well, that was a long shot.
+
+#org @gText_Viridian_Rival_Speak_3
+Yo, [PLAYER]!\pCouldn't resist watching me\nembarrass myself, huh?\pDon't just stand there silently!
+
+#org @gText_Viridian_Rival_Speak_4
+[.]\pAnyway, let's get down to\nbusiness.\pHow many Gym Badges do you have\nnow?\p[.]\pSeven?\nHa, looks like you're keeping up!
+
+#org @gText_Viridian_Rival_Speak_5
+All that's left is this Gym[.]
+
+#org @gText_Viridian_Rival_Speak_6
+You're in the same boat, right?\p[.]\pBut this placed is always closed!\nWe need to report that we can't\lget in!
+
+#org @gText_Viridian_Rival_Speak_7
+Oh, I know! I'll go ask gramps to\nsee if he knows anything!\pSmell ya!
+
+#org @gText_Viridian_Ash_Speak_1
+Congratulations, [PLAYER]!\pBut man, what a shock[.]\pI never thought a criminal would\nuse a Pok\emon Gym as their\lhideout[.]
+
+#org @gText_Viridian_Ash_Speak_2
+That's it! I've decided!\pI'll look after Viridian City Gym\nfrom now on!\pI don't really like to get tied\ndown, so I've always said no when\lthey ask about it, but[.]\pI'll be the Gym Leader from now\non!\pJust like my good friends Brock\nand Misty!
+
+#org @gText_Viridian_Ash_Speak_3
+So then, [PLAYER][.]\pTime for you to take on the\nPok\emon League!\pBut I haven't really seen you in\naction yet[.]\p[.]\pSo how about showing me\nwhat you've got!
+
+#org @gText_Viridian_Ash_Defeat
+Exactly what I'd expect from a\nPallet Town Trainer!
+
+#org @gText_Viridian_Ash_Speak_4
+Oh, man!\pSo you really are ready for the\nPok\emon League!\pJust keep going along Route 22 to\nthe west of here, and you won't\lmiss it.\pThe Elite Four are tough, but\ndon't you dare lose!
+
+#org @gText_Viridian_Ash_Speak_5
+[.]\pThe first challenger I'll have\nhere[.]\pI'm sure it's gonna be May!\pSo long then, [PLAYER]!\nUntil next time!

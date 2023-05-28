@@ -341,7 +341,68 @@ static const struct TrainerMonItemCustomMoves sParty_Route25_JessieJames[] = {
         .moves = {MOVE_SLASH, MOVE_NIGHTSLASH, MOVE_QUICKATTACK, MOVE_METALCLAW},
     },
 };
-static const struct TrainerMonItemCustomMoves sParty_HexManiac[] = {DUMMY_TRAINER_MON};
+static const struct TrainerMonItemCustomMoves sParty_Viridian_Ash[] = { // outside gym / not leader fight yet
+    {
+        .lvl = 0,
+        .species = SPECIES_DRAGONITE,
+        .ability = Ability_Hidden, // multi scale
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {248, 52, 56, 0, 152, 0},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_DRAGONDANCE, MOVE_DUALWINGBEAT, MOVE_EARTHQUAKE, MOVE_ROOST},
+    },
+    {
+        .lvl = 0,
+        .species = SPECIES_SNORLAX,
+        .ability = Ability_Hidden, // fluffy
+        .nature = NATURE_IMPISH,
+        .ivSpread = {IV_MAX},
+        .evSpread = {12, 0, 244, 0, 252, 0},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_BODYSLAM, MOVE_EARTHQUAKE, MOVE_FIREPUNCH, MOVE_PURSUIT},
+    },
+    {
+        .lvl = 0,
+        .species = SPECIES_CHARIZARD,
+        .ability = Ability_Hidden, // defiant
+        .nature = NATURE_ADAMANT,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 252, 0, 0, 4, 252},
+        .heldItem = ITEM_CHARIZARDITE_X,
+        .moves = {MOVE_DRAGONDANCE, MOVE_FLAREBLITZ, MOVE_EARTHQUAKE, MOVE_ROOST},
+    },
+    {
+        .lvl = 0,
+        .species = SPECIES_LUCARIO,
+        .ability = Ability_Hidden, // justified
+        .nature = NATURE_JOLLY,
+        .ivSpread = {IV_MAX},
+        .evSpread = {252, 252, 0, 0, 4, 0},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .moves = {MOVE_MACHPUNCH, MOVE_EXTREMESPEED, MOVE_BULLETPUNCH, MOVE_POWERUPPUNCH},
+    },
+    {
+        .lvl = 0,
+        .species = SPECIES_GRENINJA,
+        .ability = Ability_2, // battle bond
+        .nature = NATURE_TIMID,
+        .ivSpread = {IV_MAX},
+        .evSpread = {0, 0, 0, 252, 4, 252},
+        .heldItem = ITEM_CHOICE_SPECS,
+        .moves = {MOVE_SURF, MOVE_DARKPULSE, MOVE_WATERSHURIKEN, MOVE_SPIKES},
+    },
+    {
+        .lvl = 5,
+        .species = SPECIES_PIKACHU,
+        .ability = Ability_Hidden, // lightning rod
+        .nature = NATURE_TIMID,
+        .ivSpread = {IV_MAX},
+        .evSpread = {252, 252, 252, 252, 252, 252},
+        .heldItem = ITEM_LIGHT_BALL,
+        .moves = {MOVE_VOLTSWITCH, MOVE_THUNDERBOLT, MOVE_KNOCKOFF, MOVE_SURF},
+    },
+};
 static const struct TrainerMonItemCustomMoves sParty_RSLady[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_RSBeauty[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonItemCustomMoves sParty_RichBoy[] = {DUMMY_TRAINER_MON};

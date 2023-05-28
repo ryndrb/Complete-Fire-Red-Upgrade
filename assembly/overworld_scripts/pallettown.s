@@ -5,6 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ OAK_INSIDE_LAB, 4
+.equ RIVAL_INSIDE_LAB, 8
+.equ ASH_INSIDE_LAB, 12
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Prof Aid Give Time Turner
 @@@@@@@@@@@@@@@@@@@@@@
@@ -524,6 +528,7 @@ EventScript_LevelScript2_InsideOakLab:
 
 LevelScript_InsideOakLab:
     levelscript 0x4055, 1, EventScript_LevelScript_InsideOakLab
+    levelscript VAR_ENCOUNTER_ASH, 4, EventScript_PalletTown_Before8thBadge
     .hword LEVEL_SCRIPT_TERMIN
 
 EventScript_LevelScript_InsideOakLab:
@@ -2163,6 +2168,121 @@ EventScript_0x8168EE2:
     end
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Ash and Rival inside Oak Lab
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_PalletTown_Before8thBadge:
+    lock
+    pause 30
+    showsprite RIVAL_INSIDE_LAB
+    showsprite ASH_INSIDE_LAB
+    applymovement PLAYER Move_PalletTown_Before8thBadge_Player_1
+    waitmovement PLAYER
+    spriteface RIVAL_INSIDE_LAB RIGHT
+    npcmsg gText_PalletTown_Before8thBadge_Rival_Speak_1 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    pause 15
+    spriteface RIVAL_INSIDE_LAB UP
+    spriteface PLAYER UP
+    npcmsg gText_PalletTown_Before8thBadge_Oak_Speak_1 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
+    pause 30
+    spriteface OAK_INSIDE_LAB LEFT
+    npcmsg gText_PalletTown_Before8thBadge_Oak_Speak_2 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
+    pause 15
+    spriteface ASH_INSIDE_LAB RIGHT
+    npcmsg gText_PalletTown_Before8thBadge_Ash_Speak_1 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    npcmsg gText_PalletTown_Before8thBadge_Oak_Speak_3 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
+    pause 15
+    spriteface OAK_INSIDE_LAB DOWN
+    spriteface ASH_INSIDE_LAB DOWN
+    npcmsg gText_PalletTown_Before8thBadge_Ash_Speak_2 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    npcmsg gText_PalletTown_Before8thBadge_Ash_Speak_3 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 15
+    giveitem ITEM_MASTER_BALL 0x1 MSG_OBTAIN
+    npcmsg gText_PalletTown_Before8thBadge_Ash_Speak_4 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 15
+    npcmsg gText_PalletTown_Before8thBadge_Oak_Speak_4 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
+    npcmsg gText_PalletTown_Before8thBadge_Ash_Speak_5 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 30
+    spriteface RIVAL_INSIDE_LAB RIGHT
+    spriteface PLAYER LEFT
+    npcmsg gText_PalletTown_Before8thBadge_Rival_Speak_2 MSG_KEEPOPEN gText_Name_Rival
+    closemsg
+    playsong 0x13B 0x0
+    applymovement RIVAL_INSIDE_LAB Move_PalletTown_Before8thBadge_Rival_1
+    applymovement PLAYER Move_PalletTown_Before8thBadge_Player_2
+    waitmovement RIVAL_INSIDE_LAB
+    hidesprite RIVAL_INSIDE_LAB
+    fadedefaultbgm
+    pause 30
+    spriteface OAK_INSIDE_LAB LEFT
+    spriteface ASH_INSIDE_LAB RIGHT
+    npcmsg gText_PalletTown_Before8thBadge_Ash_Speak_6 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    npcmsg gText_PalletTown_Before8thBadge_Oak_Speak_5 MSG_KEEPOPEN gText_Name_ProfOak
+    closemsg
+    pause 30
+    spriteface ASH_INSIDE_LAB DOWN
+    npcmsg gText_PalletTown_Before8thBadge_Ash_Speak_7 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    applymovement ASH_INSIDE_LAB Move_PalletTown_Before8thBadge_Ash_1
+    applymovement PLAYER Move_PalletTown_Before8thBadge_Player_2
+    waitmovement ASH_INSIDE_LAB
+    hidesprite ASH_INSIDE_LAB
+    setvar VAR_ENCOUNTER_ASH 0x5
+    release
+    end
+
+Move_PalletTown_Before8thBadge_Player_1:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left_onspot_fastest
+    .byte end_m
+
+Move_PalletTown_Before8thBadge_Rival_1:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_PalletTown_Before8thBadge_Player_2:
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_PalletTown_Before8thBadge_Ash_1:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ GAME FLAGS
 @@@@@@@@@@@@@@@@@@@@@@
 SETNECESSARYGAMEFLAGS: @ will add more
@@ -2189,6 +2309,11 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag FLAG_MAY_POKETOWER_SPRITE_2
     setflag FLAG_ROCKET_GANG_LAVENDER_SPRITE
     setflag FLAG_ROCKET_GANG_POKETOWER_SPRITE
+    setflag FLAG_ASH_PEWTER_SPRITE
+    setflag FLAG_ASH_SILPHCO_SPRITE
+    setflag FLAG_RIVAL_VIRIDIAN_SPRITE
+    setflag FLAG_ASH_OAK_LAB_SPRITE
+    setflag FLAG_ASH_VIRIDIAN_SPRITE
 
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
 

@@ -6,6 +6,25 @@
 .include "../asm_defines.s"
 
 .equ BRENDAN, 0x4
+.equ ASH, 0xA
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pewter City Map Scripts
+@@@@@@@@@@@@@@@@@@@@@@
+MapScript_Pewter:
+    mapscript MAP_SCRIPT_ON_TRANSITION Map_Pewter
+    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_Pewter
+    .byte MAP_SCRIPT_TERMIN
+
+Map_Pewter:
+    setworldmapflag 0x892
+    setvar 0x4061 0x0
+    end
+
+LevelScript_Pewter:
+    levelscript VAR_BRENDAN_ENCOUNTER, 1, EventScript_BrendanOutsideGym
+    levelscript VAR_ENCOUNTER_ASH, 1, EventScript_Pewter_Ash
+    .hword LEVEL_SCRIPT_TERMIN
 
 @@@@@@@@@@@@@@@@@@@@@@
 @ Brock
@@ -147,20 +166,6 @@ EventScript_Pewter_Brendan:
     release
     end
 
-MapScript_Pewter:
-    mapscript MAP_SCRIPT_ON_TRANSITION Map_Pewter
-    mapscript MAP_SCRIPT_ON_FRAME_TABLE LevelScript_BrendanOutsideGym
-    .byte MAP_SCRIPT_TERMIN
-
-Map_Pewter:
-    setworldmapflag 0x892
-    setvar 0x4061 0x0
-    end
-
-LevelScript_BrendanOutsideGym:
-    levelscript VAR_BRENDAN_ENCOUNTER, 1, EventScript_BrendanOutsideGym
-    .hword LEVEL_SCRIPT_TERMIN
-
 EventScript_BrendanOutsideGym:
     lock
     showsprite 0x9
@@ -214,6 +219,7 @@ EventScript_BrendanAfterCatchingMonInsideGym:
     setvar VAR_BRENDAN_ENCOUNTER 0x3
     setflag FLAG_BRENDAN_PEWTER_SPRITE2
     setflag FLAG_BRENDAN_PEWTER_SPRITE3
+    clearflag FLAG_ASH_PEWTER_SPRITE
     fadedefaultbgm
     end
 
@@ -859,4 +865,87 @@ EventScript_Pewter_Steven_End:
 Move_Pewter_Steven_1:
     .byte exclaim
     .byte pause_long
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Ash
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Pewter_Ash:
+    lock
+    pause 30
+    applymovement ASH Move_Pewter_Ash_1
+    waitmovement ASH
+    sound 0x15
+    applymovement ASH Move_Pewter_Ash_2
+    waitmovement ASH
+    npcmsg gText_Pewter_Ash_Speak_1 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_Pewter_Player_1
+    waitmovement PLAYER
+    playsong 0x1D5 0x0
+    npcmsg gText_Pewter_Ash_Speak_2 MSG_KEEPOPEN gText_Name_Unknown
+    closemsg
+    npcmsg gText_Pewter_Ash_Speak_3 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 30
+    giveitem ITEM_GREAT_BALL 10 MSG_OBTAIN
+    npcmsg gText_Pewter_Ash_Speak_4 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement ASH Move_Pewter_Ash_3
+    waitmovement ASH
+    npcmsg gText_Pewter_Ash_Speak_5 MSG_KEEPOPEN gText_Name_Ash
+    closemsg
+    applymovement ASH Move_Pewter_Ash_4
+    waitmovement ASH
+    hidesprite ASH
+    setflag FLAG_ASH_PEWTER_SPRITE
+    setvar VAR_ENCOUNTER_ASH 0x2
+    fadedefaultbgm
+    release
+    end
+
+Move_Pewter_Ash_1:
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte walk_left_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_Pewter_Ash_2:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
+
+Move_Pewter_Player_1:
+    .byte say_question
+    .byte pause_long
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
+
+Move_Pewter_Ash_3:
+    .byte exclaim
+    .byte pause_long
+    .byte end_m
+
+Move_Pewter_Ash_4:
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_right
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
     .byte end_m

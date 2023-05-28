@@ -7,6 +7,9 @@ Really?\nThat's too bad then.\pCome back if  you change your\nmind.
 #org @gText_GiveDrainPunchAccept
 Great!\nHere it is.
 
+#org @gText_SilphCo_Receptionist_Woman
+On behalf of the company, we\nappreciate your help!
+
 #org @gText_GiveSleepTalk
 Zzz[.] Hm?\nTaaake[.] thissss[.]
 
@@ -69,3 +72,30 @@ Yay! Thank you, Trainer!\nI'll tell my sister all about it!
 
 #org @gText_Saffron_MeanLookingFish_Narrator_1
 Someone, somewhere, saw that you\nmade somebody's wish come true.
+
+#org @gText_SilphCo_Receptionist_Woman_Speak_1
+Hey, you there!
+
+#org @gText_SilphCo_Receptionist_Woman_Speak_2
+I have to tell you that our office\nis a bit of a disaster right now.\p[.]A REAL disaster!\pThe person you just battled there\nis a Team Rocket member!\pThis is no place for kids- not\nwhen there are so many dangerous\lpeople around!
+
+#org @gText_SilphCo_Receptionist_Ash_Speak_1
+Aw, don't be such a stick in the\nmud.
+
+#org @gText_SilphCo_Receptionist_Ash_Speak_2
+You won't even let us have a\nlittle look around?
+
+#org @gText_SilphCo_Receptionist_Woman_Speak_3
+Oh!\nY[.]you're Ash! THE Ash!
+
+#org @gText_SilphCo_Receptionist_Ash_Speak_3
+[PLAYER], what're you doing in a\nplace like this?\p[.]\pThose Team Rocket goons are causing\ntrouble all over the place, huh?\pNo surprise, they are everywhere\noutside the building.\p[.]\pWe can't keep letting Team Rocket\ndo whatever they please!
+
+#org @gText_SilphCo_Receptionist_Ash_Speak_4
+Come on! It's time to do a little\nstrategy planning!\p[.]\p[.]So in short, the plan is this:\nYou are gonna drive Team Rocket\lout of Silph Co.\pI would love to help you out here,\nbut I'm gonna do a loop around\lall of Kanto, squashing out\lTeam Rocket wherever I find 'em!\pOne of use is sure to find out\nwhere their boss is hiding.\pAnd while I'm at it, I'll swing by\nthe Pok\emon League to let them\lknow what's going on.
+
+#org @gText_SilphCo_Receptionist_Ash_Speak_5
+Don't worry, we'll try our best to\ndrive those Rocket goons away!
+
+#org @gText_SilphCo_Receptionist_Ash_Speak_6
+[.]\pSo that's the battle plan!\pTime to split up and put it into\naction!

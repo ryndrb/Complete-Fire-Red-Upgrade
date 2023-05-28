@@ -298,6 +298,7 @@ extern const u16 gEventObjectPic_WinonaPal[];
 extern const u16 gEventObjectPic_TatePal[];
 extern const u16 gEventObjectPic_LizaPal[];
 extern const u16 gEventObjectPic_WallacePal[];
+extern const u16 gEventObjectPic_AshPal[];
 
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Archer;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ariana;
@@ -328,6 +329,7 @@ extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Winona;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Tate;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Liza;
 extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Wallace;
+extern const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ash;
 
 static NPCPtr sOverworldTable2[] = {
 	/*  0 */ &gEventObjectGraphicsInfo_Archer,
@@ -359,6 +361,7 @@ static NPCPtr sOverworldTable2[] = {
 	/* 26 */ &gEventObjectGraphicsInfo_Tate,
 	/* 27 */ &gEventObjectGraphicsInfo_Liza,
 	/* 28 */ &gEventObjectGraphicsInfo_Wallace,
+	/* 29 */ &gEventObjectGraphicsInfo_Ash,
 };
 
 // create 255 OW tables
@@ -410,6 +413,7 @@ static const struct SpritePalette sObjectEventSpritePalettes12[] = {
 	{gEventObjectPic_TatePal, 0x1224},
 	{gEventObjectPic_LizaPal, 0x1225},
 	{gEventObjectPic_WallacePal, 0x1226},
+	{gEventObjectPic_AshPal, 0x1227},
 	{NULL, 0x11FF},
 };
 

@@ -297,7 +297,7 @@ struct Trainer
 #define PARTY_FLAG_HAS_ITEM         0x2
 
 
-extern struct Trainer gTrainers[];
+extern const struct Trainer gTrainers[];
 
 #define TRAINER_ENCOUNTER_MUSIC(trainer)((gTrainers[trainer].encounterMusic_gender & 0x7F))
 

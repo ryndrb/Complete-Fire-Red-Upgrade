@@ -89,7 +89,7 @@ Oh sweetie[.]\pWhat have you been doing this past\nweek[.]?\pIs the World Champi
 [.]\pOh, I almost forgot!\pProf. Oak also sent me another\nmessage.\pHe wants to know which region has\nimpressed you the most during this\lyears World Championships[.]?\pErr[.] I'm not sure why but he\nmentioned that it will determine\lwhich batch of Pok\emon you'll get\lto choose from.\pDo you have a preference honey?\pI'll be sure to let him know if\nyou do.
 
 #org @gText_MomDone
-Alright, I'll let him know!\p[.]\pAnd[.] [PAUSE][30]done!\pYou need to get going!
+Alright, I'll let him know!\pYou need to get going!
 
 #org @gText_PalletTown_Mom_Speak_2
 [PLAYER]!\nYou should take a quick rest.
@@ -282,3 +282,45 @@ I think it's wonderful for people\nto travel with Pok\emon.\pBut you should go h
 
 #org @gText_PalletTown_MayBrother
 Hi, neighbor!\pDo you already have your own\nPok\emon?
+
+#org @gText_PalletTown_Before8thBadge_Rival_Speak_1
+Yo, [PLAYER]!\nSo you're asking gramps too, huh?
+
+#org @gText_PalletTown_Before8thBadge_Oak_Speak_1
+Oh! If it isn't [PLAYER]!\pYou and [RIVAL] are both looking a\nlot more grown up the last time I\lsaw you.\pAnd you have impeccable timing, as\nusual! Let me introduce you.
+
+#org @gText_PalletTown_Before8thBadge_Oak_Speak_2
+This is Ash Ketchum, the current\nPok\emon World Champion!
+
+#org @gText_PalletTown_Before8thBadge_Ash_Speak_1
+It's fine Professor Oak, we've met\neach other already.
+
+#org @gText_PalletTown_Before8thBadge_Oak_Speak_3
+Oh, is that so?
+
+#org @gText_PalletTown_Before8thBadge_Ash_Speak_2
+More important than that, though[.]\n[PLAYER]! You did awesome!\p[.]\pWith Team Rocket!\pI never thought that their boss\nwould actually be holed up there\lat Silph Co.!\p[.]\pWhat?\pHe wasn't the actual boss of Team\nRocket?\pArghh! [.]So those Rocket goons\nare still on the loose then, huh?\pBut regardless, you still managed\nto take down a big shot of theirs!
+
+#org @gText_PalletTown_Before8thBadge_Ash_Speak_3
+[.]\pYou and your Pok\emon did your\nbest, alright!\pSo I've got a little something for\nyou! And [RIVAL], too!
+
+#org @gText_PalletTown_Before8thBadge_Ash_Speak_4
+The two of you should find that\nitem useful!
+
+#org @gText_PalletTown_Before8thBadge_Oak_Speak_4
+Oh. But what're you two even doing\nback here in Pallet Town?\p[.]What? Viridian City's Gym\nLeader is never at the Gym?
+
+#org @gText_PalletTown_Before8thBadge_Ash_Speak_5
+Huh, that's odd[.]\nMaybe I'll go take a look myself[.]
+
+#org @gText_PalletTown_Before8thBadge_Rival_Speak_2
+Gramps and Ash here doesn't have\nany information either.\lBut it's whatever.\pI'll just try barging through the\nfront door harder! Smell ya!
+
+#org @gText_PalletTown_Before8thBadge_Ash_Speak_6
+Alright Professor! It's been great\ncatching up with you!
+
+#org @gText_PalletTown_Before8thBadge_Oak_Speak_5
+Say hi to Delia and Mr. Mime for\nme, would you?
+
+#org @gText_PalletTown_Before8thBadge_Ash_Speak_7
+And [PLAYER], keep pushing forward\non your own Pok\emon adventure.\pI know you've got what it takes to\nbecome a Pok\emon Master!
