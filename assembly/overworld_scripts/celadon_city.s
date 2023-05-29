@@ -1226,7 +1226,7 @@ EventScript_RocketHQ_RocketGang:
     closemsg
     npcmsg gText_RocketHQ_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN gText_Name_Meowth
     closemsg
-    setvar VAR_FURTHER_TRAINER_BATTLES 0x2
+    setvar 0x800B 0x2
     trainerbattle3 0x3 10 0x0 gText_RocketHQ_RocketGang_Defeat
     npcmsg gText_RocketHQ_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN gText_Name_Jessie
     closemsg

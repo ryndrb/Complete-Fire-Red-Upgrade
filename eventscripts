@@ -273,6 +273,7 @@ npc 1 86 6 EventScript_Glalilite
 npc 43 2 0 EventScript_Seafoam_Regice
 
 # CINNABAR ISLAND
+npc 1 62 0 EventScript_Mansion_RocketGang
 npc 1 62 6 EventScript_StoneEdge
 npc 3 8 4 EventScript_CinnabarExplosion
 npc 3 8 5 EventScript_Cinnabar_LittleBoyDad

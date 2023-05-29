@@ -186,7 +186,7 @@ EventScript_PokeTower_TopFloor_RocketGang:
     npcmsg gText_PokeTower_TopFloor_RocketGang_James_Speak_3 MSG_KEEPOPEN gText_Name_James
     closemsg
     pause 15
-    setvar VAR_FURTHER_TRAINER_BATTLES 0x3
+    setvar 0x800B 0x3
     trainerbattle3 0x3 10 0x0 gText_PokeTower_TopFloor_RocketGang_Defeat
     playsong 0x184 0x0
     npcmsg gText_PokeTower_TopFloor_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN gText_Name_Jessie

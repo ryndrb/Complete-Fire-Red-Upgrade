@@ -362,7 +362,7 @@ EventScript_SilphCo_Proton:
     playsong 0x184 1
     npcmsg gText_SilphCo_ProtonSpeak1 MSG_KEEPOPEN gText_Name_Proton
     closemsg
-    setvar VAR_FURTHER_TRAINER_BATTLES 0x2
+    setvar 0x800B 0x2
     @trainerbattle3 0x3 0x6 0x0 gText_SilphCo_ProtonDefeated
     npcmsg gText_SilphCo_ProtonSpeak2 MSG_KEEPOPEN gText_Name_Proton
     closemsg
@@ -539,7 +539,7 @@ EventScript_SilphCo_Ariana:
     playsong 0x181 1
     npcmsg gText_SilphCo_ArianaSpeak1 MSG_KEEPOPEN gText_Name_Ariana
     closemsg
-    setvar VAR_FURTHER_TRAINER_BATTLES 0x2
+    setvar 0x800B 0x2
     trainerbattle3 0x3 0x8 0x0 gText_SilphCo_ArianaDefeated
     npcmsg gText_SilphCo_ArianaSpeak2 MSG_KEEPOPEN gText_Name_Ariana
     closemsg

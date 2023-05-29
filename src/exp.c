@@ -930,3 +930,32 @@ bool8 AddEVs(struct Pokemon* mon, u8 statId, u16 numToAdd)
 
 	return FALSE; //No EVs were added
 }
+
+u8 GetBadgeCount() {
+	u8 cap = 0;
+	if (FlagGet(FLAG_BADGE01_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE02_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE03_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE04_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE05_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE06_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE07_GET)) {
+		cap++;
+	}
+	if (FlagGet(FLAG_BADGE08_GET)) {
+		cap++;
+	}
+	return cap;
+} 

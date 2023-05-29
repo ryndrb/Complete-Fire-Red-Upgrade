@@ -48,8 +48,10 @@
 #include "Tables/raid_partners.h"
 #include "Tables/trainers_with_evs_table.h"
 
-#include "Tables/Trainer_Tables/important_trainers.h"
-#include "Tables/Trainer_Tables/trainer_parties.h"
+#include "../src/Tables/Trainer_Tables/Multiple_Battles/ariana.h"
+#include "../src/Tables/Trainer_Tables/Multiple_Battles/proton.h"
+#include "../src/Tables/Trainer_Tables/Multiple_Battles/team_rocket_gang.h"
+#include "../src/Tables/Trainer_Tables/Multiple_Battles/traynee.h"
 
 /*
 build_pokemon.c
@@ -65,80 +67,6 @@ build_pokemon.c
 #define TOTAL_ORICORIO_SPREADS ARRAY_COUNT(gOricorioSpreads)
 #define TOTAL_LITTLE_CUP_SPREADS ARRAY_COUNT(gLittleCupSpreads)
 #define TOTAL_MIDDLE_CUP_SPREADS ARRAY_COUNT(gMiddleCupSpreads)
-
-const u16 EvCaps[] = 
-{
-	0x146,// Oak Lab Rival
-	0x147,// Oak Lab Rival
-	0x148,// Oak Lab Rival
-	0x149,// Route 22 Early Rival
-	0x14A,// Route 22 Early Rival
-	0x14B,// Route 22 Early Rival
-	0x19E,// BROCK
-	0x14C,// Cerulean Rival
-	0x14D,// Cerulean Rival
-	0x14E,// Cerulean Rival
-	0x19F,// MISTY
-	0x1AA,// SS Anne Rival
-	0x1AB,// SS Anne Rival
-	0x1AC,// SS Anne Rival
-	0x1A0,// Lt Surge
-	 0x3F,// Route 9 May
-	0x1A1,// ERIKA
-	0x15C,// Rocket HQ Giovanni
-	0x1AD,// Poke Tower Rival
-	0x1AE,// Poke Tower Rival
-	0x1AF,// Poke Tower Rival
-	 0x40,// Poke Tower May
-	0x1B0,// Saffron Rival
-	0x1B1,// Saffron Rival
-	0x1B2,// Saffron Rival
-	0x15D,// Saffron Giovanni
-	0x1A4,// SABRINA
-	0x1A2,// KOGA
-	0x1A3,// BLAINE
-	0x15E,// GIOVANNI
-	0x1B3,// Route 22 Late Rival
-	0x1B4,// Route 22 Late Rival
-	0x1B5,// Route 22 Late Rival
-	 0x3C,// Victory Road Brendan
-	0x19A,// LORELEI
-	0x19B,// BRUNO
-	0x19C,// AGATHA
-	0x19D,// LANCE
-	0x1B6,// Champion Rival
-	0x1B7,// Champion Rival
-	0x1B8,// Champion Rival
-};
-
-u8 GetBadgeCount() {
-	u8 cap = 0;
-	if (FlagGet(FLAG_BADGE01_GET)) {
-		cap++;
-	}
-	if (FlagGet(FLAG_BADGE02_GET)) {
-		cap++;
-	}
-	if (FlagGet(FLAG_BADGE03_GET)) {
-		cap++;
-	}
-	if (FlagGet(FLAG_BADGE04_GET)) {
-		cap++;
-	}
-	if (FlagGet(FLAG_BADGE05_GET)) {
-		cap++;
-	}
-	if (FlagGet(FLAG_BADGE06_GET)) {
-		cap++;
-	}
-	if (FlagGet(FLAG_BADGE07_GET)) {
-		cap++;
-	}
-	if (FlagGet(FLAG_BADGE08_GET)) {
-		cap++;
-	}
-	return cap;
-} 
 
 enum
 {
@@ -841,7 +769,6 @@ void sp06B_ReplacePlayerTeamWithMultiTrainerTeam(void)
 	BuildFrontierMultiParty(Var8000);
 }
 
-// rad red implemention, cred soupercell
 static u8 BuildCustomTrainerParty(struct Pokemon* const party, const u16 trainerId, const struct MultiRaidTrainer trainerData){
 	for(u8 i = 0; i < trainerData.spreadSizes[0]; i++) {
 		u8 level = GetHighestMonLevel(gPlayerParty) + trainerData.spreads[0][i].level;
@@ -867,20 +794,42 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 	const struct Trainer* trainer;
 	u32 otid = 0;
 	u8 otIdType = OT_ID_RANDOM_NO_SHINY;
-	u8 val = VarGet(VAR_FURTHER_TRAINER_BATTLES);
+	u8 val = VarGet(0x800B);
 
+	// Separete files, annoying counting index
 	if(FlagGet(FLAG_TRAYNEE_HP_TEAM))
-		return BuildCustomTrainerParty(party, gImportantTrainers[0].otId, gImportantTrainers[0]);
+		return BuildCustomTrainerParty(party, gTrayneeBattles[0].otId, gTrayneeBattles[0]);
 	else if(FlagGet(FLAG_TRAYNEE_ATT_TEAM))
-		return BuildCustomTrainerParty(party, gImportantTrainers[1].otId, gImportantTrainers[1]);
+		return BuildCustomTrainerParty(party, gTrayneeBattles[1].otId, gTrayneeBattles[1]);
 	else if(FlagGet(FLAG_TRAYNEE_DEF_TEAM))
-		return BuildCustomTrainerParty(party, gImportantTrainers[2].otId, gImportantTrainers[2]);
+		return BuildCustomTrainerParty(party, gTrayneeBattles[2].otId, gTrayneeBattles[2]);
 	else if(FlagGet(FLAG_TRAYNEE_SPA_TEAM))
-		return BuildCustomTrainerParty(party, gImportantTrainers[3].otId, gImportantTrainers[3]);
+		return BuildCustomTrainerParty(party, gTrayneeBattles[3].otId, gTrayneeBattles[3]);
 	else if(FlagGet(FLAG_TRAYNEE_SPD_TEAM))
-		return BuildCustomTrainerParty(party, gImportantTrainers[4].otId, gImportantTrainers[4]);
+		return BuildCustomTrainerParty(party, gTrayneeBattles[4].otId, gTrayneeBattles[4]);
 	else if(FlagGet(FLAG_TRAYNEE_SPE_TEAM))
-		return BuildCustomTrainerParty(party, gImportantTrainers[5].otId, gImportantTrainers[5]);
+		return BuildCustomTrainerParty(party, gTrayneeBattles[5].otId, gTrayneeBattles[5]);
+
+	switch(trainerId){
+		case 6:
+			if(val == 2) // Proton Silph Co.
+				return BuildCustomTrainerParty(party, gProtonBattles[0].otId, gProtonBattles[0]);
+			break;
+		case 8:
+			if(val == 2) // Ariana Silph Co.
+				return BuildCustomTrainerParty(party, gArianaBattles[0].otId, gArianaBattles[0]);
+			break;
+		case 10:
+			if(val == 2) // rocket gang hq battle
+				return BuildCustomTrainerParty(party, trainerId, gTeamRocketGangBattles[0]);
+			else if(val == 3) // rocket gang poke tower battle
+				return BuildCustomTrainerParty(party, trainerId, gTeamRocketGangBattles[0]);
+			else if(val == 4) // rocket gang poke mansion battle
+				return BuildCustomTrainerParty(party, trainerId, gTeamRocketGangBattles[0]);
+			break;
+		default:
+			break;
+	}
 
 	if (trainerId == TRAINER_SECRET_BASE)
 		return 0;
@@ -1117,29 +1066,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 						if (trainer->party.ItemCustomMoves[i].heldItem == ITEM_EVIOLITE)
 							canEvolveMon = canEvolveMonBackup; //Restore original option for rest of team
 						#else
-
-						switch(trainerId)
-						{	/* 	val value -> current battle times
-								val = 2 means second battle, and so on.
-								easy to remember
-							*/
-							case 0x6:
-								if(val == 2) // Proton Silph Co.
-									return BuildCustomTrainerParty(party, gImportantTrainers[6].otId, gImportantTrainers[6]); 
-								break;
-							case 0x8:
-								if(val == 2) // Ariana Silph Co.
-									return BuildCustomTrainerParty(party, gImportantTrainers[7].otId, gImportantTrainers[7]); 
-								break;
-							case 10:
-								if(val == 2) // rocket gang hq battle
-									return BuildCustomTrainerParty(party, gImportantTrainers[8].otId, gImportantTrainers[8]); 
-								else if(val == 3) // rocket gang poke tower battle
-									return BuildCustomTrainerParty(party, gImportantTrainers[8].otId, gImportantTrainers[8]); 
-								break;
-							default:
-								break;
-						}
 
 						MAKE_POKEMON(trainer->party.ItemCustomMoves);
 						#endif

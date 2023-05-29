@@ -93,3 +93,66 @@ You've been asleep for a long,\nlong time[.] What happened to you?\pAnd what wer
 
 #org @gText_Cinnabar_AbandonedHouseEntry_Door
 [BLACK]The door is tightly shut.\nIt appears impossible to open.
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_1
+Prepare for trouble!
+
+#org @gText_Mansion_RocketGang_James_Speak_1
+Make it double!
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_2
+To protect the world from\ndevastation!
+
+#org @gText_Mansion_RocketGang_James_Speak_2
+To unite all people within our\nnation!
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_3
+To denounce the evils of truth and\nlove!
+
+#org @gText_Mansion_RocketGang_James_Speak_3
+To extend our reach to the stars\nabove!
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_4
+Jessie!
+
+#org @gText_Mansion_RocketGang_James_Speak_4
+James!
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_5
+Team Rocket, blast off at the\nspeed of light!
+
+#org @gText_Mansion_RocketGang_James_Speak_5
+Surrender now, or prepare to\nfight!
+
+#org @gText_Mansion_RocketGang_Meowth_Speak_1
+Meowth!\nThat's right!
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_6
+Arghh! It's that annoying little\ntwerp again!
+
+#org @gText_Mansion_RocketGang_James_Speak_6
+Why are you always getting in our\nway!?
+
+#org @gText_Mansion_RocketGang_Meowth_Speak_2
+Those who get in Team Rocket's way\nwon't get away unscathed!
+
+#org @gText_Mansion_RocketGang_Defeat
+Jessie: How did it end up like\nthis?\pJames: It's not fair that you\nalways win!
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_7
+You're just a twerp. Why are you\nso strong?\p[.]Is it because of your strong\nPok\emon?\pYou can probably go all out\nbecause of them[.]
+
+#org @gText_Mansion_RocketGang_James_Speak_7
+With your powerful Pok\emon, we may\nbe able to conquer the world!\pHey, do you want to join Team\nRocket?\p[.]\p[.]\pOK. Fine.\pHumph, we're enemies after all!\pBut if you change your mind, come\nback anytime.
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_8
+[.]What's this?\pWhy do I feel so refreshed?\pYou've been such a troublesome\nlittle twerp, and yet[.]
+
+#org @gText_Mansion_RocketGang_Meowth_Speak_3
+It's great to have times like this\nfor a change once in a while,\lisn't it?
+
+#org @gText_Mansion_RocketGang_James_Speak_8
+You might be right.
+
+#org @gText_Mansion_RocketGang_Jessie_Speak_9
+We feel great!

@@ -2314,6 +2314,7 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag FLAG_RIVAL_VIRIDIAN_SPRITE
     setflag FLAG_ASH_OAK_LAB_SPRITE
     setflag FLAG_ASH_VIRIDIAN_SPRITE
+    setflag FLAG_ROCKET_GANG_MANSION_SPRITE
 
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
 

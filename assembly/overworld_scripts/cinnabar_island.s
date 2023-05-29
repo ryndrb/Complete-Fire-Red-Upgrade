@@ -5,6 +5,10 @@
 .include "../xse_defines.s"
 .include "../asm_defines.s"
 
+.equ JESSIE_MANSION, 8
+.equ JAMES_MANSION, 9
+.equ MEOWTH_MANSION, 10
+
 @@@@@@@@@@@@@@@@@@@@@@
 @ Blaine
 @@@@@@@@@@@@@@@@@@@@@@
@@ -1130,4 +1134,169 @@ Move_Cinnabar_AbandonedHouseEntry_Door_Player_1:
 Move_Cinnabar_AbandonedHouseEntry_Door_Player_2:
     .byte walk_down_onspot_fastest
     .byte walk_down
+    .byte end_m
+
+@@@@@@@@@@@@@@@@@@@@@@
+@ Pokemon Mansion Rocket Gang
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_Mansion_RocketGang:
+    lock
+    pause 15
+    fadescreen 0x1
+    showsprite JESSIE_MANSION
+    showsprite JAMES_MANSION
+    showsprite MEOWTH_MANSION
+    fadescreen 0x0
+    sound 0x15
+    applymovement PLAYER Move_Mansion_RocketGang_Player_1
+    waitmovement PLAYER
+    playsong 0x184 0x0
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_1 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    npcmsg gText_Mansion_RocketGang_James_Speak_1 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    pause 15
+    spriteface JESSIE_MANSION LEFT
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_2 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    pause 15
+    spriteface JAMES_MANSION RIGHT
+    npcmsg gText_Mansion_RocketGang_James_Speak_2 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    pause 15
+    spriteface JESSIE_MANSION UP
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_3 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    pause 15
+    spriteface JAMES_MANSION UP
+    npcmsg gText_Mansion_RocketGang_James_Speak_3 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    pause 15
+    spriteface JESSIE_MANSION DOWN
+    sound 0x79
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_4 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    pause 15
+    spriteface JAMES_MANSION DOWN
+    sound 0x79
+    npcmsg gText_Mansion_RocketGang_James_Speak_4 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_5 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    npcmsg gText_Mansion_RocketGang_James_Speak_5 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    applymovement MEOWTH_MANSION Move_Mansion_RocketGang_Meowth_1
+    waitmovement MEOWTH_MANSION
+    npcmsg gText_Mansion_RocketGang_Meowth_Speak_1 MSG_KEEPOPEN gText_Name_Meowth
+    closemsg
+    pause 30
+    sound 0x15
+    applymovement JESSIE_MANSION Move_Mansion_RocketGang_Exclaim
+    applymovement JAMES_MANSION Move_Mansion_RocketGang_Exclaim
+    applymovement MEOWTH_MANSION Move_Mansion_RocketGang_Exclaim
+    waitmovement JESSIE_MANSION
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_6 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    npcmsg gText_Mansion_RocketGang_James_Speak_6 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    npcmsg gText_Mansion_RocketGang_Meowth_Speak_2 MSG_KEEPOPEN gText_Name_Meowth
+    closemsg
+    pause 15
+    setvar 0x800B 0x4
+    trainerbattle3 0x3 10 0x0 gText_Mansion_RocketGang_Defeat
+    playsong 0x184 0x0
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_7 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    npcmsg gText_Mansion_RocketGang_James_Speak_7 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    pause 15
+    fadescreen 0x1
+    pause 15
+    fadescreen 0x0
+    pause 15
+    sound 0x15
+    applymovement JESSIE_MANSION Move_Mansion_RocketGang_Exclaim
+    waitmovement JESSIE_MANSION 
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_8 MSG_KEEPOPEN gText_Name_Jessie
+    closemsg
+    pause 15
+    spriteface JESSIE_MANSION RIGHT
+    spriteface JAMES_MANSION LEFT
+    spriteface MEOWTH_MANSION LEFT
+    pause 5
+    npcmsg gText_Mansion_RocketGang_Meowth_Speak_3 MSG_KEEPOPEN gText_Name_Meowth
+    closemsg
+    npcmsg gText_Mansion_RocketGang_James_Speak_8 MSG_KEEPOPEN gText_Name_James
+    closemsg
+    pause 15
+    npcmsg gText_Mansion_RocketGang_Jessie_Speak_9 MSG_KEEPOPEN gText_Name_Jessie 
+    applymovement JESSIE_MANSION Move_Mansion_RocketGang_Jessie_1
+    applymovement JAMES_MANSION Move_Mansion_RocketGang_James_1
+    applymovement MEOWTH_MANSION Move_Mansion_RocketGang_Meowth_2
+    waitmovement JESSIE_MANSION
+    closemsg
+    hidesprite JESSIE_MANSION
+    hidesprite JAMES_MANSION
+    hidesprite MEOWTH_MANSION
+    pause 15
+    fadedefaultbgm
+    applymovement PLAYER Move_Mansion_RocketGang_Player_2
+    waitmovement PLAYER
+    pause 30
+    hidesprite 0x6
+    setflag 0x1A8
+    giveitem ITEM_SECRET_KEY 0x1 MSG_OBTAIN
+    release
+    end
+
+Move_Mansion_RocketGang_Player_1:
+    .byte exclaim
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
+Move_Mansion_RocketGang_Meowth_1:
+    .byte pause_long
+    .byte jump_onspot_down
+    .byte pause_long
+    .byte end_m
+
+Move_Mansion_RocketGang_Jessie_1:
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte end_m
+
+Move_Mansion_RocketGang_James_1:
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte end_m
+
+Move_Mansion_RocketGang_Meowth_2:
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte run_up
+    .byte end_m
+
+Move_Mansion_RocketGang_Player_2:
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_Mansion_RocketGang_Exclaim:
+    .byte exclaim
+    .byte pause_long
     .byte end_m

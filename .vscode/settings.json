@@ -36,7 +36,9 @@
         "event_data.h": "c",
         "species.h": "c",
         "trade_scene.h": "c",
-        "string_util.h": "c"
+        "string_util.h": "c",
+        "trainer_parties.h": "c",
+        "traynee.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
