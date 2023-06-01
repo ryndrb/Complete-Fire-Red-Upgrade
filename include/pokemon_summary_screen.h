@@ -173,4 +173,13 @@ struct PokemonSummaryScreenData
 #define TAG_PSS_UNK_96 0x96
 #define TAG_PSS_UNK_A0 0xA0
 
+// For Nature Colored Stats in Summary Screen
+#define POKESUM_WIN_RIGHT_PANE 3
+#define FONT_NORMAL 2
+#define TEXT_SKIP_DRAW 0xFF
+
+#define NUM_NATURE_STATS 5
+#define GetNumberRightAlign63(x) (63 - StringLength((x)) * 6)
+#define GetNumberRightAlign27(x) (27 - StringLength((x)) * 6)
+
 #endif // GUARD_POKEMON_SUMMARY_SCREEN_H

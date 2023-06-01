@@ -263,9 +263,9 @@ HPIV:
 	str r1, [sp, #0x4]
 
 	#x, y position
-	mov r2, #0x29
+	mov r2, #0xD
 	str r2, [sp, #0x8]
-	mov r1, #0x2
+	mov r1, #0x6
 	str r1, [sp, #0xc]
 
 	#x, y size
@@ -296,9 +296,9 @@ AtkIV:
 	str r1, [sp, #0x4]
 
 	#x, y position
-	mov r2, #0x29
+	mov r2, #0xD
 	str r2, [sp, #0x8]
-	mov r1, #0x16
+	mov r1, #0x18
 	str r1, [sp, #0xc]
 
 	#x, y size
@@ -329,9 +329,9 @@ DefIV:
 	str r1, [sp, #0x4]
 
 	#x, y position
-	mov r2, #0x29
+	mov r2, #0xD
 	str r2, [sp, #0x8]
-	mov r1, #0x22
+	mov r1, #0x25
 	str r1, [sp, #0xc]
 
 	#x, y size
@@ -362,9 +362,9 @@ SAtkIV:
 	str r1, [sp, #0x4]
 
 	#x, y position
-	mov r2, #0x29
+	mov r2, #0xD
 	str r2, [sp, #0x8]
-	mov r1, #0x2E
+	mov r1, #0x32
 	str r1, [sp, #0xc]
 
 	#x, y size
@@ -395,9 +395,9 @@ SDefIV:
 	str r1, [sp, #0x4]
 
 	#x, y position
-	mov r2, #0x29
+	mov r2, #0xD
 	str r2, [sp, #0x8]
-	mov r1, #0x3A
+	mov r1, #0x3F
 	str r1, [sp, #0xc]
 
 	#x, y size
@@ -428,9 +428,9 @@ SpeedIV:
 	str r1, [sp, #0x4]
 
 	#x, y position
-	mov r2, #0x29
+	mov r2, #0xD
 	str r2, [sp, #0x8]
-	mov r1, #0x46
+	mov r1, #0x4C
 	str r1, [sp, #0xc]
 
 	#x, y size

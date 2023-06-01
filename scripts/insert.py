@@ -207,17 +207,20 @@ def ReplaceBytesFromPatches(rom: _io.BufferedReader):
     bw_bag = 'patches/bw_bag.txt'
     squeetz_music = 'patches/squeetz_music.txt'
     iv_ranking = 'patches/iv_ranking.txt'
+    ui_pals = 'patches/ui_pals.txt'
     #dppt_font = 'patches/ddpt_font.txt' # as option
     
     ## Patches
-    if os.path.isfile(bw_party_screen):
-        DoReplace(rom, bw_party_screen)
-    if os.path.isfile(bw_bag):
-        DoReplace(rom, bw_bag)
+    #if os.path.isfile(bw_party_screen):
+    #    DoReplace(rom, bw_party_screen)
+    # if os.path.isfile(bw_bag):
+    #     DoReplace(rom, bw_bag)
     if os.path.isfile(squeetz_music):
         DoReplace(rom, squeetz_music)
     if os.path.isfile(iv_ranking):
         DoReplace(rom, iv_ranking)
+    if os.path.isfile(ui_pals):
+        DoReplace(rom, ui_pals)
     #if os.path.isfile(dppt_font):
     #    DoReplace(rom, dppt_font)
 

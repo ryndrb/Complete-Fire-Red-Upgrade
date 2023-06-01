@@ -1,6 +1,6 @@
 [General]
 ApplicationVersion = '''0.5.2.1'''
-FreeSpaceSearch = '''35F440'''
+FreeSpaceSearch = '''3620C0'''
 FreeSpaceBuffer = '''100'''
 NextExportID = '''0'''
 ShowRawIVByteForTrainer = False
@@ -101,12 +101,6 @@ Name = '''data.menus.text.options'''
 Address = 0x3CC314
 Format = '''[text<"">]7'''
 DefaultHash = '''FB906E1D'''
-
-[[NamedAnchors]]
-Name = '''data.pokemon.moves.descriptions'''
-Address = 0x143AAA8
-Format = ''''''
-DefaultHash = '''BD0C8971'''
 
 [[NamedAnchors]]
 Name = '''data.menus.text.pcoptions'''
@@ -493,7 +487,7 @@ Format = '''`ucs4x8x8|graphics.items.fossils.palette2`'''
 DefaultHash = '''03CB9517'''
 
 [[NamedAnchors]]
-Name = '''graphics.pokemon.sprites.back'''
+Name = '''graphics.pokemon.sprites.back_copy1'''
 Address = 0x19778E0
 Format = '''[sprite<`lzs4x8x8`> uncompressedLength: index:]data.pokemon.names+28'''
 DefaultHash = '''8DF98E0A'''
@@ -3001,12 +2995,6 @@ Format = '''[animationPointer<[animation<[frame: time:]!FFFF0000>]2>]graphics.tr
 DefaultHash = '''E2699D55'''
 
 [[NamedAnchors]]
-Name = '''graphics.moves.surf.palette'''
-Address = 0x152E4CC
-Format = '''`lzp4:8`'''
-DefaultHash = '''4196E8C6'''
-
-[[NamedAnchors]]
 Name = '''scripts.moves.effects'''
 Address = 0x143C068
 Format = '''[effect<`bse`>]moveeffectoptions'''
@@ -3029,24 +3017,6 @@ Name = '''graphics.menu.pokemon.background.tilemap'''
 Address = 0xE82A98
 Format = '''`lzm4x32x32|graphics.menu.pokemon.background.tileset`'''
 DefaultHash = '''62A2999E'''
-
-[[NamedAnchors]]
-Name = '''graphics.moves.substitute.sprite.front'''
-Address = 0x152CBD8
-Format = '''`lzs4x8x8|graphics.moves.substitute.palette`'''
-DefaultHash = '''0BAF314C'''
-
-[[NamedAnchors]]
-Name = '''graphics.moves.substitute.palette'''
-Address = 0x152CE50
-Format = '''`lzp4`'''
-DefaultHash = '''B8A62814'''
-
-[[NamedAnchors]]
-Name = '''graphics.moves.substitute.sprite.back'''
-Address = 0x152E1B4
-Format = '''`lzs4x8x8|graphics.moves.substitute.palette`'''
-DefaultHash = '''0BAF314C'''
 
 [[NamedAnchors]]
 Name = '''graphics.battle.animations.misc'''
