@@ -4,9 +4,6 @@
 ## Move Relearner Pal
 08E97DDC 00 00 F4 66 16 73 16 73 4E 52 DD 7F DD 7F 35 77 79 77 08 21 C6 18 5F 2B DF 22 08 21 FF 7F C6 18
 
-## Bottom Start Menu Bar Pal (Last 8 bytes)
-08471E2C 2E 53 FF 7F 8C 31 5A 67 3C 04 FF 3A 64 06 D2 4B 46 65 14 7B FF 7F 29 77 9C 7F 08 21 18 67 D6 5E
-
 ## Bottom Bag Bar Pal 1 & 2
 ## (reversed bytes, 06 must be present here)
 08E835EC 9D 57 AD 06 35 DA 2A 3E 3B
