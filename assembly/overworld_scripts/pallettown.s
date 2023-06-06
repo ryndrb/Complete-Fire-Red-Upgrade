@@ -289,7 +289,7 @@ EventScript_0x8165605:
     special 0x174
     pause 0x1E
     playsong 0x12E 0x0
-    npcmsg gText_0x817D72C MSG_KEEPOPEN gText_Name_ProfOak
+    npcmsg gText_0x817D72C MSG_KEEPOPEN gText_Name_Unknown
     pause 0x55
     closemsg
     applymovement PLAYER 0x81A75ED
@@ -536,10 +536,10 @@ EventScript_LevelScript_InsideOakLab:
     applymovement 0x4 0x81692B0
     waitmovement 0x0
     hidesprite 0x4
-    movesprite2 0x4 0x6 0x3
+    movesprite2 0x4 0x6 0x4
     spritebehave 0x4 0x8
     clearflag 0x2B
-    applymovement PLAYER 0x81692B7
+    applymovement PLAYER Move_PalletTown_InsideOakLab_Player_1
     waitmovement 0x0
     applymovement 0x8 0x81A75E9
     waitmovement 0x0
@@ -581,6 +581,16 @@ EventScript_LevelScript_InsideOakLab:
     releaseall
     end
 
+Move_PalletTown_InsideOakLab_Player_1:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
 Move_PalletTown_InsideOakLab_May_1:
     .byte walk_up
     .byte walk_up
@@ -588,7 +598,6 @@ Move_PalletTown_InsideOakLab_May_1:
     .byte walk_up
     .byte walk_up
     .byte walk_right
-    .byte walk_up
     .byte walk_up
     .byte end_m
 
@@ -828,7 +837,7 @@ EventScript_GalarStartersFire:
     return
 
 EventScript_0x8169BE1:
-    applymovement 0x4 0x81A75EF @ Oak looks to player
+    applymovement 0x4 Move_0x81A75EF @ Oak looks to player
     waitmovement 0x0
     showpokepic 0x4002 0xA 0x3
     compare 0x4001 0x0
@@ -938,25 +947,27 @@ EventScript_0x8169D2F:
     sound 0x15
     applymovement 0x4 Move_PalletTown_InsideOakLab_Oak_TookMon_1
     waitmovement 0x4
-    spriteface 8, LEFT
-    spriteface 11, LEFT
-    spriteface PLAYER, LEFT
+    spriteface 8, DOWN
+    spriteface 11, DOWN
+    spriteface PLAYER, DOWN
     npcmsg gText_PalletTown_InsideOakLab_TookMon_Oak_Speak_1 MSG_KEEPOPEN gText_Name_ProfOak
     closemsg
     pause 15
     sound 0x15
     applymovement 11 Move_PalletTown_InsideOakLab_May_TookMon_1
     waitmovement 11
+    spriteface 0x8 LEFT
+    pause 5
+    spriteface PLAYER LEFT
     npcmsg gText_PalletTown_InsideOakLab_May_TookMon_Speak_2 MSG_KEEPOPEN gText_Name_May
     closemsg
     pause 15
-    fadescreenspeed 0x3 3
+    fadescreen 0x1
     hidesprite 11
-    fadescreenspeed 0x2 3
-    applymovement 0x4 Move_PalletTown_InsideOakLab_Oak_TookMon_2
-    waitmovement 0x4
+    pause 15
+    fadescreen 0x0
+    spriteface 0x8 DOWN
     setvar 0x4055 0x3
-    spriteface 0x4, DOWN
     checkflag 0x83E
     if 0x1 _call 0x8169D5C
     release
@@ -964,6 +975,7 @@ EventScript_0x8169D2F:
 
 EventScript_PalletTown_InsideOakLab_May_TakeEevee_Grass:
     applymovement 11 Move_PalletTown_InsideOakLab_May_TakeMon_1
+    applymovement 4 Move_PalletTown_InsideOakLab_Oak_LetMayThrough
     waitmovement 11
     return
 
@@ -979,53 +991,49 @@ EventScript_PalletTown_InsideOakLab_May_TakeEevee_Fire:
 
 Move_0x8169D62:
     .byte walk_down
-    .byte walk_down
-    .byte walk_right
-    .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_right
     .byte walk_up
-    .byte end_m
-
-Move_0x8169D72:
-    .byte walk_down
-    .byte walk_right
-    .byte walk_right
-    .byte walk_right
+    .byte walk_up
+    .byte walk_up
+    .byte walk_left
     .byte walk_up_onspot_fastest
     .byte end_m
 
+Move_0x8169D72:
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
+
 Move_0x8169D6B:
-    .byte walk_down
-    .byte walk_right
-    .byte walk_right
-    .byte walk_right
+    .byte walk_up
+    .byte walk_up
     .byte walk_right
     .byte walk_up_onspot_fastest
     .byte end_m
 
 Move_PalletTown_InsideOakLab_May_TakeMon_1:
-    .byte walk_down
-    .byte walk_down
-    .byte walk_right
-    .byte walk_right
+    .byte walk_up
+    .byte walk_left
     .byte walk_up
     .byte end_m
 
+Move_PalletTown_InsideOakLab_Oak_LetMayThrough:
+    .byte walk_down
+    .byte walk_up_onspot_fastest
+    .byte end_m
+
 Move_PalletTown_InsideOakLab_May_TakeMon_2:
-    .byte walk_down
-    .byte walk_down
-    .byte walk_right
-    .byte walk_right
-    .byte walk_right
+    .byte walk_up
     .byte walk_up
     .byte end_m
 
 Move_PalletTown_InsideOakLab_May_TakeMon_3:
-    .byte walk_down
-    .byte walk_right
-    .byte walk_up_onspot_fastest
+    .byte walk_left
+    .byte walk_left
+    .byte walk_up
+    .byte walk_up
     .byte end_m
 
 Move_PalletTown_InsideOakLab_May_TookMon_1:
@@ -1034,17 +1042,13 @@ Move_PalletTown_InsideOakLab_May_TookMon_1:
     .byte end_m
 
 Move_PalletTown_InsideOakLab_Oak_TookMon_1:
-    .byte exclaim
+    .byte say_cross
     .byte pause_long
-    .byte walk_down
-    .byte walk_down
-    .byte walk_right_onspot_fastest
+    .byte walk_up_onspot_fastest
     .byte end_m
 
-Move_PalletTown_InsideOakLab_Oak_TookMon_2:
-    .byte walk_up
-    .byte walk_up
-    .byte walk_down_onspot_fastest
+Move_0x81A75EF:
+    .byte walk_up_onspot_fastest
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
@@ -1273,9 +1277,8 @@ Move_0x81A75E9:
 
 Move_0x8169438:
     .byte walk_down
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
+    .byte walk_down
+    .byte walk_down
     .byte walk_left
     .byte walk_left
     .byte walk_down
@@ -1283,63 +1286,65 @@ Move_0x8169438:
 
 Move_0x8169440:
     .byte walk_down
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
+    .byte walk_down
+    .byte walk_down
     .byte walk_left
     .byte walk_down
     .byte end_m
 
 Move_0x8169447:
     .byte walk_down
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
+    .byte walk_down
+    .byte walk_down
     .byte walk_down
     .byte end_m
 
 Move_0x81694B3:
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
+    .byte walk_down
+    .byte walk_down
     .byte walk_down
     .byte walk_down
     .byte end_m
 
 Move_0x81694B9:
-    .byte walk_left
-    .byte walk_left
     .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
     .byte walk_down
     .byte end_m
 
 Move_0x81694BE:
-    .byte walk_left
     .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
+    .byte walk_right
     .byte walk_down
     .byte end_m
 
 Move_0x81693C0:
+    .byte walk_left
     .byte walk_down
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
+    .byte walk_down
+    .byte walk_down
     .byte walk_down
     .byte end_m
 
 Move_0x81693C7:
+    .byte walk_left
     .byte walk_down
-    .byte walk_left
-    .byte walk_left
-    .byte walk_left
+    .byte walk_down
+    .byte walk_down
+    .byte walk_right
     .byte walk_down
     .byte end_m
 
 Move_0x81693CD:
+    .byte walk_right
     .byte walk_down
-    .byte walk_left
-    .byte walk_left
+    .byte walk_down
+    .byte walk_down
     .byte walk_down
     .byte end_m
 
@@ -1543,54 +1548,24 @@ EventScript_0x816961E:
     pause 15
     npcmsg gText_0x818E536 MSG_KEEPOPEN gText_Name_ProfOak
     closemsg
-    applymovement 0x8 Move_PalletTown_InsideOakLab_ReceivingPokedex_Rival_1
-    waitmovement 0x8
-    npcmsg gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_OnlyTwoDex MSG_KEEPOPEN gText_Name_Rival
-    closemsg
-    pause 15
-    sound 0x15
-    applymovement 0x4 Move_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_1
-    waitmovement 0x4
-    npcmsg gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_RealizeTwoDex MSG_KEEPOPEN gText_Name_ProfOak
-    closemsg
-    applymovement 0x8 Move_PalletTown_InsideOakLab_ReceivingPokedex_Rival_1
-    waitmovement 0x8
-    npcmsg gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_NoFair MSG_KEEPOPEN gText_Name_Rival
-    closemsg
-    pause 15
-    npcmsg gText_PalletTown_InsideOakLab_ReceivingPokedex_May_OKWithIt MSG_KEEPOPEN gText_Name_May
-    closemsg
-    pause 15
-    npcmsg gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_ThanksMay MSG_KEEPOPEN gText_Name_ProfOak
-    closemsg
     pause 30
-    compare PLAYERFACING 0x2
-    if 0x1 _call 0x8169882
-    compare PLAYERFACING 0x1
-    if 0x1 _call 0x8169882
-    compare PLAYERFACING 0x4
-    if 0x1 _call 0x8169882
-    compare PLAYERFACING 0x3
-    if 0x1 _call 0x8169882
+    applymovement 0x4 Move_PalletTown_InsideLab_Oak_1
+    waitmovement 0x4
     npcmsg gText_RecentSightings MSG_KEEPOPEN gText_Name_ProfOak
     closemsg
     pause 0x28
     npcmsg gText_0x818E5C5 MSG_KEEPOPEN gText_Name_ProfOak
     closemsg
-    applymovement 0x4 0x81A75E9
-    waitmovement 0x0
+    applymovement 0x4 Move_PalletTown_InsideLab_Oak_2
+    waitmovement 0x4
     hidesprite 0x9
     pause 0xA
     hidesprite 0xA
-    pause 0x19
-    compare PLAYERFACING 0x2
-    if 0x1 _call 0x8169845
-    compare PLAYERFACING 0x1
-    if 0x1 _call 0x8169845
-    compare PLAYERFACING 0x4
-    if 0x1 _call 0x8169845
-    compare PLAYERFACING 0x3
-    if 0x1 _call 0x8169845
+    pause 0xA
+    hidesprite 0xD
+    pause 15
+    applymovement 0x4 Move_PalletTown_InsideLab_Oak_3
+    waitmovement 0x4
     pause 0xA
     fanfare 0x13E
     preparemsg 0x818E5EA
@@ -1615,24 +1590,20 @@ EventScript_0x816961E:
     pause 15
     spriteface 0x8, RIGHT
     spriteface 11, LEFT
+    pause 5
     spriteface PLAYER, LEFT
     npcmsg gText_0x818DEF3 MSG_KEEPOPEN gText_Name_Rival
     closemsg
     playsong 0x13C 0x0
-    compare PLAYERFACING 0x2
-    if 0x1 _call 0x8169B69
-    compare PLAYERFACING 0x1
-    if 0x1 _call 0x8169B69
-    compare PLAYERFACING 0x4
-    if 0x1 _call 0x8169B69
-    compare PLAYERFACING 0x3
-    if 0x1 _call 0x8169B69
+    applymovement 0x8 Move_PalletTown_InsideLab_Rival_1
+    waitmovement 0x8
     hidesprite 0x8
     fadedefault
-    pause 15
+    pause 30
     spriteface 11, UP
     npcmsg gText_PalletTown_InsideOakLab_May_ThanksOak MSG_KEEPOPEN gText_Name_May
     spriteface 11, LEFT
+    pause 10
     spriteface PLAYER, RIGHT
     npcmsg gText_PalletTown_InsideOakLab_May_LeavingForAdventure MSG_KEEPOPEN gText_Name_May
     closemsg
@@ -1645,12 +1616,40 @@ EventScript_0x816961E:
     setvar 0x4051 0x1
     setvar 0x4058 0x1
     setvar 0x4054 0x1
-    clearflag 0x9DD @ jessie viridian
-    clearflag 0x9DE @ james viridian
-    clearflag 0x9DF @ meowth viridian
-    setvar 0x5043 0x1
+    clearflag FLAG_ROCKET_GANG_VIRIDIAN_SPRITE
+    setvar VAR_ROCKET_GANG_ENCOUNTER 0x1
     release
     end
+
+Move_PalletTown_InsideLab_Oak_1:
+    .byte walk_up
+    .byte pause_long
+    .byte pause_long
+    .byte walk_down_onspot_fastest
+    .byte pause_long
+    .byte pause_long
+    .byte end_m
+
+Move_PalletTown_InsideLab_Oak_2:
+    .byte pause_long
+    .byte walk_up_onspot_fastest
+    .byte pause_long
+    .byte end_m
+
+Move_PalletTown_InsideLab_Oak_3:
+    .byte walk_down
+    .byte pause_long
+    .byte end_m
+
+Move_PalletTown_InsideLab_Rival_1:
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte walk_down
+    .byte end_m
 
 EventScript_0x81699FB:
     special 0x187
@@ -1689,7 +1688,7 @@ EventScript_0x8169A82:
     movesprite2 0x8 0x5 0xA
     showsprite 0x8
     applymovement PLAYER 0x8169B94
-    applymovement 0x8 0x8169B9D
+    applymovement 0x8 Move_0x8169B9D
     waitmovement 0x0
     return
 
@@ -1698,7 +1697,7 @@ EventScript_0x8169AC1:
     showsprite 0x8
     applymovement 0x4 0x81A75ED
     applymovement PLAYER Move_PalletTown_InsideOakLab_ReceivingPokedex_Player_Reposition_Down
-    applymovement 0x8 0x8169B9D
+    applymovement 0x8 Move_0x8169B9D
     waitmovement 0x8
     return
 
@@ -1707,7 +1706,7 @@ EventScript_0x8169A9E_Right:
     showsprite 0x8
     applymovement 0x4 0x81A75ED
     applymovement PLAYER Move_PalletTown_InsideOakLab_ReceivingPokedex_Player_Reposition_Right
-    applymovement 0x8 0x8169B9D
+    applymovement 0x8 Move_0x8169B9D
     waitmovement 0x8
     return
 
@@ -1716,9 +1715,17 @@ EventScript_0x8169A9E_Left:
     showsprite 0x8
     applymovement 0x4 0x81A75ED
     applymovement PLAYER Move_PalletTown_InsideOakLab_ReceivingPokedex_Player_Reposition_Left
-    applymovement 0x8 0x8169B9D
+    applymovement 0x8 Move_0x8169B9D
     waitmovement 0x8
     return
+
+Move_0x8169B9D:
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte walk_up
+    .byte end_m
 
 Move_PalletTown_InsideOakLab_ReceivingPokedex_Player_Reposition_Down:
     .byte walk_left
@@ -1770,7 +1777,6 @@ Move_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_1:
     .byte end_m
 
 Move_PalletTown_InsideOakLab_May_Entering_1:
-    .byte walk_up
     .byte walk_up
     .byte walk_up
     .byte walk_up
@@ -2249,7 +2255,6 @@ Move_PalletTown_Before8thBadge_Player_1:
     .byte walk_up
     .byte walk_up
     .byte walk_up
-    .byte walk_up
     .byte walk_left_onspot_fastest
     .byte end_m
 
@@ -2317,6 +2322,7 @@ SETNECESSARYGAMEFLAGS: @ will add more
     setflag FLAG_ROCKET_GANG_MANSION_SPRITE
 
     setvar 0x4070 0x1 @ Pallet Town Sign Lady
+    setflag 0x3A @ hide pokedex when starting
 
     setflag 0x9BB @ kyogre
     setflag 0x9BC @ groudon

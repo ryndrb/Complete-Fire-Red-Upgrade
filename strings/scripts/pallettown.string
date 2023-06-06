@@ -26,7 +26,7 @@ Gramps!\nI'm fed up with waiting!
 Right here, Grandpa!
 
 #org @gText_PalletTown_InsideOakLab_Oak_Speak_1
-Alright! Now that we have everyone\nhere, let us begin.\p[PLAYER], [RIVAL], and May!\pOn the table to your right, there\nare three Pok\e Balls. Each one of\lthem contains a Pok\emon.\pWhen I was young, I was a serious\nPok\emon trainer.\pBut as I got older, I couldn't do\nit anymore[.]\lSo I went and became a researcher!\pNow, each one of you can have one.\nSo go on, choose!
+Alright! Now that we have everyone\nhere, let us begin.\p[PLAYER], [RIVAL], and May!\pOn the table behind me, there are\nthree Pok\e Balls. Each one of them\lcontains a Pok\emon.\pWhen I was young, I was a serious\nPok\emon trainer.\pBut as I got older, I couldn't do\nit anymore[.]\lSo I went and became a researcher!\pNow, each one of you can have one.\nSo go on, choose!
 
 #org @gText_0x818DCB9
 Hey, Gramps!\pRemember, I want a Pok\emon native\nin Kanto only!
@@ -129,21 +129,6 @@ Before you guys leave for your\njourneys, I have more things to\lgive you!\pHmm[
 
 #org @gText_0x818E536
 Alright, good!\nAll of you are here.\pNow as I'm sure you already know,\nchallenging the Pok\emon League\lrequires having obtained eight Gym\lBadges.\pDuring your journey, you will end\nup seeing many different kinds of\lPok\emon.\pOn the desk behind me, is my\ninvention, the Pok\edex!
-
-#org @gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_OnlyTwoDex
-Gramps!\pI only see two Pok\edex at the\ntable. There's three of us!
-
-#org @gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_RealizeTwoDex
-It seems I must have forgotten[.]\pLooks like I'll have to make\nanother one.\pHmm[.]\nLet me think[.]\p[RIVAL], do you mind receiving your\nPok\edex later today?
-
-#org @gText_PalletTown_InsideOakLab_ReceivingPokedex_Rival_NoFair
-No fair, Gramps!
-
-#org @gText_PalletTown_InsideOakLab_ReceivingPokedex_May_OKWithIt
-It's OK Grandpa.\pYou can give [PLAYER] and [RIVAL]\ntheir Pok\edex. I'll have mine\llater.
-
-#org @gText_PalletTown_InsideOakLab_TryingToGivePokedex_Oak_ThanksMay
-Oh, my dear May, always being\nconsiderate.\pThank you for understanding.\pNow then, let's get started!
 
 #org @gText_RecentSightings
 Recently, there have been\nsightings of many rare Pok\emon\lspecies all around Kanto.\pAs I have mentioned before, it\nwould be wonderful if I can go and\lsee things for myself, but I'm\lmuch too old[.]

@@ -144,7 +144,7 @@ const struct Trainer gTrainers[] =
     },
     [TRAINER_ASH] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
-        .trainerClass = CLASS_CHAMPION,
+        .trainerClass = CLASS_PKMN_TRAINER_1,
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_HEX_MANIAC,
         .trainerName = {_A,_s,_h,_END},
