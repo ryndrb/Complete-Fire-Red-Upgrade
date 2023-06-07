@@ -221,6 +221,7 @@ EventScript_0x16A205:
     setvar 0x4055 0x5
     setvar VAR_MAY_ENCOUNTER 0x1
     clearflag FLAG_MAY_ROUTE1_SPRITE
+    clearflag 0x3A
     releaseall
     end
 

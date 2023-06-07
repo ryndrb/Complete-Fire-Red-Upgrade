@@ -182,6 +182,11 @@ u16 GetLocationMusicNew(struct WarpData* warp)
         && 9 == warp->mapNum){
             music = BGM_RSE_METEOR_FALLS;
         }
+        // Lake Viridian
+        if(43 == warp->mapGroup
+        && 10 == warp->mapNum){
+            music = BGM_RSE_ROUTE_1;
+        }
 
         /*
             Houses etc.

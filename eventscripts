@@ -306,6 +306,9 @@ npc 3 20 3 EventScript_Cut
 npc 3 20 7 EventScript_BindingBand
 npc 3 20 8 EventScript_Venoshock
 npc 15 1 2 EventScript_SmackDown
+npc 43 11 0 EventScript_ViridianLake_GuardianTrio
+sign 43 10 0 EventScript_Route2_LakeViridianSignpost
+
 
 # ROUTE 3
 npc 3 21 0 EventScript_TimburrGift

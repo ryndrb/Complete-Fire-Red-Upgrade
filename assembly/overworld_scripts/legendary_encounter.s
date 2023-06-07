@@ -650,6 +650,118 @@ Move_VidianForest_Celebi_Player_1:
     .byte end_m
 
 @@@@@@@@@@@@@@@@@@@@@@
+@ Lake Guardian Trio
+@@@@@@@@@@@@@@@@@@@@@@
+EventScript_ViridianLake_GuardianTrio:
+    lock
+    checkflag FLAG_AZELF_VIRIDIAN_LAKE
+    if NOT_SET _goto EventScript_ViridianLake_Azelf
+    checkflag FLAG_MESPRIT_VIRIDIAN_LAKE
+    if NOT_SET _goto EventScript_ViridianLake_Mesprit
+    checkflag FLAG_UXIE_VIRIDIAN_LAKE
+    if NOT_SET _goto EventScript_ViridianLake_Uxie
+    release
+    end
+
+EventScript_ViridianLake_Azelf:
+    signmsg
+    pause 30
+    msgbox gText_ViridianLake_GuardianTrio_Narrator_1 MSG_YESNO
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Legendaries_End
+    closeonkeypress
+    pause 15
+    sound 0x15
+    applymovement PLAYER Move_PlayerExclaim
+    waitmovement PLAYER
+    pause 15
+    cry SPECIES_AZELF 0x0
+    msgbox gText_ViridianLake_GuardianTrio MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    wildbattle SPECIES_AZELF 60 ITEM_NONE
+    special2 LASTRESULT 0xB4
+    compare LASTRESULT 0x1
+    if equal _goto EventScript_Legendaries_End
+    compare LASTRESULT 0x4
+    if equal _goto EventScript_Legendaries_End
+    pause 15
+    fadescreenspeed 0x3 0
+    setflag FLAG_AZELF_VIRIDIAN_LAKE
+    fadescreenspeed 0x2 0
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_PlayerExclaim
+    waitmovement PLAYER
+    release
+    end
+
+EventScript_ViridianLake_Mesprit:
+    signmsg
+    pause 30
+    msgbox gText_ViridianLake_GuardianTrio_Narrator_1 MSG_YESNO
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Legendaries_End
+    closeonkeypress
+    pause 15
+    sound 0x15
+    applymovement PLAYER Move_PlayerExclaim
+    waitmovement PLAYER
+    pause 15
+    cry SPECIES_MESPRIT 0x0
+    msgbox gText_ViridianLake_GuardianTrio MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    wildbattle SPECIES_MESPRIT 60 ITEM_NONE
+    special2 LASTRESULT 0xB4
+    compare LASTRESULT 0x1
+    if equal _goto EventScript_Legendaries_End
+    compare LASTRESULT 0x4
+    if equal _goto EventScript_Legendaries_End
+    pause 15
+    fadescreenspeed 0x3 0
+    setflag FLAG_MESPRIT_VIRIDIAN_LAKE
+    fadescreenspeed 0x2 0
+    pause 30
+    sound 0x15
+    applymovement PLAYER Move_PlayerExclaim
+    waitmovement PLAYER
+    release
+    end
+
+EventScript_ViridianLake_Uxie:
+    signmsg
+    pause 30
+    msgbox gText_ViridianLake_GuardianTrio_Narrator_1 MSG_YESNO
+    compare LASTRESULT 0x1
+    if notequal _goto EventScript_Legendaries_End
+    closeonkeypress
+    pause 15
+    sound 0x15
+    applymovement PLAYER Move_PlayerExclaim
+    waitmovement PLAYER
+    pause 15
+    cry SPECIES_UXIE 0x0
+    msgbox gText_ViridianLake_GuardianTrio MSG_KEEPOPEN
+    closeonkeypress
+    pause 30
+    wildbattle SPECIES_UXIE 60 ITEM_NONE
+    special2 LASTRESULT 0xB4
+    compare LASTRESULT 0x1
+    if equal _goto EventScript_Legendaries_End
+    compare LASTRESULT 0x4
+    if equal _goto EventScript_Legendaries_End
+    pause 15
+    fadescreenspeed 0x3 0
+    hidesprite 0x1
+    setflag FLAG_UXIE_VIRIDIAN_LAKE
+    fadescreenspeed 0x2 0
+    msgbox gText_ViridianLake_GuardianTrio_Narrator_2 MSG_KEEPOPEN
+    closeonkeypress
+    release
+    end
+
+@@@@@@@@@@@@@@@@@@@@@@
 @ Legendary General
 @@@@@@@@@@@@@@@@@@@@@@
 Move_PlayerExclaim:
