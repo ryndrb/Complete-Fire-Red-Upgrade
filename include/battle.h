@@ -260,7 +260,7 @@ struct TrainerMonNoItemCustomMoves
 
 struct TrainerMonItemCustomMoves
 {
-    u16 lvl;
+    s8 lvl;
     u16 species;
 	u8 	ability;
 	u8 	nature;

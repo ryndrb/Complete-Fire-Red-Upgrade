@@ -956,9 +956,6 @@ EventScript_0x8169D2F:
     sound 0x15
     applymovement 11 Move_PalletTown_InsideOakLab_May_TookMon_1
     waitmovement 11
-    spriteface 0x8 LEFT
-    pause 5
-    spriteface PLAYER LEFT
     npcmsg gText_PalletTown_InsideOakLab_May_TookMon_Speak_2 MSG_KEEPOPEN gText_Name_May
     closemsg
     pause 15

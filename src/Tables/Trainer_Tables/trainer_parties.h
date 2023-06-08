@@ -10103,22 +10103,12 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
     },
     {
         .lvl = 0,
-        .species = SPECIES_GEODUDE_A,
-        .nature = NATURE_ADAMANT,
-        .ability = Ability_2, // sturdy
-        .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
-        .heldItem = ITEM_CHESTO_BERRY,
-        .moves = {MOVE_SPARK, MOVE_TACKLE},
-    },
-    {
-        .lvl = 0,
         .species = SPECIES_DWEBBLE,
         .nature = NATURE_IMPISH,
         .ability = Ability_Hidden, // weakarmor
         .ivSpread = {IV_MAX},
         .evSpread = {EV_20},
-        .heldItem = ITEM_QUICK_BALL,
+        .heldItem = ITEM_QUICK_CLAW,
         .moves = {MOVE_FURYCUTTER, MOVE_SMACKDOWN},
     },
     {
@@ -10129,17 +10119,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBrock[] = {
         .ivSpread = {IV_MAX},
         .evSpread = {EV_20},
         .heldItem = ITEM_SITRUS_BERRY,
-        .moves = {MOVE_CONFUSERAY, MOVE_GIGADRAIN, MOVE_INGRAIN, MOVE_ATTRACT},
-    },  
-    {
-        .lvl = -1,
-        .species = SPECIES_ONIX,
-        .nature = NATURE_QUIET,
-        .ability = Ability_1, // sturdy
-        .ivSpread = {IV_MAX},
-        .evSpread = {EV_20},
-        .heldItem = ITEM_CHOPLE_BERRY,
-        .moves = {MOVE_SMACKDOWN, MOVE_BIND, MOVE_SANDSTORM, MOVE_TAUNT},
+        .moves = {MOVE_CONFUSERAY, MOVE_MEGADRAIN, MOVE_INGRAIN, MOVE_ATTRACT},
     },
     {
         .lvl = 1,
@@ -10165,16 +10145,6 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .moves = {MOVE_WATERPULSE, MOVE_ROOST, MOVE_AIRCUTTER, MOVE_UTURN},
     },        
     {
-        .lvl = -1,
-        .species = SPECIES_AZUMARILL,
-        .nature = NATURE_ADAMANT,
-        .ability = Ability_2, // huge power
-        .ivSpread = {IV_MAX},
-        .evSpread = {EV_40},
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_AQUAJET, MOVE_SLAM, MOVE_REST, MOVE_SLEEPTALK},
-    },   
-    {
         .lvl = 0,
         .species = SPECIES_MARSHTOMP,
         .nature = NATURE_RELAXED,
@@ -10195,7 +10165,7 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderMisty[] = {
         .moves = {MOVE_TOXICSPIKES, MOVE_WATERPULSE, MOVE_PROTECT, MOVE_UTURN},
     },
     {
-        .lvl = -1,
+        .lvl = 0,
         .species = SPECIES_BIBAREL,
         .nature = NATURE_ADAMANT,
         .ability = Ability_2, // unaware

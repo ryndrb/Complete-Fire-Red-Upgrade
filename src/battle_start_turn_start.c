@@ -223,11 +223,6 @@ void BattleBeginFirstTurn(void)
 	u8* state = &(gBattleStruct->switchInAbilitiesCounter);
 	u8* bank = &(gBattleStruct->switchInItemsCounter);
 
-	if(gBattleTypeFlags & BATTLE_TYPE_TRAINER){ // Force trainer battles to set even if the player choose switch in option
-		gSaveBlock2->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SET;
-		gBattleScripting.battleStyle = OPTIONS_BATTLE_STYLE_SET;
-	}
-
 	if (!gBattleExecBuffer) //Inlclude Safari Check Here?
 	{
 		switch(*state) {
