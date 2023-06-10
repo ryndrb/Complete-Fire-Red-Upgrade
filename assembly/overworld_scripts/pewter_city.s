@@ -220,6 +220,7 @@ EventScript_BrendanAfterCatchingMonInsideGym:
     setflag FLAG_BRENDAN_PEWTER_SPRITE2
     setflag FLAG_BRENDAN_PEWTER_SPRITE3
     clearflag FLAG_ASH_PEWTER_SPRITE
+    setvar VAR_ENCOUNTER_ASH 0x1
     fadedefaultbgm
     end
 

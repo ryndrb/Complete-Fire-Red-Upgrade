@@ -316,7 +316,7 @@ void atk23_getexp(void)
 				if (*expGiveType == GiveExpBattlePariticpants) //In battle recieves full EXP
 					divisor = 1;
 				else //Otherwise Exp / 2
-					divisor = 2;
+					divisor = 1;
 			#endif
 		#endif
 
