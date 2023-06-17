@@ -1,15 +1,9 @@
 # Complete Fire Red Upgrade
 
 ## What is this?
-A CFRU fork for a personal romhack.
-It uses some Hydo Blue? (if I remember correctly) scrap maps that I've found online. So big credits to the mappers. Rest of the maps will be inspired by the style, if I get around to it, that is.
-
-Pacth used:
-LEON Rom Base (Complete)
-BW Summary Screen
-Squeetz Music Patch
-DPPt Summary Screen
-IV Ranking
+* A CFRU fork for a personal romhack. 
+* It uses some Hydo Blue? (if I remember correctly) scrap maps that I've found online. So big credits to the mappers. Rest of the maps will be inspired by the style, if I get around to it, that is.
+* Replacing Kanto story with Unova.
 
 **Before doing anything it is HIGHLY recommended the documentation be read thoroughly.**
 
