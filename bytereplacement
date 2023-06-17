@@ -700,7 +700,7 @@
 #endif
 
 ##Player Initial Spawn Location
-08054A08 02
+08054A08 06
 08054A00 05
 
 ##Remove Gendered Text Color

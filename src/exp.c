@@ -84,9 +84,6 @@ u8 GetCap() {
 	if (FlagGet(FLAG_BADGE02_GET)) {
 		cap++;
 	}
-	if (FlagGet(FLAG_CAP_RIVALSSANNE)){
-		cap++;
-	}
 	if (FlagGet(FLAG_BADGE03_GET)) {
 		cap++;
 	}
@@ -845,7 +842,7 @@ static void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 	u8 itemQuality = ItemId_GetHoldEffectParam(heldItem);
 	u8 pkrsMultiplier = (CheckPartyHasHadPokerus(mon, 0)) ? 2 : 1;
 
-	if (GetMonEVCount(mon) >= MAX_TOTAL_EVS || FlagGet(FLAG_TRAYNEE_EXP_TRAINING_NO_EV) || FlagGet(FLAG_MINIMAL_GRINDING))
+	if (GetMonEVCount(mon) >= MAX_TOTAL_EVS || FlagGet(FLAG_MINIMAL_GRINDING))
 		return;
 
 	for (u8 stat = 0; stat < NUM_STATS; ++stat, evIncrease = 0)

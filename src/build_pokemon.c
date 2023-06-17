@@ -797,19 +797,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 	u8 val = VarGet(0x800B);
 
 	// Separete files, annoying counting index
-	if(FlagGet(FLAG_TRAYNEE_HP_TEAM))
-		return BuildCustomTrainerParty(party, gTrayneeBattles[0].otId, gTrayneeBattles[0]);
-	else if(FlagGet(FLAG_TRAYNEE_ATT_TEAM))
-		return BuildCustomTrainerParty(party, gTrayneeBattles[1].otId, gTrayneeBattles[1]);
-	else if(FlagGet(FLAG_TRAYNEE_DEF_TEAM))
-		return BuildCustomTrainerParty(party, gTrayneeBattles[2].otId, gTrayneeBattles[2]);
-	else if(FlagGet(FLAG_TRAYNEE_SPA_TEAM))
-		return BuildCustomTrainerParty(party, gTrayneeBattles[3].otId, gTrayneeBattles[3]);
-	else if(FlagGet(FLAG_TRAYNEE_SPD_TEAM))
-		return BuildCustomTrainerParty(party, gTrayneeBattles[4].otId, gTrayneeBattles[4]);
-	else if(FlagGet(FLAG_TRAYNEE_SPE_TEAM))
-		return BuildCustomTrainerParty(party, gTrayneeBattles[5].otId, gTrayneeBattles[5]);
-
 	switch(trainerId){
 		case 6:
 			if(val == 2) // Proton Silph Co.
