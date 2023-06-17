@@ -763,8 +763,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_May),
-        .party = {.ItemCustomMoves = sParty_May}
+        .partySize = NELEMS(sParty_May_PlayerHouse_Oshawott),
+        .party = {.ItemCustomMoves = sParty_May_PlayerHouse_Oshawott}
     },
     [TRAINER_MAY_2] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -775,8 +775,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_May2),
-        .party = {.ItemCustomMoves = sParty_May2}
+        .partySize = NELEMS(sParty_May_PlayerHouse_Tepig),
+        .party = {.ItemCustomMoves = sParty_May_PlayerHouse_Tepig}
     },
     [TRAINER_MAY_3] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -787,8 +787,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_May3),
-        .party = {.ItemCustomMoves = sParty_May3}
+        .partySize = NELEMS(sParty_May_PlayerHouse_Snivy),
+        .party = {.ItemCustomMoves = sParty_May_PlayerHouse_Snivy}
     },
     [TRAINER_RS_PKMN_BREEDER_M] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -3931,8 +3931,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_RivalOaksLabSquirtle),
-        .party = {.ItemCustomMoves = sParty_RivalOaksLabSquirtle}
+        .partySize = NELEMS(sParty_Rival_PlayerHouse_Tepig),
+        .party = {.ItemCustomMoves = sParty_Rival_PlayerHouse_Tepig}
     },
     [TRAINER_RIVAL_OAKS_LAB_BULBASAUR] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -3943,8 +3943,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_RivalOaksLabBulbasaur),
-        .party = {.ItemCustomMoves = sParty_RivalOaksLabBulbasaur}
+        .partySize = NELEMS(sParty_Rival_PlayerHouse_Snivy),
+        .party = {.ItemCustomMoves = sParty_Rival_PlayerHouse_Snivy}
     },
     [TRAINER_RIVAL_OAKS_LAB_CHARMANDER] = {
         .partyFlags = PARTY_FLAG_CUSTOM_MOVES | PARTY_FLAG_HAS_ITEM,
@@ -3955,8 +3955,8 @@ const struct Trainer gTrainers[] =
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = NELEMS(sParty_RivalOaksLabCharmander),
-        .party = {.ItemCustomMoves = sParty_RivalOaksLabCharmander}
+        .partySize = NELEMS(sParty_Rival_PlayerHouse_Oshawott),
+        .party = {.ItemCustomMoves = sParty_Rival_PlayerHouse_Oshawott}
     },
     [TRAINER_RIVAL_ROUTE22_EARLY_SQUIRTLE] = {
         .partyFlags = PARTY_FLAG_HAS_ITEM | PARTY_FLAG_CUSTOM_MOVES,

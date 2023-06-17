@@ -1,0 +1,119 @@
+#org @gText_Pallet_Town_Player_House_2F_May_1
+Ooh! What kind of Pok\emon could\nthey be?
+
+#org @gText_Pallet_Town_Player_House_2F_Rival_1
+Would you get a move on and open\nthe gift box already?\pI'm sure the Pok\emon are just as\nexcited to meet us!
+
+#org @gText_Pallet_Town_Player_House_2F_CheckOutTheMons
+Aren't you going to choose a\nPok\emon?\pWhere are you going?
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_Rival_1
+[PLAYER]!\pI heard from gramps.\nWe can have a Pok\emon?
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_Rival_2
+[.]\pWhat's keeping May?
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_May_1
+Am I a little late again?\nSo-oooo-orry!
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_Rival_3
+May[.]\pI've known for ten years that\nyou have no sense of time,\lbut[.] seriously[.]\pToday's the day we can get a\nPok\emon from gramps!
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_May_2
+I know. Sorry, [PLAYER].\nSorry, [RIVAL].
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_May_3
+So, where are the Pok\emon?\pThey were delivered to [PLAYER]'s\nhouse, so [PLAYER] gets first pick.
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_Rival_4
+Naturally.
+
+#org @gText_Pallet_Town_Player_House_2F_Intro_Rival_5
+The Pok\emon are waiting for us\ninside those Pok\e Balls.\pOK, [PLAYER], you go first and\nchoose your Pok\emon.\pI want to meet the Pok\emon right\nnow!
+
+#org @gText_Pallet_Town_Player_House_2F_Choose_Starter_Attachment
+There is a message attach to the\nPok\e Ball.\pI've brought three Pok\emon, one\nfor you and one for each of your\lfriends.\pPlease settle your choices\npolitely.\pEnjoy your Pok\emon!\p-Prof. Oak
+
+#org @gText_Pallet_Town_Player_House_2F_Choose_Starter_Snivy
+The Grass-type Pok\emon: Snivy.\pIs this the Pok\emon you want?
+
+#org @gText_Pallet_Town_Player_House_2F_Choose_Starter_Oshawott
+The Water-type Pok\emon: Oshawott.\pIs this the Pok\emon you want?
+
+#org @gText_Pallet_Town_Player_House_2F_Choose_Starter_Tepig
+The Fire-type Pok\emon: Tepig.\pIs this the Pok\emon you want?
+
+#org @gText_Pallet_Town_Player_House_2F_Obtained_Pokemon
+[PLAYER] obtained a Pok\emon!
+
+#org @gText_Pallet_Town_Player_House_2F_Received_Starter_WantToNickName
+Do you want to give your Pok\emon a\nnickname?
+
+#org @gText_Pallet_Town_Player_House_2F_Received_Starter_May_1
+OK, I'll take this Pok\emon!\n[RIVAL], that one's yours!
+
+#org @gText_Pallet_Town_Player_House_2F_Received_Starter_Rival_1
+Hey, how come you get to pick out\nmy Pok\emon?
+
+#org @gText_Pallet_Town_Player_House_2F_Received_Starter_Rival_2
+Oh, never mind.\pI want this Pok\emon from the start\nanyway.
+
+#org @gText_Pallet_Town_Player_House_2F_Received_Starter_May_2
+Everyone has chosen a Pok\emon!\n[.]So that's that!\pHey, I know!\nLet's have a Pok\emon battle!
+
+#org @gText_Pallet_Town_Player_House_2F_Received_Starter_Rival_3
+Honestly, May[.]\pEven though they're weak Pok\emon,\nyou shouldn't have Pok\emon battles\linside a house.
+
+#org @gText_Pallet_Town_Player_House_2F_Received_Starter_May_3
+Don't be a worrywart! These little\nones are weak, like you said.\pWe have to let them battle so\nthey'll get stronger.\lIt's settled, [PLAYER]!\lGet ready for a Pok\emon battle!
+
+#org @gText_Pallet_Town_Player_House_2F_May_Battle_Defeat
+The Pok\emon on both sides did\ntheir best!
+
+#org @gText_Pallet_Town_Player_House_2F_May_Battle_Win
+Wha[.]\pI got absorbed in having my\nPok\emon use moves.\pI won before even realizing[.]
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_May_1
+Wow[.]\p[PLAYER], you're gonna be an awesome\nTrainer someday, I can tell!\pNo doubt!
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_1
+Uh[.]\pMay, would you take a look around?
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_May_2
+Wh-whoa! What happened!?
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_May_3
+Wow! Pok\emon are amaaaaazing!\nSo little, but so strong!\pI'm so glad that I get to have a\nPok\emon!\p[.]Oh.\nUm, sorry about your room, [PLAYER].
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_2
+You[.] are completely hopeless.\pHere!\nI'll restore your Pok\emon for you.
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_HealedMayPokemon
+[RIVAL] healed May's Pok\emon!
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_3
+[PLAYER]'s Pok\emon needs to be fixed\nup, too.
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_HealedPlayerPokemon
+[RIVAL] healed [PLAYER]'s Pok\emon!
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_May_4
+Hey, [RIVAL]!\nHow about you battle, too?\pWith all you know, I'm sure you\ncan battle without turning the\lroom into a disaster area!
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_4
+I believe you're right!\pIt'll be no problem for me to keep\nthe room from getting any messier.\pBesides, it's not fair if you two\nare the only ones who get to have\lfun battling!
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_5
+It's decided. You'll be my\nopponent[.] in our first Pok\emon\lbattle!\pLet's see what my Pok\emon can do!
+
+#org @gText_Pallet_Town_Player_House_2F_Rival_Battle_Defeat
+Ah! So that's a Pok\emon battle!
+
+#org @gText_Pallet_Town_Player_House_2F_Rival_Battle_Win
+Ah! So that's a Pok\emon battle!
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_Rival_6
+This feeling[.]\nFinally, I'm a Trainer.\pBut first, we'd better go\napologize to your mother about\lthis messed-up room.
+
+#org @gText_Pallet_Town_Player_House_2F_After_Battle_May_5
+Oh!\nI'd better come, too!

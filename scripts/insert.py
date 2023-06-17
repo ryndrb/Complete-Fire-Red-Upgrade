@@ -208,7 +208,7 @@ def ReplaceBytesFromPatches(rom: _io.BufferedReader):
     squeetz_music = 'patches/squeetz_music.txt'
     iv_ranking = 'patches/iv_ranking.txt'
     ui_pals = 'patches/ui_pals.txt'
-    #dppt_font = 'patches/ddpt_font.txt' # as option
+    dppt_font = 'patches/ddpt_font.txt' # as option
     
     ## Patches
     #if os.path.isfile(bw_party_screen):
@@ -221,8 +221,8 @@ def ReplaceBytesFromPatches(rom: _io.BufferedReader):
         DoReplace(rom, iv_ranking)
     if os.path.isfile(ui_pals):
         DoReplace(rom, ui_pals)
-    #if os.path.isfile(dppt_font):
-    #    DoReplace(rom, dppt_font)
+    if os.path.isfile(dppt_font):
+        DoReplace(rom, dppt_font)
 
 def DoReplace(rom: _io.BufferedReader, path):
     with open(path, 'r') as replacelist:

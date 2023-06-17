@@ -122,14 +122,14 @@
 #define VAR_0x404E                         0x404E
 #define VAR_LOTAD_SIZE_RECORD              0x404F
 
-// Map Scene
-#define VAR_MAP_SCENE_PALLET_TOWN_OAK                                          0x4050
+// Map Scene for unova firered..
+#define VAR_MAP_SCENE_PALLET_TOWN                                              0x4050 // revised
 #define VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN                                    0x4051
 #define VAR_MAP_SCENE_CERULEAN_CITY_RIVAL                                      0x4052
 #define VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER                                0x4053
 #define VAR_MAP_SCENE_ROUTE22                                                  0x4054
-#define VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB                           0x4055
-#define VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F                             0x4056
+#define VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB                           0x4055 // revised
+#define VAR_MAP_SCENE_PALLET_TOWN_PLAYER_HOUSE                                 0x4056 // revised
 #define VAR_MAP_SCENE_VIRIDIAN_CITY_MART                                       0x4057
 #define VAR_MAP_SCENE_PALLET_TOWN_GARYS_HOUSE                                  0x4058
 #define VAR_MAP_SCENE_POKEMON_TOWER_6F                                         0x4059
@@ -183,6 +183,7 @@
 #define VAR_MAP_SCENE_SIX_ISLAND_POKEMON_CENTER_1F                             0x4089
 #define VAR_MAP_SCENE_CINNABAR_ISLAND_2                                        0x408A
 #define VAR_MAP_SCENE_MT_MOON_B2F                                              0x408B
+#define VAR_MAP_SCENE_PALLET_TOWN_MAY_HOUSE                                    0x5013
 
 
 #define VAR_0x408C                 0x408C

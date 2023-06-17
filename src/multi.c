@@ -570,15 +570,6 @@ static u32 CalcPrizeiMoneyForTrainer(u16 trainerId)
 	if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && !(gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS)))
 		money *= 2;
 
-	if(FlagGet(FLAG_TRAYNEE_EXP_TRAINING_NO_EV)
-	|| FlagGet(FLAG_TRAYNEE_HP_TEAM)
-	|| FlagGet(FLAG_TRAYNEE_ATT_TEAM)
-	|| FlagGet(FLAG_TRAYNEE_DEF_TEAM)
-	|| FlagGet(FLAG_TRAYNEE_SPA_TEAM)
-	|| FlagGet(FLAG_TRAYNEE_SPD_TEAM)
-	|| FlagGet(FLAG_TRAYNEE_SPE_TEAM))
-		money = 0;
-
 	return money;
 }
 
