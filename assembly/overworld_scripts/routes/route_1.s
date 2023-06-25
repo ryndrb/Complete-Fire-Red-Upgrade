@@ -45,6 +45,10 @@ EventScript_Route_1_OakExplainCatch:
     closemsg
     npcmsg gText_Route_1_OakExplainCatch_Oak_1 MSG_KEEPOPEN gText_Name_ProfOak
     closemsg
+    pause 5
+    special 0x188
+    special 0x9D
+    waitstate
     npcmsg gText_Route_1_OakExplainCatch_Oak_2 MSG_KEEPOPEN gText_Name_ProfOak
     closemsg
     pause 5
