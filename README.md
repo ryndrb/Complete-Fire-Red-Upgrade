@@ -5,6 +5,7 @@
 * <strike>It uses some Hydo Blue? (if I remember correctly) scrap maps that I've found online. So big credits to the mappers. Rest of the maps will be inspired by the style, if I get around to it, that is.</strike>
 * Moving to emerald decompilations (offsets...)
 * https://github.com/ryndrb/fr_pokeemerald
+* See **Release** if you want to play a working patch.
 
 **Before doing anything it is HIGHLY recommended the documentation be read thoroughly.**
 
